@@ -54,7 +54,6 @@ export default function Home() {
       ))}
       <Timeline
         id="ourplan"
-        className="col-span-10 col-start-2"
         cover={{
           tag: t("Home.timeline.cover.tag"),
           title: t("Home.timeline.cover.title"),

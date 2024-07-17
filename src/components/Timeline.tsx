@@ -1,3 +1,5 @@
+import { Paragraph } from "@/components/Paragraph";
+import { Tag } from "@/components/Tag";
 import Star from "@/icons/star";
 import { cn } from "@/lib/utils";
 
@@ -26,23 +28,21 @@ export default function Timeline(props: Props) {
         props.className,
       )}
     >
-      <div className="flex flex-col gap-6 max-lg:pt-12 lg:flex-row">
-        <div className="space-y-4.5 lg:w-1/3 lg:py-[84px]">
+      <div className="grid grid-cols-2 gap-y-[3.25rem] lg:grid-cols-12">
+        <div className="space-y-4.5 col-span-full gap-y-[1.125rem] pt-[3rem] lg:col-span-3 lg:col-start-2 lg:pt-[5.25rem]">
           <div className="text-foreground flex gap-x-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em]">
-              {props.cover.tag}
-            </p>
+            <Tag>{props.cover.tag}</Tag>
           </div>
-          <h2 className="text-hsm text-balance font-semibold">
+          <h2 className="text-balance text-[1.875rem] font-semibold leading-[2.375rem]">
             {props.cover.title}
           </h2>
-          <p className="text-black-700 text-pretty">
+          <Paragraph className="text-black-700 text-pretty">
             {props.cover.description}
-          </p>
+          </Paragraph>
         </div>
-        <div className="relative flex h-full justify-start sm:justify-center lg:w-2/3">
+        <div className="relative col-span-full flex h-full justify-start sm:justify-center lg:col-span-7 lg:col-start-6">
           <div className="bg-outline-200 absolute -z-10 h-full w-px max-sm:left-[3.5px]" />
-          <div className="grid grid-cols-1 gap-x-14 gap-y-3 py-8 max-sm:ml-8 sm:grid-cols-2 lg:py-[84px]">
+          <div className="grid grid-cols-1 gap-x-14 gap-y-3 pb-[3rem] pt-[5.25rem] max-sm:ml-8 sm:grid-cols-2 lg:pb-[3.563rem] lg:pt-[6.438rem]">
             {props.data.map((item, i) => (
               <div
                 key={i}
