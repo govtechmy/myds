@@ -15,6 +15,7 @@ import { Link, usePathname } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { Suspense, useState } from "react";
 import FigmaLink from "./FigmaLink";
 
@@ -35,8 +36,13 @@ export function Header({ locale }: { locale: string }) {
       <div className="bg-background container flex w-full items-center justify-between gap-3 py-3 max-lg:border-b lg:gap-4 lg:bg-transparent">
         <Link href="/" className="flex h-full flex-none items-center gap-2.5">
           {/* TODO: Use webp */}
-          <img src="/logo.svg" alt="Logo" className="h-100 max-h-8" />
-          <img src="/label-beta.svg" alt="Beta release" className="h-100" />
+          <Image width={95} height={32} src="/logo.svg" alt="Logo" />
+          <Image
+            width={31}
+            height={9}
+            src="/label-beta.svg"
+            alt="Beta software"
+          />
         </Link>
 
         <Sheet open={showMenu} onOpenChange={setMenu}>
