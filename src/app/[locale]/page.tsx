@@ -5,6 +5,8 @@ import Feedback from "@/components/home/Feedback";
 import { useTranslations } from "next-intl";
 import Timeline from "@/components/Timeline";
 
+const TIMELINE_ITEMS = 7;
+
 const previewItems = [
   {
     tagKey: "Home.previewContent.items.1.tag",
@@ -36,7 +38,7 @@ export default function Home() {
   const t = useTranslations();
 
   return (
-    <main className="divide-washed-100 flex w-full flex-col divide-y py-4 lg:py-0">
+    <main className="flex w-full flex-col divide-y divide-washed-100 py-4 lg:py-0">
       {/* Wrapper container components in <article> to display full-width dividers */}
       <article>
         <Hero id="about" className="pt-[3rem]" />
@@ -67,11 +69,13 @@ export default function Home() {
             title: t("Home.timeline.cover.title"),
             description: t("Home.timeline.cover.description"),
           }}
-          data={Array.from({ length: 7 }).map((_, i) => ({
-            type: t(`Home.timeline.items.${i + 1}.type`),
-            date: t(`Home.timeline.items.${i + 1}.date`),
-            title: t(`Home.timeline.items.${i + 1}.title`),
-            description: t(`Home.timeline.items.${i + 1}.description`),
+          data={Array.from({ length: TIMELINE_ITEMS }).map((_, i) => ({
+            type: t(`Home.timeline.items.${TIMELINE_ITEMS - i}.type`),
+            date: t(`Home.timeline.items.${TIMELINE_ITEMS - i}.date`),
+            title: t(`Home.timeline.items.${TIMELINE_ITEMS - i}.title`),
+            description: t(
+              `Home.timeline.items.${TIMELINE_ITEMS - i}.description`,
+            ),
           }))}
         />
       </article>
