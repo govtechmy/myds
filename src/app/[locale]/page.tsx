@@ -70,12 +70,10 @@ export default function Home() {
             description: t("Home.timeline.cover.description"),
           }}
           data={Array.from({ length: TIMELINE_ITEMS }).map((_, i) => ({
-            type: t(`Home.timeline.items.${TIMELINE_ITEMS - i}.type`),
-            date: t(`Home.timeline.items.${TIMELINE_ITEMS - i}.date`),
-            title: t(`Home.timeline.items.${TIMELINE_ITEMS - i}.title`),
-            description: t(
-              `Home.timeline.items.${TIMELINE_ITEMS - i}.description`,
-            ),
+            type: t(`Home.timeline.items.${i + 1}.type`),
+            date: t(`Home.timeline.items.${i + 1}.date`),
+            title: t(`Home.timeline.items.${i + 1}.title`),
+            description: t(`Home.timeline.items.${i + 1}.description`),
           }))}
         />
       </article>
