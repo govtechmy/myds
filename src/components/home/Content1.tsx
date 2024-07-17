@@ -50,7 +50,7 @@ export default async function Content1(props: Props) {
   return (
     <section
       className={cn(
-        "container col-span-10 col-start-2 flex flex-col items-center gap-8",
+        "container flex flex-col items-center gap-8",
         props.className,
       )}
     >

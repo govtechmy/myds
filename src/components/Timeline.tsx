@@ -22,7 +22,7 @@ export default function Timeline(props: Props) {
     <section
       id={props.id}
       className={cn(
-        "lg:border-washed-100 container col-span-10 col-start-2 lg:border-x",
+        "lg:border-washed-100 container lg:border-x",
         props.className,
       )}
     >

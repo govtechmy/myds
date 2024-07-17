@@ -21,7 +21,7 @@ export default async function PreviewContent(props: Props) {
   return (
     <section
       className={cn(
-        "container col-span-10 col-start-2 flex flex-col items-start gap-4 lg:flex-row lg:items-center lg:gap-16",
+        "container flex flex-col items-start gap-4 lg:flex-row lg:items-center lg:gap-16",
         reversed ? "lg:flex-row-reverse" : "",
         props.className,
       )}
