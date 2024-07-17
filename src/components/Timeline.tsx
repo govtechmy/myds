@@ -22,11 +22,11 @@ export default function Timeline(props: Props) {
     <section
       id={props.id}
       className={cn(
-        "lg:border-washed-100 container lg:grid lg:grid-cols-12 lg:border-x",
+        "lg:border-washed-100 container col-span-10 col-start-2 lg:border-x",
         props.className,
       )}
     >
-      <div className="col-span-10 col-start-2 flex flex-col gap-6 max-lg:pt-12 lg:flex-row">
+      <div className="flex flex-col gap-6 max-lg:pt-12 lg:flex-row">
         <div className="space-y-4.5 lg:w-1/3 lg:py-[84px]">
           <div className="text-foreground flex gap-x-3">
             <p className="text-sm font-semibold uppercase tracking-[0.2em]">

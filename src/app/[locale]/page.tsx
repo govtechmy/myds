@@ -36,13 +36,12 @@ export default function Home() {
   const t = useTranslations();
 
   return (
-    <main className="container grid w-full auto-rows-auto grid-cols-12 gap-y-32 py-4 lg:py-0">
-      <Hero id="about" className="col-span-10 col-start-2" />
-      <Content1 className="col-span-10 col-start-2" />
+    <main className="grid w-full auto-rows-auto grid-cols-12 gap-y-32 py-4 lg:py-0">
+      <Hero id="about" />
+      <Content1 />
       {previewItems.map((item, i) => (
         <PreviewContent
           key={i}
-          className="col-span-10 col-start-2"
           data={{
             tag: t(item.tagKey),
             title: t(item.titleKey),
@@ -54,7 +53,6 @@ export default function Home() {
       ))}
       <Timeline
         id="ourplan"
-        className="col-span-10 col-start-2"
         cover={{
           tag: t("Home.timeline.cover.tag"),
           title: t("Home.timeline.cover.title"),
@@ -67,7 +65,7 @@ export default function Home() {
           description: t(`Home.timeline.items.${i + 1}.description`),
         }))}
       />
-      <Feedback id="contribute" className="col-span-10 col-start-2" />
+      <Feedback id="contribute" />
     </main>
   );
 }

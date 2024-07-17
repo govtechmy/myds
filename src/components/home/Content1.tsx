@@ -49,7 +49,10 @@ export default async function Content1(props: Props) {
 
   return (
     <section
-      className={cn("flex flex-col items-center gap-8", props.className)}
+      className={cn(
+        "container col-span-10 col-start-2 flex flex-col items-center gap-8",
+        props.className,
+      )}
     >
       <div className="flex flex-col items-start gap-4 lg:items-center">
         <h1 className="text-balance text-3xl font-semibold lg:text-start">

@@ -15,7 +15,7 @@ export default function Hero(props: Props) {
     <section
       id={props.id}
       className={cn(
-        "flex w-full flex-col items-center gap-8 lg:flex-row",
+        "container col-span-10 col-start-2 flex w-full flex-col items-center gap-8 lg:flex-row",
         props.className,
       )}
     >
