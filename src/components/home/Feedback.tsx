@@ -23,7 +23,7 @@ export default async function Feedback(props: Props) {
       <h1 className="text-balance text-3xl font-semibold">
         {t("Home.title.feedback")}
       </h1>
-      <p className="text-black-700 text-pretty lg:w-2/3 lg:text-center">
+      <p className="text-black-700 text-pretty text-center lg:w-2/3">
         {t.rich("Home.description.feedback", {
           email: (_) => {
             return (
