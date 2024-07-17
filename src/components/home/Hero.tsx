@@ -2,6 +2,7 @@ import BorderedLink from "@/components/BorderedLink";
 import FigmaLink from "@/components/FigmaLink";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import { Paragraph } from "../Paragraph";
 
 type Props = {
   id?: string;
@@ -15,23 +16,23 @@ export default function Hero(props: Props) {
     <section
       id={props.id}
       className={cn(
-        "container flex w-full flex-col items-center gap-8 lg:flex-row",
+        "container grid auto-rows-auto grid-cols-2 lg:grid-cols-12",
         props.className,
       )}
     >
-      <div className="flex max-h-full basis-1/2 flex-col justify-center gap-6 lg:items-start">
+      <div className="col-span-full flex flex-col justify-start lg:col-span-5 lg:col-start-1 lg:justify-center">
         <h5 className="text-tag-300 uppercase tracking-widest">
           {t("Home.tag.beta")}
         </h5>
-        <h1 className="text-balance text-3xl font-semibold lg:text-start lg:text-4xl">
+        <h1 className="mt-[1.5rem] text-balance text-[2rem] font-semibold leading-[2.5rem] lg:text-start lg:text-[2.25rem] lg:leading-[2.75rem]">
           {t("Home.title.hero")}
         </h1>
-        <p className="text-black-700 text-pretty lg:text-start">
+        <Paragraph className="mt-[1.5rem] lg:text-start">
           {t("Home.description.hero")}
-        </p>
-        <div className="mt-2 flex flex-row items-center gap-4">
-          <FigmaLink className="h-[44px] text-[16px] leading-6" />
-          <BorderedLink href="#contribute" className="h-[44px] w-[106px]">
+        </Paragraph>
+        <div className="mt-[2.25rem] flex flex-row items-center gap-x-[0.5rem]">
+          <FigmaLink className="h-[2.75rem] text-[1rem] leading-[1.5rem]" />
+          <BorderedLink href="#contribute" className="h-[2.75rem] w-[6.625rem]">
             {t("common.contribute")}
           </BorderedLink>
         </div>
@@ -39,7 +40,7 @@ export default function Hero(props: Props) {
       <img
         src="/preview/hero.svg"
         alt="Hero"
-        className="max-h-full w-full basis-1/2 bg-[#FAFAFA] lg:w-1/2"
+        className="col-span-full mt-[3rem] w-full bg-[#FAFAFA] lg:col-span-6 lg:col-start-7 lg:mt-0"
       />
     </section>
   );

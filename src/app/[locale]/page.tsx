@@ -36,8 +36,8 @@ export default function Home() {
   const t = useTranslations();
 
   return (
-    <main className="grid w-full auto-rows-auto grid-cols-12 divide-y py-4 lg:py-0">
-      <Hero id="about" className="col-span-10 col-start-2" />
+    <main className="flex w-full flex-col divide-y py-4 lg:py-0">
+      <Hero id="about" className="pt-[3rem]" />
       <Content1 className="col-span-10 col-start-2 py-[84px]" />
       {previewItems.map((item, i) => (
         <PreviewContent
