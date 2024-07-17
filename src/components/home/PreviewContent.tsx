@@ -1,5 +1,6 @@
-import { Tag } from "@/components/Tag";
+import BorderedSection from "@/components/BorderedSection";
 import { Paragraph } from "@/components/Paragraph";
+import { Tag } from "@/components/Tag";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -19,11 +20,8 @@ export default async function PreviewContent(props: Props) {
   const { data, reversed } = props;
 
   return (
-    <section
-      className={cn(
-        "container grid grid-cols-2 lg:grid-cols-12",
-        props.className,
-      )}
+    <BorderedSection
+      className={cn("grid grid-cols-2 lg:grid-cols-12", props.className)}
     >
       <div
         className={cn(
@@ -44,6 +42,6 @@ export default async function PreviewContent(props: Props) {
           reversed ? "lg:col-start-1" : "lg:col-start-7",
         )}
       />
-    </section>
+    </BorderedSection>
   );
 }

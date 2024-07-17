@@ -1,3 +1,4 @@
+import BorderedSection from "@/components/BorderedSection";
 import GradientLink from "@/components/GradientLink";
 import { Paragraph } from "@/components/Paragraph";
 import { FEEDBACK_EMAIL } from "@/constants";
@@ -14,12 +15,9 @@ export default async function Feedback(props: Props) {
   const t = useTranslations();
 
   return (
-    <section
+    <BorderedSection
       id={props.id}
-      className={cn(
-        "container flex flex-col items-center py-[5.25rem]",
-        props.className,
-      )}
+      className={cn("flex flex-col items-center py-[5.25rem]", props.className)}
     >
       <h1 className="text-balance text-[1.875rem] font-semibold leading-[2.375rem]">
         {t("Home.title.feedback")}
@@ -45,6 +43,6 @@ export default async function Feedback(props: Props) {
         <IconMailWhite />
         <span>{t("Home.action.feedback.send")}</span>
       </GradientLink>
-    </section>
+    </BorderedSection>
   );
 }

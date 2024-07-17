@@ -1,4 +1,5 @@
 import BorderedLink from "@/components/BorderedLink";
+import BorderedSection from "@/components/BorderedSection";
 import FigmaLink from "@/components/FigmaLink";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -13,12 +14,9 @@ export default function Hero(props: Props) {
   const t = useTranslations();
 
   return (
-    <section
+    <BorderedSection
       id={props.id}
-      className={cn(
-        "container grid auto-rows-auto grid-cols-2 lg:grid-cols-12",
-        props.className,
-      )}
+      className={cn("grid grid-cols-2 lg:grid-cols-12", props.className)}
     >
       <div className="col-span-full flex flex-col justify-start lg:col-span-5 lg:col-start-1 lg:justify-center">
         <h5 className="text-tag-300 uppercase tracking-widest">
@@ -42,6 +40,6 @@ export default function Hero(props: Props) {
         alt="Hero"
         className="col-span-full mt-[3rem] w-full bg-[#FAFAFA] lg:col-span-6 lg:col-start-7 lg:mt-0"
       />
-    </section>
+    </BorderedSection>
   );
 }

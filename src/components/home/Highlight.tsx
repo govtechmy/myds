@@ -1,3 +1,4 @@
+import BorderedSection from "@/components/BorderedSection";
 import { Paragraph } from "@/components/Paragraph";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -49,11 +50,8 @@ export default async function Highlight(props: Props) {
   const t = useTranslations();
 
   return (
-    <section
-      className={cn(
-        "container grid grid-cols-2 lg:grid-cols-12",
-        props.className,
-      )}
+    <BorderedSection
+      className={cn("grid grid-cols-2 lg:grid-cols-12", props.className)}
     >
       <div className="col-span-full flex grid flex-col items-center gap-y-[2rem] lg:col-span-10 lg:col-start-2 lg:gap-y-[4.625rem]">
         <div className="flex flex-col items-start gap-y-[1.125rem] lg:items-center">
@@ -83,6 +81,6 @@ export default async function Highlight(props: Props) {
           ))}
         </div>
       </div>
-    </section>
+    </BorderedSection>
   );
 }

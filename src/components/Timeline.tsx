@@ -1,3 +1,4 @@
+import BorderedSection from "@/components/BorderedSection";
 import { Paragraph } from "@/components/Paragraph";
 import { Tag } from "@/components/Tag";
 import Star from "@/icons/star";
@@ -21,13 +22,7 @@ type Props = {
 
 export default function Timeline(props: Props) {
   return (
-    <section
-      id={props.id}
-      className={cn(
-        "lg:border-washed-100 container lg:border-x",
-        props.className,
-      )}
-    >
+    <BorderedSection id={props.id} className={props.className}>
       <div className="grid grid-cols-2 gap-y-[3.25rem] lg:grid-cols-12">
         <div className="space-y-4.5 col-span-full gap-y-[1.125rem] pt-[3rem] lg:col-span-3 lg:col-start-2 lg:pt-[5.25rem]">
           <div className="text-foreground flex gap-x-3">
@@ -93,6 +88,6 @@ export default function Timeline(props: Props) {
           </div>
         </div>
       </div>
-    </section>
+    </BorderedSection>
   );
 }

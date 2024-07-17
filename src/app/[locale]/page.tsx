@@ -36,37 +36,48 @@ export default function Home() {
   const t = useTranslations();
 
   return (
-    <main className="flex w-full flex-col divide-y py-4 lg:py-0">
-      <Hero id="about" className="pt-[3rem]" />
-      <Highlight className="py-[3rem] lg:py-[5.25rem]" />
+    <main className="divide-washed-100 flex w-full flex-col divide-y py-4 lg:py-0">
+      {/* Wrapper container components in <article> to display full-width dividers */}
+      <article>
+        <Hero id="about" className="pt-[3rem]" />
+      </article>
+      <article>
+        <Highlight className="py-[3rem] lg:py-[5.25rem]" />
+      </article>
       {previewItems.map((item, i) => (
-        <PreviewContent
-          className="py-[3rem] lg:py-[5.25rem]"
-          key={i}
-          data={{
-            tag: t(item.tagKey),
-            title: t(item.titleKey),
-            description: t(item.descriptionKey),
-            img: item.img,
-          }}
-          reversed={(i + 1) % 2 === 0}
-        />
+        <article>
+          <PreviewContent
+            className="py-[3rem] lg:py-[5.25rem]"
+            key={i}
+            data={{
+              tag: t(item.tagKey),
+              title: t(item.titleKey),
+              description: t(item.descriptionKey),
+              img: item.img,
+            }}
+            reversed={(i + 1) % 2 === 0}
+          />
+        </article>
       ))}
-      <Timeline
-        id="ourplan"
-        cover={{
-          tag: t("Home.timeline.cover.tag"),
-          title: t("Home.timeline.cover.title"),
-          description: t("Home.timeline.cover.description"),
-        }}
-        data={Array.from({ length: 7 }).map((_, i) => ({
-          type: t(`Home.timeline.items.${i + 1}.type`),
-          date: t(`Home.timeline.items.${i + 1}.date`),
-          title: t(`Home.timeline.items.${i + 1}.title`),
-          description: t(`Home.timeline.items.${i + 1}.description`),
-        }))}
-      />
-      <Feedback id="contribute" className="py-[3rem] lg:py-[5.25rem]" />
+      <article>
+        <Timeline
+          id="ourplan"
+          cover={{
+            tag: t("Home.timeline.cover.tag"),
+            title: t("Home.timeline.cover.title"),
+            description: t("Home.timeline.cover.description"),
+          }}
+          data={Array.from({ length: 7 }).map((_, i) => ({
+            type: t(`Home.timeline.items.${i + 1}.type`),
+            date: t(`Home.timeline.items.${i + 1}.date`),
+            title: t(`Home.timeline.items.${i + 1}.title`),
+            description: t(`Home.timeline.items.${i + 1}.description`),
+          }))}
+        />
+      </article>
+      <article>
+        <Feedback id="contribute" className="py-[3rem] lg:py-[5.25rem]" />
+      </article>
     </main>
   );
 }
