@@ -19,7 +19,7 @@ export default function FigmaLink(props: Props) {
         props.className,
       )}
     >
-      <div className="flex h-full w-full flex-row items-center gap-2">
+      <div className="flex h-full w-full flex-row items-center gap-x-[0.375rem]">
         <IconFigmaWhite className="h-full max-h-[24px] min-h-[18px]" />
         {t("common.figma.explore")}
       </div>
