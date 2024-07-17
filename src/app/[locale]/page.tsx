@@ -41,7 +41,7 @@ export default function Home() {
       <Highlight className="py-[3rem] lg:py-[5.25rem]" />
       {previewItems.map((item, i) => (
         <PreviewContent
-          className="col-span-10 col-start-2 py-[84px]"
+          className="py-[3rem] lg:py-[5.25rem]"
           key={i}
           data={{
             tag: t(item.tagKey),
@@ -49,7 +49,7 @@ export default function Home() {
             description: t(item.descriptionKey),
             img: item.img,
           }}
-          reversed={i % 2 !== 0}
+          reversed={(i + 1) % 2 === 0}
         />
       ))}
       <Timeline

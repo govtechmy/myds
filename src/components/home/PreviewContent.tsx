@@ -1,5 +1,6 @@
+import { Tag } from "@/components/Tag";
+import { Paragraph } from "@/components/Paragraph";
 import { cn } from "@/lib/utils";
-import { useTranslations } from "next-intl";
 
 type Props = {
   data: {
@@ -15,27 +16,33 @@ type Props = {
 };
 
 export default async function PreviewContent(props: Props) {
-  const t = useTranslations();
   const { data, reversed } = props;
 
   return (
     <section
       className={cn(
-        "container flex flex-col items-start gap-4 lg:flex-row lg:items-center lg:gap-16",
-        reversed ? "lg:flex-row-reverse" : "",
+        "container grid grid-cols-2 lg:grid-cols-12",
         props.className,
       )}
     >
-      <div className="flex flex-col items-start gap-4 lg:w-1/2">
-        <div className="text-brand-700 text-sm font-medium uppercase tracking-widest">
-          {data.tag}
-        </div>
-        <h3 className="text-balance text-3xl font-semibold">{data.title}</h3>
-        <p className="text-black-700 text-pretty">{data.description}</p>
+      <div
+        className={cn(
+          "col-span-full flex h-full w-full flex-col justify-start gap-y-[1.125rem] lg:col-span-4 lg:row-span-1 lg:row-start-1 lg:justify-center",
+          reversed ? "lg:col-start-8" : "lg:col-start-2",
+        )}
+      >
+        <Tag>{data.tag}</Tag>
+        <h3 className="text-balance text-[1.5rem] font-semibold leading-[2rem] lg:text-[1.875rem] lg:leading-[2.375rem]">
+          {data.title}
+        </h3>
+        <Paragraph>{data.description}</Paragraph>
       </div>
       <img
         src={data.img.src}
-        className="lg-[600px] h-[300px] w-full lg:w-1/2"
+        className={cn(
+          "col-span-full mt-[2rem] h-full w-full lg:col-span-6 lg:col-start-1 lg:row-span-1 lg:row-start-1 lg:mt-0",
+          reversed ? "lg:col-start-1" : "lg:col-start-7",
+        )}
       />
     </section>
   );
