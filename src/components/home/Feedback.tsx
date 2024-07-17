@@ -16,7 +16,7 @@ export default async function Feedback(props: Props) {
     <section
       id={props.id}
       className={cn(
-        "container flex h-[266px] flex-col items-center gap-4 lg:h-[320px]",
+        "container flex flex-col items-center gap-4 py-[84px]",
         props.className,
       )}
     >

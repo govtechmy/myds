@@ -36,12 +36,12 @@ export default function Home() {
   const t = useTranslations();
 
   return (
-    <main className="grid w-full auto-rows-auto grid-cols-12 gap-y-32 py-4 lg:py-0">
+    <main className="grid w-full auto-rows-auto grid-cols-12 divide-y py-4 lg:py-0">
       <Hero id="about" className="col-span-10 col-start-2" />
-      <Content1 className="col-span-10 col-start-2" />
+      <Content1 className="col-span-10 col-start-2 py-[84px]" />
       {previewItems.map((item, i) => (
         <PreviewContent
-          className="col-span-10 col-start-2"
+          className="col-span-10 col-start-2 py-[84px]"
           key={i}
           data={{
             tag: t(item.tagKey),
@@ -67,7 +67,7 @@ export default function Home() {
           description: t(`Home.timeline.items.${i + 1}.description`),
         }))}
       />
-      <Feedback id="contribute" className="col-span-10 col-start-2" />
+      <Feedback id="contribute" className="col-span-10 col-start-2 py-[84px]" />
     </main>
   );
 }
