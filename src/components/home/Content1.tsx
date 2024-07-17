@@ -50,7 +50,7 @@ export default async function Content1(props: Props) {
   return (
     <section
       className={cn(
-        "container flex flex-col items-center gap-8",
+        "container flex flex-col items-center gap-[74px]",
         props.className,
       )}
     >
@@ -62,7 +62,7 @@ export default async function Content1(props: Props) {
           {t("Home.description.content1")}
         </p>
       </div>
-      <div className="grid w-full auto-rows-auto grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-y-12">
+      <div className="grid w-full auto-rows-auto grid-cols-1 gap-[48px] lg:grid-cols-3">
         {dataItems.map((item, index) => (
           <div
             key={index}
