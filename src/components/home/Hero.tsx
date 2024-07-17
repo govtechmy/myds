@@ -30,7 +30,7 @@ export default function Hero(props: Props) {
           {t("Home.description.hero")}
         </p>
         <div className="mt-2 flex flex-row items-center gap-4">
-          <FigmaLink className="h-[44px]" />
+          <FigmaLink className="h-[44px] text-[16px] leading-6" />
           <BorderedLink href="#contribute" className="h-[44px] w-[106px]">
             {t("common.contribute")}
           </BorderedLink>
