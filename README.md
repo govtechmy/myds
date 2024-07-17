@@ -2,6 +2,11 @@
 
 The design foundation for building official Malaysian government websites, MYDS provides beautiful pre-built components which streamline development and ensure consistency.
 
+# What is a Design System?
+
+A structured collection of reusable components which adheres to design standards and principles, providing a foundation for digital product development.
+
+
 # Getting Started
 
 ```bash
