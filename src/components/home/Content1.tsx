@@ -63,8 +63,8 @@ export default async function Content1(props: Props) {
         </p>
       </div>
       <div className="grid w-full auto-rows-auto grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-y-12">
-        {dataItems.map((item) => (
-          <div className="flex flex-row items-start gap-4 lg:flex-col lg:items-center">
+        {dataItems.map((item, index) => (
+          <div key={index} className="flex flex-row items-start gap-4 lg:flex-col lg:items-center">
             <img src={item.icon} className="h-[54px] w-[54px]" />
             <div className="flex flex-col items-start gap-1 lg:items-center">
               <h3 className="text-brand-700 font-medium">{t(item.titleKey)}</h3>
