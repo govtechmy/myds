@@ -1,4 +1,5 @@
 import GradientLink from "@/components/GradientLink";
+import { Paragraph } from "@/components/Paragraph";
 import { FEEDBACK_EMAIL } from "@/constants";
 import IconMailWhite from "@/icons/mail-white";
 import { cn } from "@/lib/utils";
@@ -16,14 +17,14 @@ export default async function Feedback(props: Props) {
     <section
       id={props.id}
       className={cn(
-        "container flex flex-col items-center gap-4 py-[84px]",
+        "container flex flex-col items-center py-[5.25rem]",
         props.className,
       )}
     >
-      <h1 className="text-balance text-3xl font-semibold">
+      <h1 className="text-balance text-[1.875rem] font-semibold leading-[2.375rem]">
         {t("Home.title.feedback")}
       </h1>
-      <p className="text-black-700 text-pretty text-center lg:w-2/3">
+      <Paragraph className="mt-[1.125rem] text-center">
         {t.rich("Home.description.feedback", {
           email: (_) => {
             return (
@@ -36,9 +37,9 @@ export default async function Feedback(props: Props) {
             );
           },
         })}
-      </p>
+      </Paragraph>
       <GradientLink
-        className="mt-4 h-[44px] gap-2 px-4"
+        className="mt-[2rem] h-[44px] gap-x-[0.375rem]"
         href={`mailto:${FEEDBACK_EMAIL}`}
       >
         <IconMailWhite />

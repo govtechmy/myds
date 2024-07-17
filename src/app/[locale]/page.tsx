@@ -66,7 +66,7 @@ export default function Home() {
           description: t(`Home.timeline.items.${i + 1}.description`),
         }))}
       />
-      <Feedback id="contribute" className="col-span-10 col-start-2 py-[84px]" />
+      <Feedback id="contribute" className="py-[3rem] lg:py-[5.25rem]" />
     </main>
   );
 }
