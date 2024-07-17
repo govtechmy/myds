@@ -36,7 +36,7 @@ export function Header({ locale }: { locale: string }) {
         <Link href="/" className="flex h-full flex-none items-center gap-2.5">
           {/* TODO: Use webp */}
           <img src="/logo.svg" alt="Logo" className="h-100 max-h-8" />
-          <img src="/label-beta.png" alt="Logo" className="h-100" />
+          <img src="/label-beta.svg" alt="Beta release" className="h-100" />
         </Link>
 
         <Sheet open={showMenu} onOpenChange={setMenu}>
