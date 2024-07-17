@@ -1,0 +1,173 @@
+{
+	"metadata": {
+		"title": "MYDS - Sistem Reka Bentuk Kerajaan Malaysia",
+		"description": "Asas reka bentuk untuk membina laman web rasmi kerajaan Malaysia, MYDS menyediakan komponen pra-dibina yang menarik untuk menyederhanakan pembangunan dan memastikan konsistensi."
+	},
+	"common": {
+		"name": "Kementerian Digital",
+		"figma": {
+			"explore": "Explore in Figma"
+		},
+		"contribute": "Menyumbang"
+	},
+	"Home": {
+		"title": {
+			"hero": "Sistem Reka Bentuk Kerajaan Malaysia (MYDS)",
+			"content1": "Apa itu Sistem Reka Bentuk?",
+			"feedback": "Bantu peningkatan kami"
+		},
+		"description": {
+			"hero": "Asas reka bentuk untuk membina laman web rasmi kerajaan Malaysia, MYDS menyediakan komponen pra-dibina yang menarik untuk menyederhanakan pembangunan dan memastikan konsistensi.",
+			"content1": "Satu koleksi terstruktur komponen boleh guna semula yang mematuhi piawaian dan prinsip reka bentuk, menyediakan asas untuk pembangunan produk digital.",
+			"feedback": "Sila berikan maklum balas membina kepada <email>design@tech.gov.my</email>"
+		},
+		"action": {
+			"feedback": {
+				"send": "Kirimkan maklum balas anda"
+			}
+		},
+		"tag": {
+			"beta": "Beta"
+		},
+		"content1": {
+			"items": {
+				"1": {
+					"title": "Laman Kerajaan yang Indah",
+					"description": "Bersih dan minimalis, memastikan maklumat mudah dijumpai dan perkhidmatan mudah digunakan."
+				},
+				"2": {
+					"title": "Pembangunan Pantas",
+					"description": "Elemen visual dan fungsional yang sudah siap untuk prototaipan dan pembangunan yang cekap."
+				},
+				"3": {
+					"title": "Penjimatan Kos",
+					"description": "Percepatan reka bentuk dan pembangunan, menjimatkan ringgit cukai yang berharga."
+				},
+				"4": {
+					"title": "Mematuhi Piawaian",
+					"description": "Mematuhi sepenuhnya prinsip reka bentuk dan senibina perkhidmatan Jabatan Digital Negara."
+				},
+				"5": {
+					"title": "Aksesibiliti dalam Reka Bentuk",
+					"description": "Pematuhan segera terhadap WCAG dan amalan aksesibiliti terbaik."
+				},
+				"6": {
+					"title": "Dipercayai oleh Rakyat",
+					"description": "Rupa dan rasa yang dikenali, meningkatkan kepercayaan rakyat terhadap kehadiran digital kerajaan."
+				}
+			}
+		},
+		"previewContent": {
+			"items": {
+				"1": {
+					"tag": "Laman Kerajaan yang Indah",
+					"title": "Laman web kerajaan akan kelihatan bersih dan direka dengan baik",
+					"description": "Sistem Reka Bentuk memastikan semua laman web kerajaan mengekalkan penampilan yang konsisten, bersih, dan direka dengan baik, meningkatkan kebolehgunaan, aksesibiliti, dan kehadiran digital keseluruhan perkhidmatan kerajaan Malaysia."
+				},
+				"2": {
+					"tag": "Pembangunan Pantas",
+					"title": "Komponen pra-dibina membolehkan anda memberi tumpuan kepada produk",
+					"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				},
+				"3": {
+					"tag": "Penjimatan Kos",
+					"title": "Kurang ringgit cukai akan digunakan untuk laman web kerajaan",
+					"description": "Pembangunan frontend untuk produk kerajaan akan lebih cepat dan murah, menjimatkan wang pembayar cukai."
+				}
+			}
+		},
+		"timeline": {
+			"cover": {
+				"tag": "Our Plan",
+				"title": "How are we rolling out Malaysia’s first design system?",
+				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+			},
+			"items": {
+				"1": {
+					"date": "29 JUL 2024",
+					"title": "Digital Ministry website launched",
+					"description": "Proof-of-concept for the Malaysia Government Design System, with skin in the game using our own official site!",
+					"type": "highlight"
+				},
+				"2": {
+					"date": "29 JUL 2024",
+					"title": "MYDS (Beta) launched",
+					"description": "Figma opened for public inspection and feedback",
+					"type": "normal"
+				},
+				"3": {
+					"date": "AUG - NOV 2024",
+					"title": "Development of Site Builder",
+					"description": "The engine behind implementation of the design system. Agencies will use this site builder (i.e. a CMS) to populate content.",
+					"type": "highlight"
+				},
+				"4": {
+					"date": "SEP 2024 - JAN 2025",
+					"title": "School Sites Revamp",
+					"description": "Proof-of-concept for the scalability of our design system and site builder, working with 10,000 schools nationwide.",
+					"type": "highlight"
+				},
+				"5": {
+					"date": "DEC 2024 - MAR 2025 ",
+					"title": "Agency Sites Revamp",
+					"description": "Roll-out across government agencies. The site builder (including hosting) will be completely free for the public sector.",
+					"type": "highlight"
+				},
+				"6": {
+					"date": "MAR 2025",
+					"title": "Final Stakeholder Consultation",
+					"description": "Preview and testing with members of the local tech community and industry, as well as other public sector officers.",
+					"type": "highlight"
+				},
+				"7": {
+					"date": "APR 2025",
+					"title": "Full Launch of MYDS",
+					"description": "Production-ready design system now ready to be used for any future product. A new era for gov.my sites begins!",
+					"type": "normal"
+				}
+			}
+		}
+	},
+	"Masthead": {
+		"official_gov_website": "Portal Rasmi Kerajaan Malaysia",
+		"how_to_identify": "Kenal pasti begini",
+		"official": "Pautan portal rasmi berakhir dengan .gov.my",
+		"not_govmy": "Sekiranya anda melihat pautan selain ",
+		"close_site": ", segera tutupkan halaman itu walaupun ia menyerupai portal rasmi!",
+		"secure": "Portal yang selamat menggunakan HTTPS",
+		"find_lock": "Periksa ikon loker (",
+		"or": ") atau ",
+		"precaution": " di depan pautan. Sekiranya tiada, jangan kongsikan sebarang maklumat sensitif."
+	},
+	"Header": {
+		"about": "Tentang",
+		"our_plan": "Rancangan Kami"
+	},
+	"Footer": {
+		"follow_us": "Follow Us",
+		"open_source": "Open Source",
+		"github": "GitHub Repo",
+		"figma": "Figma",
+		"copyright": "All Rights Reserved",
+		"disclaimer": "Disclaimer",
+		"privacy_policy": "Privacy Policy",
+		"last_update": "Last Updated"
+	},
+	"Disclaimer": {
+		"header": "Penafian",
+		"desc": "Kementerian Digital tidak bertanggungjawab terhadap sebarang kehilangan atau kerosakan yang dialami kerana menggunakan maklumat dalam portal ini."
+	},
+	"Privacy": {
+		"header": "Dasar Privasi",
+		"your_privacy": "Privasi Anda",
+		"your_privacy_desc": "Halaman ini menerangkan dasar privasi yang merangkumi penggunaan dan perlindungan maklumat yang dikemukakan oleh pengunjung. Sekiranya anda membuat transaksi atau menghantar e-mel yang mengandungi maklumat peribadi, maklumat ini mungkin akan dikongsi bersama dengan agensi awam lain untuk membantu penyediaan perkhidmatan yang lebih berkesan dan efektif. Contohnya seperti di dalam menyelesaikan aduan yang memerlukan maklum balas dari agensi-agensi lain.",
+		"collected_info": "Maklumat Yang Dikumpul",
+		"collected_info_desc": "Tiada maklumat peribadi akan dikumpul semasa anda melayari portal ini kecuali maklumat yang dikemukakan oleh anda melalui e-mel.\n\nApa yang akan berlaku jika saya membuat pautan kepada portal/laman web yang lain?\n\nPortal ini mempunyai pautan ke portal/laman web lain. Dasar privasi ini hanya terpakai untuk laman web ini sahaja. Perlu diingatkan bahawa portal/laman web yang terdapat dalam pautan mungkin mempunyai dasar privasi yang berbeza dan pengunjung dinasihatkan supaya meneliti dan memahami dasar privasi bagi setiap portal/laman web yang dilayari.",
+		"policy_change": "Pindaan Dasar",
+		"policy_change_desc": "Sekiranya dasar privasi ini dipinda, pindaan akan dikemas kini di halaman ini. Dengan sering melayari halaman ini, anda akan dikemaskini tentang maklumat yang dikumpul, cara ia digunakan dan dalam keadaan tertentu, serta bagaimana maklumat dikongsi bersama pihak yang lain.",
+		"personal_data": "Perlindungan Data Peribadi",
+		"personal_data_act": "Akta Perlindungan Data Peribadi",
+		"personal_data_act_desc": "Jabatan Perlindungan Data Peribadi (JPDP) merupakan agensi di bawah Kementerian Digital yang ditubuhkan pada 16 Mei 2011 selepas Parlimen meluluskan Rang Undang-undang berkaitan Akta Perlindungan Data Peribadi 2010 (APDP) iaitu Akta 709.\n\nTanggungjawab utama Jabatan ini ialah untuk mengawalselia pemprosesan data peribadi individu yang terlibat dalam urus niaga komersial oleh pengguna data supaya tidak disalahguna dan disalahpakai oleh pihak-pihak yang berkepentingan.\n\nKeselamatan data peribadi pengguna perlu dilindungi bagi mencegah sebarang bentuk penyalahgunaan terhadap penyimpanan atau pemprosesan data peribadi individu, awam dan swasta di Malaysia secara transaksi komersial adalah termaktub di bawah APDP ini.\n\nDalam menguatkuasakan APDP, JPDP telah mensyaratkan kepada semua golongan pengguna data peribadi yang terdiri daripada pihak individu mahupun swasta kecuali Kerajaan untuk berdaftar secara rasmi bagi tujuan melindungi hak-hak pengguna dan awam.\n\nJPDP diketuai oleh Ketua Pengarah dengan dibantu oleh seorang Timbalan Ketua Pengarah. Manakala, terdapat tiga bahagian utama di JPDP iaitu Bahagian Pendaftaran dan Operasi, Bahagian Pemantauan dan Bahagian Perundangan.\n\nUntuk maklumat tambahan, sila layari <a>http://www.pdp.gov.my</a>.",
+		"last_update": "Kemaskini terakhir pada 19 Februari 2024"
+	}
+}
