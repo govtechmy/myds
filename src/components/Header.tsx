@@ -32,8 +32,8 @@ export function Header({ locale }: { locale: string }) {
   const [showMenu, setMenu] = useState<boolean>(false);
 
   return (
-    <header className="bg-background lg:bg-background/80 sticky top-0 z-50 lg:border-b lg:backdrop-blur-[30px]">
-      <div className="bg-background container flex w-full items-center justify-between gap-3 py-3 max-lg:border-b lg:gap-4 lg:bg-transparent">
+    <header className="sticky top-0 z-50 bg-background lg:border-b lg:bg-background/80 lg:backdrop-blur-[30px]">
+      <div className="container flex w-full items-center justify-between gap-3 bg-background py-3 max-lg:border-b lg:gap-4 lg:bg-transparent xl:px-0">
         <Link href="/" className="flex h-full flex-none items-center gap-2.5">
           {/* TODO: Use webp */}
           <Image width={95} height={32} src="/logo.svg" alt="Logo" />
@@ -57,7 +57,7 @@ export function Header({ locale }: { locale: string }) {
                   data-state={isActive(href) ? "open" : "close"}
                   className={cn(
                     buttonVariants({ variant: "tertiary", size: "md" }),
-                    "data-[state=open]:bg-washed-100 w-full justify-start",
+                    "w-full justify-start data-[state=open]:bg-washed-100",
                   )}
                 >
                   {t(key)}
@@ -79,7 +79,7 @@ export function Header({ locale }: { locale: string }) {
                   data-state={isActive(href) ? "open" : "close"}
                   className={cn(
                     buttonVariants({ variant: "tertiary" }),
-                    "data-[state=open]:bg-washed-100 w-max bg-transparent transition-colors",
+                    "w-max bg-transparent transition-colors data-[state=open]:bg-washed-100",
                   )}
                 >
                   {t(key)}
