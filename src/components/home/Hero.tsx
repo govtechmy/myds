@@ -40,11 +40,15 @@ export default function Hero(props: Props) {
         </div>
       </div>
 
-      <picture className="border-outline-washed-100 col-span-full mt-[3rem] w-full border-t bg-[#FAFAFA] lg:col-span-6 lg:col-start-7 lg:mt-0 lg:border-l">
+      <picture className="border-outline-washed-100 col-span-full mt-[3rem] w-full overflow-hidden border-t bg-[#FAFAFA] object-cover lg:col-span-6 lg:col-start-7 lg:mt-0 lg:max-h-[700px] lg:border-l">
         {/* TODO: Handle missing (webp) images better */}
         <source srcSet="/preview/hero/image.webp" type="image/webp" />
         <source srcSet="/preview/hero/image.svg" type="image/svg+xml" />
-        <img src="/preview/hero/image.svg" alt="Hero" />
+        <img
+          src="/preview/hero/image.svg"
+          alt="Hero"
+          className="h-[18.75rem] w-full object-cover lg:h-[43.75rem]"
+        />
       </picture>
     </BorderedSection>
   );
