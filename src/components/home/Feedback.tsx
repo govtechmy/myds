@@ -19,9 +19,9 @@ export default async function Feedback(props: Props) {
       id={props.id}
       className={cn("flex flex-col items-center py-[5.25rem]", props.className)}
     >
-      <h1 className="text-balance text-[1.875rem] font-semibold leading-[2.375rem]">
+      <h3 className="text-balance text-[1.5rem] font-semibold leading-[2rem] lg:text-[1.875rem] lg:leading-[2.375rem]">
         {t("Home.title.feedback")}
-      </h1>
+      </h3>
       <Paragraph className="mt-[1.125rem] text-center">
         {t.rich("Home.description.feedback", {
           email: (_) => {

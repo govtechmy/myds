@@ -28,9 +28,9 @@ export default function Timeline(props: Props) {
           <div className="flex gap-x-3 text-foreground">
             <Tag>{props.cover.tag}</Tag>
           </div>
-          <h2 className="text-balance text-[1.875rem] font-semibold leading-[2.375rem]">
+          <h3 className="text-balance text-[1.5rem] font-semibold leading-[2rem] lg:text-[1.875rem] lg:leading-[2.375rem]">
             {props.cover.title}
-          </h2>
+          </h3>
           <Paragraph className="text-pretty text-black-700">
             {props.cover.description}
           </Paragraph>
