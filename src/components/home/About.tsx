@@ -58,11 +58,11 @@ export default async function About(props: Props) {
       className={cn("grid grid-cols-2 lg:grid-cols-12", props.className)}
     >
       <div className="col-span-full flex grid flex-col items-center gap-y-[2rem] lg:col-span-10 lg:col-start-2 lg:gap-y-[4.625rem]">
-        <div className="flex flex-col items-start gap-y-[1.125rem] lg:items-center">
-          <h1 className="text-balance text-[1.5rem] font-semibold leading-[2rem] lg:text-start lg:text-[1.875rem] lg:leading-[2.375rem]">
+        <div className="grid grid-cols-1 gap-y-[1.125rem] lg:grid-cols-12">
+          <h1 className="col-span-full text-balance text-start text-[1.5rem] font-semibold leading-[2rem] lg:col-span-6 lg:col-start-4 lg:text-center lg:text-[1.875rem] lg:leading-[2.375rem]">
             {t("Home.title.content1")}
           </h1>
-          <Paragraph className="lg:text-center">
+          <Paragraph className="col-span-full lg:col-span-6 lg:col-start-4 lg:text-center">
             {t("Home.description.content1")}
           </Paragraph>
         </div>
