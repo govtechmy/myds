@@ -39,11 +39,13 @@ export default function Hero(props: Props) {
           </BorderedLink>
         </div>
       </div>
-      <img
-        src="/preview/hero.svg"
-        alt="Hero"
-        className="col-span-full mt-[3rem] w-full bg-[#FAFAFA] lg:col-span-6 lg:col-start-7 lg:mt-0"
-      />
+
+      <picture className="col-span-full mt-[3rem] w-full bg-[#FAFAFA] lg:col-span-6 lg:col-start-7 lg:mt-0">
+        {/* TODO: Handle missing (webp) images better */}
+        <source srcSet="/preview/hero/image.webp" type="image/webp" />
+        <source srcSet="/preview/hero/image.svg" type="image/svg+xml" />
+        <img src="/preview/hero/image.svg" alt="Hero" />
+      </picture>
     </BorderedSection>
   );
 }

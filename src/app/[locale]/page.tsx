@@ -13,7 +13,9 @@ const previewItems = [
     titleKey: "Home.previewContent.items.1.title",
     descriptionKey: "Home.previewContent.items.1.description",
     img: {
-      src: "/preview/content2.svg",
+      svg: "/preview/content2/image.svg",
+      webp: "/preview/content2/image.webp",
+      altKey: "Home.previewContent.items.1.tag",
     },
   },
   {
@@ -21,7 +23,9 @@ const previewItems = [
     titleKey: "Home.previewContent.items.2.title",
     descriptionKey: "Home.previewContent.items.2.description",
     img: {
-      src: "/preview/content3.svg",
+      svg: "/preview/content3/image.svg",
+      webp: "/preview/content3/image.webp",
+      altKey: "Home.previewContent.items.2.tag",
     },
   },
   {
@@ -29,7 +33,9 @@ const previewItems = [
     titleKey: "Home.previewContent.items.3.title",
     descriptionKey: "Home.previewContent.items.3.description",
     img: {
-      src: "/preview/content4.svg",
+      svg: "/preview/content4/image.svg",
+      webp: "/preview/content4/image.webp",
+      altKey: "Home.previewContent.items.3.tag",
     },
   },
 ];
@@ -54,7 +60,10 @@ export default function Home() {
               tag: t(item.tagKey),
               title: t(item.titleKey),
               description: t(item.descriptionKey),
-              img: item.img,
+              img: {
+                ...item.img,
+                alt: t(item.img.altKey),
+              },
             }}
             reversed={(i + 1) % 2 === 0}
           />

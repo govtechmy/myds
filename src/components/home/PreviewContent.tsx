@@ -9,7 +9,9 @@ type Props = {
     title: string;
     description: string;
     img: {
-      src: string;
+      svg: string;
+      webp?: string;
+      alt: string;
     };
   };
   className?: string;
@@ -35,13 +37,17 @@ export default async function PreviewContent(props: Props) {
         </h3>
         <Paragraph>{data.description}</Paragraph>
       </div>
-      <img
-        src={data.img.src}
+      <picture
         className={cn(
           "col-span-full mt-[2rem] h-full w-full lg:col-span-6 lg:col-start-1 lg:row-span-1 lg:row-start-1 lg:mt-0",
           reversed ? "lg:col-start-1" : "lg:col-start-7",
         )}
-      />
+      >
+        {/* TODO: Handle missing (webp) images better */}
+        <source srcSet={data.img.webp} type="image/webp" />
+        <source srcSet={data.img.svg} type="image/svg+xml" />
+        <img src={data.img.svg} alt={data.img.alt} />
+      </picture>
     </BorderedSection>
   );
 }
