@@ -1,6 +1,6 @@
 # Malaysia Government Design System (MYDS)
 
-The design foundation for building official Malaysian government websites, MYDS provides beautiful pre-built components which streamline development and ensure consistency.
+The design foundation for building official Malaysian government websites, MYDS provides beautiful pre-built visual and functional components which streamline development and ensure consistency.
 
 # What is a Design System?
 
