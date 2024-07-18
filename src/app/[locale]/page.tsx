@@ -79,6 +79,7 @@ export default function Home() {
           }}
           data={Array.from({ length: TIMELINE_ITEMS }).map((_, i) => ({
             type: t(`Home.timeline.items.${i + 1}.type`),
+            year: t(`Home.timeline.items.${i + 1}.year`),
             date: t(`Home.timeline.items.${i + 1}.date`),
             title: t(`Home.timeline.items.${i + 1}.title`),
             description: t(`Home.timeline.items.${i + 1}.description`),

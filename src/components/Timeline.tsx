@@ -16,6 +16,7 @@ type Props = {
   };
   data: {
     type: string;
+    year: string;
     date: string;
     title: string;
     description: string;
@@ -23,6 +24,16 @@ type Props = {
 };
 
 export default function Timeline(props: Props) {
+  // Parse the year in each entry into a unique list of integers and sort them in ascending order
+  const years = Array.from(
+    new Set(props.data.map((item) => parseInt(item.year))),
+  ).sort((a, b) => a - b);
+
+  // Produce an array of arrays, each containing the data for a given year
+  const dataByYears = years.map((year) => {
+    return props.data.filter((item) => parseInt(item.year) === year);
+  });
+
   return (
     <BorderedSection id={props.id} className={props.className}>
       <div className="grid grid-cols-2 gap-y-[3.25rem] lg:grid-cols-12">
@@ -39,70 +50,88 @@ export default function Timeline(props: Props) {
         </div>
         <div className="relative col-span-full flex h-full justify-start sm:justify-center lg:col-span-7 lg:col-start-6">
           <div className="absolute -z-10 h-full w-px bg-outline-200 max-sm:left-[3.5px]" />
-          <div className="grid grid-cols-1 gap-x-14 gap-y-3 pb-[3rem] max-sm:ml-8 sm:grid-cols-2 lg:pb-[3.563rem] lg:pt-[6.438rem]">
-            {props.data.map((item, i) => (
-              <div
-                key={i}
-                className="relative flex flex-col justify-center even:sm:translate-y-[calc(50%+6px)]"
-              >
-                <div
-                  className={cn(
-                    "relative flex h-fit flex-col gap-1 rounded-xl border border-outline-200 px-4 py-3",
-                    "group hover:border-brand-300 hover:ring-1 hover:ring-brand-300",
-                  )}
-                >
-                  <div
-                    className={cn(
-                      item.type === "highlight" ||
-                        item.type == "launched" ||
-                        item.type == "development"
-                        ? "absolute right-3 top-2 flex size-6 items-center justify-center rounded-full"
-                        : "hidden",
-                      item.type === "highlight"
-                        ? "bg-[#FFF1E5]"
-                        : item.type === "launched"
-                          ? "bg-success-50"
-                          : item.type === "development"
-                            ? "bg-brand-50"
-                            : "",
-                    )}
-                  >
-                    {item.type === "highlight" ? (
-                      <Star className="size-4 stroke-2 text-[#EA740F]" />
-                    ) : item.type === "launched" ? (
-                      <Checkmark className="size-[0.625rem] stroke-2 text-success-600" />
-                    ) : item.type === "development" ? (
-                      <Production className="size-[0.875rem] stroke-2 text-brand-600" />
-                    ) : (
-                      <></>
-                    )}
-                  </div>
-                  <p className="line-clamp-1 text-xs font-medium uppercase tracking-widest text-dim-500">
-                    {item.date}
-                  </p>
-                  <p className="font-medium text-black-900">{item.title}</p>
-                  <p className="text-sm text-black-700">{item.description}</p>
-                  <div
-                    className={cn(
-                      i % 2 === 0 ? "max-sm:-left-7 sm:-right-7" : "-left-7",
-                      "absolute top-1/2 h-px w-[26px] -translate-y-1/2 transform border border-dashed border-outline-400",
-                      "group-hover:border-y-2 group-hover:border-brand-300",
-                    )}
-                  >
-                    <div
-                      className={cn(
-                        i % 2 === 0
-                          ? "group-hover:-right-[6.5px] max-sm:-left-1.5 group-hover:max-sm:-left-[6.5px] sm:-right-1.5"
-                          : "-left-1.5 group-hover:-left-[6.5px]",
-                        "absolute top-1/2 size-2 -translate-y-1/2 transform rounded-full bg-brand-600",
-                        "ring-brand-300 ring-offset-[3px] group-hover:ring",
-                      )}
-                    >
-                      <div className="absolute -top-[3.75rem] left-[3px] h-[3.75rem] w-px bg-gradient-to-t from-brand-600 from-0% to-transparent to-100%" />
-                    </div>
-                  </div>
+          <div className="flex flex-col pb-[3rem] lg:pb-[3.563rem] lg:pt-[6.438rem]">
+            {dataByYears.map((data, i) => (
+              <>
+                <div className="self-center rounded-full bg-brand-50 px-[0.5rem] py-[0.125rem] text-[0.75rem] font-medium leading-[1.125rem] tracking-[0.075rem] text-brand-600">
+                  {data[0].year}
                 </div>
-              </div>
+                <div
+                  key={i}
+                  className="grid grid-cols-1 gap-x-14 gap-y-3 max-sm:ml-8 sm:grid-cols-2"
+                >
+                  {data.map((item, j) => (
+                    <div
+                      key={j}
+                      className="relative flex flex-col justify-center even:sm:translate-y-[calc(50%+6px)]"
+                    >
+                      <div
+                        className={cn(
+                          "relative flex h-fit flex-col gap-1 rounded-xl border border-outline-200 px-4 py-3",
+                          "group hover:border-brand-300 hover:ring-1 hover:ring-brand-300",
+                        )}
+                      >
+                        <div
+                          className={cn(
+                            item.type === "highlight" ||
+                              item.type == "launched" ||
+                              item.type == "development"
+                              ? "absolute right-3 top-2 flex size-6 items-center justify-center rounded-full"
+                              : "hidden",
+                            item.type === "highlight"
+                              ? "bg-[#FFF1E5]"
+                              : item.type === "launched"
+                                ? "bg-success-50"
+                                : item.type === "development"
+                                  ? "bg-brand-50"
+                                  : "",
+                          )}
+                        >
+                          {item.type === "highlight" ? (
+                            <Star className="size-4 stroke-2 text-[#EA740F]" />
+                          ) : item.type === "launched" ? (
+                            <Checkmark className="size-[0.625rem] stroke-2 text-success-600" />
+                          ) : item.type === "development" ? (
+                            <Production className="size-[0.875rem] stroke-2 text-brand-600" />
+                          ) : (
+                            <></>
+                          )}
+                        </div>
+                        <p className="line-clamp-1 text-xs font-medium uppercase tracking-widest text-dim-500">
+                          {item.date}
+                        </p>
+                        <p className="font-medium text-black-900">
+                          {item.title}
+                        </p>
+                        <p className="text-sm text-black-700">
+                          {item.description}
+                        </p>
+                        <div
+                          className={cn(
+                            j % 2 === 0
+                              ? "max-sm:-left-7 sm:-right-7"
+                              : "-left-7",
+                            "absolute top-1/2 h-px w-[26px] -translate-y-1/2 transform border border-dashed border-outline-400",
+                            "group-hover:border-y-2 group-hover:border-brand-300",
+                          )}
+                        >
+                          <div
+                            className={cn(
+                              j % 2 === 0
+                                ? "group-hover:-right-[6.5px] max-sm:-left-1.5 group-hover:max-sm:-left-[6.5px] sm:-right-1.5"
+                                : "-left-1.5 group-hover:-left-[6.5px]",
+                              "absolute top-1/2 size-2 -translate-y-1/2 transform rounded-full bg-brand-600",
+                              "ring-brand-300 ring-offset-[3px] group-hover:ring",
+                            )}
+                          >
+                            <div className="absolute -top-[3.75rem] left-[3px] h-[3.75rem] w-px bg-gradient-to-t from-brand-600 from-0% to-transparent to-100%" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
             ))}
           </div>
         </div>
