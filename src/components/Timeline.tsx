@@ -79,7 +79,7 @@ export default function Timeline(props: Props) {
                         "ring-brand-300 ring-offset-[3px] group-hover:ring",
                       )}
                     >
-                      <div className="absolute -top-[3.75rem] left-[3px] h-[3.75rem] w-0.5 bg-gradient-to-t from-brand-600 from-0% to-transparent to-100%" />
+                      <div className="absolute -top-[3.75rem] left-[3px] h-[3.75rem] w-px bg-gradient-to-t from-brand-600 from-0% to-transparent to-100%" />
                     </div>
                   </div>
                 </div>
