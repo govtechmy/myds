@@ -1,11 +1,13 @@
+import GradientLink from "@/components/GradientLink";
 import { FIGMA_URL } from "@/constants";
 import IconFigmaWhite from "@/icons/figma-white";
+import { ButtonSize } from "@/lib/button";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import GradientLink from "./GradientLink";
 
 type Props = {
   className?: string;
+  size: ButtonSize;
 };
 
 export default function FigmaLink(props: Props) {
@@ -14,10 +16,8 @@ export default function FigmaLink(props: Props) {
   return (
     <GradientLink
       href={FIGMA_URL}
-      className={cn(
-        "h-max max-h-[44px] min-h-[32px] w-max hover:opacity-75",
-        props.className,
-      )}
+      size={props.size}
+      className={cn("h-max max-h-[44px] min-h-[32px] w-max", props.className)}
     >
       <div className="flex h-full w-full flex-row items-center gap-x-[0.375rem]">
         <IconFigmaWhite className="h-full max-h-[24px] min-h-[18px]" />

@@ -90,7 +90,7 @@ export function Header({ locale }: { locale: string }) {
         </NavigationMenu.Root>
 
         <div className="flex items-center gap-2">
-          <FigmaLink className="hidden h-[2rem] gap-x-[0.375rem] text-[0.875rem] leading-[1.25rem] sm:block" />
+          <FigmaLink size="small" className="hidden h-[2rem] sm:block" />
           <Suspense>
             <Locale locale={locale} />
           </Suspense>

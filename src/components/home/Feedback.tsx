@@ -27,7 +27,7 @@ export default async function Feedback(props: Props) {
           email: (_) => {
             return (
               <a
-                className="text-brand-600 font-medium underline"
+                className="font-medium text-brand-600 underline"
                 href={`mailto:${FEEDBACK_EMAIL}`}
               >
                 {FEEDBACK_EMAIL}
@@ -37,7 +37,8 @@ export default async function Feedback(props: Props) {
         })}
       </Paragraph>
       <GradientLink
-        className="mt-[2rem] h-[44px] gap-x-[0.375rem]"
+        size="medium"
+        className="mt-[2rem] h-[44px]"
         href={`mailto:${FEEDBACK_EMAIL}`}
       >
         <IconMailWhite />

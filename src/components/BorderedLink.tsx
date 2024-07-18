@@ -1,3 +1,5 @@
+import SimpleLinkState from "@/components/SimpleLinkState";
+import { ButtonSize, getSizeClassnames } from "@/lib/button";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { ReactNode } from "react";
@@ -6,21 +8,29 @@ type Props = {
   className?: string;
   href: string;
   children: ReactNode;
+  size: ButtonSize;
 };
 
 export default function BorderedLink(props: Props) {
   const t = useTranslations();
 
   return (
-    <a
-      href={props.href}
-      target={props.href.startsWith("#") ? "_self" : "_blank"}
-      className={cn(
-        "text-black-700 flex h-full flex-row items-center justify-center gap-0.5 rounded-lg border border-[#E4E4E7] px-3 py-2 text-center text-[16px] leading-6 hover:opacity-75",
-        props.className,
-      )}
-    >
-      {props.children}
-    </a>
+    <SimpleLinkState className={cn(props.className)}>
+      <a
+        href={props.href}
+        target={props.href.startsWith("#") ? "_self" : "_blank"}
+        className={cn(
+          "flex h-full flex-row items-center justify-center gap-0.5",
+          "rounded-lg",
+          "border border-[#E4E4E7] hover:border-[#D4D4D8]",
+          "bg-[#FFFFFF] hover:bg-[#FAFAFA]",
+          "px-3 py-2",
+          "hover:text-brand-900 text-center text-black-700",
+          getSizeClassnames(props.size),
+        )}
+      >
+        {props.children}
+      </a>
+    </SimpleLinkState>
   );
 }
