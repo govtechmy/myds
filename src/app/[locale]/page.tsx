@@ -47,7 +47,7 @@ export default function Home() {
     <main className="flex w-full flex-col divide-y divide-washed-100 py-4 lg:py-0">
       {/* Wrapper container components in <article> to display full-width dividers */}
       <article>
-        <Hero className="pt-[3rem]" />
+        <Hero className="lg:pr-0" />
       </article>
       <article>
         <Highlight id="about" className="py-[3rem] lg:py-[5.25rem]" />
