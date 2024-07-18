@@ -53,17 +53,21 @@ export default function Timeline(props: Props) {
           <div className="flex flex-col pb-[3rem] lg:pb-[3.563rem] lg:pt-[6.438rem]">
             {dataByYears.map((data, i) => (
               <>
-                <div className="self-center rounded-full bg-brand-50 px-[0.5rem] py-[0.125rem] text-[0.75rem] font-medium leading-[1.125rem] tracking-[0.075rem] text-brand-600">
+                <div
+                  className={`ml-[1.875rem] self-start rounded-full bg-brand-50 px-[0.5rem] py-[0.125rem] text-[0.75rem] font-medium leading-[1.125rem] tracking-[0.075rem] text-brand-600 sm:ml-0 sm:self-center`}
+                >
                   {data[0].year}
                 </div>
+                {/* Add margin bottom to the last item to accomodate overflowing content due to y-translation */}
                 <div
                   key={i}
-                  className="grid grid-cols-1 gap-x-14 gap-y-3 max-sm:ml-8 sm:grid-cols-2"
+                  className="grid grid-cols-1 gap-x-14 gap-y-3 max-sm:ml-8 sm:grid-cols-2 sm:last:mb-[3rem]"
                 >
+                  {/* Add margin top to the first element and margin bottom to the last element to make gaps for the year */}
                   {data.map((item, j) => (
                     <div
                       key={j}
-                      className="relative flex flex-col justify-center even:sm:translate-y-[calc(50%+6px)]"
+                      className="relative flex flex-col justify-center first:mt-[0.75rem] last:mb-[1.875rem] sm:even:translate-y-[calc(50%+6px)]"
                     >
                       <div
                         className={cn(
@@ -111,7 +115,7 @@ export default function Timeline(props: Props) {
                             j % 2 === 0
                               ? "max-sm:-left-7 sm:-right-7"
                               : "-left-7",
-                            "absolute top-1/2 h-px w-[26px] -translate-y-1/2 transform border border-dashed border-outline-400",
+                            `absolute top-1/2 h-px w-[26px] -translate-y-1/2 transform border border-dashed border-outline-400`,
                             "group-hover:border-y-2 group-hover:border-brand-300",
                           )}
                         >
