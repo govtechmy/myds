@@ -3,8 +3,8 @@
 import Collapse from "@/components/Collapse";
 import Checkmark14PointStar from "@/icons/checkmark-14-point-star";
 import ChevronDown from "@/icons/chevron-down";
+import EncryptedLock from "@/icons/encrypted-lock";
 import GovMY from "@/icons/govmy";
-import Lock from "@/icons/lock";
 import SolidLock from "@/icons/solid-lock";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -19,34 +19,40 @@ export default function Masthead() {
       className={cn(
         "z-[99]",
         open
-          ? "from-washed-100 to-outline-200 bg-gradient-to-b from-[84.74%] to-100%"
+          ? "bg-gradient-to-b from-washed-100 from-[84.74%] to-outline-200 to-100%"
           : "bg-washed-100",
       )}
     >
       <div className="container">
-        <div className="text-brand-700 flex flex-wrap items-center gap-1.5 py-1.5 text-sm leading-4">
-          <Checkmark14PointStar className="size-4 sm:size-5" />
-          <span className="text-black-700">{t("official_gov_website")}</span>
-          <button
-            className="flex items-center gap-0.5"
-            onClick={() => setOpen(!open)}
-          >
-            {t("how_to_identify")}
-            <ChevronDown
-              className={cn(
-                "size-4 transition duration-200",
-                open ? "rotate-180" : "",
-              )}
-            />
-          </button>
-        </div>
+        <button className="w-full" onClick={() => setOpen(!open)}>
+          <div className="flex flex-wrap items-center gap-1.5 py-2.5 text-sm/4 text-brand-700 max-sm:justify-between sm:py-1">
+            <div className="flex items-center gap-1.5">
+              <Checkmark14PointStar className="size-4 sm:size-5" />
+              <span className="text-black-700">
+                {t("official_gov_website")}
+              </span>
+            </div>
+            <div className="flex items-center gap-0.5 max-sm:rounded-md max-sm:bg-outline-200 max-sm:px-1">
+              <span className="hidden tracking-[-0.01em] sm:block">
+                {t("how_to_identify")}
+              </span>
+              <ChevronDown
+                className={cn("size-4 transition", open ? "rotate-180" : "")}
+              />
+            </div>
+          </div>
+        </button>
         <Collapse isOpen={open}>
-          <div className="grid grid-cols-1 gap-6 pb-8 pt-6 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4.5 pb-6 pt-4.5 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
+            <span className="static text-sm text-brand-700 sm:hidden">
+              {t("how_to_identify")}
+            </span>
+
             <div className="flex gap-3">
-              <GovMY className="text-foreground-success shrink-0" />
+              <GovMY className="shrink-0 text-dim-500" />
               <div className="space-y-1.5">
-                <p className="font-medium">{t("official")}</p>
-                <p className="text-black-700 max-w-prose text-balance text-sm">
+                <p className="font-medium max-sm:text-sm">{t("official")}</p>
+                <p className="max-w-prose text-balance text-sm text-black-700">
                   {t("not_govmy")}
                   <span className="font-semibold">.gov.my</span>
                   {t("close_site")}
@@ -54,11 +60,12 @@ export default function Masthead() {
               </div>
             </div>
             <div className="flex gap-3">
-              <Lock className="text-foreground-success shrink-0" />
+              <EncryptedLock className="shrink-0 text-dim-500" />
               <div className="space-y-1.5">
-                <p className="font-medium">{t("secure")}</p>
-                <div className="text-black-700 max-w-prose text-balance text-sm">
-                  {t("find_lock")} <SolidLock className="inline size-4" />{" "}
+                <p className="font-medium max-sm:text-sm">{t("secure")}</p>
+                <div className="max-w-prose text-balance text-sm text-black-700">
+                  {t("find_lock")}{" "}
+                  <SolidLock className="-ml-[3px] mb-0.5 mr-px inline size-3.5" />
                   {t("or")}
                   <span className="font-semibold">https://</span>
                   {t("precaution")}
