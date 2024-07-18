@@ -47,10 +47,9 @@ export default function Home() {
         <Highlight className="py-[3rem] lg:py-[5.25rem]" />
       </article>
       {previewItems.map((item, i) => (
-        <article>
+        <article key={i}>
           <PreviewContent
             className="py-[3rem] lg:py-[5.25rem]"
-            key={i}
             data={{
               tag: t(item.tagKey),
               title: t(item.titleKey),
