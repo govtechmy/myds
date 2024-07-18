@@ -151,13 +151,13 @@
 		"our_plan": "Our Plan"
 	},
 	"Footer": {
-		"follow_us": "Follow Us",
-		"open_source": "Open Source",
+		"designSystem": "Design System",
+		"designStandards": "Design Standards",
+		"figmaBeta": "Figma (Beta)",
+		"openSource": "Open Source",
 		"github": "GitHub Repo",
 		"figma": "Figma",
 		"copyright": "All Rights Reserved",
-		"disclaimer": "Disclaimer",
-		"privacy_policy": "Privacy Policy",
 		"last_update": "Last Updated"
 	},
 	"Disclaimer": {

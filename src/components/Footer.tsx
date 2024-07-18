@@ -1,36 +1,27 @@
-import { FIGMA_URL, GITHUB_REPO_URL } from "@/constants";
-import { Icon } from "@/icons/social-media";
-import { Link } from "@/lib/i18n";
+import {
+  DESIGN_STANDARDS_URL,
+  FIGMA_BETA_URL,
+  FIGMA_URL,
+  GITHUB_REPO_URL,
+} from "@/constants";
 import { useFormatter, useTranslations } from "next-intl";
 import Image from "next/image";
 
-type FooterLinks = "open_source";
-
-export const social_media = [
-  {
-    icon: <Icon.Facebook />,
-    name: "Facebook",
-    href: "https://www.facebook.com/KementerianDigitalMalaysia/",
-  },
-  { icon: <Icon.X />, name: "X", href: "https://x.com/KemDigitalMsia" },
-  {
-    icon: <Icon.Instagram />,
-    name: "Instagram",
-    href: "https://www.instagram.com/kementeriandigitalmalaysia/",
-  },
-  {
-    icon: <Icon.Tiktok />,
-    name: "Tiktok",
-    href: "https://www.tiktok.com/@kementeriandigital",
-  },
-];
+type FooterLinks = "designSystem" | "openSource";
 
 export default function Footer() {
   const format = useFormatter();
   const t = useTranslations();
 
   const links: Record<FooterLinks, { name: string; href: string }[]> = {
-    open_source: [
+    designSystem: [
+      { name: "Footer.designStandards", href: DESIGN_STANDARDS_URL },
+      {
+        name: "Footer.figmaBeta",
+        href: FIGMA_BETA_URL,
+      },
+    ],
+    openSource: [
       { name: "Footer.github", href: GITHUB_REPO_URL },
       {
         name: "Footer.figma",
@@ -62,30 +53,7 @@ export default function Footer() {
                 </h6>
               </div>
             </div>
-            <p className="text-sm text-black-700">
-              Aras 13, 14 dan 15, Blok Menara, <br />
-              Menara Usahawan <br />
-              No. 18, Persiaran Perdana, Presint 2, <br />
-              Pusat Pentadbiran Kerajaan Persekutuan, <br />
-              62000 Putrajaya, Malaysia.
-            </p>
-            <div className="space-y-2 lg:space-y-3">
-              <p className="text-sm font-semibold">{t("Footer.follow_us")}</p>
-              <div className="flex gap-3">
-                {social_media.map(({ icon, name, href }) => (
-                  <a
-                    key={name}
-                    href={href}
-                    target="_blank"
-                    rel="noopenner noreferrer"
-                  >
-                    {icon}
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>
-
           <div className="flex flex-col gap-6 text-sm lg:flex-row">
             {(Object.keys(links) as FooterLinks[]).map((category) => (
               <div className="space-y-2" key={category}>
@@ -114,17 +82,6 @@ export default function Footer() {
               {t("Footer.copyright")} © {new Date().getFullYear()}
             </p>
             <span className="hidden h-3 w-px bg-outline-300 lg:block"></span>
-            <div className="flex flex-wrap gap-x-3 gap-y-2 text-black-700">
-              {["disclaimer", "privacy_policy"].map((link) => (
-                <Link
-                  key={link}
-                  className="text-sm text-black-700 [text-underline-position:from-font] hover:text-black-900 hover:underline"
-                  href={link}
-                >
-                  {t(`Footer.${link}`)}
-                </Link>
-              ))}
-            </div>
           </div>
           <span>
             {t("Footer.last_update") +

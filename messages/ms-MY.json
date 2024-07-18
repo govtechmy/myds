@@ -151,13 +151,11 @@
 		"our_plan": "Rancangan Kami"
 	},
 	"Footer": {
-		"follow_us": "Follow Us",
-		"open_source": "Open Source",
+		"designSystem": "Sistem Reka Bentuk",
+		"openSource": "Open Source",
 		"github": "GitHub Repo",
 		"figma": "Figma",
 		"copyright": "All Rights Reserved",
-		"disclaimer": "Disclaimer",
-		"privacy_policy": "Privacy Policy",
 		"last_update": "Last Updated"
 	},
 	"Disclaimer": {
