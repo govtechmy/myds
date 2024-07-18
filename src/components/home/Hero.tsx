@@ -40,7 +40,7 @@ export default function Hero(props: Props) {
           </BorderedLink>
         </div>
       </div>
-      <picture className="col-span-full mt-[3rem] border-t border-washed-100 bg-[#FAFAFA] object-cover lg:col-span-6 lg:col-start-7 lg:mt-0 lg:border-l lg:pr-0">
+      <picture className="col-span-full mt-[3rem] border-t border-washed-100 bg-[#FAFAFA] object-cover lg:col-span-6 lg:col-start-7 lg:mt-0 lg:border-l lg:border-t-0 lg:pr-0">
         {/* TODO: Handle missing (webp) images better */}
         <source srcSet="/preview/hero/image.webp" type="image/webp" />
         <source srcSet="/preview/hero/image.svg" type="image/svg+xml" />
