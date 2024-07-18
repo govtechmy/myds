@@ -34,6 +34,11 @@ export default function Timeline(props: Props) {
     return props.data.filter((item) => parseInt(item.year) === year);
   });
 
+  // Determine the starting position of the first item of each year in the timeline (1 = right, -1 = left)
+  const itemPositions = dataByYears.map((data, i) => {
+    return data.length % 2 === 0 ? 1 : -1;
+  });
+
   return (
     <BorderedSection id={props.id} className={props.className}>
       <div className="grid grid-cols-2 gap-y-[3.25rem] lg:grid-cols-12">
@@ -54,7 +59,10 @@ export default function Timeline(props: Props) {
             {dataByYears.map((data, i) => (
               <>
                 <div
-                  className={`ml-[1.875rem] self-start rounded-full bg-brand-50 px-[0.5rem] py-[0.125rem] text-[0.75rem] font-medium leading-[1.125rem] tracking-[0.075rem] text-brand-600 sm:ml-0 sm:self-center`}
+                  className={cn(
+                    "mb-[0.75rem] ml-[1.875rem] self-start rounded-full bg-brand-50 px-[0.5rem] py-[0.125rem] text-[0.75rem] font-medium leading-[1.125rem] tracking-[0.075rem] text-brand-600 sm:ml-0 sm:self-center",
+                    i > 0 && "mt-[1.875rem]",
+                  )}
                 >
                   {data[0].year}
                 </div>
@@ -67,7 +75,12 @@ export default function Timeline(props: Props) {
                   {data.map((item, j) => (
                     <div
                       key={j}
-                      className="relative flex flex-col justify-center first:mt-[0.75rem] last:mb-[1.875rem] sm:even:translate-y-[calc(50%+6px)]"
+                      className={cn(
+                        "relative flex flex-col justify-center",
+                        itemPositions[i] === 1
+                          ? "sm:odd:translate-y-[calc(50%+6px)]"
+                          : "sm:even:translate-y-[calc(50%+6px)]",
+                      )}
                     >
                       <div
                         className={cn(
