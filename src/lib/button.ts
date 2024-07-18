@@ -11,3 +11,7 @@ export function getSizeClassnames(size: ButtonSize) {
       return "";
   }
 }
+
+export function getShadowClassnames() {
+  return "shadow-button";
+}
