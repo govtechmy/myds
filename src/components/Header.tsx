@@ -57,7 +57,7 @@ export function Header({ locale }: { locale: string }) {
                   data-state={isActive(href) ? "open" : "close"}
                   className={cn(
                     buttonVariants({ variant: "tertiary", size: "md" }),
-                    "w-full justify-start data-[state=open]:bg-washed-100",
+                    "w-full justify-start text-[1rem] leading-[1.5rem] lg:data-[state=open]:bg-washed-100",
                   )}
                 >
                   {t(key)}
