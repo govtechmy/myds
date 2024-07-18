@@ -2,6 +2,8 @@ import BorderedSection from "@/components/BorderedSection";
 import { Paragraph } from "@/components/Paragraph";
 import { Tag } from "@/components/Tag";
 import Star from "@/icons/star";
+import Checkmark from "@/icons/checkmark";
+import Production from "@/icons/production";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -51,12 +53,29 @@ export default function Timeline(props: Props) {
                 >
                   <div
                     className={cn(
-                      item.type === "highlight"
-                        ? "absolute right-3 top-2 flex size-6 items-center justify-center rounded-full bg-[#FFF1E5]"
+                      item.type === "highlight" ||
+                        item.type == "launched" ||
+                        item.type == "development"
+                        ? "absolute right-3 top-2 flex size-6 items-center justify-center rounded-full"
                         : "hidden",
+                      item.type === "highlight"
+                        ? "bg-[#FFF1E5]"
+                        : item.type === "launched"
+                          ? "bg-success-50"
+                          : item.type === "development"
+                            ? "bg-brand-50"
+                            : "",
                     )}
                   >
-                    <Star className="size-4 stroke-2 text-[#EA740F]" />
+                    {item.type === "highlight" ? (
+                      <Star className="size-4 stroke-2 text-[#EA740F]" />
+                    ) : item.type === "launched" ? (
+                      <Checkmark className="size-[0.625rem] stroke-2 text-success-600" />
+                    ) : item.type === "development" ? (
+                      <Production className="size-[0.875rem] stroke-2 text-brand-600" />
+                    ) : (
+                      <></>
+                    )}
                   </div>
                   <p className="line-clamp-1 text-xs font-medium uppercase tracking-widest text-dim-500">
                     {item.date}
