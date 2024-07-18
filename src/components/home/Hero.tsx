@@ -40,7 +40,7 @@ export default function Hero(props: Props) {
         </div>
       </div>
 
-      <picture className="col-span-full mt-[3rem] w-full bg-[#FAFAFA] lg:col-span-6 lg:col-start-7 lg:mt-0">
+      <picture className="border-outline-washed-100 col-span-full mt-[3rem] w-full border-t bg-[#FAFAFA] lg:col-span-6 lg:col-start-7 lg:mt-0 lg:border-l">
         {/* TODO: Handle missing (webp) images better */}
         <source srcSet="/preview/hero/image.webp" type="image/webp" />
         <source srcSet="/preview/hero/image.svg" type="image/svg+xml" />
