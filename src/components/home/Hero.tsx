@@ -14,11 +14,12 @@ export default function Hero(props: Props) {
   const t = useTranslations();
 
   return (
+    // Disable left/right padding on the container
     <BorderedSection
       id={props.id}
-      className={cn("grid grid-cols-2 lg:grid-cols-12", props.className)}
+      className={cn("grid grid-cols-2 px-0 lg:grid-cols-12", props.className)}
     >
-      <div className="col-span-full flex flex-col justify-start lg:col-span-5 lg:col-start-1 lg:justify-center">
+      <div className="col-span-full flex flex-col justify-start px-[1.125rem] lg:col-span-5 lg:col-start-1 lg:justify-center lg:pl-[1.5rem] lg:pr-0">
         <h5 className="uppercase tracking-widest text-tag-300">
           {t("Home.tag.beta")}
         </h5>
@@ -39,8 +40,7 @@ export default function Hero(props: Props) {
           </BorderedLink>
         </div>
       </div>
-
-      <picture className="border-outline-washed-100 col-span-full mt-[3rem] w-full overflow-hidden border-t bg-[#FAFAFA] object-cover lg:col-span-6 lg:col-start-7 lg:mt-0 lg:max-h-[700px] lg:border-l">
+      <picture className="border-outline-washed-100 col-span-full mt-[3rem] border-t bg-[#FAFAFA] object-cover lg:col-span-6 lg:col-start-7 lg:mt-0 lg:border-l lg:pr-0">
         {/* TODO: Handle missing (webp) images better */}
         <source srcSet="/preview/hero/image.webp" type="image/webp" />
         <source srcSet="/preview/hero/image.svg" type="image/svg+xml" />
