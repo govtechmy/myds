@@ -37,7 +37,7 @@ export default function Timeline(props: Props) {
         </div>
         <div className="relative col-span-full flex h-full justify-start sm:justify-center lg:col-span-7 lg:col-start-6">
           <div className="absolute -z-10 h-full w-px bg-outline-200 max-sm:left-[3.5px]" />
-          <div className="grid grid-cols-1 gap-x-14 gap-y-3 pb-[3rem] pt-[5.25rem] max-sm:ml-8 sm:grid-cols-2 lg:pb-[3.563rem] lg:pt-[6.438rem]">
+          <div className="grid grid-cols-1 gap-x-14 gap-y-3 pb-[3rem] max-sm:ml-8 sm:grid-cols-2 lg:pb-[3.563rem] lg:pt-[6.438rem]">
             {props.data.map((item, i) => (
               <div
                 key={i}
