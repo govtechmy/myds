@@ -14,6 +14,8 @@ type DataItem = {
   descriptionKey: string;
 };
 
+// TODO: Rename 'content1' to 'about'
+
 const dataItems: DataItem[] = [
   {
     icon: "/icons/content1-icon1.svg",
@@ -47,7 +49,7 @@ const dataItems: DataItem[] = [
   },
 ];
 
-export default async function Highlight(props: Props) {
+export default async function About(props: Props) {
   const t = useTranslations();
 
   return (

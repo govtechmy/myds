@@ -1,5 +1,5 @@
 import Hero from "@/components/home/Hero";
-import Highlight from "@/components/home/Highlight";
+import About from "@/components/home/About";
 import PreviewContent from "@/components/home/PreviewContent";
 import Feedback from "@/components/home/Feedback";
 import { useTranslations } from "next-intl";
@@ -50,7 +50,7 @@ export default function Home() {
         <Hero />
       </article>
       <article>
-        <Highlight id="about" className="py-[3rem] lg:py-[5.25rem]" />
+        <About id="about" className="py-[3rem] lg:py-[5.25rem]" />
       </article>
       {previewItems.map((item, i) => (
         <article key={i}>
