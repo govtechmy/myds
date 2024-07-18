@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
 type Props = {
+  id?: string;
   className?: string;
 };
 
@@ -51,6 +52,7 @@ export default async function Highlight(props: Props) {
 
   return (
     <BorderedSection
+      id={props.id}
       className={cn("grid grid-cols-2 lg:grid-cols-12", props.className)}
     >
       <div className="col-span-full flex grid flex-col items-center gap-y-[2rem] lg:col-span-10 lg:col-start-2 lg:gap-y-[4.625rem]">
@@ -70,10 +72,10 @@ export default async function Highlight(props: Props) {
             >
               <img src={item.icon} className="h-[3.375rem] w-[3.375rem]" />
               <div className="flex flex-col items-start gap-[0.5rem] lg:items-center">
-                <div className="text-brand-700 text-balance text-[1rem] font-medium leading-[1.5rem]">
+                <div className="text-balance text-[1rem] font-medium leading-[1.5rem] text-brand-700">
                   {t(item.titleKey)}
                 </div>
-                <p className="text-black-700 text-pretty text-[0.875rem] leading-[1.25rem] lg:text-center">
+                <p className="text-pretty text-[0.875rem] leading-[1.25rem] text-black-700 lg:text-center">
                   {t(item.descriptionKey)}
                 </p>
               </div>
