@@ -20,12 +20,10 @@ export default function GradientLink(props: Props) {
       <a
         href={props.href}
         target="_blank"
-        style={{
-          background:
-            "linear-gradient(74.55deg, #1351F0 61.78%, #24B9F9 84.42%, #FFEAA1 100%)",
-        }}
         className={cn(
-          "flex h-full flex-row items-center gap-1 rounded-lg border border-[#2563EB] px-3 py-2 text-sm font-medium text-white shadow-button",
+          "flex h-full flex-row items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-white shadow-button",
+          "bg-gradient-button hover:bg-gradient-button-hovered focus:bg-gradient-button-focused",
+          "border border-brand-600 hover:border-brand-700",
           getTextSizeClassnames(props.size),
           getShadowClassnames(),
         )}

@@ -26,7 +26,14 @@ const config: Config = {
       animation: {
         flow: "flow 10s reverse linear forwards infinite",
       },
-      backgroundImage: {},
+      backgroundImage: {
+        "gradient-button":
+          "linear-gradient(74.55deg, #1351F0 61.78%, #24B9F9 84.42%, #FFEAA1 100%)",
+        "gradient-button-hovered":
+          "linear-gradient(250.33deg, #FFEAA1 -7.69%, #24B9F9 11.16%, #1D4ED8 38.54%)",
+        "gradient-button-focused":
+          "linear-gradient(247.99deg, #FFEAA1 0%, #24B9F9 18.41%, #1351F0 45.16%), linear-gradient(250.33deg, #FFEAA1 -7.69%, #24B9F9 11.16%, #1D4ED8 38.54%)",
+      },
       boxShadow: {
         button: "0 1px 3px 0 rgba(0, 0, 0, 0.07)",
         card: "0px 2px 6px 0 rgba(0, 0, 0, 0.05), 0px 6px 24px 0 rgba(0, 0, 0, 0.05)",
