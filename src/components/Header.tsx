@@ -9,24 +9,62 @@ import {
   SheetOverlay,
   SheetPortal,
 } from "@/components/Sheet";
+import { FIGMA_URL } from "@/constants";
 import CrossX from "@/icons/cross-x";
+import IconFigma from "@/icons/figma";
+import IconNewTab from "@/icons/new-tab";
 import HamburgerMenu from "@/icons/hamburger-menu";
 import { Link, usePathname } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { VariantProps } from "class-variance-authority";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { Suspense, useState } from "react";
+import { ReactNode, Suspense, useState } from "react";
+import colors from "tailwindcss/colors";
 import FigmaLink from "./FigmaLink";
+
+type NavItem = {
+  href: string;
+  component: ReactNode;
+  target?: string;
+  sheetOnly?: boolean;
+  variant: VariantProps<typeof buttonVariants>["variant"];
+};
 
 export function Header({ locale }: { locale: string }) {
   const t = useTranslations();
   const pathname = usePathname();
   const isActive = (href: string) => pathname.startsWith(href) && href !== "/";
-  const navItems = [
-    { key: "Header.about", href: "#about" },
-    { key: "Header.our_plan", href: "#ourplan" },
-    { key: "common.contribute", href: "#contribute" },
+  const navItems: NavItem[] = [
+    {
+      href: "#about",
+      component: <>{t("Header.about")}</>,
+      variant: "tertiary",
+    },
+    {
+      href: "#ourplan",
+      component: <>{t("Header.our_plan")}</>,
+      variant: "tertiary",
+    },
+    {
+      href: "#contribute",
+      component: <>{t("common.contribute")}</>,
+      variant: "tertiary",
+    },
+    {
+      href: FIGMA_URL,
+      target: "_blank",
+      component: (
+        <>
+          <IconFigma color={colors.blue[600]} />
+          <div className="text-brand-600">{t("common.figma.explore")}</div>
+          <IconNewTab color={colors.blue[600]} className="ml-auto" />
+        </>
+      ),
+      sheetOnly: true,
+      variant: "tertiary-colour",
+    },
   ];
 
   const [showMenu, setMenu] = useState<boolean>(false);
@@ -50,17 +88,21 @@ export function Header({ locale }: { locale: string }) {
             side="top"
             className="absolute top-full -z-10 flex flex-col gap-0 rounded-b-xl p-3 lg:hidden"
           >
-            {navItems.map(({ key, href }) => (
-              <SheetClose asChild key={key}>
+            {navItems.map(({ component, href, target, variant }, i) => (
+              <SheetClose asChild key={i}>
                 <Link
                   href={href}
+                  target={target || "self"}
                   data-state={isActive(href) ? "open" : "close"}
                   className={cn(
-                    buttonVariants({ variant: "tertiary", size: "md" }),
-                    "w-full justify-start text-[1rem] leading-[1.5rem] lg:data-[state=open]:bg-washed-100",
+                    buttonVariants({
+                      variant,
+                      size: "md",
+                    }),
+                    "w-full justify-start gap-x-[0.5rem] text-[1rem] leading-[1.5rem] lg:data-[state=open]:bg-washed-100",
                   )}
                 >
-                  {t(key)}
+                  {component}
                 </Link>
               </SheetClose>
             ))}
@@ -72,20 +114,22 @@ export function Header({ locale }: { locale: string }) {
 
         <NavigationMenu.Root className="z-10 hidden w-full items-center lg:flex">
           <NavigationMenu.List className="group flex list-none items-center justify-center space-x-1">
-            {navItems.map(({ key, href }) => (
-              <NavigationMenu.Item key={key}>
-                <Link
-                  href={href}
-                  data-state={isActive(href) ? "open" : "close"}
-                  className={cn(
-                    buttonVariants({ variant: "tertiary" }),
-                    "w-max bg-transparent transition-colors data-[state=open]:bg-washed-100",
-                  )}
-                >
-                  {t(key)}
-                </Link>
-              </NavigationMenu.Item>
-            ))}
+            {navItems
+              .filter((item) => !item.sheetOnly)
+              .map(({ component, href }, i) => (
+                <NavigationMenu.Item key={i}>
+                  <Link
+                    href={href}
+                    data-state={isActive(href) ? "open" : "close"}
+                    className={cn(
+                      buttonVariants({ variant: "tertiary" }),
+                      "w-max bg-transparent transition-colors data-[state=open]:bg-washed-100",
+                    )}
+                  >
+                    {component}
+                  </Link>
+                </NavigationMenu.Item>
+              ))}
           </NavigationMenu.List>
         </NavigationMenu.Root>
 
