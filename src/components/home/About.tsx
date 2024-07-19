@@ -75,7 +75,11 @@ export default async function About(props: Props) {
               key={index}
               className="flex flex-row items-start gap-[1.125rem] lg:flex-col lg:items-center"
             >
-              <img src={item.icon} className="h-[3.375rem] w-[3.375rem]" />
+              <img
+                src={item.icon}
+                className="h-[3.375rem] w-[3.375rem]"
+                alt={t(item.titleKey)}
+              />
               <div className="flex flex-col items-start gap-[0.5rem] lg:items-center">
                 <div className="text-balance text-[1rem] font-medium leading-[1.5rem] text-brand-700">
                   {t(item.titleKey)}
