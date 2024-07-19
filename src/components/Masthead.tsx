@@ -24,8 +24,11 @@ export default function Masthead() {
       )}
     >
       <div className="container xl:px-0">
-        <button className="w-full" onClick={() => setOpen(!open)}>
-          <div className="flex flex-wrap items-center gap-1.5 py-2.5 text-sm/4 text-brand-700 max-sm:justify-between sm:py-1">
+        <button
+          className="h-[2.25rem] w-full md:h-[1.75rem]"
+          onClick={() => setOpen(!open)}
+        >
+          <div className="flex flex-wrap items-center gap-1.5 text-sm/4 text-brand-700 max-sm:justify-between sm:py-1">
             <div className="flex items-center gap-1.5">
               <FlagMY className="h-[1rem] w-[2rem]" />
               <span className="text-black-700">
