@@ -5,6 +5,7 @@ import Star from "@/icons/star";
 import Checkmark from "@/icons/checkmark";
 import Production from "@/icons/production";
 import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from "react";
 
 type Props = {
   id?: string;
@@ -40,9 +41,15 @@ export default function Timeline(props: Props) {
   });
 
   return (
-    <BorderedSection id={props.id} className={props.className}>
-      <div className="grid grid-cols-2 gap-y-[3.25rem] lg:grid-cols-12">
-        <div className="col-span-full gap-y-[1.125rem] space-y-4.5 pt-[3rem] lg:col-span-3 lg:col-start-2 lg:pt-[5.25rem]">
+    <BorderedSection id={props.id} className={cn("px-0", props.className)}>
+      <div className="grid grid-cols-2 lg:grid-cols-12 lg:gap-y-[3.25rem]">
+        <div
+          className={cn(
+            "col-span-full gap-y-[1.125rem] space-y-4.5 px-[1.125rem] pt-[3rem] lg:col-span-3 lg:col-start-2 lg:pt-[5.25rem]",
+            "sticky top-[3rem] z-[10] h-fit bg-background pb-4 lg:top-[5.25rem] lg:pb-2",
+            "border-b border-washed-100 lg:border-b-0",
+          )}
+        >
           <div className="flex gap-x-3 text-foreground">
             <Tag>{props.cover.tag}</Tag>
           </div>
@@ -53,30 +60,44 @@ export default function Timeline(props: Props) {
             {props.cover.description}
           </Paragraph>
         </div>
-        <div className="relative col-span-full flex h-full justify-start sm:justify-center lg:col-span-7 lg:col-start-6">
+        <div
+          className={cn(
+            "relative col-span-full flex h-full justify-start sm:justify-center lg:col-span-7 lg:col-start-6",
+            "mx-[1.125rem] lg:mx-0",
+          )}
+        >
           <div className="absolute -z-10 h-full w-px bg-outline-200 max-sm:left-[3.5px]" />
-          <div className="flex flex-col pb-[3rem] lg:pb-[3.563rem] lg:pt-[6.438rem]">
+          <div
+            className={cn(
+              "flex flex-col pb-[3rem] lg:pb-[3.563rem] lg:pt-[6.438rem]",
+              "pt-[1.875rem]",
+            )}
+          >
             {dataByYears.map((data, i) => (
               <>
                 <div
                   className={cn(
                     "mb-[0.75rem] ml-[1.875rem] self-start rounded-full bg-brand-50 px-[0.5rem] py-[0.125rem] text-[0.75rem] font-medium leading-[1.125rem] tracking-[0.075rem] text-brand-600 sm:ml-0 sm:self-center",
+                    // Add margin to all but the first item
                     i > 0 && "mt-[1.875rem]",
                   )}
                 >
                   {data[0].year}
                 </div>
-                {/* Add margin bottom to the last item to accomodate overflowing content due to y-translation */}
                 <div
                   key={i}
-                  className="grid grid-cols-1 gap-x-14 gap-y-3 max-sm:ml-8 sm:grid-cols-2 sm:last:mb-[3rem]"
+                  className={cn(
+                    "grid grid-cols-1 gap-x-14 gap-y-3 max-sm:ml-8 sm:grid-cols-2",
+                    /* Add margin bottom to the last item to accomodate overflowing content caused by y-translation */
+                    "sm:last:mb-[3rem]",
+                  )}
                 >
-                  {/* Add margin top to the first element and margin bottom to the last element to make gaps for the year */}
                   {data.map((item, j) => (
                     <div
                       key={j}
                       className={cn(
                         "relative flex flex-col justify-center",
+                        /* Add margin top to the first element and margin bottom to the last element to make gaps for the year */
                         itemPositions[i] === 1
                           ? "sm:odd:translate-y-[calc(50%+6px)]"
                           : "sm:even:translate-y-[calc(50%+6px)]",
