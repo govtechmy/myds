@@ -2,7 +2,7 @@ import SimpleLinkState from "@/components/SimpleLinkState";
 import {
   ButtonSize,
   getShadowClassnames,
-  getSizeClassnames,
+  getTextSizeClassnames,
 } from "@/lib/button";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
@@ -26,7 +26,7 @@ export default function GradientLink(props: Props) {
         }}
         className={cn(
           "flex h-full flex-row items-center gap-1 rounded-lg border border-[#2563EB] px-3 py-2 text-sm font-medium text-white shadow-button",
-          getSizeClassnames(props.size),
+          getTextSizeClassnames(props.size),
           getShadowClassnames(),
         )}
       >

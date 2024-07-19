@@ -2,7 +2,7 @@ import SimpleLinkState from "@/components/SimpleLinkState";
 import {
   ButtonSize,
   getShadowClassnames,
-  getSizeClassnames,
+  getTextSizeClassnames,
 } from "@/lib/button";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -30,7 +30,7 @@ export default function BorderedLink(props: Props) {
           "bg-[#FFFFFF] hover:bg-[#FAFAFA]",
           "px-3 py-2",
           "hover:text-brand-900 text-center text-black-700",
-          getSizeClassnames(props.size),
+          getTextSizeClassnames(props.size),
           getShadowClassnames(),
         )}
       >
