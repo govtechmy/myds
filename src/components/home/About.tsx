@@ -55,7 +55,10 @@ export default async function About(props: Props) {
   return (
     <BorderedSection
       id={props.id}
-      className={cn("grid grid-cols-2 lg:grid-cols-12", props.className)}
+      className={cn(
+        "grid grid-cols-2 lg:grid-cols-12 lg:px-0",
+        props.className,
+      )}
     >
       <div className="col-span-full flex grid flex-col items-center gap-y-[2rem] lg:col-span-10 lg:col-start-2 lg:gap-y-[4.625rem]">
         <div className="grid grid-cols-1 gap-y-[1.125rem] lg:grid-cols-12">
