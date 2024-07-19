@@ -23,7 +23,7 @@ export default function Masthead() {
           : "bg-washed-100",
       )}
     >
-      <div className="container">
+      <div className="container lg:px-0">
         <button className="w-full" onClick={() => setOpen(!open)}>
           <div className="flex flex-wrap items-center gap-1.5 py-2.5 text-sm/4 text-brand-700 max-sm:justify-between sm:py-1">
             <div className="flex items-center gap-1.5">
