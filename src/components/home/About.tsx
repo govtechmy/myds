@@ -77,7 +77,7 @@ export default async function About(props: Props) {
             >
               <img
                 src={item.icon}
-                className="h-[3.375rem] w-[3.375rem]"
+                className="h-[3.375rem] w-[3.375rem] transition-all"
                 alt={t(item.titleKey)}
               />
               <div className="flex flex-col items-start gap-[0.5rem] lg:items-center">
