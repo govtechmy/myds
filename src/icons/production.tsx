@@ -1,4 +1,4 @@
-export default function Production({ ...props }) {
+export default function IconProduction({ ...props }) {
   return (
     <svg
       width="12"

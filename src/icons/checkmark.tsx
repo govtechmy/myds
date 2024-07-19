@@ -1,4 +1,4 @@
-export default function Checkmark({ ...props }) {
+export default function IconCheckmark({ ...props }) {
   return (
     <svg
       width="10"
