@@ -44,7 +44,7 @@ export default function Home() {
   const t = useTranslations();
 
   return (
-    <main className="flex w-full flex-col divide-y divide-washed-100 py-4 lg:py-0">
+    <main className="flex w-full flex-col divide-y divide-washed-100 lg:py-0">
       {/* Wrapper container components in <article> to display full-width dividers */}
       <article>
         <Hero />
