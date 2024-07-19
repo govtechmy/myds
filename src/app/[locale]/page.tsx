@@ -1,9 +1,12 @@
-import Hero from "@/components/home/Hero";
-import About from "@/components/home/About";
-import PreviewContent from "@/components/home/PreviewContent";
-import Feedback from "@/components/home/Feedback";
-import { useTranslations } from "next-intl";
 import Timeline from "@/components/Timeline";
+import About from "@/components/home/About";
+import Feedback from "@/components/home/Feedback";
+import Hero from "@/components/home/Hero";
+import PreviewContent from "@/components/home/PreviewContent";
+import { type MetadataProps } from "@/lib/page";
+import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 const TIMELINE_ITEMS = 7;
 

@@ -1,7 +1,18 @@
 {
 	"metadata": {
 		"title": "MYDS - Sistem Reka Bentuk Kerajaan Malaysia",
-		"description": "Asas reka bentuk untuk membina laman web rasmi kerajaan Malaysia, MYDS menyediakan komponen pra-dibina yang menarik untuk menyederhanakan pembangunan dan memastikan konsistensi."
+		"description": "Asas reka bentuk untuk membina laman web rasmi kerajaan Malaysia, MYDS menyediakan komponen pra-dibina yang menarik untuk menyederhanakan pembangunan dan memastikan konsistensi.",
+		"openGraph": {
+			"url": {
+				"index": "https://myds.gov.my/ms-MY"
+			},
+			"images": {
+				"1": {
+					"url": "https://cdn.jsdelivr.net/gh/govtechmy/kd-portal/public/og/ms-MY.png",
+					"alt": "Portal Rasmi - KementerianDigital Malaysia"
+				}
+			}
+		}
 	},
 	"common": {
 		"name": "Kementerian Digital",

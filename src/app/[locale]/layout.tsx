@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import { Header } from "@/components/Header";
 import Masthead from "@/components/Masthead";
+import { type MetadataProps } from "@/lib/page";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
@@ -10,10 +11,6 @@ import "../globals.css";
 
 type Props = {
   children: React.ReactNode;
-  params: { locale: string };
-};
-
-type MetadataProps = {
   params: { locale: string };
 };
 
@@ -39,6 +36,21 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      siteName: t("url"),
+      type: "website",
+      images: [
+        {
+          // TODO: Update OG image URLs when the repo is public
+          url: t("openGraph.images.1.url"),
+          alt: t("openGraph.images.1.alt"),
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
   };
 }
 

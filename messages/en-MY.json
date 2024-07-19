@@ -1,7 +1,18 @@
 {
 	"metadata": {
 		"title": "MYDS - Malaysia Government Design System",
-		"description": "The design foundation for building official Malaysian government websites, MYDS provides beautiful pre-built components which streamline development and ensure consistency."
+		"description": "The design foundation for building official Malaysian government websites, MYDS provides beautiful pre-built components which streamline development and ensure consistency.",
+		"openGraph": {
+			"url": {
+				"index": "https://myds.gov.my/en-MY"
+			},
+			"images": {
+				"1": {
+					"url": "https://cdn.jsdelivr.net/gh/govtechmy/kd-portal/public/og/en-GB.png",
+					"alt": "Official Website - Ministry of Digital Malaysia"
+				}
+			}
+		}
 	},
 	"common": {
 		"name": "Ministry of Digital",
