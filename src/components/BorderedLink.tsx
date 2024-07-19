@@ -24,7 +24,7 @@ export default function BorderedLink(props: Props) {
         href={props.href}
         target={props.href.startsWith("#") ? "_self" : "_blank"}
         className={cn(
-          "flex h-full flex-row items-center justify-center gap-0.5",
+          "flex h-full w-fit flex-row items-center justify-center gap-0.5",
           "rounded-lg",
           "border border-[#E4E4E7] hover:border-[#D4D4D8]",
           "bg-[#FFFFFF] hover:bg-[#FAFAFA]",
