@@ -1,7 +1,7 @@
 "use client";
 
 import Collapse from "@/components/Collapse";
-import Checkmark14PointStar from "@/icons/checkmark-14-point-star";
+import FlagMY from "@/icons/flag-my";
 import ChevronDown from "@/icons/chevron-down";
 import EncryptedLock from "@/icons/encrypted-lock";
 import GovMY from "@/icons/govmy";
@@ -27,7 +27,7 @@ export default function Masthead() {
         <button className="w-full" onClick={() => setOpen(!open)}>
           <div className="flex flex-wrap items-center gap-1.5 py-2.5 text-sm/4 text-brand-700 max-sm:justify-between sm:py-1">
             <div className="flex items-center gap-1.5">
-              <Checkmark14PointStar className="size-4 sm:size-5" />
+              <FlagMY className="h-[1rem] w-[2rem]" />
               <span className="text-black-700">
                 {t("official_gov_website")}
               </span>
