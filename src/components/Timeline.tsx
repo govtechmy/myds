@@ -62,14 +62,13 @@ export default function Timeline(props: Props) {
         <div
           className={cn(
             "relative col-span-full flex h-full justify-start sm:justify-center lg:col-span-7 lg:col-start-6",
-            "mx-[1.125rem] lg:mx-0",
+            "lg-mr-[1.5rem] mx-[1.125rem] lg:ml-0",
           )}
         >
           <div className="absolute -z-10 h-full w-px bg-outline-200 max-sm:left-[3.5px]" />
           <div
             className={cn(
-              "flex flex-col pb-[3rem] lg:pb-[3.563rem] lg:pt-[6.438rem]",
-              "pt-[1.875rem]",
+              "flex flex-col pb-[3rem] pt-[1.875rem] lg:pb-[3.563rem] lg:pt-[6.438rem]",
             )}
           >
             {dataByYears.map((data, i) => (
