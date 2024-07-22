@@ -23,7 +23,11 @@ export default async function PreviewContent(props: Props) {
 
   return (
     <BorderedSection
-      className={cn("grid grid-cols-2 lg:grid-cols-12", props.className)}
+      className={cn(
+        "grid grid-cols-2 lg:grid-cols-12",
+        "md:max-lg:mx-auto md:max-lg:max-w-[600px] md:max-lg:px-0",
+        props.className,
+      )}
     >
       <div
         className={cn(
@@ -32,7 +36,7 @@ export default async function PreviewContent(props: Props) {
         )}
       >
         <Tag>{data.tag}</Tag>
-        <h3 className="text-balance text-[1.5rem] font-semibold leading-[2rem] lg:text-[1.875rem] lg:leading-[2.375rem]">
+        <h3 className="text-pretty text-[1.5rem] font-semibold leading-[2rem] lg:text-[1.875rem] lg:leading-[2.375rem]">
           {data.title}
         </h3>
         <Paragraph>{data.description}</Paragraph>

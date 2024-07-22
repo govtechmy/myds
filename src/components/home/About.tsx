@@ -54,20 +54,48 @@ export default async function About(props: Props) {
     <BorderedSection
       id={props.id}
       className={cn(
-        "grid grid-cols-2 lg:grid-cols-12 lg:px-0",
+        "grid grid-cols-1",
+        "md:max-lg:grid-cols-2",
+        "lg:grid-cols-12 lg:px-0",
         props.className,
       )}
     >
-      <div className="col-span-full flex grid flex-col items-center gap-y-[2rem] lg:col-span-10 lg:col-start-2 lg:gap-y-[4.625rem]">
-        <div className="grid grid-cols-1 gap-y-[1.125rem] lg:grid-cols-10">
-          <h1 className="col-span-full text-balance text-start text-[1.5rem] font-semibold leading-[2rem] lg:col-span-6 lg:col-start-3 lg:text-center lg:text-[1.875rem] lg:leading-[2.375rem]">
+      <div
+        className={cn(
+          "col-span-full flex grid flex-col items-center gap-y-[2rem]",
+          "md:max-lg:mx-auto md:max-lg:w-[600px] md:max-lg:gap-y-[3rem]",
+          "lg:col-span-10 lg:col-start-2 lg:gap-y-[4.625rem]",
+        )}
+      >
+        <div
+          className={cn("grid grid-cols-1 gap-y-[1.125rem]", "lg:grid-cols-12")}
+        >
+          <h1
+            className={cn(
+              "col-span-full text-pretty text-start text-[1.5rem] font-semibold leading-[2rem]",
+              "md:max-lg:text-center",
+              "lg:col-span-6 lg:col-start-4 lg:text-center lg:text-[1.875rem] lg:leading-[2.375rem]",
+            )}
+          >
             {t("Home.title.about")}
           </h1>
-          <Paragraph className="col-span-full lg:col-span-6 lg:col-start-3 lg:text-center">
+          <Paragraph
+            className={cn(
+              "col-span-full",
+              "md:max-lg:text-center",
+              "lg:col-span-6 lg:col-start-4 lg:text-center",
+            )}
+          >
             {t("Home.description.about")}
           </Paragraph>
         </div>
-        <div className="grid auto-rows-auto grid-cols-1 gap-y-[2rem] lg:grid-cols-3 lg:gap-[3rem]">
+        <div
+          className={cn(
+            "grid grid-cols-1 gap-y-[2rem]",
+            "md:max-lg:grid-cols-2 md:max-lg:gap-[3rem]",
+            "lg:grid-cols-3 lg:gap-[3rem]",
+          )}
+        >
           {dataItems.map((item, index) => (
             <div
               key={index}

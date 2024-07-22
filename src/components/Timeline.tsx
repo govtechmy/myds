@@ -44,15 +44,17 @@ export default function Timeline(props: Props) {
       <div className="grid grid-cols-2 lg:grid-cols-12 lg:gap-y-[3.25rem]">
         <div
           className={cn(
-            "col-span-full gap-y-[1.125rem] space-y-4.5 px-[1.125rem] pt-[3rem] lg:col-span-3 lg:col-start-2 lg:pb-[5.25rem] lg:pt-[5.25rem]",
-            "z-[10] h-fit bg-background pb-[2rem] lg:sticky lg:top-[5.25rem]",
-            "lg:border-b lg:border-b-0 lg:border-washed-100",
+            "col-span-full gap-y-[1.125rem] space-y-4.5 px-[1.125rem] pt-[3rem]",
+            "z-[10] h-fit bg-background pb-[2rem]",
+            "md:px-0 md:pt-[5.25rem]",
+            "md:mx-auto md:max-lg:w-[600px]",
+            "lg:sticky lg:top-[5.25rem] lg:col-span-3 lg:col-start-2 lg:border-b lg:border-b-0 lg:border-washed-100 lg:pb-[5.25rem]",
           )}
         >
           <div className="flex gap-x-3 text-foreground">
             <Tag>{props.cover.tag}</Tag>
           </div>
-          <h3 className="text-balance text-[1.5rem] font-semibold leading-[2rem] lg:text-[1.875rem] lg:leading-[2.375rem]">
+          <h3 className="text-pretty text-[1.5rem] font-semibold leading-[2rem] lg:text-[1.875rem] lg:leading-[2.375rem]">
             {props.cover.title}
           </h3>
           <Paragraph className="text-pretty text-black-700">

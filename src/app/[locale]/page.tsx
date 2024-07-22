@@ -53,12 +53,12 @@ export default function Home() {
         <Hero />
       </article>
       <article>
-        <About id="about" className="py-[3rem] lg:py-[5.25rem]" />
+        <About id="about" className="py-[3rem] md:py-[5.25rem]" />
       </article>
       {previewItems.map((item, i) => (
         <article key={i}>
           <PreviewContent
-            className="py-[3rem] lg:py-[5.25rem]"
+            className="py-[3rem] md:py-[5.25rem]"
             data={{
               tag: t(item.tagKey),
               title: t(item.titleKey),

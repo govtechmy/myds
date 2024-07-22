@@ -17,9 +17,21 @@ export default function Hero(props: Props) {
     // Disable left/right padding on the container
     <BorderedSection
       id={props.id}
-      className={cn("grid grid-cols-2 px-0 lg:grid-cols-12", props.className)}
+      className={cn(
+        "grid grid-cols-2 px-0",
+        "md:max-lg:grid-cols-12",
+        "lg:grid-cols-12",
+        props.className,
+      )}
     >
-      <div className="col-span-full flex flex-col justify-start px-[1.125rem] pt-[3rem] lg:col-span-5 lg:col-start-1 lg:justify-center lg:pl-[1.5rem] lg:pr-0 lg:pt-0">
+      <div
+        className={cn(
+          "col-span-full flex flex-col justify-start px-[1.125rem] pt-[3rem]",
+          "md:max-lg:mx-auto md:max-lg:w-[600px]",
+          "lg:col-span-5 lg:col-start-1 lg:justify-center lg:pl-[1.5rem] lg:pr-0 lg:pt-0",
+          props.className,
+        )}
+      >
         <h5 className="uppercase tracking-widest text-tag-300">
           {t("Home.tag.beta")}
         </h5>
@@ -47,7 +59,11 @@ export default function Hero(props: Props) {
         <img
           src="/preview/hero/image.svg"
           alt="Hero"
-          className="h-[18.75rem] w-full object-cover lg:h-[43.75rem]"
+          className={cn(
+            "h-[18.75rem] w-full object-cover",
+            "md:max-lg:h-[25rem]",
+            "lg:h-[43.75rem]",
+          )}
         />
       </picture>
     </BorderedSection>
