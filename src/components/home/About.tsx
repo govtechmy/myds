@@ -59,11 +59,11 @@ export default async function About(props: Props) {
       )}
     >
       <div className="col-span-full flex grid flex-col items-center gap-y-[2rem] lg:col-span-10 lg:col-start-2 lg:gap-y-[4.625rem]">
-        <div className="grid grid-cols-1 gap-y-[1.125rem] lg:grid-cols-12">
-          <h1 className="col-span-full text-balance text-start text-[1.5rem] font-semibold leading-[2rem] lg:col-span-6 lg:col-start-4 lg:text-center lg:text-[1.875rem] lg:leading-[2.375rem]">
+        <div className="grid grid-cols-1 gap-y-[1.125rem] lg:grid-cols-10">
+          <h1 className="col-span-full text-balance text-start text-[1.5rem] font-semibold leading-[2rem] lg:col-span-6 lg:col-start-3 lg:text-center lg:text-[1.875rem] lg:leading-[2.375rem]">
             {t("Home.title.about")}
           </h1>
-          <Paragraph className="col-span-full lg:col-span-6 lg:col-start-4 lg:text-center">
+          <Paragraph className="col-span-full lg:col-span-6 lg:col-start-3 lg:text-center">
             {t("Home.description.about")}
           </Paragraph>
         </div>
