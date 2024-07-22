@@ -45,8 +45,8 @@ export default function Timeline(props: Props) {
       <div className="grid grid-cols-2 lg:grid-cols-12 lg:gap-y-[3.25rem]">
         <div
           className={cn(
-            "col-span-full gap-y-[1.125rem] space-y-4.5 px-[1.125rem] pt-[3rem] lg:col-span-3 lg:col-start-2 lg:pt-[5.25rem]",
-            "z-[10] h-fit bg-background pb-[2rem] lg:sticky lg:top-[3rem] lg:top-[5.25rem] lg:pb-2 lg:pb-4",
+            "col-span-full gap-y-[1.125rem] space-y-4.5 px-[1.125rem] pt-[3rem] lg:col-span-3 lg:col-start-2 lg:pb-[5.25rem] lg:pt-[5.25rem]",
+            "z-[10] h-fit bg-background pb-[2rem] lg:sticky lg:top-[5.25rem]",
             "lg:border-b lg:border-b-0 lg:border-washed-100",
           )}
         >
