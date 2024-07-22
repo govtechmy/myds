@@ -73,7 +73,6 @@ export function Header({ locale }: { locale: string }) {
     <header className="sticky top-0 z-50 bg-background lg:border-b lg:bg-background/80 lg:backdrop-blur-[30px]">
       <div className="container flex w-full items-center justify-between gap-3 bg-background py-3 max-lg:border-b lg:gap-4 lg:bg-transparent xl:px-0">
         <Link href="/" className="flex h-full flex-none items-center gap-2.5">
-          {/* TODO: Use webp */}
           <Image width={95} height={32} src="/logo.svg" alt="Logo" />
           <Image
             width={31}
