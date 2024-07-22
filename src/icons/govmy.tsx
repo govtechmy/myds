@@ -1,33 +1,33 @@
 export default function GovMY({ ...props }) {
   return (
     <svg
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path
-        d="M12 9.25H8M12 9.25H15.5M12 9.25L12.1325 9.1617C13.4102 8.30987 13.291 6.3955 11.9175 5.70874L11.0963 5.29814C10.7092 5.10461 10.3954 4.79077 10.2019 4.40372L10 4M8 9.25H4.5M8 9.25L7.86754 9.1617C6.58981 8.30987 6.70899 6.3955 8.08252 5.70874L8.90372 5.29814C9.29077 5.10461 9.60461 4.79077 9.79814 4.40372L10 4M10 4V3.25M10 3.25V2.25L12.5 2.75L10 3.25Z"
-        stroke="currentColor"
-        strokeWidth="inherit"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M14.4 11.1H9.60002M14.4 11.1H18.6M14.4 11.1L14.559 10.994C16.0923 9.9718 15.9492 7.67455 14.301 6.85044L13.3156 6.35772C12.8511 6.12549 12.4745 5.74888 12.2423 5.28441L12 4.79995M9.60002 11.1H5.40002M9.60002 11.1L9.44108 10.994C7.9078 9.9718 8.05082 7.67455 9.69905 6.85044L10.6845 6.35772C11.1489 6.12549 11.5256 5.74888 11.7578 5.28441L12 4.79995M12 4.79995V3.89995M12 3.89995V2.69995L15 3.29995L12 3.89995Z"
+        stroke="#71717A"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
       <path
-        d="M1.75 17.75H18.25"
-        stroke="currentColor"
-        strokeWidth="inherit"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M2.09998 21.3H21.9"
+        stroke="#71717A"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
       <path
-        d="M3 15.25V12.25M5.5 15.25V12.25M14.5 15.25V12.25M17 12.25V15.25M8 15.25V13.5C8 12.3954 8.89543 11.5 10 11.5C11.1046 11.5 12 12.3954 12 13.5V15.25"
-        stroke="currentColor"
-        strokeWidth="inherit"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M3.59998 18.3V14.7M6.59998 18.3V14.7M17.4 18.3V14.7M20.4 14.7V18.3M9.59998 18.3V16.2001C9.59998 14.8746 10.6745 13.8 12 13.8C13.3255 13.8 14.4 14.8746 14.4 16.2001V18.3"
+        stroke="#71717A"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   );
