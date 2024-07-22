@@ -17,8 +17,11 @@ export default function Hero(props: Props) {
     // Disable left/right padding on the container
     <BorderedSection
       id={props.id}
+      className={cn("grid grid-cols-2 px-0 lg:grid-cols-12", props.className)}
+    >
+      <div
       className={cn(
-        "sticky top-0 grid grid-cols-2 px-0 lg:grid-cols-12",
+        "grid grid-cols-2 px-0 lg:sticky lg:top-0 lg:grid-cols-12",
         props.className,
       )}
     >
