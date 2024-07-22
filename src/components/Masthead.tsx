@@ -52,7 +52,7 @@ export default function Masthead() {
             </span>
 
             <div className="flex gap-3">
-              <GovMY className="shrink-0 text-dim-500" />
+              <GovMY className="size-[1.5rem] shrink-0 text-dim-500" />
               <div className="space-y-1.5">
                 <p className="font-medium max-sm:text-sm">{t("official")}</p>
                 <p className="max-w-prose text-balance text-sm text-black-700">
@@ -63,7 +63,7 @@ export default function Masthead() {
               </div>
             </div>
             <div className="flex gap-3">
-              <EncryptedLock className="shrink-0 text-dim-500" />
+              <EncryptedLock className="size-[1.5rem] shrink-0 text-dim-500" />
               <div className="space-y-1.5">
                 <p className="font-medium max-sm:text-sm">{t("secure")}</p>
                 <div className="max-w-prose text-balance text-sm text-black-700">
