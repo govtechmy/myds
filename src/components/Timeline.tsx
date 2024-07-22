@@ -1,11 +1,10 @@
 import BorderedSection from "@/components/BorderedSection";
 import { Paragraph } from "@/components/Paragraph";
 import { Tag } from "@/components/Tag";
-import Star from "@/icons/star";
 import Checkmark from "@/icons/checkmark";
 import Production from "@/icons/production";
+import Star from "@/icons/star";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef, useState } from "react";
 
 type Props = {
   id?: string;
