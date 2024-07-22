@@ -19,12 +19,6 @@ export default function Hero(props: Props) {
       id={props.id}
       className={cn("grid grid-cols-2 px-0 lg:grid-cols-12", props.className)}
     >
-      <div
-      className={cn(
-        "grid grid-cols-2 px-0 lg:sticky lg:top-0 lg:grid-cols-12",
-        props.className,
-      )}
-    >
       <div className="col-span-full flex flex-col justify-start px-[1.125rem] pt-[3rem] lg:col-span-5 lg:col-start-1 lg:justify-center lg:pl-[1.5rem] lg:pr-0 lg:pt-0">
         <h5 className="uppercase tracking-widest text-tag-300">
           {t("Home.tag.beta")}
