@@ -24,12 +24,12 @@
 	"Home": {
 		"title": {
 			"hero": "Malaysia Government Design System (MYDS)",
-			"content1": "What is a Design System?",
+			"about": "What is a Design System?",
 			"feedback": "Help us improve"
 		},
 		"description": {
 			"hero": "The design foundation for building official Malaysian government websites, MYDS provides beautiful pre-built components which streamline development and ensure consistency.",
-			"content1": "A structured collection of reusable components which adheres to design standards and principles, providing a foundation for digital product development.",
+			"about": "A structured collection of reusable components which adheres to design standards and principles, providing a foundation for digital product development.",
 			"feedback": "Write your constructive feedback to <email>design@tech.gov.my</email>"
 		},
 		"action": {
@@ -40,7 +40,7 @@
 		"tag": {
 			"beta": "Beta"
 		},
-		"content1": {
+		"about": {
 			"items": {
 				"1": {
 					"title": "Beautiful Government Sites",

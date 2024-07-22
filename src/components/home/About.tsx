@@ -14,38 +14,36 @@ type DataItem = {
   descriptionKey: string;
 };
 
-// TODO: Rename 'content1' to 'about'
-
 const dataItems: DataItem[] = [
   {
-    icon: "/icons/content1-icon1.svg",
-    titleKey: "Home.content1.items.1.title",
-    descriptionKey: "Home.content1.items.1.description",
+    icon: "/icons/about-icon1.svg",
+    titleKey: "Home.about.items.1.title",
+    descriptionKey: "Home.about.items.1.description",
   },
   {
-    icon: "/icons/content1-icon2.svg",
-    titleKey: "Home.content1.items.2.title",
-    descriptionKey: "Home.content1.items.2.description",
+    icon: "/icons/about-icon2.svg",
+    titleKey: "Home.about.items.2.title",
+    descriptionKey: "Home.about.items.2.description",
   },
   {
-    icon: "/icons/content1-icon3.svg",
-    titleKey: "Home.content1.items.3.title",
-    descriptionKey: "Home.content1.items.3.description",
+    icon: "/icons/about-icon3.svg",
+    titleKey: "Home.about.items.3.title",
+    descriptionKey: "Home.about.items.3.description",
   },
   {
-    icon: "/icons/content1-icon4.svg",
-    titleKey: "Home.content1.items.4.title",
-    descriptionKey: "Home.content1.items.4.description",
+    icon: "/icons/about-icon4.svg",
+    titleKey: "Home.about.items.4.title",
+    descriptionKey: "Home.about.items.4.description",
   },
   {
-    icon: "/icons/content1-icon5.svg",
-    titleKey: "Home.content1.items.5.title",
-    descriptionKey: "Home.content1.items.5.description",
+    icon: "/icons/about-icon5.svg",
+    titleKey: "Home.about.items.5.title",
+    descriptionKey: "Home.about.items.5.description",
   },
   {
-    icon: "/icons/content1-icon6.svg",
-    titleKey: "Home.content1.items.6.title",
-    descriptionKey: "Home.content1.items.6.description",
+    icon: "/icons/about-icon6.svg",
+    titleKey: "Home.about.items.6.title",
+    descriptionKey: "Home.about.items.6.description",
   },
 ];
 

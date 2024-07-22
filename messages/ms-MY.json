@@ -24,12 +24,12 @@
 	"Home": {
 		"title": {
 			"hero": "Sistem Reka Bentuk Kerajaan Malaysia (MYDS)",
-			"content1": "Apa itu Sistem Reka Bentuk?",
+			"about": "Apa itu Sistem Reka Bentuk?",
 			"feedback": "Bantu peningkatan kami"
 		},
 		"description": {
 			"hero": "Asas reka bentuk untuk membina laman web rasmi kerajaan Malaysia, MYDS menyediakan komponen pra-dibina yang menarik untuk menyederhanakan pembangunan dan memastikan konsistensi.",
-			"content1": "Satu koleksi terstruktur komponen boleh guna semula yang mematuhi piawaian dan prinsip reka bentuk, menyediakan asas untuk pembangunan produk digital.",
+			"about": "Satu koleksi terstruktur komponen boleh guna semula yang mematuhi piawaian dan prinsip reka bentuk, menyediakan asas untuk pembangunan produk digital.",
 			"feedback": "Sila berikan maklum balas membina kepada <email>design@tech.gov.my</email>"
 		},
 		"action": {
@@ -40,7 +40,7 @@
 		"tag": {
 			"beta": "Beta"
 		},
-		"content1": {
+		"about": {
 			"items": {
 				"1": {
 					"title": "Laman Kerajaan yang Indah",
