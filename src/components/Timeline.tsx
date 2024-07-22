@@ -46,8 +46,8 @@ export default function Timeline(props: Props) {
         <div
           className={cn(
             "col-span-full gap-y-[1.125rem] space-y-4.5 px-[1.125rem] pt-[3rem] lg:col-span-3 lg:col-start-2 lg:pt-[5.25rem]",
-            "sticky top-[3rem] z-[10] h-fit bg-background pb-4 lg:top-[5.25rem] lg:pb-2",
-            "border-b border-washed-100 lg:border-b-0",
+            "z-[10] h-fit bg-background pb-[2rem] lg:sticky lg:top-[3rem] lg:top-[5.25rem] lg:pb-2 lg:pb-4",
+            "lg:border-b lg:border-b-0 lg:border-washed-100",
           )}
         >
           <div className="flex gap-x-3 text-foreground">
