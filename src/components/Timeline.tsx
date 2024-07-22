@@ -64,6 +64,7 @@ export default function Timeline(props: Props) {
         <div
           className={cn(
             "relative col-span-full flex h-full justify-start sm:justify-center lg:col-span-7 lg:col-start-6",
+            "md:max-lg:mx-auto md:max-lg:w-[700px]",
             "lg-mr-[1.5rem] mx-[1.125rem] lg:ml-0",
           )}
         >
