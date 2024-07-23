@@ -163,6 +163,8 @@
 	},
 	"Footer": {
 		"designSystem": "Sistem Reka Bentuk",
+		"designStandards": "Piawaian Reka Bentuk",
+		"figmaBeta": "Figma (Beta)",
 		"openSource": "Open Source",
 		"github": "GitHub Repo",
 		"figma": "Figma",
