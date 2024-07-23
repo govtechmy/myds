@@ -16,10 +16,7 @@ export default getRequestConfig(async ({ locale }) => {
   };
 });
 
-export function extract(
-  messages: AbstractIntlMessages,
-  path: string,
-): string | null {
+export function extract(messages: AbstractIntlMessages, path: string): string {
   const keys = path.split(".");
 
   let current = messages;
@@ -34,5 +31,5 @@ export function extract(
     current = value;
   }
 
-  return null;
+  return "";
 }
