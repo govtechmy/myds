@@ -2,6 +2,7 @@ import { createSharedPathnamesNavigation } from "next-intl/navigation";
 import { getRequestConfig } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locales } from "../i18n-config";
+import { AbstractIntlMessages } from "next-intl";
 
 export const { Link, redirect, usePathname, useRouter } =
   createSharedPathnamesNavigation({ locales });
@@ -14,3 +15,8 @@ export default getRequestConfig(async ({ locale }) => {
     messages: (await import(`../../messages/${locale}.json`)).default,
   };
 });
+
+export function extract(messages: AbstractIntlMessages, path: string): string {
+  const keys = path.split(".");
+  return keys.reduce((acc, key) => acc && acc[key], messages);
+}

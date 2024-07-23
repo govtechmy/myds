@@ -1,6 +1,13 @@
 import Footer from "@/components/Footer";
 import { Header } from "@/components/Header";
 import Masthead from "@/components/Masthead";
+import {
+  DESIGN_STANDARDS_URL,
+  FIGMA_BETA_URL,
+  FIGMA_URL,
+  GITHUB_REPO_URL,
+} from "@/constants";
+import { extract } from "@/lib/i18n";
 import { type MetadataProps } from "@/lib/page";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -74,7 +81,38 @@ export default async function LocaleLayout({
             <Masthead />
             <Header locale={locale} />
             <div className="flex-1">{children}</div>
-            <Footer />
+            <Footer
+              ministry={extract(messages, "common.name")}
+              descriptionWithNewlines={extract(messages, "Footer.address")}
+              links={[
+                {
+                  title: extract(messages, "Footer.designSystem"),
+                  links: [
+                    {
+                      name: extract(messages, "Footer.designStandards"),
+                      href: DESIGN_STANDARDS_URL,
+                    },
+                    {
+                      name: extract(messages, "Footer.figmaBeta"),
+                      href: FIGMA_BETA_URL,
+                    },
+                  ],
+                },
+                {
+                  title: extract(messages, "Footer.openSource"),
+                  links: [
+                    {
+                      name: extract(messages, "Footer.github"),
+                      href: GITHUB_REPO_URL,
+                    },
+                    {
+                      name: extract(messages, "Footer.figma"),
+                      href: FIGMA_URL,
+                    },
+                  ],
+                },
+              ]}
+            />
           </div>
         </NextIntlClientProvider>
       </body>
