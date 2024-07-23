@@ -68,13 +68,13 @@ export default async function About(props: Props) {
         )}
       >
         <div
-          className={cn("grid grid-cols-1 gap-y-[1.125rem]", "lg:grid-cols-12")}
+          className={cn("grid grid-cols-1 gap-y-[1.125rem]", "lg:grid-cols-10")}
         >
           <h1
             className={cn(
               "col-span-full text-pretty text-start text-[1.5rem] font-semibold leading-[2rem]",
               "md:max-lg:text-center",
-              "lg:col-span-6 lg:col-start-4 lg:text-center lg:text-[1.875rem] lg:leading-[2.375rem]",
+              "lg:col-span-6 lg:col-start-3 lg:text-center lg:text-[1.875rem] lg:leading-[2.375rem]",
             )}
           >
             {t("Home.title.about")}
@@ -83,7 +83,7 @@ export default async function About(props: Props) {
             className={cn(
               "col-span-full",
               "md:max-lg:text-center",
-              "lg:col-span-6 lg:col-start-4 lg:text-center",
+              "lg:col-span-6 lg:col-start-3 lg:text-center",
             )}
           >
             {t("Home.description.about")}
