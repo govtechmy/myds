@@ -16,7 +16,23 @@ export default getRequestConfig(async ({ locale }) => {
   };
 });
 
-export function extract(messages: AbstractIntlMessages, path: string): string {
+export function extract(
+  messages: AbstractIntlMessages,
+  path: string,
+): string | null {
   const keys = path.split(".");
-  return keys.reduce((acc, key) => acc && acc[key], messages);
+
+  let current = messages;
+
+  for (const key of keys) {
+    const value = current[key];
+
+    if (typeof value === "string") {
+      return value;
+    }
+
+    current = value;
+  }
+
+  return null;
 }
