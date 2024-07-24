@@ -50,7 +50,6 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          // TODO: Update OG image URLs when the repo is public
           url: t("openGraph.images.1.url"),
           alt: t("openGraph.images.1.alt"),
           width: 1200,
