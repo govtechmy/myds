@@ -50,6 +50,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
+          // TODO: Replace image URL with https://cdn.jsdelivr.net/gh/govtechmy/myds@0.0.1/public/og/images/en-MY.png
           url: t("openGraph.images.1.url"),
           alt: t("openGraph.images.1.alt"),
           width: 1200,
