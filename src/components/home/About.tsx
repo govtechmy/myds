@@ -62,7 +62,7 @@ export default async function About(props: Props) {
     >
       <div
         className={cn(
-          "col-span-full flex grid flex-col items-center gap-y-[2rem]",
+          "col-span-full grid items-center gap-y-[2rem]",
           "md:max-lg:mx-auto md:max-lg:w-[600px] md:max-lg:gap-y-[3rem]",
           "lg:col-span-10 lg:col-start-2 lg:gap-y-[4.625rem]",
         )}
