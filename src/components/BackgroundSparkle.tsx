@@ -13,12 +13,12 @@ function getRandomNumberBetween(min: number, max: number) {
 
 export default function BackgroundSparkle({ className, children }: Props) {
   return (
-    <div className={cn("relative h-full w-full", className)}>
+    <div className={cn("z-1 relative h-full w-full", className)}>
       {Array.from({ length: 10 }).map((_, i) => (
         <div
           key={i}
           style={{
-            top: `${getRandomNumberBetween(10, 80)}%`,
+            top: `${i % 2 === 0 ? getRandomNumberBetween(10, 50) : getRandomNumberBetween(50, 90)}%`,
           }}
           className={cn("absolute h-full w-full", styles.sparkle)}
         ></div>

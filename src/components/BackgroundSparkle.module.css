@@ -1,7 +1,7 @@
 .sparkle {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-image: url("/effects/sparkle.svg");
   background-position: center;
