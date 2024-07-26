@@ -2,7 +2,6 @@ import BorderedSection from "@/components/BorderedSection";
 import { Paragraph } from "@/components/Paragraph";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import BackgroundSparkle from "../BackgroundSparkle";
 
 type Props = {
   id?: string;
@@ -61,7 +60,7 @@ export default async function About(props: Props) {
         props.className,
       )}
     >
-      <BackgroundSparkle
+      <div
         className={cn(
           "col-span-full grid items-center gap-y-[2rem]",
           "md:max-lg:mx-auto md:max-lg:w-[600px] md:max-lg:gap-y-[3rem]",
@@ -118,7 +117,7 @@ export default async function About(props: Props) {
             </div>
           ))}
         </div>
-      </BackgroundSparkle>
+      </div>
     </BorderedSection>
   );
 }
