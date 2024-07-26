@@ -1,0 +1,84 @@
+.sparkle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-image: url("/effects/sparkle.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+  animation: sparkle 2s infinite;
+  z-index: 0;
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.sparkle:nth-child(1) {
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.sparkle:nth-child(2) {
+  top: 30%;
+  left: 25%;
+  animation-delay: 0.5s;
+}
+
+.sparkle:nth-child(3) {
+  top: 66%;
+  left: 35%;
+  animation-delay: 1s;
+}
+
+.sparkle:nth-child(4) {
+  top: 70%;
+  left: 45%;
+  animation-delay: 1.5s;
+}
+
+.sparkle:nth-child(5) {
+  top: 24%;
+  left: 55%;
+  animation-delay: 3s;
+}
+
+.sparkle:nth-child(6) {
+  top: 44%;
+  left: 65%;
+  animation-delay: 3.5s;
+}
+
+.sparkle:nth-child(7) {
+  top: 70%;
+  left: 75%;
+  animation-delay: 4s;
+}
+
+.sparkle:nth-child(8) {
+  top: 28%;
+  left: 85%;
+  animation-delay: 5s;
+}
+
+.sparkle:nth-child(9) {
+  top: 60%;
+  left: 95%;
+  animation-delay: 5.5s;
+}
+.sparkle:nth-child(10) {
+  top: 82%;
+  left: 10%;
+  animation-delay: 6s;
+}
