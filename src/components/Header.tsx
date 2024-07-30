@@ -72,14 +72,15 @@ export function Header({ locale }: { locale: string }) {
   return (
     <header className="sticky top-0 z-50 bg-background lg:border-b lg:bg-background/80 lg:backdrop-blur-[30px]">
       <div className="container flex w-full items-center justify-between gap-3 bg-background py-3 max-lg:border-b lg:gap-4 lg:bg-transparent xl:px-0">
-        <a href="#" className="flex h-full flex-none items-center gap-2.5">
+        <a href="#" className="flex h-full flex-none items-center">
           <Image width={32} height={32} src="/logo.svg" alt="Logo" />
-          <h1 className="text-[1.125rem] font-semibold leading-[1.625rem]">
+          <h1 className="ml-[0.625rem] text-[1.125rem] font-semibold leading-[1.625rem]">
             {t("app.name")}
           </h1>
           <Image
             width={31}
             height={9}
+            className="ml-[0.5rem]"
             src="/label-beta.svg"
             alt="Beta software"
           />
