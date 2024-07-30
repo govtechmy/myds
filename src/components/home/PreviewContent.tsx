@@ -24,7 +24,7 @@ export default async function PreviewContent(props: Props) {
   return (
     <BorderedSection
       className={cn(
-        "grid grid-cols-2 lg:grid-cols-12",
+        "grid grid-cols-2 lg:grid-cols-12 lg:px-0",
         "md:max-lg:mx-auto md:max-lg:max-w-[600px] md:max-lg:px-0",
         props.className,
       )}
@@ -45,6 +45,7 @@ export default async function PreviewContent(props: Props) {
         className={cn(
           "col-span-full mt-[2rem] h-full w-full lg:col-span-6 lg:col-start-1 lg:row-span-1 lg:row-start-1 lg:mt-0",
           reversed ? "lg:col-start-1" : "lg:col-start-7",
+          reversed ? "lg:pl-[1.5rem]" : "lg:pr-[1.5rem]",
         )}
       >
         {/* TODO: Handle missing (webp) images better */}
