@@ -8,7 +8,7 @@
 			},
 			"images": {
 				"1": {
-					"url": "https://cdn.jsdelivr.net/gh/govtechmy/kd-portal/public/og/ms-MY.png",
+					"url": "https://cdn.jsdelivr.net/gh/govtechmy/myds@0.0.2/public/og/images/ms-MY.png",
 					"alt": "Portal Rasmi - Kementerian Digital Malaysia"
 				}
 			}
