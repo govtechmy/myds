@@ -1,7 +1,6 @@
 import { defaultLocale, localePrefix, locales } from "@/i18n-config";
 import createIntlMiddleware from "next-intl/middleware";
 import { NextRequest } from "next/server";
-import authenticate from "./middlewares/basic-auth";
 
 export default async function middleware(request: NextRequest) {
   // Create and call the next-intl middleware
