@@ -1,6 +1,7 @@
 import { defaultLocale, localePrefix, locales } from "@/i18n-config";
 import createIntlMiddleware from "next-intl/middleware";
 import { NextRequest } from "next/server";
+import authenticate from "./middlewares/basic-auth";
 
 export default async function middleware(request: NextRequest) {
   // Create and call the next-intl middleware
@@ -12,28 +13,32 @@ export default async function middleware(request: NextRequest) {
 
   const response = handleI18nRouting(request);
 
-  if (
-    process.env.APP_ENV === "development" ||
-    process.env.APP_ENV === "production"
-  ) {
-    return response;
-  }
+  return response;
 
-  const basicAuth = request.headers.get("authorization");
-  if (basicAuth) {
-    const authValue = basicAuth.split(" ")[1];
-    const [user, password] = atob(authValue).split(":");
-    if (user === "admin" && password === process.env.AUTH_TOKEN) {
-      return response;
-    }
-  }
+  // if (
+  //   process.env.APP_ENV === "development" ||
+  //   process.env.APP_ENV === "production"
+  // ) {
+  //   return response;
+  // }
 
-  return new Response("Auth required", {
-    status: 401,
-    headers: {
-      "WWW-Authenticate": `Basic realm="Secure Area"`,
-    },
-  });
+  // const basicAuth = request.headers.get("authorization");
+
+  // if (basicAuth) {
+  //   const authValue = basicAuth.split(" ")[1];
+  //   const [user, password] = atob(authValue).split(":");
+
+  //   if (user === "admin" && password === process.env.AUTH_TOKEN) {
+  //     return response;
+  //   }
+  // }
+
+  // return new Response("Auth required", {
+  //   status: 401,
+  //   headers: {
+  //     "WWW-Authenticate": `Basic realm="Secure Area"`,
+  //   },
+  // });
 }
 
 // export const config = {
