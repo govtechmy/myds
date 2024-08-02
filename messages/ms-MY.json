@@ -4,7 +4,7 @@
 		"description": "Asas reka bentuk untuk membina laman web rasmi kerajaan Malaysia, MYDS menyediakan komponen pra-dibina yang menarik untuk menyederhanakan pembangunan dan memastikan konsistensi.",
 		"openGraph": {
 			"url": {
-				"index": "https://design.digital.gov.my/ms-MY"
+				"index": "https://myds.vercel.app/ms-MY"
 			},
 			"images": {
 				"1": {
