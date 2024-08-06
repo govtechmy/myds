@@ -4,7 +4,7 @@
 		"description": "The design foundation for building official Malaysian government websites, MYDS provides beautiful pre-built components which streamline development and ensure consistency.",
 		"openGraph": {
 			"url": {
-				"index": "https://myds.vercel.app/en-MY"
+				"index": "${baseUrl}/en-MY"
 			},
 			"images": {
 				"1": {

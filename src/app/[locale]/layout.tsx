@@ -46,7 +46,7 @@ export async function generateMetadata({
     openGraph: {
       title: t("title"),
       description: t("description"),
-      siteName: t("openGraph.url.index"),
+      siteName: t("openGraph.url.index", { baseUrl: process.env.APP_URL }),
       type: "website",
       images: [
         {
