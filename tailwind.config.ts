@@ -91,11 +91,7 @@ const config: Config = {
         base: ["16px", "24px"],
         lg: ["18px", "26px"],
         xl: ["20px", "30px"],
-        hxs: ["24px", "32px"],
-        hsm: ["30px", "38px"],
         hmd: ["36px", "44px"],
-        hlg: ["48px", "60px"],
-        hxl: ["60px", "72px"],
       },
       keyframes: {
         flow: {
