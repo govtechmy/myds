@@ -16,8 +16,8 @@ const previewItems = [
     titleKey: "Home.previewContent.items.1.title",
     descriptionKey: "Home.previewContent.items.1.description",
     img: {
-      svg: "/preview/content2/image.svg",
-      webp: "/preview/content2/image.webp",
+      svg: "/preview/content1/image.svg",
+      webp: "/preview/content1/image.webp",
       altKey: "Home.previewContent.items.1.tag",
     },
   },
@@ -26,8 +26,8 @@ const previewItems = [
     titleKey: "Home.previewContent.items.2.title",
     descriptionKey: "Home.previewContent.items.2.description",
     img: {
-      svg: "/preview/content3/image.svg",
-      webp: "/preview/content3/image.webp",
+      svg: "/preview/content2/image.svg",
+      webp: "/preview/content2/image.webp",
       altKey: "Home.previewContent.items.2.tag",
     },
   },
@@ -36,8 +36,8 @@ const previewItems = [
     titleKey: "Home.previewContent.items.3.title",
     descriptionKey: "Home.previewContent.items.3.description",
     img: {
-      svg: "/preview/content4/image.svg",
-      webp: "/preview/content4/image.webp",
+      svg: "/preview/content3/image.svg",
+      webp: "/preview/content3/image.webp",
       altKey: "Home.previewContent.items.3.tag",
     },
   },
