@@ -1,53 +1,12 @@
-import { defaultLocale, localePrefix, locales } from "@/i18n-config";
-import createIntlMiddleware from "next-intl/middleware";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { handleBasicAuth } from "@/middlewares/basic-auth";
+import { handleI18nRouting } from "@/middlewares/i18n";
 
 export default async function middleware(request: NextRequest) {
-  // Create and call the next-intl middleware
-  const handleI18nRouting = createIntlMiddleware({
-    locales,
-    localePrefix,
-    defaultLocale,
-  });
-
   const response = handleI18nRouting(request);
-
-  return response;
-
-  // if (
-  //   process.env.APP_ENV === "development" ||
-  //   process.env.APP_ENV === "production"
-  // ) {
-  //   return response;
-  // }
-
-  // const basicAuth = request.headers.get("authorization");
-
-  // if (basicAuth) {
-  //   const authValue = basicAuth.split(" ")[1];
-  //   const [user, password] = atob(authValue).split(":");
-
-  //   if (user === "admin" && password === process.env.AUTH_TOKEN) {
-  //     return response;
-  //   }
-  // }
-
-  // return new Response("Auth required", {
-  //   status: 401,
-  //   headers: {
-  //     "WWW-Authenticate": `Basic realm="Secure Area"`,
-  //   },
-  // });
+  const authResponse = handleBasicAuth(request);
+  return authResponse || response;
 }
-
-// export const config = {
-//   matcher: [
-//     // Match all pathnames except for
-//     // - if they start with `/api`, `/_next` or `/_vercel`
-//     // - the ones containing a dot (e.g. `favicon.ico`)
-//     "/((?!api|_next|_vercel|.*\\..*).*)",
-//   ],
-// };
 
 export const config = {
   matcher: [
