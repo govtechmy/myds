@@ -22,7 +22,8 @@
 		"figma": {
 			"explore": "Explore in Figma"
 		},
-		"contribute": "Contribute"
+		"contribute": "Contribute",
+		"beta": "Beta"
 	},
 	"Home": {
 		"title": {
@@ -39,9 +40,6 @@
 			"feedback": {
 				"send": "Send us your feedback"
 			}
-		},
-		"tag": {
-			"beta": "Beta"
 		},
 		"about": {
 			"items": {

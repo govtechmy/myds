@@ -22,7 +22,8 @@
 		"figma": {
 			"explore": "Explore in Figma"
 		},
-		"contribute": "Menyumbang"
+		"contribute": "Menyumbang",
+		"beta": "Beta"
 	},
 	"Home": {
 		"title": {
@@ -39,9 +40,6 @@
 			"feedback": {
 				"send": "Kirimkan maklum balas anda"
 			}
-		},
-		"tag": {
-			"beta": "Beta"
 		},
 		"about": {
 			"items": {

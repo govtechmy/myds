@@ -32,8 +32,8 @@ export default function Hero(props: Props) {
           props.className,
         )}
       >
-        <h5 className="uppercase tracking-widest text-tag-300">
-          {t("Home.tag.beta")}
+        <h5 className="text-[0.875rem] font-semibold uppercase leading-[1.25rem] tracking-[0.175rem] text-tag-300">
+          {t("common.beta")}
         </h5>
         <h1 className="mt-[1.5rem] text-balance text-[2rem] font-semibold leading-[2.5rem] lg:text-start lg:text-[2.25rem] lg:leading-[2.75rem]">
           {t("Home.title.hero")}

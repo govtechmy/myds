@@ -77,6 +77,9 @@ export function Header({ locale }: { locale: string }) {
           <h1 className="ml-[0.625rem] text-[1.125rem] font-semibold leading-[1.625rem]">
             {t("app.name")}
           </h1>
+          <span className="ml-[0.5rem] text-[0.75rem] font-semibold uppercase leading-[1.125rem] text-tag-300">
+            {t("common.beta")}
+          </span>
           <Image
             width={31}
             height={9}
