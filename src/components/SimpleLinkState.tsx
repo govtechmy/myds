@@ -10,7 +10,7 @@ export default function SimpleLinkState(props: Props) {
   return (
     <div
       className={cn(
-        "transition-transform active:translate-y-[0.0625rem]",
+        "transition-transform active:translate-y-[0.625rem]",
         props.className,
       )}
     >
