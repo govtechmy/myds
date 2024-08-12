@@ -79,7 +79,7 @@
 				"2": {
 					"tag": "Pembangunan Pantas",
 					"title": "Komponen pra-dibina membolehkan anda memberi tumpuan kepada produk",
-					"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+					"description": "Memudahkan pembangunan sistem dengan komponen pra-dibina membolehkan lebih fokus pada meningkatkan ciri teras."
 				},
 				"3": {
 					"tag": "Penjimatan Kos",
@@ -90,57 +90,57 @@
 		},
 		"timeline": {
 			"cover": {
-				"tag": "Our Plan",
-				"title": "How are we rolling out Malaysia’s first design system?",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				"tag": "Pelan Kami",
+				"title": "Bagaimana kami melancarkan sistem reka bentuk pertama Malaysia?",
+				"description": "Kami akan mula dengan laman konsep dan dokumen reka bentuk, kemudian menyediakan pembina laman untuk agensi kerajaan dan sekolah membina laman ikut sistem reka bentuk."
 			},
 			"items": {
 				"1": {
 					"date": "29 JUL 2024",
-					"title": "Digital Ministry website launched",
-					"description": "Proof-of-concept for the Malaysia Government Design System, with skin in the game using our own official site!",
+					"title": "Laman Kementerian Digital dilancarkan",
+					"description": "Laman konsep untuk Sistem Reka Bentuk Kerajaan Malaysia, dengan laman rasmi kami sebagai contoh praktikal!",
 					"type": "launched",
 					"year": "2024"
 				},
 				"2": {
 					"date": "29 JUL 2024",
-					"title": "MYDS (Beta) launched",
-					"description": "Figma opened for public inspection and feedback",
+					"title": "MYDS (Beta) dilancarkan",
+					"description": "Figma dibuka untuk pemeriksaan dan maklum balas awam.",
 					"type": "launched",
 					"year": "2024"
 				},
 				"3": {
-					"date": "AUG - NOV 2024",
-					"title": "Development of Site Builder",
-					"description": "The engine behind implementation of the design system. Agencies will use this site builder (i.e. a CMS) to populate content.",
+					"date": "OGO - NOV 2024",
+					"title": "Pembangunan Pembina Laman",
+					"description": "Enjin di sebalik pelaksanaan sistem reka bentuk. Agensi akan guna pembina laman ini (iaitu CMS) untuk tambah kandungan.",
 					"type": "development",
 					"year": "2024"
 				},
 				"4": {
 					"date": "SEP 2024 - JAN 2025",
-					"title": "School Sites Revamp",
-					"description": "Proof-of-concept for the scalability of our design system and site builder, working with 10,000 schools nationwide.",
+					"title": "Penambahbaikan Laman Sekolah",
+					"description": "Laman konsep untuk menguji skalabiliti sistem reka bentuk dan pembina laman kami dengan 10,000 sekolah di seluruh negara.",
 					"type": "none",
 					"year": "2024"
 				},
 				"5": {
-					"date": "DEC 2024 - MAR 2025 ",
-					"title": "Agency Sites Revamp",
-					"description": "Roll-out across government agencies. The site builder (including hosting) will be completely free for the public sector.",
+					"date": "DIS 2024 - MAC 2025 ",
+					"title": "Penambahbaikan Laman Agensi",
+					"description": "Pelaksanaan di agensi-agensi kerajaan. Pembina laman (termasuk hosting) adalah percuma untuk sektor awam.",
 					"type": "none",
 					"year": "2024"
 				},
 				"6": {
-					"date": "MAR 2025",
-					"title": "Final Stakeholder Consultation",
-					"description": "Preview and testing with members of the local tech community and industry, as well as other public sector officers.",
+					"date": "MAC 2025",
+					"title": "Perundingan dengan Pihak Berkepentingan",
+					"description": "Pratonton dan ujian dengan komuniti IT tempatan, industri, dan pegawai sektor awam lain.",
 					"type": "none",
 					"year": "2025"
 				},
 				"7": {
 					"date": "APR 2025",
-					"title": "Full Launch of MYDS",
-					"description": "Production-ready design system now ready to be used for any future product. A new era for gov.my sites begins!",
+					"title": "Pelancaran Penuh MYDS",
+					"description": "Sistem reka bentuk sedia digunakan untuk membangun produk masa depan. Era baru untuk laman gov.my bermula!",
 					"type": "none",
 					"year": "2025"
 				}

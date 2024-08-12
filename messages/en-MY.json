@@ -79,7 +79,7 @@
 				"2": {
 					"tag": "Rapid Development",
 					"title": "Pre-built components let you focus on the product",
-					"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+					"description": "Simplifying development with ready-made components allows more focus on enhancing core features."
 				},
 				"3": {
 					"tag": "Cost Savings",
@@ -92,7 +92,7 @@
 			"cover": {
 				"tag": "Our Plan",
 				"title": "How are we rolling out Malaysia’s first design system?",
-				"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				"description": "We’ll start with proof-of-concept sites and design docs, then offer a site builder for government agencies and schools to create sites using the design system."
 			},
 			"items": {
 				"1": {
