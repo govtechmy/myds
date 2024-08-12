@@ -80,13 +80,6 @@ export function Header({ locale }: { locale: string }) {
           <span className="ml-[0.5rem] text-[0.75rem] font-semibold uppercase leading-[1.125rem] text-tag-300">
             {t("common.beta")}
           </span>
-          <Image
-            width={31}
-            height={9}
-            className="ml-[0.5rem]"
-            src="/label-beta.svg"
-            alt="Beta software"
-          />
         </a>
 
         <Sheet open={showMenu} onOpenChange={setMenu}>
