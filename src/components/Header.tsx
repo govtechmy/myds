@@ -91,7 +91,7 @@ export function Header({ locale }: { locale: string }) {
               <SheetClose asChild key={i}>
                 <Link
                   href={href}
-                  target={target || "self"}
+                  target={target || "_self"}
                   data-state={isActive(href) ? "open" : "close"}
                   className={cn(
                     buttonVariants({
