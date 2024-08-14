@@ -18,7 +18,9 @@
 		"name": "MYDS"
 	},
 	"common": {
-		"name": "Ministry of Digital",
+		"names": {
+			"kd": "Ministry of Digital"
+		},
 		"figma": {
 			"explore": "Explore in Figma"
 		},

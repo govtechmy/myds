@@ -81,7 +81,7 @@ export default async function LocaleLayout({
             <Header locale={locale} />
             <div className="flex-1">{children}</div>
             <Footer
-              ministry={extract(messages, "common.name")}
+              ministry={extract(messages, "common.names.kd")}
               descriptionWithNewlines={extract(messages, "Footer.address")}
               links={[
                 {
