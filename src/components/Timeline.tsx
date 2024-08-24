@@ -89,7 +89,7 @@ export default function Timeline(props: Props) {
                   key={i}
                   className={cn(
                     "grid grid-cols-1 gap-x-14 gap-y-3 max-sm:ml-8 sm:grid-cols-2",
-                    /* Add margin bottom to the last item to accomodate overflowing content caused by y-translation */
+                    /* Add margin bottom to the last item to accommodate overflowing content caused by y-translation */
                     "sm:last:mb-[3rem]",
                   )}
                 >
