@@ -6,6 +6,14 @@ import Production from "@/icons/production";
 import Star from "@/icons/star";
 import { cn } from "@/lib/utils";
 
+type DataItem = {
+  type: string;
+  year: string;
+  date: string;
+  title: string;
+  description: string;
+};
+
 type Props = {
   id?: string;
   className?: string;
@@ -14,14 +22,29 @@ type Props = {
     title: string;
     description: string;
   };
-  data: {
-    type: string;
-    year: string;
-    date: string;
-    title: string;
-    description: string;
-  }[];
+  data: DataItem[];
 };
+
+// Sort the data into sections. The items in even-numbered sections are reversed horizontally.
+function sortData(data: DataItem[], sectionIndex: number) {
+  if (sectionIndex % 2 === 0) {
+    return data;
+  }
+
+  const oddData = data.filter((_, i) => i % 2 !== 0);
+  const evenData = data.filter((_, i) => i % 2 === 0);
+  const result: DataItem[] = [];
+
+  for (let i = 0; i < data.length; i++) {
+    const item = i % 2 === 0 ? oddData.shift() : evenData.shift();
+
+    if (item) {
+      result.push(item);
+    }
+  }
+
+  return result;
+}
 
 export default function Timeline(props: Props) {
   // Parse the year in each entry into a unique list of integers and sort them in ascending order
@@ -89,86 +112,21 @@ export default function Timeline(props: Props) {
                   key={i}
                   className={cn(
                     "grid grid-cols-1 gap-x-14 gap-y-3 max-sm:ml-8 sm:grid-cols-2",
-                    /* Add margin bottom to the last item to accomodate overflowing content caused by y-translation */
                     "sm:last:mb-[3rem]",
                   )}
                 >
-                  {data.map((item, j) => (
-                    <div
-                      key={j}
-                      className={cn(
-                        "relative flex flex-col justify-center",
-                        /* Add margin top to the first element and margin bottom to the last element to make gaps for the year */
-                        itemPositions[i] === 1
-                          ? "sm:odd:translate-y-[calc(50%+6px)]"
-                          : "sm:even:translate-y-[calc(50%+6px)]",
-                      )}
-                    >
-                      <div
-                        className={cn(
-                          "relative flex h-fit flex-col gap-1 rounded-xl border border-outline-200 px-4 py-3",
-                          "group hover:border-brand-300 hover:ring-1 hover:ring-brand-300",
-                        )}
-                      >
-                        <div
-                          className={cn(
-                            item.type === "highlight" ||
-                              item.type == "launched" ||
-                              item.type == "development"
-                              ? "absolute right-3 top-2 flex size-6 items-center justify-center rounded-full"
-                              : "hidden",
-                            item.type === "highlight"
-                              ? "bg-[#FFF1E5]"
-                              : item.type === "launched"
-                                ? "bg-success-50"
-                                : item.type === "development"
-                                  ? "bg-brand-50"
-                                  : "",
-                          )}
-                        >
-                          {item.type === "highlight" ? (
-                            <Star className="size-4 stroke-2 text-[#EA740F]" />
-                          ) : item.type === "launched" ? (
-                            <Checkmark className="size-[0.625rem] stroke-2 text-success-600" />
-                          ) : item.type === "development" ? (
-                            <Production className="size-[0.875rem] stroke-2 text-brand-600" />
-                          ) : (
-                            <></>
-                          )}
-                        </div>
-                        <p className="line-clamp-1 text-xs font-medium uppercase tracking-widest text-dim-500">
-                          {item.date}
-                        </p>
-                        <p className="font-medium text-black-900">
-                          {item.title}
-                        </p>
-                        <p className="text-sm text-black-700">
-                          {item.description}
-                        </p>
-                        <div
-                          className={cn(
-                            j % 2 === 0
-                              ? "max-sm:-left-7 sm:-right-7"
-                              : "-left-7",
-                            `absolute top-1/2 h-px w-[26px] -translate-y-1/2 transform border border-dashed border-outline-400`,
-                            "group-hover:border-y-2 group-hover:border-brand-300",
-                          )}
-                        >
-                          <div
-                            className={cn(
-                              j % 2 === 0
-                                ? "group-hover:-right-[6.5px] max-sm:-left-1.5 group-hover:max-sm:-left-[6.5px] sm:-right-1.5"
-                                : "-left-1.5 group-hover:-left-[6.5px]",
-                              "absolute top-1/2 size-2 -translate-y-1/2 transform rounded-full bg-brand-600",
-                              "ring-brand-300 ring-offset-[3px] group-hover:ring",
-                            )}
-                          >
-                            <div className="absolute -top-[3.75rem] left-[3px] h-[3.75rem] w-px bg-gradient-to-t from-brand-600 from-0% to-transparent to-100%" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                  {/* List for tablet screen size and beyond */}
+                  <ItemList
+                    data={sortData(data, i)}
+                    trailing={itemPositions[i] === 1}
+                    className={cn("itemlist-lg max-sm:hidden")}
+                  />
+                  {/* List for mobile screen size */}
+                  <ItemList
+                    data={data}
+                    trailing={itemPositions[i] === 1}
+                    className={"itemlist-sm sm:hidden"}
+                  />
                 </div>
               </>
             ))}
@@ -176,5 +134,86 @@ export default function Timeline(props: Props) {
         </div>
       </div>
     </BorderedSection>
+  );
+}
+
+export function ItemList(props: {
+  data: DataItem[];
+  trailing: boolean;
+  className?: string;
+}) {
+  return (
+    <>
+      {props.data.map((item, j) => (
+        <div
+          key={j}
+          className={cn(
+            "relative flex flex-col justify-center",
+            props.trailing
+              ? "sm:odd:translate-y-[calc(50%+6px)]"
+              : "sm:even:translate-y-[calc(50%+6px)]",
+            props.className,
+          )}
+        >
+          <div
+            className={cn(
+              "relative flex h-fit flex-col gap-1 rounded-xl border border-outline-200 px-4 py-3",
+              "group hover:border-brand-300 hover:ring-1 hover:ring-brand-300",
+            )}
+          >
+            <div
+              className={cn(
+                item.type === "highlight" ||
+                  item.type == "launched" ||
+                  item.type == "development"
+                  ? "absolute right-3 top-2 flex size-6 items-center justify-center rounded-full"
+                  : "hidden",
+                item.type === "highlight"
+                  ? "bg-[#FFF1E5]"
+                  : item.type === "launched"
+                    ? "bg-success-50"
+                    : item.type === "development"
+                      ? "bg-brand-50"
+                      : "",
+              )}
+            >
+              {item.type === "highlight" ? (
+                <Star className="size-4 stroke-2 text-[#EA740F]" />
+              ) : item.type === "launched" ? (
+                <Checkmark className="size-[0.625rem] stroke-2 text-success-600" />
+              ) : item.type === "development" ? (
+                <Production className="size-[0.875rem] stroke-2 text-brand-600" />
+              ) : (
+                <></>
+              )}
+            </div>
+            <p className="line-clamp-1 text-xs font-medium uppercase tracking-widest text-dim-500">
+              {item.date}
+            </p>
+            <p className="font-medium text-black-900">{item.title}</p>
+            <p className="text-sm text-black-700">{item.description}</p>
+            <div
+              className={cn(
+                j % 2 === 0 ? "max-sm:-left-7 sm:-right-7" : "-left-7",
+                `absolute top-1/2 h-px w-[26px] -translate-y-1/2 transform border border-dashed border-outline-400`,
+                "group-hover:border-y-2 group-hover:border-brand-300",
+              )}
+            >
+              <div
+                className={cn(
+                  j % 2 === 0
+                    ? "group-hover:-right-[6.5px] max-sm:-left-1.5 group-hover:max-sm:-left-[6.5px] sm:-right-1.5"
+                    : "-left-1.5 group-hover:-left-[6.5px]",
+                  "absolute top-1/2 size-2 -translate-y-1/2 transform rounded-full bg-brand-600",
+                  "ring-brand-300 ring-offset-[3px] group-hover:ring",
+                )}
+              >
+                <div className="absolute -top-[3.75rem] left-[3px] h-[3.75rem] w-px bg-gradient-to-t from-brand-600 from-0% to-transparent to-100%" />
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </>
   );
 }

@@ -3,10 +3,7 @@ import About from "@/components/home/About";
 import Feedback from "@/components/home/Feedback";
 import Hero from "@/components/home/Hero";
 import PreviewContent from "@/components/home/PreviewContent";
-import { type MetadataProps } from "@/lib/page";
-import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
 import React, { ReactNode } from "react";
 
 const TIMELINE_ITEMS = 7;
