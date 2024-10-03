@@ -1,0 +1,10 @@
+{
+  "name": "@myds/tailwindcss",
+  "version": "0.0.0",
+  "private": true,
+  "exports": "./index.ts",
+  "devDependencies": {
+    "tailwindcss": "^3.4.10",
+    "tailwindcss-animate": "^1.0.7"
+  }
+}

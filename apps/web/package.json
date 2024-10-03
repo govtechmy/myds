@@ -19,7 +19,7 @@
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.4.0",
-    "tailwindcss-animate": "^1.0.7"
+    "@myds/tailwindcss": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -30,7 +30,6 @@
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",
-    "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
 }
