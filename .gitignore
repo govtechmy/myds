@@ -39,3 +39,7 @@ next-env.d.ts
 .env
 .turbo
 .vscode
+*storybook.log
+
+# tailwind
+output.tailwind.css

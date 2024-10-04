@@ -2,9 +2,28 @@
   "name": "@myds/tailwindcss",
   "version": "0.0.0",
   "private": true,
-  "exports": "./index.ts",
-  "devDependencies": {
+  "scripts": {
+    "dev": "tailwindcss -i ./styles/input.tailwind.css -o ./styles/output.tailwind.css --watch"
+  },
+  "exports": {
+    ".": {
+      "default": "./index.ts",
+      "type": "./index.ts"
+    },
+    "./output.css": {
+      "default": "./styles/output.tailwind.css"
+    }
+  },
+  "dependencies": {
     "tailwindcss": "^3.4.10",
     "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47"
+  },
+  "peerDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47"
   }
 }

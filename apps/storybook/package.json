@@ -1,0 +1,30 @@
+{
+  "name": "@myds/storybook",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@myds/react": "workspace:*",
+    "@myds/tailwindcss": "workspace:*"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.9.0",
+    "@storybook/addon-essentials": "^8.3.4",
+    "@storybook/addon-interactions": "^8.3.4",
+    "@storybook/addon-links": "^8.3.4",
+    "@storybook/addon-onboarding": "^8.3.4",
+    "@storybook/blocks": "^8.3.4",
+    "@storybook/react": "^8.3.4",
+    "@storybook/react-vite": "^8.3.4",
+    "@storybook/test": "^8.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "prop-types": "^15.8.1",
+    "storybook": "^8.3.4",
+    "tailwindcss": "^3.4.10"
+  }
+}
