@@ -1,0 +1,59 @@
+import { fn } from "@storybook/test";
+import type { Meta, StoryObj } from "@storybook/react";
+import {{ pascalCase title }} from "@myds/react/{{ dashCase title}}";
+
+/**
+ * Storybook story placeholder for the component.
+ *
+ * This placeholder is used to define the default story for the component in Storybook.
+ * It provides a basic example of how the component can be used and configured.
+ *
+ * @component
+ * @example
+ * return (
+ *   <ComponentName prop1="value1" prop2="value2" />
+ * );
+ */
+const meta = {
+  title: "@myds/react/{{ pascalCase title }}",
+  component: {{ pascalCase title }},
+  tags: ["autodocs"],
+  parameters: {
+    layout: "centered",
+  },
+  args: { onClick: fn() },
+} satisfies Meta<typeof {{ pascalCase title }}>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+
+
+/**
+ * Storybook stories for different variants of a component.
+ *
+ * This file contains the Storybook stories for the various variants of a component.
+ * Each variant is represented as a separate story with its own set of arguments.
+ *
+ * @example
+ * export const Default: Story = {
+ *   args: {
+ *     variant: "default",
+ *     children: "Tutup",
+ *   },
+ * };
+ * export const Primary: Story = {
+ *   args: {
+ *     variant: "primary",
+ *     children: "Teruskan",
+ *   },
+ * };
+ */
+
+// export const Primary: Story = {
+//   args: {
+//     variant: "primary",
+//     children: "Teruskan",
+//   },
+// };
+

@@ -3,7 +3,17 @@ import { PlopTypes } from "@turbo/gen";
 interface ComponentPrompt {
   framework: "react" | "vue" | "angular";
   title: string;
+  has_story: boolean;
 }
+
+/**
+ * DO NOT MODIFY. This is a template for the export statement in the package.json file.
+ */
+const ComponentExport = `,
+    "./{{ dashCase title}}": {
+      "default": "./src/components/{{ dashCase title}}.tsx",
+      "type": "./src/components/{{ dashCase title}}.tsx"
+    }`;
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
   // Component generator
@@ -34,16 +44,38 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
           return true;
         },
       },
+      {
+        type: "confirm",
+        default: true,
+        name: "has_story",
+        message: "Include the story? (@myds/storybook)",
+      },
     ],
     actions: (data) => {
       const _data = data as ComponentPrompt;
       const actions: PlopTypes.ActionType[] = [];
 
       if (_data.framework === "react") {
+        actions.push(
+          {
+            type: "add",
+            path: "{{ turbo.paths.root }}/packages/react/src/components/{{ dashCase title }}.tsx",
+            templateFile: "templates/react-component.hbs",
+          },
+          {
+            type: "append",
+            path: "{{ turbo.paths.root }}/packages/react/package.json",
+            pattern: /("exports":\s*{[^}]*)(})/,
+            template: ComponentExport,
+          }
+        );
+      }
+
+      if (_data.has_story) {
         actions.push({
           type: "add",
-          path: "{{ turbo.paths.root }}/packages/react/src/components/{{ dashCase title }}.tsx",
-          templateFile: "templates/react-component.hbs",
+          path: "{{ turbo.paths.root }}/apps/storybook/stories/{{ dashCase title }}.stories.ts",
+          templateFile: "templates/react-story.hbs",
         });
       }
       return actions;
