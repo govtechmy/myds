@@ -1,0 +1,23 @@
+import { useState } from 'react';
+
+/**
+ * {{camelCase title}} Hook
+ * @param {Object} initialState - The initial state for the hook.
+ * @returns {[state, setState]} - The current state and a function to update the state.
+ */
+const {{camelCase title}} = (initialState) => {
+  const [state, setState] = useState(initialState);
+
+  /**
+   * Function to update the state.
+   *
+   * @param {Object} newState - The new state to be set.
+   */
+  const updateState = (newState) => {
+    setState(newState);
+  };
+
+  return [state, updateState];
+};
+
+export default {{camelCase title}};

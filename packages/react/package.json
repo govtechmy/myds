@@ -1,0 +1,14 @@
+{
+  "name": "@myds/react",
+  "version": "0.0.0",
+  "private": true,
+  "peerDependencies": {
+    "@myds/tailwindcss": "workspace:*",
+    "react": "^18"
+  },
+  "devDependencies": {
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "react-dom": "^18"
+  }
+}
