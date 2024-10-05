@@ -1,67 +1,12 @@
+@import "./theme/color.css";
+@import "./theme/light.css";
+@import "./theme/dark.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --black-900: 24 24 27;
-    --black-800: 39 39 42;
-    --black-700: 63 63 70;
-
-    --base-white: 255 255 255;
-
-    --dim-500: 113 113 122;
-
-    --outline-400: 161 161 170;
-    --outline-300: 212 212 216;
-    --outline-200: 228 228 231;
-
-    --washed-100: 244 244 245;
-
-    --background-50: 250 250 250;
-
-    --brand-600: 37 99 235;
-    --brand-700: 29 78 216;
-    --brand-300: 150 183 255;
-    --brand-200: 194 213 255;
-    --brand-50: 239 246 255;
-
-    --success-300: 131 218 163;
-    --success-200: 187 247 208;
-    --success-50: 240 253 244;
-
-    --tag-300: 189 90 48;
-  }
-
-  .dark {
-    --black-900: 255 255 255;
-    --black-800: 244 244 245;
-    --black-700: 212 212 216;
-    --base-white: 24 24 27;
-
-    --dim-500: 161 161 170;
-
-    --outline-400: 82 82 91;
-    --outline-300: 63 63 70;
-    --outline-200: 39 39 42;
-
-    --washed-100: 29 29 33;
-
-    --background-50: 22 22 25;
-
-    --brand-600: 37 99 235;
-    --brand-700: 88 139 251;
-    --brand-300: 30 64 175;
-    --brand-200: 30 58 138;
-    --brand-50: 15 24 54;
-
-    --success-300: 22 101 52;
-    --success-200: 20 83 45;
-    --success-50: 5 46 22;
-
-    --tag-300: 189 90 48;
-  }
-
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -76,18 +21,5 @@
 
   :focus:not(:focus-visible) {
     @apply outline-none;
-  }
-
-  body {
-    @apply bg-background text-black-900;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-heading;
   }
 }

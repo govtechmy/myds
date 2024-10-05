@@ -79,3 +79,25 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+---
+
+## important note
+
+### 1. Tailwind Intellisense Workaround
+
+MyDS uses a unified tailwind config/preset file, as the base config for multiple apps/packages. If you are using Tailwind Intellisense extension on VSCode, you may lose the ability to the extension's auto-suggest and CSS preview feature if you work on `packages/**`. This is because the extension requires `tailwind.config` to be available in the local workspace, which are not defined in individual packages.
+
+To solve this, add the following in your VSCode **Workspace settings** (_Not your User settings_):
+
+```json
+// .vscode/settings.json
+{
+  "tailwindCSS.experimental.configFile": {
+    "apps/web/tailwind.config.ts": "apps/web/**",
+    "packages/tailwindcss/tailwind.config.ts": "packages/**"
+  }
+}
+```
+
+This will override Intellisense's auto-config-locator to point to a single config file and apply to all workspaces
