@@ -1,18 +1,20 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
+import { createStory } from "../utils";
 import {{ pascalCase title }} from "@myds/react/{{ dashCase title}}";
 
 /**
- * Storybook story placeholder for the component.
+ * ### Overview
+ * Insert a brief description of the component here.
  *
- * This placeholder is used to define the default story for the component in Storybook.
- * It provides a basic example of how the component can be used and configured.
+ * > Insert a ChatGPT pantun here 
  *
- * @component
- * @example
- * return (
- *   <ComponentName prop1="value1" prop2="value2" />
- * );
+ * ### Usage
+ * ```ts
+ * import {{pascalCase title}} from "@myds/react/{{dashCase title}}";
+ *
+ * <{{pascalCase title}} />
+ * ```
  */
 const meta = {
   title: "@myds/react/{{ pascalCase title }}",
@@ -22,38 +24,31 @@ const meta = {
     layout: "centered",
   },
   args: { onClick: fn() },
+  argTypes: {
+    type: {
+      table: {
+        type: {
+          summary: "enum",
+        },
+      },
+      description: "insert-description-here",
+      control: "inline-radio",
+      options: ["option-1", "option-2", "option-3"],
+    },
+  }
 } satisfies Meta<typeof {{ pascalCase title }}>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-
-
 /**
  * Storybook stories for different variants of a component.
  *
- * This file contains the Storybook stories for the various variants of a component.
- * Each variant is represented as a separate story with its own set of arguments.
- *
  * @example
- * export const Default: Story = {
- *   args: {
- *     variant: "default",
- *     children: "Tutup",
- *   },
- * };
- * export const Primary: Story = {
- *   args: {
- *     variant: "primary",
- *     children: "Teruskan",
- *   },
- * };
+ * export const Default: Story = createStory({ /** insert-args-here */ });
+ * export const DarkDefault: Story = createStory({ /** insert-args-here */ }, "dark");
  */
 
-// export const Primary: Story = {
-//   args: {
-//     variant: "primary",
-//     children: "Teruskan",
-//   },
-// };
-
+// export const Default: Story = createStory({
+//  children: "Example",
+// });

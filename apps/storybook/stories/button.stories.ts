@@ -14,7 +14,7 @@ import Button from "@myds/react/button";
  *
  * ### Usage
  * ```ts
- * import Button from @myds/react/button
+ * import Button from "@myds/react/button"
  *
  * <Button variant="primary-fill" size="medium" onClick={() => alert('Button clicked!')}>
  * ```
