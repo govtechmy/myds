@@ -20,6 +20,9 @@ importers:
 
   apps/docs:
     dependencies:
+      '@myds/tailwindcss':
+        specifier: workspace:*
+        version: link:../../packages/tailwindcss
       fumadocs-core:
         specifier: 13.4.10
         version: 13.4.10(@types/react@18.3.10)(next@14.2.14(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -100,9 +103,15 @@ importers:
       '@storybook/test':
         specifier: ^8.3.5
         version: 8.3.5(storybook@8.3.5)
+      '@types/react':
+        specifier: ^18
+        version: 18.3.11
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
       storybook:
         specifier: ^8.3.5
         version: 8.3.5
@@ -205,6 +214,9 @@ importers:
 
   packages/react:
     dependencies:
+      '@radix-ui/react-slot':
+        specifier: ^1.1.0
+        version: 1.1.0(@types/react@18.3.10)(react@18.3.1)
       react:
         specifier: ^18
         version: 18.3.1

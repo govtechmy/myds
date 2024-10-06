@@ -14,7 +14,8 @@
     "fumadocs-core": "13.4.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "fumadocs-mdx": "10.0.2"
+    "fumadocs-mdx": "10.0.2",
+    "@myds/tailwindcss": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "22.5.4",

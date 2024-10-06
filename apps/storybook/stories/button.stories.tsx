@@ -1,11 +1,14 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import Button from "@myds/react/button";
+import { Button, ButtonIcon, ButtonCounter } from "@myds/react/button";
+import ArrowForward from "../react/arrow-forward";
+import ArrowBack from "../react/arrow-back";
+import React from "react";
 
 /**
  * ### Overview
- * Lie in here is a button. How exciting! It can be filled with primary colors, outlined, or ghosted. It can also be disabled. The button can be small, medium, or large. It can also be a submit or reset button.
+ * Lie in here is a button. How exciting! It can be filled with primary colors, outlined, or ghosted. It can also be disabled. Available in small, medium, or large. Use the `ButtonIcon` to apply proper styling to any icons.
  *
  * > Berjalan-jalan ke kota tua,
  * >  Membeli kuih di pasar pagi.
@@ -14,9 +17,39 @@ import Button from "@myds/react/button";
  *
  * ### Usage
  * ```ts
- * import Button from "@myds/react/button"
+ * import { Button, ButtonIcon, ButtonCounter } from "@myds/react/button"
  *
+ * // Text only
+ * <Button variant="primary-fill" size="medium" onClick={() => alert('Button clicked!')}>Welcome</Button>
+ *
+ * // Text + Right Icon
  * <Button variant="primary-fill" size="medium" onClick={() => alert('Button clicked!')}>
+ *    <span>Go forward</span>
+ *    <ButtonIcon>
+ *      <ArrowForward />
+ *    <ButtonIcon>
+ * </Button>
+ *
+ * // Text + Left Icon
+ * <Button variant="primary-fill" size="medium" onClick={() => alert('Button clicked!')}>
+ *    <ButtonIcon>
+ *      <ArrowBack />
+ *    <ButtonIcon>
+ *    <span>Go back</span>
+ * </Button>
+ *
+ * // Icon only
+ * <Button variant="primary-fill" size="medium" onClick={() => alert('Button clicked!')}>
+ *    <ButtonIcon>
+ *      <ArrowBack />
+ *    <ButtonIcon>
+ * </Button>
+ 
+* // Text + Counter only
+ * <Button variant="primary-fill" size="medium" onClick={() => alert('Button clicked!')}>
+ *   Counter: 
+ *   <ButtonCounter>3</ButtonCounter>
+ * </Button>
  * ```
  */
 const meta = {
@@ -81,6 +114,46 @@ const meta = {
       control: "inline-radio",
       options: ["small", "medium", "large"],
     },
+    children: {
+      type: "string",
+      control: "select",
+      options: [
+        "Text Only",
+        "Text + Right Icon",
+        "Text + Left Icon",
+        "Icon Only",
+        "Text + Counter",
+      ],
+      mapping: {
+        "Text Only": <span>Welcome</span>,
+        "Text + Right Icon": (
+          <>
+            <span>Go forward</span>
+            <ButtonIcon>
+              <ArrowForward />
+            </ButtonIcon>
+          </>
+        ),
+        "Text + Left Icon": (
+          <>
+            <ButtonIcon>
+              <ArrowBack />
+            </ButtonIcon>
+            <span>Go back</span>
+          </>
+        ),
+        "Icon Only": (
+          <ButtonIcon>
+            <ArrowForward />
+          </ButtonIcon>
+        ),
+        "Text + Counter": (
+          <>
+            Counter: <ButtonCounter>3</ButtonCounter>
+          </>
+        ),
+      },
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -96,7 +169,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const PrimaryFill: Story = createStory({
   variant: "primary-fill",
-  children: "Teruskan",
+  children: "Text Only",
 });
 
 /**
@@ -107,7 +180,7 @@ export const PrimaryFill: Story = createStory({
  */
 export const PrimaryOutline: Story = createStory({
   variant: "primary-outline",
-  children: "Teruskan",
+  children: "Text Only",
 });
 
 /**
@@ -118,7 +191,7 @@ export const PrimaryOutline: Story = createStory({
  */
 export const PrimaryGhost: Story = createStory({
   variant: "primary-ghost",
-  children: "Teruskan",
+  children: "Text Only",
 });
 
 /**
@@ -126,7 +199,7 @@ export const PrimaryGhost: Story = createStory({
  */
 export const DefaultOutline: Story = createStory({
   variant: "default-outline",
-  children: "Teruskan",
+  children: "Text Only",
 });
 
 /**
@@ -134,7 +207,7 @@ export const DefaultOutline: Story = createStory({
  */
 export const DefaultGhost: Story = createStory({
   variant: "default-ghost",
-  children: "Teruskan",
+  children: "Text Only",
 });
 
 /**
@@ -142,7 +215,7 @@ export const DefaultGhost: Story = createStory({
  */
 export const DangerFill: Story = createStory({
   variant: "danger-fill",
-  children: "Teruskan",
+  children: "Text Only",
 });
 
 /**
@@ -150,7 +223,7 @@ export const DangerFill: Story = createStory({
  */
 export const DangerOutline: Story = createStory({
   variant: "danger-outline",
-  children: "Teruskan",
+  children: "Text Only",
 });
 
 /**
@@ -158,7 +231,7 @@ export const DangerOutline: Story = createStory({
  */
 export const DangerGhost: Story = createStory({
   variant: "danger-ghost",
-  children: "Teruskan",
+  children: "Text Only",
 });
 
 /**
@@ -171,7 +244,7 @@ export const DangerGhost: Story = createStory({
 export const DarkPrimaryFill: Story = createStory(
   {
     variant: "primary-fill",
-    children: "Teruskan",
+    children: "Text Only",
     className: "dark",
   },
   "dark",
@@ -186,7 +259,7 @@ export const DarkPrimaryFill: Story = createStory(
 export const DarkPrimaryOutline: Story = createStory(
   {
     variant: "primary-outline",
-    children: "Teruskan",
+    children: "Text Only",
     className: "dark",
   },
   "dark",
@@ -201,7 +274,7 @@ export const DarkPrimaryOutline: Story = createStory(
 export const DarkPrimaryGhost: Story = createStory(
   {
     variant: "primary-ghost",
-    children: "Teruskan",
+    children: "Text Only",
     className: "dark",
   },
   "dark",
@@ -213,7 +286,7 @@ export const DarkPrimaryGhost: Story = createStory(
 export const DarkDefaultOutline: Story = createStory(
   {
     variant: "default-outline",
-    children: "Teruskan",
+    children: "Text Only",
     className: "dark",
   },
   "dark",
@@ -225,7 +298,7 @@ export const DarkDefaultOutline: Story = createStory(
 export const DarkDefaultGhost: Story = createStory(
   {
     variant: "default-ghost",
-    children: "Teruskan",
+    children: "Text Only",
     className: "dark",
   },
   "dark",
@@ -237,7 +310,7 @@ export const DarkDefaultGhost: Story = createStory(
 export const DarkDangerFill: Story = createStory(
   {
     variant: "danger-fill",
-    children: "Teruskan",
+    children: "Text Only",
     className: "dark",
   },
   "dark",
@@ -249,7 +322,7 @@ export const DarkDangerFill: Story = createStory(
 export const DarkDangerOutline: Story = createStory(
   {
     variant: "danger-outline",
-    children: "Teruskan",
+    children: "Text Only",
     className: "dark",
   },
   "dark",
@@ -261,7 +334,7 @@ export const DarkDangerOutline: Story = createStory(
 export const DarkDangerGhost: Story = createStory(
   {
     variant: "danger-ghost",
-    children: "Teruskan",
+    children: "Text Only",
     className: "dark",
   },
   "dark",

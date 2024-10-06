@@ -1,11 +1,16 @@
 import type { Config } from "tailwindcss/types/config";
 import tailwindcssAnimate from "tailwindcss-animate";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
-  content: ["../react/src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "../react/src/**/*.{js,jsx,ts,tsx}",
+    "../../apps/storybook/react/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     colors: ({ colors, theme }) => ({
       current: colors.current,
+      inherit: colors.inherit,
       transparent: colors.transparent,
       white: {
         DEFAULT: "rgba(var(--_white))",
@@ -80,6 +85,18 @@ const config: Config = {
       },
     }),
     extend: {
+      borderRadius: {
+        sm: "6px",
+        DEFAULT: "8px",
+        md: "8px",
+        lg: "12px",
+        xl: "14px",
+        full: "9999px",
+      },
+      fontFamily: {
+        body: ["Inter", ...defaultTheme.fontFamily.sans],
+        heading: ["Poppins", ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         "bg-white": "rgba(var(--bg-white))",
         "bg-white-hover": "rgba(var(--bg-white-hover))",
@@ -176,7 +193,10 @@ const config: Config = {
       },
     },
     boxShadow: {
-      button: "0px 1px 3px 0px #00000012",
+      button: "0px 1px 3px 0px rgba(0, 0, 0, 0.07)",
+      card: "0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 6px 24px 0px rgba(0, 0, 0, 0.05)",
+      "context-menu":
+        "0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 12px 50px 0px rgba(0, 0, 0, 0.10)",
     },
   },
   plugins: [tailwindcssAnimate],
