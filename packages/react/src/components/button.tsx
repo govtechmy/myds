@@ -15,7 +15,7 @@ type ButtonSize = "small" | "medium" | "large";
 type ButtonVariant = Exclude<keyof typeof variants, "base">;
 
 const variants = {
-  base: "flex select-none items-center gap-1.5 rounded-lg w-fit font-body font-medium outline-none transition disabled:cursor-not-allowed text-center active:translate-y-[0.5px]",
+  base: "group flex select-none items-center gap-1.5 rounded-lg w-fit font-body font-medium outline-none transition disabled:cursor-not-allowed text-center active:translate-y-[0.5px]",
   reset: "",
   "default-outline": clx(
     "bg-bg-white border border-otl-gray-200 text-txt-black-700 shadow-button",
@@ -161,16 +161,20 @@ interface ButtonCounterProps {
 const ButtonCounter: ForwardRefExoticComponent<ButtonCounterProps> = forwardRef(
   ({ children }, ref) => {
     const { variant, size } = useContext(ButtonContext);
+    const default_style =
+      "bg-bg-primary-600 text-txt-white group-disabled:bg-bg-white-disabled group-disabled:text-inherit";
     const variants = {
       reset: "",
-      "primary-fill": "bg-white text-primary-600",
-      "primary-outline": "bg-bg-primary-600 text-white",
-      "primary-ghost": "bg-bg-primary-600 text-white",
-      "default-outline": "bg-bg-primary-600 text-white",
-      "default-ghost": "bg-bg-primary-600 text-white",
-      "danger-fill": "bg-white text-danger-600",
-      "danger-outline": "bg-bg-primary-600 text-white",
-      "danger-ghost": "bg-bg-primary-600 text-white",
+      "primary-fill":
+        "bg-white text-primary-600 group-disabled:bg-bg-white-disabled group-disabled:text-inherit",
+      "primary-outline": default_style,
+      "primary-ghost": default_style,
+      "default-outline": default_style,
+      "default-ghost": default_style,
+      "danger-fill":
+        "bg-white text-danger-600 group-disabled:bg-bg-white-disabled group-disabled:text-inherit",
+      "danger-outline": default_style,
+      "danger-ghost": default_style,
     };
     const sizes = {
       small: "h-4.5 w-4.5 text-sm",
@@ -191,6 +195,8 @@ const ButtonCounter: ForwardRefExoticComponent<ButtonCounterProps> = forwardRef(
     );
   },
 );
+
+ButtonCounter.displayName = "ButtonCounter";
 
 interface ButtonIconProps {
   children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
