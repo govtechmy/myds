@@ -20,6 +20,9 @@
   --bg-black-400: var(--_gray-400);
   --bg-black-disabled: var(--_white) / 0.4;
 
+  /* Background - Gray */
+  --bg-gray-50: var(--_gray-930);
+
   /* bg - Primary */
   --bg-primary-50: var(--_primary-950);
   --bg-primary-100: var(--_primary-900);

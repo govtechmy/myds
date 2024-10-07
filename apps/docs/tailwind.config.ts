@@ -16,6 +16,13 @@ const config: Config = {
     }),
     preset,
   ],
+  theme: {
+    extend: {
+      colors: {
+        accent: "rgba(189, 90, 48, 1)",
+      },
+    },
+  },
 };
 
 export default config;
