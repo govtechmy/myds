@@ -1,0 +1,43 @@
+{
+  "name": "@myds/tailwindcss",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tailwindcss -i ./styles/input.tailwind.css -o ./styles/output.tailwind.css --watch"
+  },
+  "exports": {
+    ".": {
+      "default": "./index.ts",
+      "type": "./index.ts"
+    },
+    "./color.css": {
+      "default": "./styles/theme/color.css"
+    },
+    "./light.css": {
+      "default": "./styles/theme/light.css"
+    },
+    "./dark.css": {
+      "default": "./styles/theme/dark.css"
+    },
+    "./output.css": {
+      "default": "./styles/output.tailwind.css"
+    }
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.10",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "@types/postcss-js": "^4.0.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "postcss-import": "^16.1.0",
+    "postcss-js": "^4.0.1"
+  },
+  "peerDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.10"
+  }
+}

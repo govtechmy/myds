@@ -1,0 +1,25 @@
+{
+  "name": "@myds/react",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./button": {
+      "default": "./src/components/button.tsx",
+      "type": "./src/components/button.tsx"
+    }
+  },
+  "peerDependencies": {
+    "@myds/tailwindcss": "workspace:*",
+    "react": "^18"
+  },
+  "devDependencies": {
+    "@myds/tailwindcss": "workspace:*",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "react-dom": "^18"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "tailwind-merge": "^2.4.0"
+  }
+}

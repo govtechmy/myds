@@ -86,7 +86,7 @@ export default function Home() {
 
 function Main(props: { children: ReactNode }) {
   return (
-    <main className="flex w-full flex-col divide-y divide-washed-100 lg:py-0">
+    <main className="divide-washed-100 flex w-full flex-col divide-y lg:py-0">
       {React.Children.map(props.children, (child) => (
         // Wrap each child in <article> to consistently display full-width dividers
         <article>{child}</article>
