@@ -95,12 +95,12 @@
   --txt-danger-disabled: var(--_danger-400) / 0.4;
 
   /* Text - Success */
-  --txt-success: var(--_success-600);
-  --txt-success-disabled: var(--_success-600) / 0.4;
+  --txt-success: var(--_success-500);
+  --txt-success-disabled: var(--_success-500) / 0.4;
 
   /* Text - Warning */
-  --txt-warning: var(--_warning-600);
-  --txt-warning-disabled: var(--_warning-600) / 0.4;
+  --txt-warning: var(--_warning-500);
+  --txt-warning-disabled: var(--_warning-500) / 0.4;
 
   /* Outline - Divider */
   --otl-divider: var(--_gray-850);
