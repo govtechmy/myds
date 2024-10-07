@@ -1,6 +1,6 @@
-import { createPreset } from "fumadocs-ui/tailwind-plugin";
+import { createPreset, Preset } from "fumadocs-ui/tailwind-plugin";
 import { Config } from "tailwindcss";
-import { preset } from "@myds/tailwindcss";
+import { preset, preset_fumadocs } from "@myds/tailwindcss";
 
 const config: Config = {
   content: [
@@ -10,7 +10,12 @@ const config: Config = {
     "./mdx-components.{ts,tsx}",
     "./node_modules/fumadocs-ui/dist/**/*.js",
   ],
-  presets: [createPreset(), preset],
+  presets: [
+    createPreset({
+      preset: preset_fumadocs,
+    }),
+    preset,
+  ],
 };
 
 export default config;

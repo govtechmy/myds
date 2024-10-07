@@ -96,6 +96,7 @@ const config: Config = {
       fontFamily: {
         body: ["Inter", ...defaultTheme.fontFamily.sans],
         heading: ["Poppins", ...defaultTheme.fontFamily.sans],
+        mono: ["Roboto Mono", ...defaultTheme.fontFamily.mono],
       },
       colors: {
         "bg-white": "rgba(var(--bg-white))",

@@ -2,6 +2,7 @@ import "@/app/global.css";
 import { Inter } from "next/font/google";
 import { RootProvider } from "fumadocs-ui/provider";
 import { I18nProvider } from "fumadocs-ui/i18n";
+import { clx } from "@myds/react/utils";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang={params.lang} className={inter.className}>
+    <html lang={params.lang} className={clx(inter.className, "font-body")}>
       <body>
         <I18nProvider
           locale={params.lang}
