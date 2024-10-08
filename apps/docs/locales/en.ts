@@ -216,4 +216,70 @@ export default {
       "Jabatan Perlindungan Data Peribadi (JPDP) is an agency under the Ministry of Digital established on May 16, 2011, after Parliament passed the relevant Bill on the Personal Data Protection Act 2010 (APDP), Act 709.\n\nThe main responsibility of this department is to supervise the processing of individuals' personal data involved in commercial transactions by data users to prevent misuse and misappropriation by interested parties.\n\nThe security of users' personal data must be protected to prevent any form of misuse regarding the storage or processing of individuals' personal data. The public and private sectors in Malaysia are subject to commercial transactions under this APDP.\n\nIn enforcing the APDP, JPDP has mandated that all categories of personal data users, whether individual or private entities, except for the Government, must officially register to protect the rights of users and the public.\n\nJPDP is headed by a Director-General, assisted by a Deputy Director-General. There are three main divisions in JPDP, namely the Registration and Operations Division, the Monitoring Division, and the Legal Division.\n\nFor further information, please go to <a>http://www.pdp.gov.my</a>.",
     last_update: "Last updated on 19th February 2024",
   },
+
+  /* Menu */
+  menu: {
+    home: "Home",
+    design: "Design",
+    component: "Component",
+  },
+
+  /* Design */
+  design: {
+    title: "Design",
+    description:
+      "The MYDS design system provides a set of guidelines and resources to help designers and developers create consistent and user-friendly digital products.",
+    color: {
+      title: "Color",
+      description:
+        "The MYDS color palette is designed to be accessible and usable across a wide range of digital products.",
+    },
+    typography: {
+      title: "Typography",
+      description:
+        "The MYDS typography system is designed to be easy to read and accessible.",
+    },
+    iconography: {
+      title: "Iconography",
+      description:
+        "The MYDS iconography system provides a set of icons that are designed to be clear and easy to understand.",
+    },
+    illustration: {
+      title: "Illustration",
+      description:
+        "The MYDS illustration system provides a set of illustrations that are designed to be engaging and informative.",
+    },
+  },
+
+  /* Component */
+  component: {
+    title: "Component",
+    description:
+      "The MYDS component library provides a set of reusable components that can be used to build digital products.",
+    button: {
+      title: "Button",
+      description:
+        "Buttons are used to trigger actions or events in a digital product.",
+    },
+    card: {
+      title: "Card",
+      description:
+        "Cards are used to display information in a structured and visually appealing way.",
+    },
+    form: {
+      title: "Form",
+      description:
+        "Forms are used to collect information from users in a digital product.",
+    },
+    modal: {
+      title: "Modal",
+      description:
+        "Modals are used to display content or functionality that requires user interaction.",
+    },
+    navigation: {
+      title: "Navigation",
+      description:
+        "Navigation components are used to help users move around a digital product.",
+    },
+  },
 };

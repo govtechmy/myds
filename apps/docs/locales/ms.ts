@@ -23,7 +23,7 @@ export default {
       kd: "Kementerian Digital",
     },
     figma: {
-      explore: "Explore in Figma",
+      explore: "Terokai dalam Figma",
     },
     contribute: "Menyumbang",
     beta: "Beta",
@@ -116,14 +116,14 @@ export default {
           title: "Laman Kementerian Digital dilancarkan",
           description:
             "Laman konsep untuk Sistem Reka Bentuk Kerajaan Malaysia, dengan laman rasmi kami sebagai contoh praktikal!",
-          type: "launched",
+          type: "dilancarkan",
           year: "2024",
         },
         "2": {
           date: "29 JUL 2024",
           title: "MYDS (Beta) dilancarkan",
           description: "Figma dibuka untuk pemeriksaan dan maklum balas awam.",
-          type: "launched",
+          type: "dilancarkan",
           year: "2024",
         },
         "3": {
@@ -131,7 +131,7 @@ export default {
           title: "Pembangunan Pembina Laman",
           description:
             "Enjin di sebalik pelaksanaan sistem reka bentuk. Agensi akan guna pembina laman ini (iaitu CMS) untuk tambah kandungan.",
-          type: "development",
+          type: "pembangunan",
           year: "2024",
         },
         "4": {
@@ -139,7 +139,7 @@ export default {
           title: "Penambahbaikan Laman Sekolah",
           description:
             "Laman konsep untuk menguji skalabiliti sistem reka bentuk dan pembina laman kami dengan 10,000 sekolah di seluruh negara.",
-          type: "none",
+          type: "tiada",
           year: "2024",
         },
         "5": {
@@ -147,7 +147,7 @@ export default {
           title: "Penambahbaikan Laman Agensi",
           description:
             "Pelaksanaan di agensi-agensi kerajaan. Pembina laman (termasuk hosting) adalah percuma untuk sektor awam.",
-          type: "none",
+          type: "tiada",
           year: "2024",
         },
         "6": {
@@ -155,7 +155,7 @@ export default {
           title: "Perundingan dengan Pihak Berkepentingan",
           description:
             "Pratonton dan ujian dengan komuniti IT tempatan, industri, dan pegawai sektor awam lain.",
-          type: "none",
+          type: "tiada",
           year: "2025",
         },
         "7": {
@@ -163,7 +163,7 @@ export default {
           title: "Pelancaran Penuh MYDS",
           description:
             "Sistem reka bentuk sedia digunakan untuk membangun produk masa depan. Era baru untuk laman gov.my bermula!",
-          type: "none",
+          type: "tiada",
           year: "2025",
         },
       },
@@ -190,7 +190,7 @@ export default {
     designSystem: "Sistem Reka Bentuk",
     designStandards: "Piawaian Reka Bentuk",
     figmaBeta: "Figma (Beta)",
-    openSource: "Open Source",
+    openSource: "Sumber Terbuka",
     github: "GitHub Repo",
     figma: "Figma",
     copyright: "Hak Cipta Terpelihara",
@@ -218,5 +218,71 @@ export default {
     personal_data_act_desc:
       "Jabatan Perlindungan Data Peribadi (JPDP) merupakan agensi di bawah Kementerian Digital yang ditubuhkan pada 16 Mei 2011 selepas Parlimen meluluskan Rang Undang-undang berkaitan Akta Perlindungan Data Peribadi 2010 (APDP) iaitu Akta 709.\n\nTanggungjawab utama Jabatan ini ialah untuk mengawalselia pemprosesan data peribadi individu yang terlibat dalam urus niaga komersial oleh pengguna data supaya tidak disalahguna dan disalahpakai oleh pihak-pihak yang berkepentingan.\n\nKeselamatan data peribadi pengguna perlu dilindungi bagi mencegah sebarang bentuk penyalahgunaan terhadap penyimpanan atau pemprosesan data peribadi individu, awam dan swasta di Malaysia secara transaksi komersial adalah termaktub di bawah APDP ini.\n\nDalam menguatkuasakan APDP, JPDP telah mensyaratkan kepada semua golongan pengguna data peribadi yang terdiri daripada pihak individu mahupun swasta kecuali Kerajaan untuk berdaftar secara rasmi bagi tujuan melindungi hak-hak pengguna dan awam.\n\nJPDP diketuai oleh Ketua Pengarah dengan dibantu oleh seorang Timbalan Ketua Pengarah. Manakala, terdapat tiga bahagian utama di JPDP iaitu Bahagian Pendaftaran dan Operasi, Bahagian Pemantauan dan Bahagian Perundangan.\n\nUntuk maklumat tambahan, sila layari <a>http://www.pdp.gov.my</a>.",
     last_update: "Kemaskini terakhir pada 19 Februari 2024",
+  },
+
+  /* Menu */
+  menu: {
+    home: "Laman Utama",
+    design: "Reka Bentuk",
+    component: "Komponen",
+  },
+
+  /* Design */
+  design: {
+    title: "Reka Bentuk",
+    description:
+      "Sistem reka bentuk MYDS menyediakan satu set garis panduan dan sumber untuk membantu pereka dan pembangun mencipta produk digital yang konsisten dan mesra pengguna.",
+    color: {
+      title: "Warna",
+      description:
+        "Palet warna MYDS direka untuk boleh diakses dan digunakan merentasi pelbagai produk digital.",
+    },
+    typography: {
+      title: "Tipografi",
+      description:
+        "Sistem tipografi MYDS direka untuk mudah dibaca dan boleh diakses.",
+    },
+    iconography: {
+      title: "Ikonografi",
+      description:
+        "Sistem ikonografi MYDS menyediakan satu set ikon yang direka untuk jelas dan mudah difahami.",
+    },
+    illustration: {
+      title: "Ilustrasi",
+      description:
+        "Sistem ilustrasi MYDS menyediakan satu set ilustrasi yang direka untuk menarik dan informatif.",
+    },
+  },
+
+  /* Component */
+  component: {
+    title: "Komponen",
+    description:
+      "Perpustakaan komponen MYDS menyediakan satu set komponen boleh guna semula yang boleh digunakan untuk membina produk digital.",
+    button: {
+      title: "Butang",
+      description:
+        "Butang digunakan untuk mencetuskan tindakan atau acara dalam produk digital.",
+    },
+    card: {
+      title: "Kad",
+      description:
+        "Kad digunakan untuk memaparkan maklumat dalam cara yang terstruktur dan menarik secara visual.",
+    },
+    form: {
+      title: "Borang",
+      description:
+        "Borang digunakan untuk mengumpul maklumat daripada pengguna dalam produk digital.",
+    },
+    modal: {
+      title: "Modul",
+      description:
+        "Modul digunakan untuk memaparkan kandungan atau fungsi yang memerlukan interaksi pengguna.",
+    },
+    navigation: {
+      title: "Navigasi",
+      description:
+        "Komponen navigasi digunakan untuk membantu pengguna bergerak di sekitar produk digital.",
+    },
   },
 };
