@@ -1,15 +1,15 @@
 "use client";
 import { clx } from "@myds/react/utils";
 import { Paragraph } from "../Paragraph";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import { Button, ButtonIcon } from "@myds/react/button";
 import IconFigma from "@/icons/figma";
 import ArrowForward from "@/icons/arrow-forward";
 import Section from "../section";
+import { RosettaContext } from "@/locales/_client";
 
 const Hero: FunctionComponent = () => {
-  // const t = useTranslations();
-  const t = (test: any) => "";
+  const { t } = useContext(RosettaContext);
 
   return (
     <Section
@@ -29,17 +29,10 @@ const Hero: FunctionComponent = () => {
       >
         <h5 className="text-accent text-body-sm font-semibold uppercase tracking-[0.2em]">
           {t("common.beta")}
-          Beta
         </h5>
-        <h1 className="text-balance lg:text-start">
-          {t("Home.title.hero")}
-          Malaysia Government Design System (MYDS)
-        </h1>
+        <h1 className="text-balance lg:text-start">{t("Home.title.hero")}</h1>
         <Paragraph className="lg:text-start">
           {t("Home.description.hero")}
-          The design foundation for building official Malaysian government
-          websites, MYDS provides beautiful pre-built components which
-          streamline development and ensure consistency.
         </Paragraph>
         <div className="flex flex-row flex-wrap items-center gap-1.5 gap-x-[0.5rem]">
           <Button
@@ -53,8 +46,8 @@ const Hero: FunctionComponent = () => {
             Explore in Figma
           </Button>
           <Button variant="default-outline" size="large">
-            {/* {t("common.contribute")} */}
-            Get started
+            {t("common.contribute")}
+
             <ButtonIcon>
               <ArrowForward />
             </ButtonIcon>

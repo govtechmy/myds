@@ -1,57 +1,49 @@
-import BorderedSection from "@/components/BorderedSection";
 import { Paragraph } from "@/components/Paragraph";
 import { clx } from "@myds/react/utils";
 import Section from "../section";
-// import { useTranslations } from "next-intl";
+import { getRosetta } from "@/locales/_server";
 
 type Props = {
+  lang: "en" | "ms";
   id?: string;
   className?: string;
 };
 
-type DataItem = {
-  icon: string;
-  titleKey: string;
-  descriptionKey: string;
-};
-
-const dataItems: DataItem[] = [
+const dataItems = [
   {
     icon: "/assets/icons/about-icon1.svg",
-    titleKey: "Home.about.items.1.title",
-    descriptionKey: "Home.about.items.1.description",
+    titleKey: "Home.about.items.1.title" as const,
+    descriptionKey: "Home.about.items.1.description" as const,
   },
   {
     icon: "/assets/icons/about-icon2.svg",
-    titleKey: "Home.about.items.2.title",
-    descriptionKey: "Home.about.items.2.description",
+    titleKey: "Home.about.items.2.title" as const,
+    descriptionKey: "Home.about.items.2.description" as const,
   },
   {
     icon: "/assets/icons/about-icon3.svg",
-    titleKey: "Home.about.items.3.title",
-    descriptionKey: "Home.about.items.3.description",
+    titleKey: "Home.about.items.3.title" as const,
+    descriptionKey: "Home.about.items.3.description" as const,
   },
   {
     icon: "/assets/icons/about-icon4.svg",
-    titleKey: "Home.about.items.4.title",
-    descriptionKey: "Home.about.items.4.description",
+    titleKey: "Home.about.items.4.title" as const,
+    descriptionKey: "Home.about.items.4.description" as const,
   },
   {
     icon: "/assets/icons/about-icon5.svg",
-    titleKey: "Home.about.items.5.title",
-    descriptionKey: "Home.about.items.5.description",
+    titleKey: "Home.about.items.5.title" as const,
+    descriptionKey: "Home.about.items.5.description" as const,
   },
   {
     icon: "/assets/icons/about-icon6.svg",
-    titleKey: "Home.about.items.6.title",
-    descriptionKey: "Home.about.items.6.description",
+    titleKey: "Home.about.items.6.title" as const,
+    descriptionKey: "Home.about.items.6.description" as const,
   },
 ];
 
 export default async function About(props: Props) {
-  // const t = useTranslations();
-  const t = (test: any) => test;
-
+  const { t } = getRosetta(props.lang);
   return (
     <Section
       className={clx(

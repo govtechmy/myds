@@ -1,5 +1,7 @@
-// import { useFormatter, useTranslations } from "next-intl";
+"use client";
+import { RosettaContext } from "@/locales/_client";
 import Image from "next/image";
+import { useContext } from "react";
 
 type Props = {
   ministry: string;
@@ -16,15 +18,15 @@ type Props = {
 export default function Footer(props: Props) {
   // const format = useFormatter();
   // const t = useTranslations();
-  const t = (test: any) => test;
+  const { t } = useContext(RosettaContext);
 
   const className = {
     link: "text-sm text-black-700 [text-underline-position:from-font] hover:text-black-900 hover:underline",
   };
 
   return (
-    <div className="bg-bg-gray-50 border-t py-8 lg:py-16">
-      <div className="divide-y-outline-200 container divide-y max-sm:px-0">
+    <div className="bg-bg-gray-50 border-otl-gray-200 border-t py-8 lg:py-16">
+      <div className="divide-otl-gray-200 container divide-y max-sm:px-0">
         <div className="max-sm:px-4.5 flex flex-col gap-6 pb-8 lg:flex-row lg:justify-between">
           <div className="lg:gap-4.5 flex flex-col gap-4">
             <div className="flex items-center gap-x-2.5">
@@ -76,7 +78,6 @@ export default function Footer(props: Props) {
               {t("Footer.copyright")} © {new Date().getFullYear()}
             </p>
           </div>
-          <span>{t("Footer.last_update")}</span>
         </div>
       </div>
     </div>

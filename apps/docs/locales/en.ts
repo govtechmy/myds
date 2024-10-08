@@ -38,8 +38,7 @@ export default {
       hero: "The design foundation for building official Malaysian government websites, MYDS provides beautiful pre-built components which streamline development and ensure consistency.",
       about:
         "A structured collection of reusable components which adheres to design standards and principles, providing a foundation for digital product development.",
-      feedback:
-        "Write your constructive feedback to <email>design@tech.gov.my</email>",
+      feedback: "Write your constructive feedback to",
     },
     action: {
       feedback: {

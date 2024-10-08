@@ -4,15 +4,16 @@ import IconMailWhite from "@/icons/mail-white";
 import { Button, ButtonIcon } from "@myds/react/button";
 import { clx } from "@myds/react/utils";
 import Section from "../section";
+import { useContext } from "react";
+import { RosettaContext } from "@/locales/_client";
 
 type Props = {
   id?: string;
   className?: string;
 };
 
-export default async function Feedback(props: Props) {
-  // const t = useTranslations();
-  const t = (e: string) => e;
+export default function Feedback(props: Props) {
+  const { t } = useContext(RosettaContext);
 
   return (
     <Section
@@ -21,25 +22,16 @@ export default async function Feedback(props: Props) {
         props.className,
       )}
     >
-      <div className="space-y-[18px] text-center">
-        <h2 className="text-balance">
-          {/* {t("Home.title.feedback")} */}
-          Help us improve
-        </h2>
+      <div className="space-y-4.5 text-center">
+        <h2 className="text-balance">{t("Home.title.feedback")}</h2>
         <Paragraph>
-          Write your constructive feedback to design@tech.gov.my
-          {/* {t.rich("Home.description.feedback", {
-          email: (_) => {
-            return (
-              <a
-                className="font-medium text-brand-600 underline"
-                href={`mailto:${FEEDBACK_EMAIL}`}
-              >
-                {FEEDBACK_EMAIL}
-              </a>
-            );
-          },
-        })} */}
+          {t("Home.description.feedback")}{" "}
+          <a
+            className="text-txt-primary inline font-medium underline"
+            href="mailto:design@tech.gov.my"
+          >
+            design@tech.gov.my
+          </a>
         </Paragraph>
       </div>
       <Button

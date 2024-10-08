@@ -9,13 +9,11 @@ const config: Config = {
     "./content/**/*.{md,mdx}",
     "./mdx-components.{ts,tsx}",
     "./node_modules/fumadocs-ui/dist/**/*.js",
+    // This is a workaround; In final build, @myds/tailwindcss output full css for users to import
+    // Issue: Styles are not being applied if below line is not added
+    "../../packages/react/src/**/*.{ts,tsx}",
   ],
-  presets: [
-    createPreset({
-      preset: preset_fumadocs,
-    }),
-    preset,
-  ],
+  presets: [createPreset({ preset: preset_fumadocs }), preset],
   theme: {
     extend: {
       colors: {

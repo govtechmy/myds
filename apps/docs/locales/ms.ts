@@ -38,8 +38,7 @@ export default {
       hero: "Asas reka bentuk untuk membina laman web rasmi kerajaan Malaysia, MYDS menyediakan komponen pra-dibina yang menarik untuk menyederhanakan pembangunan dan memastikan konsistensi.",
       about:
         "Satu koleksi terstruktur komponen boleh guna semula yang mematuhi piawaian dan prinsip reka bentuk, menyediakan asas untuk pembangunan produk digital.",
-      feedback:
-        "Sila berikan maklum balas membina kepada <email>design@tech.gov.my</email>",
+      feedback: "Sila berikan maklum balas membina kepada",
     },
     action: {
       feedback: {
@@ -107,10 +106,9 @@ export default {
     timeline: {
       cover: {
         tag: "Pelan Kami",
-        title:
-          "Bagaimana kami melancarkan sistem reka bentuk pertama Malaysia?",
+        title: "Bagaimana kami melancarkan sistem reka bentuk untuk Malaysia?",
         description:
-          "Kami akan mula dengan laman konsep dan dokumen reka bentuk, kemudian menyediakan pembina laman untuk agensi kerajaan dan sekolah membina laman ikut sistem reka bentuk.",
+          "Kami akan bermula dengan laman konsep dan dokumen reka bentuk, kemudian menyediakan pembina laman untuk agensi kerajaan dan sekolah membina laman ikut sistem reka bentuk.",
       },
       items: {
         "1": {

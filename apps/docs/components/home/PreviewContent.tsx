@@ -36,9 +36,7 @@ export default async function PreviewContent(props: Props) {
         )}
       >
         <Tag>{data.tag}</Tag>
-        <h3 className="text-pretty text-[1.5rem] font-semibold leading-[2rem] lg:text-[1.875rem] lg:leading-[2.375rem]">
-          {data.title}
-        </h3>
+        <h2 className="text-pretty">{data.title}</h2>
         <Paragraph>{data.description}</Paragraph>
       </div>
       <picture

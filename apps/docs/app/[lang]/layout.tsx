@@ -1,14 +1,47 @@
 import "@/app/global.css";
-import { Inter } from "next/font/google";
 import { RootProvider } from "fumadocs-ui/provider";
-import { I18nProvider } from "fumadocs-ui/i18n";
+import { I18nProvider as FumaI18n } from "fumadocs-ui/i18n";
+import { RosettaProvider } from "@/locales/_client";
 import { clx } from "@myds/react/utils";
+import en from "@/locales/en";
+import ms from "@/locales/ms";
+import Masthead from "@/components/Masthead";
+import { getRosetta } from "@/locales/_server";
 
-const inter = Inter({
-  subsets: ["latin"],
-});
+import type { Metadata } from "next";
 
-export default function RootLayout({
+interface MetadataProps {
+  params: { lang: "en" | "ms" };
+}
+
+export async function generateMetadata({
+  params: { lang },
+}: MetadataProps): Promise<Metadata> {
+  const { t } = getRosetta(lang as "en" | "ms");
+
+  return {
+    title: t("metadata.title"),
+    description: t("metadata.description"),
+    openGraph: {
+      title: t("metadata.title"),
+      description: t("metadata.description"),
+      siteName: t("metadata.openGraph.url.index", {
+        baseUrl: process.env.APP_URL,
+      }),
+      type: "website",
+      images: [
+        {
+          url: t("metadata.openGraph.images.1.url"),
+          alt: t("metadata.openGraph.images.1.alt"),
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+  };
+}
+
+export default async function RootLayout({
   params,
   children,
 }: {
@@ -16,9 +49,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang={params.lang} className={clx(inter.className, "font-body")}>
+    <html lang={params.lang} className={clx("font-body")}>
       <body>
-        <I18nProvider
+        <FumaI18n
           locale={params.lang}
           locales={[
             {
@@ -30,9 +63,14 @@ export default function RootLayout({
               locale: "ms",
             },
           ]}
+          // translations={{
+          // }}
         >
-          <RootProvider>{children}</RootProvider>
-        </I18nProvider>
+          <Masthead lang={params.lang as "en" | "ms"} />
+          <RosettaProvider locales={{ en, ms }}>
+            <RootProvider>{children}</RootProvider>
+          </RosettaProvider>
+        </FumaI18n>
       </body>
     </html>
   );

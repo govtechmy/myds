@@ -1,11 +1,9 @@
-import BorderedSection from "@/components/BorderedSection";
 import { Paragraph } from "@/components/Paragraph";
 import { Tag } from "@/components/Tag";
 import Checkmark from "@/icons/checkmark";
 import Production from "@/icons/production";
 import Star from "@/icons/star";
 import { clx } from "@myds/react/utils";
-import Section from "../section";
 
 type DataItem = {
   type: string;
@@ -18,11 +16,11 @@ type DataItem = {
 type Props = {
   id?: string;
   className?: string;
-  // cover: {
-  //   tag: string;
-  //   title: string;
-  //   description: string;
-  // };
+  cover: {
+    tag: string;
+    title: string;
+    description: string;
+  };
   data: DataItem[];
 };
 
@@ -65,7 +63,7 @@ export default function Timeline(props: Props) {
 
   return (
     <div className="w-full">
-      <div className="mx-auto grid max-w-screen-xl grid-cols-2 border-x lg:grid-cols-12 lg:gap-y-[3.25rem]">
+      <div className="border-otl-gray-200 mx-auto grid max-w-screen-xl grid-cols-2 border-x lg:grid-cols-12 lg:gap-y-[3.25rem]">
         <div
           className={clx(
             "col-span-full gap-y-[1.125rem] space-y-[18px] px-[1.125rem] pt-[3rem]",
@@ -75,17 +73,11 @@ export default function Timeline(props: Props) {
             "lg:border-washed-100 border-b lg:sticky lg:top-[5.25rem] lg:col-span-3 lg:col-start-2 lg:border-b-0 lg:pb-[5.25rem]",
           )}
         >
-          {/* <Tag>{props.cover.tag}</Tag> */}
-          <Tag>Our Plan</Tag>
+          <Tag>{props.cover.tag}</Tag>
 
-          <h2 className="text-pretty">
-            {/* {props.cover.title} */}
-            How are we rolling out Malaysia's first design system?
-          </h2>
+          <h2 className="text-pretty">{props.cover.title}</h2>
           <Paragraph className="text-pretty">
-            We'll start with proof-of-concept sites and design docs, then offer
-            a site builder for government agencies and schools to create sites
-            using the design system.
+            {props.cover.description}
           </Paragraph>
         </div>
         <div

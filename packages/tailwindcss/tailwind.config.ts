@@ -85,6 +85,10 @@ const config: Config = {
       },
     }),
     extend: {
+      spacing: {
+        "2.5": "0.625rem",
+        "4.5": "1.125rem",
+      },
       fontSize: {
         DEFAULT: ["0.875rem", { lineHeight: "1.25rem" }],
         "heading-xl": ["3.75rem", { lineHeight: "4.5rem" }],

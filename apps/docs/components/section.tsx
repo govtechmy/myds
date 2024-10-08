@@ -11,7 +11,7 @@ const Section: FunctionComponent<SectionProps> = ({ className, children }) => {
     <div className="w-full">
       <section
         className={clx(
-          "mx-auto w-full max-w-screen-xl border-x px-[18px] py-12 md:px-6 md:py-[5.25rem]",
+          "border-otl-gray-200 px-4.5 mx-auto w-full max-w-screen-xl border-x py-12 md:px-6 md:py-[5.25rem]",
           className,
         )}
       >
