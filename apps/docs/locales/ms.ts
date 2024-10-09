@@ -224,7 +224,7 @@ export default {
   menu: {
     home: "Laman Utama",
     design: "Reka Bentuk",
-    component: "Komponen",
+    develop: "Pembangunan",
   },
 
   /* Design */
@@ -255,8 +255,8 @@ export default {
   },
 
   /* Component */
-  component: {
-    title: "Komponen",
+  develop: {
+    title: "Pembangunan",
     description:
       "Perpustakaan komponen MYDS menyediakan satu set komponen boleh guna semula yang boleh digunakan untuk membina produk digital.",
     button: {

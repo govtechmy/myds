@@ -1,18 +1,10 @@
 {
-  "title": "Design",
+  "title": "Develop",
   "pages": [
+    "---Getting Started---",
     "index",
-    "---Foundation---",
-    "(foundation)/12-8-4-grid",
-    "(foundation)/color",
-    "(foundation)/typography",
-    "(foundation)/icon",
-    "(foundation)/themes",
-    "(foundation)/animation",
-    "(foundation)/border",
-    "(foundation)/radius",
-    "(foundation)/shadow",
-    "(foundation)/spacing",
+    "(getting-started)/install",
+    "(getting-started)/usage",
 
     "---Components---",
     "(components)/accordion",

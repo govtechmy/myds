@@ -9,7 +9,7 @@ export default function Layout({
   children: ReactNode;
   params: { lang: "en" | "ms" };
 }): React.ReactElement {
-  const baseOptions = getMYDSConfig(lang);
+  const { config } = getMYDSConfig(lang);
 
-  return <HomeLayout {...baseOptions}>{children}</HomeLayout>;
+  return <HomeLayout {...config}>{children}</HomeLayout>;
 }

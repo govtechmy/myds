@@ -221,14 +221,13 @@ export default {
   menu: {
     home: "Home",
     design: "Design",
-    component: "Component",
+    develop: "Develop",
   },
 
   /* Design */
   design: {
     title: "Design",
-    description:
-      "The MYDS design system provides a set of guidelines and resources to help designers and developers create consistent and user-friendly digital products.",
+    description: "Design guidelines and resources",
     color: {
       title: "Color",
       description:
@@ -251,11 +250,10 @@ export default {
     },
   },
 
-  /* Component */
-  component: {
+  /* Develop */
+  develop: {
     title: "Component",
-    description:
-      "The MYDS component library provides a set of reusable components that can be used to build digital products.",
+    description: "Component library for developers",
     button: {
       title: "Button",
       description:
