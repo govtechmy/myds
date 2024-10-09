@@ -1,0 +1,23 @@
+{
+  "title": "Develop",
+  "pages": [
+    "---Getting Started---",
+    "index",
+    "(getting-started)/install",
+    "(getting-started)/usage",
+
+    "---Components---",
+    "(components)/accordion",
+    "(components)/anchor",
+    "(components)/banner",
+    "(components)/breadcrumb",
+    "(components)/button",
+    "(components)/callout",
+    "(components)/checkbox",
+    "(components)/chip",
+    "(components)/date-picker",
+    "(components)/pagination",
+    "(components)/radio"
+  ],
+  "root": true
+}

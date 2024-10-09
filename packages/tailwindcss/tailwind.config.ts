@@ -85,6 +85,24 @@ const config: Config = {
       },
     }),
     extend: {
+      spacing: {
+        "2.5": "0.625rem",
+        "4.5": "1.125rem",
+      },
+      fontSize: {
+        DEFAULT: ["0.875rem", { lineHeight: "1.25rem" }],
+        "heading-xl": ["3.75rem", { lineHeight: "4.5rem" }],
+        "heading-lg": ["3rem", { lineHeight: "3.75rem" }],
+        "heading-md": ["2.25rem", { lineHeight: "2.75rem" }],
+        "heading-sm": ["1.875rem", { lineHeight: "2.375rem" }],
+        "heading-xs": ["1.5rem", { lineHeight: "2rem" }],
+        "heading-2xs": ["1.25rem", { lineHeight: "1.75rem" }],
+        "body-xl": ["1.25rem", { lineHeight: "1.875rem" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.625rem" }],
+        "body-md": ["1rem", { lineHeight: "1.5rem" }],
+        "body-sm": ["0.875rem", { lineHeight: "1.25rem" }],
+        "body-xs": ["0.75rem", { lineHeight: "1.125rem" }],
+      },
       borderRadius: {
         sm: "6px",
         DEFAULT: "8px",
@@ -96,6 +114,7 @@ const config: Config = {
       fontFamily: {
         body: ["Inter", ...defaultTheme.fontFamily.sans],
         heading: ["Poppins", ...defaultTheme.fontFamily.sans],
+        mono: ["Roboto Mono", ...defaultTheme.fontFamily.mono],
       },
       colors: {
         "bg-white": "rgba(var(--bg-white))",
@@ -111,6 +130,7 @@ const config: Config = {
         "bg-black-500": "rgba(var(--bg-black-500))",
         "bg-black-400": "rgba(var(--bg-black-400))",
         "bg-black-disabled": "rgba(var(--bg-black-disabled))",
+        "bg-gray-50": "rgba(var(--bg-gray-50))",
         "bg-primary-50": "rgba(var(--bg-primary-50))",
         "bg-primary-100": "rgba(var(--bg-primary-100))",
         "bg-primary-200": "rgba(var(--bg-primary-200))",
