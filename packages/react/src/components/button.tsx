@@ -3,88 +3,13 @@ import React, {
   createContext,
   forwardRef,
   ForwardRefExoticComponent,
-  MouseEventHandler,
   cloneElement,
   ReactNode,
   useContext,
   LegacyRef,
 } from "react";
 import { clx } from "../utils";
-
-type ButtonSize = "small" | "medium" | "large";
-type ButtonVariant = Exclude<keyof typeof variants, "base">;
-
-const variants = {
-  base: "group flex select-none items-center gap-1.5 rounded-lg w-fit font-body font-medium outline-none transition disabled:cursor-not-allowed text-center active:translate-y-[0.5px]",
-  reset: "active:translate-y-[0.5px]",
-  "default-outline": clx(
-    "bg-bg-white border border-otl-gray-200 text-txt-black-700 shadow-button",
-    "hover:bg-bg-white-hover hover:border-otl-gray-300 hover:text-txt-black-900",
-    "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
-    "disabled:bg-bg-white-disabled disabled:text-txt-black-disabled disabled:border-transparent",
-  ),
-
-  "default-ghost": clx(
-    "bg-transparent border border-transparent text-txt-black-700",
-    "hover:bg-bg-white-hover",
-    "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
-    "disabled:bg-bg-white-disabled disabled:text-txt-black-disabled disabled:border-transparent",
-  ),
-
-  "danger-fill": clx(
-    "bg-danger-600 border border-danger-600 text-white shadow-button",
-    "hover:bg-danger-700",
-    "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
-    "disabled:bg-bg-danger-disabled disabled:text-white-disabled disabled:border-bg-danger-disabled",
-  ),
-  "danger-outline": clx(
-    "bg-bg-white border border-otl-danger-200 text-txt-danger shadow-button",
-    "hover:bg-bg-danger-50",
-    "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
-    "disabled:bg-bg-white-disabled disabled:text-txt-danger-disabled disabled:border-transparent",
-  ),
-  "danger-ghost": clx(
-    "bg-transparent border border-transparent text-txt-danger",
-    "hover:bg-bg-danger-50",
-    "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
-    "disabled:bg-bg-white-disabled disabled:text-txt-danger-disabled disabled:border-transparent",
-  ),
-
-  "primary-fill": clx(
-    "bg-primary-600 border border-primary-600 text-white shadow-button",
-    "hover:bg-primary-700",
-    "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
-    "disabled:bg-bg-primary-disabled disabled:text-white-disabled disabled:border-bg-primary-disabled",
-  ),
-
-  "primary-outline": clx(
-    "bg-bg-white border border-otl-primary-200 text-txt-primary shadow-button",
-    "hover:bg-bg-primary-50",
-    "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
-    "disabled:bg-bg-white-disabled disabled:text-txt-primary-disabled disabled:border-transparent",
-  ),
-
-  "primary-ghost": clx(
-    "bg-transparent border border-transparent text-txt-primary",
-    "hover:bg-bg-primary-50",
-    "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
-    "disabled:bg-bg-white-disabled disabled:text-txt-primary-disabled disabled:border-transparent rounded-sm",
-  ),
-};
-
-const sizes: Record<"small" | "medium" | "large", string> = {
-  small: "py-1.5 px-2.5 text-sm rounded-sm",
-  medium: "py-2 px-3 text-base rounded-md",
-  large: "py-2.5 px-4 text-base rounded-md",
-};
-
-interface ButtonProps extends ComponentProps<"button"> {
-  className?: string;
-  size?: ButtonSize;
-  variant?: Exclude<ButtonVariant, "base">;
-  onClick?: MouseEventHandler<HTMLButtonElement> | (() => void);
-  children?: ReactNode;
-}
+import { cva, VariantProps } from "class-variance-authority";
 
 /**
  * Button component that supports various styles and sizes.
@@ -94,6 +19,85 @@ interface ButtonProps extends ComponentProps<"button"> {
  *   Click Me
  * </Button>
  */
+const button_cva = cva(
+  [
+    "group flex select-none items-center gap-1.5 rounded-lg w-fit",
+    "font-body font-medium outline-none transition disabled:cursor-not-allowed,",
+    "text-center active:translate-y-[0.5px]",
+  ],
+  {
+    variants: {
+      variant: {
+        "default-outline": [
+          "bg-bg-white border border-otl-gray-200 text-txt-black-700 shadow-button",
+          "hover:bg-bg-white-hover hover:border-otl-gray-300 hover:text-txt-black-900",
+          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "disabled:bg-bg-white-disabled disabled:text-txt-black-disabled disabled:border-transparent",
+        ],
+        "default-ghost": [
+          "bg-transparent border border-transparent text-txt-black-700",
+          "hover:bg-bg-white-hover",
+          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "disabled:bg-bg-white-disabled disabled:text-txt-black-disabled disabled:border-transparent",
+        ],
+        "danger-fill": [
+          "bg-danger-600 border border-danger-600 text-white shadow-button",
+          "hover:bg-danger-700",
+          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "disabled:bg-bg-danger-disabled disabled:text-white-disabled disabled:border-bg-danger-disabled",
+        ],
+        "danger-outline": [
+          "bg-bg-white border border-otl-danger-200 text-txt-danger shadow-button",
+          "hover:bg-bg-danger-50",
+          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "disabled:bg-bg-white-disabled disabled:text-txt-danger-disabled disabled:border-transparent",
+        ],
+        "danger-ghost": [
+          "bg-transparent border border-transparent text-txt-danger",
+          "hover:bg-bg-danger-50",
+          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "disabled:bg-bg-white-disabled disabled:text-txt-danger-disabled disabled:border-transparent",
+        ],
+
+        "primary-fill": [
+          "bg-primary-600 border border-primary-600 text-white shadow-button",
+          "hover:bg-primary-700",
+          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "disabled:bg-bg-primary-disabled disabled:text-white-disabled disabled:border-bg-primary-disabled",
+        ],
+
+        "primary-outline": [
+          "bg-bg-white border border-otl-primary-200 text-txt-primary shadow-button",
+          "hover:bg-bg-primary-50",
+          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "disabled:bg-bg-white-disabled disabled:text-txt-primary-disabled disabled:border-transparent",
+        ],
+
+        "primary-ghost": [
+          "bg-transparent border border-transparent text-txt-primary",
+          "hover:bg-bg-primary-50",
+          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "disabled:bg-bg-white-disabled disabled:text-txt-primary-disabled disabled:border-transparent rounded-sm",
+        ],
+      },
+
+      size: {
+        small: "py-1.5 px-2.5 text-sm rounded-sm",
+        medium: "py-2 px-3 text-base rounded-md",
+        large: "py-2.5 px-4 text-base rounded-md",
+      },
+    },
+    defaultVariants: {
+      variant: "primary-fill",
+      size: "small",
+    },
+  },
+);
+
+interface ButtonProps
+  extends ComponentProps<"button">,
+    VariantProps<typeof button_cva> {}
+
 const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
   (
     {
@@ -106,7 +110,8 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
     },
     ref,
   ) => {
-    const iconOnly = (size: ButtonSize) => {
+    const iconOnly = (size: ButtonProps["size"]) => {
+      if (!size) return;
       if (Array.isArray(children)) return;
       if (!React.isValidElement(children)) return;
 
@@ -128,11 +133,8 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
           ref={ref}
           type={type}
           className={clx(
-            variant !== "reset" && variants.base,
-            variants[variant],
-            sizes[size],
             iconOnly(size),
-            className,
+            button_cva({ variant, size, className }),
           )}
           {...props}
         >
@@ -143,15 +145,50 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
   },
 );
 
-type ButtonContextProps = {
-  variant: ButtonVariant;
-  size: ButtonSize;
-};
-
-const ButtonContext = createContext<ButtonContextProps>({
+const ButtonContext = createContext<VariantProps<typeof button_cva>>({
   variant: "primary-fill",
   size: "small",
 });
+
+/**
+ * ButtonCounter component is a forward-ref exotic component that utilizes the ButtonContext
+ * to apply variant and size styles to a span element.
+ *
+ * @param {ButtonCounterProps} props - The properties for the ButtonCounter component.
+ * @param {React.Ref} ref - The ref to be forwarded to the span element.
+ * @returns {JSX.Element} The rendered span element with applied styles and children.
+ */
+
+const button_counter_cva = cva(
+  [
+    "flex aspect-square shrink-0 items-center justify-center",
+    "rounded-full px-1 leading-none bg-bg-primary-600 text-txt-white",
+    "group-disabled:bg-bg-white-disabled group-disabled:text-inherit",
+  ],
+  {
+    variants: {
+      variant: {
+        "primary-fill": ["bg-white text-primary-600"],
+        "danger-fill": ["bg-white text-danger-600"],
+        "default-outline": "",
+        "default-ghost": "",
+        "danger-outline": "",
+        "danger-ghost": "",
+        "primary-outline": "",
+        "primary-ghost": "",
+      },
+      size: {
+        small: "h-4.5 w-4.5 text-sm",
+        medium: "h-5 w-5 text-sm",
+        large: "h-6 w-6 text-base",
+      },
+    },
+    defaultVariants: {
+      variant: "primary-fill",
+      size: "small",
+    },
+  },
+);
 
 interface ButtonCounterProps {
   children: ReactNode;
@@ -161,35 +198,9 @@ interface ButtonCounterProps {
 const ButtonCounter: ForwardRefExoticComponent<ButtonCounterProps> = forwardRef(
   ({ children }, ref) => {
     const { variant, size } = useContext(ButtonContext);
-    const default_style =
-      "bg-bg-primary-600 text-txt-white group-disabled:bg-bg-white-disabled group-disabled:text-inherit";
-    const variants = {
-      reset: "",
-      "primary-fill":
-        "bg-white text-primary-600 group-disabled:bg-bg-white-disabled group-disabled:text-inherit",
-      "primary-outline": default_style,
-      "primary-ghost": default_style,
-      "default-outline": default_style,
-      "default-ghost": default_style,
-      "danger-fill":
-        "bg-white text-danger-600 group-disabled:bg-bg-white-disabled group-disabled:text-inherit",
-      "danger-outline": default_style,
-      "danger-ghost": default_style,
-    };
-    const sizes = {
-      small: "h-4.5 w-4.5 text-sm",
-      medium: "h-5 w-5 text-sm",
-      large: "h-6 w-6 text-base",
-    };
+
     return (
-      <span
-        ref={ref}
-        className={clx(
-          "flex aspect-square shrink-0 items-center justify-center rounded-full px-1 leading-none",
-          variants[variant],
-          sizes[size],
-        )}
-      >
+      <span ref={ref} className={clx(button_counter_cva({ variant, size }))}>
         {children}
       </span>
     );
@@ -197,6 +208,32 @@ const ButtonCounter: ForwardRefExoticComponent<ButtonCounterProps> = forwardRef(
 );
 
 ButtonCounter.displayName = "ButtonCounter";
+
+/**
+ * `ButtonIcon` forwards a ref to its child and applies a class based on the button size.
+ *
+ * @component
+ * @param {ButtonIconProps} props - The properties for the ButtonIcon component.
+ * @param {React.ReactNode} props.children - The child element to which the ref will be forwarded.
+ * @param {React.Ref} ref - The ref to be forwarded to the child element.
+ * @returns {React.ReactElement} The cloned child element with the forwarded ref and applied class name.
+ */
+
+const button_icon_cva = cva(
+  "block stroke-inherit text-inherit stroke-[1.5px]",
+  {
+    variants: {
+      size: {
+        small: "h-4 w-4",
+        medium: "h-5 w-5",
+        large: "h-5 w-5",
+      },
+    },
+    defaultVariants: {
+      size: "small",
+    },
+  },
+);
 
 interface ButtonIconProps {
   children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
@@ -206,18 +243,9 @@ const ButtonIcon: ForwardRefExoticComponent<ButtonIconProps> = forwardRef(
   ({ children }, ref) => {
     const { size } = useContext(ButtonContext);
 
-    const sizes = {
-      small: "h-4 w-4",
-      medium: "h-5 w-5",
-      large: "h-5 w-5",
-    };
-
     return cloneElement(children, {
       ref,
-      className: clx(
-        "block stroke-inherit text-inherit stroke-[1.5px]",
-        sizes[size],
-      ),
+      className: clx(button_icon_cva({ size })),
     });
   },
 );
