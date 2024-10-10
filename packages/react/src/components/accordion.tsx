@@ -152,7 +152,7 @@ const AccordionTrigger = React.forwardRef<
   <AccordionBase.Header className="flex">
     <AccordionBase.Trigger
       className={clx(
-        "text-txt-black-900 font-body group flex h-[45px] flex-1 cursor-pointer items-center justify-between bg-white py-4 text-base font-medium leading-none outline-none hover:underline",
+        "text-txt-black-900 font-body group flex flex-1 cursor-pointer items-center justify-between bg-white py-4 text-base font-medium leading-none outline-none hover:underline",
         className,
       )}
       {...props}
@@ -173,7 +173,7 @@ const AccordionContent = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
   <AccordionBase.Content
     className={clx(
-      "data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp text-txt-black-700 font-body overflow-hidden pb-4 pr-9 text-sm font-normal",
+      "text-txt-black-700 font-body pb-4 pr-9 text-sm font-normal",
       className,
     )}
     {...props}
