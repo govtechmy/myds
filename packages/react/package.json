@@ -7,6 +7,10 @@
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
     },
+    "./breadcrumbs": {
+      "type": "./src/components/breadcrumbs.tsx",
+      "default": "./src/components/breadcrumbs.tsx"
+    },
     "./button": {
       "type": "./src/components/button.tsx",
       "default": "./src/components/button.tsx"
@@ -24,6 +28,7 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
     "tailwind-merge": "^2.4.0"
   }
 }
