@@ -7,6 +7,7 @@ export interface ToggleProps {
   checked?: boolean;
   onChange?: (checked: boolean) => void;
   size?: ToggleSize;
+  disabled?: boolean;
 }
 
 const sizes: Record<ToggleSize, { toggle: string; thumb: string }> = {
@@ -24,9 +25,10 @@ const Toggle: React.FC<ToggleProps> = ({
   checked = false,
   onChange,
   size = "medium",
+  disabled = false,
 }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
+    if (onChange && !disabled) {
       onChange(event.target.checked);
     }
   };
@@ -35,17 +37,31 @@ const Toggle: React.FC<ToggleProps> = ({
 
   return (
     <label
-      className={clx("relative inline-block rounded-full bg-gray-200", toggle)}
+      className={clx(
+        "relative inline-block rounded-full focus:outline-none",
+        "focus:ring-[3px]",
+        toggle,
+        checked
+          ? "bg-primary-600 hover:bg-primary-700"
+          : "bg-otl-gray-200 hover:bg-otl-gray-300",
+        disabled
+          ? "bg-bg-primary-disabled cursor-not-allowed"
+          : "cursor-pointer",
+      )}
+      tabIndex={disabled ? -1 : 0}
+      role="switch"
+      aria-checked={checked}
     >
       <input
         type="checkbox"
         className="sr-only"
         checked={checked}
         onChange={handleChange}
+        disabled={disabled}
       />
       <span
         className={clx(
-          "absolute left-[3px] top-[3px] rounded-full bg-white transition-transform duration-200 ease-in-out",
+          "absolute left-[3px] top-[3px] z-10 rounded-full bg-white transition-transform duration-200 ease-in-out",
           thumb,
           checked
             ? size === "medium"

@@ -6,6 +6,9 @@ const meta: Meta<typeof Toggle> = {
   title: "Components/Toggle",
   component: Toggle,
   tags: ["autodocs"],
+  parameters: {
+    layout: "centeredd",
+  },
   argTypes: {
     checked: {
       control: "boolean",
