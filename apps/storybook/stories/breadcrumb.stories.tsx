@@ -11,9 +11,12 @@ import React from "react";
 
 /**
  * ### Overview
- * Breadcrumb
+ * A navigation aid that helps users understand their current location within a website or application and allows them to easily navigate back to previous levels.
  *
- * > Insert a ChatGPT pantun here
+ * > Ke pasar pagi beli selasih,
+ * > Singgah sebentar di kedai rempah;
+ * > Navigasi mudah, langkah tersisih,
+ * > Breadcrumb penunjuk, jalan terarah. -- ChatGPT
  *
  * ### Usage
  * ```ts
