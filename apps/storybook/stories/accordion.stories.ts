@@ -1,12 +1,11 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import {
+import AccordionDemo, {
   AccordionTrigger,
   AccordionContent,
   AccordionRoot,
   AccordionItem,
-  AccordionDemo,
 } from "@myds/react/accordion";
 
 /**
@@ -22,7 +21,6 @@ import {
  *   AccordionContent,
  *   AccordionRoot,
  *   AccordionItem,
- *   AccordionDemo,
  * } from "@myds/react/accordion";
  *
  * const AccordionDemo = () => (
@@ -64,39 +62,75 @@ import {
  * );
  * ```
  */
+// const meta = {
+//   title: "@myds/react/Accordion",
+//   component: AccordionDemo,
+//   tags: ["autodocs"],
+//   parameters: {
+//     layout: "padded",
+//   },
+// } satisfies Meta<typeof AccordionDemo>;
+
 const meta = {
-  title: "@myds/react/Accordion",
-  component: AccordionDemo,
+  title: "Components/Accordion",
+  component: AccordionRoot,
   tags: ["autodocs"],
   parameters: {
     layout: "padded",
   },
-  args: { onClick: fn() },
   argTypes: {
+    asChild: {
+      description:
+        "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+      control: "boolean",
+    },
     type: {
-      table: {
-        type: {
-          summary: "enum",
-        },
-      },
-      description: "insert-description-here",
-      control: "inline-radio",
-      options: ["option-1", "option-2", "option-3"],
+      description:
+        "Determines whether one or multiple items can be opened at the same time.",
+      control: { type: "radio" },
+      options: ["single", "multiple"],
+    },
+    value: {
+      description:
+        'The controlled value(s) of the item(s) to expand. Use string for "single" type and string[] for "multiple" type.',
+      control: "text",
+    },
+    defaultValue: {
+      description:
+        'The default value(s) of the item(s) to expand. Use string for "single" type and string[] for "multiple" type.',
+      control: "text",
+    },
+    onValueChange: {
+      description:
+        'Event handler called when the expanded state changes. Receives a string for "single" type and string[] for "multiple" type.',
+      action: "onValueChange",
+    },
+    collapsible: {
+      description:
+        'When type is "single", allows closing content when clicking trigger of open item.',
+      control: "boolean",
+    },
+    disabled: {
+      description:
+        "When true, prevents the user from interacting with the accordion and all its items.",
+      control: "boolean",
+    },
+    dir: {
+      description: "The reading direction of the accordion.",
+      control: { type: "radio" },
+      options: ["ltr", "rtl"],
+    },
+    orientation: {
+      description: "The orientation of the accordion.",
+      control: { type: "radio" },
+      options: ["vertical", "horizontal"],
     },
   },
-} satisfies Meta<typeof AccordionDemo>;
+} satisfies Meta<typeof AccordionRoot>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/**
- * Storybook stories for different variants of a component.
- *
- * @example
- * export const Default: Story = createStory({  insert-args-here  });
- * export const DarkDefault: Story = createStory({ insert-args-here  }, "dark");
- */
+export const PrimaryFill: Story = createStory({});
 
-export const Default: Story = createStory({
-  children: "Example",
-});
+export const Item: Story = {};

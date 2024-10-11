@@ -26,69 +26,6 @@ interface AccordionProps {
 //   return <div>{/* Add your component JSX here */}</div>;
 // };
 
-// type AccordionTriggerProps = React.ComponentPropsWithoutRef<
-//   typeof AccordionBase.Trigger
-// > & {
-//   children: React.ReactNode;
-//   className?: string;
-// };
-
-// const AccordionTrigger = React.forwardRef<
-//   React.ElementRef<typeof AccordionBase.Trigger>,
-//   AccordionTriggerProps
-// >(({ children, className, ...props }, forwardedRef) => (
-//   <AccordionBase.Header className="AccordionHeader">
-//     <AccordionBase.Trigger
-//       className={clx(className)}
-//       {...props}
-//       ref={forwardedRef}
-//     >
-//       {children}
-//       <ChevronDown className="AccordionChevron" aria-hidden />
-//     </AccordionBase.Trigger>
-//   </AccordionBase.Header>
-// ));
-
-// AccordionTrigger.displayName = "AccordionTrigger";
-
-// type AccordionContentProps = React.ComponentPropsWithoutRef<
-//   typeof AccordionBase.Content
-// > & {
-//   children: React.ReactNode;
-//   className?: string;
-// };
-
-// const AccordionContent = React.forwardRef<
-//   React.ElementRef<typeof AccordionBase.Content>,
-//   AccordionContentProps
-// >(({ children, className, ...props }, forwardedRef) => (
-//   <AccordionBase.Content
-//     className={clx(className)}
-//     {...props}
-//     ref={forwardedRef}
-//   >
-//     <div className="AccordionContentText">{children}</div>
-//   </AccordionBase.Content>
-// ));
-
-// AccordionContent.displayName = "AccordionContent";
-
-// // TODO: refactor this
-// const AccordionRoot = AccordionBase.Root;
-
-// const AccordionItem = React.forwardRef<
-//   React.ComponentRef<typeof AccordionBase.Item>,
-//   React.ComponentPropsWithoutRef<typeof AccordionBase.Item>
-// >(({ children, className, ...props }, forwardedRef) => (
-//   <AccordionBase.Item
-//     className={clx("mt-px overflow-hidden first:mt-0", className)}
-//     {...props}
-//     ref={forwardedRef}
-//   >
-//     {children}
-//   </AccordionBase.Item>
-// ));
-
 const AccordionDemo = () => (
   <AccordionRoot type="single" defaultValue="item-1" collapsible>
     <AccordionItem value="item-1">
@@ -127,7 +64,23 @@ const AccordionDemo = () => (
   </AccordionRoot>
 );
 
-const AccordionRoot = AccordionBase.Root;
+type AccordionRootProps = React.ComponentPropsWithoutRef<
+  typeof AccordionBase.Root
+> & {
+  children: React.ReactNode;
+  className?: string;
+};
+
+const AccordionRoot = React.forwardRef<
+  React.ElementRef<typeof AccordionBase.Root>,
+  AccordionRootProps
+>(({ children, className, ...props }, forwardedRef) => (
+  <AccordionBase.Root className={className} {...props} ref={forwardedRef}>
+    {children}
+  </AccordionBase.Root>
+));
+
+AccordionRoot.displayName = "AccordionRoot";
 
 const AccordionItem = React.forwardRef<
   React.ComponentRef<typeof AccordionBase.Item>,
@@ -135,7 +88,7 @@ const AccordionItem = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
   <AccordionBase.Item
     className={clx(
-      "border-otl-gray-200 mt-px overflow-hidden border-b first:mt-0",
+      "border-otl-gray-200 bg-bg-white mt-px overflow-hidden border-b first:mt-0",
       className,
     )}
     {...props}
@@ -152,7 +105,7 @@ const AccordionTrigger = React.forwardRef<
   <AccordionBase.Header className="flex">
     <AccordionBase.Trigger
       className={clx(
-        "text-txt-black-900 font-body group flex flex-1 cursor-pointer items-center justify-between bg-white py-4 text-base font-medium leading-none outline-none hover:underline",
+        "text-txt-black-900 font-body bg-bg-white group flex flex-1 cursor-pointer items-center justify-between py-4 text-base font-medium leading-none outline-none hover:underline",
         className,
       )}
       {...props}
@@ -184,10 +137,4 @@ const AccordionContent = React.forwardRef<
 ));
 
 export default AccordionDemo;
-export {
-  AccordionTrigger,
-  AccordionContent,
-  AccordionRoot,
-  AccordionItem,
-  AccordionDemo,
-};
+export { AccordionTrigger, AccordionContent, AccordionRoot, AccordionItem };
