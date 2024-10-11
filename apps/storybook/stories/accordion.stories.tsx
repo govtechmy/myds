@@ -1,12 +1,13 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import AccordionDemo, {
+import {
   AccordionTrigger,
   AccordionContent,
   AccordionRoot,
   AccordionItem,
 } from "@myds/react/accordion";
+import React from "react";
 
 /**
  * ### Overview
@@ -80,15 +81,21 @@ const meta = {
   },
   argTypes: {
     asChild: {
+      control: false,
       description:
         "Change the default rendered element for the one passed as a child, merging their props and behavior.",
-      control: "boolean",
+      table: {
+        type: { summary: "boolean" },
+      },
     },
     type: {
       description:
         "Determines whether one or multiple items can be opened at the same time.",
       control: { type: "radio" },
       options: ["single", "multiple"],
+      table: {
+        type: { summary: "enum" },
+      },
     },
     value: {
       description:
@@ -131,6 +138,29 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const PrimaryFill: Story = createStory({});
-
-export const Item: Story = {};
+export const Default: Story = createStory(
+  {
+    children: [
+      <AccordionItem key="item-1" value="item-1">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </AccordionContent>
+      </AccordionItem>,
+      <AccordionItem key="item-2" value="item-2">
+        <AccordionTrigger>Is it styled?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It comes with default styles that matches the other components'
+          aesthetic.
+        </AccordionContent>
+      </AccordionItem>,
+      <AccordionItem key="item-3" value="item-3">
+        <AccordionTrigger>Is it animated?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It's animated by default, but you can disable it if you prefer.
+        </AccordionContent>
+      </AccordionItem>,
+    ],
+  },
+  "light",
+);
