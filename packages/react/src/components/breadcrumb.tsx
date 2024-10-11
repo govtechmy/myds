@@ -3,9 +3,8 @@ import React, { ComponentProps, ForwardRefExoticComponent } from "react";
 import { clx } from "../utils";
 import { cva, VariantProps } from "class-variance-authority";
 import ChevronRight from "../icons/chevron-right";
-import Options from "../icons/options";
 
-const breadcrumbs_cva = cva(
+const breadcrumb_cva = cva(
   [
     "group flex flex-wrap select-none items-center font-body font-medium text-sm py-1 px-3 rounded-md",
   ],
@@ -13,7 +12,7 @@ const breadcrumbs_cva = cva(
     variants: {
       variant: {
         default: "",
-        alternative: "bg-bg-washed",
+        fill: "bg-bg-washed",
       },
     },
     defaultVariants: {
@@ -22,23 +21,22 @@ const breadcrumbs_cva = cva(
   },
 );
 
-interface BreadcrumbsProps
+interface BreadcrumbProps
   extends ComponentProps<"nav">,
-    VariantProps<typeof breadcrumbs_cva> {}
+    VariantProps<typeof breadcrumb_cva> {}
 
-const Breadcrumbs: ForwardRefExoticComponent<BreadcrumbsProps> =
-  React.forwardRef(
-    ({ variant = "default", className, children, ...props }, ref) => (
-      <nav ref={ref} aria-label="breadcrumbs" {...props}>
-        <ol className={clx(breadcrumbs_cva({ variant, className }))}>
-          {children}
-        </ol>
-      </nav>
-    ),
-  );
-Breadcrumbs.displayName = "Breadcrumbs";
+const Breadcrumb: ForwardRefExoticComponent<BreadcrumbProps> = React.forwardRef(
+  ({ variant = "default", className, children, ...props }, ref) => (
+    <nav ref={ref} aria-label="breadcrumb" {...props}>
+      <ol className={clx(breadcrumb_cva({ variant, className }))}>
+        {children}
+      </ol>
+    </nav>
+  ),
+);
+Breadcrumb.displayName = "Breadcrumb";
 
-const BreadcrumbsItem: ForwardRefExoticComponent<ComponentProps<"li">> =
+const BreadcrumbItem: ForwardRefExoticComponent<ComponentProps<"li">> =
   React.forwardRef(({ className, ...props }, ref) => (
     <li
       ref={ref}
@@ -46,9 +44,9 @@ const BreadcrumbsItem: ForwardRefExoticComponent<ComponentProps<"li">> =
       {...props}
     />
   ));
-BreadcrumbsItem.displayName = "BreadcrumbsItem";
+BreadcrumbItem.displayName = "BreadcrumbItem";
 
-const BreadcrumbsLink: ForwardRefExoticComponent<
+const BreadcrumbLink: ForwardRefExoticComponent<
   ComponentProps<"a"> & { asChild?: boolean }
 > = React.forwardRef(({ asChild, className, ...props }, ref) => {
   const Comp = asChild ? Slot : "a";
@@ -64,9 +62,9 @@ const BreadcrumbsLink: ForwardRefExoticComponent<
     />
   );
 });
-BreadcrumbsLink.displayName = "BreadcrumbsLink";
+BreadcrumbLink.displayName = "BreadcrumbLink";
 
-const BreadcrumbsPage: ForwardRefExoticComponent<ComponentProps<"span">> =
+const BreadcrumbPage: ForwardRefExoticComponent<ComponentProps<"span">> =
   React.forwardRef(({ className, ...props }, ref) => (
     <span
       ref={ref}
@@ -80,9 +78,9 @@ const BreadcrumbsPage: ForwardRefExoticComponent<ComponentProps<"span">> =
       {...props}
     />
   ));
-BreadcrumbsPage.displayName = "BreadcrumbsPage";
+BreadcrumbPage.displayName = "BreadcrumbPage";
 
-const BreadcrumbsSeparator = ({
+const BreadcrumbSeparator = ({
   children,
   className,
   ...props
@@ -93,15 +91,15 @@ const BreadcrumbsSeparator = ({
     className={clx("[&>svg]:stroke-bg-black-400 [&>svg]:size-6", className)}
     {...props}
   >
-    {children ?? <ChevronRight />}
+    {children || <ChevronRight />}
   </li>
 );
-BreadcrumbsSeparator.displayName = "BreadcrumbsSeparator";
+BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
 
 export {
-  Breadcrumbs,
-  BreadcrumbsItem,
-  BreadcrumbsLink,
-  BreadcrumbsPage,
-  BreadcrumbsSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
 };

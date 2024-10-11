@@ -7,9 +7,9 @@
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
     },
-    "./breadcrumbs": {
-      "type": "./src/components/breadcrumbs.tsx",
-      "default": "./src/components/breadcrumbs.tsx"
+    "./breadcrumb": {
+      "type": "./src/components/breadcrumb.tsx",
+      "default": "./src/components/breadcrumb.tsx"
     },
     "./button": {
       "type": "./src/components/button.tsx",
