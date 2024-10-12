@@ -11,6 +11,8 @@ import React, {
 import { clx } from "../utils";
 import { cva, VariantProps } from "class-variance-authority";
 
+/*========================================================================================================================*/
+
 /**
  * Button component that supports various styles and sizes.
  *
@@ -145,10 +147,14 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
   },
 );
 
+/*========================================================================================================================*/
+
 const ButtonContext = createContext<VariantProps<typeof button_cva>>({
   variant: "primary-fill",
   size: "small",
 });
+
+/*========================================================================================================================*/
 
 /**
  * ButtonCounter component is a forward-ref exotic component that utilizes the ButtonContext
@@ -190,6 +196,8 @@ const button_counter_cva = cva(
   },
 );
 
+/*========================================================================================================================*/
+
 interface ButtonCounterProps {
   children: ReactNode;
   ref?: LegacyRef<HTMLSpanElement | null>;
@@ -208,6 +216,8 @@ const ButtonCounter: ForwardRefExoticComponent<ButtonCounterProps> = forwardRef(
 );
 
 ButtonCounter.displayName = "ButtonCounter";
+
+/*========================================================================================================================*/
 
 /**
  * `ButtonIcon` forwards a ref to its child and applies a class based on the button size.
@@ -251,5 +261,7 @@ const ButtonIcon: ForwardRefExoticComponent<ButtonIconProps> = forwardRef(
 );
 
 ButtonIcon.displayName = "ButtonIcon";
+
+/*========================================================================================================================*/
 
 export { Button, ButtonIcon, ButtonCounter };

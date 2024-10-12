@@ -7,6 +7,10 @@
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
     },
+    "./toast": {
+      "type": "./src/components/toast.tsx",
+      "default": "./src/components/toast.tsx"
+    },
     "./button": {
       "type": "./src/components/button.tsx",
       "default": "./src/components/button.tsx"
@@ -18,13 +22,16 @@
   },
   "devDependencies": {
     "@myds/tailwindcss": "workspace:*",
+    "@types/node": "^22.7.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "react-dom": "^18"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-toast": "^1.2.2",
     "class-variance-authority": "^0.7.0",
+    "mitt": "^3.0.1",
     "tailwind-merge": "^2.4.0"
   }
 }
