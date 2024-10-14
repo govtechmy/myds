@@ -20,12 +20,7 @@ type AccordionSingleProps = Omit<
   AccordionBase.AccordionSingleProps,
   "dir" | "orientation"
 >;
-
-type AccordionProps = Omit<AccordionSingleProps, "type"> & {
-  collapsible?: boolean;
-  disabled?: boolean;
-};
-
+type AccordionProps = Omit<AccordionSingleProps, "type">;
 const Accordion = React.forwardRef<
   React.ElementRef<typeof AccordionBase.Root>,
   AccordionProps
@@ -38,7 +33,6 @@ const Accordion = React.forwardRef<
     ref={forwardedRef}
   />
 ));
-
 Accordion.displayName = "Accordion";
 
 const AccordionItem = React.forwardRef<
