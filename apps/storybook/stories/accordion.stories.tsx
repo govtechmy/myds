@@ -68,22 +68,35 @@ const meta = {
         category: "Accordion Props",
       },
     },
+    type: {
+      description:
+        "Determines whether one or multiple items can be opened at the same time.",
+      control: false,
+      options: ["single", "multiple"],
+      table: {
+        type: { summary: "enum", detail: '"single" | "multiple"' },
+        defaultValue: { summary: '"single"' },
+        category: "Accordion Props",
+      },
+      defaultValue: "single",
+    },
     value: {
       description:
-        'The controlled value(s) of the item(s) to expand. Use string for "single" type',
+        'The controlled value(s) of the item(s) to expand. Use string for "single" type and string[] for "multiple" type.',
       control: false,
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "-" },
+        type: { summary: "string | string[]" },
+        defaultValue: { summary: "- / []" },
         category: "Accordion Props",
       },
     },
     defaultValue: {
-      description: "The default value(s) of the item(s) to expand",
+      description:
+        'The default value(s) of the item(s) to expand. Use string for "single" type and string[] for "multiple" type.',
       control: false,
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "-" },
+        type: { summary: "string | string[]" },
+        defaultValue: { summary: "- / []" },
         category: "Accordion Props",
       },
     },

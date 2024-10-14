@@ -16,23 +16,31 @@ import ChevronDown from "../icons/chevron-down";
  * <Accordion propName="value" />
  */
 
-type AccordionSingleProps = Omit<
-  AccordionBase.AccordionSingleProps,
-  "dir" | "orientation"
->;
-type AccordionProps = Omit<AccordionSingleProps, "type">;
+type AccordionProps = Omit<
+  AccordionBase.AccordionSingleProps & AccordionBase.AccordionMultipleProps,
+  "dir" | "orientation" | "type"
+> & {
+  type?: "single" | "multiple";
+};
+
 const Accordion = React.forwardRef<
   React.ElementRef<typeof AccordionBase.Root>,
   AccordionProps
->(({ collapsible = true, disabled = false, ...props }, forwardedRef) => (
-  <AccordionBase.Root
-    type="single"
-    collapsible={collapsible}
-    disabled={disabled}
-    {...props}
-    ref={forwardedRef}
-  />
-));
+>(
+  (
+    { collapsible = true, disabled = false, type = "single", ...props },
+    forwardedRef,
+  ) => (
+    <AccordionBase.Root
+      type={type as "single" | "multiple"}
+      collapsible={type === "single" ? collapsible : undefined}
+      disabled={disabled}
+      {...props}
+      ref={forwardedRef}
+    />
+  ),
+);
+
 Accordion.displayName = "Accordion";
 
 const AccordionItem = React.forwardRef<
@@ -57,8 +65,9 @@ const AccordionTrigger = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
   <AccordionBase.Header className="flex">
     <AccordionBase.Trigger
+      tabIndex={0}
       className={clx(
-        "text-txt-black-900 font-body bg-bg-white group flex flex-1 cursor-pointer items-center justify-between py-4 text-base font-medium leading-none outline-none hover:underline",
+        "text-txt-black-500 font-body bg-bg-white hover:text-txt-black-900 group flex flex-1 cursor-pointer items-center justify-between py-4 text-base font-medium leading-none outline-none hover:underline",
         className,
       )}
       {...props}
