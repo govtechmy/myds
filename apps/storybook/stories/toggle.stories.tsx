@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import Toggle from "@myds/react/toggle";
+import { Toggle, ToggleLabel, ToggleThumb } from "@myds/react/toggle";
 import { createStory } from "../utils";
 
 /**
@@ -14,6 +14,7 @@ import { createStory } from "../utils";
  * - Optional label for clear context
  * - Dark mode support for all variants
  * - Fully accessible with keyboard navigation and ARIA attributes
+ * - Flexible composition with separate ToggleLabel and ToggleThumb components
  *
  * ## Usage Guidelines
  * - Use clear, concise labels to describe the toggle's function
@@ -26,33 +27,48 @@ import { createStory } from "../utils";
  *
  * Basic usage:
  * ```tsx
- * import Toggle from "@myds/react/toggle"
+ * import { Toggle, ToggleThumb } from "@myds/react/toggle"
  *
  * function MyComponent() {
  *   const [isChecked, setIsChecked] = React.useState(false);
- *   return <Toggle checked={isChecked} onCheckedChange={setIsChecked} />;
+ *   return (
+ *     <Toggle checked={isChecked} onCheckedChange={setIsChecked}>
+ *       <ToggleThumb />
+ *     </Toggle>
+ *   );
  * }
  * ```
  *
  * With label:
  * ```tsx
- * <Toggle label="Enable notifications" defaultChecked={true} onCheckedChange={handleChange} />
+ * import { Toggle, ToggleLabel, ToggleThumb } from "@myds/react/toggle"
+ *
+ * <Toggle defaultChecked={true} onCheckedChange={handleChange}>
+ *   <ToggleLabel>Enable notifications</ToggleLabel>
+ *   <ToggleThumb />
+ * </Toggle>
  * ```
  *
  * Large size:
  * ```tsx
- * <Toggle size="large" defaultChecked={false} onCheckedChange={handleChange} />
+ * <Toggle size="large" defaultChecked={false} onCheckedChange={handleChange}>
+ *   <ToggleThumb />
+ * </Toggle>
  * ```
  *
  * Disabled state:
  * ```tsx
- * <Toggle disabled defaultChecked={true} />
+ * <Toggle disabled defaultChecked={true}>
+ *   <ToggleThumb />
+ * </Toggle>
  * ```
  *
  * Dark mode:
  * ```tsx
  * <div className="dark">
- *   <Toggle defaultChecked={false} />
+ *   <Toggle defaultChecked={false}>
+ *     <ToggleThumb />
+ *   </Toggle>
  * </div>
  * ```
  */
@@ -65,7 +81,7 @@ const meta: Meta<typeof Toggle> = {
     docs: {
       description: {
         component:
-          "A customizable toggle switch component for binary choices, with support for both light and dark modes.",
+          "A customizable, composable toggle switch component for binary choices, with support for both light and dark modes.",
       },
     },
   },
@@ -73,10 +89,6 @@ const meta: Meta<typeof Toggle> = {
     defaultChecked: {
       control: "boolean",
       description: "The default checked state of the toggle (uncontrolled)",
-    },
-    label: {
-      control: "text",
-      description: "The label for the toggle (optional)",
     },
     checked: {
       control: "boolean",
@@ -98,14 +110,6 @@ const meta: Meta<typeof Toggle> = {
       control: "text",
       description: "Additional CSS classes for customization",
     },
-    asChild: {
-      control: "boolean",
-      description: "Whether to render as a child component (advanced usage)",
-    },
-    value: {
-      control: "text",
-      description: "The value attribute of the hidden input element",
-    },
   },
 };
 
@@ -115,6 +119,7 @@ type Story = StoryObj<typeof Toggle>;
 export const Default: Story = createStory(
   {
     defaultChecked: false,
+    children: <ToggleThumb />,
   },
   "light",
 );
@@ -124,6 +129,7 @@ export const DefaultDark: Story = createStory(
   {
     defaultChecked: false,
     className: "dark",
+    children: <ToggleThumb />,
   },
   "dark",
 );
@@ -133,6 +139,7 @@ export const LargeSize: Story = createStory(
   {
     defaultChecked: false,
     size: "large",
+    children: <ToggleThumb />,
   },
   "light",
 );
@@ -143,6 +150,7 @@ export const LargeSizeDark: Story = createStory(
     defaultChecked: false,
     size: "large",
     className: "dark",
+    children: <ToggleThumb />,
   },
   "dark",
 );
@@ -151,7 +159,12 @@ LargeSizeDark.storyName = "Large Size - Dark Mode";
 export const WithLabel: Story = createStory(
   {
     defaultChecked: false,
-    label: "Enable feature",
+    children: (
+      <>
+        <ToggleLabel>Enable feature</ToggleLabel>
+        <ToggleThumb />
+      </>
+    ),
   },
   "light",
 );
@@ -160,16 +173,51 @@ WithLabel.storyName = "With Label";
 export const WithLabelDark: Story = createStory(
   {
     defaultChecked: false,
-    label: "Enable feature",
     className: "dark",
+    children: (
+      <>
+        <ToggleLabel>Enable feature</ToggleLabel>
+        <ToggleThumb />
+      </>
+    ),
   },
   "dark",
 );
 WithLabelDark.storyName = "With Label - Dark Mode";
 
+export const WithLabelRight: Story = createStory(
+  {
+    defaultChecked: false,
+    children: (
+      <>
+        <ToggleThumb />
+        <ToggleLabel>Enable feature</ToggleLabel>
+      </>
+    ),
+  },
+  "light",
+);
+WithLabelRight.storyName = "With Label (Right)";
+
+export const WithLabelRightDark: Story = createStory(
+  {
+    defaultChecked: false,
+    className: "dark",
+    children: (
+      <>
+        <ToggleThumb />
+        <ToggleLabel>Enable feature</ToggleLabel>
+      </>
+    ),
+  },
+  "dark",
+);
+WithLabelRightDark.storyName = "With Label (Right) - Dark Mode";
+
 export const Checked: Story = createStory(
   {
     defaultChecked: true,
+    children: <ToggleThumb />,
   },
   "light",
 );
@@ -179,6 +227,7 @@ export const CheckedDark: Story = createStory(
   {
     defaultChecked: true,
     className: "dark",
+    children: <ToggleThumb />,
   },
   "dark",
 );
@@ -188,6 +237,7 @@ export const Disabled: Story = createStory(
   {
     defaultChecked: false,
     disabled: true,
+    children: <ToggleThumb />,
   },
   "light",
 );
@@ -198,6 +248,7 @@ export const DisabledDark: Story = createStory(
     defaultChecked: false,
     disabled: true,
     className: "dark",
+    children: <ToggleThumb />,
   },
   "dark",
 );
@@ -207,6 +258,7 @@ export const DisabledChecked: Story = createStory(
   {
     defaultChecked: true,
     disabled: true,
+    children: <ToggleThumb />,
   },
   "light",
 );
@@ -217,59 +269,21 @@ export const DisabledCheckedDark: Story = createStory(
     defaultChecked: true,
     disabled: true,
     className: "dark",
+    children: <ToggleThumb />,
   },
   "dark",
 );
 DisabledCheckedDark.storyName = "Disabled (Checked) - Dark Mode";
-
-export const CustomValue: Story = createStory(
-  {
-    defaultChecked: false,
-    value: "custom-value",
-  },
-  "light",
-);
-CustomValue.storyName = "With Custom Value";
-
-export const CustomValueDark: Story = createStory(
-  {
-    defaultChecked: false,
-    value: "custom-value",
-    className: "dark",
-  },
-  "dark",
-);
-CustomValueDark.storyName = "With Custom Value - Dark Mode";
-
-export const AsChild: Story = createStory(
-  {
-    defaultChecked: false,
-    asChild: true,
-  },
-  "light",
-);
-AsChild.storyName = "As Child Component";
-
-export const AsChildDark: Story = createStory(
-  {
-    defaultChecked: false,
-    asChild: true,
-    className: "dark",
-  },
-  "dark",
-);
-AsChildDark.storyName = "As Child Component - Dark Mode";
 
 export const ControlledToggle: Story = {
   render: () => {
     const [isChecked, setIsChecked] = React.useState(false);
     return (
       <div>
-        <Toggle
-          checked={isChecked}
-          onCheckedChange={setIsChecked}
-          label={`Controlled Toggle (${isChecked ? "On" : "Off"})`}
-        />
+        <Toggle checked={isChecked} onCheckedChange={setIsChecked}>
+          <ToggleLabel>{`Controlled Toggle (${isChecked ? "On" : "Off"})`}</ToggleLabel>
+          <ToggleThumb />
+        </Toggle>
         <p>Current state: {isChecked ? "On" : "Off"}</p>
       </div>
     );
@@ -282,18 +296,13 @@ export const ControlledToggleDark: Story = {
     const [isChecked, setIsChecked] = React.useState(false);
     return (
       <div className="dark bg-gray-800 p-4 text-white">
-        <Toggle
-          checked={isChecked}
-          onCheckedChange={setIsChecked}
-          label={`Controlled Toggle (${isChecked ? "On" : "Off"})`}
-        />
+        <Toggle checked={isChecked} onCheckedChange={setIsChecked}>
+          <ToggleLabel>{`Controlled Toggle (${isChecked ? "On" : "Off"})`}</ToggleLabel>
+          <ToggleThumb />
+        </Toggle>
         <p>Current state: {isChecked ? "On" : "Off"}</p>
       </div>
     );
   },
 };
 ControlledToggleDark.storyName = "Controlled Toggle Example - Dark Mode";
-
-ControlledToggleDark.parameters = {
-  backgrounds: { default: "dark" },
-};
