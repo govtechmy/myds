@@ -3,6 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./utils": {
+      "type": "./src/utils/index.ts",
+      "default": "./src/utils/index.ts"
+    },
+    "./breadcrumb": {
+      "type": "./src/components/breadcrumb.tsx",
+      "default": "./src/components/breadcrumb.tsx"
+    },
     "./button": {
       "default": "./src/components/button.tsx",
       "type": "./src/components/button.tsx"
@@ -25,6 +33,7 @@
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
     "tailwind-merge": "^2.4.0"
   }
 }

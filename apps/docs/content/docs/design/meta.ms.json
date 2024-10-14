@@ -1,0 +1,31 @@
+{
+  "title": "Design",
+  "pages": [
+    "index",
+    "---Foundation---",
+    "(foundation)/12-8-4-grid",
+    "(foundation)/color",
+    "(foundation)/typography",
+    "(foundation)/icon",
+    "(foundation)/themes",
+    "(foundation)/animation",
+    "(foundation)/border",
+    "(foundation)/radius",
+    "(foundation)/shadow",
+    "(foundation)/spacing",
+
+    "---Components---",
+    "(components)/accordion",
+    "(components)/anchor",
+    "(components)/banner",
+    "(components)/breadcrumb",
+    "(components)/button",
+    "(components)/callout",
+    "(components)/checkbox",
+    "(components)/chip",
+    "(components)/date-picker",
+    "(components)/pagination",
+    "(components)/radio"
+  ],
+  "root": true
+}

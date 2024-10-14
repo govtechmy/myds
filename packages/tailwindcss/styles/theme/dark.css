@@ -20,6 +20,9 @@
   --bg-black-400: var(--_gray-400);
   --bg-black-disabled: var(--_white) / 0.4;
 
+  /* Background - Gray */
+  --bg-gray-50: var(--_gray-930);
+
   /* bg - Primary */
   --bg-primary-50: var(--_primary-950);
   --bg-primary-100: var(--_primary-900);
@@ -95,12 +98,12 @@
   --txt-danger-disabled: var(--_danger-400) / 0.4;
 
   /* Text - Success */
-  --txt-success: var(--_success-600);
-  --txt-success-disabled: var(--_success-600) / 0.4;
+  --txt-success: var(--_success-500);
+  --txt-success-disabled: var(--_success-500) / 0.4;
 
   /* Text - Warning */
-  --txt-warning: var(--_warning-600);
-  --txt-warning-disabled: var(--_warning-600) / 0.4;
+  --txt-warning: var(--_warning-500);
+  --txt-warning-disabled: var(--_warning-500) / 0.4;
 
   /* Outline - Divider */
   --otl-divider: var(--_gray-850);
