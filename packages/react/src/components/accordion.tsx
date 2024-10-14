@@ -50,6 +50,7 @@ const AccordionItem = React.forwardRef<
   <AccordionBase.Item
     className={clx(
       "border-otl-gray-200 bg-bg-white mt-px overflow-hidden border-b first:mt-0",
+      "focus-within:relative focus-within:z-10 focus-within:shadow-lg",
       className,
     )}
     {...props}
@@ -65,9 +66,8 @@ const AccordionTrigger = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
   <AccordionBase.Header className="flex">
     <AccordionBase.Trigger
-      tabIndex={0}
       className={clx(
-        "text-txt-black-500 font-body bg-bg-white hover:text-txt-black-900 group flex flex-1 cursor-pointer items-center justify-between py-4 text-base font-medium leading-none outline-none hover:underline",
+        "text-txt-black-500 font-body bg-bg-white hover:text-txt-black-900 group flex flex-1 cursor-pointer items-center justify-between py-4 text-base font-medium leading-none hover:underline",
         className,
       )}
       {...props}
