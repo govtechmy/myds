@@ -10,6 +10,10 @@
     "./button": {
       "type": "./src/components/button.tsx",
       "default": "./src/components/button.tsx"
+    },
+    "./link": {
+      "type": "./src/components/link.tsx",
+      "default": "./src/components/link.tsx"
     }
   },
   "peerDependencies": {
