@@ -185,35 +185,6 @@ export const WithLabelDark: Story = createStory(
 );
 WithLabelDark.storyName = "With Label - Dark Mode";
 
-export const WithLabelRight: Story = createStory(
-  {
-    defaultChecked: false,
-    children: (
-      <>
-        <ToggleThumb />
-        <ToggleLabel>Enable feature</ToggleLabel>
-      </>
-    ),
-  },
-  "light",
-);
-WithLabelRight.storyName = "With Label (Right)";
-
-export const WithLabelRightDark: Story = createStory(
-  {
-    defaultChecked: false,
-    className: "dark",
-    children: (
-      <>
-        <ToggleThumb />
-        <ToggleLabel>Enable feature</ToggleLabel>
-      </>
-    ),
-  },
-  "dark",
-);
-WithLabelRightDark.storyName = "With Label (Right) - Dark Mode";
-
 export const Checked: Story = createStory(
   {
     defaultChecked: true,
