@@ -14,6 +14,10 @@
     "./button": {
       "type": "./src/components/button.tsx",
       "default": "./src/components/button.tsx"
+    },
+    "./dialog": {
+      "type": "./src/components/dialog.tsx",
+      "default": "./src/components/dialog.tsx"
     }
   },
   "peerDependencies": {
