@@ -218,6 +218,15 @@ const config: Config = {
       "context-menu":
         "0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 12px 50px 0px rgba(0, 0, 0, 0.10)",
     },
+    keyframes: {
+      "decrease-width": {
+        "0%": { width: "100%" },
+        "100%": { transform: "0%" },
+      },
+    },
+    animation: {
+      expire: "decrease-width 5s forwards",
+    },
   },
   plugins: [tailwindcssAnimate],
 };

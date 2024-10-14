@@ -6,7 +6,8 @@ import fs, { mkdirSync } from "fs";
 import path from "path";
 
 const outputIconTemplate = (name: string, text: string) => {
-  return `import { FunctionComponent, SVGProps } from "react";
+  return `import React from "react";
+import { FunctionComponent, SVGProps } from "react";
 
 /**
 * ${name} Icon
@@ -29,7 +30,8 @@ const sanitizeToReactAttrs = (text: string) => {
     .replaceAll("stroke-width", "strokeWidth")
     .replaceAll("stroke-linecap", "strokeLinecap")
     .replaceAll("stroke-linejoin", "strokeLinejoin")
-    .replaceAll("fill-rule", "fillRule");
+    .replaceAll("fill-rule", "fillRule")
+    .replaceAll(`stroke="#18181B"`, `stroke="currentColor"`);
 };
 
 interface MainScriptProps {

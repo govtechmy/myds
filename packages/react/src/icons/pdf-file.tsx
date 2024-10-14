@@ -1,3 +1,4 @@
+import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
@@ -9,8 +10,8 @@ export const PdfFileIcon: FunctionComponent<SVGProps<SVGSVGElement>> = ({ classN
     return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
 <g id="Icon/pdf-file">
 <g id="Vector">
-<path id="Vector_2" d="M6.79999 17.25H15.3C16.4046 17.25 17.3 16.3546 17.3 15.25V7L13.05 2.75H6.79999C5.69542 2.75 4.79999 3.64543 4.79999 4.75V15.25C4.79999 16.3546 5.69542 17.25 6.79999 17.25Z" stroke="#18181B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-<path id="Vector_3" d="M17.05 7.25H12.8V3" stroke="#18181B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path id="Vector_2" d="M6.79999 17.25H15.3C16.4046 17.25 17.3 16.3546 17.3 15.25V7L13.05 2.75H6.79999C5.69542 2.75 4.79999 3.64543 4.79999 4.75V15.25C4.79999 16.3546 5.69542 17.25 6.79999 17.25Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path id="Vector_3" d="M17.05 7.25H12.8V3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 <path id="Rect" d="M1 10C1 9.17157 1.67157 8.5 2.5 8.5H13.5C14.3284 8.5 15 9.17157 15 10V14C15 14.8284 14.3284 15.5 13.5 15.5H2.5C1.67157 15.5 1 14.8284 1 14V10Z" fill="#DC2626"/>
 <g id="PDF">
 <path d="M2.5 14V10H4.20008C4.52691 10 4.80534 10.0579 5.03539 10.1738C5.26543 10.2884 5.44077 10.4479 5.5614 10.6523C5.68344 10.8555 5.74445 11.0898 5.74445 11.3555C5.74445 11.6211 5.68273 11.8555 5.5593 12.0586C5.43586 12.2617 5.25701 12.4199 5.02276 12.5332C4.78991 12.6465 4.50797 12.7031 4.17693 12.7031H3.09334V12.0254H4.02965C4.20499 12.0254 4.34946 11.9974 4.46308 11.9414C4.57811 11.8841 4.66367 11.8053 4.71978 11.7051C4.77729 11.6035 4.80604 11.487 4.80604 11.3555C4.80604 11.2227 4.77729 11.1068 4.71978 11.0078C4.66367 10.9076 4.57811 10.8301 4.46308 10.7754C4.34806 10.7194 4.20218 10.6914 4.02544 10.6914H3.41106V14H2.5Z" fill="white"/>

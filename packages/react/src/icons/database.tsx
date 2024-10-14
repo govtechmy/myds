@@ -1,3 +1,4 @@
+import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**

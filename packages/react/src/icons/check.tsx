@@ -1,3 +1,4 @@
+import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
@@ -8,7 +9,7 @@ import { FunctionComponent, SVGProps } from "react";
 export const CheckIcon: FunctionComponent<SVGProps<SVGSVGElement>> = ({ className }) => {
     return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
 <g id="Icon/check">
-<path id="Vector" d="M4 11.4608L6.71103 14.5373C7.36204 15.276 8.53625 15.1978 9.08347 14.3792L16 4.0322" stroke="#18181B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path id="Vector" d="M4 11.4608L6.71103 14.5373C7.36204 15.276 8.53625 15.1978 9.08347 14.3792L16 4.0322" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 </g>
 </svg>
 
