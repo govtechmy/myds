@@ -16,7 +16,7 @@ type ButtonVariant = Exclude<keyof typeof variants, "base">;
 
 const variants = {
   base: "group flex select-none items-center gap-1.5 rounded-lg w-fit font-body font-medium outline-none transition disabled:cursor-not-allowed text-center active:translate-y-[0.5px]",
-  reset: "",
+  reset: "active:translate-y-[0.5px]",
   "default-outline": clx(
     "bg-bg-white border border-otl-gray-200 text-txt-black-700 shadow-button",
     "hover:bg-bg-white-hover hover:border-otl-gray-300 hover:text-txt-black-900",

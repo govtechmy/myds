@@ -8,5 +8,3 @@ export const source = loader({
   baseUrl: "/docs",
   source: createMDXSource(docs, meta),
 });
-
-console.log(source.pageTree);

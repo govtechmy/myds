@@ -11,8 +11,8 @@ interface ComponentPrompt {
  */
 const ComponentExport = `,
     "./{{ dashCase title}}": {
-      "default": "./src/components/{{ dashCase title}}.tsx",
-      "type": "./src/components/{{ dashCase title}}.tsx"
+      "type": "./src/components/{{ dashCase title}}.tsx",
+      "default": "./src/components/{{ dashCase title}}.tsx"
     }`;
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
@@ -67,7 +67,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
             path: "{{ turbo.paths.root }}/packages/react/package.json",
             pattern: /("exports":\s*{[^}]*)(})/,
             template: ComponentExport,
-          }
+          },
         );
       }
 
