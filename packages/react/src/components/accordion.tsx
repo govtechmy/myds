@@ -8,9 +8,6 @@ import ChevronDown from "../icons/chevron-down";
  * @typedef AccordionProps
  * @property {type} propName - Description of propName
  */
-interface AccordionProps {
-  // Define your props here
-}
 
 /**
  * Accordion component description.
@@ -18,31 +15,31 @@ interface AccordionProps {
  * @example
  * <Accordion propName="value" />
  */
-// const Accordion: FunctionComponent<AccordionProps> = (
-//   {
-//     // Destructure your props here
-//   },
-// ) => {
-//   return <div>{/* Add your component JSX here */}</div>;
-// };
 
-type AccordionRootProps = React.ComponentPropsWithoutRef<
-  typeof AccordionBase.Root
-> & {
-  children: React.ReactNode;
-  className?: string;
+type AccordionSingleProps = Omit<
+  AccordionBase.AccordionSingleProps,
+  "dir" | "orientation"
+>;
+
+type AccordionProps = Omit<AccordionSingleProps, "type"> & {
+  collapsible?: boolean;
+  disabled?: boolean;
 };
 
-const AccordionRoot = React.forwardRef<
+const Accordion = React.forwardRef<
   React.ElementRef<typeof AccordionBase.Root>,
-  AccordionRootProps
->(({ children, className, ...props }, forwardedRef) => (
-  <AccordionBase.Root className={className} {...props} ref={forwardedRef}>
-    {children}
-  </AccordionBase.Root>
+  AccordionProps
+>(({ collapsible = true, disabled = false, ...props }, forwardedRef) => (
+  <AccordionBase.Root
+    type="single"
+    collapsible={collapsible}
+    disabled={disabled}
+    {...props}
+    ref={forwardedRef}
+  />
 ));
 
-AccordionRoot.displayName = "AccordionRoot";
+Accordion.displayName = "Accordion";
 
 const AccordionItem = React.forwardRef<
   React.ComponentRef<typeof AccordionBase.Item>,
@@ -98,4 +95,4 @@ const AccordionContent = React.forwardRef<
   </AccordionBase.Content>
 ));
 
-export { AccordionTrigger, AccordionContent, AccordionRoot, AccordionItem };
+export { AccordionTrigger, AccordionContent, Accordion, AccordionItem };
