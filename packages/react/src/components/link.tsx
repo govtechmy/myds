@@ -1,3 +1,4 @@
+import { Slot } from "@radix-ui/react-slot";
 import React, { ComponentPropsWithoutRef, forwardRef } from "react";
 import { clx } from "../utils";
 
@@ -7,6 +8,7 @@ import { clx } from "../utils";
  * @property {type} variant
  */
 interface LinkProps extends ComponentPropsWithoutRef<"a"> {
+  asChild?: boolean;
   newTab?: boolean;
   primary?: boolean;
   underline: "always" | "hover" | "none";
@@ -21,6 +23,7 @@ interface LinkProps extends ComponentPropsWithoutRef<"a"> {
 const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   (
     {
+      asChild,
       children,
       className: _className,
       href,
@@ -55,10 +58,11 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         </a>
       );
 
+    const Comp = asChild ? Slot : "a";
     return (
-      <a ref={ref} href={href} className={className} {...props}>
+      <Comp ref={ref} href={href} className={className} {...props}>
         {children}
-      </a>
+      </Comp>
     );
   },
 );
