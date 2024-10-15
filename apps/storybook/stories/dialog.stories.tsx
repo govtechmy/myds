@@ -41,40 +41,45 @@ import { createStory } from "../utils";
  * } from "@myds/react/dialog";
  *
  * <Dialog>
- *  <DialogTrigger>
- *    <Button variant="danger-fill" size="medium">
- *      Padam data
- *    </Button>
- *  </DialogTrigger>
- *  <DialogContent withCloseButton={true}>
- *    <DialogHeader>
- *      <DialogTitle>Adakah anda pasti?</DialogTitle>
- *      <DialogDescription>
- *        Tindakan ini tidak boleh dibatalkan. Ini akan menghapuskan
- *        data anda dari pelayar anda.
- *      </DialogDescription>
- *    </DialogHeader>
- *    <DialogFooter>
- *      <>
- *        <DialogClose asChild>
- *          <Button variant="default-outline" size="medium">
- *            Batal
- *          </Button>
- *        </DialogClose>
- *        <DialogClose asChild>
- *          <Button variant="danger-fill" size="medium">
- *            Ya, teruskan
- *          </Button>
- *        </DialogClose>
- *      </>
- *    </DialogFooter>
- *  </DialogContent>
+ *   <DialogTrigger>
+ *     <Button variant="danger-fill" size="medium">
+ *       Padam data
+ *     </Button>
+ *   </DialogTrigger>
+ *   <DialogContent withCloseButton={true}>
+ *     <DialogHeader>
+ *       <DialogTitle>Adakah anda pasti?</DialogTitle>
+ *       <DialogDescription>
+ *         Tindakan ini tidak boleh dibatalkan. Ini akan menghapuskan data anda
+ *         dari pelayar anda.
+ *       </DialogDescription>
+ *     </DialogHeader>
+ *     <DialogFooter
+ *       withBorderTop={false}
+ *       fillWidth={false}
+ *     >
+ *       <DialogClose asChild>
+ *         <Button variant="default-outline" size="medium">
+ *           Batal
+ *         </Button>
+ *       </DialogClose>
+ *       <DialogClose asChild>
+ *         <Button variant="danger-fill" size="medium">
+ *           Ya, teruskan
+ *         </Button>
+ *       </DialogClose>
+ *     </DialogFooter>
+ *   </DialogContent>
  * </Dialog>
  * ```
  */
 const meta: Meta = {
   title: "@myds/react/Dialog",
-  component: ({ withCloseButton }) => (
+  component: ({
+    withCloseButton,
+    withFooterTopBorder,
+    withFooterFillWidth,
+  }) => (
     <Dialog>
       <DialogTrigger>
         <Button variant="danger-fill" size="medium">
@@ -89,19 +94,20 @@ const meta: Meta = {
             dari pelayar anda.
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter>
-          <>
-            <DialogClose asChild>
-              <Button variant="default-outline" size="medium">
-                Batal
-              </Button>
-            </DialogClose>
-            <DialogClose asChild>
-              <Button variant="danger-fill" size="medium">
-                Ya, teruskan
-              </Button>
-            </DialogClose>
-          </>
+        <DialogFooter
+          withBorderTop={withFooterTopBorder}
+          fillWidth={withFooterFillWidth}
+        >
+          <DialogClose asChild>
+            <Button variant="default-outline" size="medium">
+              Batal
+            </Button>
+          </DialogClose>
+          <DialogClose asChild>
+            <Button variant="danger-fill" size="medium">
+              Ya, teruskan
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -111,16 +117,40 @@ const meta: Meta = {
   },
   args: {
     withCloseButton: true,
+    withFooterTopBorder: false,
+    withFooterFillWidth: false,
   },
   argTypes: {
     withCloseButton: {
+      name: "Close button",
+      description: "The dialog should have a close button",
       defaultValue: true,
       control: {
         type: "boolean",
       },
     },
+    withFooterTopBorder: {
+      name: "Top border (footer)",
+      description: "The footer should have a top border",
+      defaultValue: false,
+      control: {
+        type: "boolean",
+      },
+    },
+    withFooterFillWidth: {
+      name: "Fill Width (footer)",
+      description: "The footer children should fill up the available width",
+      defaultValue: false,
+      control: {
+        type: "boolean",
+      },
+    },
   },
-} satisfies Meta<typeof Dialog & typeof DialogContent>;
+} satisfies Meta<{
+  withCloseButton?: boolean;
+  withFooterTopBorder?: boolean;
+  withFooterFillWidth?: boolean;
+}>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -130,8 +160,4 @@ type Story = StoryObj<typeof meta>;
  */
 export const Default: Story = createStory({
   withCloseButton: true,
-});
-
-export const WithoutCloseButton: Story = createStory({
-  withCloseButton: false,
 });

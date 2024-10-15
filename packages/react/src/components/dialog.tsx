@@ -1,9 +1,18 @@
 "use client";
 
 import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { cva } from "class-variance-authority";
 import * as React from "react";
 import Cross from "../icons/cross";
 import { clx } from "../utils";
+import { variants as buttonVariants, sizes } from "./button";
+
+const buttonCva = cva([], {
+  variants: {
+    variant: buttonVariants,
+    size: sizes,
+  },
+});
 
 const Dialog = DialogPrimitive.Root;
 const DialogTrigger = DialogPrimitive.Trigger;
@@ -42,11 +51,10 @@ const DialogContent = React.forwardRef<
         className={clx(
           "fixed left-[50%] top-[50%] z-[1000] translate-x-[-50%] translate-y-[-50%]",
           "w-full max-w-lg",
+          "flex flex-col items-start",
           "shadow-lg sm:rounded-lg",
           "border-otl-gray-200 border",
           "bg-gray-50",
-          "grid gap-4",
-          "p-6",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]",
           "duration-200",
@@ -58,13 +66,11 @@ const DialogContent = React.forwardRef<
         {withCloseButton && (
           <DialogPrimitive.Close
             className={clx(
+              buttonCva({ variant: "default-outline", size: "small" }),
               "absolute right-4 top-4",
-              "rounded-sm",
-              "focus:outline-none",
-              "focus:ring-primary-600/30 focus:ring-[3px]",
-              "ring-offset-primary-600 focus:ring-offset-[2px]",
-              "opacity-70 transition-opacity hover:opacity-100",
-              "data-[state=open]:text-txt-black-900",
+              "size-[2rem]",
+              "grid place-content-center",
+              "text-txt-black-900",
               "disabled:pointer-events-none",
             )}
           >
@@ -83,7 +89,9 @@ const DialogHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={clx(
-      "flex flex-col space-y-1.5 text-center sm:text-left",
+      "flex flex-col space-y-1.5",
+      "p-[1.5rem]",
+      "text-left",
       className,
     )}
     {...props}
@@ -92,11 +100,22 @@ const DialogHeader = ({
 
 const DialogFooter = ({
   className,
+  withBorderTop,
+  fillWidth,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
+}: React.HTMLAttributes<HTMLDivElement> & {
+  withBorderTop?: boolean;
+  fillWidth?: boolean;
+}) => (
   <div
     className={clx(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+      "self-end",
+      "w-full",
+      withBorderTop && "border-otl-gray-200 border-t",
+      "flex flex-row justify-end gap-[.75rem]",
+      "p-[1.5rem]",
+      !withBorderTop && "pt-0",
+      fillWidth && "[&>*]:flex-1",
       className,
     )}
     {...props}
@@ -107,7 +126,15 @@ const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
 >(({ className, ...props }, ref) => (
-  <DialogPrimitive.Title ref={ref} className={clx(className)} {...props} />
+  <DialogPrimitive.Title
+    ref={ref}
+    className={clx(
+      "text-body-lg text-txt-black-900",
+      "font-semibold",
+      className,
+    )}
+    {...props}
+  />
 ));
 
 const DialogDescription = React.forwardRef<
@@ -116,7 +143,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={clx(className)}
+    className={clx("text-txt-black-700 text-body-sm", "font-normal", className)}
     {...props}
   />
 ));

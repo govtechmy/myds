@@ -14,7 +14,7 @@ import { clx } from "../utils";
 type ButtonSize = "small" | "medium" | "large";
 type ButtonVariant = Exclude<keyof typeof variants, "base">;
 
-const variants = {
+export const variants = {
   base: "group flex select-none items-center gap-1.5 rounded-lg w-fit font-body font-medium outline-none transition disabled:cursor-not-allowed text-center active:translate-y-[0.5px]",
   reset: "active:translate-y-[0.5px]",
   "default-outline": clx(
@@ -72,7 +72,7 @@ const variants = {
   ),
 };
 
-const sizes: Record<"small" | "medium" | "large", string> = {
+export const sizes: Record<"small" | "medium" | "large", string> = {
   small: "py-1.5 px-2.5 text-sm rounded-sm",
   medium: "py-2 px-3 text-base rounded-md",
   large: "py-2.5 px-4 text-base rounded-md",
