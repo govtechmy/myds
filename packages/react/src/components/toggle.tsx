@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { clx } from "../utils";
 
 const toggleVariants = cva(
-  "relative inline-flex items-center rounded-full transition-colors ",
+  "relative inline-flex items-center rounded-full transition-colors focus:ring-fr-primary focus-visible:ring-fr-primary outline-none focus:ring-[3px] focus-visible:ring-[3px]",
   {
     variants: {
       size: {
@@ -179,9 +179,6 @@ export const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
           checked: context.checked,
           disabled: context.disabled,
         }),
-        "focus:ring-primary-600 focus-visible:ring-primary-600 outline-none focus:ring-[3px] focus-visible:ring-[3px]",
-        "focus:ring-primary-600 focus-visible:ring-primary-600 outline-none focus:ring-[3px] focus-visible:ring-[3px]",
-
         className,
       )}
     >

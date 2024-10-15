@@ -99,7 +99,8 @@ const meta: Meta<typeof Toggle> = {
       description: "Callback function when the checked state changes",
     },
     size: {
-      control: { type: "radio", options: ["medium", "large"] },
+      control: "inline-radio",
+      options: ["medium", "large"],
       description: "The size of the toggle",
     },
     disabled: {
