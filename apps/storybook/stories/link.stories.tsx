@@ -93,7 +93,7 @@ export const Default: Story = createStory({
 });
 
 /**
- * To create a link that looks like a button, you can nest the link component in a Button and set the asChild parameter.
+ * To create a link that looks like a button, you can nest the link component in a Button and set the `asChild` parameter.
  */
 export const ButtonAsLink: Story = {
   args: {
