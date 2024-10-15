@@ -15,6 +15,11 @@
       "type": "./src/components/button.tsx",
       "default": "./src/components/button.tsx"
     }
+,
+    "./toggle": {
+      "default": "./src/components/toggle.tsx",
+      "type": "./src/components/toggle.tsx"
+    }
   },
   "peerDependencies": {
     "@myds/tailwindcss": "workspace:*",
