@@ -79,14 +79,15 @@ const meta: Meta = {
     withCloseButton,
     withFooterTopBorder,
     withFooterFillWidth,
+    theme,
   }) => (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger className={theme}>
         <Button variant="danger-fill" size="medium">
           Padam data
         </Button>
       </DialogTrigger>
-      <DialogContent withCloseButton={withCloseButton}>
+      <DialogContent withCloseButton={withCloseButton} className={theme}>
         <DialogHeader>
           <DialogTitle>Adakah anda pasti?</DialogTitle>
           <DialogDescription>
@@ -150,6 +151,7 @@ const meta: Meta = {
   withCloseButton?: boolean;
   withFooterTopBorder?: boolean;
   withFooterFillWidth?: boolean;
+  theme?: "light" | "dark";
 }>;
 
 export default meta;
@@ -158,6 +160,14 @@ type Story = StoryObj<typeof meta>;
 /**
  * This story represents the dialog component with default variant.
  */
-export const Default: Story = createStory({
+export const DefaultLight: Story = createStory({
   withCloseButton: true,
 });
+
+export const DefaultDark: Story = createStory(
+  {
+    withCloseButton: true,
+    theme: "dark",
+  },
+  "dark",
+);

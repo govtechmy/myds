@@ -54,7 +54,7 @@ const DialogContent = React.forwardRef<
           "flex flex-col items-start",
           "shadow-lg sm:rounded-lg",
           "border-otl-gray-200 border",
-          "bg-gray-50",
+          "bg-bg-white",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
           "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]",
           "duration-200",
@@ -143,7 +143,8 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={clx("text-txt-black-700 text-body-sm", "font-normal", className)}
+    // TODO: twMerge() will incorrectly de-duplicate 'text-txt-black-700'
+    className={`${clx("text-txt-black-700")} ${clx(`text-body-sm className font-normal`)}`}
     {...props}
   />
 ));
