@@ -2,28 +2,19 @@ import React, { createContext, useContext, useId } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { clx } from "../utils";
 
-const toggleVariants = cva(
-  "relative inline-flex items-center rounded-full transition-colors focus:ring-fr-primary focus-visible:ring-fr-primary outline-none focus:ring-[3px] focus-visible:ring-[3px] data-[state=checked]:bg-bg-primary-600 data-[state=checked]:hover:bg-bg-primary-700 data-[state=unchecked]:bg-otl-gray-200 data-[state=unchecked]:hover:bg-otl-gray-300 data-[disabled]:cursor-not-allowed data-[disabled]:data-[state=checked]:bg-bg-primary-disabled data-[disabled]:data-[state=unchecked]:bg-bg-washed",
-  {
-    variants: {
-      size: {
-        medium: "w-[30px] h-[20px]",
-        large: "w-9 h-6",
-      },
-    },
-    defaultVariants: {
-      size: "medium",
-    },
-  },
-);
-
 const thumbVariants = cva(
-  "absolute left-[3px] top-[3px] z-10 rounded-full transition-transform duration-200 ease-in-out data-[state=checked]:bg-white data-[state=unchecked]:bg-white data-[disabled]:bg-bg-white",
+  [
+    "absolute block outline-none focus:ring-[3px] focus:ring-fr-primary bg-otl-gray-200 hover:bg-otl-gray-300 data-[state=checked]:bg-bg-primary-600 cursor-pointer rounded-full transition-color duration-200 z-10",
+    "before:content-[''] before:left-[3px] before:bottom-[3px] before:bg-white before:absolute before:rounded-full before:transition-all before:duration-200",
+    "peer-disabled:data-[state=checked]:bg-bg-primary-disabled peer-disabled:cursor-not-allowed peer-disabled:before:data-[state=checked]:bg-bg-white",
+  ],
   {
     variants: {
       size: {
-        medium: "w-[14px] h-[14px] data-[state=checked]:translate-x-[10px]",
-        large: "w-[18px] h-[18px] data-[state=checked]:translate-x-3",
+        medium:
+          "h-[20px] w-[30px] before:size-[14px] before:data-[state=checked]:translate-x-[10px]",
+        large:
+          "h-[24px] w-[36px] before:size-[18px] before:data-[state=checked]:translate-x-3",
       },
     },
     defaultVariants: {
@@ -32,7 +23,7 @@ const thumbVariants = cva(
   },
 );
 
-interface ToggleContextType extends VariantProps<typeof toggleVariants> {
+interface ToggleContextType extends VariantProps<typeof thumbVariants> {
   checked: boolean;
   disabled: boolean;
   onChange: () => void;
@@ -41,7 +32,7 @@ interface ToggleContextType extends VariantProps<typeof toggleVariants> {
 
 const ToggleContext = createContext<ToggleContextType | undefined>(undefined);
 
-export interface ToggleProps extends VariantProps<typeof toggleVariants> {
+export interface ToggleProps extends VariantProps<typeof thumbVariants> {
   defaultChecked?: boolean;
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
@@ -52,40 +43,45 @@ export interface ToggleProps extends VariantProps<typeof toggleVariants> {
 
 export const Toggle: React.FC<ToggleProps> = ({
   defaultChecked = false,
-  checked: controlledChecked,
+  checked,
   onCheckedChange,
   size = "medium",
   disabled = false,
   className = "",
   children,
 }) => {
-  const [internalChecked, setInternalChecked] = React.useState(defaultChecked);
-  const id = useId();
+  const [_checked, set_checked] = React.useState(
+    checked || defaultChecked || false,
+  );
 
   React.useEffect(() => {
-    if (controlledChecked !== undefined) {
-      setInternalChecked(controlledChecked);
-    }
-  }, [controlledChecked]);
-
-  const isControlled = controlledChecked !== undefined;
-  const checked = isControlled ? controlledChecked : internalChecked;
+    if (checked === undefined) return;
+    set_checked(checked);
+  }, [checked]);
 
   const handleChange = () => {
-    if (!disabled) {
-      const newChecked = !checked;
-      if (!isControlled) {
-        setInternalChecked(newChecked);
-      }
-      onCheckedChange?.(newChecked);
-    }
+    if (disabled) return;
+
+    set_checked(!_checked);
+    onCheckedChange?.(!_checked);
   };
 
   return (
     <ToggleContext.Provider
-      value={{ checked, disabled, size, onChange: handleChange, id }}
+      value={{
+        checked: _checked,
+        disabled,
+        size,
+        onChange: handleChange,
+        id: useId(),
+      }}
     >
-      <div className={clx("flex items-center", className)}>{children}</div>
+      <div
+        tabIndex={-1}
+        className={clx("flex items-start justify-between gap-2.5", className)}
+      >
+        {children}
+      </div>
     </ToggleContext.Provider>
   );
 };
@@ -100,14 +96,14 @@ export const ToggleLabel: React.FC<ToggleLabelProps> = ({
   className,
 }) => {
   const context = useContext(ToggleContext);
-  if (!context) throw new Error("ToggleLabel must be used within a Toggle");
+  if (!context) throw new Error("ToggleLabel must be used within Toggle");
 
   return (
     <label
       htmlFor={context.id}
       className={clx(
-        "text-txt-black-700 pr-2.5",
-        context.size === "medium" ? "text-sm" : "text-lg leading-[26px]",
+        "text-txt-black-700 font-medium",
+        context.size === "medium" ? "text-sm" : "text-lg",
         className,
       )}
     >
@@ -122,28 +118,34 @@ export interface ToggleThumbProps {
 
 export const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
   const context = useContext(ToggleContext);
-  if (!context) throw new Error("ToggleThumb must be used within a Toggle");
+  if (!context) throw new Error("ToggleThumb must be used within Toggle");
+
+  //* Handles keyboard interaction: Enter | Space
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      context.onChange();
+    }
+  };
 
   return (
-    <label
-      htmlFor={context.id}
-      tabIndex={0}
-      className={clx(toggleVariants({ size: context.size }), className)}
-      data-state={context.checked ? "checked" : "unchecked"}
-      data-disabled={context.disabled || undefined}
-    >
+    <label tabIndex={-1} className="relative inline-block">
       <input
         id={context.id}
         type="checkbox"
-        className="sr-only"
+        className="peer sr-only"
         checked={context.checked}
         onChange={context.onChange}
         disabled={context.disabled}
       />
       <span
+        tabIndex={0}
+        role="switch"
         className={thumbVariants({ size: context.size })}
+        onKeyDown={handleKeyDown}
         data-state={context.checked ? "checked" : "unchecked"}
-        data-disabled={context.disabled || undefined}
+        aria-checked={context.checked}
+        aria-disabled={context.disabled}
       />
     </label>
   );
