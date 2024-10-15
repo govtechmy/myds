@@ -44,19 +44,19 @@ const button_cva = cva(
         "danger-fill": [
           "bg-danger-600 border border-danger-600 text-white shadow-button",
           "hover:bg-danger-700",
-          "focus:ring focus:ring-fr-danger",
+          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-danger-disabled disabled:text-white-disabled disabled:border-bg-danger-disabled",
         ],
         "danger-outline": [
           "bg-bg-white border border-otl-danger-200 text-txt-danger shadow-button",
           "hover:bg-bg-danger-50",
-          "focus:ring focus:ring-fr-danger",
+          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-danger-disabled disabled:border-transparent",
         ],
         "danger-ghost": [
           "bg-transparent border border-transparent text-txt-danger",
           "hover:bg-bg-danger-50",
-          "focus:ring focus:ring-fr-danger",
+          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-danger-disabled disabled:border-transparent",
         ],
         "primary-fill": [
