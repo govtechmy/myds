@@ -3,75 +3,31 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { clx } from "../utils";
 
 const toggleVariants = cva(
-  "relative inline-flex items-center rounded-full transition-colors focus:ring-fr-primary focus-visible:ring-fr-primary outline-none focus:ring-[3px] focus-visible:ring-[3px]",
+  "relative inline-flex items-center rounded-full transition-colors focus:ring-fr-primary focus-visible:ring-fr-primary outline-none focus:ring-[3px] focus-visible:ring-[3px] data-[state=checked]:bg-bg-primary-600 data-[state=checked]:hover:bg-bg-primary-700 data-[state=unchecked]:bg-otl-gray-200 data-[state=unchecked]:hover:bg-otl-gray-300 data-[disabled]:cursor-not-allowed data-[disabled]:data-[state=checked]:bg-bg-primary-disabled data-[disabled]:data-[state=unchecked]:bg-bg-washed",
   {
     variants: {
       size: {
         medium: "w-[30px] h-[20px]",
         large: "w-9 h-6",
       },
-      checked: {
-        true: "bg-bg-primary-600 hover:bg-primary-700",
-        false: "bg-otl-gray-200 hover:bg-otl-gray-300",
-      },
-      disabled: {
-        true: "cursor-not-allowed",
-        false: "cursor-pointer",
-      },
     },
-    compoundVariants: [
-      {
-        checked: true,
-        disabled: true,
-        className: "bg-bg-primary-disabled",
-      },
-      {
-        checked: false,
-        disabled: true,
-        className: "bg-bg-washed",
-      },
-    ],
     defaultVariants: {
       size: "medium",
-      checked: false,
-      disabled: false,
     },
   },
 );
 
 const thumbVariants = cva(
-  "absolute left-[3px] top-[3px] z-10 rounded-full transition-transform duration-200 ease-in-out",
+  "absolute left-[3px] top-[3px] z-10 rounded-full transition-transform duration-200 ease-in-out data-[state=checked]:bg-white data-[state=unchecked]:bg-white data-[disabled]:bg-bg-white",
   {
     variants: {
       size: {
-        medium: "w-[14px] h-[14px]",
-        large: "w-[18px] h-[18px]",
-      },
-      checked: {
-        true: "",
-        false: "",
-      },
-      disabled: {
-        true: "bg-bg-white",
-        false: "bg-white",
+        medium: "w-[14px] h-[14px] data-[state=checked]:translate-x-[10px]",
+        large: "w-[18px] h-[18px] data-[state=checked]:translate-x-3",
       },
     },
-    compoundVariants: [
-      {
-        size: "medium",
-        checked: true,
-        className: "translate-x-[10px]",
-      },
-      {
-        size: "large",
-        checked: true,
-        className: "translate-x-3",
-      },
-    ],
     defaultVariants: {
       size: "medium",
-      checked: false,
-      disabled: false,
     },
   },
 );
@@ -85,8 +41,7 @@ interface ToggleContextType extends VariantProps<typeof toggleVariants> {
 
 const ToggleContext = createContext<ToggleContextType | undefined>(undefined);
 
-export interface ToggleProps
-  extends Omit<VariantProps<typeof toggleVariants>, "checked" | "disabled"> {
+export interface ToggleProps extends VariantProps<typeof toggleVariants> {
   defaultChecked?: boolean;
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
@@ -173,14 +128,9 @@ export const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
     <label
       htmlFor={context.id}
       tabIndex={0}
-      className={clx(
-        toggleVariants({
-          size: context.size,
-          checked: context.checked,
-          disabled: context.disabled,
-        }),
-        className,
-      )}
+      className={clx(toggleVariants({ size: context.size }), className)}
+      data-state={context.checked ? "checked" : "unchecked"}
+      data-disabled={context.disabled || undefined}
     >
       <input
         id={context.id}
@@ -191,11 +141,9 @@ export const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
         disabled={context.disabled}
       />
       <span
-        className={thumbVariants({
-          size: context.size,
-          checked: context.checked,
-          disabled: context.disabled,
-        })}
+        className={thumbVariants({ size: context.size })}
+        data-state={context.checked ? "checked" : "unchecked"}
+        data-disabled={context.disabled || undefined}
       />
     </label>
   );

@@ -264,17 +264,48 @@ export const ControlledToggle: Story = {
 ControlledToggle.storyName = "Controlled Toggle Example";
 
 export const ControlledToggleDark: Story = {
+  ...createStory({}, "dark"),
   render: () => {
     const [isChecked, setIsChecked] = React.useState(false);
     return (
-      <div className="dark bg-gray-800 p-4 text-white">
+      <div className="text-txt-black-700 bg-bg-white dark p-4">
         <Toggle checked={isChecked} onCheckedChange={setIsChecked}>
-          <ToggleLabel>{`Controlled Toggle (${isChecked ? "On" : "Off"})`}</ToggleLabel>
+          <ToggleLabel>{`Dark Controlled Toggle (${isChecked ? "On" : "Off"})`}</ToggleLabel>
           <ToggleThumb />
         </Toggle>
-        <p>Current state: {isChecked ? "On" : "Off"}</p>
+        <p className="mt-2">Current state: {isChecked ? "On" : "Off"}</p>
       </div>
     );
   },
 };
+
 ControlledToggleDark.storyName = "Controlled Toggle Example - Dark Mode";
+
+export const UncontrolledToggle: Story = {
+  render: () => (
+    <div>
+      <Toggle defaultChecked={false}>
+        <ToggleLabel>Uncontrolled Toggle</ToggleLabel>
+        <ToggleThumb />
+      </Toggle>
+      <p className="mt-2">This toggle manages its own state internally.</p>
+    </div>
+  ),
+};
+UncontrolledToggle.storyName = "Uncontrolled Toggle Example";
+
+export const UncontrolledToggleDark: Story = {
+  ...createStory({}, "dark"),
+  render: () => (
+    <div className="text-txt-black-700 bg-bg-white dark p-4">
+      <Toggle defaultChecked={false}>
+        <ToggleLabel>Dark Uncontrolled Toggle</ToggleLabel>
+        <ToggleThumb />
+      </Toggle>
+      <p className="mt-2">
+        This toggle manages its own state internally (Dark Mode).
+      </p>
+    </div>
+  ),
+};
+UncontrolledToggleDark.storyName = "Uncontrolled Toggle Example - Dark Mode";
