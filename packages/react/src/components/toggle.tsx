@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useContext, useId } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { clx } from "../utils";
 
@@ -76,13 +76,23 @@ const thumbVariants = cva(
   },
 );
 
+interface ToggleContextType extends VariantProps<typeof toggleVariants> {
+  checked: boolean;
+  disabled: boolean;
+  onChange: () => void;
+  id: string;
+}
+
+const ToggleContext = createContext<ToggleContextType | undefined>(undefined);
+
 export interface ToggleProps
-  extends Omit<VariantProps<typeof toggleVariants>, "checked"> {
+  extends Omit<VariantProps<typeof toggleVariants>, "checked" | "disabled"> {
   defaultChecked?: boolean;
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
+  disabled?: boolean;
   className?: string;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export const Toggle: React.FC<ToggleProps> = ({
@@ -94,23 +104,20 @@ export const Toggle: React.FC<ToggleProps> = ({
   className = "",
   children,
 }) => {
-  const isControlled = controlledChecked !== undefined;
-  const [internalChecked, setInternalChecked] = React.useState(
-    isControlled ? controlledChecked : defaultChecked,
-  );
-  const id = React.useId();
+  const [internalChecked, setInternalChecked] = React.useState(defaultChecked);
+  const id = useId();
 
   React.useEffect(() => {
-    if (isControlled) {
+    if (controlledChecked !== undefined) {
       setInternalChecked(controlledChecked);
     }
-  }, [isControlled, controlledChecked]);
+  }, [controlledChecked]);
 
+  const isControlled = controlledChecked !== undefined;
   const checked = isControlled ? controlledChecked : internalChecked;
-  const isDisabled = disabled === true;
 
   const handleChange = () => {
-    if (!isDisabled) {
+    if (!disabled) {
       const newChecked = !checked;
       if (!isControlled) {
         setInternalChecked(newChecked);
@@ -120,41 +127,32 @@ export const Toggle: React.FC<ToggleProps> = ({
   };
 
   return (
-    <div className={clx("flex items-center", className)}>
-      {React.Children.map(children, (child) =>
-        React.isValidElement(child)
-          ? React.cloneElement(child, {
-              checked,
-              disabled: isDisabled,
-              size,
-              onChange: handleChange,
-              id,
-            } as any)
-          : child,
-      )}
-    </div>
+    <ToggleContext.Provider
+      value={{ checked, disabled, size, onChange: handleChange, id }}
+    >
+      <div className={clx("flex items-center", className)}>{children}</div>
+    </ToggleContext.Provider>
   );
 };
 
 export interface ToggleLabelProps {
   children: React.ReactNode;
   className?: string;
-  size?: "medium" | "large";
-  id?: string;
 }
 
 export const ToggleLabel: React.FC<ToggleLabelProps> = ({
   children,
   className,
-  size = "medium",
-  id,
 }) => {
+  const context = useContext(ToggleContext);
+  if (!context) throw new Error("ToggleLabel must be used within a Toggle");
+
   return (
     <label
-      htmlFor={id}
+      htmlFor={context.id}
       className={clx(
-        "text-txt-black-700",
-        size === "medium" ? "text-sm" : "text-lg leading-[26px]",
+        "text-txt-black-700 pr-2.5",
+        context.size === "medium" ? "text-sm" : "text-lg leading-[26px]",
         className,
       )}
     >
@@ -163,40 +161,40 @@ export const ToggleLabel: React.FC<ToggleLabelProps> = ({
   );
 };
 
-export interface ToggleThumbProps
-  extends Omit<ToggleProps, "children" | "defaultChecked" | "onCheckedChange"> {
-  onChange?: () => void;
-  id?: string;
+export interface ToggleThumbProps {
+  className?: string;
 }
 
-export const ToggleThumb: React.FC<ToggleThumbProps> = ({
-  checked,
-  disabled,
-  size = "medium",
-  onChange,
-  className,
-  id,
-}) => {
-  const isDisabled = disabled === true;
+export const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
+  const context = useContext(ToggleContext);
+  if (!context) throw new Error("ToggleThumb must be used within a Toggle");
 
   return (
     <label
-      htmlFor={id}
+      htmlFor={context.id}
       className={clx(
-        toggleVariants({ size, checked, disabled: isDisabled }),
+        toggleVariants({
+          size: context.size,
+          checked: context.checked,
+          disabled: context.disabled,
+        }),
         className,
       )}
     >
       <input
-        id={id}
+        id={context.id}
         type="checkbox"
         className="sr-only"
-        checked={checked}
-        onChange={onChange}
-        disabled={isDisabled}
+        checked={context.checked}
+        onChange={context.onChange}
+        disabled={context.disabled}
       />
       <span
-        className={thumbVariants({ size, checked, disabled: isDisabled })}
+        className={thumbVariants({
+          size: context.size,
+          checked: context.checked,
+          disabled: context.disabled,
+        })}
       />
     </label>
   );
