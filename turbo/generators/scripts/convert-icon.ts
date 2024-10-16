@@ -14,7 +14,7 @@ import { FunctionComponent, SVGProps } from "react";
 * @param className
 * @returns ${name}Icon
 */
-export const ${name}Icon: FunctionComponent<SVGProps<SVGSVGElement>> = ({ className }) => {
+export const ${name}Icon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return ${sanitizeToReactAttrs(text)}
 }`;
 };
@@ -23,7 +23,7 @@ const sanitizeToReactAttrs = (text: string) => {
   return text
     .replace(
       `xmlns="http://www.w3.org/2000/svg"`,
-      `xmlns="http://www.w3.org/2000/svg" className={className}`,
+      `xmlns="http://www.w3.org/2000/svg" {...props}`,
     )
     .replaceAll("clip-rule", "clipRule")
     .replaceAll("clip-path", "clipPath")

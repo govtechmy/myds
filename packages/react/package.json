@@ -15,9 +15,17 @@
       "type": "./src/components/toast.tsx",
       "default": "./src/components/toast.tsx"
     },
+    "./breadcrumb": {
+      "type": "./src/components/breadcrumb.tsx",
+      "default": "./src/components/breadcrumb.tsx"
+    },
     "./button": {
       "type": "./src/components/button.tsx",
       "default": "./src/components/button.tsx"
+    },
+    "./toggle": {
+      "type": "./src/components/toggle.tsx",
+      "default": "./src/components/toggle.tsx"
     }
   },
   "peerDependencies": {
