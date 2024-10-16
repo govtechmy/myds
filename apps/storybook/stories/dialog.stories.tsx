@@ -7,11 +7,13 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
+  DialogIcon,
   DialogTitle,
   DialogTrigger,
 } from "@myds/react/dialog";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
+import ArrowForward from "../react/arrow-forward";
 
 /**
  * ### Overview
@@ -89,6 +91,9 @@ const meta: Meta = {
       </DialogTrigger>
       <DialogContent withCloseButton={withCloseButton} className={theme}>
         <DialogHeader>
+          <DialogIcon variant="danger">
+            <ArrowForward />
+          </DialogIcon>
           <DialogTitle>Adakah anda pasti?</DialogTitle>
           <DialogDescription>
             Tindakan ini tidak boleh dibatalkan. Ini akan menghapuskan data anda
@@ -96,7 +101,7 @@ const meta: Meta = {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter
-          withBorderTop={withFooterTopBorder}
+          border={withFooterTopBorder}
           fillWidth={withFooterFillWidth}
         >
           <DialogClose asChild>
