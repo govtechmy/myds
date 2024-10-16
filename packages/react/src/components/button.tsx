@@ -12,6 +12,8 @@ import { clx } from "../utils";
 import { cva, VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
 
+/*========================================================================================================================*/
+
 /**
  * Button component that supports various styles and sizes.
  *
@@ -77,7 +79,7 @@ const button_cva = cva(
           "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-primary-disabled disabled:border-transparent",
         ],
-        unset: null
+        unset: null,
       },
 
       size: {
@@ -148,10 +150,14 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
   },
 );
 
+/*========================================================================================================================*/
+
 const ButtonContext = createContext<VariantProps<typeof button_cva>>({
   variant: "primary-fill",
   size: "small",
 });
+
+/*========================================================================================================================*/
 
 /**
  * ButtonCounter component is a forward-ref exotic component that utilizes the ButtonContext
@@ -194,6 +200,8 @@ const button_counter_cva = cva(
   },
 );
 
+/*========================================================================================================================*/
+
 interface ButtonCounterProps {
   children: ReactNode;
   ref?: LegacyRef<HTMLSpanElement | null>;
@@ -212,6 +220,8 @@ const ButtonCounter: ForwardRefExoticComponent<ButtonCounterProps> = forwardRef(
 );
 
 ButtonCounter.displayName = "ButtonCounter";
+
+/*========================================================================================================================*/
 
 /**
  * `ButtonIcon` forwards a ref to its child and applies a class based on the button size.

@@ -16,37 +16,37 @@ import React from "react";
  * > 'Button' ditekan dengan jari. -- ChatGPT
  *
  * ### Usage
- * ```ts
+ * ```tsx
  * import { Button, ButtonIcon, ButtonCounter } from "@myds/react/button"
  *
- * // Text only
- * <Button variant="primary-fill" size="medium" onClick={() => alert('Button clicked!')}>Welcome</Button>
+ * //* Text only
+ * <Button variant="primary-fill" size="medium">Welcome</Button>
  *
- * // Text + Right Icon
- * <Button variant="primary-fill" size="medium" onClick={() => alert('Button clicked!')}>
+ * //* Text + Right Icon
+ * <Button variant="primary-fill" size="medium">
  *    <span>Go forward</span>
  *    <ButtonIcon>
  *      <ArrowForward />
- *    <ButtonIcon>
+ *    </ButtonIcon>
  * </Button>
  *
- * // Text + Left Icon
- * <Button variant="primary-fill" size="medium" onClick={() => alert('Button clicked!')}>
+ * //* Text + Left Icon
+ * <Button variant="primary-fill" size="medium">
  *    <ButtonIcon>
  *      <ArrowBack />
- *    <ButtonIcon>
+ *    </ButtonIcon>
  *    <span>Go back</span>
  * </Button>
  *
- * // Icon only
- * <Button variant="primary-fill" size="medium" onClick={() => alert('Button clicked!')}>
+ * //* Icon only
+ * <Button variant="primary-fill" size="medium">
  *    <ButtonIcon>
  *      <ArrowBack />
- *    <ButtonIcon>
+ *    </ButtonIcon>
  * </Button>
  
-* // Text + Counter only
- * <Button variant="primary-fill" size="medium" onClick={() => alert('Button clicked!')}>
+* //* Text + Counter only
+ * <Button variant="primary-fill" size="medium">
  *   Counter: 
  *   <ButtonCounter>3</ButtonCounter>
  * </Button>
