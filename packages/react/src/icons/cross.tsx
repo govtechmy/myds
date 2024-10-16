@@ -1,24 +1,33 @@
-import React, { FC } from "react";
+import React from "react";
+import { FunctionComponent, SVGProps } from "react";
 
-const Cross: FC<React.SVGProps<SVGSVGElement>> = ({ ...props }) => {
+/**
+ * Cross Icon
+ * @param className
+ * @returns CrossIcon
+ */
+export const CrossIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (
+  props,
+) => {
   return (
     <svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path
-        d="M13.32 4.67993L4.67999 13.3199M4.67999 4.67993L13.32 13.3199"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <g id="Icon/cross">
+        <path
+          id="Vector"
+          d="M14.8 5.20001L5.20001 14.8M5.20001 5.20001L14.8 14.8"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
     </svg>
   );
 };
-
-export default Cross;
