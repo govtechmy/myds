@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "storybook build",
+    "build": "storybook build -o dist",
     "start": "serve storybook-static"
   },
   "dependencies": {
