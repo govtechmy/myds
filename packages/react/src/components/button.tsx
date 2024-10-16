@@ -266,4 +266,4 @@ const ButtonIcon: ForwardRefExoticComponent<ButtonIconProps> = forwardRef(
 
 ButtonIcon.displayName = "ButtonIcon";
 
-export { Button, ButtonIcon, ButtonCounter };
+export { Button, ButtonIcon, ButtonCounter, button_cva };
