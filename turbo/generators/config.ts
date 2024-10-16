@@ -1,5 +1,5 @@
 import { PlopTypes } from "@turbo/gen";
-
+import convertIcon from "./scripts/convert-icon";
 interface ComponentPrompt {
   framework: "react" | "vue" | "angular";
   title: string;
@@ -122,6 +122,44 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
           templateFile: "templates/react-hook.hbs",
         });
       }
+      return actions;
+    },
+  });
+
+  // Icon generator
+  plop.setGenerator("icon", {
+    description: "Builds React component icons from SVG",
+    prompts: [
+      {
+        type: "list",
+        choices: ["react"], // vue and angular are not supported yet
+        default: "react",
+        name: "framework",
+        message: "For which library/framework? ",
+      },
+      // {
+      //   type: "input",
+      //   name: "title",
+      //   message: "Hook name:",
+      //   validate: (input: string) => {
+      //     if (input.includes(".")) {
+      //       return "Component name cannot include an extension";
+      //     }
+      //     if (input.includes(" ")) {
+      //       return "Component name cannot include spaces";
+      //     }
+      //     if (!input) {
+      //       return "Component name is required";
+      //     }
+      //     return true;
+      //   },
+      // },
+    ],
+    actions: (data) => {
+      const _data = data as ComponentPrompt;
+      const actions: PlopTypes.ActionType[] = [];
+
+      convertIcon({ framework: _data.framework });
       return actions;
     },
   });
