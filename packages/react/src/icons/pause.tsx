@@ -6,8 +6,8 @@ import { FunctionComponent, SVGProps } from "react";
 * @param className
 * @returns PauseIcon
 */
-export const PauseIcon: FunctionComponent<SVGProps<SVGSVGElement>> = ({ className }) => {
-    return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+export const PauseIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+    return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="Icon/pause">
 <g id="Vector">
 <path d="M5 16C4.44772 16 4 15.5523 4 15V5C4 4.44772 4.44772 4 5 4H6.5C7.05228 4 7.5 4.44772 7.5 5V15C7.5 15.5523 7.05228 16 6.5 16H5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>

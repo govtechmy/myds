@@ -6,8 +6,8 @@ import { FunctionComponent, SVGProps } from "react";
 * @param className
 * @returns MobileIcon
 */
-export const MobileIcon: FunctionComponent<SVGProps<SVGSVGElement>> = ({ className }) => {
-    return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+export const MobileIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+    return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="Icon/mobile">
 <g id="Vector">
 <path d="M10.5 14.5C10.5 14.7761 10.2761 15 10 15C9.72386 15 9.5 14.7761 9.5 14.5C9.5 14.2239 9.72386 14 10 14C10.2761 14 10.5 14.2239 10.5 14.5Z" fill="#18181B"/>

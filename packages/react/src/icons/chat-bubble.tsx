@@ -6,8 +6,8 @@ import { FunctionComponent, SVGProps } from "react";
 * @param className
 * @returns ChatBubbleIcon
 */
-export const ChatBubbleIcon: FunctionComponent<SVGProps<SVGSVGElement>> = ({ className }) => {
-    return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+export const ChatBubbleIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+    return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="Icon/chat-bubble">
 <g id="Vector">
 <path d="M7.5 10C7.5 10.2761 7.27614 10.5 7 10.5C6.72386 10.5 6.5 10.2761 6.5 10C6.5 9.72386 6.72386 9.5 7 9.5C7.27614 9.5 7.5 9.72386 7.5 10Z" fill="#18181B"/>

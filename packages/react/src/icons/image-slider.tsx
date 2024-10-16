@@ -6,8 +6,8 @@ import { FunctionComponent, SVGProps } from "react";
 * @param className
 * @returns ImageSliderIcon
 */
-export const ImageSliderIcon: FunctionComponent<SVGProps<SVGSVGElement>> = ({ className }) => {
-    return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+export const ImageSliderIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+    return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="Icon/image-slider">
 <path id="Vector" d="M3 12.5L6.05917 8.44336C6.74054 7.57659 8.04396 7.54824 8.7624 8.38456M8.25 9.75C9.00902 8.78454 10.553 6.77681 11.3136 5.81265C11.9963 4.95148 13.2955 4.92508 14.0124 5.75954L17.5 10M3.75 13.25H16.25C17.2165 13.25 18 12.4665 18 11.5V4.5C18 3.5335 17.2165 2.75 16.25 2.75H3.75C2.7835 2.75 2 3.5335 2 4.5V11.5C2 12.4665 2.7835 13.25 3.75 13.25Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 <g id="Vector_2">

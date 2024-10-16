@@ -6,8 +6,8 @@ import { FunctionComponent, SVGProps } from "react";
 * @param className
 * @returns SettingIcon
 */
-export const SettingIcon: FunctionComponent<SVGProps<SVGSVGElement>> = ({ className }) => {
-    return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+export const SettingIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+    return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="Icon/setting">
 <g id="Vector">
 <path d="M13 10.3539C13 12.0107 11.6569 13.3539 10 13.3539C8.34315 13.3539 7 12.0107 7 10.3539C7 8.697 8.34315 7.35385 10 7.35385C11.6569 7.35385 13 8.697 13 10.3539Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

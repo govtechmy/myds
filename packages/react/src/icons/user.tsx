@@ -6,8 +6,8 @@ import { FunctionComponent, SVGProps } from "react";
 * @param className
 * @returns UserIcon
 */
-export const UserIcon: FunctionComponent<SVGProps<SVGSVGElement>> = ({ className }) => {
-    return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+export const UserIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+    return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="Icon/user">
 <g id="Vector">
 <path d="M10 9.25C11.7949 9.25 13.25 7.79493 13.25 6C13.25 4.20507 11.7949 2.75 10 2.75C8.20508 2.75 6.75 4.20507 6.75 6C6.75 7.79493 8.20508 9.25 10 9.25Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
