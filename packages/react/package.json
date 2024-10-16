@@ -23,6 +23,10 @@
       "type": "./src/components/button.tsx",
       "default": "./src/components/button.tsx"
     },
+    "./dialog": {
+      "type": "./src/components/dialog.tsx",
+      "default": "./src/components/dialog.tsx"
+    },
     "./link": {
       "type": "./src/components/link.tsx",
       "default": "./src/components/link.tsx"
@@ -44,6 +48,7 @@
     "react-dom": "^18"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-toast": "^1.2.2",
     "class-variance-authority": "^0.7.0",
