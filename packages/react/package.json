@@ -7,6 +7,10 @@
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
     },
+    "./hooks": {
+      "type": "./src/hooks/index.ts",
+      "default": "./src/hooks/index.ts"
+    },
     "./toast": {
       "type": "./src/components/toast.tsx",
       "default": "./src/components/toast.tsx"

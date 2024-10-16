@@ -5,7 +5,8 @@ import defaultTheme from "tailwindcss/defaultTheme";
 const config: Config = {
   content: [
     "../react/src/**/*.{js,jsx,ts,tsx}",
-    "../../apps/storybook/react/**/*.{js,jsx,ts,tsx}",
+    "../../apps/storybook/**/*.{js,jsx,ts,tsx}",
+    "../../apps/storybook/**/*.stories.{js,jsx,ts,tsx}",
   ],
   theme: {
     colors: ({ colors, theme }) => ({
@@ -221,11 +222,11 @@ const config: Config = {
     keyframes: {
       "decrease-width": {
         "0%": { width: "100%" },
-        "100%": { transform: "0%" },
+        "100%": { width: "0%" },
       },
     },
     animation: {
-      expire: "decrease-width 5s forwards",
+      expire: "decrease-width 5s linear",
     },
   },
   plugins: [tailwindcssAnimate],
