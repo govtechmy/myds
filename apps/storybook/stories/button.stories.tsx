@@ -92,7 +92,7 @@ const meta = {
       description: "Available button variants",
       control: "select",
       options: [
-        "reset",
+        "unset",
         "primary-fill",
         "primary-outline",
         "primary-ghost",

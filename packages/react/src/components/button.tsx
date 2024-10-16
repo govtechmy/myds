@@ -10,6 +10,7 @@ import React, {
 } from "react";
 import { clx } from "../utils";
 import { cva, VariantProps } from "class-variance-authority";
+import { Slot } from "@radix-ui/react-slot";
 
 /*========================================================================================================================*/
 
@@ -23,8 +24,8 @@ import { cva, VariantProps } from "class-variance-authority";
  */
 const button_cva = cva(
   [
-    "group flex select-none items-center gap-1.5 rounded-lg w-fit",
-    "font-body font-medium outline-none transition disabled:cursor-not-allowed,",
+    "group flex select-none items-center gap-1.5 rounded-md w-fit",
+    "font-body font-medium outline-none transition disabled:cursor-not-allowed",
     "text-center active:translate-y-[0.5px]",
   ],
   {
@@ -33,60 +34,58 @@ const button_cva = cva(
         "default-outline": [
           "bg-bg-white border border-otl-gray-200 text-txt-black-700 shadow-button",
           "hover:bg-bg-white-hover hover:border-otl-gray-300 hover:text-txt-black-900",
-          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-black-disabled disabled:border-transparent",
         ],
         "default-ghost": [
           "bg-transparent border border-transparent text-txt-black-700",
           "hover:bg-bg-white-hover",
-          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-black-disabled disabled:border-transparent",
         ],
         "danger-fill": [
           "bg-danger-600 border border-danger-600 text-white shadow-button",
           "hover:bg-danger-700",
-          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-danger-disabled disabled:text-white-disabled disabled:border-bg-danger-disabled",
         ],
         "danger-outline": [
           "bg-bg-white border border-otl-danger-200 text-txt-danger shadow-button",
           "hover:bg-bg-danger-50",
-          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-danger-disabled disabled:border-transparent",
         ],
         "danger-ghost": [
           "bg-transparent border border-transparent text-txt-danger",
           "hover:bg-bg-danger-50",
-          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-danger-disabled disabled:border-transparent",
         ],
-
         "primary-fill": [
           "bg-primary-600 border border-primary-600 text-white shadow-button",
           "hover:bg-primary-700",
-          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-primary-disabled disabled:text-white-disabled disabled:border-bg-primary-disabled",
         ],
-
         "primary-outline": [
           "bg-bg-white border border-otl-primary-200 text-txt-primary shadow-button",
           "hover:bg-bg-primary-50",
-          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
+          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-primary-disabled disabled:border-transparent",
         ],
-
         "primary-ghost": [
           "bg-transparent border border-transparent text-txt-primary",
           "hover:bg-bg-primary-50",
-          "focus:ring ring-fr-primary/0 focus:ring-fr-primary",
-          "disabled:bg-bg-white-disabled disabled:text-txt-primary-disabled disabled:border-transparent rounded-sm",
+          "focus:ring focus:ring-fr-primary",
+          "disabled:bg-bg-white-disabled disabled:text-txt-primary-disabled disabled:border-transparent",
         ],
+        unset: null,
       },
 
       size: {
-        small: "py-1.5 px-2.5 text-sm rounded-sm",
-        medium: "py-2 px-3 text-base rounded-md",
-        large: "py-2.5 px-4 text-base rounded-md",
+        small: "py-1.5 px-2.5 text-sm",
+        medium: "py-2 px-3 text-base",
+        large: "py-2.5 px-4 text-base",
       },
     },
     defaultVariants: {
@@ -98,7 +97,9 @@ const button_cva = cva(
 
 interface ButtonProps
   extends ComponentProps<"button">,
-    VariantProps<typeof button_cva> {}
+    VariantProps<typeof button_cva> {
+  asChild?: boolean;
+}
 
 const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
   (
@@ -108,6 +109,7 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
       variant = "primary-fill",
       size = "small",
       children,
+      asChild = false,
       ...props
     },
     ref,
@@ -128,10 +130,11 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
         }[size],
       );
     };
+    const Comp = asChild ? Slot : "button";
 
     return (
       <ButtonContext.Provider value={{ variant, size }}>
-        <button
+        <Comp
           ref={ref}
           type={type}
           className={clx(
@@ -141,7 +144,7 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
           {...props}
         >
           {children}
-        </button>
+        </Comp>
       </ButtonContext.Provider>
     );
   },
@@ -182,6 +185,7 @@ const button_counter_cva = cva(
         "danger-ghost": "",
         "primary-outline": "",
         "primary-ghost": "",
+        unset: "",
       },
       size: {
         small: "h-4.5 w-4.5 text-sm",
@@ -261,7 +265,5 @@ const ButtonIcon: ForwardRefExoticComponent<ButtonIconProps> = forwardRef(
 );
 
 ButtonIcon.displayName = "ButtonIcon";
-
-/*========================================================================================================================*/
 
 export { Button, ButtonIcon, ButtonCounter };
