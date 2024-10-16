@@ -1,8 +1,9 @@
-import type { Config } from "tailwindcss/types/config";
+import type { PresetsConfig } from "tailwindcss/types/config";
 import tailwindcssAnimate from "tailwindcss-animate";
 import defaultTheme from "tailwindcss/defaultTheme";
 
-const config: Config = {
+const config: PresetsConfig = {
+  //* `content` is for debugging purpose only -- inspect the generated css in styles/output.tailwind.css
   content: [
     "../react/src/**/*.{js,jsx,ts,tsx}",
     "../../apps/storybook/**/*.{js,jsx,ts,tsx}",
