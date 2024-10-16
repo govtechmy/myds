@@ -17,7 +17,7 @@ import React from "react";
  * > Lipat-melipat seperti kipas, Membuka rahsia satu persatu. Accordion mengembang dan rapat, Menyusun info dengan teratur. -- Claude
  *
  * ### Usage
- * ```ts
+ * ```tsx
  * import {
  *   AccordionTrigger,
  *   AccordionContent,
@@ -71,19 +71,18 @@ const meta = {
     type: {
       description:
         "Determines whether one or multiple items can be opened at the same time.",
-      control: false,
+      control: "inline-radio",
       options: ["single", "multiple"],
       table: {
         type: { summary: "enum", detail: '"single" | "multiple"' },
         defaultValue: { summary: '"single"' },
         category: "Accordion Props",
       },
-      defaultValue: "single",
     },
     value: {
       description:
         'The controlled value(s) of the item(s) to expand. Use string for "single" type and string[] for "multiple" type.',
-      control: false,
+      control: "text",
       table: {
         type: { summary: "string | string[]" },
         defaultValue: { summary: "- / []" },
@@ -93,23 +92,14 @@ const meta = {
     defaultValue: {
       description:
         'The default value(s) of the item(s) to expand. Use string for "single" type and string[] for "multiple" type.',
-      control: false,
+      control: "text",
       table: {
         type: { summary: "string | string[]" },
         defaultValue: { summary: "- / []" },
         category: "Accordion Props",
       },
     },
-    onValueChange: {
-      description: "Event handler called when the expanded state changes",
-      action: "onValueChange",
-      control: false,
-      table: {
-        type: { summary: "function" },
-        defaultValue: { summary: "-" },
-        category: "Accordion Props",
-      },
-    },
+
     collapsible: {
       description: "Allows closing content when clicking trigger of open item.",
       control: "boolean",
@@ -175,7 +165,7 @@ export const AccordionDark: Story = createStory(
           aesthetic.
         </AccordionContent>
       </AccordionItem>,
-      <AccordionItem key="item-3" value="item-3">
+      <AccordionItem key="item-33" value="item-3">
         <AccordionTrigger>Is it animated?</AccordionTrigger>
         <AccordionContent>
           Yes. It's animated by default, but you can disable it if you prefer.

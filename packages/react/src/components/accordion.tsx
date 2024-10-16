@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import * as AccordionBase from "@radix-ui/react-accordion";
 import { clx } from "../utils";
-import ChevronDown from "../icons/chevron-down";
+import { ChevronDownIcon } from "../icons/chevron-down";
 
 /**
  * Props for Accordion component.
@@ -16,30 +16,12 @@ import ChevronDown from "../icons/chevron-down";
  * <Accordion propName="value" />
  */
 
-type AccordionProps = Omit<
-  AccordionBase.AccordionSingleProps & AccordionBase.AccordionMultipleProps,
-  "dir" | "orientation" | "type"
-> & {
-  type?: "single" | "multiple";
-};
-
 const Accordion = React.forwardRef<
   React.ElementRef<typeof AccordionBase.Root>,
-  AccordionProps
->(
-  (
-    { collapsible = true, disabled = false, type = "single", ...props },
-    forwardedRef,
-  ) => (
-    <AccordionBase.Root
-      type={type as "single" | "multiple"}
-      collapsible={type === "single" ? collapsible : undefined}
-      disabled={disabled}
-      {...props}
-      ref={forwardedRef}
-    />
-  ),
-);
+  React.ComponentProps<typeof AccordionBase.Root>
+>((props, forwardedRef) => (
+  <AccordionBase.Root {...props} ref={forwardedRef} />
+));
 
 Accordion.displayName = "Accordion";
 
@@ -49,8 +31,8 @@ const AccordionItem = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
   <AccordionBase.Item
     className={clx(
-      "border-otl-gray-200 bg-bg-white mt-px overflow-hidden border-b first:mt-0",
-      "focus-within:relative focus-within:z-10 focus-within:shadow-lg",
+      "border-otl-gray-200 bg-bg-white group mt-px overflow-hidden border-b first:mt-0",
+      "focus:ring-fr-primary outline-none focus-within:relative focus-within:z-10 focus-within:shadow-lg",
       className,
     )}
     {...props}
@@ -67,15 +49,16 @@ const AccordionTrigger = React.forwardRef<
   <AccordionBase.Header className="flex">
     <AccordionBase.Trigger
       className={clx(
-        "text-txt-black-500 font-body bg-bg-white hover:text-txt-black-900 group flex flex-1 cursor-pointer items-center justify-between py-4 text-base font-medium leading-none hover:underline",
+        "text-txt-black-500 font-body bg-bg-white hover:text-txt-black-900 data-[state=open]:text-txt-black-900 group flex flex-1 cursor-pointer items-center justify-between py-4 text-base font-medium leading-none hover:underline",
+        "outline-none focus-visible:underline",
         className,
       )}
       {...props}
       ref={forwardedRef}
     >
       {children}
-      <ChevronDown
-        className="text-txt-black-500 transition-transform duration-300 ease-[cubic-bezier(0.87,_0,_0.13,_1)] group-data-[state=open]:rotate-180"
+      <ChevronDownIcon
+        className="text-txt-black-500 transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-180"
         aria-hidden
       />
     </AccordionBase.Trigger>
@@ -88,13 +71,15 @@ const AccordionContent = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
   <AccordionBase.Content
     className={clx(
-      "text-txt-black-700 font-body pb-4 pr-9 text-sm font-normal",
+      "text-txt-black-700 font-body relative overflow-hidden text-sm font-normal transition-all duration-300",
+      "data-[state=open]:animate-slide-down data-[state=closed]:animate-slide-up",
+      "data-[state=closed]:opacity-0 data-[state=open]:opacity-100",
       className,
     )}
     {...props}
     ref={forwardedRef}
   >
-    <div>{children}</div>
+    <div className="overflow-hidden pb-4 pr-9">{children}</div>
   </AccordionBase.Content>
 ));
 
