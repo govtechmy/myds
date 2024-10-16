@@ -107,9 +107,7 @@ export const ButtonAsLink: Story = {
   },
   render: (args) => (
     <Button asChild>
-      <Link {...args}>
-        Ask a question
-      </Link>
+      <Link {...args}>Ask a question</Link>
     </Button>
   ),
 };
