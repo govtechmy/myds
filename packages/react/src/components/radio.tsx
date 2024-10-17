@@ -118,8 +118,8 @@ const RadioLabel = ({
     <label
       className={clx(
         "text-txt-black-700 font-medium",
-        size === "small" && "text-sm",
-        size === "medium" && "text-md",
+        size === "small" && "text-body-sm",
+        size === "medium" && "text-body-md",
         size === "large" && "text-lg",
         disabled && "text-txt-black-disabled",
         className,
@@ -144,8 +144,8 @@ const RadioHintText = ({
       className={clx(
         "text-txt-black-500",
         size === "small" && "text-xs",
-        size === "medium" && "text-sm",
-        size === "large" && "text-md",
+        size === "medium" && "text-body-sm",
+        size === "large" && "text-body-md",
         disabled && "text-otl-gray-300",
         className,
       )}
