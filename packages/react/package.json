@@ -11,6 +11,10 @@
       "type": "./src/components/pill.tsx",
       "default": "./src/components/pill.tsx"
     },
+    "./tabs": {
+      "type": "./src/components/tabs.tsx",
+      "default": "./src/components/tabs.tsx"
+    },
     "./hooks": {
       "type": "./src/hooks/index.ts",
       "default": "./src/hooks/index.ts"
@@ -61,9 +65,11 @@
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.1",
-    "@radix-ui/react-radio-group": "^1.2.1",
     "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-navigation-menu": "^1.2.0",
+    "@radix-ui/react-radio-group": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",
     "class-variance-authority": "^0.7.0",
     "mitt": "^3.0.1",
