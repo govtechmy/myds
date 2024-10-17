@@ -6,6 +6,11 @@
     "./utils": {
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
+    }
+,
+    "./tag": {
+      "type": "./src/components/tag.tsx",
+      "default": "./src/components/tag.tsx"
     },
     "./hooks": {
       "type": "./src/hooks/index.ts",
