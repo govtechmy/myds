@@ -31,11 +31,11 @@ Tabs.displayName = TabsPrimitive.Root.displayName;
 /*========================================================================================================================*/
 
 const tabs_list_cva = cva(
-  "relative flex flex-row items-center justify-start font-medium",
+  "relative flex flex-row items-center space-x-1 justify-start font-medium",
   {
     variants: {
       variant: {
-        pill: "bg-transparent rounded-full",
+        pill: ["bg-transparent rounded-full"],
         enclosed: "bg-bg-washed rounded-md",
         line: "before:h-0.5 before:content-[''] before:absolute before:-bottom-2.5 before:bg-otl-gray-200 before:left-0 before:right-0 mb-2",
       },
@@ -76,14 +76,19 @@ TabsList.displayName = TabsPrimitive.List.displayName;
 const tabs_trigger_cva = cva(
   [
     "relative flex gap-1 items-center text-txt-black-500 hover:text-txt-black-900 data-[state=active]:text-txt-black-900 outline-none border border-transparent",
-    "focus:ring-2 focus:ring-fr-primary",
+    "focus:ring-2 focus:ring-fr-primary space",
   ],
   {
     variants: {
       variant: {
-        pill: "bg-transparent data-[state=active]:bg-bg-washed-active transition-colors rounded-full",
-        enclosed:
+        pill: [
+          "bg-transparent data-[state=active]:bg-bg-washed-active transition-colors rounded-full",
+          "before:h-auto before:w-[1px] before:content-[''] before:absolute before:-left-1 before:bg-otl-gray-300 before:first-of-type:hidden",
+        ],
+        enclosed: [
           "data-[state=active]:bg-bg-dialog-active rounded-md transition-[border] data-[state=active]:border-otl-gray-200",
+          "before:h-auto before:w-[1px] before:content-[''] before:absolute before:-left-1 before:bg-otl-gray-300 before:first-of-type:hidden",
+        ],
         line: "rounded-md before:content-[''] before:absolute before:-bottom-2.5 before:left-0 before:right-0 before:data-[state=active]:bg-primary-600 before:h-0.5 before:transition-all before:duration-200",
       },
       size: {
@@ -92,6 +97,16 @@ const tabs_trigger_cva = cva(
       },
     },
     compoundVariants: [
+      {
+        variant: ["pill", "enclosed"],
+        size: "small",
+        className: "before:py-2",
+      },
+      {
+        variant: ["pill", "enclosed"],
+        size: "medium",
+        className: " before:py-2.5",
+      },
       {
         variant: "line",
         size: "small",
