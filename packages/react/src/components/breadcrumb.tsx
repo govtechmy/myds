@@ -2,11 +2,11 @@ import { Slot } from "@radix-ui/react-slot";
 import React, { ComponentProps, ForwardRefExoticComponent } from "react";
 import { clx } from "../utils";
 import { cva, VariantProps } from "class-variance-authority";
-import ChevronRight from "../icons/chevron-right";
+import { ChevronRightIcon } from "../icons/chevron-right";
 
 const breadcrumb_cva = cva(
   [
-    "group flex flex-wrap select-none items-center font-body font-medium text-sm py-1 px-3 rounded-md",
+    "group flex flex-wrap select-none items-center font-body font-medium text-body-sm py-1 px-3 rounded-md gap-1",
   ],
   {
     variants: {
@@ -88,10 +88,10 @@ const BreadcrumbSeparator = ({
   <li
     role="presentation"
     aria-hidden="true"
-    className={clx("[&>svg]:stroke-bg-black-400 [&>svg]:size-6", className)}
+    className={clx("[&>svg]:text-bg-black-400 [&>svg]:size-6", className)}
     {...props}
   >
-    {children || <ChevronRight />}
+    {children || <ChevronRightIcon />}
   </li>
 );
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";

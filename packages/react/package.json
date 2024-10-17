@@ -12,6 +12,14 @@
       "type": "./src/components/tag.tsx",
       "default": "./src/components/tag.tsx"
     },
+    "./pill": {
+      "type": "./src/components/pill.tsx",
+      "default": "./src/components/pill.tsx"
+    },
+    "./tabs": {
+      "type": "./src/components/tabs.tsx",
+      "default": "./src/components/tabs.tsx"
+    },
     "./hooks": {
       "type": "./src/hooks/index.ts",
       "default": "./src/hooks/index.ts"
@@ -20,13 +28,25 @@
       "type": "./src/components/toast.tsx",
       "default": "./src/components/toast.tsx"
     },
+    "./radio": {
+      "type": "./src/components/radio.tsx",
+      "default": "./src/components/radio.tsx"
+    },
     "./breadcrumb": {
       "type": "./src/components/breadcrumb.tsx",
       "default": "./src/components/breadcrumb.tsx"
     },
+    "./accordion": {
+      "default": "./src/components/accordion.tsx",
+      "type": "./src/components/accordion.tsx"
+    },
     "./button": {
       "type": "./src/components/button.tsx",
       "default": "./src/components/button.tsx"
+    },
+    "./dialog": {
+      "type": "./src/components/dialog.tsx",
+      "default": "./src/components/dialog.tsx"
     },
     "./link": {
       "type": "./src/components/link.tsx",
@@ -49,7 +69,12 @@
     "react-dom": "^18"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.1",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-navigation-menu": "^1.2.0",
+    "@radix-ui/react-radio-group": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",
     "class-variance-authority": "^0.7.0",
     "mitt": "^3.0.1",

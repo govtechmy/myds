@@ -18,9 +18,6 @@
     },
     "./dark.css": {
       "default": "./styles/theme/dark.css"
-    },
-    "./output.css": {
-      "default": "./styles/output.tailwind.css"
     }
   },
   "dependencies": {

@@ -103,7 +103,7 @@ export const ToggleLabel: React.FC<ToggleLabelProps> = ({
       htmlFor={context.id}
       className={clx(
         "text-txt-black-700 font-medium",
-        context.size === "medium" ? "text-sm" : "text-lg",
+        context.size === "medium" ? "text-body-sm" : "text-lg",
         className,
       )}
     >

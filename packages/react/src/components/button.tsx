@@ -83,7 +83,7 @@ const button_cva = cva(
       },
 
       size: {
-        small: "py-1.5 px-2.5 text-sm",
+        small: "py-1.5 px-2.5 text-body-sm",
         medium: "py-2 px-3 text-base",
         large: "py-2.5 px-4 text-base",
       },
@@ -188,8 +188,8 @@ const button_counter_cva = cva(
         unset: "",
       },
       size: {
-        small: "h-4.5 w-4.5 text-sm",
-        medium: "h-5 w-5 text-sm",
+        small: "h-4.5 w-4.5 text-body-sm",
+        medium: "h-5 w-5 text-body-sm",
         large: "h-6 w-6 text-base",
       },
     },
@@ -266,4 +266,4 @@ const ButtonIcon: ForwardRefExoticComponent<ButtonIconProps> = forwardRef(
 
 ButtonIcon.displayName = "ButtonIcon";
 
-export { Button, ButtonIcon, ButtonCounter };
+export { Button, ButtonIcon, ButtonCounter, button_cva };
