@@ -6,7 +6,7 @@ import { ChevronRightIcon } from "../icons/chevron-right";
 
 const breadcrumb_cva = cva(
   [
-    "group flex flex-wrap select-none items-center font-body font-medium text-sm py-1 px-3 rounded-md gap-1",
+    "group flex flex-wrap select-none items-center font-body font-medium text-body-sm py-1 px-3 rounded-md gap-1",
   ],
   {
     variants: {

@@ -71,7 +71,7 @@ const AccordionContent = React.forwardRef<
 >(({ children, className, ...props }, forwardedRef) => (
   <AccordionBase.Content
     className={clx(
-      "text-txt-black-700 font-body relative overflow-hidden text-sm font-normal transition-all duration-300",
+      "text-txt-black-700 font-body text-body-sm relative overflow-hidden font-normal transition-all duration-300",
       "data-[state=open]:animate-slide-down data-[state=closed]:animate-slide-up",
       "data-[state=closed]:opacity-0 data-[state=open]:opacity-100",
       className,

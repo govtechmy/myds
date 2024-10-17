@@ -108,7 +108,7 @@ ToastRoot.displayName = ToastPrimitives.Root.displayName;
 //   "group-[.destructive]:hover:border-destructive/30 group-[.destructive]:hover:bg-destructive",
 //   "group-[.destructive]:hover:text-destructive-foreground group-[.destructive]:focus:ring-destructive",
 //   "inline-flex h-8 shrink-0 items-center justify-center rounded-md border bg-transparent px-3",
-//   "text-sm font-medium transition-colors focus:outline-none focus:ring-1",
+//   "text-body-sm font-medium transition-colors focus:outline-none focus:ring-1",
 //   "disabled:pointer-events-none disabled:opacity-50",
 // ]);
 
@@ -148,7 +148,7 @@ ToastClose.displayName = ToastPrimitives.Close.displayName;
 
 /*========================================================================================================================*/
 
-const toast_title_cva = cva(["text-sm font-semibold"], {
+const toast_title_cva = cva(["text-body-sm font-semibold"], {
   variants: {
     variant: {
       success: "text-txt-success",
@@ -184,7 +184,7 @@ const ToastDescription = React.forwardRef<
   return (
     <ToastPrimitives.Description
       ref={ref}
-      className={clx("text-txt-black-700 text-sm", className)}
+      className={clx("text-txt-black-700 text-body-sm", className)}
       {...props}
     />
   );
