@@ -1,7 +1,7 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import Pill from "@myds/react/pill";
+import { Pill } from "@myds/react/pill";
 
 /**
  * ### Overview

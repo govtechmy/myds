@@ -33,7 +33,7 @@ interface PillProps
   onDelete?: ComponentProps<typeof Button>["onClick"];
 }
 
-const Pill: ForwardRefExoticComponent<PillProps> = React.forwardRef(
+export const Pill: ForwardRefExoticComponent<PillProps> = React.forwardRef(
   (
     { asChild, children, disabled, size, className, onDelete, ...props },
     ref,
@@ -63,5 +63,3 @@ const Pill: ForwardRefExoticComponent<PillProps> = React.forwardRef(
   },
 );
 Pill.displayName = "Pill";
-
-export default Pill;
