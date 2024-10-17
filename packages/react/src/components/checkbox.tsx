@@ -1,8 +1,8 @@
 "use client";
-
 import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { CheckIcon } from "../icons/check";
+import { MinusIcon } from "../icons/minus";
 import { clx } from "../utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
@@ -30,12 +30,14 @@ const checkboxVariants = cva(
 
 interface CheckboxProps
   extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
-    VariantProps<typeof checkboxVariants> {}
+    VariantProps<typeof checkboxVariants> {
+  indeterminate?: boolean;
+}
 
 const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   CheckboxProps
->(({ className, size, ...props }, ref) => (
+>(({ className, size, indeterminate, ...props }, ref) => (
   <CheckboxPrimitive.Root
     ref={ref}
     className={clx(checkboxVariants({ size, className }))}
@@ -47,9 +49,19 @@ const Checkbox = React.forwardRef<
         size === "medium" ? "size-4" : "size-3",
       )}
     >
-      <CheckIcon
-        className={clx(size === "medium" ? "stroke-[2.0px]" : "stroke-[1.5px]")}
-      />
+      {indeterminate ? (
+        <MinusIcon
+          className={clx(
+            size === "medium" ? "stroke-[2.0px]" : "stroke-[1.5px]",
+          )}
+        />
+      ) : (
+        <CheckIcon
+          className={clx(
+            size === "medium" ? "stroke-[2.0px]" : "stroke-[1.5px]",
+          )}
+        />
+      )}
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ));
