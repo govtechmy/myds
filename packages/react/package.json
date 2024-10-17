@@ -7,6 +7,10 @@
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
     },
+    "./pill": {
+      "type": "./src/components/pill.tsx",
+      "default": "./src/components/pill.tsx"
+    },
     "./hooks": {
       "type": "./src/hooks/index.ts",
       "default": "./src/hooks/index.ts"
