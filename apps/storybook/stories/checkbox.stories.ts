@@ -15,18 +15,17 @@ import { createStory } from "../utils";
  * - Support for checked and unchecked states
  * - Disabled state for read-only scenarios
  * - Two sizes: small and medium
- * - Dark theme compatibility for versatile design integration
  * - Accessible design, following WCAG guidelines for interactive elements
  *
  * ### Usage
  * ```tsx
- * import { Checkbox } from "@myds/react/checkbox";
+ * import { Checkbox } from "./checkbox";
  *
  * // Default checkbox (small size)
  * <Checkbox>Default Checkbox</Checkbox>
  *
- * // Small checkbox
- * <Checkbox size="small">Small Checkbox</Checkbox>
+ * // Medium checkbox
+ * <Checkbox size="medium">Medium Checkbox</Checkbox>
  *
  * // Checked checkbox
  * <Checkbox checked>Checked Checkbox</Checkbox>
@@ -36,9 +35,6 @@ import { createStory } from "../utils";
  *
  * // Disabled and checked checkbox
  * <Checkbox disabled checked>Disabled Checked Checkbox</Checkbox>
- *
- * // Dark theme checkbox (assuming your theming system supports it)
- * <Checkbox data-theme="dark">Dark Theme Checkbox</Checkbox>
  * ```
  *
  * This versatile component is designed to seamlessly integrate into various parts of your
@@ -61,8 +57,8 @@ const meta: Meta<typeof Checkbox> = {
   },
   tags: ["autodocs"],
 };
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
 export const DefaultSmall: Story = createStory({
@@ -90,10 +86,3 @@ export const DisabledChecked: Story = createStory({
   disabled: true,
   checked: true,
 });
-
-export const DarkTheme: Story = createStory(
-  {
-    children: "Dark Theme Checkbox",
-  },
-  "dark",
-);

@@ -18,8 +18,8 @@ const checkboxVariants = cva(
   {
     variants: {
       size: {
-        small: "h-4 w-4",
-        medium: "h-5 w-5",
+        small: "size-4",
+        medium: "size-5",
       },
     },
     defaultVariants: {
@@ -44,11 +44,11 @@ const Checkbox = React.forwardRef<
     <CheckboxPrimitive.Indicator
       className={clx(
         "flex items-center justify-center text-white",
-        size === "small" ? "h-3 w-3" : "h-4 w-4",
+        size === "medium" ? "size-4" : "size-3",
       )}
     >
       <CheckIcon
-        className={clx(size === "small" ? "stroke-[1.5px]" : "stroke-[2.0px]")}
+        className={clx(size === "medium" ? "stroke-[2.0px]" : "stroke-[1.5px]")}
       />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
