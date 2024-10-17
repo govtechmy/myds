@@ -276,6 +276,20 @@ export const Default: Story = createStory({
   ),
 });
 
+export const FullWidth: Story = createStory({
+  children: (
+    <>
+      <TabsList width="full">
+        <TabsTrigger value="1">Proton</TabsTrigger>
+        <TabsTrigger value="2">Perodua</TabsTrigger>
+        <TabsTrigger value="3">Toyota</TabsTrigger>
+        <TabsTrigger value="4">Lamborghini</TabsTrigger>
+      </TabsList>
+      {content}
+    </>
+  ),
+});
+
 export const DefaultDark: Story = createStory(
   {
     children: (
