@@ -1,71 +1,99 @@
-import { fn } from "@storybook/test";
-import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import { Checkbox } from "@myds/react/checkbox";
 import { createStory } from "../utils";
-import Checkbox from "@myds/react/checkbox";
 
 /**
  * ### Overview
- * The Checkbox component provides a customizable and accessible checkbox input.
+ * The Checkbox component is a fundamental UI element that allows users to make binary choices.
+ * It's commonly used in forms, settings panels, and list interfaces where users can select
+ * one or multiple options from a set. This component supports various states including default,
+ * checked, disabled, and combinations thereof, providing flexibility for different use cases.
  *
- * > Checkbox, small but grand,
- * > Click to mark, a simple command,
- * > States change at your hand,
- * > User's choice, it does understand.
+ * ### Key Features
+ * - Customizable label text
+ * - Support for checked and unchecked states
+ * - Disabled state for read-only scenarios
+ * - Two sizes: small and medium
+ * - Dark theme compatibility for versatile design integration
+ * - Accessible design, following WCAG guidelines for interactive elements
  *
  * ### Usage
  * ```tsx
- * import Checkbox from "@myds/react/checkbox";
+ * import { Checkbox } from "@myds/react/checkbox";
  *
- * <Checkbox />
+ * // Default checkbox (small size)
+ * <Checkbox>Default Checkbox</Checkbox>
+ *
+ * // Small checkbox
+ * <Checkbox size="small">Small Checkbox</Checkbox>
+ *
+ * // Checked checkbox
+ * <Checkbox checked>Checked Checkbox</Checkbox>
+ *
+ * // Disabled checkbox
+ * <Checkbox disabled>Disabled Checkbox</Checkbox>
+ *
+ * // Disabled and checked checkbox
+ * <Checkbox disabled checked>Disabled Checked Checkbox</Checkbox>
+ *
+ * // Dark theme checkbox (assuming your theming system supports it)
+ * <Checkbox data-theme="dark">Dark Theme Checkbox</Checkbox>
  * ```
+ *
+ * This versatile component is designed to seamlessly integrate into various parts of your
+ * application, providing a consistent and intuitive user experience for selection tasks.
  */
-const meta = {
+const meta: Meta<typeof Checkbox> = {
   title: "@myds/react/Checkbox",
   component: Checkbox,
-  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
-  args: { onClick: fn() },
   argTypes: {
-    checked: {
-      control: "boolean",
-      description: "The checked state of the checkbox",
-    },
-    disabled: {
-      control: "boolean",
-      description: "Whether the checkbox is disabled",
-    },
-    className: {
-      control: "text",
-      description: "Additional CSS class names for the checkbox",
+    children: { control: "text" },
+    checked: { control: "boolean" },
+    disabled: { control: "boolean" },
+    size: {
+      control: { type: "select" },
+      options: ["small", "medium"],
     },
   },
-} satisfies Meta<typeof Checkbox>;
-
+  tags: ["autodocs"],
+};
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-/**
- * Storybook stories for different variants of the Checkbox component.
- */
-export const Default: Story = createStory({});
+type Story = StoryObj<typeof Checkbox>;
+
+export const DefaultSmall: Story = createStory({
+  children: "Small Checkbox",
+  size: "small",
+});
+
+export const Medium: Story = createStory({
+  children: "Medium Checkbox",
+  size: "medium",
+});
 
 export const Checked: Story = createStory({
-  args: {
-    checked: true,
-  },
+  children: "Checked Checkbox",
+  checked: true,
 });
 
 export const Disabled: Story = createStory({
-  args: {
-    disabled: true,
-  },
+  children: "Disabled Checkbox",
+  disabled: true,
 });
 
-export const CheckedDisabled: Story = createStory({
-  args: {
-    checked: true,
-    disabled: true,
-  },
+export const DisabledChecked: Story = createStory({
+  children: "Disabled Checked Checkbox",
+  disabled: true,
+  checked: true,
 });
+
+export const DarkTheme: Story = createStory(
+  {
+    children: "Dark Theme Checkbox",
+  },
+  "dark",
+);
