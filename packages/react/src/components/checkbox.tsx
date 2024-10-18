@@ -74,21 +74,36 @@ Checkbox.displayName = "Checkbox";
 
 const CheckboxContext = React.createContext<{
   size?: "small" | "medium" | "large";
-}>({});
-const CheckboxItemContext = React.createContext<{ disabled?: boolean }>({});
+  disabled?: boolean;
+}>({
+  size: "small",
+  disabled: false,
+});
+
+export const CheckboxProvider: React.FC<
+  React.PropsWithChildren<{
+    size?: "small" | "medium" | "large";
+    disabled?: boolean;
+  }>
+> = ({ children, size = "small", disabled = false }) => {
+  return (
+    <CheckboxContext.Provider value={{ size, disabled }}>
+      {children}
+    </CheckboxContext.Provider>
+  );
+};
 
 export const CheckboxLabel = ({
   className,
   children,
   ...props
 }: React.ComponentProps<"label">) => {
-  const { size } = React.useContext(CheckboxContext);
-  const { disabled } = React.useContext(CheckboxItemContext);
+  const { size, disabled } = React.useContext(CheckboxContext);
 
   return (
     <label
       className={clx(
-        "text-txt-black-700 font-medium",
+        "text-txt-black-700 px-2 font-medium",
         size === "small" && "text-body-sm",
         size === "medium" && "text-body-md",
         size === "large" && "text-lg",
@@ -103,3 +118,5 @@ export const CheckboxLabel = ({
 };
 
 CheckboxLabel.displayName = "CheckboxLabel";
+
+export const useCheckboxContext = () => React.useContext(CheckboxContext);
