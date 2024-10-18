@@ -80,7 +80,7 @@ const CheckboxContext = React.createContext<{
   disabled: false,
 });
 
-export const CheckboxProvider: React.FC<
+export const CheckboxItem: React.FC<
   React.PropsWithChildren<{
     size?: "small" | "medium" | "large";
     disabled?: boolean;

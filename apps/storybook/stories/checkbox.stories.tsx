@@ -1,9 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import {
-  Checkbox,
-  CheckboxLabel,
-  CheckboxProvider,
-} from "@myds/react/checkbox";
+import { Checkbox, CheckboxLabel, CheckboxItem } from "@myds/react/checkbox";
 import { createStory } from "../utils";
 
 /**
@@ -128,27 +124,27 @@ export const DisabledIndeterminateDark: Story = createStory(
 export const WithRightLabel: Story = {
   ...createStory({}),
   render: () => (
-    <CheckboxProvider>
+    <CheckboxItem>
       <div className="flex items-center">
         <Checkbox id="checkbox-with-label" />
         <CheckboxLabel htmlFor="checkbox-with-label">
           Checkbox with label
         </CheckboxLabel>
       </div>
-    </CheckboxProvider>
+    </CheckboxItem>
   ),
 };
 
 export const WithLeftLabel: Story = {
   ...createStory({}),
   render: () => (
-    <CheckboxProvider>
+    <CheckboxItem>
       <div className="flex items-center">
         <CheckboxLabel htmlFor="checkbox-with-label">
           Checkbox with label
         </CheckboxLabel>
         <Checkbox id="checkbox-with-label" />
       </div>
-    </CheckboxProvider>
+    </CheckboxItem>
   ),
 };
