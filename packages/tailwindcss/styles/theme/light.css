@@ -14,10 +14,17 @@
   --bg-dialog-active: var(--_white);
 
   /* Background - Black */
-  --bg-black-900: var(--_gray-900);
-  --bg-black-700: var(--_gray-700);
-  --bg-black-500: var(--_gray-500);
+  --bg-black-50: var(--_gray-50);
+  --bg-black-100: var(--_gray-100);
+  --bg-black-200: var(--_gray-200);
+  --bg-black-300: var(--_gray-300);
   --bg-black-400: var(--_gray-400);
+  --bg-black-500: var(--_gray-500);
+  --bg-black-600: var(--_gray-600);
+  --bg-black-700: var(--_gray-700);
+  --bg-black-800: var(--_gray-800);
+  --bg-black-900: var(--_gray-900);
+  --bg-black-950: var(--_gray-950);
   --bg-black-disabled: var(--_gray-900) / 0.4;
 
   /* Background - Gray */
@@ -109,31 +116,31 @@
   --otl-divider: var(--_gray-100);
   --otl-gray-200: var(--_gray-200);
   --otl-gray-300: var(--_gray-300);
-  --otl-gray-600-20: var(--_gray-600) / 0.2;
+  /* --otl-gray-600-20: var(--_gray-600) / 0.2; */
 
   /* Outline - Primary */
   --otl-primary-disabled: var(--_primary-200) / 0.4;
   --otl-primary-200: var(--_primary-200);
   --otl-primary-300: var(--_primary-300);
-  --otl-primary-600-20: var(--_primary-600) / 0.2;
+  /* --otl-primary-600-20: var(--_primary-600) / 0.2; */
 
   /* Outline - Danger */
   --otl-danger-disabled: var(--_danger-200) / 0.4;
   --otl-danger-200: var(--_danger-200);
   --otl-danger-300: var(--_danger-300);
-  --otl-danger-600-20: var(--_danger-600) / 0.2;
+  /* --otl-danger-600-20: var(--_danger-600) / 0.2; */
 
   /* Outline - Success */
   --otl-success-disabled: var(--_success-200) / 0.4;
   --otl-success-200: var(--_success-200);
   --otl-success-300: var(--_success-300);
-  --otl-success-700-20: var(--_success-700) / 0.2;
+  /* --otl-success-700-20: var(--_success-700) / 0.2; */
 
   /* Outline - Warning */
   --otl-warning-disabled: var(--_warning-200) / 0.4;
   --otl-warning-200: var(--_warning-200);
   --otl-warning-300: var(--_danger-300);
-  --otl-warning-700-20: var(--_warning-700) / 0.2;
+  /* --otl-warning-700-20: var(--_warning-700) / 0.2; */
 
   /* Ring - Primary */
   --fr-primary: var(--_primary-300) / 0.4;

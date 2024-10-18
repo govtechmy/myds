@@ -7,16 +7,14 @@ const tag_cva = cva(
   {
     variants: {
       variant: {
-        default:
-          "text-txt-black-500 bg-bg-washed border-otl-gray-600-20 border",
+        default: "text-txt-black-500 bg-bg-washed border-gray-600/20 border",
         primary:
-          "bg-bg-primary-50 text-txt-primary border-otl-primary-600-20 border",
+          "bg-bg-primary-50 text-txt-primary border-primary-600/20 border",
         success:
-          "bg-bg-success-50 text-txt-success border-otl-success-700-20 border",
-        danger:
-          "bg-bg-danger-50 text-txt-danger border-otl-danger-600-20 border",
+          "bg-bg-success-50 text-txt-success border-success-700/20 border",
+        danger: "bg-bg-danger-50 text-txt-danger border-danger-600/20 border",
         warning:
-          "bg-bg-warning-50 text-txt-warning border-otl-warning-700-20 border",
+          "bg-bg-warning-50 text-txt-warning border-warning-700/20 border",
       },
       size: {
         small: "py-0.5 px-2 text-body-xs h-[22px]",
