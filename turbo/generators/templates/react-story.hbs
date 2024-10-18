@@ -1,7 +1,7 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import {{ pascalCase title }} from "@myds/react/{{ dashCase title}}";
+import { {{ pascalCase title }} } from "@myds/react/{{ dashCase title}}";
 
 /**
  * ### Overview
@@ -46,7 +46,7 @@ type Story = StoryObj<typeof meta>;
  *
  * @example
  * export const Default: Story = createStory({ ... });
- * export const DarkDefault: Story = createStory({ ... }, "dark");
+ * export const DarkDefault: Story = createStory({ ... , className="dark"}, "dark");
  */
 
 // export const Default: Story = createStory({
