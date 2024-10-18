@@ -1,8 +1,9 @@
-import type { Config } from "tailwindcss/types/config";
+import type { PresetsConfig } from "tailwindcss/types/config";
 import tailwindcssAnimate from "tailwindcss-animate";
 import defaultTheme from "tailwindcss/defaultTheme";
 
-const config: Config = {
+const config: PresetsConfig = {
+  //* `content` is for debugging purpose only -- inspect the generated css in styles/output.tailwind.css
   content: [
     "../react/src/**/*.{js,jsx,ts,tsx}",
     "../../apps/storybook/**/*.{js,jsx,ts,tsx}",
@@ -224,9 +225,19 @@ const config: Config = {
         "0%": { width: "100%" },
         "100%": { width: "0%" },
       },
+      "slide-down": {
+        from: { height: "0" },
+        to: { height: "var(--radix-accordion-content-height)" },
+      },
+      "slide-up": {
+        from: { height: "var(--radix-accordion-content-height)" },
+        to: { height: "0" },
+      },
     },
     animation: {
       expire: "decrease-width 5s linear",
+      "slide-down": "slide-down 300ms ease-out",
+      "slide-up": "slide-up 300ms ease-out",
     },
   },
   plugins: [tailwindcssAnimate],

@@ -1,6 +1,5 @@
 import { Preview } from "@storybook/react";
-
-import "@myds/tailwindcss/output.css";
+import "./global.css";
 
 const preview: Preview = {
   tags: ["autodocs"],
