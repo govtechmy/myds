@@ -86,7 +86,7 @@ export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = createStory({});
-export const DefaultDark: Story = createStory("dark");
+export const DefaultDark: Story = createStory({}, "dark");
 export const Medium: Story = createStory({ size: "medium" });
 export const MediumDark: Story = createStory({ size: "medium" }, "dark");
 export const Checked: Story = createStory({ checked: true });
