@@ -7,68 +7,73 @@ const tag_cva = cva(
   {
     variants: {
       variant: {
-        gray: "text-txt-black-500 bg-bg-washed",
-        brand: "bg-bg-primary-50 text-txt-primary",
-        success: "bg-bg-success-50 text-txt-success",
-        danger: "bg-bg-danger-50 text-txt-danger",
-        warning: "bg-bg-warning-50 text-txt-warning",
+        default:
+          "text-txt-black-500 bg-bg-washed border-otl-gray-600-20 border",
+        primary:
+          "bg-bg-primary-50 text-txt-primary border-otl-primary-600-20 border",
+        success:
+          "bg-bg-success-50 text-txt-success border-otl-success-700-20 border",
+        danger:
+          "bg-bg-danger-50 text-txt-danger border-otl-danger-600-20 border",
+        warning:
+          "bg-bg-warning-50 text-txt-warning border-otl-warning-700-20 border",
       },
       size: {
         small: "py-0.5 px-2 text-body-xs h-[22px]",
         medium: "py-1 px-2 text-body-sm h-[28px]",
         large: "py-1 px-2.5 text-body-md h-8",
       },
-      tagStyle: {
-        style1: "rounded-full",
-        style2: "rounded-md",
+      mode: {
+        pill: "rounded-full",
+        default: "rounded-md",
       },
     },
     defaultVariants: {
-      variant: "gray",
+      variant: "default",
       size: "small",
-      tagStyle: "style1",
+      mode: "pill",
     },
   },
 );
+
+const dot_cva = cva(["inline-block  rounded-full bg-current"], {
+  variants: {
+    size: {
+      small: "size-1.5",
+      medium: "size-2",
+      large: "size-2.5",
+    },
+  },
+});
 
 /**
  * Props for Tag component.
  * @typedef TagProps
  * @property {React.ReactNode} children - The content of the tag (text or HTML elements)
- * @property {boolean} [showStatusDot=false] - Whether to show a status dot
- * @property {"gray" | "brand" | "success" | "danger" | "warning"} variant - The visual style variant of the tag
+ * @property {boolean} [dot=false] - Whether to show a status dot
+ * @property {"default" | "primary" | "success" | "danger" | "warning"} variant - The visual style variant of the tag
  * @property {"small" | "medium" | "large"} size - The size of the tag
- * @property {"style1" | "style2"} tagStyle - The style of the tag (rounded or not)
+ * @property {"pill" | "default"} mode - The style of the tag (rounded or not)
  */
 interface TagProps extends ComponentProps<"div">, VariantProps<typeof tag_cva> {
-  showStatusDot?: boolean;
-  variant: "gray" | "brand" | "success" | "danger" | "warning";
+  dot?: boolean;
+  variant: "default" | "primary" | "success" | "danger" | "warning";
   size: "small" | "medium" | "large";
-  tagStyle: "style1" | "style2";
+  mode: "pill" | "default";
 }
 
 const Tag = forwardRef<HTMLDivElement, TagProps>(
   (
-    {
-      children,
-      variant,
-      size,
-      tagStyle,
-      showStatusDot = false,
-      className,
-      ...props
-    },
+    { children, variant, size, mode, dot = false, className, ...props },
     ref,
   ) => {
     return (
       <div
         ref={ref}
-        className={clx(tag_cva({ variant, size, tagStyle }), className)}
+        className={clx(tag_cva({ variant, size, mode }), className)}
         {...props}
       >
-        {showStatusDot && (
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-current" />
-        )}
+        {dot && <span className={clx(dot_cva({ size }))} />}
         {children}
       </div>
     );

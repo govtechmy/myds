@@ -109,26 +109,31 @@
   --otl-divider: var(--_gray-100);
   --otl-gray-200: var(--_gray-200);
   --otl-gray-300: var(--_gray-300);
+  --otl-gray-600-20: var(--_gray-600) / 0.2;
 
   /* Outline - Primary */
   --otl-primary-disabled: var(--_primary-200) / 0.4;
   --otl-primary-200: var(--_primary-200);
   --otl-primary-300: var(--_primary-300);
+  --otl-primary-600-20: var(--_primary-600) / 0.2;
 
   /* Outline - Danger */
   --otl-danger-disabled: var(--_danger-200) / 0.4;
   --otl-danger-200: var(--_danger-200);
   --otl-danger-300: var(--_danger-300);
+  --otl-danger-600-20: var(--_danger-600) / 0.2;
 
   /* Outline - Success */
   --otl-success-disabled: var(--_success-200) / 0.4;
   --otl-success-200: var(--_success-200);
   --otl-success-300: var(--_success-300);
+  --otl-success-700-20: var(--_success-700) / 0.2;
 
   /* Outline - Warning */
   --otl-warning-disabled: var(--_warning-200) / 0.4;
   --otl-warning-200: var(--_warning-200);
   --otl-warning-300: var(--_danger-300);
+  --otl-warning-700-20: var(--_warning-700) / 0.2;
 
   /* Ring - Primary */
   --fr-primary: var(--_primary-300) / 0.4;

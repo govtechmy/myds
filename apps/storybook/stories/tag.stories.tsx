@@ -16,10 +16,10 @@ import { Tag } from "@myds/react/tag";
  * ```ts
  * import Tag from "@myds/react/tag";
  *
- * <Tag size="medium" showStatusDot={true}>Gray</Tag>
- * <Tag size="medium" tagStyle="style2" showStatusDot={true}>Gray</Tag>
+ * <Tag size="medium" dot={true}>Gray</Tag>
+ * <Tag size="medium" mode="default" dot={true}>Gray</Tag>
  * <Tag size="medium">Gray</Tag>
- * <Tag size="medium" style="style2">Gray</Tag>
+ * <Tag size="medium" style="default">Gray</Tag>
  * ```
  */
 const meta = {
@@ -36,7 +36,7 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["gray", "brand", "success", "danger", "warning"],
+      options: ["default", "primary", "success", "danger", "warning"],
       description: "The visual style variant of the tag",
     },
     size: {
@@ -44,22 +44,22 @@ const meta = {
       options: ["small", "medium", "large"],
       description: "The size of the tag",
     },
-    tagStyle: {
+    mode: {
       control: "radio",
-      options: ["style1", "style2"],
+      options: ["pill", "default"],
       description: "The style of the tag (rounded or not)",
     },
-    showStatusDot: {
+    dot: {
       control: "boolean",
       description: "Whether to show a status dot",
     },
   },
   args: {
     children: "Tag Content",
-    variant: "gray",
+    variant: "default",
     size: "small",
-    tagStyle: "style1",
-    showStatusDot: false,
+    mode: "pill",
+    dot: false,
   },
 } satisfies Meta<typeof Tag>;
 
@@ -67,21 +67,21 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * This story represents a tag component with the "gray" variant, which is the default.
+ * This story represents a tag component with the "default" variant, which is the default.
  */
 export const Gray: Story = createStory({
-  variant: "gray",
+  variant: "default",
   size: "medium",
-  children: <span>gray</span>,
+  children: <span>default</span>,
 });
 
 /**
- * This story represents a tag component with the "brand" variant, which is related to product's brand.
+ * This story represents a tag component with the "primary" variant, which is related to product's brand.
  */
 export const Brand: Story = createStory({
-  variant: "brand",
+  variant: "primary",
   size: "medium",
-  children: <span>brand</span>,
+  children: <span>primary</span>,
 });
 
 /**
@@ -112,26 +112,26 @@ export const Warning: Story = createStory({
 });
 
 /**
- * This story represents a tag component with the "gray" variant, which is the default.
+ * This story represents a tag component with the "default" variant, which is the default.
  */
 export const DarkGray: Story = createStory(
   {
-    variant: "gray",
+    variant: "default",
     size: "medium",
-    children: <span>gray</span>,
+    children: <span>default</span>,
     className: "dark",
   },
   "dark",
 );
 
 /**
- * This story represents a tag component with the "brand" variant, which is related to product's brand.
+ * This story represents a tag component with the "primary" variant, which is related to product's brand.
  */
 export const DarkBrand: Story = createStory(
   {
-    variant: "brand",
+    variant: "primary",
     size: "medium",
-    children: <span>brand</span>,
+    children: <span>primary</span>,
     className: "dark",
   },
   "dark",
@@ -177,54 +177,54 @@ export const DarkWarning: Story = createStory(
 );
 
 /**
- * This story represents a tag component with the "brand" variant with tagStyle equals style2. Each of the tag component can have a choice of style1 or style 2.
+ * This story represents a tag component with the "primary" variant with mode equals default. Each of the tag component can have a choice of pill or style 2.
  *
- * Style1 is the default style. It is being used to display status independently, positioned absolutely on image or container. It has fully rounded appearance.
+ * Pill style has fully rounded appearance. It is being used to display status independently, positioned absolutely on image or container.
  *
- * Style2 is typically used to display a status inline, positioned side by side with text. It has 6px of border radius.
+ * Default tag style has 6px of border radius. It is typically used to display a status inline, positioned side by side with text.
  */
-export const brandSecondStyle: Story = createStory({
-  variant: "brand",
+export const primaryDefaultTagStyle: Story = createStory({
+  variant: "primary",
   size: "medium",
-  children: <span>brand</span>,
-  tagStyle: "style2",
+  children: <span>primary</span>,
+  mode: "default",
 });
 
 /**
- * This story represents a tag component with the "brand" variant with tagStyle equals style2. Each of the tag component can have a choice of style1 or style 2.
+ * This story represents a tag component with the "primary" variant with mode equals default. Each of the tag component can have a choice of pill or default tag style.
  *
- * Style1 is the default style. It is being used to display status independently, positioned absolutely on image or container. It has fully rounded appearance.
+ * Pill style has fully rounded appearance. It is being used to display status independently, positioned absolutely on image or container.
  *
- * Style2 is typically used to display a status inline, positioned side by side with text. It has 6px of border radius.
+ * Default tag style has 6px of border radius. It is typically used to display a status inline, positioned side by side with text.
  */
-export const DarkBrandSecondStyle: Story = createStory(
+export const DarkPrimaryDefaultTagStyle: Story = createStory(
   {
-    variant: "brand",
+    variant: "primary",
     size: "medium",
-    children: <span>brand</span>,
-    tagStyle: "style2",
+    children: <span>primary</span>,
+    mode: "default",
     className: "dark",
   },
   "dark",
 );
 
 /**
- * This story represents a tag component with the "brand" variant with tagStyle equals style1 and dot.
+ * This story represents a tag component with the "primary" variant with mode equals pill and dot.
  */
-export const brandFirstStyleDot: Story = createStory({
-  variant: "brand",
+export const primaryPillWithDot: Story = createStory({
+  variant: "primary",
   size: "medium",
-  children: <span>brand</span>,
-  showStatusDot: true,
+  children: <span>primary</span>,
+  dot: true,
 });
 
 /**
- * This story represents a tag component with the "brand" variant with tagStyle equals style2 and dot.
+ * This story represents a tag component with the "primary" variant with mode equals default tag style and dot.
  */
-export const brandSecondStyleDot: Story = createStory({
-  variant: "brand",
+export const primaryDefaultTagStyleWithDot: Story = createStory({
+  variant: "primary",
   size: "medium",
-  children: <span>brand</span>,
-  showStatusDot: true,
-  tagStyle: "style2",
+  children: <span>primary</span>,
+  dot: true,
+  mode: "default",
 });
