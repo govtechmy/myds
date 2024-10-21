@@ -2,23 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 import { Pagination } from "@myds/react/pagination";
 import React from "react";
-
-const DemoPagination = (props: any) => {
-  const urlParams = new URLSearchParams(document.location.search);
-  const mockedParam = urlParams.get("page");
-  console.log("its here", mockedParam);
-
-  return (
-    <Pagination
-      page={1}
-      limit={10}
-      count={199}
-      type="default"
-      maxDisplay={4}
-      onPageChange={(page) => console.log("page", page)}
-    />
-  );
-};
+import { GovIcon } from "../../../packages/react/src/icons/gov";
+import { InfoIcon } from "../../../packages/react/src/icons/info";
 
 /**
  * ### Overview
@@ -58,6 +43,9 @@ const meta = {
     count: 199,
     type: "default",
     maxDisplay: 4,
+    next: undefined,
+    previous: undefined,
+    fullText: undefined,
   },
   argTypes: {
     page: {
@@ -113,17 +101,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Simple: Story = createStory({
   type: "simple",
-});
-/**
- * This story represents the pagination component in "default" type.
- * Where the use case is for use for server-side pagination
- */
-
-export const ServerSideUsage: Story = createStory({
-  type: "default",
-  onPageChange: (page: string) => {
-    console.log("AYYY LMAO", page);
-  },
 });
 /**
  * This story represents the pagination component in "full" type.
@@ -216,6 +193,27 @@ export const ControlledNumberPagination: Story = createStory({
   limit: 4,
   count: 60,
   maxDisplay: 2,
+});
+/**
+ * This story represents the pagination component in "simple" type.
+ * Where using customized buttons and labels
+ */
+
+export const CustomizedButtonAndLabel: Story = createStory({
+  type: "full",
+  page: 1,
+  limit: 4,
+  count: 60,
+  maxDisplay: 2,
+  previous: {
+    label: "Kembali",
+    icon: <GovIcon />,
+  },
+  next: {
+    label: "Seterusnya",
+    icon: <InfoIcon />,
+  },
+  fullText: `Muka Surat 1 daripada 20`,
 });
 
 /**

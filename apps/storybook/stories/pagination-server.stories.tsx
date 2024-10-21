@@ -36,6 +36,7 @@ const DemoPagination = (props: any) => {
  *
  * const urlParams = new URLSearchParams(document.location.search);
  *
+ *  // In storybook, query params is added here in meta
  *  parameters: { query: { page: "6" } },
  *
  * return (
