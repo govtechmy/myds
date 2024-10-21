@@ -84,8 +84,8 @@ const button_cva = cva(
 
       size: {
         small: "py-1.5 px-2.5 text-body-sm",
-        medium: "py-2 px-3 text-base",
-        large: "py-2.5 px-4 text-base",
+        medium: "py-2 px-3 text-body-md",
+        large: "py-2.5 px-4 text-body-lg",
       },
     },
     defaultVariants: {
@@ -249,18 +249,23 @@ const button_icon_cva = cva(
   },
 );
 
-interface ButtonIconProps {
+interface ButtonIconProps extends ComponentProps<"div"> {
   children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
 }
 
 const ButtonIcon: ForwardRefExoticComponent<ButtonIconProps> = forwardRef(
-  ({ children }, ref) => {
+  ({ children, className, ...props }, ref) => {
     const { size } = useContext(ButtonContext);
 
-    return cloneElement(children, {
-      ref,
-      className: clx(button_icon_cva({ size })),
-    });
+    return (
+      <Slot
+        ref={ref}
+        className={button_icon_cva({ size, className })}
+        {...props}
+      >
+        {children}
+      </Slot>
+    );
   },
 );
 
