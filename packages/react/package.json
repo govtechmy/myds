@@ -8,6 +8,11 @@
       "default": "./src/utils/index.ts"
     }
 ,
+    "./pagination": {
+      "type": "./src/components/pagination.tsx",
+      "default": "./src/components/pagination.tsx"
+    }
+,
     "./tag": {
       "type": "./src/components/tag.tsx",
       "default": "./src/components/tag.tsx"
