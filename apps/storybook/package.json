@@ -20,6 +20,7 @@
     "@storybook/addon-interactions": "^8.3.5",
     "@storybook/addon-links": "^8.3.5",
     "@storybook/addon-onboarding": "^8.3.5",
+    "@storybook/addon-queryparams": "^7.0.1",
     "@storybook/blocks": "^8.3.5",
     "@storybook/react": "^8.3.5",
     "@storybook/react-vite": "^8.3.5",

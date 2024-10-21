@@ -1,6 +1,24 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 import { Pagination } from "@myds/react/pagination";
+import React from "react";
+
+const DemoPagination = (props: any) => {
+  const urlParams = new URLSearchParams(document.location.search);
+  const mockedParam = urlParams.get("page");
+  console.log("its here", mockedParam);
+
+  return (
+    <Pagination
+      page={1}
+      limit={10}
+      count={199}
+      type="default"
+      maxDisplay={4}
+      onPageChange={(page) => console.log("page", page)}
+    />
+  );
+};
 
 /**
  * ### Overview
@@ -29,13 +47,16 @@ const meta = {
   component: Pagination,
   parameters: {
     layout: "centered",
+    query: {
+      page: "2",
+    },
   },
   args: {
-    onPageChange: (page) => console.log(page),
+    onPageChange: (page) => console.log("page", page),
     page: 1,
     limit: 10,
     count: 199,
-    type: "number",
+    type: "default",
     maxDisplay: 4,
   },
   argTypes: {
@@ -77,7 +98,7 @@ const meta = {
       description: "The multiple types available for pagination",
       control: "inline-radio",
       type: "string",
-      options: ["number", "basic", "basic-alternate"],
+      options: ["default", "simple", "full"],
     },
   },
 } satisfies Meta<typeof Pagination>;
@@ -86,100 +107,111 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * This story represents the pagination component in "basic" type.
+ * This story represents the pagination component in "simple" type.
  * This is the most basic implementation of pagination
  */
 
-export const Basic: Story = createStory({
-  type: "basic",
+export const Simple: Story = createStory({
+  type: "simple",
 });
 /**
- * This story represents the pagination component in "basic-alternate" type.
+ * This story represents the pagination component in "default" type.
+ * Where the use case is for use for server-side pagination
+ */
+
+export const ServerSideUsage: Story = createStory({
+  type: "default",
+  onPageChange: (page: string) => {
+    console.log("AYYY LMAO", page);
+  },
+});
+/**
+ * This story represents the pagination component in "full" type.
  * This is the most basic implementation of pagination
  */
 
-export const BasicAlternate: Story = createStory({
-  type: "basic-alternate",
+export const Full: Story = createStory({
+  type: "full",
 });
 /**
- * This story represents the pagination component in "number" type.
+ * This story represents the pagination component in "default" type.
  * This is the most basic implementation of pagination
  */
 
-export const Number: Story = createStory({
-  type: "number",
+export const Default: Story = createStory({
+  type: "default",
 });
 /**
- * This story represents the pagination component in "number" type.
+ * This story represents the pagination component in "default" type.
  * Where there is only 1 page.
  */
 
 export const SinglePage: Story = createStory({
-  type: "number",
+  type: "default",
   page: 1,
   count: 1,
 });
 /**
- * This story represents the pagination component in "basic" type.
+ * This story represents the pagination component in "simple" type.
  * Where there is only 1 page.
  */
 
-export const SinglePageBasic: Story = createStory({
-  type: "basic",
+export const SinglePageSimple: Story = createStory({
+  type: "simple",
   page: 1,
   count: 1,
 });
 /**
- * This story represents the pagination component in "number" type.
+ * This story represents the pagination component in "default" type.
  * Where the page is currently around the middle of the total pages
  */
 
 export const MiddleOfPagination: Story = createStory({
-  type: "number",
+  type: "default",
   page: 7,
   limit: 4,
   count: 60,
 });
 /**
- * This story represents the pagination component in "basic" type.
+ * This story represents the pagination component in "simple" type.
  * Where the page is currently around the middle of the total pages
  */
 
-export const MiddleOfPaginationBasic: Story = createStory({
-  type: "basic",
+export const MiddleOfPaginationSimple: Story = createStory({
+  type: "simple",
   page: 10,
   limit: 4,
   count: 60,
 });
 /**
- * This story represents the pagination component in "number" type.
+ * This story represents the pagination component in "default" type.
  * Where the current page is at the end of the pagination
  */
 
 export const EndOfPagination: Story = createStory({
-  type: "number",
+  type: "default",
   page: 15,
   limit: 4,
   count: 60,
 });
 /**
- * This story represents the pagination component in "basic" type.
+ * This story represents the pagination component in "simple" type.
  * Where the current page is at the end of the pagination
  */
 
-export const EndOfPaginationBasic: Story = createStory({
-  type: "basic",
+export const EndOfPaginationSimple: Story = createStory({
+  type: "simple",
   page: 15,
   limit: 4,
   count: 60,
 });
 /**
- * This story represents the pagination component in "number" type.
+ * This story represents the pagination component in "default" type.
  * Where the "maxDisplay" to set how many number to show
  */
 
 export const ControlledNumberPagination: Story = createStory({
-  type: "number",
+  type: "default",
   page: 1,
   limit: 4,
   count: 60,
@@ -187,37 +219,37 @@ export const ControlledNumberPagination: Story = createStory({
 });
 
 /**
- * This story represents the pagination component in "basic" type.
+ * This story represents the pagination component in "simple" type.
  * This is the most basic implementation of pagination
  */
 
-export const BasicDark: Story = createStory(
+export const SimpleDark: Story = createStory(
   {
-    type: "basic",
+    type: "simple",
     className: "dark",
   },
   "dark",
 );
 /**
- * This story represents the pagination component in "basic-alternate" type.
+ * This story represents the pagination component in "full" type.
  * This is the most basic implementation of pagination
  */
 
-export const BasicAlternateDark: Story = createStory(
+export const FullDark: Story = createStory(
   {
-    type: "basic-alternate",
+    type: "full",
     className: "dark",
   },
   "dark",
 );
 /**
- * This story represents the pagination component in "number" type.
+ * This story represents the pagination component in "default" type.
  * This is the most basic implementation of pagination
  */
 
-export const NumberDark: Story = createStory(
+export const DefaultDark: Story = createStory(
   {
-    type: "number",
+    type: "default",
     className: "dark",
   },
   "dark",

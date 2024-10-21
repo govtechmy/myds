@@ -25,7 +25,7 @@ export interface PaginatorProps {
   limit: number;
   count: number;
   onPageChange: (page: number) => void;
-  type: "basic" | "basic-alternate" | "number";
+  type: "simple" | "full" | "default";
 }
 
 const PaginationContext = createContext<
@@ -37,7 +37,7 @@ const PaginationContext = createContext<
   count: 0,
   limit: 6,
   totalPages: 0,
-  type: "number",
+  type: "default",
   onPageChange: (page) => {},
 });
 
@@ -188,7 +188,7 @@ const PaginationLabel: ForwardRefExoticComponent<ComponentProps<"p">> =
     const { page, totalPages, type } = useContext(PaginationContext);
     return (
       <p ref={ref} className={clx("text-txt-black-700", className)} {...props}>
-        {type === "basic-alternate" && "Page"} {page} of {totalPages}
+        {type === "full" && "Page"} {page} of {totalPages}
       </p>
     );
   });
@@ -215,8 +215,8 @@ interface PaginationProps extends ComponentProps<"nav">, PaginatorProps {
 }
 
 const Pagination: ForwardRefExoticComponent<PaginationProps> = forwardRef(
-  ({ type = "number", maxDisplay = 4, ...props }, ref) => {
-    if (type === "basic") {
+  ({ type = "default", maxDisplay = 4, ...props }, ref) => {
+    if (type === "simple") {
       return (
         <PaginationRoot ref={ref} type={type} {...props}>
           <PaginationContent>
@@ -233,7 +233,7 @@ const Pagination: ForwardRefExoticComponent<PaginationProps> = forwardRef(
         </PaginationRoot>
       );
     }
-    if (type === "basic-alternate") {
+    if (type === "full") {
       return (
         <PaginationRoot ref={ref} type={type} {...props}>
           <PaginationContent className="w-[512px]">
