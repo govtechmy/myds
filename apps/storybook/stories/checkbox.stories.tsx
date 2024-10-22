@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Checkbox, CheckboxLabel, CheckboxItem } from "@myds/react/checkbox";
+import { Checkbox, CheckboxItem } from "@myds/react/checkbox";
 import { createStory } from "../utils";
 
 /**
@@ -10,7 +10,6 @@ import { createStory } from "../utils";
  * checked, disabled, indeterminate, and combinations thereof, providing flexibility for different use cases.
  *
  * ### Key Features
- * - Customizable label text
  * - Support for checked, unchecked, and indeterminate states
  * - Disabled state for read-only scenarios
  * - Two sizes: small and medium
@@ -120,31 +119,3 @@ export const DisabledIndeterminateDark: Story = createStory(
   { disabled: true, checked: "indeterminate" },
   "dark",
 );
-
-export const WithRightLabel: Story = {
-  ...createStory({}),
-  render: () => (
-    <CheckboxItem>
-      <div className="flex items-center">
-        <Checkbox id="checkbox-with-label" />
-        <CheckboxLabel htmlFor="checkbox-with-label">
-          Checkbox with label
-        </CheckboxLabel>
-      </div>
-    </CheckboxItem>
-  ),
-};
-
-export const WithLeftLabel: Story = {
-  ...createStory({}),
-  render: () => (
-    <CheckboxItem>
-      <div className="flex items-center">
-        <CheckboxLabel htmlFor="checkbox-with-label">
-          Checkbox with label
-        </CheckboxLabel>
-        <Checkbox id="checkbox-with-label" />
-      </div>
-    </CheckboxItem>
-  ),
-};
