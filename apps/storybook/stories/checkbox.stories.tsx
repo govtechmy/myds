@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Checkbox, CheckboxItem } from "@myds/react/checkbox";
+import { Checkbox } from "@myds/react/checkbox";
 import { createStory } from "../utils";
 
 /**
@@ -13,8 +13,7 @@ import { createStory } from "../utils";
  * - Support for checked, unchecked, and indeterminate states
  * - Disabled state for read-only scenarios
  * - Two sizes: small and medium
- * - Accessible design, following WCAG guidelines for interactive elements
- * - Light and dark theme support
+ * - Light and Dark Theme supported
  *
  * ### Uses RadixUI's checkbox API.
  * https://www.radix-ui.com/primitives/docs/components/checkbox
@@ -39,7 +38,6 @@ import { createStory } from "../utils";
  * <Checkbox disabled>Disabled Checkbox</Checkbox>
  * ```
  */
-
 const meta: Meta<typeof Checkbox> = {
   title: "@myds/react/Checkbox",
   component: Checkbox,
@@ -85,20 +83,36 @@ export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = createStory({});
-export const DefaultDark: Story = createStory({}, "dark");
+
+export const DefaultDark: Story = createStory({ className: "dark" }, "dark");
+
 export const Medium: Story = createStory({ size: "medium" });
-export const MediumDark: Story = createStory({ size: "medium" }, "dark");
+
+export const MediumDark: Story = createStory(
+  { size: "medium", className: "dark" },
+  "dark",
+);
+
 export const Checked: Story = createStory({ checked: true });
-export const CheckedDark: Story = createStory({ checked: true }, "dark");
+
+export const CheckedDark: Story = createStory(
+  { checked: true, className: "dark" },
+  "dark",
+);
+
 export const Indeterminate: Story = createStory({ checked: "indeterminate" });
 
 export const IndeterminateDark: Story = createStory(
-  { checked: "indeterminate" },
+  { checked: "indeterminate", className: "dark" },
   "dark",
 );
 
 export const Disabled: Story = createStory({ disabled: true });
-export const DisabledDark: Story = createStory({ disabled: true }, "dark");
+
+export const DisabledDark: Story = createStory(
+  { disabled: true, className: "dark" },
+  "dark",
+);
 
 export const DisabledChecked: Story = createStory({
   disabled: true,
@@ -106,7 +120,7 @@ export const DisabledChecked: Story = createStory({
 });
 
 export const DisabledCheckedDark: Story = createStory(
-  { disabled: true, checked: true },
+  { disabled: true, checked: true, className: "dark" },
   "dark",
 );
 
@@ -116,6 +130,6 @@ export const DisabledIndeterminate: Story = createStory({
 });
 
 export const DisabledIndeterminateDark: Story = createStory(
-  { disabled: true, checked: "indeterminate" },
+  { disabled: true, checked: "indeterminate", className: "dark" },
   "dark",
 );
