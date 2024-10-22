@@ -1,4 +1,3 @@
-"use client";
 import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { CheckIcon } from "../icons/check";
@@ -9,7 +8,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 const checkboxVariants = cva(
   [
     "rounded-sm outline-none flex items-center justify-center",
-    "border border-otl-gray-200 hover:border-otl-gray-300 shadow-button",
+    "border border-otl-gray-200 hover:border-otl-gray-300 shadow-button bg-bg-white",
     "data-[state=checked]:bg-primary-600 data-[state=checked]:border-none data-[state=checked]:hover:border-primary-700 data-[state=checked]:hover:bg-primary-700",
     "data-[state=indeterminate]:bg-primary-600 data-[state=indeterminate]:border-none data-[state=indeterminate]:hover:border-primary-700 data-[state=indeterminate]:hover:bg-primary-700",
     "focus-visible:ring-[3px] focus-visible:ring-fr-primary",
