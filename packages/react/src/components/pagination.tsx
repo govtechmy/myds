@@ -176,8 +176,8 @@ const PaginationNext: ForwardRefExoticComponent<
 PaginationNext.displayName = "PaginationNext";
 
 const PaginationNumber: ForwardRefExoticComponent<
-  ComponentProps<"button"> & { number: number }
-> = forwardRef(({ number, ...props }, ref) => {
+  ButtonProps & { number: number }
+> = forwardRef(({ number, asChild, children, ...props }, ref) => {
   const { page, onPageChange } = useContext(PaginationContext);
   const isActive = page === number;
   const handleClickPage = () => {
@@ -193,9 +193,10 @@ const PaginationNumber: ForwardRefExoticComponent<
         isActive && "bg-bg-washed-active",
         "h-10 w-10 items-center justify-center",
       )}
+      asChild={asChild}
       {...props}
     >
-      {number}
+      {asChild ? children : number}
     </Button>
   );
 });
