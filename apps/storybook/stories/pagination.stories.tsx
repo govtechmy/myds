@@ -1,9 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { Pagination } from "@myds/react/pagination";
+import {
+  Pagination,
+  PaginationNext,
+  PaginationPrevious,
+} from "@myds/react/pagination";
 import React from "react";
 import { GovIcon } from "../../../packages/react/src/icons/gov";
-import { InfoIcon } from "../../../packages/react/src/icons/info";
+import { Button } from "@myds/react/button";
 
 /**
  * ### Overview
@@ -195,26 +199,82 @@ export const ControlledNumberPagination: Story = createStory({
   maxDisplay: 2,
 });
 /**
- * This story represents the pagination component in "simple" type.
+ * This story represents the pagination component in "full" type.
  * Where using customized buttons and labels
  */
-
 export const CustomizedButtonAndLabel: Story = createStory({
   type: "full",
   page: 1,
   limit: 4,
   count: 60,
   maxDisplay: 2,
-  previous: {
-    label: "Kembali",
-    icon: <GovIcon />,
-  },
-  next: {
-    label: "Seterusnya",
-    icon: <InfoIcon />,
-  },
+  previous: (
+    <PaginationPrevious label={"Random"} variant={"danger-fill"} asChild>
+      <Button>there</Button>
+    </PaginationPrevious>
+  ),
+  next: (
+    <PaginationNext
+      icon={<GovIcon />}
+      onMouseEnter={() => console.log("hello")}
+    />
+  ),
   fullText: `Muka Surat 1 daripada 20`,
 });
+
+/**
+ *
+ * ```ts
+ * import Pagination from "@myds/react/pagination";
+ *
+ * const urlParams = new URLSearchParams(document.location.search);
+ *
+ *  // In storybook, query params is added here in meta
+ *  parameters: { query: { page: "6" } },
+ *
+ * return (
+ *  <Pagination
+ *    page={Number(urlParams.get("page")) || 1}
+ *    limit={10}
+ *    count={199}
+ *    type="default"
+ *    maxDisplay={4}
+ *    onPageChange={(page) => {
+ *                   console.log("will run this: urlParams.set('page', page.toString());");
+ *                   urlParams.set("page", page.toString());
+ *                  }}
+ * />
+ * );
+ * ```
+ */
+
+export const ServerSidePagination: Story = {
+  parameters: {
+    query: { page: "6" },
+    backgrounds: {
+      default: "light",
+      values: [{ name: "dark", value: "#18181B" }],
+    },
+  },
+  render: (args, context) => {
+    const urlParams = new URLSearchParams(document.location.search);
+    return (
+      <Pagination
+        page={Number(urlParams.get("page")) || 1}
+        limit={10}
+        count={199}
+        type="default"
+        onPageChange={(page) => {
+          console.log(
+            "will run this: urlParams.set('page', page.toString()) which is",
+            page,
+          );
+          urlParams.set("page", page.toString());
+        }}
+      />
+    );
+  },
+};
 
 /**
  * This story represents the pagination component in "simple" type.

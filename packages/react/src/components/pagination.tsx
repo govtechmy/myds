@@ -10,11 +10,9 @@ import React, {
 } from "react";
 import { clx } from "../utils";
 import { OptionsIcon } from "../icons/options";
-import { Button, ButtonIcon } from "./button";
+import { Button, ButtonIcon, ButtonProps } from "./button";
 import { ChevronLeftIcon } from "../icons/chevron-left";
 import { ChevronRightIcon } from "../icons/chevron-right";
-import { GovIcon } from "../icons/gov";
-import { BellIcon } from "../icons/bell";
 
 /**
  * Props for Pagination component.
@@ -101,11 +99,11 @@ const PaginationItem: ForwardRefExoticComponent<ComponentProps<"li">> =
 PaginationItem.displayName = "PaginationItem";
 
 const PaginationPrevious: ForwardRefExoticComponent<
-  ComponentProps<"button"> & {
+  ButtonProps & {
     label?: string;
     icon?: ReactElement<any, string | JSXElementConstructor<any>>;
   }
-> = forwardRef(({ label, icon, ...props }, ref) => {
+> = forwardRef(({ label, icon, asChild, children, ...props }, ref) => {
   const { page, onPageChange } = useContext(PaginationContext);
   const disabled = page <= 1;
   const handlePreviousPage = () => {
@@ -122,10 +120,17 @@ const PaginationPrevious: ForwardRefExoticComponent<
       disabled={disabled}
       className={clx(disabled && "shadow-transparent")}
       onClick={handlePreviousPage}
+      asChild={asChild}
       {...props}
     >
-      <ButtonIcon>{icon || <ChevronLeftIcon />}</ButtonIcon>
-      {label}
+      {asChild ? (
+        children
+      ) : (
+        <>
+          <ButtonIcon>{icon || <ChevronLeftIcon />}</ButtonIcon>
+          {label}
+        </>
+      )}
     </Button>
   );
 });
@@ -133,11 +138,11 @@ const PaginationPrevious: ForwardRefExoticComponent<
 PaginationPrevious.displayName = "PaginationPrevious";
 
 const PaginationNext: ForwardRefExoticComponent<
-  ComponentProps<"button"> & {
+  ButtonProps & {
     label?: string;
     icon?: ReactElement<any, string | JSXElementConstructor<any>>;
   }
-> = forwardRef(({ label, icon, ...props }, ref) => {
+> = forwardRef(({ label, icon, asChild, children, ...props }, ref) => {
   const { page, totalPages, onPageChange } = useContext(PaginationContext);
   const disabled = page === totalPages;
   const handleNextPage = () => {
@@ -153,10 +158,17 @@ const PaginationNext: ForwardRefExoticComponent<
       disabled={disabled}
       className={clx(disabled && "shadow-transparent")}
       onClick={handleNextPage}
+      asChild={asChild}
       {...props}
     >
-      {label}
-      <ButtonIcon>{icon || <ChevronRightIcon />}</ButtonIcon>
+      {asChild ? (
+        children
+      ) : (
+        <>
+          {label}
+          <ButtonIcon>{icon || <ChevronRightIcon />}</ButtonIcon>
+        </>
+      )}
     </Button>
   );
 });
@@ -220,16 +232,8 @@ PaginationEllipsis.displayName = "PaginationEllipsis";
 
 interface PaginationProps extends ComponentProps<"nav">, PaginatorProps {
   maxDisplay?: number;
-  next?: {
-    label?: string;
-    icon?: ReactElement<any, string | JSXElementConstructor<any>>;
-    disabled?: boolean;
-  };
-  previous?: {
-    label?: string;
-    icon?: ReactElement<any, string | JSXElementConstructor<any>>;
-    disabled?: boolean;
-  };
+  next?: ReactNode;
+  previous?: ReactNode;
   fullText?: string;
 }
 
@@ -243,16 +247,13 @@ const Pagination: ForwardRefExoticComponent<PaginationProps> = forwardRef(
         <PaginationRoot ref={ref} type={type} {...props}>
           <PaginationContent>
             <PaginationItem>
-              <PaginationPrevious
-                label={previous?.label || "Previous"}
-                icon={previous?.icon}
-              />
+              {previous || <PaginationPrevious label={"Previous"} />}
             </PaginationItem>
             <PaginationItem>
               <PaginationLabel />
             </PaginationItem>
             <PaginationItem>
-              <PaginationNext label={next?.label || "Next"} icon={next?.icon} />
+              {next || <PaginationNext label={"Next"} />}
             </PaginationItem>
           </PaginationContent>
         </PaginationRoot>
@@ -266,14 +267,11 @@ const Pagination: ForwardRefExoticComponent<PaginationProps> = forwardRef(
               <PaginationLabel content={fullText} />
             </PaginationItem>
             <PaginationItem>
-              <PaginationPrevious
-                label={previous?.label || "Previous"}
-                icon={previous?.icon}
-              />
+              {previous || <PaginationPrevious label={"Previous"} />}
             </PaginationItem>
 
             <PaginationItem>
-              <PaginationNext label={next?.label || "Next"} icon={next?.icon} />
+              {next || <PaginationNext label={"Next"} />}
             </PaginationItem>
           </PaginationContent>
         </PaginationRoot>
@@ -310,11 +308,9 @@ const Pagination: ForwardRefExoticComponent<PaginationProps> = forwardRef(
     return (
       <PaginationRoot ref={ref} type={type} {...props}>
         <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious label={previous?.label} icon={previous?.icon} />
-          </PaginationItem>
+          <PaginationItem>{previous || <PaginationPrevious />}</PaginationItem>
           {getVisiblePageNumber().map((page, index) => (
-            <PaginationItem>
+            <PaginationItem key={page}>
               {page === "..." ? (
                 <PaginationEllipsis />
               ) : (
@@ -322,9 +318,7 @@ const Pagination: ForwardRefExoticComponent<PaginationProps> = forwardRef(
               )}
             </PaginationItem>
           ))}
-          <PaginationItem>
-            <PaginationNext label={next?.label} icon={next?.icon} />
-          </PaginationItem>
+          <PaginationItem>{next || <PaginationNext />}</PaginationItem>
         </PaginationContent>
       </PaginationRoot>
     );
