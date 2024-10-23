@@ -6,6 +6,11 @@
     "./utils": {
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
+    }
+,
+    "./masthead": {
+      "type": "./src/components/masthead.tsx",
+      "default": "./src/components/masthead.tsx"
     },
     "./input": {
       "type": "./src/components/input.tsx",
