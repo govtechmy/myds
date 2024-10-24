@@ -7,7 +7,8 @@ import {
 } from "@myds/react/pagination";
 import React from "react";
 import { GovIcon } from "../../../packages/react/src/icons/gov";
-import { Button } from "@myds/react/button";
+import { Button, ButtonIcon } from "@myds/react/button";
+import ArrowBack from "../react/arrow-back";
 
 /**
  * ### Overview
@@ -26,7 +27,7 @@ import { Button } from "@myds/react/button";
  *    page={1}
  *    limit={10}
  *    count={199}
- *    type="number"
+ *    type="simple"
  *    maxDisplay={4}
  * />
  * ```
@@ -209,15 +210,24 @@ export const CustomizedButtonAndLabel: Story = createStory({
   count: 60,
   maxDisplay: 2,
   previous: (
-    <PaginationPrevious label={"Random"} variant={"danger-fill"} asChild>
-      <Button>there</Button>
+    <PaginationPrevious asChild>
+      <Button variant="danger-fill">
+        <ButtonIcon>
+          <ArrowBack />
+        </ButtonIcon>
+        Stop
+      </Button>
     </PaginationPrevious>
   ),
   next: (
-    <PaginationNext
-      icon={<GovIcon />}
-      onMouseEnter={() => console.log("hello")}
-    />
+    <PaginationNext asChild>
+      <Button variant="primary-fill">
+        <ButtonIcon>
+          <GovIcon />
+        </ButtonIcon>
+        Go
+      </Button>
+    </PaginationNext>
   ),
   fullText: `Muka Surat 1 daripada 20`,
 });

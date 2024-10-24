@@ -13,6 +13,7 @@ import { OptionsIcon } from "../icons/options";
 import { Button, ButtonIcon, ButtonProps } from "./button";
 import { ChevronLeftIcon } from "../icons/chevron-left";
 import { ChevronRightIcon } from "../icons/chevron-right";
+import { Slot } from "@radix-ui/react-slot";
 
 /**
  * Props for Pagination component.
@@ -99,11 +100,8 @@ const PaginationItem: ForwardRefExoticComponent<ComponentProps<"li">> =
 PaginationItem.displayName = "PaginationItem";
 
 const PaginationPrevious: ForwardRefExoticComponent<
-  ButtonProps & {
-    label?: string;
-    icon?: ReactElement<any, string | JSXElementConstructor<any>>;
-  }
-> = forwardRef(({ label, icon, asChild, children, ...props }, ref) => {
+  ComponentProps<"button"> & { asChild?: boolean }
+> = forwardRef(({ asChild, children, ...props }, ref) => {
   const { page, onPageChange } = useContext(PaginationContext);
   const disabled = page <= 1;
   const handlePreviousPage = () => {
@@ -111,6 +109,13 @@ const PaginationPrevious: ForwardRefExoticComponent<
       onPageChange(page - 1);
     }
   };
+
+  if (asChild)
+    return (
+      <Slot ref={ref} {...props}>
+        {children}
+      </Slot>
+    );
 
   return (
     <Button
@@ -120,17 +125,12 @@ const PaginationPrevious: ForwardRefExoticComponent<
       disabled={disabled}
       className={clx(disabled && "shadow-transparent")}
       onClick={handlePreviousPage}
-      asChild={asChild}
       {...props}
     >
-      {asChild ? (
-        children
-      ) : (
-        <>
-          <ButtonIcon>{icon || <ChevronLeftIcon />}</ButtonIcon>
-          {label}
-        </>
-      )}
+      <ButtonIcon>
+        <ChevronLeftIcon />
+      </ButtonIcon>
+      {children}
     </Button>
   );
 });
@@ -150,6 +150,13 @@ const PaginationNext: ForwardRefExoticComponent<
       onPageChange(page + 1);
     }
   };
+  if (asChild)
+    return (
+      <Slot ref={ref} {...props}>
+        {children}
+      </Slot>
+    );
+
   return (
     <Button
       ref={ref}
@@ -158,17 +165,12 @@ const PaginationNext: ForwardRefExoticComponent<
       disabled={disabled}
       className={clx(disabled && "shadow-transparent")}
       onClick={handleNextPage}
-      asChild={asChild}
       {...props}
     >
-      {asChild ? (
-        children
-      ) : (
-        <>
-          {label}
-          <ButtonIcon>{icon || <ChevronRightIcon />}</ButtonIcon>
-        </>
-      )}
+      {children}
+      <ButtonIcon>
+        <ChevronRightIcon />
+      </ButtonIcon>
     </Button>
   );
 });
@@ -176,8 +178,8 @@ const PaginationNext: ForwardRefExoticComponent<
 PaginationNext.displayName = "PaginationNext";
 
 const PaginationNumber: ForwardRefExoticComponent<
-  ButtonProps & { number: number }
-> = forwardRef(({ number, asChild, children, ...props }, ref) => {
+  ComponentProps<"button"> & { number: number }
+> = forwardRef(({ number, ...props }, ref) => {
   const { page, onPageChange } = useContext(PaginationContext);
   const isActive = page === number;
   const handleClickPage = () => {
@@ -193,10 +195,9 @@ const PaginationNumber: ForwardRefExoticComponent<
         isActive && "bg-bg-washed-active",
         "h-10 w-10 items-center justify-center",
       )}
-      asChild={asChild}
       {...props}
     >
-      {asChild ? children : number}
+      {number}
     </Button>
   );
 });
@@ -248,13 +249,13 @@ const Pagination: ForwardRefExoticComponent<PaginationProps> = forwardRef(
         <PaginationRoot ref={ref} type={type} {...props}>
           <PaginationContent>
             <PaginationItem>
-              {previous || <PaginationPrevious label={"Previous"} />}
+              {previous || <PaginationPrevious>Previous</PaginationPrevious>}
             </PaginationItem>
             <PaginationItem>
               <PaginationLabel />
             </PaginationItem>
             <PaginationItem>
-              {next || <PaginationNext label={"Next"} />}
+              {next || <PaginationNext>Next</PaginationNext>}
             </PaginationItem>
           </PaginationContent>
         </PaginationRoot>
@@ -268,11 +269,11 @@ const Pagination: ForwardRefExoticComponent<PaginationProps> = forwardRef(
               <PaginationLabel content={fullText} />
             </PaginationItem>
             <PaginationItem>
-              {previous || <PaginationPrevious label={"Previous"} />}
+              {previous || <PaginationPrevious>Previous</PaginationPrevious>}
             </PaginationItem>
 
             <PaginationItem>
-              {next || <PaginationNext label={"Next"} />}
+              {next || <PaginationNext>Next</PaginationNext>}
             </PaginationItem>
           </PaginationContent>
         </PaginationRoot>
