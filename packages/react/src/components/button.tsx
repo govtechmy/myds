@@ -27,6 +27,7 @@ const button_cva = cva(
     "group flex select-none items-center gap-1.5 rounded-md w-fit",
     "font-body font-medium outline-none transition disabled:cursor-not-allowed",
     "text-center active:translate-y-[0.5px]",
+    "focus:ring focus:ring-fr-primary",
   ],
   {
     variants: {
@@ -34,49 +35,41 @@ const button_cva = cva(
         "default-outline": [
           "bg-bg-white border border-otl-gray-200 text-txt-black-700 shadow-button",
           "hover:bg-bg-white-hover hover:border-otl-gray-300 hover:text-txt-black-900",
-          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-black-disabled disabled:border-transparent",
         ],
         "default-ghost": [
           "bg-transparent border border-transparent text-txt-black-700",
           "hover:bg-bg-white-hover",
-          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-black-disabled disabled:border-transparent",
         ],
         "danger-fill": [
           "bg-danger-600 border border-danger-600 text-white shadow-button",
           "hover:bg-danger-700",
-          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-danger-disabled disabled:text-white-disabled disabled:border-bg-danger-disabled",
         ],
         "danger-outline": [
           "bg-bg-white border border-otl-danger-200 text-txt-danger shadow-button",
           "hover:bg-bg-danger-50",
-          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-danger-disabled disabled:border-transparent",
         ],
         "danger-ghost": [
           "bg-transparent border border-transparent text-txt-danger",
           "hover:bg-bg-danger-50",
-          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-danger-disabled disabled:border-transparent",
         ],
         "primary-fill": [
           "bg-primary-600 border border-primary-600 text-white shadow-button",
           "hover:bg-primary-700",
-          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-primary-disabled disabled:text-white-disabled disabled:border-bg-primary-disabled",
         ],
         "primary-outline": [
           "bg-bg-white border border-otl-primary-200 text-txt-primary shadow-button",
           "hover:bg-bg-primary-50",
-          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-primary-disabled disabled:border-transparent",
         ],
         "primary-ghost": [
           "bg-transparent border border-transparent text-txt-primary",
           "hover:bg-bg-primary-50",
-          "focus:ring focus:ring-fr-primary",
           "disabled:bg-bg-white-disabled disabled:text-txt-primary-disabled disabled:border-transparent",
         ],
         unset: null,
@@ -199,8 +192,6 @@ const button_counter_cva = cva(
     },
   },
 );
-
-/*========================================================================================================================*/
 
 interface ButtonCounterProps {
   children: ReactNode;
