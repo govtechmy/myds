@@ -7,6 +7,10 @@
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
     },
+    "./pagination": {
+      "type": "./src/components/pagination.tsx",
+      "default": "./src/components/pagination.tsx"
+    },
     "./input": {
       "type": "./src/components/input.tsx",
       "default": "./src/components/input.tsx"
