@@ -7,6 +7,10 @@
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
     },
+    "./input": {
+      "type": "./src/components/input.tsx",
+      "default": "./src/components/input.tsx"
+    },
     "./tag": {
       "type": "./src/components/tag.tsx",
       "default": "./src/components/tag.tsx"
