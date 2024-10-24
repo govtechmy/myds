@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 import { Skiplink } from "@myds/react/skiplink";
-import { Children } from "react";
+import { clx } from "@myds/react/utils";
 
 /**
  * ### Overview
@@ -24,14 +24,15 @@ const meta = {
   component: Skiplink,
   decorators: [
     (Story, context) => {
-      // Generate unique content ID based on story name
-      const storyId = context.story?.toLowerCase().replace(/\s+/g, "-");
-      const contentId =
-        context.args.href?.replace("#", "") ||
-        `main-content-${storyId || "default"}`;
+      const contentId = context.args.href?.replace("#", "");
 
       return (
-        <div style={{ minHeight: "150px" }}>
+        <div
+          className={clx(
+            "min-h-[60px]",
+            contentId == "main-dark-content" && "text-white",
+          )}
+        >
           <Story />
           <nav className="h-[300px] bg-slate-800">
             <div className="items-center justify-between">
@@ -57,10 +58,14 @@ const meta = {
           </nav>
 
           {/* Main content with dynamic id */}
-          <main id={contentId} className="flex-1 p-6" tabIndex={-1}>
+          <main id={contentId} className="flex-1" tabIndex={-1}>
             <div className="mx-auto max-w-7xl">
               <h1 className="mb-4 text-2xl font-bold">Main Content</h1>
-              <p className="text-slate-600">{contentId}</p>
+              <p className="text-slate-600">
+                Use tab to navigate to the skipLink element, and press Enter to
+                be directed to the div with the correct id. This div has the id
+                of <span className="font-bold">{contentId}</span>
+              </p>
             </div>
           </main>
         </div>
@@ -96,12 +101,12 @@ export const LightSkipLink: Story = createStory({
 });
 
 /**
- * This story represents a skiplink component with light mode
+ * This story represents a skiplink component with dark mode
  */
 
 export const DarkSkipLink: Story = createStory(
   {
-    text: "Skip to main content bla bla",
+    text: "Skip to main content",
     href: "#main-dark-content",
     className: "dark",
   },
