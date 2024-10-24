@@ -11,6 +11,10 @@
       "type": "./src/components/select.tsx",
       "default": "./src/components/select.tsx"
     },
+    "./pagination": {
+      "type": "./src/components/pagination.tsx",
+      "default": "./src/components/pagination.tsx"
+    },
     "./input": {
       "type": "./src/components/input.tsx",
       "default": "./src/components/input.tsx"
