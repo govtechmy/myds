@@ -6,11 +6,6 @@ import MalaysiaFlagIcon from "../icons/malaysia-flag";
 import { GovMyIcon } from "../icons/gov-my";
 
 // Types
-type BaseProps = {
-  className?: string;
-  children?: React.ReactNode;
-};
-
 type MastheadContentProps = {
   icon: React.ReactNode;
   children: React.ReactNode;
@@ -25,7 +20,7 @@ type MastheadSectionBodyProps = {
 };
 
 // Component definitions
-export const _MastheadHeader = ({ children }: PropsWithChildren) => {
+export const MastheadHeader = ({ children }: PropsWithChildren) => {
   return (
     <summary className="block cursor-pointer list-none py-2.5 outline-none sm:py-1">
       <div className="px-4.5 mx-auto flex max-w-[1280px] items-center gap-1.5 text-sm/4 max-sm:justify-between md:px-6">
@@ -35,7 +30,7 @@ export const _MastheadHeader = ({ children }: PropsWithChildren) => {
   );
 };
 
-export const _MastheadOfficialIndicator = ({
+export const MastheadOfficialIndicator = ({
   children = "Official Malaysia Government Website",
 }: PropsWithChildren) => {
   return (
@@ -46,7 +41,7 @@ export const _MastheadOfficialIndicator = ({
   );
 };
 
-export const _MastheadIdentificationToggle = ({
+export const MastheadIdentificationToggle = ({
   children = "Here's how you know",
 }: PropsWithChildren) => (
   <div className="max-sm:bg-bg-washed text-primary-600 flex items-center gap-0.5 max-sm:rounded-md max-sm:px-1">
@@ -57,7 +52,7 @@ export const _MastheadIdentificationToggle = ({
   </div>
 );
 
-export const _MastheadContent = ({ children }: PropsWithChildren) => {
+export const MastheadContent = ({ children }: PropsWithChildren) => {
   return (
     <div className="container mx-auto max-w-[1280px]">
       <div className="gap-4.5 pt-4.5 grid grid-cols-1 pb-6 pl-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
@@ -93,7 +88,7 @@ export const MastheadSectionBody = ({ children }: MastheadSectionBodyProps) => (
 
 // Default content components
 const DefaultMastheadContent = () => (
-  <_MastheadContent>
+  <MastheadContent>
     <MastheadSection icon={<GovMyIcon />}>
       <MastheadSectionTitle>
         Official government websites end with .gov.my
@@ -114,18 +109,18 @@ const DefaultMastheadContent = () => (
         information.
       </MastheadSectionBody>
     </MastheadSection>
-  </_MastheadContent>
+  </MastheadContent>
 );
 
 const DefaultMastheadHeader = () => (
-  <_MastheadHeader>
-    <_MastheadOfficialIndicator />
-    <_MastheadIdentificationToggle />
-  </_MastheadHeader>
+  <MastheadHeader>
+    <MastheadOfficialIndicator />
+    <MastheadIdentificationToggle />
+  </MastheadHeader>
 );
 
 // Main Masthead component
-export const _Masthead = ({ children }: PropsWithChildren) => {
+export const Masthead = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const details = document.getElementById(
@@ -168,8 +163,8 @@ export const _Masthead = ({ children }: PropsWithChildren) => {
 
   React.Children.forEach(children, (child) => {
     if (React.isValidElement(child)) {
-      if (child.type === _MastheadHeader) hasHeader = true;
-      if (child.type === _MastheadContent) hasContent = true;
+      if (child.type === MastheadHeader) hasHeader = true;
+      if (child.type === MastheadContent) hasContent = true;
     }
   });
 
@@ -180,8 +175,8 @@ export const _Masthead = ({ children }: PropsWithChildren) => {
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             if (
-              child.type === _MastheadHeader ||
-              child.type === _MastheadContent
+              child.type === MastheadHeader ||
+              child.type === MastheadContent
             ) {
               return child;
             }
@@ -198,49 +193,49 @@ const Example = () => {
   return (
     <>
       {/* Default everything */}
-      <_Masthead />
+      <Masthead />
 
       {/* Custom header only */}
-      <_Masthead>
-        <_MastheadHeader>
-          <_MastheadOfficialIndicator>
+      <Masthead>
+        <MastheadHeader>
+          <MastheadOfficialIndicator>
             Custom Official Text
-          </_MastheadOfficialIndicator>
-          <_MastheadIdentificationToggle>
+          </MastheadOfficialIndicator>
+          <MastheadIdentificationToggle>
             Custom Toggle Text
-          </_MastheadIdentificationToggle>
-        </_MastheadHeader>
-      </_Masthead>
+          </MastheadIdentificationToggle>
+        </MastheadHeader>
+      </Masthead>
 
       {/* Custom content only */}
-      <_Masthead>
-        <_MastheadContent>
+      <Masthead>
+        <MastheadContent>
           <MastheadSection icon={<GovMyIcon />}>
             <MastheadSectionTitle>Custom Title</MastheadSectionTitle>
             <MastheadSectionBody>Custom content here</MastheadSectionBody>
           </MastheadSection>
-        </_MastheadContent>
-      </_Masthead>
+        </MastheadContent>
+      </Masthead>
 
       {/* Both custom */}
-      <_Masthead>
-        <_MastheadHeader>
-          <_MastheadOfficialIndicator>
+      <Masthead>
+        <MastheadHeader>
+          <MastheadOfficialIndicator>
             Custom Official Text
-          </_MastheadOfficialIndicator>
-          <_MastheadIdentificationToggle>
+          </MastheadOfficialIndicator>
+          <MastheadIdentificationToggle>
             Custom Toggle Text
-          </_MastheadIdentificationToggle>
-        </_MastheadHeader>
-        <_MastheadContent>
+          </MastheadIdentificationToggle>
+        </MastheadHeader>
+        <MastheadContent>
           <MastheadSection icon={<GovMyIcon />}>
             <MastheadSectionTitle>Custom Title</MastheadSectionTitle>
             <MastheadSectionBody>Custom content here</MastheadSectionBody>
           </MastheadSection>
-        </_MastheadContent>
-      </_Masthead>
+        </MastheadContent>
+      </Masthead>
     </>
   );
 };
 
-export default _Masthead;
+export default Masthead;

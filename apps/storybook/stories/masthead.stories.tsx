@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import {
-  _Masthead,
-  _MastheadHeader,
-  _MastheadContent,
-  _MastheadOfficialIndicator,
-  _MastheadIdentificationToggle,
+  Masthead,
+  MastheadHeader,
+  MastheadContent,
+  MastheadOfficialIndicator,
+  MastheadIdentificationToggle,
   MastheadSection,
   MastheadSectionTitle,
   MastheadSectionBody,
@@ -40,28 +40,28 @@ import { GovMyIcon } from "../../../packages/react/src/icons/gov-my";
  * ### Usage
  * ```tsx
  * // Basic usage with all defaults
- * import { _Masthead } from "@myds/react/masthead";
+ * import { Masthead } from "@myds/react/masthead";
  *
- * const MyPage = () => <_Masthead />;
+ * const MyPage = () => <Masthead />;
  *
  * // Custom header text
  * const CustomHeader = () => (
- *   <_Masthead>
- *     <_MastheadHeader>
- *       <_MastheadOfficialIndicator>
+ *   <Masthead>
+ *     <MastheadHeader>
+ *       <MastheadOfficialIndicator>
  *         Custom Official Text
- *       </_MastheadOfficialIndicator>
- *       <_MastheadIdentificationToggle>
+ *       </MastheadOfficialIndicator>
+ *       <MastheadIdentificationToggle>
  *         Custom Toggle Text
- *       </_MastheadIdentificationToggle>
- *     </_MastheadHeader>
- *   </_Masthead>
+ *       </MastheadIdentificationToggle>
+ *     </MastheadHeader>
+ *   </Masthead>
  * );
  *
  * // Custom content
  * const CustomContent = () => (
- *   <_Masthead>
- *     <_MastheadContent>
+ *   <Masthead>
+ *     <MastheadContent>
  *       <MastheadSection icon={<CustomIcon />}>
  *         <MastheadSectionTitle>
  *           Custom Title
@@ -70,15 +70,15 @@ import { GovMyIcon } from "../../../packages/react/src/icons/gov-my";
  *           Custom content here
  *         </MastheadSectionBody>
  *       </MastheadSection>
- *     </_MastheadContent>
- *   </_Masthead>
+ *     </MastheadContent>
+ *   </Masthead>
  * );
  * ```
  */
 
 const meta = {
   title: "@myds/react/Masthead",
-  component: _Masthead,
+  component: Masthead,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -98,37 +98,37 @@ const meta = {
       },
     },
   },
-} satisfies Meta<typeof _Masthead>;
+} satisfies Meta<typeof Masthead>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Default usage
 export const Default: Story = {
-  render: () => <_Masthead />,
+  render: () => <Masthead />,
 };
 
 // Custom header
 export const CustomHeader: Story = {
   render: () => (
-    <_Masthead>
-      <_MastheadHeader>
-        <_MastheadOfficialIndicator>
+    <Masthead>
+      <MastheadHeader>
+        <MastheadOfficialIndicator>
           Portal Rasmi Kerajaan Malaysia
-        </_MastheadOfficialIndicator>
-        <_MastheadIdentificationToggle>
+        </MastheadOfficialIndicator>
+        <MastheadIdentificationToggle>
           Ketahui Lebih Lanjut
-        </_MastheadIdentificationToggle>
-      </_MastheadHeader>
-    </_Masthead>
+        </MastheadIdentificationToggle>
+      </MastheadHeader>
+    </Masthead>
   ),
 };
 
 // Custom content
 export const CustomContent: Story = {
   render: () => (
-    <_Masthead>
-      <_MastheadContent>
+    <Masthead>
+      <MastheadContent>
         <MastheadSection icon={<GovMyIcon />}>
           <MastheadSectionTitle>
             Laman web rasmi kerajaan berakhir dengan .gov.my
@@ -139,24 +139,24 @@ export const CustomContent: Story = {
             laman web dengan segera walaupun ia kelihatan serupa.
           </MastheadSectionBody>
         </MastheadSection>
-      </_MastheadContent>
-    </_Masthead>
+      </MastheadContent>
+    </Masthead>
   ),
 };
 
 // Fully customized
 export const FullyCustomized: Story = {
   render: () => (
-    <_Masthead>
-      <_MastheadHeader>
-        <_MastheadOfficialIndicator>
+    <Masthead>
+      <MastheadHeader>
+        <MastheadOfficialIndicator>
           Portal Rasmi Kerajaan Malaysia
-        </_MastheadOfficialIndicator>
-        <_MastheadIdentificationToggle>
+        </MastheadOfficialIndicator>
+        <MastheadIdentificationToggle>
           Ketahui Lebih Lanjut
-        </_MastheadIdentificationToggle>
-      </_MastheadHeader>
-      <_MastheadContent>
+        </MastheadIdentificationToggle>
+      </MastheadHeader>
+      <MastheadContent>
         <MastheadSection icon={<GovMyIcon />}>
           <MastheadSectionTitle>
             Laman web rasmi kerajaan berakhir dengan .gov.my
@@ -179,7 +179,7 @@ export const FullyCustomized: Story = {
             sebarang maklumat sensitif.
           </MastheadSectionBody>
         </MastheadSection>
-      </_MastheadContent>
-    </_Masthead>
+      </MastheadContent>
+    </Masthead>
   ),
 };
