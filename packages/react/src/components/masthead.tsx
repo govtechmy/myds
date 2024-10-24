@@ -6,116 +6,85 @@ import MalaysiaFlagIcon from "../icons/malaysia-flag";
 import { GovMyIcon } from "../icons/gov-my";
 
 // Types
-interface OfficialIndicatorProps {
-  text?: string;
-}
+type BaseProps = {
+  className?: string;
+  children?: React.ReactNode;
+};
 
-interface IdentificationToggleProps {
-  text?: string;
-}
-
-interface OfficialInfoProps {
-  title?: string;
-  description?: string;
-  domain?: string;
-  closeText?: string;
-}
-
-interface SecureInfoProps {
-  title?: string;
-  description?: string;
-  orText?: string;
-  protocol?: string;
-  precautionText?: string;
-}
-
-interface MastheadProps {
+type MastheadProps = BaseProps & {
   officialText?: string;
   identifyText?: string;
-  officialTitle?: string;
-  officialDescription?: string;
-  domain?: string;
-  closeText?: string;
-  secureTitle?: string;
-  secureDescription?: string;
-  orText?: string;
-  protocol?: string;
-  precautionText?: string;
-}
+};
 
-export const OfficialIndicator: React.FC<OfficialIndicatorProps> = ({
-  text = "Official Malaysia Government Website",
+type SubComponentProps = BaseProps;
+
+// Components
+const MastheadOfficialIndicator: React.FC<SubComponentProps> = ({
+  children = "Official Malaysia Government Website",
+  className = "",
 }) => (
-  <div className="flex select-none items-center gap-2">
+  <div className={`flex select-none items-center gap-2 ${className}`}>
     <MalaysiaFlagIcon className="shrink-0" />
-    <span className="text-txt-black-900">{text}</span>
+    <span className="text-txt-black-900">{children}</span>
   </div>
 );
 
-export const IdentificationToggle: React.FC<IdentificationToggleProps> = ({
-  text = "Here's how you know",
+const MastheadIdentificationToggle: React.FC<SubComponentProps> = ({
+  children = "Here's how you know",
+  className = "",
 }) => (
-  <div className="max-sm:bg-bg-washed text-primary-600 flex items-center gap-0.5 max-sm:rounded-md max-sm:px-1">
+  <div
+    className={`max-sm:bg-bg-washed text-primary-600 flex items-center gap-0.5 max-sm:rounded-md max-sm:px-1 ${className}`}
+  >
     <span className="hidden select-none tracking-[-0.01em] sm:block">
-      {text}
+      {children}
     </span>
     <ChevronDownIcon className="size-4 transition group-open:rotate-180" />
   </div>
 );
 
-export const OfficialInfo: React.FC<OfficialInfoProps> = ({
-  title = "Official government websites end with .gov.my",
-  description = "If the link does not end with ",
-  domain = ".gov.my",
-  closeText = ", exit the website immediately even if it looks similar.",
+const MastheadTitleOfficialInfo: React.FC<SubComponentProps> = ({
+  children = "Official government websites end with .gov.my",
+  className = "",
+}) => <p className={`font-medium max-sm:text-sm ${className}`}>{children}</p>;
+
+const MastheadTitleSecureInfo: React.FC<SubComponentProps> = ({
+  children = "Secure websites use HTTPS",
+  className = "",
+}) => <p className={`font-medium max-sm:text-sm ${className}`}>{children}</p>;
+
+const MastheadOfficialInfo: React.FC<SubComponentProps> = ({
+  children,
+  className = "",
 }) => (
-  <div className="flex gap-3">
-    <GovMyIcon className="text-txt-black-500 shrink-0" />
-    <div className="space-y-1.5">
-      <p className="font-medium max-sm:text-sm">{title}</p>
-      <div className="text-txt-black-700 max-w-prose text-balance text-sm">
-        {description}
-        <span className="font-semibold">{domain}</span>
-        {closeText}
-      </div>
-    </div>
+  <div className="text-txt-black-700 max-w-prose text-balance text-sm">
+    {children}
   </div>
 );
 
-export const SecureInfo: React.FC<SecureInfoProps> = ({
-  title = "Secure websites use HTTPS",
-  description = "Look for a lock ( ",
-  orText = ") or ",
-  protocol = "https://",
-  precautionText = " as an added precaution. If not present, do not share any sensitive information.",
+const MastheadSecureInfo: React.FC<SubComponentProps> = ({
+  children,
+  className = "",
 }) => (
-  <div className="flex gap-3">
-    <Lock2Icon className="text-txt-black-500 shrink-0" />
-    <div className="space-y-1.5">
-      <p className="font-medium max-sm:text-sm">{title}</p>
-      <div className="text-txt-black-700 max-w-prose text-balance text-sm">
-        {description}
-        <SolidLockIcon className="mb-0.5 inline size-3.5" />
-        {orText}
-        <span className="font-semibold">{protocol}</span>
-        {precautionText}
-      </div>
-    </div>
+  <div className="text-txt-black-700 max-w-prose text-balance text-sm">
+    {children}
   </div>
 );
 
-export const Masthead: React.FC<MastheadProps> = ({
-  officialText = "Official Malaysia Government Website",
-  identifyText = "Here's how you know",
-  officialTitle = "Official government websites end with .gov.my",
-  officialDescription = "If the link does not end with ",
-  domain = ".gov.my",
-  closeText = ", exit the website immediately even if it looks similar.",
-  secureTitle = "Secure websites use HTTPS",
-  secureDescription = "Look for a lock (",
-  orText = ") or ",
-  protocol = "https://",
-  precautionText = " as an added precaution. If not present, do not share any sensitive information.",
+type CompoundMasthead = React.FC<MastheadProps> & {
+  OfficialIndicator: typeof MastheadOfficialIndicator;
+  IdentificationToggle: typeof MastheadIdentificationToggle;
+  OfficialInfo: typeof MastheadOfficialInfo;
+  SecureInfo: typeof MastheadSecureInfo;
+  TitleOfficialInfo: typeof MastheadTitleOfficialInfo;
+  TitleSecureInfo: typeof MastheadTitleSecureInfo;
+};
+
+const Masthead: CompoundMasthead = ({
+  children,
+  className = "",
+  officialText,
+  identifyText,
 }) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -141,33 +110,108 @@ export const Masthead: React.FC<MastheadProps> = ({
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  const renderHeader = () => {
+    return (
+      React.Children.map(children, (child) => {
+        if (React.isValidElement(child)) {
+          if (
+            child.type === MastheadOfficialIndicator ||
+            child.type === MastheadIdentificationToggle
+          ) {
+            return child;
+          }
+        }
+        return null;
+      }) || (
+        <>
+          <MastheadOfficialIndicator>{officialText}</MastheadOfficialIndicator>
+          <MastheadIdentificationToggle>
+            {identifyText}
+          </MastheadIdentificationToggle>
+        </>
+      )
+    );
+  };
+
+  const renderOfficialSection = () => {
+    let title: React.ReactNode = null;
+    let content: React.ReactNode = null;
+
+    React.Children.forEach(children, (child) => {
+      if (React.isValidElement(child)) {
+        if (child.type === MastheadTitleOfficialInfo) {
+          title = child;
+        } else if (child.type === MastheadOfficialInfo) {
+          content = child;
+        }
+      }
+    });
+
+    return (
+      <div className="flex gap-3">
+        <GovMyIcon className="text-txt-black-500 shrink-0" />
+        <div className="space-y-1.5">
+          {title || <MastheadTitleOfficialInfo />}
+          {content || (
+            <MastheadOfficialInfo>
+              If the link does not end with
+              <span className="font-semibold"> .gov.my</span>, exit the website
+              immediately even if it looks similar.
+            </MastheadOfficialInfo>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  const renderSecureSection = () => {
+    let title: React.ReactNode = null;
+    let content: React.ReactNode = null;
+
+    React.Children.forEach(children, (child) => {
+      if (React.isValidElement(child)) {
+        if (child.type === MastheadTitleSecureInfo) {
+          title = child;
+        } else if (child.type === MastheadSecureInfo) {
+          content = child;
+        }
+      }
+    });
+
+    return (
+      <div className="flex gap-3">
+        <Lock2Icon className="text-txt-black-500 shrink-0" />
+        <div className="space-y-1.5">
+          {title || <MastheadTitleSecureInfo />}
+          {content || (
+            <MastheadSecureInfo>
+              Look for a lock (
+              <SolidLockIcon className="mb-0.5 inline size-3.5" />) or
+              <span className="font-semibold"> https:// </span>
+              as an added precaution. If not present, do not share any sensitive
+              information.
+            </MastheadSecureInfo>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div className="bg-bg-washed print:hidden" data-nosnippet>
+    <div className={`bg-bg-washed print:hidden ${className}`} data-nosnippet>
       <details id="Masthead" className="group">
         <summary className="block cursor-pointer list-none py-2.5 outline-none sm:py-1">
           <div className="px-4.5 mx-auto flex max-w-[1280px] items-center gap-1.5 text-sm/4 max-sm:justify-between md:px-6">
-            <OfficialIndicator text={officialText} />
-            <IdentificationToggle text={identifyText} />
+            {renderHeader()}
           </div>
         </summary>
         <div className="container mx-auto max-w-[1280px]">
           <div className="gap-4.5 pt-4.5 grid grid-cols-1 pb-6 pl-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
             <span className="text-primary-600 static text-sm sm:hidden">
-              {identifyText}
+              {identifyText || "Here's how you know"}
             </span>
-            <OfficialInfo
-              title={officialTitle}
-              description={officialDescription}
-              domain={domain}
-              closeText={closeText}
-            />
-            <SecureInfo
-              title={secureTitle}
-              description={secureDescription}
-              orText={orText}
-              protocol={protocol}
-              precautionText={precautionText}
-            />
+            {renderOfficialSection()}
+            {renderSecureSection()}
           </div>
         </div>
       </details>
@@ -175,9 +219,12 @@ export const Masthead: React.FC<MastheadProps> = ({
   );
 };
 
-// Story Exports
-export const CompleteMasthead: React.FC = () => {
-  return <Masthead />;
-};
+// Attach sub-components
+Masthead.OfficialIndicator = MastheadOfficialIndicator;
+Masthead.IdentificationToggle = MastheadIdentificationToggle;
+Masthead.OfficialInfo = MastheadOfficialInfo;
+Masthead.SecureInfo = MastheadSecureInfo;
+Masthead.TitleOfficialInfo = MastheadTitleOfficialInfo;
+Masthead.TitleSecureInfo = MastheadTitleSecureInfo;
 
 export default Masthead;
