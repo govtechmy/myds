@@ -1,41 +1,44 @@
-import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 import { Skiplink } from "@myds/react/skiplink";
 
 /**
  * ### Overview
- * Insert a brief description of the component here.
+ * The skip link component enables users to bypass repetitive navigation links and jumps directly to the main content. It enhances accessibility for keyboard and screen reader users by improving navigation efficiency and is typically hidden until focused.
  *
- * > Insert a ChatGPT pantun here 
+ * > Melompat jauh di padang permainan,
+ * > Langkah ringan menuju destinasi.
+ * > Skiplink memberi kemudahan,
+ * > Pengguna melayari tanpa frustrasi. -- Claude
  *
  * ### Usage
  * ```ts
  * import Skiplink from "@myds/react/skiplink";
  *
- * <Skiplink />
+ * <Skiplink href="#main-content" text="Skip to main content"/>
  * ```
  */
 const meta = {
-  title: "@myds/react/Skiplink",
+  title: "@myds/React/Skiplink",
   component: Skiplink,
-  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
-  args: { onClick: fn() },
   argTypes: {
-    type: {
-      table: {
-        type: {
-          summary: "enum",
-        },
-      },
-      description: "insert-description-here",
-      control: "inline-radio",
-      options: ["option-1", "option-2", "option-3"],
+    text: {
+      description: "The text content displayed in the skiplink button",
+      control: "text",
     },
-  }
+    href: {
+      description: "The target URL or anchor ID that the skiplink navigates to",
+      control: "text",
+    },
+  },
+  args: {
+    text: "Skip to main content",
+    href: "#main",
+  },
+  tags: ["autodocs"],
 } satisfies Meta<typeof Skiplink>;
 
 export default meta;
@@ -49,6 +52,8 @@ type Story = StoryObj<typeof meta>;
  * export const DarkDefault: Story = createStory({ ... , className="dark"}, "dark");
  */
 
-// export const Default: Story = createStory({
-//  children: "Example",
-// });
+export const Default: Story = createStory({}); // Uses the default args from meta
+
+export const CustomText: Story = createStory({
+  text: "Jump to content", // Overrides just the text
+});

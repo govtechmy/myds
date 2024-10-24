@@ -22,7 +22,19 @@ const Skiplink = forwardRef<HTMLAnchorElement, SkiplinkProps>(
       <Button asChild variant="primary-outline" size={"small"}>
         <a
           ref={ref}
-          className={clx("shadow-context-menu", className)}
+          className={clx(
+            // to hide the element
+            "shadow-context-menu",
+            "absolute h-[1px] w-[1px]",
+            "overflow-hidden",
+            "whitespace-nowrap",
+            "[clip-path:inset(50%)]",
+            // Focus state (visible)
+            "focus:h-auto focus:w-auto",
+            "focus:left-4 focus:top-11",
+            "focus:[clip-path:none]",
+            className,
+          )}
           href={href}
           {...props}
         >
