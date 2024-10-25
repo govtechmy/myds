@@ -22,7 +22,7 @@ type MastheadSectionBodyProps = {
 // Component definitions
 export const MastheadHeader = ({ children }: PropsWithChildren) => {
   return (
-    <summary className="block cursor-pointer list-none py-2.5 outline-none sm:py-1">
+    <summary className="block cursor-pointer list-none py-2.5 outline-none sm:py-1 [&::-webkit-details-marker]:hidden">
       <div className="px-4.5 mx-auto flex max-w-[1280px] items-center gap-1.5 text-sm/4 max-sm:justify-between md:px-6">
         {children}
       </div>
