@@ -12,6 +12,10 @@
       "type": "./src/components/skiplink.tsx",
       "default": "./src/components/skiplink.tsx"
     },
+    "./pagination": {
+      "type": "./src/components/pagination.tsx",
+      "default": "./src/components/pagination.tsx"
+    },
     "./input": {
       "type": "./src/components/input.tsx",
       "default": "./src/components/input.tsx"
@@ -27,6 +31,10 @@
     "./tabs": {
       "type": "./src/components/tabs.tsx",
       "default": "./src/components/tabs.tsx"
+    },
+    "./checkbox": {
+      "type": "./src/components/checkbox.tsx",
+      "default": "./src/components/checkbox.tsx"
     },
     "./hooks": {
       "type": "./src/hooks/index.ts",
@@ -77,6 +85,7 @@
     "react-dom": "^18"
   },
   "dependencies": {
+    "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-navigation-menu": "^1.2.0",

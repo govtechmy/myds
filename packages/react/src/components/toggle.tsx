@@ -4,7 +4,7 @@ import { clx } from "../utils";
 
 const thumbVariants = cva(
   [
-    "absolute block outline-none focus:ring-[3px] focus:ring-fr-primary bg-otl-gray-200 hover:bg-otl-gray-300 data-[state=checked]:bg-bg-primary-600 cursor-pointer rounded-full transition-color duration-200 z-10",
+    "block outline-none focus:ring-[3px] focus:ring-fr-primary bg-otl-gray-200 hover:bg-otl-gray-300 data-[state=checked]:bg-bg-primary-600 cursor-pointer rounded-full transition-color duration-200 z-10",
     "before:content-[''] before:left-[3px] before:bottom-[3px] before:bg-white before:absolute before:rounded-full before:transition-all before:duration-200",
     "peer-disabled:data-[state=checked]:bg-bg-primary-disabled peer-disabled:cursor-not-allowed peer-disabled:before:data-[state=checked]:bg-bg-white",
   ],
@@ -83,32 +83,6 @@ export const Toggle: React.FC<ToggleProps> = ({
         {children}
       </div>
     </ToggleContext.Provider>
-  );
-};
-
-export interface ToggleLabelProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
-export const ToggleLabel: React.FC<ToggleLabelProps> = ({
-  children,
-  className,
-}) => {
-  const context = useContext(ToggleContext);
-  if (!context) throw new Error("ToggleLabel must be used within Toggle");
-
-  return (
-    <label
-      htmlFor={context.id}
-      className={clx(
-        "text-txt-black-700 font-medium",
-        context.size === "medium" ? "text-body-sm" : "text-lg",
-        className,
-      )}
-    >
-      {children}
-    </label>
   );
 };
 
