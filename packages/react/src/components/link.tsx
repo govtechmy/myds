@@ -2,11 +2,6 @@ import { Slot } from "@radix-ui/react-slot";
 import React, { ComponentPropsWithoutRef, forwardRef } from "react";
 import { clx } from "../utils";
 
-/**
- * Props for Link component.
- * @typedef LinkProps
- * @property {type} variant
- */
 interface LinkProps extends ComponentPropsWithoutRef<"a"> {
   asChild?: boolean;
   newTab?: boolean;
@@ -15,17 +10,17 @@ interface LinkProps extends ComponentPropsWithoutRef<"a"> {
 }
 
 /**
- * Link component description.
- * @component
+ * The Link component extends the `<a>` element, customised according to the MYDS theme.
  * @example
- * <Link href="https://design.digital.gov.my">MYDS</Link>
+ * <Link href="https://design.digital.gov.my" newTab primary underline="always">MYDS</Link>
+ * @see {@link https://design.digital.gov.my/?path=/docs/myds-react-link--docs}
  */
 const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   (
     {
       asChild,
       children,
-      className: _className,
+      className,
       href,
       newTab = false,
       primary = false,
@@ -34,14 +29,14 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     },
     ref,
   ) => {
-    const className = clx(
+    const _className = clx(
       primary ? "text-txt-primary" : "text-inherit",
       underline == "always"
         ? "underline"
         : underline == "hover"
           ? "hover:underline"
           : "",
-      _className,
+      className,
     );
 
     if (newTab)
@@ -49,7 +44,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
         <a
           ref={ref}
           href={href}
-          className={className}
+          className={_className}
           target="_blank"
           {...props}
         >
@@ -60,7 +55,7 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 
     const Comp = asChild ? Slot : "a";
     return (
-      <Comp ref={ref} href={href} className={className} {...props}>
+      <Comp ref={ref} href={href} className={_className} {...props}>
         {children}
       </Comp>
     );
