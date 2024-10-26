@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import { clx } from "../utils";
 import { OptionsIcon } from "../icons/options";
-import { Button, ButtonIcon, ButtonProps } from "./button";
+import { Button, ButtonIcon } from "./button";
 import { ChevronLeftIcon } from "../icons/chevron-left";
 import { ChevronRightIcon } from "../icons/chevron-right";
 import { Slot } from "@radix-ui/react-slot";
@@ -138,11 +138,8 @@ const PaginationPrevious: ForwardRefExoticComponent<
 PaginationPrevious.displayName = "PaginationPrevious";
 
 const PaginationNext: ForwardRefExoticComponent<
-  ButtonProps & {
-    label?: string;
-    icon?: ReactElement<any, string | JSXElementConstructor<any>>;
-  }
-> = forwardRef(({ label, icon, asChild, children, ...props }, ref) => {
+  ComponentProps<"button"> & { asChild?: boolean }
+> = forwardRef(({ asChild, children, ...props }, ref) => {
   const { page, totalPages, onPageChange } = useContext(PaginationContext);
   const disabled = page === totalPages;
   const handleNextPage = () => {
