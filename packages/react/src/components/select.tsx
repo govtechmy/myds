@@ -4,6 +4,7 @@ import { clx } from "../utils";
 import { cva } from "class-variance-authority";
 import { ChevronDownFillIcon } from "../icons/chevron-down-fill";
 import { CheckCircleFillIcon } from "../icons/check-circle-fill";
+import { Checkbox } from "./checkbox";
 
 type SelectBase = Omit<
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>,
@@ -28,7 +29,7 @@ type SelectMultiple = SelectBase & {
 };
 
 const isMultiple = (props: SelectProps): props is SelectMultiple =>
-  props.multiple;
+  Boolean(props.multiple);
 
 type SelectProps = SelectSingle | SelectMultiple;
 
@@ -58,6 +59,11 @@ const Select: React.ForwardRefExoticComponent<SelectProps> = React.forwardRef(
     const [_open, _setOpen] = React.useState<boolean | undefined>(
       props.open || false,
     );
+
+    React.useEffect(() => {
+      if (props.multiple && !Array.isArray(_value)) _setValue([]);
+      if (!props.multiple && Array.isArray(_value)) _setValue("");
+    }, [props.multiple]);
 
     React.useEffect(() => {
       if (props.value) _setValue(props.value);
@@ -125,14 +131,14 @@ interface SelectValueProps
   icon?: React.JSXElementConstructor<any>;
 }
 const SelectValue: React.ForwardRefExoticComponent<SelectValueProps> =
-  React.forwardRef(({ label, icon, ...props }, ref) => {
+  React.forwardRef(({ label, icon, asChild, ...props }, ref) => {
     const rootProps = React.useContext(SelectContext);
     const Icon = icon || ChevronDownFillIcon;
 
     if (!isMultiple(rootProps))
       return [
         typeof label === "string" ? <SelectLabel>{label}</SelectLabel> : label,
-        <SelectPrimitive.Value ref={ref} {...props} />,
+        <SelectPrimitive.Value ref={ref} asChild={asChild} {...props} />,
         <SelectPrimitive.Icon asChild>
           <Icon className={select_icon_cva({ size: rootProps.size })} />
         </SelectPrimitive.Icon>,
@@ -140,10 +146,8 @@ const SelectValue: React.ForwardRefExoticComponent<SelectValueProps> =
 
     return [
       typeof label === "string" ? <SelectLabel>{label}</SelectLabel> : label,
-      <SelectPrimitive.Value ref={ref} {...props}>
-        {props.placeholder}
-      </SelectPrimitive.Value>,
-      rootProps && <SelectCounter>{rootProps._value?.length}</SelectCounter>,
+      <SelectPrimitive.Value ref={ref} asChild={asChild} {...props} />,
+      !asChild && <SelectCounter>{rootProps._value?.length}</SelectCounter>,
       <SelectPrimitive.Icon asChild>
         <Icon className={select_icon_cva({ size: rootProps.size })} />
       </SelectPrimitive.Icon>,
@@ -155,7 +159,7 @@ const SelectValue: React.ForwardRefExoticComponent<SelectValueProps> =
 const select_counter_cva = cva(
   [
     "flex aspect-square shrink-0 leading-none items-center justify-center bg-primary-600",
-    "rounded-full px-1 leading-none bg-bg-primary-600 text-txt-white",
+    "rounded-full px-1 leading-none text-white",
     "group-disabled:bg-bg-white-disabled group-disabled:text-inherit",
   ],
   {
@@ -216,19 +220,19 @@ const select_trigger_cva = cva(
   },
 );
 
-interface SelectTriggerProps
-  extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> {}
-
-const SelectTrigger = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Trigger>,
-  SelectTriggerProps
->(({ className, children, ...props }, ref) => {
+const SelectTrigger: React.ForwardRefExoticComponent<
+  React.ComponentProps<typeof SelectPrimitive.Trigger>
+> = React.forwardRef(({ className, children, ...props }, ref) => {
   const { variant, size } = React.useContext(SelectContext);
 
   return (
     <SelectPrimitive.Trigger
       ref={ref}
-      className={select_trigger_cva({ variant, size })}
+      className={select_trigger_cva({
+        variant,
+        size,
+        className,
+      })}
       {...props}
     >
       {children}
@@ -240,7 +244,7 @@ SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 /*========================================================================================================================*/
 
 const select_label_cva = cva(
-  ["text-txt-black-500 group-data-[disabled]:text-txt-black-disabled"],
+  ["group-data-[disabled]:text-txt-black-disabled"],
   {
     variants: {
       size: {
@@ -248,20 +252,23 @@ const select_label_cva = cva(
         medium: "text-body-md",
         large: "text-body-lg",
       },
+      multiple: {
+        false: "text-txt-black-500",
+        true: "text-txt-black-900",
+      },
     },
-    defaultVariants: { size: "small" },
+    defaultVariants: { size: "small", multiple: false },
   },
 );
 
-const SelectLabel = React.forwardRef<
-  React.ElementRef<"span">,
-  React.ComponentPropsWithoutRef<"span">
->(({ className, ...props }, ref) => {
-  const { size } = React.useContext(SelectContext);
+const SelectLabel: React.ForwardRefExoticComponent<
+  React.ComponentProps<"span">
+> = React.forwardRef(({ className, ...props }, ref) => {
+  const { size, multiple } = React.useContext(SelectContext);
   return (
     <span
       ref={ref}
-      className={select_label_cva({ size, className })}
+      className={select_label_cva({ size, multiple, className })}
       {...props}
     />
   );
@@ -270,28 +277,45 @@ SelectLabel.displayName = "SelectLabel";
 
 /*========================================================================================================================*/
 
+const select_content_cva = cva(
+  [
+    "bg-bg-dialog relative z-50 max-h-64 min-w-[8rem] overflow-hidden ",
+    "rounded-xl border border-otl-gray-200 shadow-context-menu",
+    "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+  ],
+  {
+    variants: {
+      position: {
+        popper:
+          "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
+        "item-aligned": "",
+      },
+      size: {
+        small: "max-h-64",
+        medium: "max-h-72",
+        large: "max-h-80",
+      },
+    },
+    defaultVariants: { position: "popper", size: "small" },
+  },
+);
+
 const SelectContent: React.ForwardRefExoticComponent<
   React.ComponentProps<typeof SelectPrimitive.Content>
 > = React.forwardRef(
   ({ className, children, position = "popper", ...props }, ref) => {
-    const { _handleClose } = React.useContext(SelectContext);
+    const { _handleClose, size } = React.useContext(SelectContext);
     return (
       <SelectPrimitive.Portal>
         <SelectPrimitive.Content
           ref={ref}
-          className={clx(
-            "bg-bg-dialog data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-96 min-w-[8rem] overflow-hidden rounded-md border shadow-md",
-            position === "popper" &&
-              "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
-            className,
-          )}
+          className={select_content_cva({ position, size, className })}
           position={position}
           {...props}
           onPointerDownOutside={() => _handleClose?.(false)}
         >
           <SelectPrimitive.Viewport
             className={clx(
-              "p-[5px]",
               position === "popper" &&
                 "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]",
             )}
@@ -307,23 +331,28 @@ SelectContent.displayName = SelectPrimitive.Content.displayName;
 
 /*========================================================================================================================*/
 
-const SelectHeader = React.forwardRef<
+const SelectGroupTitle = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Label>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
 >(({ className, ...props }, ref) => (
-  <SelectPrimitive.Label
-    ref={ref}
-    className={clx("px-2.5 py-1.5 text-sm font-semibold", className)}
-    {...props}
-  />
+  <SelectXPad>
+    <SelectPrimitive.Label
+      ref={ref}
+      className={clx(
+        "text-body-xs px-2.5 py-1.5 font-semibold text-gray-400",
+        className,
+      )}
+      {...props}
+    />
+  </SelectXPad>
 ));
-SelectHeader.displayName = SelectPrimitive.Label.displayName;
+SelectGroupTitle.displayName = SelectPrimitive.Label.displayName;
 
 /*========================================================================================================================*/
 
 const select_item_cva = cva(
   [
-    "flex items-center w-full cursor-default select-none py-1.5 pl-2.5 pr-[38px] font-medium outline-none text-txt-black-700 rounded-xs",
+    "flex items-center w-full cursor-default select-none py-1.5 gap-2 font-medium outline-none text-txt-black-700 rounded-xs",
     "data-[highlighted]:bg-bg-washed",
   ],
   {
@@ -333,66 +362,73 @@ const select_item_cva = cva(
         medium: "text-body-sm",
         large: "text-body-md",
       },
+      multiple: {
+        false: "pl-2.5 pr-[38px]",
+        true: "px-2.5",
+      },
     },
   },
 );
 
-const SelectItem = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(({ className, children, ...props }, ref) => {
+const SelectItem: React.ForwardRefExoticComponent<
+  React.ComponentProps<typeof SelectPrimitive.Item>
+> = React.forwardRef(({ className, children, ...props }, ref) => {
   const rootProps = React.useContext(SelectContext);
   if (!isMultiple(rootProps))
     return (
-      <SelectPrimitive.Item
-        ref={ref}
-        className={select_item_cva({ size: rootProps.size, className })}
-        {...props}
-      >
-        <span className="absolute right-2 flex h-3.5 w-3.5 items-center justify-center">
-          <SelectPrimitive.ItemIndicator>
-            <CheckCircleFillIcon
-              data-size={rootProps.size}
-              className="text-txt-primary size-5 data-[size=small]:size-4"
-            />
-          </SelectPrimitive.ItemIndicator>
-        </span>
-        <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-      </SelectPrimitive.Item>
+      <SelectXPad>
+        <SelectPrimitive.Item
+          ref={ref}
+          className={select_item_cva({
+            size: rootProps.size,
+            multiple: false,
+            className,
+          })}
+          {...props}
+        >
+          <span className="absolute right-4 flex h-3.5 w-3.5 items-center justify-center">
+            <SelectPrimitive.ItemIndicator>
+              <CheckCircleFillIcon
+                data-size={rootProps.size}
+                className="text-primary-600 size-5 data-[size=small]:size-4"
+              />
+            </SelectPrimitive.ItemIndicator>
+          </span>
+          <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+        </SelectPrimitive.Item>
+      </SelectXPad>
     );
 
-  const isChecked = rootProps._value.includes(props.value);
+  const checked = rootProps._value.includes(props.value);
 
   return (
-    <SelectPrimitive.Item
-      ref={ref}
-      className={clx(
-        "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-        className,
-      )}
-      {...props}
-      data-state={isChecked ? "checked" : "unchecked"}
-    >
-      {/* <span className="absolute right-2 flex items-center justify-center">
-        {rootProps._value.includes(props.value) && (
-          <CheckCircleFillIcon className="text-txt-primary size-4" />
-        )}
-      </span> */}
-      <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
-    </SelectPrimitive.Item>
+    <SelectXPad>
+      <SelectPrimitive.Item
+        ref={ref}
+        className={select_item_cva({
+          size: rootProps.size,
+          multiple: true,
+          className,
+        })}
+        {...props}
+        data-state={checked ? "checked" : "unchecked"}
+      >
+        <Checkbox checked={checked} />
+        <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+      </SelectPrimitive.Item>
+    </SelectXPad>
   );
 });
 SelectItem.displayName = SelectPrimitive.Item.displayName;
 
 /*========================================================================================================================*/
 
-const SelectSeparator = React.forwardRef<
-  React.ElementRef<typeof SelectPrimitive.Separator>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
->(({ className, ...props }, ref) => (
+const SelectSeparator: React.ForwardRefExoticComponent<
+  React.ComponentProps<typeof SelectPrimitive.Separator>
+> = React.forwardRef(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={clx("bg-muted -mx-1 my-1 h-px", className)}
+    className={clx("bg-otl-divider -mx-1 my-1 h-px", className)}
     {...props}
   />
 ));
@@ -400,14 +436,52 @@ SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 
 /*========================================================================================================================*/
 
+const SelectHeader: React.ForwardRefExoticComponent<
+  React.ComponentProps<"div">
+> = React.forwardRef(({ className, ...props }, ref) => {
+  return (
+    <SelectXPad
+      className={clx("bg-bg-dialog sticky top-0 z-50 pt-1", className)}
+      {...props}
+    />
+  );
+});
+SelectHeader.displayName = "SelectHeader";
+
+/*========================================================================================================================*/
+
+const SelectFooter: React.ForwardRefExoticComponent<
+  React.ComponentProps<"div">
+> = React.forwardRef(({ className, ...props }, ref) => {
+  return (
+    <SelectXPad
+      className={clx(
+        "bg-bg-dialog border-otl-gray-200 sticky bottom-0 z-50 border-t py-1",
+        className,
+      )}
+      {...props}
+    />
+  );
+});
+SelectFooter.displayName = "SelectFooter";
+
+/*========================================================================================================================*/
+
+const SelectXPad: React.FunctionComponent<React.ComponentProps<"div">> = ({
+  children,
+  className,
+}) => <div className={clx("px-1", className)}>{children}</div>;
+
 export {
   Select,
   SelectGroup,
+  SelectGroupTitle,
   SelectValue,
   SelectTrigger,
   SelectLabel,
   SelectContent,
   SelectHeader,
+  SelectFooter,
   SelectItem,
   SelectSeparator,
   // SelectScrollUpButton,
