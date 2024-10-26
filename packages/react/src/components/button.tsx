@@ -115,7 +115,7 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
       // @ts-expect-error
       if (children.type.displayName !== ButtonIcon.displayName) return;
       return clx(
-        "aspect-square rounded-lg",
+        "aspect-square rounded-md",
         {
           small: "p-2",
           medium: "p-2.5",
@@ -131,8 +131,8 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
           ref={ref}
           type={type}
           className={clx(
-            iconOnly(size),
             button_cva({ variant, size, className }),
+            iconOnly(size),
           )}
           {...props}
         >
