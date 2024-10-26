@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { DateRange, Matcher } from "react-day-picker";
+import { DateAfter, DateRange, Matcher } from "react-day-picker";
 import { enGB, ms } from "date-fns/locale";
 import { format, isAfter, isBefore, isSameMonth } from "date-fns";
 import { useControllableState } from "../hooks/use-controllable-state";
@@ -121,9 +121,11 @@ function DateRangePicker({
             excludeDisabled={excludeDisabled}
             isDisabled={(date) =>
               selectedDateRange?.from
-                ? isSameMonth(date, selectedDateRange.from)
-                  ? false
-                  : isBefore(date, selectedDateRange.from)
+                ? (disabled as DateAfter).after
+                  ? isAfter(date, (disabled as DateAfter).after)
+                  : isSameMonth(date, selectedDateRange.from)
+                    ? false
+                    : isBefore(date, selectedDateRange.from)
                 : false
             }
             locale={_locale}
