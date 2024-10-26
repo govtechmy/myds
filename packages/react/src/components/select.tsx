@@ -126,19 +126,25 @@ const select_icon_cva = cva(["text-txt-black-900"], {
 });
 
 interface SelectValueProps
-  extends React.ComponentProps<typeof SelectPrimitive.Value> {
+  extends Omit<
+    React.ComponentProps<typeof SelectPrimitive.Value>,
+    "children" | "asChild"
+  > {
   label?: React.ReactNode;
   icon?: React.JSXElementConstructor<any>;
+  children?: (value: string | string[]) => React.ReactNode | React.ReactNode;
 }
 const SelectValue: React.ForwardRefExoticComponent<SelectValueProps> =
-  React.forwardRef(({ label, icon, asChild, ...props }, ref) => {
+  React.forwardRef(({ label, icon, children, ...props }, ref) => {
     const rootProps = React.useContext(SelectContext);
     const Icon = icon || ChevronDownFillIcon;
 
     if (!isMultiple(rootProps))
       return [
         typeof label === "string" ? <SelectLabel>{label}</SelectLabel> : label,
-        <SelectPrimitive.Value ref={ref} asChild={asChild} {...props} />,
+        <SelectPrimitive.Value ref={ref} {...props}>
+          {children && children(rootProps._value)}
+        </SelectPrimitive.Value>,
         <SelectPrimitive.Icon asChild>
           <Icon className={select_icon_cva({ size: rootProps.size })} />
         </SelectPrimitive.Icon>,
@@ -146,8 +152,10 @@ const SelectValue: React.ForwardRefExoticComponent<SelectValueProps> =
 
     return [
       typeof label === "string" ? <SelectLabel>{label}</SelectLabel> : label,
-      <SelectPrimitive.Value ref={ref} asChild={asChild} {...props} />,
-      !asChild && <SelectCounter>{rootProps._value?.length}</SelectCounter>,
+      <SelectPrimitive.Value ref={ref} {...props}>
+        {children && children(rootProps._value)}
+      </SelectPrimitive.Value>,
+      !children && <SelectCounter>{rootProps._value?.length}</SelectCounter>,
       <SelectPrimitive.Icon asChild>
         <Icon className={select_icon_cva({ size: rootProps.size })} />
       </SelectPrimitive.Icon>,

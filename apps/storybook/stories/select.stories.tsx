@@ -9,13 +9,13 @@ import {
   SelectHeader,
   SelectTrigger,
   SelectValue,
-  SelectLabel,
   SelectGroupTitle,
   SelectFooter,
 } from "@myds/react/select";
 import { Input, InputIcon } from "@myds/react/input";
 import { SearchIcon } from "../../../packages/react/src/icons/search";
 import { Button } from "@myds/react/button";
+import { Pill } from "@myds/react/pill";
 
 const CONTENT = (
   <SelectGroup>
@@ -38,9 +38,9 @@ const CONTENT = (
 
 /**
  * ### Overview
- * Insert a brief description of the component here.
  *
- * > Insert a ChatGPT pantun here
+ * The Select component allows users to choose one or more options from a dropdown list.
+ * It supports various configurations including headers, footers, and custom display options.
  *
  * ### Usage
  * ```tsx
@@ -312,6 +312,46 @@ export const WithFooter: Story = createStory({
         <SelectItem value="pineapple7">Pineapple7</SelectItem>
         <SelectItem value="pineapple8">Pineapple8</SelectItem>
         <SelectItem value="pineapple9">Pineapple9</SelectItem>
+      </SelectGroup>
+      <SelectFooter>
+        <Button variant={"default-ghost"} size={"small"}>
+          Reset
+        </Button>
+      </SelectFooter>
+    </SelectContent>,
+  ],
+});
+
+const CustomOption = {
+  apple: "Apple",
+  banana: "Banana",
+  blueberry: "Blueberry",
+  grapes: "Grapes",
+  pineapple: "Pineapple",
+};
+
+export const CustomDisplay_Pill: Story = createStory({
+  multiple: true,
+  children: [
+    <SelectTrigger>
+      <SelectValue label="Fruit">
+        {(value) => (
+          <div className="flex gap-1">
+            {Array.isArray(value)
+              ? value.map((v) => (
+                  <Pill>{CustomOption[v as keyof typeof CustomOption]}</Pill>
+                ))
+              : value}
+          </div>
+        )}
+      </SelectValue>
+    </SelectTrigger>,
+    <SelectContent>
+      <SelectGroup>
+        <SelectGroupTitle>Fruits</SelectGroupTitle>
+        {Object.entries(CustomOption).map(([value, label]) => (
+          <SelectItem value={value}>{label}</SelectItem>
+        ))}
       </SelectGroup>
       <SelectFooter>
         <Button variant={"default-ghost"} size={"small"}>
