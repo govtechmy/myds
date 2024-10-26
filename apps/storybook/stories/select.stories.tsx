@@ -42,6 +42,11 @@ const CONTENT = (
  * The Select component allows users to choose one or more options from a dropdown list.
  * It supports various configurations including headers, footers, and custom display options.
  *
+ * > Pilih buah dalam Select,
+ * > Banyak pilihan, senang hati,
+ * > Header, footer, semua lengkap,
+ * > Guna Select, mudah sekali. --Copilot
+ *
  * ### Usage
  * ```tsx
  * import Select from "@myds/react/select";
@@ -223,14 +228,6 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-/**
- * Storybook stories for different variants of a component.
- *
- * @example
- * export const Default: Story = createStory({ ... });
- * export const DarkDefault: Story = createStory({ ... , className="dark"}, "dark");
- */
 
 export const Default: Story = createStory({
   children: [
