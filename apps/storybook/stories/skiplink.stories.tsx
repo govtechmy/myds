@@ -34,7 +34,7 @@ const meta = {
           )}
         >
           <Story />
-          <nav className="h-[300px] bg-slate-800">
+          <nav className="h-[200px] bg-slate-800">
             <div className="items-center justify-between">
               <div className="text-xl font-bold">Logo</div>
               <ul className="flex gap-6">
@@ -56,15 +56,20 @@ const meta = {
               </ul>
             </div>
           </nav>
-
-          {/* Main content with dynamic id */}
           <main id={contentId} className="flex-1" tabIndex={-1}>
             <div className="mx-auto max-w-7xl">
               <h1 className="mb-4 text-2xl font-bold">Main Content</h1>
               <p className="text-slate-600">
-                Use tab to navigate to the skipLink element, and press Enter to
-                be directed to the div with the correct id. This div has the id
-                of <span className="font-bold">{contentId}</span>
+                To navigate using the skip link: Press the Shift + Tab keys (or
+                Tab) after clicking on the story to navigate through the
+                tab-able components in the story. A skip link will appear at the
+                top of the story's viewport (overlapping the menu bar). This
+                skiplink component allows you to bypass the navigation menu and
+                jump directly to the main content. Press Enter while the skip
+                link is focused to activate it. You'll be taken straight to the
+                main content area, saving you from having to tab through all the
+                navigation items. This feature is particularly helpful for
+                keyboard users and people using screen readers.
               </p>
             </div>
           </main>
@@ -73,9 +78,9 @@ const meta = {
     },
   ],
   argTypes: {
-    text: {
-      description: "The text content displayed in the skiplink button",
+    children: {
       control: "text",
+      description: "The content of the tag",
     },
     href: {
       description: "The target URL or anchor ID that the skiplink navigates to",
@@ -83,7 +88,7 @@ const meta = {
     },
   },
   args: {
-    text: "Skip to main content",
+    children: <span>Skip to main content</span>,
     href: "#main-content",
   },
   tags: ["autodocs"],
@@ -98,6 +103,7 @@ type Story = StoryObj<typeof meta>;
 
 export const LightSkipLink: Story = createStory({
   href: "#main-light-content",
+  children: <span>Skip to main content</span>,
 });
 
 /**
@@ -106,7 +112,7 @@ export const LightSkipLink: Story = createStory({
 
 export const DarkSkipLink: Story = createStory(
   {
-    text: "Skip to main content",
+    children: <span>Skip to main content</span>,
     href: "#main-dark-content",
     className: "dark",
   },

@@ -1,4 +1,4 @@
-import React, { ComponentProps, forwardRef } from "react";
+import React, { ComponentProps, forwardRef, ReactNode } from "react";
 import { clx } from "../utils";
 import { Button } from "./button";
 
@@ -7,17 +7,16 @@ import { Button } from "./button";
  * to quickly navigate to the main content of a page.
  * @typedef SkiplinkProps
  * @property {string} href - The target URL or anchor ID that the skiplink navigates to
- * @property {string} text - The text content displayed in the skiplink button
+ * @property {ReactNode} children - The content to be displayed in the skiplink
  * @property {string} [className] - Optional CSS class names to apply to the anchor element
  */
 
-interface SkiplinkProps extends Omit<ComponentProps<"a">, "children"> {
-  href: string;
-  text: string;
+interface SkiplinkProps extends ComponentProps<"a"> {
+  href: string; // Only redefining href to make it required
 }
 
 const Skiplink = forwardRef<HTMLAnchorElement, SkiplinkProps>(
-  ({ text, href, className, ...props }, ref) => {
+  ({ children, href, className, ...props }, ref) => {
     return (
       <Button asChild variant="primary-outline" size={"small"}>
         <a
@@ -25,7 +24,7 @@ const Skiplink = forwardRef<HTMLAnchorElement, SkiplinkProps>(
           className={clx(
             // to hide the element
             "shadow-context-menu",
-            "absolute h-[1px] w-[1px]",
+            "absolute size-[1px]",
             "overflow-hidden",
             "whitespace-nowrap",
             "[clip-path:inset(50%)]",
@@ -33,12 +32,14 @@ const Skiplink = forwardRef<HTMLAnchorElement, SkiplinkProps>(
             "focus:h-auto focus:w-auto",
             "focus:left-4 focus:top-11",
             "focus:[clip-path:none]",
+            "transition-all duration-500 ease-in-out",
+            "opacity-0 focus:opacity-100",
             className,
           )}
           href={href}
           {...props}
         >
-          {text}
+          {children}
         </a>
       </Button>
     );
