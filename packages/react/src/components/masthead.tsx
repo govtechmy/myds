@@ -36,12 +36,12 @@ export const MastheadOfficialIndicator = ({
   return (
     <div className="flex select-none items-center gap-2">
       <MalaysiaFlagIcon className="shrink-0" />
-      <span className="text-txt-black-900">{children}</span>
+      <span className="text-txt-black-700">{children}</span>
     </div>
   );
 };
 
-export const MastheadIdentificationToggle = ({
+export const MastheadToggle = ({
   children = "Here's how you know",
 }: PropsWithChildren) => (
   <div className="max-sm:bg-bg-washed text-primary-600 flex items-center gap-0.5 max-sm:rounded-md max-sm:px-1">
@@ -77,7 +77,7 @@ export const MastheadSection = ({ icon, children }: MastheadContentProps) => {
 export const MastheadSectionTitle = ({
   children,
 }: MastheadSectionTitleProps) => (
-  <p className="font-medium max-sm:text-sm">{children}</p>
+  <p className="text-txt-black-900 font-medium max-sm:text-sm">{children}</p>
 );
 
 export const MastheadSectionBody = ({ children }: MastheadSectionBodyProps) => (
@@ -115,7 +115,7 @@ const DefaultMastheadContent = () => (
 const DefaultMastheadHeader = () => (
   <MastheadHeader>
     <MastheadOfficialIndicator />
-    <MastheadIdentificationToggle />
+    <MastheadToggle />
   </MastheadHeader>
 );
 
@@ -201,9 +201,7 @@ const Example = () => {
           <MastheadOfficialIndicator>
             Custom Official Text
           </MastheadOfficialIndicator>
-          <MastheadIdentificationToggle>
-            Custom Toggle Text
-          </MastheadIdentificationToggle>
+          <MastheadToggle>Custom Toggle Text</MastheadToggle>
         </MastheadHeader>
       </Masthead>
 
@@ -223,9 +221,7 @@ const Example = () => {
           <MastheadOfficialIndicator>
             Custom Official Text
           </MastheadOfficialIndicator>
-          <MastheadIdentificationToggle>
-            Custom Toggle Text
-          </MastheadIdentificationToggle>
+          <MastheadToggle>Custom Toggle Text</MastheadToggle>
         </MastheadHeader>
         <MastheadContent>
           <MastheadSection icon={<GovMyIcon />}>

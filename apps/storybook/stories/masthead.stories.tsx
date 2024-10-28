@@ -4,7 +4,7 @@ import {
   MastheadHeader,
   MastheadContent,
   MastheadOfficialIndicator,
-  MastheadIdentificationToggle,
+  MastheadToggle,
   MastheadSection,
   MastheadSectionTitle,
   MastheadSectionBody,
@@ -52,9 +52,9 @@ import { createStory } from "../utils";
  *       <MastheadOfficialIndicator>
  *         Custom Official Text
  *       </MastheadOfficialIndicator>
- *       <MastheadIdentificationToggle>
+ *       <MastheadToggle>
  *         Custom Toggle Text
- *       </MastheadIdentificationToggle>
+ *       </MastheadToggle>
  *     </MastheadHeader>
  *   </Masthead>
  * );
@@ -123,9 +123,7 @@ export const CustomHeader: Story = {
         <MastheadOfficialIndicator>
           Portal Rasmi Kerajaan Malaysia
         </MastheadOfficialIndicator>
-        <MastheadIdentificationToggle>
-          Ketahui Lebih Lanjut
-        </MastheadIdentificationToggle>
+        <MastheadToggle>Ketahui Lebih Lanjut</MastheadToggle>
       </MastheadHeader>
     </Masthead>
   ),
@@ -141,9 +139,7 @@ export const CustomHeaderDark: Story = {
             <MastheadOfficialIndicator>
               Portal Rasmi Kerajaan Malaysia
             </MastheadOfficialIndicator>
-            <MastheadIdentificationToggle>
-              Ketahui Lebih Lanjut
-            </MastheadIdentificationToggle>
+            <MastheadToggle>Ketahui Lebih Lanjut</MastheadToggle>
           </MastheadHeader>
         </Masthead>
       </div>
@@ -199,9 +195,7 @@ export const FullyCustomized: Story = {
         <MastheadOfficialIndicator>
           Portal Rasmi Kerajaan Malaysia
         </MastheadOfficialIndicator>
-        <MastheadIdentificationToggle>
-          Ketahui Lebih Lanjut
-        </MastheadIdentificationToggle>
+        <MastheadToggle>Ketahui Lebih Lanjut</MastheadToggle>
       </MastheadHeader>
       <MastheadContent>
         <MastheadSection icon={<GovMyIcon />}>
@@ -240,9 +234,7 @@ export const FullyCustomizedDark: Story = {
           <MastheadOfficialIndicator>
             Portal Rasmi Kerajaan Malaysia
           </MastheadOfficialIndicator>
-          <MastheadIdentificationToggle>
-            Ketahui Lebih Lanjut
-          </MastheadIdentificationToggle>
+          <MastheadToggle>Ketahui Lebih Lanjut</MastheadToggle>
         </MastheadHeader>
         <MastheadContent>
           <MastheadSection icon={<GovMyIcon />}>
