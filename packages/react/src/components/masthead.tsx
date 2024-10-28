@@ -68,12 +68,14 @@ const MastheadContent: FunctionComponent<PropsWithChildren> = ({
   children,
 }) => {
   return (
-    <div className="container mx-auto max-w-[1280px]">
-      <div className="gap-4.5 pt-4.5 grid grid-cols-1 pb-6 pl-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
-        <span className="text-primary-600 static text-sm sm:hidden">
-          Here's how you know
-        </span>
-        {children}
+    <div className="group-open:animate-in group-open:slide-in-from-top-2 group-closed:animate-out group-closed:slide-out-to-top-1 overflow-hidden transition-all duration-300 ease-in-out">
+      <div className="container mx-auto max-w-[1280px]">
+        <div className="gap-4.5 pt-4.5 grid grid-cols-1 pb-6 pl-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
+          <span className="text-primary-600 static text-sm sm:hidden">
+            Here's how you know
+          </span>
+          {children}
+        </div>
       </div>
     </div>
   );
