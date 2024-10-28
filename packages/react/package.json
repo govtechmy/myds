@@ -6,13 +6,15 @@
     "./utils": {
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
-    }
-,
+    },
+    "./masthead": {
+      "type": "./src/components/masthead.tsx",
+      "default": "./src/components/masthead.tsx"
+    },
     "./label": {
       "type": "./src/components/label.tsx",
       "default": "./src/components/label.tsx"
-    }
-,
+    },
     "./skiplink": {
       "type": "./src/components/skiplink.tsx",
       "default": "./src/components/skiplink.tsx"
