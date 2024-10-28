@@ -1,9 +1,4 @@
-import React, {
-  FunctionComponent,
-  ForwardRefExoticComponent,
-  PropsWithChildren,
-  useEffect,
-} from "react";
+import React, { FunctionComponent, PropsWithChildren, useEffect } from "react";
 import { ChevronDownIcon } from "../icons/chevron-down";
 import { Lock2Icon } from "../icons/lock-2";
 import SolidLockIcon from "../icons/solid-lock";
