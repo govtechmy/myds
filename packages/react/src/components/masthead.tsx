@@ -1,4 +1,9 @@
-import React, { PropsWithChildren, useEffect } from "react";
+import React, {
+  FunctionComponent,
+  ForwardRefExoticComponent,
+  PropsWithChildren,
+  useEffect,
+} from "react";
 import { ChevronDownIcon } from "../icons/chevron-down";
 import { Lock2Icon } from "../icons/lock-2";
 import SolidLockIcon from "../icons/solid-lock";
@@ -11,16 +16,17 @@ type MastheadContentProps = {
   children: React.ReactNode;
 };
 
-type MastheadSectionTitleProps = {
-  children: React.ReactNode;
-};
-
-type MastheadSectionBodyProps = {
-  children: React.ReactNode;
-};
+type MastheadSectionTitleProps = PropsWithChildren;
+type MastheadSectionBodyProps = PropsWithChildren;
+type MastheadProps = PropsWithChildren;
+type MastheadHeaderProps = PropsWithChildren;
+type MastheadOfficialIndicatorProps = PropsWithChildren;
+type MastheadToggleProps = PropsWithChildren;
 
 // Component definitions
-export const MastheadHeader = ({ children }: PropsWithChildren) => {
+const MastheadHeader: FunctionComponent<MastheadHeaderProps> = ({
+  children,
+}) => {
   return (
     <summary
       className="block cursor-pointer list-none py-2.5 outline-none sm:py-1 [&::-webkit-details-marker]:hidden"
@@ -33,9 +39,9 @@ export const MastheadHeader = ({ children }: PropsWithChildren) => {
   );
 };
 
-export const MastheadOfficialIndicator = ({
-  children = "Official Malaysia Government Website",
-}: PropsWithChildren) => {
+const MastheadOfficialIndicator: FunctionComponent<
+  MastheadOfficialIndicatorProps
+> = ({ children = "Official Malaysia Government Website" }) => {
   return (
     <div className="flex select-none items-center gap-2">
       <MalaysiaFlagIcon className="shrink-0" />
@@ -44,9 +50,9 @@ export const MastheadOfficialIndicator = ({
   );
 };
 
-export const MastheadToggle = ({
+const MastheadToggle: FunctionComponent<MastheadToggleProps> = ({
   children = "Here's how you know",
-}: PropsWithChildren) => (
+}) => (
   <div
     className="max-sm:bg-bg-washed text-primary-600 focus:ring-fr-primary flex items-center gap-0.5 rounded-sm p-1 pl-1.5 focus:outline-none focus:ring-[3px] focus:ring-inset max-sm:rounded-md max-sm:px-1"
     tabIndex={0}
@@ -58,7 +64,9 @@ export const MastheadToggle = ({
   </div>
 );
 
-export const MastheadContent = ({ children }: PropsWithChildren) => {
+const MastheadContent: FunctionComponent<PropsWithChildren> = ({
+  children,
+}) => {
   return (
     <div className="container mx-auto max-w-[1280px]">
       <div className="gap-4.5 pt-4.5 grid grid-cols-1 pb-6 pl-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
@@ -71,7 +79,10 @@ export const MastheadContent = ({ children }: PropsWithChildren) => {
   );
 };
 
-export const MastheadSection = ({ icon, children }: MastheadContentProps) => {
+const MastheadSection: FunctionComponent<MastheadContentProps> = ({
+  icon,
+  children,
+}) => {
   return (
     <div className="flex gap-3">
       <div className="text-txt-black-500 shrink-0">{icon}</div>
@@ -80,20 +91,22 @@ export const MastheadSection = ({ icon, children }: MastheadContentProps) => {
   );
 };
 
-export const MastheadSectionTitle = ({
+const MastheadSectionTitle: FunctionComponent<MastheadSectionTitleProps> = ({
   children,
-}: MastheadSectionTitleProps) => (
+}) => (
   <p className="text-txt-black-900 font-medium max-sm:text-sm">{children}</p>
 );
 
-export const MastheadSectionBody = ({ children }: MastheadSectionBodyProps) => (
+const MastheadSectionBody: FunctionComponent<MastheadSectionBodyProps> = ({
+  children,
+}) => (
   <div className="text-txt-black-700 max-w-prose text-balance text-sm">
     {children}
   </div>
 );
 
 // Default content components
-const DefaultMastheadContent = () => (
+const DefaultMastheadContent: FunctionComponent = () => (
   <MastheadContent>
     <MastheadSection icon={<GovMyIcon />}>
       <MastheadSectionTitle>
@@ -118,7 +131,7 @@ const DefaultMastheadContent = () => (
   </MastheadContent>
 );
 
-const DefaultMastheadHeader = () => (
+const DefaultMastheadHeader: FunctionComponent = () => (
   <MastheadHeader>
     <MastheadOfficialIndicator />
     <MastheadToggle />
@@ -126,14 +139,13 @@ const DefaultMastheadHeader = () => (
 );
 
 // Main Masthead component
-export const Masthead = ({ children }: PropsWithChildren) => {
+const Masthead: FunctionComponent<MastheadProps> = ({ children }) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const details = document.getElementById(
         "Masthead",
       ) as HTMLDetailsElement | null;
 
-      // Handle Alt+Cmd/Ctrl+Enter toggle
       if (
         event.altKey &&
         (event.metaKey || event.ctrlKey) &&
@@ -154,7 +166,6 @@ export const Masthead = ({ children }: PropsWithChildren) => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // If no children provided, render all defaults
   if (!children) {
     return (
       <div className="bg-bg-washed outline-none print:hidden" data-nosnippet>
@@ -166,7 +177,6 @@ export const Masthead = ({ children }: PropsWithChildren) => {
     );
   }
 
-  // Check for header and content in children
   let hasHeader = false;
   let hasContent = false;
 
@@ -197,4 +207,14 @@ export const Masthead = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default Masthead;
+// Exports
+export {
+  Masthead,
+  MastheadHeader,
+  MastheadOfficialIndicator,
+  MastheadToggle,
+  MastheadContent,
+  MastheadSection,
+  MastheadSectionTitle,
+  MastheadSectionBody,
+};
