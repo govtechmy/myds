@@ -22,7 +22,10 @@ type MastheadSectionBodyProps = {
 // Component definitions
 export const MastheadHeader = ({ children }: PropsWithChildren) => {
   return (
-    <summary className="block cursor-pointer list-none py-2.5 outline-none sm:py-1 [&::-webkit-details-marker]:hidden">
+    <summary
+      className="block cursor-pointer list-none py-2.5 outline-none sm:py-1 [&::-webkit-details-marker]:hidden"
+      tabIndex={-1}
+    >
       <div className="px-4.5 mx-auto flex max-w-[1280px] items-center gap-1.5 text-sm/4 max-sm:justify-between md:px-6">
         {children}
       </div>
@@ -44,7 +47,10 @@ export const MastheadOfficialIndicator = ({
 export const MastheadToggle = ({
   children = "Here's how you know",
 }: PropsWithChildren) => (
-  <div className="max-sm:bg-bg-washed text-primary-600 flex items-center gap-0.5 max-sm:rounded-md max-sm:px-1">
+  <div
+    className="max-sm:bg-bg-washed text-primary-600 focus:ring-fr-primary flex items-center gap-0.5 rounded-sm p-1 pl-1.5 focus:outline-none focus:ring-[3px] focus:ring-inset max-sm:rounded-md max-sm:px-1"
+    tabIndex={0}
+  >
     <span className="hidden select-none tracking-[-0.01em] sm:block">
       {children}
     </span>
@@ -126,6 +132,8 @@ export const Masthead = ({ children }: PropsWithChildren) => {
       const details = document.getElementById(
         "Masthead",
       ) as HTMLDetailsElement | null;
+
+      // Handle Alt+Cmd/Ctrl+Enter toggle
       if (
         event.altKey &&
         (event.metaKey || event.ctrlKey) &&
@@ -136,6 +144,7 @@ export const Masthead = ({ children }: PropsWithChildren) => {
           details.open = !details.open;
         }
       }
+
       if ((event.metaKey || event.ctrlKey) && event.key === "k") {
         event.preventDefault();
       }
@@ -148,7 +157,7 @@ export const Masthead = ({ children }: PropsWithChildren) => {
   // If no children provided, render all defaults
   if (!children) {
     return (
-      <div className="bg-bg-washed print:hidden" data-nosnippet>
+      <div className="bg-bg-washed outline-none print:hidden" data-nosnippet>
         <details id="Masthead" className="group">
           <DefaultMastheadHeader />
           <DefaultMastheadContent />
@@ -169,7 +178,7 @@ export const Masthead = ({ children }: PropsWithChildren) => {
   });
 
   return (
-    <div className="bg-bg-washed print:hidden" data-nosnippet>
+    <div className="bg-bg-washed outline-none print:hidden" data-nosnippet>
       <details id="Masthead" className="group">
         {!hasHeader && <DefaultMastheadHeader />}
         {React.Children.map(children, (child) => {
@@ -185,52 +194,6 @@ export const Masthead = ({ children }: PropsWithChildren) => {
         {!hasContent && <DefaultMastheadContent />}
       </details>
     </div>
-  );
-};
-
-// Example usage:
-const Example = () => {
-  return (
-    <>
-      {/* Default everything */}
-      <Masthead />
-
-      {/* Custom header only */}
-      <Masthead>
-        <MastheadHeader>
-          <MastheadOfficialIndicator>
-            Custom Official Text
-          </MastheadOfficialIndicator>
-          <MastheadToggle>Custom Toggle Text</MastheadToggle>
-        </MastheadHeader>
-      </Masthead>
-
-      {/* Custom content only */}
-      <Masthead>
-        <MastheadContent>
-          <MastheadSection icon={<GovMyIcon />}>
-            <MastheadSectionTitle>Custom Title</MastheadSectionTitle>
-            <MastheadSectionBody>Custom content here</MastheadSectionBody>
-          </MastheadSection>
-        </MastheadContent>
-      </Masthead>
-
-      {/* Both custom */}
-      <Masthead>
-        <MastheadHeader>
-          <MastheadOfficialIndicator>
-            Custom Official Text
-          </MastheadOfficialIndicator>
-          <MastheadToggle>Custom Toggle Text</MastheadToggle>
-        </MastheadHeader>
-        <MastheadContent>
-          <MastheadSection icon={<GovMyIcon />}>
-            <MastheadSectionTitle>Custom Title</MastheadSectionTitle>
-            <MastheadSectionBody>Custom content here</MastheadSectionBody>
-          </MastheadSection>
-        </MastheadContent>
-      </Masthead>
-    </>
   );
 };
 
