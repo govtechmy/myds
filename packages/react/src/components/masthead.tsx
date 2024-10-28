@@ -110,7 +110,7 @@ const MastheadSectionBody: FunctionComponent<MastheadSectionBodyProps> = ({
 // Default content components
 const DefaultMastheadContent: FunctionComponent = () => (
   <MastheadContent>
-    <MastheadSection icon={<GovMyIcon />}>
+    <MastheadSection icon={<GovMyIcon height={24} width={24} />}>
       <MastheadSectionTitle>
         Official government websites end with .gov.my
       </MastheadSectionTitle>
@@ -120,7 +120,7 @@ const DefaultMastheadContent: FunctionComponent = () => (
         immediately even if it looks similar.
       </MastheadSectionBody>
     </MastheadSection>
-    <MastheadSection icon={<Lock2Icon />}>
+    <MastheadSection icon={<Lock2Icon height={24} width={24} />}>
       <MastheadSectionTitle>Secure websites use HTTPS</MastheadSectionTitle>
       <MastheadSectionBody>
         Look for a lock (
