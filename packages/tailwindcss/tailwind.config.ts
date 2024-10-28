@@ -106,6 +106,7 @@ const config: PresetsConfig = {
         "body-xs": ["0.75rem", { lineHeight: "1.125rem" }],
       },
       borderRadius: {
+        xs: "4px",
         sm: "6px",
         DEFAULT: "8px",
         md: "8px",

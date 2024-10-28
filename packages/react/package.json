@@ -6,11 +6,26 @@
     "./utils": {
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
-    }
-,
+    },
     "./masthead": {
       "type": "./src/components/masthead.tsx",
       "default": "./src/components/masthead.tsx"
+    },
+    "./label": {
+      "type": "./src/components/label.tsx",
+      "default": "./src/components/label.tsx"
+    },
+    "./skiplink": {
+      "type": "./src/components/skiplink.tsx",
+      "default": "./src/components/skiplink.tsx"
+    },
+    "./select": {
+      "type": "./src/components/select.tsx",
+      "default": "./src/components/select.tsx"
+    },
+    "./pagination": {
+      "type": "./src/components/pagination.tsx",
+      "default": "./src/components/pagination.tsx"
     },
     "./input": {
       "type": "./src/components/input.tsx",
@@ -27,6 +42,10 @@
     "./tabs": {
       "type": "./src/components/tabs.tsx",
       "default": "./src/components/tabs.tsx"
+    },
+    "./checkbox": {
+      "type": "./src/components/checkbox.tsx",
+      "default": "./src/components/checkbox.tsx"
     },
     "./hooks": {
       "type": "./src/hooks/index.ts",
@@ -77,10 +96,12 @@
     "react-dom": "^18"
   },
   "dependencies": {
+    "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-navigation-menu": "^1.2.0",
     "@radix-ui/react-radio-group": "^1.2.1",
+    "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",

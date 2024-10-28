@@ -4,13 +4,15 @@ import { clx } from "../utils";
 
 const thumbVariants = cva(
   [
-    "absolute block outline-none focus:ring-[3px] focus:ring-fr-primary bg-otl-gray-200 hover:bg-otl-gray-300 data-[state=checked]:bg-bg-primary-600 cursor-pointer rounded-full transition-color duration-200 z-10",
+    "block outline-none focus:ring-[3px] focus:ring-fr-primary bg-otl-gray-200 hover:bg-otl-gray-300 data-[state=checked]:bg-bg-primary-600 cursor-pointer rounded-full transition-color duration-200 z-10",
     "before:content-[''] before:left-[3px] before:bottom-[3px] before:bg-white before:absolute before:rounded-full before:transition-all before:duration-200",
     "peer-disabled:data-[state=checked]:bg-bg-primary-disabled peer-disabled:cursor-not-allowed peer-disabled:before:data-[state=checked]:bg-bg-white",
   ],
   {
     variants: {
       size: {
+        small:
+          "h-[16px] w-[24px] before:size-[10px] before:data-[state=checked]:translate-x-2",
         medium:
           "h-[20px] w-[30px] before:size-[14px] before:data-[state=checked]:translate-x-[10px]",
         large:
@@ -33,6 +35,7 @@ interface ToggleContextType extends VariantProps<typeof thumbVariants> {
 const ToggleContext = createContext<ToggleContextType | undefined>(undefined);
 
 export interface ToggleProps extends VariantProps<typeof thumbVariants> {
+  id?: string;
   defaultChecked?: boolean;
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
@@ -41,7 +44,8 @@ export interface ToggleProps extends VariantProps<typeof thumbVariants> {
   children: React.ReactNode;
 }
 
-export const Toggle: React.FC<ToggleProps> = ({
+const Toggle: React.FC<ToggleProps> = ({
+  id,
   defaultChecked = false,
   checked,
   onCheckedChange,
@@ -73,7 +77,7 @@ export const Toggle: React.FC<ToggleProps> = ({
         disabled,
         size,
         onChange: handleChange,
-        id: useId(),
+        id: id || useId(),
       }}
     >
       <div
@@ -86,37 +90,11 @@ export const Toggle: React.FC<ToggleProps> = ({
   );
 };
 
-export interface ToggleLabelProps {
-  children: React.ReactNode;
+interface ToggleThumbProps {
   className?: string;
 }
 
-export const ToggleLabel: React.FC<ToggleLabelProps> = ({
-  children,
-  className,
-}) => {
-  const context = useContext(ToggleContext);
-  if (!context) throw new Error("ToggleLabel must be used within Toggle");
-
-  return (
-    <label
-      htmlFor={context.id}
-      className={clx(
-        "text-txt-black-700 font-medium",
-        context.size === "medium" ? "text-body-sm" : "text-lg",
-        className,
-      )}
-    >
-      {children}
-    </label>
-  );
-};
-
-export interface ToggleThumbProps {
-  className?: string;
-}
-
-export const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
+const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
   const context = useContext(ToggleContext);
   if (!context) throw new Error("ToggleThumb must be used within Toggle");
 
@@ -150,3 +128,5 @@ export const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
     </label>
   );
 };
+
+export { Toggle, ToggleThumb };
