@@ -8,6 +8,11 @@
       "default": "./src/utils/index.ts"
     }
 ,
+    "./label": {
+      "type": "./src/components/label.tsx",
+      "default": "./src/components/label.tsx"
+    }
+,
     "./skiplink": {
       "type": "./src/components/skiplink.tsx",
       "default": "./src/components/skiplink.tsx"
