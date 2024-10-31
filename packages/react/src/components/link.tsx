@@ -67,4 +67,4 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   },
 );
 
-export default Link;
+export { Link };

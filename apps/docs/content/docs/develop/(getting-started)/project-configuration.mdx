@@ -1,0 +1,105 @@
+---
+title: Project Configuration
+description: Advanced configuration for stylesheet & TailwindCSS
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { Banner } from "fumadocs-ui/components/banner";
+import { InfoIcon } from "@myds/react/icon";
+import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
+
+MYDS stylesheet is composed of various CSS components to cater to a wide range of use cases.
+But you might not need everything in your project! Here's how we can be more selective with our imports!
+
+<Callout
+  type="warn"
+  title="Important"
+  className="bg-bg-warning-50 text-txt-warning border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  This section is for advanced styling configuration. If you are content with
+  the simple configuration outlined in [Installation](./install?#full-css), you
+  may skip this page.
+</Callout>
+
+## Foundation
+
+### Fonts
+
+MYDS supports 2 typefaces: `Poppins` & `Inter`. We recommend you to import via a reputable CDN like [GoogleFonts](https://fonts.google.com/). Here's a one-liner CSS import!
+
+```css
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap");
+```
+
+### Color
+
+We define each color in the MYDS Design Language as a CSS variable, which later becomes the building block to build themes!
+
+```css
+@import "@myds/tailwindcss/color.css";
+```
+
+### Theme
+
+MYDS supports both light and dark mode. However, we understand that not all projects require this feature.
+So, you can omit importing the unwanted theme from your project!
+
+```css
+/* Import Light theme */
+@import "@myds/tailwindcss/light.css";
+
+/* Import Dark theme */
+@import "@myds/tailwindcss/dark.css";
+```
+
+Please note, it is required to support the light mode by default.
+
+## TailwindCSS
+
+[TailwindCSS](https://tailwindcss.com/docs/installation) is a utility-first CSS framework that serves as the bedrock for how MYDS is styled internally.
+However, using TailwindCSS is optional at the project level.
+
+If you do use TailwindCSS, MYDS provides the option for developers to extend its powerful features.
+
+### Component
+
+<Accordions>
+  <Accordion title="My project does not use TailwindCSS">
+Got it! Just import the following CSS and we're done!
+```css
+/* Import Component CSS */
+@import "@myds/tailwindcss/component.css";
+```
+
+  </Accordion>
+
+  <Accordion title="My project uses TailwindCSS">
+Awesome, we can import the MYDS presets! Also we need to make sure the TailwindCSS is 'aware' of the component library.
+  Apply this to your project `tailwind.config.ts`
+
+```ts title="tailwind.config.ts"
+import { preset } from "@myds/tailwindcss";
+
+export default {
+  content: [
+    "src/**/*.{js,jsx,ts,tsx}",
+    "node_modules/@myds/react/dist/**/*.{js,jsx,ts,tsx}",
+  ],
+  presets: [preset],
+};
+```
+
+  </Accordion>
+</Accordions>
+
+### Color Token
+
+MYDS has 2 types of color token that developers need to be aware of, which are:
+
+- Primitive token - The value of the primitive token is static & insensitive to theme changes.
+
+- Theme token - The value of the theme token changes based on the theme applied.
+
+To learn the entire list of primitive & theme tokens available, read the [full configuration](#)

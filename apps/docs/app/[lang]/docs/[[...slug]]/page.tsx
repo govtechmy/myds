@@ -9,11 +9,11 @@ import {
 import { notFound } from "next/navigation";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 
-export default async function Page({
-  params,
-}: {
+interface PageParams {
   params: { slug?: string[]; lang: string };
-}) {
+}
+
+export default async function Page({ params }: PageParams) {
   const page = source.getPage(params.slug, params.lang);
   if (!page) notFound();
 
@@ -24,7 +24,7 @@ export default async function Page({
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>
-        <MDX components={{ ...defaultMdxComponents }} />
+        <MDX components={defaultMdxComponents} />
       </DocsBody>
     </DocsPage>
   );
@@ -34,7 +34,7 @@ export async function generateStaticParams() {
   return source.generateParams();
 }
 
-export function generateMetadata({ params }: { params: { slug?: string[] } }) {
+export function generateMetadata({ params }: PageParams) {
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
