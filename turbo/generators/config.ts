@@ -1,5 +1,6 @@
 import { PlopTypes } from "@turbo/gen";
 import convertIcon from "./scripts/convert-icon";
+import barrelIcon from "./scripts/barrel-icon";
 interface ComponentPrompt {
   framework: "react" | "vue" | "angular";
   title: string;
@@ -160,6 +161,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       const actions: PlopTypes.ActionType[] = [];
 
       convertIcon({ framework: _data.framework });
+      barrelIcon({ framework: _data.framework });
       return actions;
     },
   });

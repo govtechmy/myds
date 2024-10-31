@@ -230,8 +230,7 @@ export default {
   /* Design */
   design: {
     title: "Reka Bentuk",
-    description:
-      "Sistem reka bentuk MYDS menyediakan satu set garis panduan dan sumber untuk membantu pereka dan pembangun mencipta produk digital yang konsisten dan mesra pengguna.",
+    description: "Bahasa Reka Bentuk",
     color: {
       title: "Warna",
       description:
@@ -257,8 +256,7 @@ export default {
   /* Component */
   develop: {
     title: "Pembangunan",
-    description:
-      "Perpustakaan komponen MYDS menyediakan satu set komponen boleh guna semula yang boleh digunakan untuk membina produk digital.",
+    description: "Pustaka Komponen",
     button: {
       title: "Butang",
       description:
