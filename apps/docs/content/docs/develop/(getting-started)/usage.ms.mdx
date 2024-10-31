@@ -1,13 +1,87 @@
 ---
-title: Usage
-description: Usage
+title: Cara Mengguna
+description: Cara penggunaan semudah pustaka komponen yang moden
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+import Preview from "@/components/preview";
+import { PreviewButton, Button, ButtonIcon, Link } from "@/components/myds";
+import ArrowForward from "@/icons/arrow-forward";
 
-## What is Next?
+### Tahap Asas
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+Hanya import komponen & gunakannya, seperti di bawah!
+
+<Preview>
+  <PreviewButton
+    variant="primary-fill"
+    size="small"
+    pantun="Berjalan-jalan ke kota tua, Membeli kuih di pasar pagi. Membuka jalan menuju dunia, 'Button' ditekan dengan jari. -- Copilot"
+  >
+    <span className="text-txt-white">Jana Pantun</span>
+  </PreviewButton>
+</Preview>
+
+```tsx title="Basic Button"
+import { Button } from "@myds/react/button";
+
+<Button variant="primary-fill" size="small" onClick={...}>
+  Jana Pantun
+</Button>;
+```
+
+Pastikan untuk merujuk kepada API setiap Komponen untuk mengetahui apa yang tersedia.
+
+### Komposisi<a name="composition"></a>
+
+Komponen MYDS dibina berteraskan konsep komposisi. Komposisi menawarkan penyesuaian pada tahap terendah, memberikan kebebasan tertinggi kepada pembangun untuk menambah sentuhan tersendiri kepada MYDS.
+Pada masa yang sama, teknik ini juga boleh mencapai yang bertentangan penyesuaian maksima, dengan 'mengganti' props untuk menerapkan kelas atau pendengar acara tersendiri.
+
+#### A. Gantikan komponen induk
+
+<Preview>
+  <Button variant="primary-ghost" size="small" asChild>
+    <Link href="#composition" className="no-underline">Kembali ke tajuk</Link>
+  </Button>
+
+</Preview>
+
+```tsx title="Anchor dalam bentuk Button"
+import { Button } from "@myds/react/button";
+import { Link } from "@myds/react/link";
+
+<Button variant="primary-ghost" size="small" asChild>
+  <Link href="#composition">
+    <span className="text-txt-primary">Kembali ke tajuk</span>
+  </Link>
+</Button>;
+```
+
+#### B. Ganti props
+
+<Preview>
+  <PreviewButton
+    variant="primary-fill"
+    size="small"
+    pantun="Berjalan-jalan ke kota tua, Membeli kuih di pasar pagi. Membuka jalan menuju dunia, 'Button' ditekan dengan jari. -- Copilot"
+  >
+    <span className="text-txt-white">Jana Pantun</span>
+    <ButtonIcon>
+      <ArrowForward />
+    </ButtonIcon>
+  </PreviewButton>
+</Preview>
+
+```tsx title="Button dengan Icon Props yang Diganti"
+import { Button } from "@myds/react/button";
+import { ArrowForwardIcon } from "@myds/react/icon";
+
+<Button variant="primary-fill" size="small" onClick={...}>
+  Jana Pantun
+  <ButtonIcon>
+    <ArrowForward />
+  </ButtonIcon>
+</Button>;
+```
+
+Ini mungkin konsep baru bagi sesetengah pembangun, namun, ia sangat berbaloi untuk belajar & mahir.
+Komposisi adalah teknik yang penting dan menawarkan nilai yang besar apabila membina komponen.
