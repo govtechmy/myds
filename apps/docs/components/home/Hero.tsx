@@ -47,7 +47,7 @@ const Hero: FunctionComponent = () => {
               <ButtonIcon>
                 <IconFigma />
               </ButtonIcon>
-              Explore in Figma
+              {t("common.figma.explore")}
             </Link>
           </Button>
           <Button variant="default-outline" size="large" asChild>
