@@ -26,4 +26,8 @@
   span {
     @apply text-txt-black-700;
   }
+
+  html {
+    @apply scroll-smooth;
+  }
 }

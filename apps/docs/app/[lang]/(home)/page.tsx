@@ -4,6 +4,7 @@ import Feedback from "@/components/home/Feedback";
 import Hero from "@/components/home/Hero";
 import PreviewContent from "@/components/home/PreviewContent";
 import Timeline from "@/components/home/Timeline";
+import { links } from "@/lib/constant";
 import { getRosetta } from "@/locales/_server";
 
 export default async function HomePage({
@@ -96,11 +97,11 @@ Pusat Pentadbiran Kerajaan Persekutuan
               links: [
                 {
                   name: t("Footer.designStandards"),
-                  href: "https://standard.digital.gov.my/",
+                  href: links.standard,
                 },
                 {
                   name: t("Footer.figmaBeta"),
-                  href: "https://www.figma.com/design/svmWSPZarzWrJ116CQ8zpV/MYDS-(Beta)?node-id=7-20696&t=A1mfwrtKyez4lJjE-1",
+                  href: links.figma,
                 },
               ],
             },
@@ -109,11 +110,11 @@ Pusat Pentadbiran Kerajaan Persekutuan
               links: [
                 {
                   name: t("Footer.github"),
-                  href: "https://github.com/govtechmy/myds",
+                  href: links.github,
                 },
                 {
                   name: t("Footer.figma"),
-                  href: "https://www.figma.com/design/svmWSPZarzWrJ116CQ8zpV/MYDS-(Beta)?node-id=7-20696",
+                  href: links.figma,
                 },
               ],
             },

@@ -35,10 +35,11 @@ export default {
       feedback: "Help us improve",
     },
     description: {
-      hero: "The design foundation for building official Malaysian government websites, MYDS provides beautiful pre-built components which streamline development and ensure consistency.",
+      hero: "The design system for building official Malaysian government websites. MYDS provides beautiful pre-built components which streamline development and promotes consistency.",
       about:
         "A structured collection of reusable components which adheres to design standards and principles, providing a foundation for digital product development.",
-      feedback: "Write your constructive feedback to",
+      feedback_1: "Write your constructive feedback to ",
+      feedback_2: " or open a ",
     },
     action: {
       feedback: {
