@@ -13,13 +13,13 @@ MYDS can be configured in various ways, depending on the requirement of your pro
     ### Install packages
     <Tabs items={["npm", "yarn", "pnpm"]}>
         ```sh tab="npm"
-        npm i @myds/react @myds/tailwindcss 
+        npm i @govtechmy/myds-react @govtechmy/myds-tailwindcss 
         ```
         ```sh tab="yarn"
-        yarn add @myds/react @myds/tailwindcss
+        yarn add @govtechmy/myds-react @govtechmy/myds-tailwindcss
         ```
         ```sh tab="pnpm"
-        pnpm add @myds/react @myds/tailwindcss
+        pnpm add @govtechmy/myds-react @govtechmy/myds-tailwindcss
         ```
     </Tabs>
 
@@ -33,14 +33,14 @@ You may import the full MYDS stylesheet in one of (2) ways below.
 
 ```ts
 // Place in the bundle entry point (eg. index.{ts,js})
-import "@myds/tailwindcss/full.css";
+import "@govtechmy/myds-tailwindcss/full.css";
 ```
 
 #### B. Import via CSS
 
 ```css
 /* Place in the CSS entry point */
-@import "@myds/tailwindcss/full.css";
+@import "@govtechmy/myds-tailwindcss/full.css";
 ```
 
 For more advanced configuration, please read the [Project Configuration](./project-configuration)
@@ -53,7 +53,7 @@ For more advanced configuration, please read the [Project Configuration](./proje
 There are a variety of components available in MYDS. Here is a `<Button />` for you to get started!
 
 ```tsx
-import { Button } from "@myds/react/button";
+import { Button } from "@govtechmy/myds-react/button";
 
 export default () => {
   return <Button variant="primary-fill">Hello MYDS</Button>;

@@ -13,13 +13,13 @@ MYDS boleh ditetapkan dengan pelbagai cara, bergantung kepada keperluan projek a
     ### Pemasangan pakej
     <Tabs items={["npm", "yarn", "pnpm"]}>
         ```sh tab="npm"
-        npm i @myds/react @myds/tailwindcss 
+        npm i @govtechmy/myds-react @govtechmy/myds-tailwindcss 
         ```
         ```sh tab="yarn"
-        yarn add @myds/react @myds/tailwindcss
+        yarn add @govtechmy/myds-react @govtechmy/myds-tailwindcss
         ```
         ```sh tab="pnpm"
-        pnpm add @myds/react @myds/tailwindcss
+        pnpm add @govtechmy/myds-react @govtechmy/myds-tailwindcss
         ```
     </Tabs>
 
@@ -35,14 +35,14 @@ Anda boleh 'import' stylesheet MYDS secara keseluruhan mengikut salah satu cara 
 
 ```ts
 // Letakkan dalam fail permulaan JS/TS (eg. index.{ts,js})
-import "@myds/tailwindcss/full.css";
+import "@govtechmy/myds-tailwindcss/full.css";
 ```
 
 #### B. Import melalui CSS
 
 ```css
 /* Letakkan dalam fail permulaan CSS  */
-@import "@myds/tailwindcss/full.css";
+@import "@govtechmy/myds-tailwindcss/full.css";
 ```
 
 Untuk tetapan yang lebih lanjut, sila baca [Konfigurasi Projek](./project-configuration)
@@ -55,7 +55,7 @@ Untuk tetapan yang lebih lanjut, sila baca [Konfigurasi Projek](./project-config
 Terdapat pelbagai komponen yang tersedia dalam MYDS. Berikut adalah `<Button />` untuk anda mulakan!
 
 ```tsx
-import { Button } from "@myds/react/button";
+import { Button } from "@govtechmy/myds-react/button";
 
 export default () => {
   return <Button variant="primary-fill">Hello MYDS</Button>;
