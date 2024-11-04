@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import {
   DateValue,
   DateFieldProps as PrimitiveDateFieldProps,
@@ -17,6 +17,8 @@ const datefield_cva = cva(
   [
     "flex items-center gap-2 rounded-md border border-otl-gray-200 bg-bg-white text-txt-black-900 shadow-button",
     "focus-within:border-otl-primary-300 focus-within:ring focus-within:ring-fr-primary",
+    "has-[[data-disabled]]:bg-bg-washed has-[[data-disabled]]:text-txt-black-500 has-[[data-disabled]]:cursor-not-allowed",
+    "has-[[data-invalid]]:border-otl-danger-300 has-[[data-invalid]]:ring-fr-danger has-[[data-invalid]]:ring",
   ],
   {
     variants: {
@@ -57,22 +59,16 @@ interface DateFieldProps extends BaseProps {
  * Uses react-aria-components' DateField API
  * @see {@link https://react-spectrum.adobe.com/react-aria/DateField.html}
  */
-function DateField({
+const DateField: FunctionComponent<DateFieldProps> = ({
   className,
   size,
   locale = "en-MS",
   ...props
-}: DateFieldProps) {
+}) => {
   return (
     <I18nProvider locale={locale}>
       <PrimitiveDateField
-        className={clx(
-          datefield_cva({ size }),
-          props.isDisabled &&
-            "bg-bg-washed text-txt-black-500 cursor-not-allowed",
-          props.isInvalid && "border-otl-danger-300 ring-fr-danger ring",
-          className,
-        )}
+        className={datefield_cva({ size, className })}
         shouldForceLeadingZeros
         {...props}
       >
@@ -92,6 +88,6 @@ function DateField({
       </PrimitiveDateField>
     </I18nProvider>
   );
-}
+};
 
 export { DateField };
