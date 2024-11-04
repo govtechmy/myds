@@ -7,6 +7,8 @@ import IconFigma from "@/icons/figma";
 import ArrowForward from "@/icons/arrow-forward";
 import Section from "../section";
 import { RosettaContext } from "@/locales/_client";
+import { Link } from "../myds";
+import { links } from "@/lib/constant";
 
 const Hero: FunctionComponent = () => {
   const { t } = useContext(RosettaContext);
@@ -36,21 +38,25 @@ const Hero: FunctionComponent = () => {
         </Paragraph>
         <div className="flex flex-row flex-wrap items-center gap-1.5 gap-x-[0.5rem]">
           <Button
-            variant="reset"
+            variant="unset"
             size="large"
             className="border-otl-primary-300 flex gap-2 border bg-[linear-gradient(247.99deg,_#FFEAA1_0%,_#24B9F9_18.41%,_#1351F0_45.16%)] font-medium text-white outline-none"
+            asChild
           >
-            <ButtonIcon>
-              <IconFigma />
-            </ButtonIcon>
-            Explore in Figma
+            <Link newTab href={links.figma} underline="none">
+              <ButtonIcon>
+                <IconFigma />
+              </ButtonIcon>
+              Explore in Figma
+            </Link>
           </Button>
-          <Button variant="default-outline" size="large">
-            {t("common.contribute")}
-
-            <ButtonIcon>
-              <ArrowForward />
-            </ButtonIcon>
+          <Button variant="default-outline" size="large" asChild>
+            <Link href="#contribute" underline="none">
+              {t("common.contribute")}
+              <ButtonIcon>
+                <ArrowForward />
+              </ButtonIcon>
+            </Link>
           </Button>
         </div>
       </div>

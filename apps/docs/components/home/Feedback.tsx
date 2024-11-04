@@ -6,6 +6,7 @@ import { clx } from "@myds/react/utils";
 import Section from "../section";
 import { useContext } from "react";
 import { RosettaContext } from "@/locales/_client";
+import { Link } from "../myds";
 
 type Props = {
   id?: string;
@@ -22,20 +23,22 @@ export default function Feedback(props: Props) {
         props.className,
       )}
     >
-      <div className="space-y-4.5 text-center">
+      <div id={props.id} className="space-y-4.5 text-center">
         <h2 className="text-balance">{t("Home.title.feedback")}</h2>
         <Paragraph>
           {t("Home.description.feedback")}{" "}
-          <a
+          <Link
             className="text-txt-primary inline font-medium underline"
             href="mailto:design@tech.gov.my"
+            newTab
+            underline="always"
           >
             design@tech.gov.my
-          </a>
+          </Link>
         </Paragraph>
       </div>
       <Button
-        variant="reset"
+        variant="unset"
         size="large"
         className="border-otl-primary-300 flex items-center gap-2 border bg-[linear-gradient(247.99deg,_#FFEAA1_0%,_#24B9F9_18.41%,_#1351F0_45.16%)] font-medium text-white outline-none"
       >
