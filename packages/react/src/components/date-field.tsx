@@ -10,6 +10,7 @@ import {
 import { CalendarIcon } from "../icons/calendar";
 import { cva, VariantProps } from "class-variance-authority";
 import { clx } from "../utils";
+import { CalendarDate, getLocalTimeZone } from "@internationalized/date";
 
 const DEFAULT_SIZE = "medium";
 
@@ -47,22 +48,72 @@ const icon_cva = cva([], {
   },
 });
 
-type BaseProps = PrimitiveDateFieldProps<DateValue> &
+// Exclude these props from react-aria-components' DateField because they use
+// object instances from the `@internationalized/date` pacakage. We'll adapt
+// them to use the native JavaScript Date object instead.
+type ExcludedPrimitiveDateFieldProps =
+  | "value"
+  | "defaultValue"
+  | "onChange"
+  | "minValue"
+  | "maxValue"
+  | "validate"
+  | "isDateUnavailable"
+  | "placeholderValue";
+
+type BaseProps = Omit<
+  PrimitiveDateFieldProps<DateValue>,
+  ExcludedPrimitiveDateFieldProps
+> &
   VariantProps<typeof datefield_cva>;
 
 interface DateFieldProps extends BaseProps {
   className?: string;
   locale?: string;
+  value?: Date;
+  defaultValue?: Date;
+  onChange?: (date: Date) => void;
+}
+
+function toCalendarDate(date: Date): CalendarDate {
+  return new CalendarDate(
+    date.getFullYear(),
+    date.getMonth() + 1,
+    date.getDate(),
+  );
 }
 
 /**
- * Uses react-aria-components' DateField API
+ * Adapt props to be compatible with react-aria-components' API.
+ */
+function adaptProps({
+  value,
+  defaultValue,
+  onChange,
+}: Pick<DateFieldProps, "value" | "defaultValue" | "onChange">): Pick<
+  PrimitiveDateFieldProps<DateValue>,
+  "value" | "defaultValue" | "onChange"
+> {
+  return {
+    value: value ? toCalendarDate(value) : undefined,
+    defaultValue: defaultValue ? toCalendarDate(defaultValue) : undefined,
+    onChange: onChange
+      ? (dateValue) => onChange(dateValue.toDate(getLocalTimeZone()))
+      : undefined,
+  };
+}
+
+/**
+ * Based on react-aria-components' DateField.
  * @see {@link https://react-spectrum.adobe.com/react-aria/DateField.html}
  */
 const DateField: FunctionComponent<DateFieldProps> = ({
   className,
   size,
   locale = "en-MS",
+  value,
+  defaultValue,
+  onChange,
   ...props
 }) => {
   return (
@@ -70,6 +121,7 @@ const DateField: FunctionComponent<DateFieldProps> = ({
       <PrimitiveDateField
         className={datefield_cva({ size, className })}
         shouldForceLeadingZeros
+        {...adaptProps({ value, defaultValue, onChange })}
         {...props}
       >
         <CalendarIcon className={icon_cva({ size })} />
