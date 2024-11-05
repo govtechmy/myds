@@ -6,6 +6,11 @@
     "./utils": {
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
+    }
+,
+    "./cookie-banner": {
+      "type": "./src/components/cookie-banner.tsx",
+      "default": "./src/components/cookie-banner.tsx"
     },
     "./icon": {
       "type": "./src/icons/index.ts",
