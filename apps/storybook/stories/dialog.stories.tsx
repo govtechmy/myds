@@ -13,7 +13,7 @@ import {
 } from "@myds/react/dialog";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import ArrowForward from "../react/arrow-forward";
+import { WarningCircleIcon } from "@myds/react/icon";
 
 /**
  * ### Overview
@@ -92,7 +92,7 @@ const meta: Meta = {
       <DialogContent withCloseButton={withCloseButton} className={theme}>
         <DialogHeader>
           <DialogIcon variant="danger">
-            <ArrowForward />
+            <WarningCircleIcon />
           </DialogIcon>
           <DialogTitle>Adakah anda pasti?</DialogTitle>
           <DialogDescription>
