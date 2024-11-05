@@ -86,9 +86,16 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
       onRejectAll?.(preferences);
     };
     return (
-      <Dialog open={open} onOpenChange={handleOpenChange}>
-        <DialogContent withCloseButton={true}>
-          <DialogHeader>
+      <Dialog defaultOpen={true} onOpenChange={handleOpenChange}>
+        {/* TODO: change position */}
+        {/* TODO: check padding */}
+        {/* TODO: provide open, onOpenChange, defaultOpen */}
+        {/* TODO: check how to do open and onOpenChange in component testing */}
+        {/* TODO: remove border from X button */}
+        {/* TODO: check alignment of checkbox */}
+        {/* TODO: check button alignment */}
+        <DialogContent withCloseButton={true} className="max-w-[502px] p-6">
+          <DialogHeader className="p-0">
             <DialogTitle>{title}</DialogTitle>
             <DialogDescription>{description}</DialogDescription>
           </DialogHeader>
@@ -96,7 +103,12 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
             <>
               <div className="flex flex-col space-y-2 py-3">
                 <div className="flex flex-row space-x-2.5">
-                  <Checkbox id="necessary" checked={true} disabled />
+                  <Checkbox
+                    id="necessary"
+                    checked={true}
+                    disabled
+                    className="flex-shrink-0"
+                  />
                   <div className="flex flex-col space-y-1">
                     <label
                       htmlFor="necessary"
@@ -120,6 +132,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                         analytics: checked,
                       }));
                     }}
+                    className="flex-shrink-0"
                   />
                   <div className="flex flex-col space-y-1">
                     <label
@@ -144,6 +157,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                         performance: checked,
                       }));
                     }}
+                    className="flex-shrink-0"
                   />
                   <div className="flex flex-col space-y-1">
                     <label
@@ -159,7 +173,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                   </div>
                 </div>
               </div>
-              <DialogFooter fillWidth={false}>
+              <DialogFooter fillWidth={false} className="justify-start">
                 <DialogClose asChild>
                   <Button
                     variant="primary-fill"
@@ -181,35 +195,33 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
               </DialogFooter>
             </>
           ) : (
-            <>
-              <DialogFooter fillWidth={false}>
-                <DialogClose asChild>
-                  <Button
-                    variant="primary-fill"
-                    size="medium"
-                    onClick={handleAcceptAll}
-                  >
-                    Accept All
-                  </Button>
-                </DialogClose>
-                <DialogClose asChild>
-                  <Button
-                    variant="primary-fill"
-                    size="medium"
-                    onClick={handleRejectAll}
-                  >
-                    Reject All
-                  </Button>
-                </DialogClose>
+            <DialogFooter fillWidth={false} className="justify-start px-0 pt-4">
+              <DialogClose asChild>
                 <Button
-                  variant="primary-outline"
+                  variant="primary-fill"
                   size="medium"
-                  onClick={() => setShowCustomize(!showCustomize)}
+                  onClick={handleAcceptAll}
                 >
-                  Customize
+                  Accept All
                 </Button>
-              </DialogFooter>
-            </>
+              </DialogClose>
+              <DialogClose asChild>
+                <Button
+                  variant="primary-fill"
+                  size="medium"
+                  onClick={handleRejectAll}
+                >
+                  Reject All
+                </Button>
+              </DialogClose>
+              <Button
+                variant="primary-outline"
+                size="medium"
+                onClick={() => setShowCustomize(!showCustomize)}
+              >
+                Customize
+              </Button>
+            </DialogFooter>
           )}
         </DialogContent>
       </Dialog>

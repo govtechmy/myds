@@ -7,7 +7,7 @@ import { CookieBanner } from "@myds/react/cookie-banner";
  * ### Overview
  * Insert a brief description of the component here.
  *
- * > Insert a ChatGPT pantun here 
+ * > Insert a ChatGPT pantun here
  *
  * ### Usage
  * ```tsx
@@ -35,7 +35,7 @@ const meta = {
       control: "inline-radio",
       options: ["option-1", "option-2", "option-3"],
     },
-  }
+  },
 } satisfies Meta<typeof CookieBanner>;
 
 export default meta;
@@ -49,6 +49,6 @@ type Story = StoryObj<typeof meta>;
  * export const DarkDefault: Story = createStory({ ... , className="dark"}, "dark");
  */
 
-// export const Default: Story = createStory({
-//  children: "Example",
-// });
+export const Default: Story = createStory({
+  children: "Example",
+});
