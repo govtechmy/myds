@@ -214,31 +214,31 @@ const config: PresetsConfig = {
         "fr-primary": "rgba(var(--fr-primary))",
         "fr-danger": "rgba(var(--fr-danger))",
       },
+      keyframes: {
+        "decrease-width": {
+          "0%": { width: "100%" },
+          "100%": { width: "0%" },
+        },
+        "slide-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "slide-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        expire: "decrease-width 5s linear",
+        "slide-down": "slide-down 300ms ease-out",
+        "slide-up": "slide-up 300ms ease-out",
+      },
     },
     boxShadow: {
       button: "0px 1px 3px 0px rgba(0, 0, 0, 0.07)",
       card: "0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 6px 24px 0px rgba(0, 0, 0, 0.05)",
       "context-menu":
         "0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 12px 50px 0px rgba(0, 0, 0, 0.10)",
-    },
-    keyframes: {
-      "decrease-width": {
-        "0%": { width: "100%" },
-        "100%": { width: "0%" },
-      },
-      "slide-down": {
-        from: { height: "0" },
-        to: { height: "var(--radix-accordion-content-height)" },
-      },
-      "slide-up": {
-        from: { height: "var(--radix-accordion-content-height)" },
-        to: { height: "0" },
-      },
-    },
-    animation: {
-      expire: "decrease-width 5s linear",
-      "slide-down": "slide-down 300ms ease-out",
-      "slide-up": "slide-up 300ms ease-out",
     },
   },
   plugins: [tailwindcssAnimate],
