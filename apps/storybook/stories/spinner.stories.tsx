@@ -105,6 +105,17 @@ export const WithButton: Story = {
   ...createStory({}),
   render: () => (
     <Button disabled>
+      <Spinner color="white"></Spinner>
+      Button
+    </Button>
+  ),
+};
+WithButton.storyName = "Spinner with Button";
+
+export const WithButton2: Story = {
+  ...createStory({}),
+  render: () => (
+    <Button disabled>
       <Spinner></Spinner>
       Button
     </Button>

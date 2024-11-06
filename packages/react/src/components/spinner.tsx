@@ -1,15 +1,16 @@
 import React from "react";
+import { clx } from "../utils";
 
 interface LoadingSpinnerProps {
   size?: "sm" | "md" | "lg";
   color?: "grey" | "white";
-  classname?: string;
+  className?: string;
 }
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   size = "sm",
   color = "grey",
-  classname = "",
+  className = "",
 }) => {
   const sizeClasses = {
     sm: "h-4 w-4",
@@ -17,14 +18,21 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
     lg: "h-6 w-6",
   };
   const colorClasses = {
-    grey: "#FFFFFF",
+    grey: "#71717A",
     white: "#FFFFFF",
   };
 
   return (
     <div className="relative flex items-center justify-center">
       <div
-        className={`${sizeClasses[size]} animate-spin rounded-full bg-[conic-gradient(var(--tw-gradient-stops))] from-[${colorClasses[color]}] from-white [mask:radial-gradient(transparent_56%,#000_56%)]`}
+        className={clx(
+          sizeClasses[size],
+          "animate-spin rounded-full",
+          "bg-[conic-gradient(var(--tw-gradient-stops))]",
+          "from-[#FFFFFF]",
+          "[mask:radial-gradient(transparent_56%,#000_56%)]",
+          className,
+        )}
       ></div>
     </div>
   );
