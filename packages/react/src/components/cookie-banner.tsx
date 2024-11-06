@@ -90,14 +90,13 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
     };
     return (
       <Dialog defaultOpen={true} onOpenChange={handleOpenChange}>
-        {/* TODO: change position */}
-        {/* TODO: check padding */}
+        {/* TODO: change position and margin*/}
         {/* TODO: provide open, onOpenChange, defaultOpen */}
         {/* TODO: check how to do open and onOpenChange in component testing */}
-        {/* TODO: check alignment of checkbox */}
-        {/* TODO: check button alignment */}
         {/* TODO: check if there is better way than copy from Dialog */}
-        <DialogContent className="max-w-[502px] gap-1 p-6">
+        {/* TODO: shadow and border */}
+        {/* TODO: problem with breakpoint */}
+        <DialogContent className="border-otl-gray-200 shadow-card max-w-[502px] gap-1 rounded-lg p-3 sm:p-6">
           <DialogHeader className="p-0">
             <DialogTitle>{title}</DialogTitle>
             <DialogDescription>{description}</DialogDescription>
@@ -106,13 +105,14 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
             className={clx(
               button_cva({ variant: "default-ghost", size: "small" }),
               "absolute right-4 top-4",
-              "size-[2rem]",
+              // "size-[2rem]",
+              "size-[2rem] sm:size-[3rem]",
               "grid place-content-center",
               "text-txt-black-900",
               "disabled:pointer-events-none",
             )}
           >
-            <CrossIcon className="size-[20px] stroke-current" />
+            <CrossIcon className="stroke-current" />
             <span className="sr-only">Close</span>
           </DialogClose>
           {showCustomize ? (
@@ -122,13 +122,12 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                   <Checkbox
                     id="necessary"
                     checked={true}
-                    disabled
                     className="mt-0.5 flex-shrink-0"
                   />
                   <div className="flex flex-col justify-start gap-1">
                     <label
                       htmlFor="necessary"
-                      className="text-txt-black-900 text-body-sm leading-tight"
+                      className="text-txt-black-900 text-body-sm font-semibold"
                     >
                       Necessary
                     </label>
@@ -153,7 +152,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                   <div className="flex flex-col space-y-1">
                     <label
                       htmlFor="analytics"
-                      className="text-txt-black-900 text-body-sm"
+                      className="text-txt-black-900 text-body-sm font-semibold"
                     >
                       Analytics
                     </label>
@@ -178,7 +177,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                   <div className="flex flex-col space-y-1">
                     <label
                       htmlFor="performance"
-                      className="text-txt-black-900 text-body-sm"
+                      className="text-txt-black-900 text-body-sm font-semibold"
                     >
                       Performance
                     </label>
@@ -191,13 +190,14 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
               </div>
               <DialogFooter
                 fillWidth={false}
-                className="justify-start p-0 pt-3"
+                className="flex-col justify-start p-0 pt-3 sm:flex-row"
               >
                 <DialogClose asChild>
                   <Button
                     variant="primary-fill"
                     size="medium"
                     onClick={handleAcceptAll}
+                    className="w-full justify-center sm:w-auto"
                   >
                     Accept All
                   </Button>
@@ -207,6 +207,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                     variant="primary-fill"
                     size="medium"
                     onClick={handleRejectAll}
+                    className="w-full justify-center sm:w-auto"
                   >
                     Reject All
                   </Button>
@@ -216,13 +217,14 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
           ) : (
             <DialogFooter
               fillWidth={false}
-              className="justify-start gap-[0.5rem] px-0 py-0 pt-4"
+              className="flex-col justify-start gap-[0.5rem] p-0 pt-4 sm:flex-row"
             >
               <DialogClose asChild>
                 <Button
                   variant="primary-fill"
                   size="medium"
                   onClick={handleAcceptAll}
+                  className="w-full justify-center sm:w-auto"
                 >
                   Accept All
                 </Button>
@@ -232,6 +234,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                   variant="primary-fill"
                   size="medium"
                   onClick={handleRejectAll}
+                  className="w-full justify-center sm:w-auto"
                 >
                   Reject All
                 </Button>
@@ -240,6 +243,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                 variant="primary-outline"
                 size="medium"
                 onClick={() => setShowCustomize(!showCustomize)}
+                className="w-full justify-center sm:w-auto"
               >
                 Customize
               </Button>
