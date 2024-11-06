@@ -35,11 +35,12 @@ const meta = {
     color: {
       table: {
         type: {
-          summary: "string",
+          summary: "enum",
         },
       },
-      description: "Color of the spinner (hex, rgb, or named color)",
-      control: "color",
+      description: "Color variant of the spinner",
+      control: "inline-radio",
+      options: ["grey", "white"],
     },
   },
 } satisfies Meta<typeof Spinner>;
@@ -78,25 +79,24 @@ export const SmallDark: Story = createStory(
 );
 
 export const Medium: Story = createStory({
-  size: "sm",
+  size: "md",
 });
 
 export const MediumDark: Story = createStory(
   {
-    size: "sm",
+    size: "md",
     className: "dark",
   },
   "dark",
 );
 export const Large: Story = createStory({
-  size: "sm",
+  size: "lg",
 });
 
 export const LargeDark: Story = createStory(
   {
-    size: "sm",
+    size: "lg",
     className: "dark",
-    color: "white",
   },
   "dark",
 );
@@ -110,15 +110,4 @@ export const WithButton: Story = {
     </Button>
   ),
 };
-WithButton.storyName = "Spinner with Button";
-
-export const WithButton2: Story = {
-  ...createStory({}),
-  render: () => (
-    <Button disabled>
-      <Spinner></Spinner>
-      Button
-    </Button>
-  ),
-};
-WithButton.storyName = "Spinner with Button";
+WithButton.storyName = "Spinner with Button Disabled";

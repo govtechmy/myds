@@ -15,7 +15,7 @@ const config: PresetsConfig = {
       inherit: colors.inherit,
       transparent: colors.transparent,
       white: {
-        DEFAULT: "rgba(var(--_white))",
+        DEFAULT: "rgb(var(--_white))",
         disabled: "rgba(var(--_white)/ 0.4)",
       },
       gray: {
@@ -120,7 +120,7 @@ const config: PresetsConfig = {
         mono: ["Roboto Mono", ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        "bg-white": "rgba(var(--bg-white))",
+        "bg-white": "rgb(var(--bg-white))",
         "bg-white-hover": "rgba(var(--bg-white-hover))",
         "bg-white-disabled": "rgba(var(--bg-white-disabled))",
         "bg-washed": "rgba(var(--bg-washed))",
@@ -186,7 +186,7 @@ const config: PresetsConfig = {
         "txt-white-disabled": "rgba(var(--txt-white-disabled))",
         "txt-black-900": "rgba(var(--txt-black-900))",
         "txt-black-700": "rgba(var(--txt-black-700))",
-        "txt-black-500": "rgba(var(--txt-black-500))",
+        "txt-black-500": "rgb(var(--txt-black-500))",
         "txt-black-disabled": "rgba(var(--txt-black-disabled))",
         "txt-primary": "rgba(var(--txt-primary))",
         "txt-primary-disabled": "rgba(var(--txt-primary-disabled))",

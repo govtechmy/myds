@@ -18,8 +18,8 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
     lg: "h-6 w-6",
   };
   const colorClasses = {
-    grey: "#71717A",
-    white: "#FFFFFF",
+    grey: "from-txt-black-500",
+    white: "from-white",
   };
 
   return (
@@ -29,7 +29,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
           sizeClasses[size],
           "animate-spin rounded-full",
           "bg-[conic-gradient(var(--tw-gradient-stops))]",
-          "from-[#FFFFFF]",
+          colorClasses[color],
           "[mask:radial-gradient(transparent_56%,#000_56%)]",
           className,
         )}
