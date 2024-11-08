@@ -27,7 +27,9 @@ export default function Masthead(props: { lang: "en" | "ms" }) {
     >
       <div
         className={clx(
-          !pathname.includes("docs") ? "container xl:px-0" : "w-full px-3",
+          !pathname.includes("docs")
+            ? "mx-auto max-w-screen-xl px-3 xl:px-0"
+            : "w-full px-3",
         )}
       >
         <button
@@ -36,7 +38,7 @@ export default function Masthead(props: { lang: "en" | "ms" }) {
         >
           <div className="text-txt-primary flex flex-wrap items-center gap-1.5 text-sm/4 max-sm:justify-between sm:py-1">
             <div className="flex items-center gap-1.5">
-              <FlagMY className="h-[1rem] w-[2rem]" />
+              <FlagMY className="h-4 w-8" />
               <span className="text-txt-black-700">
                 {t("Masthead.official_gov_website")}
               </span>

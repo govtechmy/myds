@@ -1,4 +1,5 @@
 import { Tag } from "@/components/Tag";
+import { links } from "@/lib/constant";
 import { getRosetta } from "@/locales/_server";
 import { type HomeLayoutProps } from "fumadocs-ui/home-layout";
 import { LinkItemType } from "fumadocs-ui/layout";
@@ -55,7 +56,7 @@ export const getMYDSConfig = (lang: "en" | "ms"): MyDSConfig => {
       i18n: true,
       nav: {
         title: (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 xl:ml-11">
             <Image
               width={24}
               height={24}
@@ -68,7 +69,9 @@ export const getMYDSConfig = (lang: "en" | "ms"): MyDSConfig => {
         ),
       },
       links: menu,
+      githubUrl: links.github,
     },
+
     menu,
   };
 };
