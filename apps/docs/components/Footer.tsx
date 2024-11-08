@@ -31,10 +31,9 @@ export default function Footer(props: Props) {
           <div className="lg:gap-4.5 flex flex-col gap-4">
             <div className="flex items-center gap-x-2.5">
               <Image
-                src="/assets/jata-negara.png"
+                src="/common/jata-negara.png"
                 width={28}
                 height={28}
-                className="h-auto w-auto"
                 alt="Jata Negara"
               />
               <div>

@@ -11,10 +11,12 @@ import { clx } from "@myds/react/utils";
 import { useState } from "react";
 import { getRosetta } from "@/locales/_server";
 import Collapse from "./Collapse";
+import { usePathname } from "next/navigation";
 
 export default function Masthead(props: { lang: "en" | "ms" }) {
   const { t } = getRosetta(props.lang);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <div
@@ -23,14 +25,20 @@ export default function Masthead(props: { lang: "en" | "ms" }) {
         open ? "from-bg-washed to-otl-gray-200" : "from-bg-washed to-bg-washed",
       )}
     >
-      <div className="container xl:px-0">
+      <div
+        className={clx(
+          !pathname.includes("docs")
+            ? "mx-auto max-w-screen-xl px-3 xl:px-0"
+            : "w-full px-3",
+        )}
+      >
         <button
           className="h-[2.25rem] w-full md:h-[1.75rem]"
           onClick={() => setOpen(!open)}
         >
           <div className="text-txt-primary flex flex-wrap items-center gap-1.5 text-sm/4 max-sm:justify-between sm:py-1">
             <div className="flex items-center gap-1.5">
-              <FlagMY className="h-[1rem] w-[2rem]" />
+              <FlagMY className="h-4 w-8" />
               <span className="text-txt-black-700">
                 {t("Masthead.official_gov_website")}
               </span>
@@ -46,7 +54,7 @@ export default function Masthead(props: { lang: "en" | "ms" }) {
           </div>
         </button>
         <Collapse isOpen={open}>
-          <div className="gap-4.5 pt-4.5 grid grid-cols-1 pb-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
+          <div className="gap-4.5 pt-4.5 container grid grid-cols-1 pb-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
             <span className="text-txt-primary static text-sm sm:hidden">
               {t("Masthead.how_to_identify")}
             </span>

@@ -1,0 +1,20 @@
+---
+title: Character count
+description: Tracks the number of characters in a text area, providing real-time feedback to help users stay within the limit
+---
+
+Character count shows warnings near the limit and errors when exceeded.
+
+![character-count-anatomy@1.5x.png](/design/character-count-anatomy1.5x.png)
+
+1. **Text Area Input**: The character count is added to the existing Text Area Input by displaying the character limit as a hint below the input field.
+2. **Hint Under**: The hint text below the input dynamically shows the remaining character count.
+3. **Counter**: The counter starts in descending order, showing the remaining characters (e.g., 200, 199...0).
+
+## State
+
+![character-count-type@1.5x.png](/design/character-count-type1.5x.png)
+
+1. **Default**: Displays the remaining characters in descending order once user starts typing, such as “200 characters remaining”.
+2. **Warning**: When the user is close to the limit, change colour yellow, such as “10 characters left”.
+3. **Error**: If the user exceeds the limit, the counter shows negative numbers, such as “-100 characters over the limit”. User won’t be able to submit the form as character limit is part of validation.
