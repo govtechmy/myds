@@ -34,7 +34,6 @@ export default function Footer(props: Props) {
                 src="/common/jata-negara.png"
                 width={28}
                 height={28}
-                className="h-auto w-auto"
                 alt="Jata Negara"
               />
               <div>
