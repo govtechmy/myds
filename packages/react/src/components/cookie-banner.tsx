@@ -90,13 +90,10 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
     };
     return (
       <Dialog defaultOpen={true} onOpenChange={handleOpenChange}>
-        {/* TODO: change position and margin*/}
         {/* TODO: provide open, onOpenChange, defaultOpen */}
         {/* TODO: check how to do open and onOpenChange in component testing */}
         {/* TODO: check darkmode */}
-        {/* bottom-0 top-auto w-full -translate-x-1/2 translate-y-0  */}
-        {/* fixed left-[50%] translate-x-[-50%] w-[calc(100%-36px)] bottom-[18px] sm:left-[24px] sm:translate-x-0 sm:bottom-[24px] sm:w-[502px] */}
-        <DialogContent className="mb-4.5 top-auto p-[18px] sm:bottom-[24px] sm:left-[24px] sm:mb-6 sm:max-w-[502px] sm:translate-x-0 sm:p-6">
+        <DialogContent className="bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:mb-6 sm:max-w-[502px] sm:translate-x-0 sm:translate-y-[-50%] sm:p-6">
           <DialogHeader className="space-y-0 p-0 pb-1">
             <div className="mb-1 flex flex-row justify-between">
               <DialogTitle className="text-body-md pb-1">{title}</DialogTitle>
