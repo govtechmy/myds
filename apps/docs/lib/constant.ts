@@ -7,5 +7,5 @@ export const links = {
 };
 
 export const s3 = (path: string) => {
-  return `https://gnu-myds.s3.ap-southeast-1.amazonaws.com/${path}`;
+  return `https://gnu-myds.s3.ap-southeast-1.amazonaws.com${path}`;
 };
