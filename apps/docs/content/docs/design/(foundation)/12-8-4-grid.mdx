@@ -1,13 +1,61 @@
 ---
-title: 12-8-4 Grid Layout
-description: 12-8-4 Grid Layout
+title: 12-8-4 Grid System
+description: The 12-8-4 grid system provides a flexible, responsive layout structure that encourages a focus on adaptable design across all screen sizes
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+The grid system helps to ensure that content remains consistently aligned and visually balanced, making designs look polished and accessible on any device, from desktop to mobile.
 
-## What is Next?
+This guide illustrates how screen size affects width of the following container type:
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+1. **Content:** The main container where content can be freely arranged in various layouts.
+2. **Article:** Long-form content such as articles where readers need to focus. Rather than maintaining the same wide size as content, it's narrowed to maximum width of 640px—an optimal width for comfortable reading.
+3. **Images and Interactive Charts:** These should be eye-catching and relevant to the content. They can span the full width of the article container (640px) or extend to a maximum width of 740px for added visual impact.
+
+## Breakpoints
+
+Breakpoints are specific screen sizes that help websites adjust their layout to look good on any device
+
+- **Desktop (≥1024px):** For large screens like laptops or monitors, starting from **1024px** width and up.
+- **Tablet (768px - 1023px):** For medium-sized screens, like tablets, from **768px** up to **1023px** width.
+- **Mobile (≤767px):** For small screens like phones, **767px** width and below.
+
+### Desktop
+
+![desktop-1280@1.5x](/assets/design/desktop-12801.5x.webp)
+
+For screens 1024px and wider, implement a **12-column grid** with 24px column gaps and edge padding, maintaining a maximum content width of 1280px for optimal desktop viewing.
+
+The 12-column layout offers maximum flexibility for arranging content on larger screens. It allows designers to create complex layouts while ensuring that elements can be easily aligned and resized without cluttering the design.
+
+### Tablet
+
+![desktop-1280@1.5x](/assets/design/tablet-768@1.5x.png)
+On screens between 768px and 1023px, switch to an **8-column grid** with a 24px gap and edge padding to maintain a balanced spacing.
+
+The 8-column layout simplifies the design for medium-sized screens, making it easier to display content in a clean and organized manner. This layout helps to maintain readability and usability by reducing the number of columns, which can be too cramped on a smaller screen.
+
+### Mobile
+
+![desktop-1280@1.5x](/assets/design/mobile-393@1.5x.png)
+
+For screens 767px and smaller, use a **4-column grid** with an 18px gap and edge padding.
+
+The 4-column layout is ideal for smaller screens, providing enough space for content while keeping it easy to navigate. This layout focuses on essential elements, ensuring that users can access information quickly and comfortably on their devices.
+
+## Usage example
+
+### Content section
+
+Example usage on the [Ministry of Digital](https://digital.gov.my/en-GB) website showcases an image slider section where, on desktop, the title spans 3 columns and the image spans 6 columns, with a 1-column space on either side and a 1-column gap between them for visual separation.
+
+On tablet, the title and image fill the available space for optimal viewing, while on mobile, they are stacked vertically instead of side by side.
+
+![desktop-1280@1.5x](/assets/design/12-8-4-grid-usage-example@1.5x.png)
+
+### Article page
+
+The article page design prioritizes readability by using a maximum paragraph container width of 640px, ensuring easy reading without line fatigue.
+
+Images and interactive charts are displayed with a maximum width of 740px, allowing them to stand out and enhance the layout while maintaining a balanced content presentation.
+
+![desktop-1280@1.5x](/assets/design/12-8-4-grid-usage-example-2@1.5x.png)
