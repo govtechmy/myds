@@ -94,27 +94,26 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
         {/* TODO: provide open, onOpenChange, defaultOpen */}
         {/* TODO: check how to do open and onOpenChange in component testing */}
         {/* TODO: check if there is better way than copy from Dialog */}
-        {/* TODO: shadow and border */}
         {/* TODO: problem with breakpoint */}
-        <DialogContent className="border-otl-gray-200 shadow-card max-w-[502px] gap-1 rounded-lg p-3 sm:p-6">
-          <DialogHeader className="p-0">
-            <DialogTitle>{title}</DialogTitle>
+        <DialogContent className="mb-4.5 bottom-0 top-auto w-full -translate-x-1/2 translate-y-0 gap-1 p-[18px] sm:max-w-[502px] sm:p-6">
+          <DialogHeader className="space-y-0 p-0">
+            <div className="mb-1 flex flex-row justify-between">
+              <DialogTitle>{title}</DialogTitle>
+              <DialogClose
+                className={clx(
+                  button_cva({ variant: "default-ghost", size: "small" }),
+                  "size-[1.25rem]",
+                  "grid place-content-center",
+                  "text-txt-black-900",
+                  "disabled:pointer-events-none",
+                )}
+              >
+                <CrossIcon className="stroke-current" />
+                <span className="sr-only">Close</span>
+              </DialogClose>
+            </div>
             <DialogDescription>{description}</DialogDescription>
           </DialogHeader>
-          <DialogClose
-            className={clx(
-              button_cva({ variant: "default-ghost", size: "small" }),
-              "absolute right-4 top-4",
-              // "size-[2rem]",
-              "size-[2rem] sm:size-[3rem]",
-              "grid place-content-center",
-              "text-txt-black-900",
-              "disabled:pointer-events-none",
-            )}
-          >
-            <CrossIcon className="stroke-current" />
-            <span className="sr-only">Close</span>
-          </DialogClose>
           {showCustomize ? (
             <>
               <div className="flex flex-col gap-2 py-3">
@@ -190,7 +189,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
               </div>
               <DialogFooter
                 fillWidth={false}
-                className="flex-col justify-start p-0 pt-3 sm:flex-row"
+                className="flex-col justify-start gap-2 p-0 pt-3 sm:flex-row"
               >
                 <DialogClose asChild>
                   <Button
@@ -217,7 +216,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
           ) : (
             <DialogFooter
               fillWidth={false}
-              className="flex-col justify-start gap-[0.5rem] p-0 pt-4 sm:flex-row"
+              className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row"
             >
               <DialogClose asChild>
                 <Button
