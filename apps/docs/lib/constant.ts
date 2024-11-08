@@ -5,3 +5,7 @@ export const links = {
   github: "https://github.com/govtechmy/myds",
   github_issue: "https://github.com/govtechmy/myds/issues",
 };
+
+export const s3 = (path: string) => {
+  return `https://gnu-myds.s3.ap-southeast-1.amazonaws.com/${path}`;
+};
