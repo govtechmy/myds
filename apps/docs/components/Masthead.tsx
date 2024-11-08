@@ -52,7 +52,7 @@ export default function Masthead(props: { lang: "en" | "ms" }) {
           </div>
         </button>
         <Collapse isOpen={open}>
-          <div className="gap-4.5 pt-4.5 grid grid-cols-1 pb-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
+          <div className="gap-4.5 pt-4.5 container grid grid-cols-1 pb-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
             <span className="text-txt-primary static text-sm sm:hidden">
               {t("Masthead.how_to_identify")}
             </span>
