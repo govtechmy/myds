@@ -15,7 +15,7 @@
 
     "---Components---",
     "(components)/accordion",
-    "(components)/anchor",
+    "(components)/alert-dialog",
     "(components)/banner",
     "(components)/breadcrumb",
     "(components)/button",

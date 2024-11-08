@@ -56,7 +56,12 @@ export const getMYDSConfig = (lang: "en" | "ms"): MyDSConfig => {
       nav: {
         title: (
           <div className="flex items-center gap-3">
-            <Image width={24} height={24} src="/assets/logo.svg" alt="Logo" />
+            <Image
+              width={24}
+              height={24}
+              src="/common/logo.svg"
+              alt="MYDS Logo"
+            />
             <h3>MYDS</h3>
             <Tag className="text-accent text-xs">Beta</Tag>
           </div>
