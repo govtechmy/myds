@@ -11,10 +11,12 @@ import { clx } from "@myds/react/utils";
 import { useState } from "react";
 import { getRosetta } from "@/locales/_server";
 import Collapse from "./Collapse";
+import { usePathname } from "next/navigation";
 
 export default function Masthead(props: { lang: "en" | "ms" }) {
   const { t } = getRosetta(props.lang);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <div
@@ -23,7 +25,11 @@ export default function Masthead(props: { lang: "en" | "ms" }) {
         open ? "from-bg-washed to-otl-gray-200" : "from-bg-washed to-bg-washed",
       )}
     >
-      <div className="container xl:px-0">
+      <div
+        className={clx(
+          !pathname.includes("docs") ? "container xl:px-0" : "w-full px-3",
+        )}
+      >
         <button
           className="h-[2.25rem] w-full md:h-[1.75rem]"
           onClick={() => setOpen(!open)}
