@@ -154,7 +154,7 @@ const DialogDescription = React.forwardRef<
   <DialogPrimitive.Description
     ref={ref}
     // TODO: twMerge() will incorrectly de-duplicate 'text-txt-black-700'
-    className={`${clx("text-txt-black-700")} ${clx(`text-body-sm className font-normal`)}`}
+    className={`${clx("text-txt-black-700")} ${clx(`text-body-sm font-normal`, className)}`}
     {...props}
   />
 ));

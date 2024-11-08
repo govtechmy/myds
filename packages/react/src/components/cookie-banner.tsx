@@ -93,12 +93,11 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
         {/* TODO: change position and margin*/}
         {/* TODO: provide open, onOpenChange, defaultOpen */}
         {/* TODO: check how to do open and onOpenChange in component testing */}
-        {/* TODO: check if there is better way than copy from Dialog */}
-        {/* TODO: problem with breakpoint */}
-        <DialogContent className="mb-4.5 bottom-0 top-auto w-full -translate-x-1/2 translate-y-0 gap-1 p-[18px] sm:max-w-[502px] sm:p-6">
-          <DialogHeader className="space-y-0 p-0">
+        {/* TODO: check darkmode */}
+        <DialogContent className="mb-4.5 bottom-0 top-auto w-full -translate-x-1/2 translate-y-0 p-[18px] sm:max-w-[502px] sm:p-6">
+          <DialogHeader className="space-y-0 p-0 pb-1">
             <div className="mb-1 flex flex-row justify-between">
-              <DialogTitle>{title}</DialogTitle>
+              <DialogTitle className="text-body-md pb-1">{title}</DialogTitle>
               <DialogClose
                 className={clx(
                   button_cva({ variant: "default-ghost", size: "small" }),
@@ -189,7 +188,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
               </div>
               <DialogFooter
                 fillWidth={false}
-                className="flex-col justify-start gap-2 p-0 pt-3 sm:flex-row"
+                className="flex-col justify-start gap-2 p-0 pt-4 sm:flex-row"
               >
                 <DialogClose asChild>
                   <Button
