@@ -1,5 +1,79 @@
 ---
-title: File upload
-description: File upload
+title: Muat naik fail
+description: Membolehkan pengguna memuat naik dan pratonton kandungan fail
 ---
 
+import { s3 } from "@/lib/constant";
+
+Ia mempunyai tajuk, garis panduan muat naik, butang muat naik, dan senarai yang memaparkan item yang dimuat naik, dengan pengendalian ralat terbina dalam untuk muat naik fail.
+
+## Pratonton Fail
+
+Pratonton fail digunakan untuk memaparkan butiran tentang fail atau media yang telah dimuat naik, termasuk nama fail, jenis, dan pilihan untuk menghapuskan fail.
+
+![uploaded-item-1@1.5x.png](/design/uploaded-item-11.5x.png)
+
+1. **Thumbnail/Ikon**: Memaparkan thumbnail untuk imej atau video. Ikon akan ditunjukkan untuk jenis fail lain seperti PDF, DOCX, PPTX, XLSX, dan sebagainya.
+2. **Nama Fail**: Nama fail yang dimuat naik, yang dipendekkan jika terlalu panjang.
+3. **Ekstensi Fail**: Jenis fail yang ditunjukkan pada akhir nama fail (contoh: .pdf, .jpeg, .docx).
+4. **Ikon Tutup**: Ikon untuk menutup atau menghapus fail yang dimuat naik.
+
+### Keadaan (State)
+
+![uploaded-item-2@1.5x.png](/design/uploaded-item-21.5x.png)
+
+1. **Asal**: Keadaan biasa apabila fail telah dimuat naik dan dipaparkan.
+2. **Hover**: Apabila pengguna meletakkan tetikus pada item, menunjukkan tindakan yang boleh dilakukan seperti menghapus fail.
+   2a. **Hover pada Ikon Hapus**: Menunjukkan tooltip untuk memberi panduan kepada pengguna tentang fungsi butang ini (pilihan).
+
+3. **Dilumpuhkan (Disabled)**: Item tidak interaktif, biasanya apabila fail tidak boleh dihapus atau diedit.
+4. **Loading**: Apabila fail sedang dimuat naik.
+
+### Pemuatan (Loading)
+
+Apabila fail sedang dimuat naik, keadaan loading diaktifkan sehingga fail dimuat naik sepenuhnya.
+
+![uploaded-item-3@1.5x.png](/design/uploaded-item-31.5x.png)
+
+1. **Spinner**: Memaparkan spinner loading menggantikan thumbnail fail semasa proses muat naik.
+2. **Nama Fail**: Memaparkan "Sedang Memuat Naik..." menggantikan nama fail sebenar sehingga muat naik selesai.
+
+## Muat Naik Fail
+
+Biasanya dipaparkan dalam borang yang memerlukan pengguna memuat naik satu atau lebih fail.
+
+![file-upload-anatomy@1.5x.png](/design/file-upload-anatomy1.5x.png)
+
+1. **Tajuk**: Menunjukkan tujuan seksyen muat naik fail, contohnya "Dokumen Sokongan".
+2. **Format Fail**: Memberitahu pengguna format fail yang disokong.
+3. **Saiz Fail Maksimum**: Menentukan saiz fail maksimum yang dibenarkan.
+4. **Butang Muat Naik**: Butang untuk pengguna memuat naik fail.
+5. **Mesej Petunjuk/Ralat**: Memaparkan mesej untuk memaklumkan pengguna tentang isu seperti had saiz fail atau format yang tidak disokong.
+6. **Senarai Fail Dimuat Naik**: Menunjukkan komponen item yang dimuat naik, menyenaraikan fail yang telah dimuat naik oleh pengguna.
+7. **Senarai Fail Dimuat Naik Sebelumnya (Pilihan)**: Memaparkan fail yang telah dimuat naik sebelum ini, jika diperlukan, membolehkan pengguna membandingkan fail yang dimuat naik baru dengan fail lama. Jarang digunakan tetapi berguna dalam kes tertentu.
+
+### Keadaan (State)
+
+![file-upload-state@1.5x.png](/design/file-upload-state1.5x.png)
+
+1. **Asal**: Keadaan awal, membolehkan pengguna memuat naik fail.
+2. **Dilumpuhkan (Disabled)**: Seksian muat naik fail dinyahaktifkan, menghalang interaksi pengguna.
+3. **Loading**: Memaparkan keadaan loading semasa fail sedang dimuat naik.
+4. **Uploaded**: Menunjukkan bahawa fail telah berjaya dimuat naik dan dipaparkan dalam senarai fail dimuat naik.
+5. **Error**: Memaparkan mesej ralat apabila terdapat isu dengan muat naik fail (contohnya, saiz fail terlalu besar atau format tidak disokong).
+
+### Contoh Penggunaan
+
+![file-upload-location@1.5x.png](/design/file-upload-location1.5x.png)
+
+**Lokasi**: Kumpulan Muat Naik Fail biasanya digunakan dalam borang atau modal di mana pengguna perlu menyerahkan dokumen atau fail sebagai sebahagian daripada proses (contohnya, permohonan, tiket sokongan). Ia membantu mempermudah aliran kerja penyerahan dokumen.
+
+**Lebar**: Lebar biasanya ditetapkan kepada lebar penuh untuk mengisi kontena borang atau modal, memastikan ia menyesuaikan dengan ruang yang ada.
+
+## Demo
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/file-upload-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

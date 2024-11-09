@@ -1,5 +1,54 @@
 ---
-title: Cookies banner
-description: Cookies banner
+title: Banner kuki
+description: Memaklumkan pengguna yang kuki (cookie) digunakan untuk meningkatkan pengalaman melayari pautan
 ---
 
+import { s3 } from "@/lib/constant";
+
+Banner kuki sering dilengkapi dengan pilihan untuk menguruskan keutamaan persetujuan, untuk pelbagai kegunaan. Ia biasanya muncul apabila pengguna melayari laman web buat kali pertama.
+
+![cookie-anatomy@1.5x.png](/design/cookie-anatomy1.5x.png)
+
+1. **Deskripsi**: Mesej memaklumkan pengguna tentang penggunaan kuki oleh laman web. Templat: Kuki pada `website.gov.my`.
+2. **Butang Terima atau Tolak Kuki**: Butang yang membolehkan pengguna menerima semua kuki atau menolak kuki.
+3. **Tetapan**: Butang untuk membuka tetapan kuki, membolehkan pengguna menyesuaikan keutamaan kuki mereka.
+4. **Ikon Tutup**: Ikon di sudut yang membolehkan pengguna menutup Banner kuki secara manual.
+5. **Kotak Semak Kuki Diperlukan**: Kotak semak ini diperlukan untuk laman web berfungsi dengan baik. Tidak boleh dinyahpilih.
+6. **Kotak Semak Kuki Analitik**: Kuki ini menjejak bilangan pelawat, kadar lantunan, dan sumber trafik.
+7. **Kotak Semak Kuki Prestasi**: Digunakan untuk menganalisis metrik utama laman web, memperbaiki pengalaman pengguna.
+8. **Butang Terima Kuki**: Butang untuk menerima kuki yang dipilih di bawah tetapan "Sesuaikan".
+9. **Butang Tolak Semua Kuki**: Butang untuk menolak semua kuki yang tidak penting, sebagai pilihan sekunder bagi pengguna yang tidak mahu memberikan persetujuan untuk kuki selain daripada yang diperlukan.
+
+## Keadaan (State)
+
+![cookie-type@1.5x.png](/design/cookie-type1.5x.png)
+
+1. **Asal**: Keadaan asal apabila pengguna pertama kali melayari laman web. Banner memaparkan deskripsi kuki serta pilihan untuk "Terima Semua", “Tolak Semua” kuki, atau "Sesuaikan" keutamaan.
+2. **Tetapan**: Apabila pengguna klik "Tetapan", kotak semak untuk Kuki Diperlukan, Kuki Analitik, dan Kuki Prestasi akan muncul, membolehkan pengguna memilih atau menyahpilih mengikut keutamaan mereka. Semua kuki ditandai secara lalai, dan perubahan disimpan serta-merta jika pengguna menyahpilih mana-mana kuki.
+
+## Paparan Telefon Mudah Alih
+
+![cookie-mobile-view@1.5x.png](/design/cookie-mobile-view1.5x.png)
+
+1. **Desktop**: Banner kuki mempunyai padding 24px secara lalai pada skrin besar seperti desktop dan komputer riba.
+2. **Telefon Mudah Alih**: Banner kuki mempunyai padding 18px untuk memastikan keterbacaan dan interaksi mudah pada skrin yang lebih kecil.
+
+## Lokasi banner kuki
+
+Banner kuki muncul di sudut kiri bawah untuk desktop dan di tengah bawah untuk peranti mudah alih. Ia kekal kelihatan sehingga pengguna berinteraksi dengan Banner tersebut sama ada menerima semua atau menolak kuki, menyesuaikan keutamaan mereka, atau menutup Banner kuki.
+
+![cookie-location@1.5x.png](/design/cookie-location1.5x.png)
+
+**Desktop/Tablet**: Banner kuki tetap di sudut kiri bawah skrin, dengan margin 24px dan lebar 500px.
+
+**Telefon**: Banner kuki berada di tengah bahagian bawah skrin, dengan margin 18px, dan mengisi lebar skrin dengan margin 18px di kedua-dua sisi.
+
+## Contoh penggunaan
+
+Pemberitahuan kuki muncul secara automatik setelah halaman dimuatkan. Pengguna kemudian boleh menguruskan tetapan kuki mereka dengan mengklik ‘Tetapan’, ‘Terima’, atau ‘Tolak’.
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/cookie-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

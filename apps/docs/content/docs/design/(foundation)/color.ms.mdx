@@ -1,13 +1,202 @@
 ---
-title: Color
-description: Color
+title: Warna
+description: Warna menentukan palet utama, bahaya, kejayaan, amaran, dan kelabu, dengan panduan penggunaannya pada latar belakang, butang, dan teks untuk memastikan kontras, keterbacaan, dan konsistensi.
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+import { InfoIcon } from "@myds/react/icon";
 
-## What is Next?
+MYDS membahagikan palet warna kepada dua (2) kategori:
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+- **Warna primitif:** Warna asas yang kekal konsisten dalam kedua-dua mod cerah dan gelap.
+- **Token warna:** Warna dinamik yang menyesuaikan mengikut mod (cerah atau gelap).
+
+## Warna Primitif
+
+Warna primitif adalah warna asas yang digunakan di seluruh sistem reka bentuk tetapi tidak mempunyai varian khusus untuk mod gelap. Untuk penggunaan warna yang menyesuaikan dengan mod gelap, sila rujuk set "Token Warna".
+
+![colour-primitive-guide@1.5x.png](/design/colour-primitive-guide@1.5x.png)
+
+1. Pratonton Warna Primitif
+2. Nama Warna Primitif
+3. Nilai HEX Warna Primitif
+4. Token Warna
+
+### Putih
+
+Sesuai untuk latar belakang yang memberikan kejelasan.
+
+![primitive-white@1.5x.png](/design/primitive-white@1.5x.png)
+
+### Kelabu
+
+Warna asas untuk kelabu. Biasanya digunakan untuk tajuk, teks, dan latar belakang. Untuk kesan halus, ia sesuai digunakan dalam teks pemegang tempat, penerangan, pemisah, garis besar, dan latar belakang.
+
+![primitive-gray@1.5x.png](/design/primitive-gray@1.5x.png)
+
+## Utama
+
+Warna ini digunakan pada pautan terpilih, tab, butang utama, dan mana-mana elemen yang memerlukan penonjolan.
+
+![primitive-primary@1.5x.png](/design/primitive-primary@1.5x.png)
+
+<Callout
+  type="info"
+  title="Nota"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Jika produk tidak menggunakan biru utama ini sebagai warna utama,
+  pertimbangkan untuk mencipta palet warna yang berasingan.
+</Callout>
+
+### Bahaya
+
+Menunjukkan isu atau ralat kritikal. Sesuai untuk mesej ralat, butang padam, dan kotak amaran yang mendesak.
+
+![primitive-danger@1.5x.png](/design/primitive-danger@1.5x.png)
+
+### Berjaya
+
+Menandakan tindakan atau hasil yang berjaya. Sesuai untuk mesej kejayaan, pop-up pengesahan, dan penunjuk kemajuan.
+
+![primitive-success@1.5x.png](/design/primitive-success@1.5x.png)
+
+### Amaran
+
+Digunakan untuk mesej dan amaran berhati-hati. Sesuai untuk sepanduk amaran, lencana pemberitahuan, dan ikon amaran.
+
+![primitive-warning@1.5x.png](/design/primitive-warning@1.5x.png)
+
+---
+
+## Token Warna <a name="colour-token"></a>
+
+### Mod Cerah
+
+Token warna adalah set gaya yang direka khas untuk antara muka gelap. Ia memastikan kontras yang tinggi untuk keterbacaan dan mematuhi garis panduan nisbah kontras WCAG 2.1, menyokong aksesibiliti untuk semua pengguna. Pembangun boleh menggunakan token ini untuk mengintegrasikan warna yang boleh diakses dengan lancar dalam reka bentuk cerah dan gelap.
+
+![colour-tokens-guide@1.5x.png](/design/colour-tokens-guide@1.5x.png)
+
+1. Pratonton Token Warna (Latar Belakang, Teks, Garis Luar, Cincin Fokus)
+2. Nama Token Warna
+3. Rujukan Token Warna daripada Warna Primitif
+4. Token Warna:
+   **“bg-”** = Latar Belakang
+   **“txt-”** = Teks
+   **“otl-”** = Garis Luar
+   **“fr-”** = Cincin Fokus
+
+#### Latar Belakang
+
+Token latar belakang mentakrifkan warna asas untuk permukaan dan bekas. Ia memastikan kontras yang betul dan hierarki visual di seluruh komponen yang berbeza.
+
+![bg-token-1@1.5x.png](/design/bg-token-1@1.5x.png)
+
+![bg-token-2@1.5x.png](/design/bg-token-2@1.5x.png)
+
+![bg-token-3@1.5x.png](/design/bg-token-3@1.5x.png)
+
+![bg-token-4@1.5x.png](/design/bg-token-4@1.5x.png)
+
+![bg-token-5@1.5x.png](/design/bg-token-5@1.5x.png)
+
+![bg-token-6@1.5x.png](/design/bg-token-6@1.5x.png)
+
+![bg-token-7@1.5x.png](/design/bg-token-7@1.5x.png)
+
+#### Teks
+
+Token teks digunakan untuk semua jenis elemen teks, memastikan keterbacaan dan aksesibiliti. Ia dioptimumkan untuk keterbacaan dalam pelbagai keadaan dan mod.
+
+![txt-token-1@1.5x.png](/design/txt-token-1@1.5x.png)
+
+![txt-token-2@1.5x.png](/design/txt-token-2@1.5x.png)
+
+![txt-token-3@1.5x.png](/design/txt-token-3@1.5x.png)
+
+![txt-token-4@1.5x.png](/design/txt-token-4@1.5x.png)
+
+#### Garis Luar
+
+Token garis luar mentakrifkan warna untuk sempadan dan garis luar, mencipta pemisahan yang jelas dan penekanan untuk komponen UI.
+
+![otl-token-1@1.5x.png](/design/otl-token-1@1.5x.png)
+
+![otl-token-2@1.5x.png](/design/otl-token-2@1.5x.png)
+
+![otl-token-3@1.5x.png](/design/otl-token-3@1.5x.png)
+
+![otl-token-4@1.5x.png](/design/otl-token-4@1.5x.png)
+
+![otl-token-5@1.5x.png](/design/otl-token-5@1.5x.png)
+
+#### Cincin Fokus
+
+Token cincin fokus memberikan penekanan yang diperlukan pada elemen interaktif apabila mereka menerima fokus papan kekunci.
+
+![fr-token-1@1.5x.png](/design/fr-token-1@1.5x.png)
+
+### Mod Gelap
+
+Token warna adalah set gaya yang direka khas untuk antara muka gelap. Ia memastikan kontras yang tinggi untuk keterbacaan dan mematuhi garis panduan nisbah kontras WCAG 2.1, menyokong aksesibiliti untuk semua pengguna. Pembangun boleh menggunakan token ini untuk mengintegrasikan warna yang boleh diakses dengan lancar dalam reka bentuk cerah dan gelap.
+
+![colour-tokens-guide-dark@1.5x.png](/design/colour-tokens-guide-dark@1.5x.png)
+
+1. Pratonton Token Warna (Latar Belakang, Teks, Garis Luar, Cincin Fokus)
+2. Nama Token Warna
+3. Rujukan Token Warna daripada Warna Primitif
+4. Token Warna:
+   **“bg-”** = Latar Belakang
+   **“txt-”** = Teks
+   **“otl-”** = Garis Luar
+   **“fr-”** = Cincin Fokus
+
+#### Latar Belakang
+
+Token latar belakang mentakrifkan warna asas untuk permukaan dan bekas. Ia memastikan kontras yang betul dan hierarki visual di seluruh komponen yang berbeza.
+
+![bg-token-1-dark@1.5x.png](/design/bg-token-1-dark@1.5x.png)
+
+![bg-token-2-dark@1.5x.png](/design/bg-token-2-dark@1.5x.png)
+
+![bg-token-3-dark@1.5x.png](/design/bg-token-3-dark@1.5x.png)
+
+![bg-token-4-dark@1.5x.png](/design/bg-token-4-dark@1.5x.png)
+
+![bg-token-5-dark@1.5x.png](/design/bg-token-5-dark@1.5x.png)
+
+![bg-token-6-dark@1.5x.png](/design/bg-token-6-dark@1.5x.png)
+
+![bg-token-7-dark@1.5x.png](/design/bg-token-7-dark@1.5x.png)
+
+#### Teks
+
+Token teks digunakan untuk semua jenis elemen teks, memastikan keterbacaan dan aksesibiliti. Ia dioptimumkan untuk keterbacaan dalam pelbagai keadaan dan mod.
+
+![txt-token-1-dark@1.5x.png](/design/txt-token-1-dark@1.5x.png)
+
+![txt-token-2-dark@1.5x.png](/design/txt-token-2-dark@1.5x.png)
+
+![txt-token-3-dark@1.5x.png](/design/txt-token-3-dark@1.5x.png)
+
+![txt-token-4-dark@1.5x.png](/design/txt-token-4-dark@1.5x.png)
+
+#### Garis Luar
+
+Token garis luar mentakrifkan warna untuk sempadan dan garis luar, mencipta pemisahan yang jelas dan penekanan untuk komponen UI.
+
+![otl-token-1-dark@1.5x.png](/design/otl-token-1-dark@1.5x.png)
+
+![otl-token-2-dark@1.5x.png](/design/otl-token-2-dark@1.5x.png)
+
+![otl-token-3-dark@1.5x.png](/design/otl-token-3-dark@1.5x.png)
+
+![otl-token-4-dark@1.5x.png](/design/otl-token-4-dark@1.5x.png)
+
+![otl-token-5-dark@1.5x.png](/design/otl-token-5-dark@1.5x.png)
+
+#### Cincin Fokus
+
+Token cincin fokus memberikan penekanan yang diperlukan pada elemen interaktif apabila mereka menerima fokus papan kekunci.
+
+![fr-token-1-dark@1.5x.png](/design/fr-token-1-dark@1.5x.png)

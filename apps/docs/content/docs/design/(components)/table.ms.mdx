@@ -1,5 +1,49 @@
 ---
-title: Table
-description: Table
+title: Jadual
+description: Mengatur maklumat ke dalam baris dan lajur untuk kemudahan membaca
 ---
 
+import { s3 } from "@/lib/constant";
+
+Komponen jadual menampung pelbagai jenis data, termasuk teks, nombor, kod, panggilan untuk tindakan dan pautan, membolehkan penyampaian dan perbandingan yang cekap.
+
+![table-anatomy@1.5x.png](/design/table-anatomy1.5x.png)
+
+1. **Header**: Tajuk lajur yang menyediakan konteks jelas untuk data di bawahnya.
+2. **Butang Kembangkan Lajur**: Pada mulanya tersembunyi, butang ini muncul apabila pengguna melayangkan tetikus ke atas lajur. Klik untuk mengembangkan lajur secara mendatar, mendedahkan deskripsi lebih panjang untuk keterbacaan yang lebih baik.
+3. **Tooltip**: Ikon untuk menampilkan tooltip apabila dilayangkan tetikus, berguna untuk menjelaskan peranan setiap lajur dalam jadual.
+4. **Butang Susun Lajur**: Pada mulanya tersembunyi, butang ini muncul apabila melayangkan tetikus ke atas lajur. Klik untuk menukar antara susunan menaik dan menurun bagi memudahkan pengurusan data.
+5. **Sel untuk Teks**: Sel teks yang diselaraskan ke kiri secara lalai.
+6. **Sel untuk Butang**: Mengandungi butang tindakan yang diselaraskan ke kiri, membolehkan pengguna mengambil tindakan khusus bagi setiap baris.
+7. **Sel untuk Status Pil**: Menampilkan indikator status berwarna (pil) yang diselaraskan ke kiri, memberi rujukan visual pantas tentang status setiap baris.
+8. **Skeleton Loader**: Elemen pemuat animasi yang meniru susun atur kandungan semasa data dimuatkan, memberi isyarat visual bahawa kandungan sedang dalam perjalanan dan meningkatkan persepsi masa pemuatan.
+
+## Contoh Penggunaan
+
+![table-usage@1.5x.png](/design/table-usage1.5x.png)
+
+1. **Sel dengan teks diselaraskan tengah**: Digunakan untuk keseimbangan visual, biasanya untuk tajuk atau maklumat utama untuk menarik perhatian.
+2. **Sel dengan nombor diselaraskan kanan**: Menyelaraskan data berangka ke kanan untuk perbandingan mudah dan memastikan titik perpuluhan selaras, meningkatkan keterbacaan maklumat kewangan atau statistik.
+3. **Sel dengan julat baris**: Menempati dua atau lebih baris secara menegak, menyatukan data yang berkaitan dan mengurangkan pengulangan. Sesuai untuk maklumat yang berkaitan dengan pelbagai baris, meningkatkan kejelasan jadual.
+
+### Kembangkan Lajur
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/table-demo1.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+Apabila dikembangkan, kekalkan header di bawah garisan dan tunjukkan butang kuncup (collapse).
+
+### Susun Lajur
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/table-demo2.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+Laluan asal, klik pertama menyusun lajur dalam susunan menurun. Klik seterusnya akan menyusun dalam susunan menaik.
+
+Apabila disusun, kekalkan header di bawah garisan dan tunjukkan butang susun.

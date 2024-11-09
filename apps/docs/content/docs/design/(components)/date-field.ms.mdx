@@ -1,5 +1,50 @@
 ---
-title: Date field
-description: Date field
+title: Input tarikh
+description: Membolehkan pengguna memasukkan tarikh dalam format yang tersusun
 ---
 
+Medan input tarikh disusun dalam format yang jelas menggunakan medan berasingan untuk hari, bulan, dan tahun.
+
+![date-field-anatomy@1.5x.png](/design/date-field-anatomy1.5x.png)
+
+1. **Ikon Hadapan (Kalendar)**: Ikon kalendar diletakkan sebelum ruangan input, menandakan bahawa input ini untuk memilih atau memasukkan tarikh.
+2. **Hari (dd)**: Had ruangan 2-digit dari 1-31.
+3. **Bulan (mm)**: Had ruangan 2-digit dari 1-12.
+4. **Tahun (yyyy)**: Ruangan 4-digit untuk tahun.
+5. **Pemidah ( / )**: Pemisah visual antara hari, bulan, dan tahun untuk menjelaskan format input (contoh: dd/mm/yyyy).
+6. **Teks Label**: Teks yang melabelkan ruangan tarikh, menunjukkan kepada pengguna tujuan ruangan ini (contoh: "Tarikh Lahir").
+7. **Teks Petunjuk**: Diletakkan di bawah ruangan tarikh untuk menunjukkan ralat jika tarikh yang dimasukkan tidak mematuhi peraturan ruangan tarikh.
+
+## Sorotan medan input
+
+![date-field-highlight@1.5x.png](/design/date-field-highlight1.5x.png)
+
+1. **Hari**: Ruangan input untuk memasukkan hari.
+2. **Bulan**: Ruangan input untuk memasukkan bulan.
+3. **Tahun**: Ruangan input untuk memasukkan tahun.
+
+## Saiz
+
+Setiap saiz direka untuk memenuhi keperluan borang yang berbeza, memastikan keterbacaan dan pengalaman pengguna yang optimum.
+
+![date-field-size@1.5x.png](/design/date-field-size1.5x.png)
+
+# Keadaan (State)
+
+Mdan input tarikh boleh wujud dalam beberapa keadaan, setiap satunya memberi petunjuk visual kepada pengguna tentang status semasa dan kemungkinan interaksi.
+
+![date-field-state@1.5x.png](/design/date-field-state1.5x.png)
+
+1. **Asal**: Keadaan awal ruangan tarikh apabila ia bersedia untuk input pengguna tetapi tidak berinteraksi.
+2. **Filled**: Berlaku apabila pengguna telah memasukkan angka ke dalam ruangan tarikh, menunjukkan ruangan tersebut mengandungi input.
+3. **Focused**: Pengguna klik atau tab ke dalam ruangan tarikh, menunjukkan ia aktif dan sedia menerima input.
+4. **Dilumpuhkan (Disabled)**: Ruangan tarikh tidak tersedia untuk interaksi pengguna, sama ada disebabkan oleh konteks semasa atau kebenaran pengguna.
+
+## Ralat
+
+Keadaan ralat diaktifkan apabila pengguna mengklik atau tab ke dalam ruangan tarikh yang telah mempunyai keadaan ralat.
+
+![date-field-error@1.5x.png](/design/date-field-error1.5x.png)
+
+1. Ruangan tarikh akan mempunyai sempadan merah untuk menunjukkan ralat.
+2. Ruangan tarikh dengan ralat akan kekal disorot apabila difokuskan.
