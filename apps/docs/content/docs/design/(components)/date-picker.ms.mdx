@@ -1,13 +1,84 @@
 ---
-title: Date Picker
-description: Date Picker
+title: Pemilih tarikh
+description: Membolehkan pengguna memilih tarikh daripada kalendar interaktif.
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+import { s3 } from "@/lib/constant";
 
-## What is Next?
+![date-picker-anatomy@1.5x.png](/design/date-picker-anatomy1.5x.png)
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+1. Butang untuk membuka kalendar bagi memilih tarikh.
+2. Tajuk yang memaparkan bulan dan tahun semasa.
+3. Butang untuk pergi ke bulan atau tahun ke depan atau ke belakang.
+4. Singkatan nama hari untuk membantu pengguna memahami susunan hari dalam bulan.
+5. Ruangan untuk pengguna memilih tarikh tertentu dalam kalendar.
+
+## Pemilih Bulan dan Tahun
+
+Fungsi utama pemilih tarikh adalah membolehkan pengguna memilih tarikh dengan mudah. Jika pengguna ingin memilih tarikh dari tahun-tahun yang lampau, pemilih bulan dan tahun menyediakan tiga pandangan:
+
+1. **Pandangan Hari**: Menunjukkan hari dalam bulan.
+2. **Pandangan Bulan**: Menunjukkan bulan dalam tahun.
+3. **Pandangan Tahun**: Menunjukkan sekumpulan 18 tahun.
+
+![date-picker-month-year-picker@1.5x.png](/design/date-picker-month-year-picker1.5x.png)
+
+1. Untuk ke **Pandangan Bulan**, klik tajuk `Bulan`.
+2. Untuk ke **Pandangan Tahun**, klik tajuk `YYYY`.
+3. Klik tajuk `Bulan` atau senarai bulan untuk kembali ke Pandangan Hari.
+4. Klik tajuk `YYYY` atau senarai tahun untuk kembali ke Pandangan Hari.
+
+## Navigasi Antara Pandangan
+
+![date-picker-navigate-views@1.5x.png](/design/date-picker-navigate-views1.5x.png)
+
+**Pandangan Hari**
+
+1. Pergi ke bulan sebelumnya (-1).
+2. Pergi ke bulan seterusnya (+1).
+
+**Pandangan Bulan**
+
+1. Pergi ke tahun sebelumnya (-1).
+2. Pergi ke tahun seterusnya (+1).
+
+**Pandangan Tahun (Disusun dalam kumpulan 18 tahun)**
+
+1. Tatal ke atas dan ke bawah untuk melihat pilihan tahun.
+
+## Bahasa
+
+![date-picker-language@1.5x.png](/design/date-picker-language1.5x.png)
+
+1. Bahasa Inggeris
+2. Bahasa Malaysia
+
+## Pemilihan Tarikh Tunggal
+
+![date-picker-single-date@1.5x.png](/design/date-picker-single-date1.5x.png)
+
+1. **Butang Jenis: Sekunder (Secondary)** dalam keadaan lalai apabila pengguna boleh menavigasi ke bulan sebelumnya.
+2. **Butang Jenis: Sekunder** dalam keadaan tidak aktif apabila pengguna tidak boleh menavigasi ke depan, biasanya apabila menapis data hanya sehingga tarikh terkini.
+3. **Butang Jenis: Tertiari (Tertiary)** dalam keadaan tidak aktif apabila tarikh adalah dari bulan sebelumnya, tetapi pengguna masih boleh memilihnya.
+4. **Butang Jenis: Tertiari** dalam keadaan lalai menunjukkan tarikh sedia untuk dipilih.
+5. **Butang Jenis: Tertiari** dalam keadaan hover apabila kursor berada di atas tarikh.
+6. **Butang Jenis: Utama (Primary)** dalam keadaan lalai apabila tarikh telah dipilih.
+7. **Butang Jenis: Tertiari** dalam keadaan tidak aktif apabila tarikh tidak interaktif, contohnya, tarikh di hadapan tarikh terkini.
+
+## Pemilihan Julat Tarikh
+
+![date-picker-date-range@1.5x.png](/design/date-picker-date-range1.5x.png)
+
+1. Butang pemicu pemilihan tarikh untuk tarikh **Dari** dan **Ke**.
+2. Pemilihan tarikh **Dari**.
+3. Pemilihan tarikh **Ke**.
+4. Sorotan untuk julat tarikh yang dipilih.
+5. Keadaan hover tarikh dalam julat yang disorot. Gunakan **bg-primary-200** sebagai warna sorotan.
+
+## Demo
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/date-picker-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

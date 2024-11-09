@@ -1,5 +1,35 @@
 ---
-title: Search bar
-description: Search bar
+title: Bar carian
+description: Membolehkan pengguna memasukkan pertanyaan atau kata kunci untuk mencari kandungan dalam laman web.
 ---
 
+## Saiz
+
+![search-size@1.5x.png](/design/search-size1.5x.png)
+
+**Kecil**: Digunakan di tajuk bahagian bersama dengan butang dan tab bersaiz kecil.
+
+**Sederhana**: Digunakan di tajuk bahagian bersama dengan butang dan tab bersaiz sederhana.
+
+**Besar**: Digunakan dalam bahagian utama atau hero di mana fungsi carian berada di tengah paparan.
+
+## Keadaan (States)
+
+![search-states@1.5x.png](/design/search-states1.5x.png)
+
+1. **Tunjuk petunjuk pintasan** pada medan kosong asal.
+2. Warna `outline-300` pada keadaan hover.
+3. Teks yang diisi menggunakan warna `black-900`.
+4. Sembunyikan petunjuk pintasan dan tunjukkan simbol “Kosongkan” atau “X” pada medan yang diisi. Klik untuk mengosongkan teks.
+5. Tunjukkan **cincin fokus** apabila medan berada dalam keadaan fokus, termasuk apabila menekan “/” untuk memfokus.
+6. Tetapkan teks placeholder dan butang pada 20%.
+
+## Senarai Hasil Carian (Search Result Dropdown)
+
+![search-dropdown@1.5x.png](/design/search-dropdown1.5x.png)
+
+1. Tunjukkan **cincin fokus** apabila kursor berada di dalam medan carian; sembunyikan apabila kursor tidak di dalam medan.
+2. **Keadaan Hover Hasil Carian**: Warna `washed-100`.
+3. **Label Kategori**: Item kedua dan seterusnya mempunyai padding-atas `16px`.
+4. **Sorotan teks carian sebaris**: Menggunakan warna jenama produk lalai dan font `semibold`.
+5. **Max-height**: 400px (Boleh skrol)

@@ -1,5 +1,20 @@
 ---
-title: Character count
-description: Character count
+title: Pengiraan aksara
+description: Mengira bilangan aksara dalam kawasan teks, memberikan maklum balas masa nyata untuk membantu pengguna kekal dalam had yang ditetapkan.
 ---
 
+Ia memaparkan amaran apabila menghampiri had dan ralat apabila melebihi had.
+
+![character-count-anatomy@1.5x.png](/design/character-count-anatomy1.5x.png)
+
+1. **Input Kawasan Teks**: Pengiraan aksara ditambah pada Kawasan Teks sedia ada dengan memaparkan had aksara sebagai petunjuk di bawah medan input.
+2. **Petunjuk di Bawah (Hint Under)**: Teks petunjuk di bawah input yang menunjukkan bilangan aksara yang tinggal secara dinamik.
+3. **Penghitung**: Penghitung bermula dalam susunan menurun, memaparkan baki aksara (contohnya, 200, 199...0).
+
+## Keadaan
+
+![character-count-type@1.5x.png](/design/character-count-type1.5x.png)
+
+1. **Asal**: Memaparkan baki aksara dalam susunan menurun apabila pengguna mula menaip, seperti "200 aksara baki".
+2. **Amaran**: Apabila pengguna hampir mencapai had, warna berubah kepada kuning, seperti "10 aksara baki".
+3. **Ralat**: Jika pengguna melebihi had, penghitung menunjukkan nombor negatif, seperti "-100 aksara melebihi had". Pengguna tidak dapat menghantar borang kerana had aksara adalah sebahagian daripada pengesahan.

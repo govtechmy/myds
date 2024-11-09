@@ -1,13 +1,36 @@
 ---
-title: Accordion
-description: Accordion
+title: Akordion
+description: Paparkan kandungan secara padat dan boleh dilipat, lazimnya digunakan untuk seksyen Soalan Lazim (FAQ).
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+import { s3 } from "@/lib/constant";
 
-## What is Next?
+![accordion-anatomy@1.5x.png](/design/accordion-anatomy1.5x.png)
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+Elemen utama yang mendefinisikan struktur dan fungsi Akordion:
+
+1. **Teks Tajuk**: Tajuk utama atau label untuk seksyen akordion.
+2. **Teks Badan**: Kandungan yang ditunjuk atau disembunyikan dalam akordion.
+3. **Ikon Chevron (Default)**: Ikon yang dipaparkan pada sudut 0 darjah, menandakan bahagian itu ditutup.
+4. **Ikon Chevron Bawah (Dikembangkan)**: Ikon berputar kepada 180 darjah untuk menandakan bahagian tersebut dibuka.
+
+## Keadaan
+
+![accordion-variation@1.5x.png](/design/accordion-variation1.5x.png)
+
+Menentukan cara visual Akordion memberi tindak balas terhadap tingkah laku pengguna seperti hover, fokus, atau klik, memberi maklum balas dan meningkatkan kebolehgunaan.
+
+1. **Kawasan Klik (Tajuk)**: Kawasan tajuk yang boleh diklik untuk mengembangkan atau menyembunyikan akordion bagi memaparkan kandungan.
+2. **Keadaan Hover**: Gariskan teks tajuk apabila tetikus berada di atasnya.
+3. **Keadaan Tertutup (Default)**: Menyembunyikan teks badan (Kebolehlihatan: 0%).
+4. **Keadaan Terbuka**: Klik pada kawasan tajuk untuk membuka akordion dan memaparkan teks badan.
+
+## Demo
+
+Video contoh di bawah menunjukkan interaksi dan fungsi yang diinginkan untuk komponen Akordion.
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/accordion-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

@@ -37,6 +37,7 @@
     "(components)/select",
     "(components)/skip-link",
     "(components)/summary-list",
+    "(components)/switch",
     "(components)/table",
     "(components)/tabs",
     "(components)/tag",

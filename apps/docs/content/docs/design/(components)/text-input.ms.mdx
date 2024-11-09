@@ -1,5 +1,165 @@
 ---
-title: Text input
-description: Text input
+title: Input teks
+description: Elemen asas yang membolehkan pengguna memasukkan dan mengubah data
 ---
 
+## Teks input
+
+### Jenis
+
+![text-input-type@1.5x.png](/design/text-input-type1.5x.png)
+
+1. **Input Teks**: Digunakan untuk data umum seperti emel, nama, kata laluan.
+2. **Input Nombor dengan Dropdown Awalan**: Untuk nombor telefon.
+3. **Input Teks dengan Teks Tidak Boleh Sunting di Hadapan**: Contohnya, untuk URL.
+4. **Input Teks dengan Butang di Belakang**: Contoh kegunaan untuk salin teks.
+5. **Input Tag**: Digunakan untuk kategori, topik, jenis, atau penapis.
+
+### Saiz
+
+Setiap saiz direka untuk memenuhi keperluan pelbagai bentuk dan menyediakan kebolehbacaan serta pengalaman pengguna yang optimum.
+
+![text-input-size@1.5x.png](/design/text-input-size1.5x.png)
+
+### Keadaan (State)
+
+Input teks boleh wujud dalam beberapa keadaan, memberi petunjuk visual kepada pengguna mengenai status semasa dan interaksi yang mungkin.
+
+![text-input-state@1.5x.png](/design/text-input-state1.5x.png)
+
+1. **Asal**: Keadaan awal sedia untuk input pengguna tetapi belum diinteraksi.
+2. **Berisi**: Berlaku apabila pengguna telah memasukkan data, menunjukkan input mengandungi kandungan.
+3. **Fokus**: Berlaku apabila pengguna klik atau menggunakan papan kekunci untuk fokus pada input.
+4. **Dilumpuhkan (Disabled)**: Input tidak tersedia untuk interaksi disebabkan konteks atau keizinan pengguna.
+
+### Keadaan Ralat
+
+Keadaan ralat dicetuskan apabila pengguna klik atau fokus pada input yang mempunyai ralat sedia ada.
+
+![text-input-error@1.5x.png](/design/text-input-error1.5x.png)
+
+1. Input mempunyai sempadan atau bayang merah untuk menunjukkan ralat.
+2. Input dengan ralat kekal disorot apabila fokus.
+3. Hanya input teks yang boleh disunting akan disorot; teks tetap tidak akan disorot.
+
+### Ikon Hadapan & Belakang
+
+![text-input-leading-trailing-icon@1.5x.png](/design/text-input-leading-trailing-icon1.5x.png)
+
+1. **Ikon Hadapan**: Diletakkan di kiri sebelum teks input untuk memberi konteks, seperti ikon emel.
+2. **Ikon Belakang**: Diletakkan di kanan selepas teks input, biasanya sebagai butang aksi tambahan.
+   - Ikon salin - ikon silang
+   - Ikon ketampakan kata laluan - ikon mata
+   - Ikon soalan - ikon tooltip
+
+## Kumpulan Input Teks
+
+Kumpulan input adalah set elemen borang yang berkaitan, termasuk input teks, mesej petunjuk, dan label, untuk membimbing pengguna dan meningkatkan ketepatan kemasukan data.
+
+### Jenis
+
+![text-input-group-type@1.5x.png](/design/text-input-group-type1.5x.png)
+
+1. **Label**: Memberi deskripsi yang jelas mengenai tujuan input.
+2. **Input Teks**: Kawasan utama untuk kemasukan data. Ia boleh menjadi medan untuk input baris tunggal atau textarea untuk input berbilang baris.
+3. **Teks Petunjuk**: Menyediakan panduan atau maklum balas tambahan.
+   - **Bantuan**: Memberi arahan atau contoh untuk membantu pengguna memasukkan data yang betul.
+   - **Ralat**: Memaparkan mesej ralat apabila input tidak memenuhi kriteria, membantu pengguna memperbaiki entri mereka.
+
+### Saiz
+
+Setiap saiz direka untuk memenuhi pelbagai keperluan borang dan menyediakan pengalaman pengguna yang optimum.
+
+![text-input-group-size@1.5x.png](/design/text-input-group-size1.5x.png)
+
+### Keadaan (State)
+
+Input teks boleh berada dalam beberapa keadaan untuk memberikan petunjuk visual kepada pengguna tentang status dan kemungkinan interaksi.
+
+![text-input-group-state@1.5x.png](/design/text-input-group-state1.5x.png)
+
+1. **Asal**: Keadaan awal apabila sedia untuk input pengguna tetapi belum diinteraksi.
+2. **Berisi**: Berlaku apabila pengguna telah memasukkan data, menunjukkan input mengandungi kandungan.
+3. **Fokus**: Berlaku apabila pengguna klik atau menggunakan papan kekunci untuk fokus pada input.
+4. **Dilumpuhkan (Disabled)**: Input tidak tersedia untuk interaksi disebabkan konteks atau keizinan pengguna.
+5. **Ralat**: Keadaan ralat dicetuskan apabila input tidak memenuhi kriteria yang ditetapkan.
+
+### Teks Petunjuk
+
+![text-input-group-hint-text@1.5x.png](/design/text-input-group-hint-text1.5x.png)
+
+1. **Petunjuk Asal**: Memberi panduan tambahan.
+2. **Petunjuk Ralat**: Memaparkan mesej ralat apabila input tidak memenuhi kriteria.
+
+### Susunan Teks Petunjuk
+
+![text-input-group-hint-order@1.5x.png](/design/text-input-group-hint-order1.5x.png)
+
+1. Petunjuk di ATAS input teks.
+2. Petunjuk di BAWAH input teks.
+
+---
+
+## Penyunting WYSIWYG
+
+Penyunting WYSIWYG (What You See Is What You Get) adalah alat berasaskan web yang membolehkan pengguna mencipta dan mengedit kandungan dalam bentuk visual, mirip dengan bentuk akhir paparan.
+
+### Pandangan Responsif
+
+#### Desktop
+
+Paparkan semua ikon gaya.
+
+![WYSIWYG-editor-desktop@1.5x.png](/design/WYSIWYG-editor-desktop1.5x.png)
+
+#### Telefon
+
+Secara lalai, paparkan gaya asas seperti saiz teks, tebal, condong, garis bawah, dan garis melalui.
+
+![WYSIWYG-editor-mobile@1.5x.png](/design/WYSIWYG-editor-mobile1.5x.png)
+
+1. Menu “Lagi” untuk menukar ikon tersembunyi.
+2. Ikon tersembunyi akan dipaparkan selepas ketik pada menu “Lagi”.
+3. Ketik pada menu “Lagi” sekali lagi untuk menyembunyikan ikon.
+4. Pilihan gaya teks dalam menu lungsur skrol:
+   ◦ **Perenggan** - Regular 15/27
+   ◦ **Tajuk 1** - Semi Bold 30/38
+   ◦ **Tajuk 2** - Semi Bold 24/32
+   ◦ **Tajuk 3** - Semi Bold 20/30
+   ◦ **Tajuk 4** - Semi Bold 18/26
+   ◦ **Tajuk 5** - Semi Bold 16/24
+   ◦ **Tajuk 6** - Semi Bold 14/20
+
+### Jenis Butang
+
+![WYSIWYG-editor-button-state@1.5x.png](/design/WYSIWYG-editor-button-state1.5x.png)
+
+1. Rujuk keadaan (state) Pilih butang.
+2. **Asal**: Keadaan awal ikon sedia untuk interaksi.
+3. **Hover/Aktif**: Apabila ikon dihover atau diklik, menunjukkan ikon boleh dipilih.
+4. **Fokus**: Pengguna mengklik atau fokus pada ikon.
+5. **Dilumpuhkan (Disabled)**: Ikon tidak tersedia untuk interaksi.
+
+### Contoh Penggunaan
+
+#### Tambah Pautan Dalam Baris
+
+![WYSIWYG-editor-inline-link-usage@1.5x.png](/design/WYSIWYG-editor-inline-link-usage1.5x.png)
+
+1. Sorot teks dalam penyunting teks kaya.
+2. Klik ikon “Pautan” pada bar penyunting.
+3. Pop-up akan muncul berhampiran lokasi teks yang disorot dengan input teks untuk memasukkan URL.
+4. Klik ikon “Semak” untuk menambah pautan pada teks yang disorot.
+5. Klik ikon “Batal” untuk membatalkan tindakan dan menutup pop-up.
+6. Kedudukan ekor pop-up berada di tengah mendatar teks yang disorot.
+7. Keadaan hover butang.
+8. Ubah teks menjadi biru bergaris bawah.
+
+#### Kemaskini Pautan Dalam Baris
+
+![WYSIWYG-editor-edit-inline-link-usage@1.5x.png](/design/WYSIWYG-editor-edit-inline-link-usage1.5x.png)
+
+1. Klik pada pautan berwarna biru bergaris bawah dalam penyunting.
+2. Pop-up muncul berhampiran lokasi teks yang disorot, memaparkan pautan yang telah ditambah. Panjang teks pautan maksimum ialah 300px.
+3. Klik ikon “Edit” untuk mengedit pautan dan bertukar kepada mod penyuntingan. (Antaramuka yang sama seperti “Tambah pautan dalam baris”).
+4. Klik ikon “Buang Pautan” untuk memadam pautan pada teks serta mengembalikan gaya teks asal.

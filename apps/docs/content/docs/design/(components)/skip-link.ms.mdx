@@ -1,5 +1,80 @@
 ---
-title: Skip link
-description: Skip link
+title: Pautan langkau
+description: Membolehkan pengguna melangkau pautan navigasi berulang dan terus ke kandungan utama
 ---
 
+import { s3 } from "@/lib/constant";
+
+Pautan langkau meningkatkan kebolehaksesan untuk pengguna papan kekunci dan pembaca skrin dengan memperbaiki kecekapan navigasi dan biasanya tersembunyi sehingga difokuskan.
+
+## Where to use?
+
+Setiap halaman `gov.my` seharusnya mempunyai pautan langkau yang diletakkan sejurus selepas tab `<body>`.
+
+Jika banner kuki digunakan, letakkan pautan langkau selepas banner kuki.
+
+Jika elemen `<header>` ada, bungkus pautan langkau di dalam header. Jangan bungkus pautan langkau di dalam `<nav>`.
+
+```jsx
+<body>
+   <!-- Banner kuki -->
+   <cookie-banner />
+
+   <!-- 1. Lampirkan pautan langkau di sini -->
+   <a href=”#main-content” class=”myds-skip-link”>
+      Skip to main content
+   </a>
+
+   <masthead />
+   <nav />
+
+   <!-- 2. Kandungan utama -->
+   <div id=”#main-content” class=”container”>
+      <input class=”myds-search-bar” tabindex=”0”>
+   </div>
+
+</body>
+```
+
+1. Komponen pautan langkau yang menghubungkan ke ID bahagian kandungan utama.
+2. Untuk menambah elemen boleh fokus di mana sahaja dalam bahagian atau halaman, tambahkan `tabindex="0"`.
+
+## Bagaimana ia berfungsi?
+
+Secara lalai, komponen pautan langkau berada dalam keadaan tersembunyi dan hanya muncul apabila pengguna menekan kekunci `TAB` pada papan kekunci selepas halaman dimuatkan. Apabila muncul, ia berada dalam kedudukan tetap di bahagian atas kiri skrin.
+
+![skip-link-how-it-works@1.5x.png](/design/skip-link-how-it-works1.5x.png)
+
+1. Apabila menekan kekunci `TAB`, pautan langkau akan muncul dalam keadaan fokus. Tambahkan bayang (shadow) untuk menunjukkan ia berada di atas menu lain. Nota: Apabila pengguna mengklik di mana-mana pada halaman, sembunyikan butang pautan langkau.
+2. Semasa pautan langkau difokuskan, menekan kekunci **ENTER** akan menyembunyikan butang pautan langkau, menatal ke bahagian kandungan utama, dan memfokuskan elemen boleh fokus pertama dalam kandungan tersebut.
+
+## Jika Pengguna Terus Menekan TAB?
+
+Jika pengguna terus menekan TAB selepas butang pautan langkau muncul, fokus akan bergerak secara berurutan ke elemen interaktif seterusnya di halaman, mengikuti susunan tab semula jadi.
+
+![skip-link-press-tab@1.5x.png](/design/skip-link-press-tab1.5x.png)
+
+1. Fokus pada elemen boleh fokus pertama (butang navigasi).
+2. Fokus pada elemen boleh fokus kedua, dan seterusnya mengikut susunan tab semula jadi.
+
+## Demo
+
+### Tekan TAB → ENTER
+
+Langkau ke kandungan utama.
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/skip-link-demo1.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+### Tekan TAB → TAB → TAB
+
+Untuk fokus pada pautan yang boleh difokuskan pertama (Biasanya pautan dalam navbar).
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/skip-link-demo2.mov")} type="video/mp4" />
+  </video>
+</figure>
