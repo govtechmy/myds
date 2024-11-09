@@ -1,6 +1,5 @@
 "use client";
 
-// import Collapse from "@/components/Collapse";
 import FlagMY from "@/icons/flag-my";
 import ChevronDown from "@/icons/chevron-down";
 import EncryptedLock from "@/icons/encrypted-lock";
@@ -11,13 +10,10 @@ import { clx } from "@myds/react/utils";
 import { useState } from "react";
 import { getRosetta } from "@/locales/_server";
 import Collapse from "./Collapse";
-import { usePathname } from "next/navigation";
 
 export default function Masthead(props: { lang: "en" | "ms" }) {
   const { t } = getRosetta(props.lang);
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-
   return (
     <div
       className={clx(
@@ -25,13 +21,7 @@ export default function Masthead(props: { lang: "en" | "ms" }) {
         open ? "from-bg-washed to-otl-gray-200" : "from-bg-washed to-bg-washed",
       )}
     >
-      <div
-        className={clx(
-          !pathname.includes("docs")
-            ? "mx-auto max-w-screen-xl px-3 xl:px-0"
-            : "w-full px-3",
-        )}
-      >
+      <div className={clx("container mx-auto xl:px-0")}>
         <button
           className="h-[2.25rem] w-full md:h-[1.75rem]"
           onClick={() => setOpen(!open)}

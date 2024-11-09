@@ -56,7 +56,7 @@ export const getMYDSConfig = (lang: "en" | "ms"): MyDSConfig => {
       i18n: true,
       nav: {
         title: (
-          <div className="flex items-center gap-3 xl:ml-11">
+          <div className="flex items-center gap-3">
             <Image
               width={24}
               height={24}
