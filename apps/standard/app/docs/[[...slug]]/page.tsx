@@ -1,4 +1,4 @@
-import { source } from "@/app/[lang]/source";
+import { source } from "@/app/source";
 import type { Metadata } from "next";
 import {
   DocsPage,
@@ -15,7 +15,7 @@ interface PageParams {
 }
 
 export default async function Page({ params }: PageParams) {
-  const page = source.getPage(params.slug, params.lang);
+  const page = source.getPage(params.slug);
   if (!page) notFound();
 
   const MDX = page.data.body;

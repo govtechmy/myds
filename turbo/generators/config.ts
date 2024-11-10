@@ -139,6 +139,8 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       {
         type: "list",
         choices: [
+          "principle",
+          "design/(foundation)",
           "design/(foundation)",
           "design/(components)",
           "develop/(getting-started)",
