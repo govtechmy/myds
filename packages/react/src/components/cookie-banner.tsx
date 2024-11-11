@@ -43,16 +43,19 @@ interface PreferencesProps {
  * <CookieBanner propName="value" />
  */
 const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
-  ({
-    open = true,
-    title = "Customise Cookie Preferences",
-    description = "This website uses cookies to improve user experience. We need your consent to use some of the cookies.",
-    onOpenChange,
-    onClose,
-    onAcceptAll,
-    onRejectAll,
-    onSavePreferences,
-  }) => {
+  (
+    {
+      open = true,
+      title = "Customise Cookie Preferences",
+      description = "This website uses cookies to improve user experience. We need your consent to use some of the cookies.",
+      onOpenChange,
+      onClose,
+      onAcceptAll,
+      onRejectAll,
+      onSavePreferences,
+    },
+    ref,
+  ) => {
     const [showCustomize, setShowCustomize] = useState(false);
     const [preferences, setPreferences] = useState({
       necessary: true,
@@ -61,13 +64,10 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
     });
 
     const handleOpenChange = (open: boolean) => {
-      console.log("open");
       onOpenChange?.(open);
       if (!open) {
-        // TODO: check if I have to pass onClose to the X button or not
-        // TODO: remove console log
-        console.log("close");
         onClose?.();
+        setShowCustomize(false);
       }
     };
 
@@ -78,6 +78,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
         performance: true,
       };
       onAcceptAll?.(preferences);
+      handleOpenChange(false);
     };
 
     const handleRejectAll = () => {
@@ -87,13 +88,21 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
         performance: false,
       };
       onRejectAll?.(preferences);
+      handleOpenChange(false);
+    };
+
+    const handleSavePreferences = () => {
+      onSavePreferences?.(preferences);
+      handleOpenChange(false);
     };
     return (
-      <Dialog defaultOpen={true} onOpenChange={handleOpenChange}>
-        {/* TODO: provide open, onOpenChange, defaultOpen */}
-        {/* TODO: check how to do open and onOpenChange in component testing */}
+      <Dialog open={open} onOpenChange={handleOpenChange}>
         {/* TODO: check darkmode */}
-        <DialogContent className="bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:mb-6 sm:max-w-[502px] sm:translate-x-0 sm:translate-y-[-50%] sm:p-6">
+        {/* TODO: story */}
+        <DialogContent
+          className="bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:max-w-[502px] sm:translate-x-0 sm:p-6"
+          ref={ref}
+        >
           <DialogHeader className="space-y-0 p-0 pb-1">
             <div className="mb-1 flex flex-row justify-between">
               <DialogTitle className="text-body-md pb-1">{title}</DialogTitle>
@@ -120,6 +129,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                     id="necessary"
                     checked={true}
                     className="mt-0.5 flex-shrink-0"
+                    disabled
                   />
                   <div className="flex flex-col justify-start gap-1">
                     <label
@@ -189,44 +199,14 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                 fillWidth={false}
                 className="flex-col justify-start gap-2 p-0 pt-4 sm:flex-row"
               >
-                <DialogClose asChild>
-                  <Button
-                    variant="primary-fill"
-                    size="medium"
-                    onClick={handleAcceptAll}
-                    className="w-full justify-center sm:w-auto"
-                  >
-                    Accept All
-                  </Button>
-                </DialogClose>
-                <DialogClose asChild>
-                  <Button
-                    variant="primary-fill"
-                    size="medium"
-                    onClick={handleRejectAll}
-                    className="w-full justify-center sm:w-auto"
-                  >
-                    Reject All
-                  </Button>
-                </DialogClose>
-              </DialogFooter>
-            </>
-          ) : (
-            <DialogFooter
-              fillWidth={false}
-              className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row"
-            >
-              <DialogClose asChild>
                 <Button
                   variant="primary-fill"
                   size="medium"
-                  onClick={handleAcceptAll}
+                  onClick={handleSavePreferences}
                   className="w-full justify-center sm:w-auto"
                 >
                   Accept All
                 </Button>
-              </DialogClose>
-              <DialogClose asChild>
                 <Button
                   variant="primary-fill"
                   size="medium"
@@ -235,7 +215,29 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                 >
                   Reject All
                 </Button>
-              </DialogClose>
+              </DialogFooter>
+            </>
+          ) : (
+            <DialogFooter
+              fillWidth={false}
+              className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row"
+            >
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={handleAcceptAll}
+                className="w-full justify-center sm:w-auto"
+              >
+                Accept All
+              </Button>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={handleRejectAll}
+                className="w-full justify-center sm:w-auto"
+              >
+                Reject All
+              </Button>
               <Button
                 variant="primary-outline"
                 size="medium"
