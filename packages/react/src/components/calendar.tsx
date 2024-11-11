@@ -178,7 +178,7 @@ const Calendar: FC<CalendarProps> = ({
                         setView("day");
                       }}
                     >
-                      {format(date, "MMM")}
+                      {formatDate(date, "MMM")}
                     </Button>
                   );
                 })}
