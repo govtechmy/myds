@@ -5,7 +5,6 @@ import { RosettaProvider } from "@/locales/_client";
 import { clx } from "@myds/react/utils";
 import en from "@/locales/en";
 import ms from "@/locales/ms";
-import Masthead from "@/components/Masthead";
 import { getRosetta } from "@/locales/_server";
 
 import type { Metadata } from "next";
@@ -92,7 +91,6 @@ export default async function RootLayout({
             }[params.lang]
           }
         >
-          <Masthead lang={params.lang as "en" | "ms"} />
           <RosettaProvider locales={{ en, ms }}>
             <RootProvider>{children}</RootProvider>
           </RosettaProvider>

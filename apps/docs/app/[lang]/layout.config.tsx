@@ -58,12 +58,14 @@ export const getMYDSConfig = (lang: "en" | "ms"): MyDSConfig => {
         title: (
           <div className="flex items-center gap-3">
             <Image
-              width={24}
-              height={24}
+              width={32}
+              height={32}
               src="/common/logo.svg"
               alt="MYDS Logo"
             />
-            <h3>MYDS</h3>
+            <h3 className="font-heading text-[18px] font-semibold leading-[26px]">
+              MYDS
+            </h3>
             <Tag className="text-accent text-xs">Beta</Tag>
           </div>
         ),
