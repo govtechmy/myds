@@ -1,26 +1,52 @@
-"use client";
-
-import { format, FormatOptions, Locale } from "date-fns";
-import { useState } from "react";
-import { DayPicker, DayPickerProps } from "react-day-picker";
+import {
+  addMonths,
+  addYears,
+  format,
+  FormatOptions,
+  isDate,
+  isSameMonth,
+  isSameYear,
+  Locale,
+  subMonths,
+  subYears,
+} from "date-fns";
+import { FC, useEffect, useRef, useState } from "react";
+import {
+  DateLib,
+  DayPicker,
+  DayPickerProps,
+  defaultDateLib,
+  isDateAfterType,
+  isDateBeforeType,
+  isDateInterval,
+  isDateRange,
+  isDatesArray,
+  isDayOfWeekType,
+  Matcher,
+  rangeIncludesDate,
+} from "react-day-picker";
 import { ChevronLeftIcon } from "../icons/chevron-left";
 import { ChevronRightIcon } from "../icons/chevron-right";
 import { clx } from "../utils";
 import { Button, button_cva as buttonVariants } from "./button";
 
 type CalendarProps = DayPickerProps & {
-  isDisabled?: (date: Date) => boolean;
+  maxYear?: number;
+  minYear?: number;
+  yearOrder?: "asc" | "desc";
 };
 
-function Calendar({
+const Calendar: FC<CalendarProps> = ({
   className,
   classNames,
-  isDisabled,
   locale,
-  showOutsideDays = true,
+  maxYear = 2099,
   month: _month,
+  minYear = 1900,
+  showOutsideDays = true,
+  yearOrder = "asc",
   ...props
-}: CalendarProps) {
+}) => {
   const [view, setView] = useState<"day" | "month" | "year">("day");
 
   const today = new Date();
@@ -29,9 +55,14 @@ function Calendar({
   const thisYear = _month?.getFullYear() ?? today.getFullYear();
   const [year, setYear] = useState<number>(thisYear);
 
-  const [yearGroup, setYearGroup] = useState<number>(
-    thisYear - (thisYear % 18) + 1,
-  );
+  const yearRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (view === "year")
+      if (yearRef && yearRef.current)
+        yearRef.current.scrollIntoView({
+          block: "center",
+        });
+  }, [view]);
 
   const formatDate = (date: Date, formatStr: string, options?: FormatOptions) =>
     format(date, formatStr, {
@@ -104,9 +135,7 @@ function Calendar({
                 setView(view === monthOrYear ? "day" : monthOrYear)
               }
             >
-              {view === "month" && monthOrYear === "year"
-                ? year
-                : formatDate(month, formatStr)}
+              {formatDate(month, formatStr)}
             </Button>
           );
 
@@ -119,102 +148,128 @@ function Calendar({
             </span>
           );
         },
-        MonthGrid(props) {
+        MonthGrid(tableProps) {
           return view === "day" ? (
-            <table {...props} />
-          ) : (
+            <table {...tableProps} />
+          ) : view === "month" ? (
             <div role="grid" className="grid grow grid-cols-3">
-              {view === "month"
-                ? Array(12)
-                    .fill(null)
-                    .map((_, i) => {
-                      const date = new Date();
-                      date.setFullYear(year, i);
-                      date.setHours(0, 0, 0, 0);
-                      return (
-                        <Button
-                          variant={
-                            month.getMonth() === i &&
-                            month.getFullYear() === year
-                              ? "primary-fill"
-                              : "default-ghost"
-                          }
-                          disabled={isDisabled ? isDisabled(date) : false}
-                          className="w-full justify-center disabled:bg-transparent"
-                          onClick={() => {
-                            setMonth(date);
-                            setView("day");
-                          }}
-                        >
-                          {format(date, "MMM")}
-                        </Button>
-                      );
-                    })
-                : Array(18)
-                    .fill(null)
-                    .map((_, i) => {
-                      const year = yearGroup + i;
-                      const date = new Date();
-                      date.setFullYear(year, month.getMonth());
-                      date.setHours(0, 0, 0, 0);
-                      return (
-                        <Button
-                          variant={
-                            month.getFullYear() === year
-                              ? "primary-fill"
-                              : "default-ghost"
-                          }
-                          className="w-full justify-center disabled:bg-transparent"
-                          disabled={isDisabled ? isDisabled(date) : false}
-                          onClick={() => {
-                            setMonth(date);
-                            setYear(year);
-                            setView("day");
-                          }}
-                        >
-                          {year}
-                        </Button>
-                      );
-                    })}
+              {Array(12)
+                .fill(null)
+                .map((_, i) => {
+                  const date = new Date();
+                  date.setFullYear(year, i);
+                  date.setHours(0, 0, 0, 0);
+
+                  const isSelected =
+                    month.getMonth() === i && month.getFullYear() === year;
+
+                  return (
+                    <Button
+                      data-selected={isSelected}
+                      variant={isSelected ? "primary-fill" : "default-ghost"}
+                      disabled={
+                        props.disabled
+                          ? dateMatchers("month", date, props.disabled)
+                          : false
+                      }
+                      className="w-full justify-center disabled:data-[selected=false]:bg-transparent"
+                      onClick={() => {
+                        setMonth(date);
+                        setView("day");
+                      }}
+                    >
+                      {format(date, "MMM")}
+                    </Button>
+                  );
+                })}
+            </div>
+          ) : (
+            <div role="grid" className="grid grid-cols-3 overflow-y-auto">
+              {Array(maxYear - minYear + 1)
+                .fill(null)
+                .map((_, i) => {
+                  const displayYear =
+                    yearOrder === "asc" ? minYear + i : maxYear - i;
+                  const isSelected = month.getFullYear() === displayYear;
+
+                  const date = new Date();
+                  date.setFullYear(displayYear, 0, 1);
+                  date.setHours(0, 0, 0, 0);
+
+                  return (
+                    <Button
+                      ref={isSelected ? yearRef : null}
+                      data-selected={isSelected}
+                      variant={isSelected ? "primary-fill" : "default-ghost"}
+                      className="h-11 w-full justify-center disabled:data-[selected=false]:bg-transparent"
+                      disabled={
+                        props.disabled
+                          ? dateMatchers("year", date, props.disabled)
+                          : false
+                      }
+                      onClick={() => {
+                        setYear(displayYear);
+                        setMonth(new Date(displayYear, month.getMonth()));
+                        setView("month");
+                      }}
+                    >
+                      {displayYear}
+                    </Button>
+                  );
+                })}
             </div>
           );
         },
         NextMonthButton(props) {
           return view === "day" ? (
-            <Button {...props} />
-          ) : (
             <Button
               {...props}
-              aria-label={
-                view === "month"
-                  ? "Go to the Next Year"
-                  : "Go to the Next 18 Year Group"
-              }
-              onClick={() =>
-                view === "month"
-                  ? setYear(year + 1)
-                  : setYearGroup(yearGroup + 18)
-              }
+              onClick={() => {
+                const date = addMonths(month, 1);
+                setMonth(date);
+                setYear(date.getFullYear());
+              }}
+              disabled={addMonths(month, 1).getFullYear() > maxYear}
             />
+          ) : view === "month" ? (
+            <Button
+              {...props}
+              aria-label="Go to the Next Year"
+              onClick={() => {
+                const date = addYears(month, 1);
+                setMonth(date);
+                setYear(year + 1);
+              }}
+              disabled={year >= maxYear}
+            />
+          ) : (
+            <></>
           );
         },
         PreviousMonthButton(props) {
           return view === "day" ? (
-            <Button {...props} />
-          ) : (
             <Button
               {...props}
-              aria-label={
-                view === "month"
-                  ? "Go to the Previous Year"
-                  : "Go to the Previous 18 Year Group"
-              }
-              onClick={() =>
-                view === "month"
-                  ? setYear(year - 1)
-                  : setYearGroup(yearGroup - 18)
-              }
+              onClick={() => {
+                const date = subMonths(month, 1);
+                setMonth(date);
+                setYear(date.getFullYear());
+              }}
+              disabled={subMonths(month, 1).getFullYear() < minYear}
             />
+          ) : view === "month" ? (
+            <Button
+              {...props}
+              aria-label="Go to the Previous Year"
+              onClick={() => {
+                const date = subYears(month, 1);
+                setMonth(date);
+                setYear(year - 1);
+              }}
+              disabled={year <= minYear}
+            />
+          ) : (
+            <></>
           );
         },
       }}
@@ -224,7 +279,79 @@ function Calendar({
       {...props}
     />
   );
-}
+};
 Calendar.displayName = "Calendar";
 
 export { Calendar };
+
+function dateMatchers(
+  view: "month" | "year",
+  date: Date,
+  matchers: Matcher | Matcher[],
+  dateLib: DateLib = defaultDateLib,
+): boolean {
+  const matchersArr = !Array.isArray(matchers) ? [matchers] : matchers;
+  const { isSameDay, differenceInCalendarDays, isAfter } = dateLib;
+  return matchersArr.some((matcher: Matcher) => {
+    if (typeof matcher === "boolean") {
+      return matcher;
+    }
+    if (isDate(matcher)) {
+      return isSameDay(date, matcher);
+    }
+    if (isDatesArray(matcher, dateLib)) {
+      return matcher.includes(date);
+    }
+    if (isDateRange(matcher)) {
+      if (view === "month") {
+        if (isSameMonth(date, matcher.from!)) return false;
+        if (isSameMonth(date, matcher.to!)) return false;
+      }
+      if (view === "year") {
+        if (isSameYear(date, matcher.from!)) return false;
+        if (isSameYear(date, matcher.to!)) return false;
+      }
+      return rangeIncludesDate(matcher, date, false, dateLib);
+    }
+    if (isDayOfWeekType(matcher)) {
+      if (!Array.isArray(matcher.dayOfWeek)) {
+        return matcher.dayOfWeek === date.getDay();
+      }
+      return matcher.dayOfWeek.includes(date.getDay());
+    }
+    if (isDateInterval(matcher)) {
+      const diffBefore = differenceInCalendarDays(matcher.before, date);
+      const diffAfter = differenceInCalendarDays(matcher.after, date);
+      const isDayBefore = diffBefore > 0;
+      const isDayAfter = diffAfter < 0;
+      const isClosedInterval = isAfter(matcher.before, matcher.after);
+      if (view === "month") {
+        if (isSameMonth(date, matcher.before)) return false;
+        if (isSameMonth(date, matcher.after)) return false;
+      }
+      if (view === "year") {
+        if (isSameYear(date, matcher.before)) return false;
+        if (isSameYear(date, matcher.after)) return false;
+      }
+      if (isClosedInterval) {
+        return isDayAfter && isDayBefore;
+      } else {
+        return isDayBefore || isDayAfter;
+      }
+    }
+    if (isDateAfterType(matcher)) {
+      if (view === "month" && isSameMonth(date, matcher.after)) return false;
+      if (view === "year" && isSameYear(date, matcher.after)) return false;
+      return differenceInCalendarDays(date, matcher.after) > 0;
+    }
+    if (isDateBeforeType(matcher)) {
+      if (view === "month" && isSameMonth(matcher.before, date)) return false;
+      if (view === "year" && isSameYear(matcher.before, date)) return false;
+      return differenceInCalendarDays(matcher.before, date) > 0;
+    }
+    if (typeof matcher === "function") {
+      return matcher(date);
+    }
+    return false;
+  });
+}

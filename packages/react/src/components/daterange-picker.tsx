@@ -1,9 +1,7 @@
-"use client";
-
-import React from "react";
-import { DateAfter, DateRange, Matcher } from "react-day-picker";
+import React, { FC } from "react";
+import { DateAfter, DateBefore, DateRange, Matcher } from "react-day-picker";
 import { enGB, ms } from "date-fns/locale";
-import { format, isAfter, isBefore, isSameMonth } from "date-fns";
+import { format } from "date-fns";
 import { useControllableState } from "../hooks/use-controllable-state";
 import { Button, button_cva } from "./button";
 import { Calendar } from "./calendar";
@@ -17,21 +15,23 @@ export type DateRangePickerProps = {
   formatStr?: string;
   fromLabel?: string;
   locale?: "en" | "ms";
+  maxYear?: number;
+  minYear?: number;
   onSelect?: (date: DateRange) => void;
   placeholder?: string;
   selected?: DateRange;
   size?: VariantProps<typeof button_cva>["size"];
   toLabel?: string;
+  yearOrder?: "asc" | "desc";
 };
 
 /**
  * The DateRangePicker component allows users to select a range of dates from an interactive calendar.
  * @see {@link https://design.digital.gov.my/?path=/docs/myds-react-daterangepicker--docs}
  */
-function DateRangePicker({
+const DateRangePicker: FC<DateRangePickerProps> = ({
   defaultDateRange,
-  disabled = { after: new Date() },
-  excludeDisabled = true,
+  disabled,
   formatStr = "dd MMM yyy",
   fromLabel,
   locale = "en",
@@ -40,7 +40,8 @@ function DateRangePicker({
   selected,
   size,
   toLabel,
-}: DateRangePickerProps) {
+  ...props
+}) => {
   const [selectedDateRange, setSelectedDateRange] = useControllableState({
     prop: selected,
     onChange: onSelect,
@@ -53,6 +54,13 @@ function DateRangePicker({
     format(date, formatStr, {
       locale: _locale,
     });
+
+  const dateBefore: DateBefore = {
+    before: selectedDateRange?.from!,
+  };
+  const dateAfter: DateAfter = {
+    after: selectedDateRange?.to!,
+  };
 
   return (
     <div className="text-txt-black-900 flex items-center gap-1.5">
@@ -71,18 +79,12 @@ function DateRangePicker({
           <Calendar
             disabled={
               selectedDateRange?.to
-                ? {
-                    after: selectedDateRange.to,
-                  }
+                ? disabled
+                  ? Array.isArray(disabled)
+                    ? [...disabled, dateAfter]
+                    : [disabled, dateAfter]
+                  : dateAfter
                 : disabled
-            }
-            excludeDisabled={excludeDisabled}
-            isDisabled={(date) =>
-              selectedDateRange?.to
-                ? isSameMonth(date, selectedDateRange.to)
-                  ? false
-                  : isAfter(date, selectedDateRange?.to)
-                : false
             }
             locale={_locale}
             mode="range"
@@ -93,6 +95,7 @@ function DateRangePicker({
             }}
             required
             selected={selectedDateRange}
+            {...props}
           />
         </PopoverContent>
       </Popover>
@@ -112,21 +115,12 @@ function DateRangePicker({
           <Calendar
             disabled={
               selectedDateRange?.from
-                ? {
-                    before: selectedDateRange.from,
-                    after: new Date(),
-                  }
+                ? disabled
+                  ? Array.isArray(disabled)
+                    ? [...disabled, dateBefore]
+                    : [disabled, dateBefore]
+                  : dateBefore
                 : disabled
-            }
-            excludeDisabled={excludeDisabled}
-            isDisabled={(date) =>
-              selectedDateRange?.from
-                ? (disabled as DateAfter).after
-                  ? isAfter(date, (disabled as DateAfter).after)
-                  : isSameMonth(date, selectedDateRange.from)
-                    ? false
-                    : isBefore(date, selectedDateRange.from)
-                : false
             }
             locale={_locale}
             mode="range"
@@ -134,6 +128,7 @@ function DateRangePicker({
             onSelect={setSelectedDateRange}
             required
             selected={selectedDateRange}
+            {...props}
           />
         </PopoverContent>
       </Popover>

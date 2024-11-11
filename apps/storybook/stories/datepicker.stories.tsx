@@ -32,7 +32,8 @@ const meta = {
   args: { onSelect: fn() },
   argTypes: {
     defaultDate: {
-      description: "The default date when initially rendered. Use when you do not need to control the state of the date picker."
+      description:
+        "The default date when initially rendered. Use when you do not need to control the state of the date picker.",
     },
     disabled: {
       description:
@@ -59,6 +60,22 @@ const meta = {
       description: "Controls which locale the date picker is in.",
       control: "inline-radio",
       options: ["en", "ms"],
+    },
+    maxYear: {
+      table: {
+        defaultValue: {
+          summary: "2099",
+        },
+      },
+      description: "Maximum selectable year.",
+    },
+    minYear: {
+      table: {
+        defaultValue: {
+          summary: "1900",
+        },
+      },
+      description: "Minimum selectable year.",
     },
     placeholder: {
       description: "Text that appears when no value is set.",
@@ -87,6 +104,20 @@ const meta = {
       description: "Controls the size of the button.",
       control: "inline-radio",
       options: ["small", "medium", "large"],
+    },
+    yearOrder: {
+      table: {
+        defaultValue: {
+          summary: "asc",
+        },
+        type: {
+          summary: "enum",
+        },
+      },
+      description:
+        "Controls the order of the years displayed. It is in ascending (chronological) order by default.",
+      control: "inline-radio",
+      options: ["asc", "desc"],
     },
   },
 } satisfies Meta<typeof DatePicker>;

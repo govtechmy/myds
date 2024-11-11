@@ -81,6 +81,22 @@ const meta = {
       control: "inline-radio",
       options: ["en", "ms"],
     },
+    maxYear: {
+      table: {
+        defaultValue: {
+          summary: "2099",
+        },
+      },
+      description: "Maximum selectable year.",
+    },
+    minYear: {
+      table: {
+        defaultValue: {
+          summary: "1900",
+        },
+      },
+      description: "Minimum selectable year.",
+    },
     onSelect: {
       table: {
         type: {
@@ -117,6 +133,20 @@ const meta = {
       },
       description:
         "The button label for the end date picker.",
+    },
+    yearOrder: {
+      table: {
+        defaultValue: {
+          summary: "asc",
+        },
+        type: {
+          summary: "enum",
+        },
+      },
+      description:
+        "Controls the order of the years displayed. It is in ascending (chronological) order by default.",
+      control: "inline-radio",
+      options: ["asc", "desc"],
     },
   },
 } satisfies Meta<typeof DateRangePicker>;
