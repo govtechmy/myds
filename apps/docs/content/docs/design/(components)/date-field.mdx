@@ -1,0 +1,48 @@
+---
+title: Date field
+description: Allows users to input a date in a structured format using separate fields for day, month, and year.
+---
+
+![date-field-anatomy@1.5x.png](/design/date-field-anatomy1.5x.png)
+
+1. **Leading Icon (Calendar)**: A calendar icon placed before the input fields, signalling that the input is for selecting or entering a date.
+2. **Day (dd)**: 2-digits field limit from 1-31.
+3. **Month (mm)**: 2-digits field limit from 1-12.
+4. **Year (yyyy)**: 4-digits field for year.
+5. **Separator ( / )**: A visual separator between the day, month, and year fields to clearly define the input format (e.g., dd/mm/yyyy).
+6. **Label Text**: The text that labels the date field, indicating to the user what the field is for (e.g., "Date of Birth").
+7. **Hint Text**: Placed below the date field to show an error if the entered date does not follow the date field rules.
+
+## Field highlight
+
+![date-field-highlight@1.5x.png](/design/date-field-highlight1.5x.png)
+
+1. **Day**: Input field for typing in the day.
+2. **Month**: Input field for typing in the month.
+3. **Year**: Input field for typing in the year.
+
+## Size
+
+Each size is designed to cater to different form needs, ensuring optimal readability and user experience.
+
+![date-field-size@1.5x.png](/design/date-field-size1.5x.png)
+
+## State
+
+Date field can exist in several states, each providing visual cues to the user about its current status and interaction possibilities.
+
+![date-field-state@1.5x.png](/design/date-field-state1.5x.png)
+
+1. **Default**: The initial state of the date field when it is ready for user input but not currently interacted with.
+2. **Filled**: Occurs when a user has entered numbers into the date field, indicating that the field contains input.
+3. **Focused**: The user clicks on or tabs into the date field, indicating that it is active and ready to receive input.
+4. **Disabled**: The date field is not available for user interaction, either due to current context or user permissions.
+
+## Error
+
+Error state is triggered when the user clicks on or tabs into a date field that has an existing error condition.
+
+![date-field-error@1.5x.png](/design/date-field-error1.5x.png)
+
+1. The date field has a red border to indicate an error.
+2. Date field with error remains highlighted when focused.

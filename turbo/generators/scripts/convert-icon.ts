@@ -4,6 +4,7 @@
  */
 import fs, { mkdirSync } from "fs";
 import path from "path";
+import { icon_directory } from "./util";
 
 const outputIconTemplate = (name: string, text: string) => {
   return `import React from "react";
@@ -31,16 +32,13 @@ const sanitizeToReactAttrs = (text: string) => {
     .replaceAll("stroke-linecap", "strokeLinecap")
     .replaceAll("stroke-linejoin", "strokeLinejoin")
     .replaceAll("fill-rule", "fillRule")
+    .replaceAll(`fill="#18181B"`, `fill="currentColor"`)
     .replaceAll(`stroke="#18181B"`, `stroke="currentColor"`);
 };
 
 interface MainScriptProps {
   framework: "react" | "vue" | "angular";
 }
-
-const icon_directory = {
-  react: "../../../packages/react/src/icons",
-};
 
 /**
  * Converts a dash-case string to PascalCase.

@@ -1,13 +1,37 @@
 ---
-title: Pagination
-description: Pagination
+title: Penomboran halaman
+description: Membolehkan pengguna melayari set kandungan yang besar yang dibahagikan kepada halaman yang berasingan
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+## Jenis
 
-## What is Next?
+![pagination-type@1.5x.png](/design/pagination-type1.5x.png)
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+1. **Jenis 1**: Sesuai untuk konteks di mana pengguna ingin melompat ke halaman tertentu dalam sejumlah besar halaman.
+2. **Jenis 2**: Sesuai untuk navigasi yang lebih ringkas di mana pengguna bergerak ke depan atau belakang.
+3. **Jenis 3**: Mirip dengan Jenis 2, jenis ini memaparkan halaman semasa dan jumlah halaman di sebelah kiri serta butang navigasi di sebelah kanan.
+
+## Butang Sebelum & Seterusnya
+
+![pagination-buttons@1.5x.png](/design/pagination-buttons1.5x.png)
+
+Gunakan **Button Type: Secondary** sebagai komponen butang. Apabila butang dinyahaktifkan, hilangkan bayangan di bawah butang.
+
+1. **Asal**: Elemen muncul apabila tidak berinteraksi dengan pengguna.
+2. **Hover**: Elemen berubah apabila pengguna menggerakkan tetikus di atasnya.
+3. **Focused**: Elemen kelihatan aktif atau terpilih, biasanya melalui navigasi papan kekunci (TAB) atau klik tetikus.
+4. **Butang Sebelumnya**: Dinonaktifkan apabila pengguna berada di halaman pertama. Diaktifkan apabila pengguna berada di halaman lain.
+5. **Butang Seterusnya**: Dinonaktifkan apabila pengguna berada di halaman terakhir. Diaktifkan apabila pengguna berada di halaman lain.
+6. **Kedua-dua Butang Dinonaktifkan**: Apabila hanya terdapat satu halaman.
+
+## Nombor Penomboran
+
+![pagination-numbers@1.5x.png](/design/pagination-numbers1.5x.png)
+
+Gunakan **Button Type: Tertiary** sebagai komponen butang.
+
+1. **Asal**: Keadaan awal nombor penomboran.
+2. **Hover & Terpilih**: Apabila tetikus diletakkan di atas nombor atau nombor dipilih.
+3. **Focused Default**: Apabila nombor penomboran terpilih atau difokuskan.
+4. **Dilumpuhkan (Disabled)**: Nombor atau elemen yang tidak boleh diklik.
+5. **Focused & Terpilih**: Keadaan terpilih apabila difokuskan.

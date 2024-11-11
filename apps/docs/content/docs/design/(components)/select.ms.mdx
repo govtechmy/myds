@@ -1,0 +1,101 @@
+---
+title: Pilihan
+description: Membenarkan pengguna memilih dari senarai pilihan. Komponen ini sering muncul sebagai menu timbul di mana pengguna klik pada butang pilih, untuk membuat senarai pilihan muncul.
+---
+
+import { s3 } from "@/lib/constant";
+
+## Butang pilih
+
+### Jenis
+
+![select-button-type@1.5x.png](/design/select-button-type1.5x.png)
+
+1. **Asal** (Default).
+2. **Dengan Label**: Sesuai untuk memaparkan label penapis.
+3. **Tertiari**.
+4. **Ikon**.
+5. **Ikon Tertiari**.
+
+### Saiz
+
+![context-menu-size@1.5x.png](/design/context-menu-size1.5x.png)
+
+Setiap saiz butang pilih direka untuk memenuhi keperluan borang atau tindakan, memastikan keterbacaan dan pengalaman pengguna yang optimum.
+
+### Keadaan (State)
+
+![select-button-state@1.5x.png](/design/select-button-state1.5x.png)
+
+1. Asal
+2. Hover
+3. Focused
+4. Dilumpuhkan (Disabled)
+
+### Penghitung
+
+![select-button-counter@1.5x.png](/design/select-button-counter1.5x.png)
+
+Penghitung dalam komponen butang pilih ialah petunjuk kecil yang memaparkan nombor, memberi gambaran tentang jumlah penapis, notifikasi, atau item yang dipilih dalam fungsi butang.
+
+Ia memberi visual kiraan yang berkaitan dengan fungsi butang, seperti bilangan penapis yang dipilih, notifikasi, atau item dalam troli.
+
+### Ikon Sahaja
+
+![select-button-icon-only@1.5x.png](/design/select-button-icon-only1.5x.png)
+
+Elemen utama pada butang adalah ikon yang menunjukkan fungsi tanpa teks.
+
+Contoh: Ikon 3-titik, Ikon tambah.
+
+## Menu Pilih
+
+Menu Pilih ialah menu pop timbul yang muncul apabila pengguna mengklik butang pilih.
+
+### Jenis Senarai Menu
+
+![select-menu-list-type@1.5x.png](/design/select-menu-list-type1.5x.png)
+
+1. Dropdown atau Menu Konteks
+2. Pilih: Berbilang
+3. Pilih: Tunggal
+
+### Keadaan Senarai Menu
+
+![select-menu-list-state@1.5x.png](/design/select-menu-list-state1.5x.png)
+
+1. Asal
+2. Hover
+3. Dilumpuhkan (Disabled)
+4. Dipilih (Selected)
+
+### Menu Dropdown
+
+![context-menu-type@1.5x.png](/design/context-menu-type1.5x.png)
+
+1. Menu “Lagi” untuk pilihan tambahan.
+2. Fungsi carian di bahagian atas:
+   2a. Paparkan butang "Kosongkan" di bahagian bawah menu konteks berbilang-pilih apabila sekurang-kurangnya satu pilihan dipilih. Jika tiada pilihan, sembunyikan butang tersebut.
+3. Fungsi carian di bahagian bawah untuk mencari pilihan.
+
+### Item Menu Kumpulan
+
+![grouped-context-menu-items@1.5x.png](/design/grouped-context-menu-items1.5x.png)
+
+Item dalam menu konteks yang berkumpulan membantu pengguna dengan mengatur pilihan yang berkaitan ke dalam kumpulan yang mudah diakses.
+
+1. Tajuk setiap kumpulan biasanya diletakkan di awal pemisah.
+
+### Saiz Menu Dropdown
+
+![context-menu-size1.5x-1.png](/design/context-menu-size1.5x-1.png)
+
+Setiap saiz menu konteks direka untuk memenuhi keperluan borang atau tindakan, memastikan keterbacaan dan pengalaman pengguna yang optimum.
+
+## Demo
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/select-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

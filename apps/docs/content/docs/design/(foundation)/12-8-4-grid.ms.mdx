@@ -1,13 +1,56 @@
 ---
-title: 12-8-4 Grid Layout
-description: 12-8-4 Grid Layout
+title: Sistem Grid 12-8-4
+description: Sistem grid 12-8-4 menyediakan struktur susun atur yang fleksibel dan responsif yang mendorong tumpuan kepada reka bentuk yang boleh disesuaikan pada semua saiz skrin. Grid ini membantu memastikan bahawa kandungan sentiasa teratur dan seimbang secara visual, menjadikan reka bentuk kelihatan kemas dan mudah diakses pada mana-mana peranti, dari desktop hingga ke telefon mudah alih.
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+Panduan ini menggambarkan bagaimana saiz skrin mempengaruhi lebar jenis kontena berikut:
 
-## What is Next?
+1. **Kandungan:** Kontena utama di mana kandungan boleh disusun dengan bebas dalam pelbagai susun atur.
+2. **Artikel:** Kandungan panjang seperti artikel di mana pembaca perlu memberi tumpuan. Bukannya mengekalkan saiz lebar yang sama seperti kandungan, ia dipersempit kepada lebar maksimum 640px—lebar yang optimum untuk bacaan yang selesa.
+3. **Imej dan Carta Interaktif:** Ini perlu menarik perhatian dan berkaitan dengan kandungan. Ia boleh merangkumi lebar penuh kontena artikel (640px) atau meluas kepada lebar maksimum 740px untuk kesan visual yang lebih menarik.
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+## Titik Putus
+
+Titik Putus adalah saiz skrin tertentu yang membantu laman web menyesuaikan susun atur agar kelihatan baik pada mana-mana peranti.
+
+- **Desktop (≥1024px):** Untuk skrin besar seperti laptop atau monitor, bermula dari lebar 1024px dan ke atas.
+- **Tablet (768px - 1023px):** Untuk skrin bersaiz sederhana, seperti tablet, dari 768px hingga 1023px lebar.
+- **Telefon Mudah Alih (≤767px):** Untuk skrin kecil seperti telefon, lebar 767px dan ke bawah.
+
+### Desktop
+
+![desktop-1280@1.5x](/design/desktop-1280@1.5x.png)
+
+Untuk skrin yang berukuran 1024px dan lebih, laksanakan **grid 12-kolum** dengan jarak 24px antara kolum dan padding di tepi. Lebar maksimum kandungan harus 1280px untuk paparan desktop yang optimum.
+
+Susun atur 12-kolum menawarkan fleksibiliti maksimum untuk menyusun kandungan pada skrin yang lebih besar. Ia membolehkan penciptaan susun atur yang kompleks sambil memastikan elemen dapat diselaraskan dan diubah saiz dengan mudah tanpa mencemari reka bentuk.
+
+### Tablet
+
+![tablet-768@1.5x.png](/design/tablet-768@1.5x.png)
+
+Pada skrin antara 768px dan 1023px, beralih kepada **grid 8-kolum** dengan jarak 24px dan padding di tepi untuk mengekalkan jarak yang seimbang.
+
+Susun atur 8-kolum memudahkan reka bentuk untuk skrin bersaiz sederhana, menjadikannya lebih mudah untuk memaparkan kandungan dengan cara yang bersih dan teratur. Susun atur ini membantu mengekalkan kebolehan dibaca dan kegunaan dengan mengurangkan bilangan kolum, yang mungkin terlalu sesak pada skrin yang lebih kecil.
+
+### Telefon Mudah Alih
+
+![mobile-393@1.5x.png](/design/mobile-393@1.5x.png)
+
+Untuk skrin 767px dan lebih kecil, gunakan **grid 4-kolum** dengan jarak 18px dan padding di tepi.
+
+Susun atur 4-kolum adalah ideal untuk skrin yang lebih kecil, menyediakan ruang yang mencukupi untuk kandungan sambil memudahkan navigasi. Susun atur ini memberi tumpuan kepada elemen penting, memastikan pengguna dapat mengakses maklumat dengan cepat dan selesa pada peranti mereka.
+
+## Contoh Penggunaan
+
+### Seksyen Kandungan
+
+Contoh penggunaan di laman web [Kementerian Digital](https://digital.gov.my) menunjukkan bahagian pemutar gambar di mana, pada desktop, tajuk merangkumi 3 lajur dan gambar merangkumi 6 lajur, dengan ruang 1 lajur di kedua-dua sisi dan jurang di antara mereka adalah untuk pemisahan visual. Pada tablet, tajuk dan gambar mengisi ruang yang ada untuk paparan yang optimum, manakala pada telefon bimbit, kandungan disusun secara menegak bukannya bersebelahan.
+
+![12-8-4-grid-usage-example@1.5x.png](/design/12-8-4-grid-usage-example@1.5x.png)
+
+### Halaman Artikel
+
+Reka bentuk halaman artikel mengutamakan kebolehbaca dengan menggunakan lebar maksimum kontena perenggan selebar 640px, memastikan bacaan yang mudah. Gambar dan carta interaktif dipaparkan dengan lebar maksimum 740px, membolehkan kandungan menonjol dan meningkatkan susun atur sambil mengekalkan penyampaian kandungan yang seimbang.
+
+![desktop-1280@1.5x](/design/12-8-4-grid-usage-example-2@1.5x.png)

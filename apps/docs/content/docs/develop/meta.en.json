@@ -4,9 +4,11 @@
     "---Getting Started---",
     "index",
     "(getting-started)/install",
+    "(getting-started)/project-configuration",
+
     "(getting-started)/usage",
 
-    "---Components---",
+    "---Components 🚧---",
     "(components)/accordion",
     "(components)/anchor",
     "(components)/banner",

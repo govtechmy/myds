@@ -1,13 +1,19 @@
 import { PlopTypes } from "@turbo/gen";
 import convertIcon from "./scripts/convert-icon";
+import barrelIcon from "./scripts/barrel-icon";
 interface ComponentPrompt {
   framework: "react" | "vue" | "angular";
   title: string;
   has_story: boolean;
 }
 
+interface MDXPrompt {
+  project: "design" | "develop";
+  title: string;
+}
+
 /**
- * DO NOT MODIFY. This is a template for the export statement in the package.json file.
+ *! DO NOT MODIFY. This is a template for the export statement in the package.json file.
  */
 const ComponentExport = `,
     "./{{ dashCase title}}": {
@@ -126,6 +132,53 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
     },
   });
 
+  // MDX generator
+  plop.setGenerator("mdx", {
+    description: "Scaffolds MDX file for MYDS docs",
+    prompts: [
+      {
+        type: "list",
+        choices: [
+          "principle",
+          "design/(foundation)",
+          "design/(foundation)",
+          "design/(components)",
+          "develop/(getting-started)",
+          "develop/(components)",
+        ],
+        name: "project",
+        message: "Docs MDX for:",
+      },
+      {
+        type: "input",
+        name: "title",
+        message: "Title:",
+        validate: (input: string) => {
+          if (!input) {
+            return "MDX file name is required";
+          }
+          return true;
+        },
+      },
+    ],
+    actions: (data) => {
+      const actions: PlopTypes.ActionType[] = [];
+
+      actions.push({
+        type: "add",
+        path: "{{ turbo.paths.root }}/apps/docs/content/docs/{{ project }}/{{ dashCase title }}.mdx",
+        templateFile: "templates/docs-mdx.hbs",
+      });
+      actions.push({
+        type: "add",
+        path: "{{ turbo.paths.root }}/apps/docs/content/docs/{{ project }}/{{ dashCase title }}.ms.mdx",
+        templateFile: "templates/docs-mdx.hbs",
+      });
+
+      return actions;
+    },
+  });
+
   // Icon generator
   plop.setGenerator("icon", {
     description: "Builds React component icons from SVG",
@@ -160,6 +213,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       const actions: PlopTypes.ActionType[] = [];
 
       convertIcon({ framework: _data.framework });
+      barrelIcon({ framework: _data.framework });
       return actions;
     },
   });

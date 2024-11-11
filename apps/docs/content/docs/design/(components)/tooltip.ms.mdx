@@ -1,0 +1,70 @@
+---
+title: Tooltip
+description: Maklumat ringkas dan kontekstual apabila pengguna mengarahkan kursor atau memberi fokus pada elemen, meningkatkan kejelasan tanpa mengganggu antara muka. Biasanya digunakan untuk menerangkan ikon, butang, atau mana-mana elemen interaktif di mana maksudnya mungkin tidak jelas dengan segera.
+---
+
+import { s3 } from "@/lib/constant";
+
+![tooltip-anatomy@1.5x.png](/design/tooltip-anatomy1.5x.png)
+
+1. **Ruangan Pencetus**: Disarankan untuk meluaskan ruangan pencetus bagi memudahkan pengguna melayangkan tetikus.
+2. **Tooltip**: Teks yang memberikan konteks atau panduan tambahan, memastikan pengguna dapat memahami fungsi atau makna elemen tersebut dengan mudah.
+
+## Saiz Minimum Ruangan Pencetus
+
+![tooltip-trigger-size@1.5x.png](/design/tooltip-trigger-size1.5x.png)
+
+1. **Ruangan Pencetus (Salah)**: Ruangan pencetus yang kecil menyukarkan pengguna untuk melayangkan tetikus dan mengakses tooltip, mengurangkan pengalaman pengguna.
+2. **Ruangan Pencetus (Betul)**: Memastikan ruangan pencetus yang lebih besar meningkatkan kegunaan, memudahkan pengguna untuk melayangkan tetikus dan mengakses kandungan tooltip dengan lancar.
+
+## Arah Tooltip
+
+![tooltip-direction@1.5x.png](/design/tooltip-direction1.5x.png)
+
+1. Arah = **Kiri**.
+2. Arah = **Atas**.
+3. Arah = **Bawah**.
+4. Arah = **Kanan**.
+
+**_Nota_**: Garisan biru digunakan untuk menggambarkan ruangan pencetus. Buang pada UI sebenar.
+
+## Penjajaran Tooltip
+
+![tooltip-alignment@1.5x.png](/design/tooltip-alignment1.5x.png)
+
+1. **Penjajaran = Kiri**: Apabila ruangan pencetus berada di tepi kiri skrin, memastikan tooltip tetap kelihatan dan tidak melangkaui skrin.
+2. **Penjajaran = Tengah**: Apabila elemen ruangan pencetus berada di tengah skrin.
+3. **Penjajaran = Kanan**: Apabila ruangan pencetus berada di tepi kanan skrin, memastikan tooltip tetap kelihatan dan tidak melangkaui skrin.
+
+Pilih penjajaran yang memastikan tooltip kekal dalam skrin yang boleh dilihat.
+
+**_Nota_**: Garisan biru digunakan untuk menggambarkan ruangan pencetus. Buang pada UI sebenar.
+
+## Panjang Deskripsi
+
+Pastikan tooltip kekal dalam skrin yang boleh dilihat dengan penjajaran yang sesuai.
+
+![tooltip-description@1.5x.png](/design/tooltip-description1.5x.png)
+
+1. Elemen ruangan pencetus
+2. Panjang maksimum = **250px**
+
+**_Nota_**: Garisan biru digunakan untuk menggambarkan ruangan pencetus. Buang pada UI sebenar.
+
+## Demo
+
+### Ruangan pencetus kecil
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/tooltip-demo1.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+### Ruangan pencetus besar
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/tooltip-demo2.mov")} type="video/mp4" />
+  </video>
+</figure>

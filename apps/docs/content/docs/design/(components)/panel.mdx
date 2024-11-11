@@ -1,0 +1,58 @@
+---
+title: Panel
+description: A visible container used on confirmation or results pages to emphasize important content, ensuring key information stands out clearly for users. Usually placed on the first section of the page.
+---
+
+![panel-anatomy@1.5x.png](/design/panel-anatomy1.5x.png)
+
+The Panel component offers flexible properties, but to simplify implementation, this serves as the base component to begin with.
+
+1. **Panel title** is a clear, concise heading that summarizes the panel's content, helping users quickly understand its purpose and importance.
+2. **Placeholder** (Body/M/400).
+3. **Detail** (Body/XL/600).
+
+## Colour
+
+![panel-color@1.5x.png](/design/panel-color1.5x.png)
+
+1. **Blue** (Informational)
+2. **Green** (Success)
+3. **Yellow** (Warning)
+4. **Red** (Danger)
+
+## Usage example
+
+### Informational Blue
+
+![panel-usage-blue@1.5x.png](/design/panel-usage-blue1.5x.png)
+
+The blue panel is used to display informational messages when a process is in progress but not yet completed. It helps users understand the current status of their application or action, providing updates without indicating success or failure. Common use cases include submissions being processed or applications under review.
+
+1. Provide useful information related to this status such as “Date submitted”
+
+### Success Green
+
+![panel-usage-green@1.5x.png](/design/panel-usage-green1.5x.png)
+
+The green panel indicates that a process is complete and successful. It confirms to the user that their application, payment, or task has been finalized with positive results. This panel is typically used at the end of a workflow/forms to show that no further action is needed.
+
+1. Use the “check-circle” icon where necessary, especially to indicate that the process is complete.
+2. Provide a reference number or information that the user can retain for future use.
+3. Use larger “Body/5XL/600” to emphasis numbers.
+4. Include a QR code, barcode, or any image that users can use as proof of completing the process.
+
+### Warning Yellow
+
+![panel-usage-yellow@1.5x.png](/design/panel-usage-yellow1.5x.png)
+
+The yellow panel is used to bring attention to situations that require user input or where something is in process. It’s typically employed when an application or process is incomplete, under review, or approaching a deadline. The panel helps guide the user toward next steps, alerting them to the status of their request or form, while still indicating that resolution is possible with action.
+
+1. When displaying a warning status, include the estimated response time, next steps to take, expected resolution, and any payment amount required, so users know what to expect next.
+
+### Danger Red
+
+![panel-usage-red@1.5x.png](/design/panel-usage-red1.5x.png)
+
+The red panel signals that a process has failed or been rejected. It is used to notify the user of errors, rejected applications, overdue payments, or failed actions. This panel provides clear feedback on what went wrong, along with guidance on potential next steps if applicable.
+
+1. When displaying a negative status, include the reason for rejection and the error code so users understand what caused the error or rejection.

@@ -1,0 +1,48 @@
+---
+title: Table
+description: Organizes information into rows and columns for easy readability. It accommodates various data types, including text, numbers, codes, call-to-action and links, enabling efficient presentation and comparison.
+---
+
+import { s3 } from "@/lib/constant";
+
+![table-anatomy@1.5x.png](/design/table-anatomy1.5x.png)
+
+1. **Header**: Title of the column, providing clear context for the data beneath.
+2. **Expand column button**: Initially hidden, this button appears when the user hovers over the entire column. Clicking it expands the column horizontally, revealing longer descriptions for better readability.
+3. **Tooltip**: Hover on this icon to show tooltips. Useful to explain the role of the table column.
+4. **Sort column button**: Initially hidden, this button appears on hover over the column. Clicking it toggles between ascending and descending order for easy data sorting.
+5. **Cell for Text**: Left-aligned by default
+6. **Cell for Button**: Contains action buttons aligned left, allowing users to take specific actions for each row.
+7. **Cell for Status Pill**: Displays a colour-coded status indicator (pill) aligned left, providing a quick visual reference for the status of each row
+8. **Skeleton Loader**: An animated placeholder element that mimics the layout of content while data is loading, giving users a visual cue that content is on the way. It improves the perceived loading time by reducing abrupt transitions.
+
+## Usage examples
+
+![table-usage@1.5x.png](/design/table-usage1.5x.png)
+
+1. **Cell with text aligned center**: For visual balance, often used for headings or key information to draw attention.
+2. **Cell with numbers aligned right**: Aligns numerical data to the right for easy comparison and ensures decimal points line up, enhancing readability of financial or statistical information.
+3. **Cell with row span**: Occupies two rows or more vertically, consolidating related data and reducing redundancy. Useful for representing information relevant to multiple rows, improving table clarity.
+
+### Expand column
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/table-demo1.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+When expanded, keep header underlined and show collapse button.
+
+### Sort column
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/table-demo2.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+By default, first click sorts the column in descending order. Then, sort in
+ascending on next click.
+
+When sorted, keep header underlined and show sort button.

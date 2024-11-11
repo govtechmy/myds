@@ -1,5 +1,5 @@
 import { Button, ButtonIcon } from "@myds/react/button";
-import Link from "@myds/react/link";
+import { Link } from "@myds/react/link";
 import type { Meta, StoryObj } from "@storybook/react";
 import ArrowBack from "../react/arrow-back";
 import { createStory } from "../utils";
@@ -9,8 +9,8 @@ import { createStory } from "../utils";
  * The Link component extends the HTML `<a>` element and allows you to easily customize them.
  *
  * ### Usage
- * ```ts
- * import Link from "@myds/react/link";
+ * ```tsx
+ * import { Link } from "@myds/react/link";
  *
  * <Link primary href="https://design.digital.gov.my" underline="always">Malaysia's Official Design System</Link>
  * ```

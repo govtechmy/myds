@@ -5,7 +5,7 @@ import { MinusIcon } from "../icons/minus";
 import { clx } from "../utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
-const checkboxVariants = cva(
+const checkbox_cva = cva(
   [
     "rounded-sm outline-none flex items-center justify-center",
     "border border-otl-gray-200 hover:border-otl-gray-300 shadow-button bg-bg-white",
@@ -20,6 +20,29 @@ const checkboxVariants = cva(
       size: {
         small: "size-4",
         medium: "size-5",
+        large: "size-5",
+      },
+    },
+    defaultVariants: {
+      size: "small",
+    },
+  },
+);
+
+const checkbox_icon_cva = cva(
+  [
+    "flex items-center justify-center text-white",
+    "[&_.minus-icon]:hidden",
+    "[&_.checked-icon]:hidden",
+    "[&[data-state=checked]_.checked-icon]:inline-block",
+    "[&[data-state=indeterminate]_.minus-icon]:inline-block",
+  ],
+  {
+    variants: {
+      size: {
+        small: "size-3 stroke-[1.5px]",
+        medium: "size-4 stroke-[2px]",
+        large: "size-4 stroke-[2px]",
       },
     },
     defaultVariants: {
@@ -30,11 +53,11 @@ const checkboxVariants = cva(
 
 interface CheckboxProps
   extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
-    VariantProps<typeof checkboxVariants> {
+    VariantProps<typeof checkbox_cva> {
   description?: string;
 }
 
-export const Checkbox = React.forwardRef<
+const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   CheckboxProps
 >(({ className, size, description, ...props }, ref) => {
@@ -43,35 +66,18 @@ export const Checkbox = React.forwardRef<
   return (
     <CheckboxPrimitive.Root
       ref={ref}
-      className={clx(checkboxVariants({ size, className }))}
+      className={clx(checkbox_cva({ size, className }))}
       {...ariaProps}
       {...props}
     >
-      <CheckboxPrimitive.Indicator
-        className={clx(
-          "flex items-center justify-center text-white",
-          size === "medium" ? "size-4" : "size-3",
-          "[&_.minus-icon]:hidden",
-          "[&_.checked-icon]:hidden",
-          "[&[data-state=checked]_.checked-icon]:inline-block",
-          "[&[data-state=indeterminate]_.minus-icon]:inline-block",
-        )}
-      >
-        <MinusIcon
-          className={clx(
-            size === "medium" ? "stroke-[2.0px]" : "stroke-[1.5px]",
-            "minus-icon",
-          )}
-        />
-        <CheckIcon
-          className={clx(
-            size === "medium" ? "stroke-[2.0px]" : "stroke-[1.5px]",
-            "checked-icon",
-          )}
-        />
+      <CheckboxPrimitive.Indicator className={checkbox_icon_cva({ size })}>
+        <MinusIcon className="minus-icon" />
+        <CheckIcon className="checked-icon" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );
 });
 
 Checkbox.displayName = "Checkbox";
+
+export { Checkbox };

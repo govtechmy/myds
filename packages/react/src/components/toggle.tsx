@@ -11,6 +11,8 @@ const thumbVariants = cva(
   {
     variants: {
       size: {
+        small:
+          "h-[16px] w-[24px] before:size-[10px] before:data-[state=checked]:translate-x-2",
         medium:
           "h-[20px] w-[30px] before:size-[14px] before:data-[state=checked]:translate-x-[10px]",
         large:
@@ -33,6 +35,7 @@ interface ToggleContextType extends VariantProps<typeof thumbVariants> {
 const ToggleContext = createContext<ToggleContextType | undefined>(undefined);
 
 export interface ToggleProps extends VariantProps<typeof thumbVariants> {
+  id?: string;
   defaultChecked?: boolean;
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
@@ -41,7 +44,8 @@ export interface ToggleProps extends VariantProps<typeof thumbVariants> {
   children: React.ReactNode;
 }
 
-export const Toggle: React.FC<ToggleProps> = ({
+const Toggle: React.FC<ToggleProps> = ({
+  id,
   defaultChecked = false,
   checked,
   onCheckedChange,
@@ -73,7 +77,7 @@ export const Toggle: React.FC<ToggleProps> = ({
         disabled,
         size,
         onChange: handleChange,
-        id: useId(),
+        id: id || useId(),
       }}
     >
       <div
@@ -86,11 +90,11 @@ export const Toggle: React.FC<ToggleProps> = ({
   );
 };
 
-export interface ToggleThumbProps {
+interface ToggleThumbProps {
   className?: string;
 }
 
-export const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
+const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
   const context = useContext(ToggleContext);
   if (!context) throw new Error("ToggleThumb must be used within Toggle");
 
@@ -124,3 +128,5 @@ export const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
     </label>
   );
 };
+
+export { Toggle, ToggleThumb };

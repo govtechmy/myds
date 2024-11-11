@@ -1,13 +1,66 @@
 ---
-title: Installation
-description: Installation
+title: Pemasangan
+description: Panduan ringkas untuk bermula dengan MYDS.
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
 
-## What is Next?
+MYDS boleh ditetapkan dengan pelbagai cara, bergantung kepada keperluan projek anda. Namun, cara yang paling mudah mengambil hanya 3-langkah!
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+<Steps>
+  <Step>
+    ### Pemasangan pakej
+    <Tabs items={["npm", "yarn", "pnpm"]}>
+        ```sh tab="npm"
+        npm i @govtechmy/myds-react @govtechmy/myds-tailwindcss 
+        ```
+        ```sh tab="yarn"
+        yarn add @govtechmy/myds-react @govtechmy/myds-tailwindcss
+        ```
+        ```sh tab="pnpm"
+        pnpm add @govtechmy/myds-react @govtechmy/myds-tailwindcss
+        ```
+    </Tabs>
+
+  </Step>
+
+  <Step>
+
+### Tetapkan stylesheet CSS<a name="full-css"></a>
+
+Anda boleh 'import' stylesheet MYDS secara keseluruhan mengikut salah satu cara di bawah.
+
+#### A. Import melalui JS (Bundler)
+
+```ts
+// Letakkan dalam fail permulaan JS/TS (eg. index.{ts,js})
+import "@govtechmy/myds-tailwindcss/full.css";
+```
+
+#### B. Import melalui CSS
+
+```css
+/* Letakkan dalam fail permulaan CSS  */
+@import "@govtechmy/myds-tailwindcss/full.css";
+```
+
+Untuk tetapan yang lebih lanjut, sila baca [Konfigurasi Projek](./project-configuration)
+
+  </Step>
+
+<Step>
+### Mula menggunakan komponen!
+
+Terdapat pelbagai komponen yang tersedia dalam MYDS. Berikut adalah `<Button />` untuk anda mulakan!
+
+```tsx
+import { Button } from "@govtechmy/myds-react/button";
+
+export default () => {
+  return <Button variant="primary-fill">Hello MYDS</Button>;
+};
+```
+
+</Step>
+</Steps>

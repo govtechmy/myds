@@ -26,4 +26,20 @@
   span {
     @apply text-txt-black-700;
   }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  /** Need to do this because fumadocs preset is overriding custom breakpoints. For: navbar, footer */
+  .max-w-container {
+    @apply !max-w-screen-xl xl:!px-0;
+  }
+  .container {
+    @apply !max-w-screen-xl xl:!px-0;
+  }
+
+  td {
+    @apply !align-middle;
+  }
 }

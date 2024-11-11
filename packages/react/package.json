@@ -7,6 +7,22 @@
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
     },
+    "./icon": {
+      "type": "./src/icons/index.ts",
+      "default": "./src/icons/index.ts"
+    },
+    "./masthead": {
+      "type": "./src/components/masthead.tsx",
+      "default": "./src/components/masthead.tsx"
+    },
+    "./label": {
+      "type": "./src/components/label.tsx",
+      "default": "./src/components/label.tsx"
+    },
+    "./skiplink": {
+      "type": "./src/components/skiplink.tsx",
+      "default": "./src/components/skiplink.tsx"
+    },
     "./select": {
       "type": "./src/components/select.tsx",
       "default": "./src/components/select.tsx"
