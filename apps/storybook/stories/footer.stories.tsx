@@ -38,7 +38,7 @@ type Story = StoryObj<typeof meta>;
 const socialMediaIcons = [
   {
     href: "https://facebook.com/ministryofdigital",
-    icon: <FacebookIcon className="currentColor" />,
+    icon: <FacebookIcon />,
   },
   {
     href: "https://instagram.com/ministryofdigital",

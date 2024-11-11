@@ -226,35 +226,3 @@ export {
   FooterDisclaimerGroupDisclaimer,
   FooterDisclaimerLastUpdate,
 };
-
-<Footer>
-  <FooterContent>
-    <FooterContentAgencySection>
-      <FooterAgencyHeader imageSrc={""} imageAlt={""}>
-        AgencyName
-      </FooterAgencyHeader>
-      <FooterAgencyAddress></FooterAgencyAddress>
-      <FooterAgencyMediaLinks>
-        <FooterAgencyMediaLinksLogoPath
-          icons={[]}
-        ></FooterAgencyMediaLinksLogoPath>
-      </FooterAgencyMediaLinks>
-    </FooterContentAgencySection>
-    <FooterContentLinkSection>
-      <FooterContentLinkSectionTitle>Title</FooterContentLinkSectionTitle>
-      <FooterContentLinkSectionContent>
-        <FooterGeneralLink href={""}>Link1</FooterGeneralLink>
-      </FooterContentLinkSectionContent>
-    </FooterContentLinkSection>
-  </FooterContent>
-  <FooterDisclaimer>
-    <FooterDisclaimerGroup>
-      <FooterDisclaimerGroupRights></FooterDisclaimerGroupRights>
-      <FooterDisclaimerGroupDisclaimer>
-        <FooterGeneralLink href="helo">Disclaimer</FooterGeneralLink>
-        <FooterGeneralLink href="helo">PrivacyPlicy</FooterGeneralLink>
-      </FooterDisclaimerGroupDisclaimer>
-    </FooterDisclaimerGroup>
-    <FooterDisclaimerLastUpdate></FooterDisclaimerLastUpdate>
-  </FooterDisclaimer>
-</Footer>;
