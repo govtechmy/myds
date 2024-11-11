@@ -1,30 +1,52 @@
-import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 import { CookieBanner } from "@myds/react/cookie-banner";
 import { useState } from "react";
 import { Button } from "@myds/react/button";
 
-const CookieBannerDemo = (args: React.ComponentProps<typeof CookieBanner>) => {
-  const [open, setOpen] = useState(false);
+/**
+ * ### Overview
+ * This is a cookie banner, your digital gatekeeper for user privacy! It presents cookie preferences in an accessible and
+ * user-friendly interface. Use it to collect and manage user consent for various types of cookies on your website.
+ *
+ * > Laman sesawang penuh privasi,
+ * > Pilihan cookie perlu dijaga,
+ * > Terima semua atau pilih sendiri,
+ * > Keselamatan data terpelihara.
+ * > -- Claude
+ *
+ * ### Usage
+ * ```tsx
+ * import CookieBanner from "@myds/react/cookie-banner";
+ *
+ * const [open, setOpen] = useState(false);
+ *
+ * <CookieBanner
+ *   open={open}
+ *   onOpenChange={setOpen}
+ *   onClose={() => setOpen(false)}
+ * />
+ * ```
+ */
 
-  return (
-    <div className="flex flex-col items-start gap-4">
-      <Button variant="primary-fill" onClick={() => setOpen(true)}>
-        Open Cookie Settings
-      </Button>
-      <CookieBanner
-        {...args}
-        open={open}
-        onOpenChange={setOpen}
-        onClose={() => setOpen(false)}
-      />
-    </div>
-  );
-};
 const meta = {
   title: "@myds/React/CookiesBanner",
-  component: CookieBannerDemo,
+  component: (args: React.ComponentProps<typeof CookieBanner>) => {
+    const [open, setOpen] = useState(false);
+    return (
+      <div className="flex flex-col items-start gap-4">
+        <Button variant="primary-fill" onClick={() => setOpen(true)}>
+          Open Cookie Settings
+        </Button>
+        <CookieBanner
+          {...args}
+          open={open}
+          onOpenChange={setOpen}
+          onClose={() => setOpen(false)}
+        />
+      </div>
+    );
+  },
   parameters: {
     layout: "centered",
   },
@@ -103,29 +125,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * ### Overview
- * This is a cookie banner, your digital gatekeeper for user privacy! It presents cookie preferences in an accessible and
- * user-friendly interface. Use it to collect and manage user consent for various types of cookies on your website.
- *
- * > Laman sesawang penuh privasi,
- * > Pilihan cookie perlu dijaga,
- * > Terima semua atau pilih sendiri,
- * > Keselamatan data terpelihara.
- * > -- Claude
- *
- * ### Usage
- * ```tsx
- * import CookieBanner from "@myds/react/cookie-banner";
- *
- * const [open, setOpen] = useState(false);
- *
- * <CookieBanner
- *   open={open}
- *   onOpenChange={setOpen}
- *   onClose={() => setOpen(false)}
- * />
- * ```
+ * This story represents the implementation of CookieBanner for desktop viewport in light mode.
  */
 
-export const Default: Story = createStory({});
-// export const DesktopDark: Story = createStory({ className: "dark" }, "dark");
+export const DesktopLight: Story = createStory({});
+
+/**
+ * This story represents the implementation of CookieBanner for desktop viewport in dark mode.
+ */
+export const DesktopDark: Story = createStory({ className: "dark" }, "dark");

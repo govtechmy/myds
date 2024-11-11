@@ -34,6 +34,7 @@ interface CookieBannerProps {
   onAcceptAll?: (preferences: PreferencesProps) => void;
   onRejectAll?: (preferences: PreferencesProps) => void;
   onSavePreferences?: (preferences: PreferencesProps) => void;
+  className: string;
 }
 type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
 interface PreferencesProps {
@@ -54,6 +55,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
       open = false,
       title = "Customise Cookie Preferences",
       description = "This website uses cookies to improve user experience. We need your consent to use some of the cookies.",
+      className,
       onOpenChange,
       onClose,
       onAcceptAll,
@@ -103,9 +105,11 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
     };
     return (
       <Dialog open={open} onOpenChange={handleOpenChange}>
-        {/* TODO: check darkmode */}
         <DialogContent
-          className="bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:max-w-[502px] sm:translate-x-0 sm:p-6"
+          className={clx(
+            "bg-bg-white bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:max-w-[502px] sm:translate-x-0 sm:p-6",
+            className,
+          )}
           ref={ref}
         >
           <DialogHeader className="w-full space-y-0 p-0 pb-1">
