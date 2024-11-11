@@ -16,7 +16,7 @@ const config: Config = {
   presets: [
     createPreset({
       preset: preset_fumadocs,
-      layoutWidth: "1300px",
+      layoutWidth: "1318px",
     }),
     preset,
   ],

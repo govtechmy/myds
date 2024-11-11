@@ -33,10 +33,10 @@
 
   /** Need to do this because fumadocs preset is overriding custom breakpoints. For: navbar, footer */
   .max-w-container {
-    @apply !max-w-screen-xl md:!px-0;
+    @apply !max-w-screen-xl xl:!px-0;
   }
   .container {
-    @apply !max-w-screen-xl md:!px-0;
+    @apply !max-w-screen-xl xl:!px-0;
   }
 
   td {
