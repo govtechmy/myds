@@ -38,4 +38,8 @@
   .container {
     @apply !max-w-screen-xl md:!px-0;
   }
+
+  td {
+    @apply !align-middle;
+  }
 }
