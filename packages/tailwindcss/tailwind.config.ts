@@ -257,11 +257,16 @@ const config: PresetsConfig = {
         from: { height: "var(--radix-accordion-content-height)" },
         to: { height: "0" },
       },
+      "caret-blink": {
+        "0%,70%,100%": { opacity: "1" },
+        "20%,50%": { opacity: "0" },
+      },
     },
     animation: {
       expire: "decrease-width 5s linear",
       "slide-down": "slide-down 300ms ease-out",
       "slide-up": "slide-up 300ms ease-out",
+      "caret-blink": "caret-blink 1.25s ease-out infinite",
     },
   },
   plugins: [tailwindcssAnimate],
