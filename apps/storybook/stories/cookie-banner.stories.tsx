@@ -85,6 +85,7 @@ const meta = {
     },
     onOpenChange: {
       action: "onOpenChange",
+      control: { type: undefined }, // to remove setup controls link on hover in the storybook
       description: "Callback when banner visibility changes",
       table: {
         type: { summary: "function" },
@@ -92,6 +93,7 @@ const meta = {
     },
     onClose: {
       action: "onClose",
+      control: { type: undefined }, // to remove setup controls link on hover in the storybook
       description: "Callback when banner is closed",
       table: {
         type: { summary: "function" },
@@ -99,6 +101,7 @@ const meta = {
     },
     onAcceptAll: {
       action: "onAcceptAll",
+      control: { type: undefined }, // to remove setup controls link on hover in the storybook
       description: "Callback when all cookies are accepted",
       table: {
         type: { summary: "function" },
@@ -106,6 +109,7 @@ const meta = {
     },
     onRejectAll: {
       action: "onRejectAll",
+      control: { type: undefined }, // to remove setup controls link on hover in the storybook
       description: "Callback when non-essential cookies are rejected",
       table: {
         type: { summary: "function" },
@@ -113,6 +117,7 @@ const meta = {
     },
     onSavePreferences: {
       action: "onSavePreferences",
+      control: { type: undefined }, // to remove setup controls link on hover in the storybook
       description: "Callback when custom preferences are saved",
       table: {
         type: { summary: "function" },
