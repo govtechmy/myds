@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent, useState } from "react";
+import React, { forwardRef, useState } from "react";
 import { Button, button_cva } from "./button";
 import {
   Dialog,
@@ -8,7 +8,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "./dialog";
 import { Checkbox } from "./checkbox";
 import { CrossIcon } from "../icons";
@@ -17,14 +16,21 @@ import { clx } from "../utils";
 /**
  * Props for CookieBanner component.
  * @typedef CookieBannerProps
- * @property {type} propName - Description of propName
+ * @property {boolean} open - Controls the visibility state of the cookie banner.
+ * @property {string} title - The main heading text displayed at the top of the cookie banner. The template for the title should be in the form of "Cookies on {websiteName}.gov.my".
+ * @property {string} description - The descriptive text explaining the purpose of cookies and data collection to users.
+ * @property {function} onOpenChange - Callback function triggered when the banner's open state changes.
+ * @property {function} onClose - Callback function triggered when the banner is closed.
+ * @property {function} onAcceptAll - Callback function triggered when the user clicks Accept All button without customising the type of cookies to accept.
+ * @property {function} onRejectAll - Callback function triggered when the user clicks Reject All button.
+ * @property {function} onSavePreferences - Callback function triggered when the user clicks Accept All button after customising the type of cookies to accept.
  */
 interface CookieBannerProps {
   open?: boolean;
   title?: string;
   description?: string;
   onOpenChange?: (open: boolean) => void;
-  onClose?: () => {};
+  onClose?: (preferences: PreferencesProps) => void;
   onAcceptAll?: (preferences: PreferencesProps) => void;
   onRejectAll?: (preferences: PreferencesProps) => void;
   onSavePreferences?: (preferences: PreferencesProps) => void;
@@ -45,7 +51,7 @@ interface PreferencesProps {
 const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
   (
     {
-      open = true,
+      open = false,
       title = "Customise Cookie Preferences",
       description = "This website uses cookies to improve user experience. We need your consent to use some of the cookies.",
       onOpenChange,
@@ -66,7 +72,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
     const handleOpenChange = (open: boolean) => {
       onOpenChange?.(open);
       if (!open) {
-        onClose?.();
+        onClose?.(preferences);
         setShowCustomize(false);
       }
     };
@@ -98,12 +104,11 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
     return (
       <Dialog open={open} onOpenChange={handleOpenChange}>
         {/* TODO: check darkmode */}
-        {/* TODO: story */}
         <DialogContent
           className="bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:max-w-[502px] sm:translate-x-0 sm:p-6"
           ref={ref}
         >
-          <DialogHeader className="space-y-0 p-0 pb-1">
+          <DialogHeader className="w-full space-y-0 p-0 pb-1">
             <div className="mb-1 flex flex-row justify-between">
               <DialogTitle className="text-body-md pb-1">{title}</DialogTitle>
               <DialogClose
@@ -113,6 +118,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                   "grid place-content-center",
                   "text-txt-black-900",
                   "disabled:pointer-events-none",
+                  "flex-shrink-0",
                 )}
               >
                 <CrossIcon className="stroke-current" />
