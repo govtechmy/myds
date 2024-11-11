@@ -4,10 +4,7 @@ type FooterContent = PropsWithChildren;
 type FooterContentAgencySection = PropsWithChildren;
 type FooterContentLinkSection = PropsWithChildren;
 type FooterContentLinkSectionTitle = PropsWithChildren;
-type FooterContentLinkSectionContent = {
-  children: React.ReactNode;
-  href: string;
-};
+type FooterContentLinkSectionContent = PropsWithChildren;
 
 const FooterContent: FunctionComponent<FooterContent> = ({ children }) => {
   return (
@@ -36,17 +33,15 @@ const FooterContentLinkSection: FunctionComponent<FooterContentLinkSection> = ({
 const FooterContentLinkSectionTitle: FunctionComponent<
   FooterContentLinkSectionTitle
 > = ({ children }) => {
-  return <p className="font-semibold">{children}</p>;
+  return <p className="text-txt-black-900 font-semibold">{children}</p>;
 };
 
 const FooterContentLinkSectionContent: FunctionComponent<
   FooterContentLinkSectionContent
-> = ({ children, href }) => {
+> = ({ children }) => {
   return (
     <div className="grid grid-cols-2 flex-col gap-y-2 sm:grid-cols-4 sm:gap-x-6 lg:flex lg:w-[200px] lg:gap-2">
-      <a className="" target="_blank" rel="noopenner noreferrer" href={href}>
-        {children}
-      </a>
+      {children}
     </div>
   );
 };
@@ -84,7 +79,7 @@ const FooterAgencyHeader: FunctionComponent<FooterAgencyHeaderProps> = ({
         className="select-none"
       ></img>
       <div>
-        <p className="font-heading whitespace-nowrap font-semibold">
+        <p className="font-heading text-txt-black-900 whitespace-nowrap font-semibold">
           {children}
         </p>
       </div>
@@ -104,7 +99,7 @@ const FooterAgencyMediaLinks: FunctionComponent<FooterAgencyMediaLinks> = ({
 }) => {
   return (
     <div className="space-y-2 lg:space-y-3">
-      <p className="text-sm font-semibold">Follow us</p>
+      <p className="text-txt-black-900 text-sm font-semibold">Follow us</p>
       {children}
     </div>
   );
@@ -115,7 +110,7 @@ const FooterAgencyMediaLinksLogoPath: FunctionComponent<
   FooterAgencyMediaLinksLogoPathProps
 > = ({ icons }) => {
   return (
-    <div className="flex gap-3">
+    <div className="text-txt-black-700 flex gap-3">
       {icons.map((item, index) => (
         <a
           key={index}
@@ -200,23 +195,12 @@ const FooterGeneralLink: FunctionComponent<FooterGeneralLink> = ({
   </a>
 );
 
-<FooterDisclaimer>
-  <FooterDisclaimerGroup>
-    <FooterDisclaimerGroupRights></FooterDisclaimerGroupRights>
-    <FooterDisclaimerGroupDisclaimer>
-      <FooterGeneralLink href="helo">Disclaimer</FooterGeneralLink>
-      <FooterGeneralLink href="helo">PrivacyPlicy</FooterGeneralLink>
-    </FooterDisclaimerGroupDisclaimer>
-  </FooterDisclaimerGroup>
-  <FooterDisclaimerLastUpdate></FooterDisclaimerLastUpdate>
-</FooterDisclaimer>;
-
 type Footer = PropsWithChildren;
 
 // Footer.tsx
 const Footer: FunctionComponent<Footer> = ({ children }) => (
-  <div className="border-otl-gray-200 bg-bg-gray-50 border-t py-8 lg:py-16 print:hidden">
-    <div className="divide-otl-gray-200 container divide-y max-sm:px-0">
+  <div className="border-otl-gray-200 bg-bg-gray-50 border-t print:hidden">
+    <div className="divide-otl-gray-200 bg-bg-gray-50 px-15 container divide-y px-6 py-8 max-sm:px-0 lg:px-[60px] lg:py-16">
       {children}
     </div>
   </div>
@@ -258,8 +242,8 @@ export {
     </FooterContentAgencySection>
     <FooterContentLinkSection>
       <FooterContentLinkSectionTitle>Title</FooterContentLinkSectionTitle>
-      <FooterContentLinkSectionContent href={""}>
-        sample
+      <FooterContentLinkSectionContent>
+        <FooterGeneralLink href={""}>Link1</FooterGeneralLink>
       </FooterContentLinkSectionContent>
     </FooterContentLinkSection>
   </FooterContent>
