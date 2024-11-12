@@ -9,13 +9,13 @@ import { Button } from "@myds/react/button";
  *
  * ### Usage
  * ```tsx
- * import { LoadingSpinner } from "@myds/react/spinner";
+ * import { Spinner } from "@myds/react/spinner";
  *
  * <LoadingSpinner />
  * ```
  */
 const meta = {
-  title: "@myds/react/LoadingSpinner",
+  title: "@myds/react/Spinner",
   component: Spinner,
   tags: ["autodocs"],
   parameters: {
