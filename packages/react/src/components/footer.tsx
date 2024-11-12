@@ -5,6 +5,7 @@ type FooterContentAgencySection = PropsWithChildren;
 type FooterContentLinkSection = PropsWithChildren;
 type FooterContentLinkSectionTitle = PropsWithChildren;
 type FooterContentLinkSectionContent = PropsWithChildren;
+type FooterContentLinkSection2 = PropsWithChildren;
 
 const FooterContent: FunctionComponent<FooterContent> = ({ children }) => {
   return (
@@ -24,10 +25,14 @@ const FooterContentLinkSection: FunctionComponent<FooterContentLinkSection> = ({
   children,
 }) => {
   return (
-    <div className="flex flex-col gap-6 text-sm lg:flex-row">
-      <div className="space-y-2">{children}</div>
-    </div>
+    <div className="flex flex-col gap-6 text-sm lg:flex-row">{children}</div>
   );
+};
+
+const FooterContentLinkSection2: FunctionComponent<
+  FooterContentLinkSection2
+> = ({ children }) => {
+  return <div className="space-y-2">{children}</div>;
 };
 
 const FooterContentLinkSectionTitle: FunctionComponent<
@@ -217,6 +222,7 @@ export {
   FooterAgencyMediaLinks,
   FooterAgencyMediaLinksLogoPath,
   FooterContentLinkSection,
+  FooterContentLinkSection2,
   FooterContentLinkSectionTitle,
   FooterContentLinkSectionContent,
   FooterGeneralLink,
