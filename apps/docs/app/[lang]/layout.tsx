@@ -6,8 +6,8 @@ import { clx } from "@myds/react/utils";
 import en from "@/locales/en";
 import ms from "@/locales/ms";
 import { getRosetta } from "@/locales/_server";
-
 import type { Metadata } from "next";
+import Analytics from "@/components/analytics";
 
 interface MetadataProps {
   params: { lang: "en" | "ms" };
@@ -49,6 +49,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang={params.lang} className={clx("font-body")}>
+      <Analytics />
       <body>
         <FumaI18n
           locale={params.lang}
