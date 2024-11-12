@@ -38,7 +38,7 @@ MYDS mendokong 2 jenis fon: `Poppins` & `Inter`. Kami mengesyorkan anda untuk me
 Kami mentakrifkan setiap warna dalam Bahasa Reka Bentuk MYDS sebagai pembolehubah CSS, yang kemudiannya menjadi bahan binaan untuk membina tema!
 
 ```css
-@import "@myds/tailwindcss/color.css";
+@import "@govtechmy/myds-tailwindcss/color.css";
 ```
 
 ### Tema
@@ -48,10 +48,10 @@ Oleh itu, anda diberi pilihan untuk abai tema yang tidak diperlukan dari projek 
 
 ```css
 /* Import Tema Light */
-@import "@myds/tailwindcss/light.css";
+@import "@govtechmy/myds-tailwindcss/light.css";
 
 /* Import Tema Dark */
-@import "@myds/tailwindcss/dark.css";
+@import "@govtechmy/myds-tailwindcss/dark.css";
 ```
 
 Sila ambil perhatian, anda wajib menyediakan tema mod 'Light' secara lalai.
@@ -70,7 +70,7 @@ Namun, jika anda menggunakan TailwindCSS, MYDS menyediakan pilihan untuk pembang
 Baik! Hanya import CSS berikut dan kita selesai!
 ```css
 /* Import Component CSS */
-@import "@myds/tailwindcss/component.css";
+@import "@govtechmy/myds-tailwindcss/component.css";
 ```
 
   </Accordion>
@@ -80,12 +80,12 @@ Hebat, kita boleh import preset MYDS! Dan kita perlu memastikan TailwindCSS 'sed
 Terapkan ini pada projek anda `tailwind.config.ts`
 
 ```ts title="tailwind.config.ts"
-import { preset } from "@myds/tailwindcss";
+import { preset } from "@govtechmy/myds-tailwindcss";
 
 export default {
   content: [
     "src/**/*.{js,jsx,ts,tsx}",
-    "node_modules/@myds/react/dist/**/*.{js,jsx,ts,tsx}",
+    "node_modules/@govtechmy/myds-react/dist/**/*.{js,jsx,ts,tsx}",
   ],
   presets: [preset],
 };

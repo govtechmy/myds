@@ -37,7 +37,7 @@ MYDS supports 2 typefaces: `Poppins` & `Inter`. We recommend you to import via a
 We define each color in the MYDS Design Language as a CSS variable, which later becomes the building block to build themes!
 
 ```css
-@import "@myds/tailwindcss/color.css";
+@import "@govtechmy/myds-tailwindcss/color.css";
 ```
 
 ### Theme
@@ -47,10 +47,10 @@ So, you can omit importing the unwanted theme from your project!
 
 ```css
 /* Import Light theme */
-@import "@myds/tailwindcss/light.css";
+@import "@govtechmy/myds-tailwindcss/light.css";
 
 /* Import Dark theme */
-@import "@myds/tailwindcss/dark.css";
+@import "@govtechmy/myds-tailwindcss/dark.css";
 ```
 
 Please note, it is required to support the light mode by default.
@@ -69,7 +69,7 @@ If you do use TailwindCSS, MYDS provides the option for developers to extend its
 Got it! Just import the following CSS and we're done!
 ```css
 /* Import Component CSS */
-@import "@myds/tailwindcss/component.css";
+@import "@govtechmy/myds-tailwindcss/component.css";
 ```
 
   </Accordion>
@@ -79,12 +79,12 @@ Awesome, we can import the MYDS presets! Also we need to make sure the TailwindC
   Apply this to your project `tailwind.config.ts`
 
 ```ts title="tailwind.config.ts"
-import { preset } from "@myds/tailwindcss";
+import { preset } from "@govtechmy/myds-tailwindcss";
 
 export default {
   content: [
     "src/**/*.{js,jsx,ts,tsx}",
-    "node_modules/@myds/react/dist/**/*.{js,jsx,ts,tsx}",
+    "node_modules/@govtechmy/myds-react/dist/**/*.{js,jsx,ts,tsx}",
   ],
   presets: [preset],
 };

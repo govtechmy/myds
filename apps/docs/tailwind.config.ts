@@ -13,7 +13,13 @@ const config: Config = {
     // Issue: Styles are not being applied if below line is not added
     "../../packages/react/src/**/*.{ts,tsx}",
   ],
-  presets: [createPreset({ preset: preset_fumadocs }), preset],
+  presets: [
+    createPreset({
+      preset: preset_fumadocs,
+      layoutWidth: "1318px",
+    }),
+    preset,
+  ],
   theme: {
     extend: {
       colors: {

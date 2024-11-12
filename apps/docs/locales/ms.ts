@@ -2,7 +2,7 @@ export default {
   metadata: {
     title: "MYDS - Sistem Reka Bentuk Kerajaan Malaysia",
     description:
-      "Asas reka bentuk untuk membina laman web rasmi kerajaan Malaysia, MYDS menyediakan komponen pra-dibina yang menarik untuk menyederhanakan pembangunan dan memastikan konsistensi.",
+      "Asas reka bentuk untuk membina laman web rasmi kerajaan Malaysia, MYDS menyediakan komponen pra-dibina yang kemas, memudahkan pembangunan dan menyeragamkan reka bentuk.",
     openGraph: {
       url: {
         index: "${baseUrl}/ms-MY",
@@ -23,22 +23,23 @@ export default {
       kd: "Kementerian Digital",
     },
     figma: {
-      explore: "Terokai dalam Figma",
+      explore: "Terokai Figma",
     },
-    contribute: "Menyumbang",
+    contribute: "Bantu tambah baik",
     beta: "Beta",
   },
   Home: {
     title: {
       hero: "Sistem Reka Bentuk Kerajaan Malaysia (MYDS)",
       about: "Apa itu Sistem Reka Bentuk?",
-      feedback: "Bantu peningkatan kami",
+      feedback: "Bantu kami tambah baik",
     },
     description: {
-      hero: "Asas reka bentuk untuk membina laman web rasmi kerajaan Malaysia, MYDS menyediakan komponen pra-dibina yang menarik untuk menyederhanakan pembangunan dan memastikan konsistensi.",
+      hero: "MYDS merupakan sistem reka bentuk untuk membina laman web rasmi kerajaan Malaysia. MYDS menyediakan komponen pra-dibina yang kemas, memudahkan pembangunan aplikasi dan menyeragamkan reka bentuk.",
       about:
         "Satu koleksi terstruktur komponen boleh guna semula yang mematuhi piawaian dan prinsip reka bentuk, menyediakan asas untuk pembangunan produk digital.",
-      feedback: "Sila berikan maklum balas membina kepada",
+      feedback_1: "Sila berikan maklum balas anda kepada ",
+      feedback_2: " atau buka isu di ",
     },
     action: {
       feedback: {

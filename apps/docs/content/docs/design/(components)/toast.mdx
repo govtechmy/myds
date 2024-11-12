@@ -1,0 +1,55 @@
+---
+title: Toast
+description: Non-intrusive notification that appears temporarily on the screen to provide feedback or alert the user of an event.
+---
+
+import { s3 } from "@/lib/constant";
+
+![toast-anatomy@1.5x.png](/design/toast-anatomy1.5x.png)
+
+1. **Leading Icon**: Represents the type of toast (e.g., success, error, info).
+2. **Title**: The primary text that conveys the key message of the toast.
+3. **Description**: Additional text providing further context or details.
+4. **Progress Bar**: A visual indicator that defaults to a 3-second duration before the toast automatically dismisses.
+5. **Optional Close Icon**: A trailing icon that allows users to manually dismiss the toast.
+
+## Type
+
+![toast-type@1.5x.png](/design/toast-type1.5x.png)
+
+1. **Success**: Indicates a successful action, such as creating a new request or submitting a form.
+2. **Warning**: Alerts the user to take notice, often used for reminders or actions that require attention, such as reporting spam.
+3. **Information**: Provides additional details to keep the user informed.
+4. **Error**: Notifies the user of an error that requires resolution before proceeding.
+
+## Close icon state
+
+![toast-close-icon@1.5x.png](/design/toast-close-icon1.5x.png)
+
+1. **Disable state**: When dismissing the Toast, the Close Icon is in disabled state.
+2. **Default state**: During the default 3-second duration before the Toast is automatically dismissed, the Close Icon is enabled, allowing the user to manually dismiss it.
+
+## Toast location
+
+The Toast appears after a user performs an action, indicating whether the outcome is a success, error, warning, or information.
+
+![toast-location@1.5x.png](/design/toast-location1.5x.png)
+
+**Desktop/Tablet**: The Toast is fixed at the bottom right of the screen, with a 24px margin. It has a minimum width of 300px and a maximum width of 600px.
+
+**Mobile**: The Toast is centered at the bottom of the screen, with an 18px margin. It stretches to fit the screen width, with 18px margins on both sides.
+
+## Toast with Progress Bar
+
+![toast-progress-bar@1.5x.png](/design/toast-progress-bar1.5x.png)
+
+1. Upon successful scenario, toast is prompted with progress bar with 200ms ease in and out slide up animation. Loading bar starts and 100% width end at 0% within 3 seconds.
+2. The toast will automatically dismissed with 200ms ease in and out slide down animation after 3 seconds along with the progress bar.
+
+## Demo
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/toast-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

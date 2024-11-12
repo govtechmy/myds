@@ -17,12 +17,12 @@ Simply import the component & use it, like below!
     size="small"
     pantun="Berjalan-jalan ke kota tua, Membeli kuih di pasar pagi. Membuka jalan menuju dunia, 'Button' ditekan dengan jari. -- Copilot"
   >
-    <span className="text-txt-white">Jana Pantun</span>
+    <span className="text-white">Jana Pantun</span>
   </PreviewButton>
 </Preview>
 
 ```tsx title="Basic Button"
-import { Button } from "@myds/react/button";
+import { Button } from "@govtechmy/myds-react/button";
 
 <Button variant="primary-fill" size="small" onClick={...}>
   Jana Pantun
@@ -46,8 +46,8 @@ At the same time, this technique also allows for achieving the opposite extreme 
 </Preview>
 
 ```tsx title="Anchor masked as Button"
-import { Button } from "@myds/react/button";
-import { Link } from "@myds/react/link";
+import { Button } from "@govtechmy/myds-react/button";
+import { Link } from "@govtechmy/myds-react/link";
 
 <Button variant="primary-ghost" size="small" asChild>
   <Link href="#composition">
@@ -64,7 +64,7 @@ import { Link } from "@myds/react/link";
     size="small"
     pantun="Berjalan-jalan ke kota tua, Membeli kuih di pasar pagi. Membuka jalan menuju dunia, 'Button' ditekan dengan jari. -- Copilot"
   >
-    <span className="text-txt-white">Jana Pantun</span>
+    <span className="text-white">Jana Pantun</span>
     <ButtonIcon>
       <ArrowForward />
     </ButtonIcon>
@@ -72,8 +72,8 @@ import { Link } from "@myds/react/link";
 </Preview>
 
 ```tsx title="Button with Overidden Icon Props"
-import { Button, ButtonIcon } from "@myds/react/button";
-import { ArrowForwardIcon } from "@myds/react/icon";
+import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
+import { ArrowForwardIcon } from "@govtechmy/myds-react/icon";
 
 <Button variant="primary-fill" size="small" onClick={...}>
   Jana Pantun

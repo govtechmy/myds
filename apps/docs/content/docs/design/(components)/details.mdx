@@ -1,0 +1,30 @@
+---
+title: Details
+description: Provides additional information or explanations that users can reveal by expanding the section. It is used in forms, modals, pages, or articles to display more details without cluttering the interface.
+---
+
+import { s3 } from "@/lib/constant";
+
+![details-anatomy@1.5x.png](/design/details-anatomy1.5x.png)
+
+1. Header text.
+2. Body text.
+3. Chevron right opaque default at rotation: 0 deg
+4. Chevron right opaque rotation: 90 deg
+
+## State
+
+![details-state@1.5x.png](/design/details-state1.5x.png)
+
+1. **Click trigger area** (Header)
+2. **Hover state**: Underline the Header text
+3. **Closed state** (Default): Hide Body text (Opacity:0%)
+4. **Opened state**: Click on trigger area (Head) to open accordion showing Body text.
+
+## Demo
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/details-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

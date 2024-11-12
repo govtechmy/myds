@@ -1,0 +1,165 @@
+---
+title: Text input
+description: A fundamental element that allows user to enter and modify data
+---
+
+## Text input
+
+### Type
+
+![text-input-type@1.5x.png](/design/text-input-type1.5x.png)
+
+1. Text field. (emails, name, password).
+2. Number field with leading dropdown. (phone number).
+3. Text field with leading uneditable text. (URL).
+4. Text field with trailing button. (Copy text).
+5. Tags field. (category, topic, type, filter).
+
+### Size
+
+Each size is designed to cater to different form needs, ensuring optimal readability and user experience.
+
+![text-input-size@1.5x.png](/design/text-input-size1.5x.png)
+
+### State
+
+Text fields can exist in several states, each providing visual cues to the user about its current status and interaction possibilities.
+
+![text-input-state@1.5x.png](/design/text-input-state1.5x.png)
+
+1. **Default**: The initial state of the textfield when it is ready for user input but not currently interacted with.
+2. **Filled**: Occurs when a user has entered data into the textfield, indicating that the field contains input.
+3. **Focused**: The user clicks on or tabs into the textfield, indicating that it is active and ready to receive input.
+4. **Disabled**: The textfield is not available for user interaction, either due to current context or user permissions.
+
+### Error state
+
+Error state is triggered when the user clicks on or tabs into a textfield that has an existing error condition.
+
+![text-input-error@1.5x.png](/design/text-input-error1.5x.png)
+
+1. The textfield has a red border or shadow to indicate an error.
+2. Textfield with error remains highlighted when focused.
+3. Only the field with editable text will have its border highlighted, not the fixed text. Textfield remains highlighted when focused.
+
+### Leading & Trailing icon
+
+![text-input-leading-trailing-icon@1.5x.png](/design/text-input-leading-trailing-icon1.5x.png)
+
+1. **Leading icon**: Placed on the left side, before the input text. It helps users quickly understand the type of input expected or the context of the field. (eg: Email).
+2. **Trailing icon**: Placed on the right side, after the input text. It often serves as an actionable button, providing additional functionality related to the input.
+   - Clear - cross icon
+   - Password visibility - eye icon
+   - Question mark - tooltip icon
+
+## Text input group
+
+Input groups are sets of related form elements, including a textfield, hint message, and field label, that work together to guide users and improve data entry.
+
+### Type
+
+![text-input-group-type@1.5x.png](/design/text-input-group-type1.5x.png)
+
+1. **Field label**: Provides a clear, concise description of the input's purpose.
+2. **Input field**: The primary area where users enter their data. It can be a textfield for single-line input or a textarea for multi-line input.
+3. Hint text provides additional guidance or feedback.
+   - **Helper**: Offers instructions or examples to assist users in entering the correct data.
+   - **Error**: Displays error messages when the input does not meet validation criteria, helping users correct their entries.
+
+### Size
+
+Each size is designed to cater to different form needs, ensuring optimal readability and user experience.
+
+![text-input-group-size@1.5x.png](/design/text-input-group-size1.5x.png)
+
+### State
+
+Textfields can exist in several states, each providing visual cues to the user about its current status and interaction possibilities.
+
+![text-input-group-state@1.5x.png](/design/text-input-group-state1.5x.png)
+
+1. **Default**: The initial state of the textfield when it is ready for user input but not currently interacted with.
+2. **Filled**: Occurs when a user has entered data into the textfield, indicating that the field contains input.
+3. **Focused**: The user clicks on or tabs into the textfield, indicating that it is active and ready to receive input.
+4. **Disabled**: The textfield is not available for user interaction, either due to current context or user permissions.
+5. **Error**: Error state is triggered when the user clicks on or tabs into a textfield that has an existing error condition.
+
+### Hint text
+
+![text-input-group-hint-text@1.5x.png](/design/text-input-group-hint-text1.5x.png)
+
+1. **Default** hint text
+2. **Error** hint text
+
+### Hint order
+
+![text-input-group-hint-order@1.5x.png](/design/text-input-group-hint-order1.5x.png)
+
+1. Hint text ABOVE textfield
+2. Hint text BELOW textfield
+
+---
+
+## WYSIWYG editor
+
+A WYSIWYG (What You See Is What You Get) editor component is a type of web-based tool that allows users to create and edit content in a visual manner, similar to how it will appear in its final form.
+
+### Responsive view
+
+#### Desktop
+
+Show all style icons.
+
+![WYSIWYG-editor-desktop@1.5x.png](/design/WYSIWYG-editor-desktop1.5x.png)
+
+#### Mobile
+
+By default show basic styling such as Text size, Bold, Italic, Underline and Strike through by default. Hide ordered list, bullet list, links, undo and redo.
+
+![WYSIWYG-editor-mobile@1.5x.png](/design/WYSIWYG-editor-mobile1.5x.png)
+
+1. “More” menu to toggle hidden icons.
+2. Show hidden icons after tap on “More” menu.
+3. Tap on “More” menu again to hide.
+4. Text style scrollable dropdown options:
+   - **Paragraph** - Regular 15/27
+   - **Heading 1** - Semi Bold 30/38
+   - **Heading 2** - Semi Bold 24/32
+   - **Heading 3** - Semi Bold 20/30
+   - **Heading 4** - Semi Bold 18/26
+   - **Heading 5** - Semi Bold 16/24
+   - **Heading 6** - Semi Bold 14/20
+
+### Button type
+
+![WYSIWYG-editor-button-state@1.5x.png](/design/WYSIWYG-editor-button-state1.5x.png)
+
+1. Refer Select button state.
+2. **Default**: The initial state of the icon when it is ready for user to click on but not currently interacted with.
+3. **Hover/Active**: Occurs when a user has hover over the icon, indicating that the icon can be clicked or selected.
+4. **Focused**: The user clicks on or tabs into the icon, indicating that it is active and ready for user interaction.
+5. **Disabled**: The icon is not available for user interaction, either due to current context or user permissions.
+
+### Usage example
+
+#### Add inline link usage
+
+![WYSIWYG-editor-inline-link-usage@1.5x.png](/design/WYSIWYG-editor-inline-link-usage1.5x.png)
+
+1. Highlight text in richtext editor.
+2. Click on “Link” icon in editor bar.
+3. Pop-up appear relative to highlighted text location with text input to enter URL.
+4. Click “Check” icon to add link to highlighted text.
+5. Click “Cancel” icon to cancel action and close the pop-up.
+6. Pop-up tail position at horizontal center of the highlighted text.
+7. Button hover state
+8. Change text to blue underlined.
+
+#### Edit inline link usage
+
+![WYSIWYG-editor-edit-inline-link-usage@1.5x.png](/design/WYSIWYG-editor-edit-inline-link-usage1.5x.png)
+
+1. Click on blue underlined link in rich editor.
+2. Pop-up appear relative to highlighted text location. Display link previously added. Link text max-width=300px.
+3. Click “Edit” icon to edit the link to switch to edit mode. (Same UI as “Add inline link”).
+4. Click “Unlink” icon to remove link to the text. Also reset text style (1).
