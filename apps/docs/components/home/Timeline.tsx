@@ -168,7 +168,7 @@ export function ItemList(props: {
                 item.type === "highlight"
                   ? "bg-bg-white-hover"
                   : item.type === "launched"
-                    ? "bg-success-50"
+                    ? "bg-bg-success-50"
                     : item.type === "development"
                       ? "bg-bg-primary-50"
                       : "",
