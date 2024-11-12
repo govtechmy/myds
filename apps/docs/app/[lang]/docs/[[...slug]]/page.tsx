@@ -9,6 +9,7 @@ import {
 import { notFound } from "next/navigation";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import { Heading } from "fumadocs-ui/components/heading";
+import Image from "next/image";
 
 interface PageParams {
   params: { slug?: string[]; lang: string };
@@ -48,6 +49,19 @@ export default async function Page({ params }: PageParams) {
             h6: (props) => (
               <Heading as="h6" {...props} className="font-body font-semibold" />
             ),
+            img: (props: any) => {
+              const [light, dark] = [
+                props.src,
+                props.src.replace(/(\.[\w\d_-]+)$/i, "-dark$1"),
+              ];
+
+              return (
+                <>
+                  <Image {...props} src={light} className="img-light" />
+                  <Image {...props} src={dark || light} className="img-dark" />
+                </>
+              );
+            },
           }}
         />
       </DocsBody>
