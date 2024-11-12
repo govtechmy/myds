@@ -1,15 +1,52 @@
 import { FunctionComponent, PropsWithChildren } from "react";
+import { clx } from "../utils";
 
-type FooterContent = PropsWithChildren;
-type FooterContentAgencySection = PropsWithChildren;
-type FooterContentLinkSection = PropsWithChildren;
-type FooterContentLinkSectionTitle = PropsWithChildren;
-type FooterContentLinkSectionContent = PropsWithChildren;
-type FooterContentLinkSection2 = PropsWithChildren;
+type WithClassName = { className?: string };
+type FooterContent = PropsWithChildren<WithClassName>;
+type FooterContentAgencySection = PropsWithChildren<WithClassName>;
+type FooterContentLinkSection = PropsWithChildren<WithClassName>;
+type FooterContentLinkSectionTitle = PropsWithChildren<WithClassName>;
+type FooterContentLinkSectionContent = PropsWithChildren<WithClassName>;
+type FooterContentLinkSectionWrapper = PropsWithChildren<WithClassName>;
+type FooterAgencyHeaderProps = {
+  imageSrc: string;
+  imageAlt: string;
+  children: React.ReactNode;
+  className?: string;
+};
+type FooterAgencyMediaLinksLogoPathProps = {
+  children?: React.ReactNode;
+  className?: string;
+  icons: {
+    href: string;
+    icon: React.ReactNode;
+  }[];
+};
+type FooterAgencyAddressProps = PropsWithChildren<WithClassName>;
+type FooterAgencyMediaLinks = PropsWithChildren<WithClassName>;
+type FooterDisclaimer = PropsWithChildren<WithClassName>;
+type FooterDisclaimerGroup = PropsWithChildren<WithClassName>;
+type FooterDisclaimerGroupRights = PropsWithChildren<WithClassName>;
+type FooterDisclaimerGroupDisclaimer = PropsWithChildren<WithClassName>;
+type FooterDisclaimerLastUpdate = PropsWithChildren<WithClassName>;
+type FooterGeneralLink = {
+  children: React.ReactNode;
+  href: string;
+  className?: string;
+};
+type Footer = PropsWithChildren<WithClassName>;
 
-const FooterContent: FunctionComponent<FooterContent> = ({ children }) => {
+const FooterContent: FunctionComponent<FooterContent> = ({
+  children,
+  className,
+}) => {
   return (
-    <div className="max-sm:px-4.5 flex flex-col gap-6 pb-8 lg:flex-row lg:justify-between">
+    <div
+      className={clx(
+        "max-sm:px-4.5 flex flex-col gap-6 pb-8 lg:flex-row lg:justify-between",
+        className,
+      )}
+    >
       {children}
     </div>
   );
@@ -17,72 +54,71 @@ const FooterContent: FunctionComponent<FooterContent> = ({ children }) => {
 
 const FooterContentAgencySection: FunctionComponent<
   FooterContentAgencySection
-> = ({ children }) => {
-  return <div className="lg:gap-4.5 flex flex-col gap-4">{children}</div>;
-};
-
-const FooterContentLinkSection: FunctionComponent<FooterContentLinkSection> = ({
-  children,
-}) => {
+> = ({ children, className }) => {
   return (
-    <div className="flex flex-col gap-6 text-sm lg:flex-row">{children}</div>
-  );
-};
-
-const FooterContentLinkSection2: FunctionComponent<
-  FooterContentLinkSection2
-> = ({ children }) => {
-  return <div className="space-y-2">{children}</div>;
-};
-
-const FooterContentLinkSectionTitle: FunctionComponent<
-  FooterContentLinkSectionTitle
-> = ({ children }) => {
-  return <p className="text-txt-black-900 font-semibold">{children}</p>;
-};
-
-const FooterContentLinkSectionContent: FunctionComponent<
-  FooterContentLinkSectionContent
-> = ({ children }) => {
-  return (
-    <div className="grid grid-cols-2 flex-col gap-y-2 sm:grid-cols-4 sm:gap-x-6 lg:flex lg:w-[200px] lg:gap-2">
+    <div className={clx("lg:gap-4.5 flex flex-col gap-4", className)}>
       {children}
     </div>
   );
 };
 
-type FooterAgencyHeaderProps = {
-  imageSrc: string;
-  imageAlt: string;
-  children: React.ReactNode;
+const FooterContentLinkSection: FunctionComponent<FooterContentLinkSection> = ({
+  children,
+  className,
+}) => {
+  return (
+    <div className={clx("flex flex-col gap-6 text-sm lg:flex-row", className)}>
+      {children}
+    </div>
+  );
 };
 
-type FooterAgencyMediaLinksLogoPathProps = {
-  children?: React.ReactNode;
-  icons: {
-    href: string;
-    icon: React.ReactNode;
-  }[];
+const FooterContentLinkSectionWrapper: FunctionComponent<
+  FooterContentLinkSectionWrapper
+> = ({ children, className }) => {
+  return <div className={clx("space-y-2", className)}>{children}</div>;
 };
 
-type FooterAgencyAddressProps = PropsWithChildren;
-type FooterAgencyMediaLinks = PropsWithChildren;
+const FooterContentLinkSectionTitle: FunctionComponent<
+  FooterContentLinkSectionTitle
+> = ({ children, className }) => {
+  return (
+    <p className={clx("text-txt-black-900 font-semibold", className)}>
+      {children}
+    </p>
+  );
+};
 
-// FooterAgencyHeader
+const FooterContentLinkSectionContent: FunctionComponent<
+  FooterContentLinkSectionContent
+> = ({ children, className }) => {
+  return (
+    <div
+      className={clx(
+        "grid grid-cols-2 flex-col gap-y-2 sm:grid-cols-4 sm:gap-x-6 lg:flex lg:w-[200px] lg:gap-2",
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
+};
+
 const FooterAgencyHeader: FunctionComponent<FooterAgencyHeaderProps> = ({
   imageSrc,
   imageAlt,
   children,
+  className,
 }) => {
   return (
-    <div className="flex items-center gap-x-2.5">
+    <div className={clx("flex items-center gap-x-2.5", className)}>
       <img
         src={imageSrc}
         width={28}
         height={28}
         alt={imageAlt}
         className="select-none"
-      ></img>
+      />
       <div>
         <p className="font-heading text-txt-black-900 whitespace-nowrap font-semibold">
           {children}
@@ -92,30 +128,32 @@ const FooterAgencyHeader: FunctionComponent<FooterAgencyHeaderProps> = ({
   );
 };
 
-// FooterAgencyAddress.tsx
 const FooterAgencyAddress: FunctionComponent<FooterAgencyAddressProps> = ({
   children,
-}) => <p className="text-txt-black-700 whitespace-pre text-sm">{children}</p>;
-//use whitespace-pre so they can display as typed.
+  className,
+}) => (
+  <p className={clx("text-txt-black-700 whitespace-pre text-sm", className)}>
+    {children}
+  </p>
+);
 
-// FooterAgencyMediaLinks.tsx
 const FooterAgencyMediaLinks: FunctionComponent<FooterAgencyMediaLinks> = ({
   children,
+  className,
 }) => {
   return (
-    <div className="space-y-2 lg:space-y-3">
+    <div className={clx("space-y-2 lg:space-y-3", className)}>
       <p className="text-txt-black-900 text-sm font-semibold">Follow us</p>
       {children}
     </div>
   );
 };
 
-// FooterAgencyMediaLinksLogoPath
 const FooterAgencyMediaLinksLogoPath: FunctionComponent<
   FooterAgencyMediaLinksLogoPathProps
-> = ({ icons }) => {
+> = ({ icons, className }) => {
   return (
-    <div className="text-txt-black-700 flex gap-3">
+    <div className={clx("text-txt-black-700 flex gap-3", className)}>
       {icons.map((item, index) => (
         <a
           key={index}
@@ -123,7 +161,6 @@ const FooterAgencyMediaLinksLogoPath: FunctionComponent<
           target="_blank"
           rel="noopener noreferrer"
           className=""
-          //check for hover animation
         >
           {item.icon}
         </a>
@@ -132,67 +169,75 @@ const FooterAgencyMediaLinksLogoPath: FunctionComponent<
   );
 };
 
-type FooterDisclaimer = PropsWithChildren;
-type FooterDisclaimerGroup = PropsWithChildren;
-type FooterDisclaimerGroupRights = PropsWithChildren;
-type FooterDisclaimerGroupDisclaimer = PropsWithChildren;
-type FooterDisclaimerLastUpdate = PropsWithChildren;
-type FooterGeneralLink = {
-  children: React.ReactNode;
-  href: string;
-};
-
-// FooterDisclaimer.tsx
 const FooterDisclaimer: FunctionComponent<FooterDisclaimer> = ({
   children,
+  className,
 }) => (
-  <div className="text-txt-black-500 max-sm:px-4.5 flex flex-col justify-between gap-6 pt-8 text-sm lg:flex-row">
+  <div
+    className={clx(
+      "text-txt-black-500 max-sm:px-4.5 flex flex-col justify-between gap-6 pt-8 text-sm lg:flex-row",
+      className,
+    )}
+  >
     {children}
   </div>
 );
 
-// FooterDisclaimerGroup.tsx
 const FooterDisclaimerGroup: FunctionComponent<FooterDisclaimerGroup> = ({
   children,
+  className,
 }) => (
-  <div className="flex flex-col gap-2 lg:flex-row lg:items-center">
+  <div
+    className={clx(
+      "flex flex-col gap-2 lg:flex-row lg:items-center",
+      className,
+    )}
+  >
     {children}
   </div>
 );
 
-// FooterDisclaimerGroupRights.tsx
 const FooterDisclaimerGroupRights: FunctionComponent<
   FooterDisclaimerGroupRights
-> = ({ children }) => (
+> = ({ children, className }) => (
   <>
-    <p>{children}</p>
+    <p className={className}>{children}</p>
     <span className="bg-otl-divider hidden h-3 w-px lg:block"></span>
   </>
 );
 
 const FooterDisclaimerGroupDisclaimer: FunctionComponent<
   FooterDisclaimerGroupDisclaimer
-> = ({ children }) => (
-  <div className="text-txt-black-700 flex flex-wrap gap-x-3 gap-y-2">
+> = ({ children, className }) => (
+  <div
+    className={clx(
+      "text-txt-black-700 flex flex-wrap gap-x-3 gap-y-2",
+      className,
+    )}
+  >
     {children}
   </div>
 );
 
-//FooterDicalimerLastUpdate.tsx
 const FooterDisclaimerLastUpdate: FunctionComponent<
   FooterDisclaimerLastUpdate
-> = ({ children }) => (
-  <time dateTime={new Date().toISOString()}>{children}</time>
+> = ({ children, className }) => (
+  <time className={className} dateTime={new Date().toISOString()}>
+    {children}
+  </time>
 );
 
-//FooterGeneralLink.tsx
 const FooterGeneralLink: FunctionComponent<FooterGeneralLink> = ({
   children,
   href,
+  className,
 }) => (
   <a
     href={href}
-    className="text-txt-black-700 hover:text-txt-black-900 text-sm hover:underline hover:underline-offset-auto"
+    className={clx(
+      "text-txt-black-700 hover:text-txt-black-900 text-sm hover:underline hover:underline-offset-auto",
+      className,
+    )}
     target="_blank"
     rel="noopener noreferrer"
   >
@@ -200,18 +245,18 @@ const FooterGeneralLink: FunctionComponent<FooterGeneralLink> = ({
   </a>
 );
 
-type Footer = PropsWithChildren;
-
-// Footer.tsx
-const Footer: FunctionComponent<Footer> = ({ children }) => (
-  <div className="border-otl-gray-200 bg-bg-gray-50 border-t print:hidden">
-    <div className="divide-otl-gray-200 bg-bg-gray-50 px-15 container divide-y px-6 py-8 max-sm:px-0 lg:px-[60px] lg:py-16">
+const Footer: FunctionComponent<Footer> = ({ children, className }) => (
+  <div
+    className={clx(
+      "border-otl-gray-200 bg-bg-gray-50 border-t print:hidden",
+      className,
+    )}
+  >
+    <div className="divide-otl-gray-200 bg-bg-gray-50 container mx-auto divide-y px-6 py-8 max-sm:px-0 lg:px-[60px] lg:py-16">
       {children}
     </div>
   </div>
 );
-
-// Exports
 
 export {
   Footer,
@@ -222,7 +267,7 @@ export {
   FooterAgencyMediaLinks,
   FooterAgencyMediaLinksLogoPath,
   FooterContentLinkSection,
-  FooterContentLinkSection2,
+  FooterContentLinkSectionWrapper,
   FooterContentLinkSectionTitle,
   FooterContentLinkSectionContent,
   FooterGeneralLink,

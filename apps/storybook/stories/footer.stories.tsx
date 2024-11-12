@@ -17,7 +17,7 @@ import {
   FooterDisclaimerGroupRights,
   FooterDisclaimerGroupDisclaimer,
   FooterDisclaimerLastUpdate,
-  FooterContentLinkSection2,
+  FooterContentLinkSectionWrapper,
 } from "@myds/react/footer";
 import { FacebookIcon } from "../../../packages/react/src/icons/facebook";
 import { InstagramIcon } from "../../../packages/react/src/icons/instagram";
@@ -58,7 +58,7 @@ const meta = {
   component: Footer,
   tags: ["autodocs"],
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   argTypes: {
     children: {
@@ -111,7 +111,7 @@ export const Default: Story = {
           </FooterContentAgencySection>
 
           <FooterContentLinkSection>
-            <FooterContentLinkSection2>
+            <FooterContentLinkSectionWrapper>
               <FooterContentLinkSectionTitle>
                 Title 1
               </FooterContentLinkSectionTitle>
@@ -121,8 +121,8 @@ export const Default: Story = {
                 <FooterGeneralLink href="">Link 3</FooterGeneralLink>
                 <FooterGeneralLink href="">Link 4</FooterGeneralLink>
               </FooterContentLinkSectionContent>
-            </FooterContentLinkSection2>
-            <FooterContentLinkSection2>
+            </FooterContentLinkSectionWrapper>
+            <FooterContentLinkSectionWrapper>
               <FooterContentLinkSectionTitle>
                 Title 2
               </FooterContentLinkSectionTitle>
@@ -132,9 +132,9 @@ export const Default: Story = {
                 <FooterGeneralLink href="">Link 3</FooterGeneralLink>
                 <FooterGeneralLink href="">Link 4</FooterGeneralLink>
               </FooterContentLinkSectionContent>
-            </FooterContentLinkSection2>
+            </FooterContentLinkSectionWrapper>
 
-            <FooterContentLinkSection2>
+            <FooterContentLinkSectionWrapper>
               <FooterContentLinkSectionTitle>
                 Open Source
               </FooterContentLinkSectionTitle>
@@ -142,7 +142,7 @@ export const Default: Story = {
                 <FooterGeneralLink href="">Github Repo</FooterGeneralLink>
                 <FooterGeneralLink href="">Figma</FooterGeneralLink>
               </FooterContentLinkSectionContent>
-            </FooterContentLinkSection2>
+            </FooterContentLinkSectionWrapper>
           </FooterContentLinkSection>
         </FooterContent>
 
@@ -213,7 +213,7 @@ export const Custom: Story = {
           </FooterContentAgencySection>
 
           <FooterContentLinkSection>
-            <FooterContentLinkSection2>
+            <FooterContentLinkSectionWrapper>
               <FooterContentLinkSectionTitle>
                 About Us
               </FooterContentLinkSectionTitle>
@@ -227,8 +227,8 @@ export const Custom: Story = {
                 <FooterGeneralLink href="">Media</FooterGeneralLink>
                 <FooterGeneralLink href="">Contact Us</FooterGeneralLink>
               </FooterContentLinkSectionContent>
-            </FooterContentLinkSection2>
-            <FooterContentLinkSection2>
+            </FooterContentLinkSectionWrapper>
+            <FooterContentLinkSectionWrapper>
               <FooterContentLinkSectionTitle>
                 Quick Links
               </FooterContentLinkSectionTitle>
@@ -241,8 +241,8 @@ export const Custom: Story = {
                 <FooterGeneralLink href="">HRMIS</FooterGeneralLink>
                 <FooterGeneralLink href="">ePerolehan</FooterGeneralLink>
               </FooterContentLinkSectionContent>
-            </FooterContentLinkSection2>
-            <FooterContentLinkSection2>
+            </FooterContentLinkSectionWrapper>
+            <FooterContentLinkSectionWrapper>
               <FooterContentLinkSectionTitle>
                 Open Source
               </FooterContentLinkSectionTitle>
@@ -250,7 +250,7 @@ export const Custom: Story = {
                 <FooterGeneralLink href="">Github Repo</FooterGeneralLink>
                 <FooterGeneralLink href="">Figma</FooterGeneralLink>
               </FooterContentLinkSectionContent>
-            </FooterContentLinkSection2>
+            </FooterContentLinkSectionWrapper>
           </FooterContentLinkSection>
         </FooterContent>
 
@@ -321,7 +321,7 @@ export const CustomDark: Story = {
               </FooterAgencyMediaLinks>
             </FooterContentAgencySection>
             <FooterContentLinkSection>
-              <FooterContentLinkSection2>
+              <FooterContentLinkSectionWrapper>
                 <FooterContentLinkSectionTitle>
                   About Us
                 </FooterContentLinkSectionTitle>
@@ -335,8 +335,8 @@ export const CustomDark: Story = {
                   <FooterGeneralLink href="">Media</FooterGeneralLink>
                   <FooterGeneralLink href="">Contact Us</FooterGeneralLink>
                 </FooterContentLinkSectionContent>
-              </FooterContentLinkSection2>
-              <FooterContentLinkSection2>
+              </FooterContentLinkSectionWrapper>
+              <FooterContentLinkSectionWrapper>
                 <FooterContentLinkSectionTitle>
                   Quick Links
                 </FooterContentLinkSectionTitle>
@@ -349,8 +349,8 @@ export const CustomDark: Story = {
                   <FooterGeneralLink href="">HRMIS</FooterGeneralLink>
                   <FooterGeneralLink href="">ePerolehan</FooterGeneralLink>
                 </FooterContentLinkSectionContent>
-              </FooterContentLinkSection2>
-              <FooterContentLinkSection2>
+              </FooterContentLinkSectionWrapper>
+              <FooterContentLinkSectionWrapper>
                 <FooterContentLinkSectionTitle>
                   Open Source
                 </FooterContentLinkSectionTitle>
@@ -358,7 +358,7 @@ export const CustomDark: Story = {
                   <FooterGeneralLink href="">Github Repo</FooterGeneralLink>
                   <FooterGeneralLink href="">Figma</FooterGeneralLink>
                 </FooterContentLinkSectionContent>
-              </FooterContentLinkSection2>
+              </FooterContentLinkSectionWrapper>
             </FooterContentLinkSection>
           </FooterContent>
 
