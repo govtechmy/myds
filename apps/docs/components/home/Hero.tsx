@@ -62,9 +62,7 @@ const Hero: FunctionComponent = () => {
         </div>
       </div>
 
-      <picture className="col-span-full mt-[3rem] overflow-hidden border-t object-cover lg:col-span-6 lg:col-start-7 lg:mt-0 lg:border-l lg:border-t-0 lg:pr-0">
-        <source srcSet="/assets/hero/image.webp" type="image/webp" />
-        <source srcSet="/assets/hero/image.svg" type="image/svg+xml" />
+      <picture className="border-otl-divider col-span-full mt-[3rem] overflow-hidden border-t object-cover lg:col-span-6 lg:col-start-7 lg:mt-0 lg:border-l lg:border-t-0 lg:pr-0">
         <div className="w-full overflow-hidden">
           <Image
             src="/common/hero.svg"

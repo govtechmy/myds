@@ -45,7 +45,7 @@ export default async function HomePage({
 
   return (
     <>
-      <main className="border-otl-divider divide-otl-gray-200 flex min-h-screen flex-col divide-y">
+      <main className="xl:border-otl-divider divide-otl-divider flex min-h-screen flex-col divide-y">
         <Hero />
         <About lang={params.lang} />
         {previewItems.map((item, i) => (

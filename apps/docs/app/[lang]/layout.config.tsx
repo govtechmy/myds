@@ -26,7 +26,7 @@ interface Option {
   props?: HTMLAttributes<HTMLElement>;
 }
 
-type MyDSConfig = {
+export type MyDSConfig = {
   config: HomeLayoutProps;
   menu: Array<Option>;
 };

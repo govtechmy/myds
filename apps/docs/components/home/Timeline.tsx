@@ -63,7 +63,7 @@ export default function Timeline(props: Props) {
 
   return (
     <div className="w-full">
-      <div className="border-otl-gray-200 mx-auto grid max-w-screen-xl grid-cols-2 border-x lg:grid-cols-12 lg:gap-y-[3.25rem]">
+      <div className="border-otl-divider mx-auto grid max-w-screen-xl grid-cols-2 border-x lg:grid-cols-12 lg:gap-y-[3.25rem]">
         <div
           className={clx(
             "col-span-full gap-y-[1.125rem] space-y-[18px] px-[1.125rem] pt-[3rem]",
