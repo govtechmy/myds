@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { createContext, forwardRef, useContext, useState } from "react";
 import { Button, button_cva } from "./button";
 import {
   Dialog,
@@ -27,21 +27,10 @@ import { clx } from "../utils";
  */
 interface CookieBannerProps {
   open?: boolean;
-  title?: string;
-  description?: string;
-  onOpenChange?: (open: boolean) => void;
-  onClose?: (preferences: PreferencesProps) => void;
-  onAcceptAll?: (preferences: PreferencesProps) => void;
-  onRejectAll?: (preferences: PreferencesProps) => void;
-  onSavePreferences?: (preferences: PreferencesProps) => void;
-  className: string;
+  className?: string;
+  children?: React.ReactNode;
 }
 type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
-interface PreferencesProps {
-  necessary: boolean;
-  analytics: boolean;
-  performance: boolean;
-}
 
 /**
  * CookieBanner component description.
@@ -49,70 +38,84 @@ interface PreferencesProps {
  * @example
  * <CookieBanner propName="value" />
  */
+
+{
+  /* Refactoring
+1. Dialog, DialogContent jadi CookieBanner.root 
+2. DialogHeader jadi CookieBanner.header
+3. DialogTitle jadi Cookiebanner.title
+4. DialogClose jadi Cookiebanner.close? or just remains as it is?
+5. Create a new component Cookiebanner.preferences to wrap the preferences + context -> need to see how the children of preferences can manipulate the context
+6. DialogFooter jadi Cookiebanner.footer
+7. Create a new component Cookiebanner.customiser to wrap buttons that will change the state of preferences showing
+8. Double check with Irfan if function handler should be passed in as props or not
+*/
+}
+
+interface CookieBannerContextValue {
+  showPreferences: boolean;
+  setShowPreferences: (show: boolean) => void;
+}
+
+const CookieBannerContext = createContext<CookieBannerContextValue | undefined>(
+  undefined,
+);
+
+interface CookieBannerPreferencesProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
 const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
-  (
-    {
-      open = false,
-      title = "Customise Cookie Preferences",
-      description = "This website uses cookies to improve user experience. We need your consent to use some of the cookies.",
-      className,
-      onOpenChange,
-      onClose,
-      onAcceptAll,
-      onRejectAll,
-      onSavePreferences,
-    },
-    ref,
-  ) => {
-    const [showCustomize, setShowCustomize] = useState(false);
-    const [preferences, setPreferences] = useState({
-      necessary: true,
-      analytics: true,
-      performance: true,
-    });
-
-    const handleOpenChange = (open: boolean) => {
-      onOpenChange?.(open);
-      if (!open) {
-        onClose?.(preferences);
-        setShowCustomize(false);
-      }
-    };
-
-    const handleAcceptAll = () => {
-      const preferences = {
-        necessary: true,
-        analytics: true,
-        performance: true,
-      };
-      onAcceptAll?.(preferences);
-      handleOpenChange(false);
-    };
-
-    const handleRejectAll = () => {
-      const preferences = {
-        necessary: true,
-        analytics: false,
-        performance: false,
-      };
-      onRejectAll?.(preferences);
-      handleOpenChange(false);
-    };
-
-    const handleSavePreferences = () => {
-      onSavePreferences?.(preferences);
-      handleOpenChange(false);
-    };
+  ({ open = false, className, children }, ref) => {
+    const [showPreferences, setShowPreferences] = useState(false);
     return (
-      <Dialog open={open} onOpenChange={handleOpenChange}>
-        <DialogContent
-          className={clx(
-            "bg-bg-white bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:max-w-[502px] sm:translate-x-0 sm:p-6",
-            className,
-          )}
-          ref={ref}
-        >
-          <DialogHeader className="w-full space-y-0 p-0 pb-1">
+      <CookieBannerContext.Provider
+        value={{ showPreferences, setShowPreferences }}
+      >
+        <Dialog open={open}>
+          <DialogContent
+            className={clx(
+              "bg-bg-white bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:max-w-[502px] sm:translate-x-0 sm:p-6",
+              className,
+            )}
+            ref={ref}
+          >
+            {children}
+          </DialogContent>
+        </Dialog>
+      </CookieBannerContext.Provider>
+    );
+  },
+);
+
+const CookieBannerHeader = DialogHeader;
+const CookieBannerTitle = DialogTitle;
+const CookieBannerClose = DialogClose;
+const CookieBannerFooter = DialogFooter;
+const CookieBannerPreferences = ({
+  children,
+  className,
+}: CookieBannerPreferencesProps) => {
+  const context = useContext(CookieBannerContext);
+
+  if (!context) {
+    throw new Error("Must be used within CookieBanner.Root");
+  }
+
+  if (!context.showPreferences) {
+    return null;
+  }
+
+  return (
+    <div className={clx("flex flex-col gap-2 py-3", className)}>{children}</div>
+  );
+};
+
+export { CookieBanner };
+
+{
+  /* <DialogHeader className="w-full space-y-0 p-0 pb-1">
             <div className="mb-1 flex flex-row justify-between">
               <DialogTitle className="text-body-md pb-1">{title}</DialogTitle>
               <DialogClose
@@ -257,11 +260,5 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
                 Customize
               </Button>
             </DialogFooter>
-          )}
-        </DialogContent>
-      </Dialog>
-    );
-  },
-);
-
-export { CookieBanner };
+          )} */
+}
