@@ -9,7 +9,7 @@ import { s3 } from "@/lib/constant";
 
 The file preview is used to display details about a file or media item once it has been uploaded, including the file name, type, and an option to remove the file.
 
-![uploaded-item-1@1.5x.png](/design/uploaded-item-11.5x.png)
+![file-preview-anatomy.png](/design/file-preview-anatomy.png)
 
 1. **Thumbnail/Icon:** Displays a thumbnail for images or videos. An icon is shown for other file types such as PDFs, DOCX, PPTX, XLSX, etc.
 2. **File Name:** The name of the uploaded file, which is truncated if too long.
@@ -18,7 +18,7 @@ The file preview is used to display details about a file or media item once it h
 
 ### State
 
-![uploaded-item-2@1.5x.png](/design/uploaded-item-21.5x.png)
+![file-preview-state.png](/design/file-preview-state.png)
 
 1. **Default:** The normal state when a file has been uploaded and is displayed.
 2. **Hover:** When the user hovers over the item, showing possible actions like removing the file.
@@ -31,7 +31,7 @@ The file preview is used to display details about a file or media item once it h
 
 When a file is being uploaded, the loading state is initiated until the file is fully uploaded.
 
-![uploaded-item-3@1.5x.png](/design/uploaded-item-31.5x.png)
+![file-preview-loading.png](/design/file-preview-loading.png)
 
 1. **Spinner:** Displays a loading spinner in place of the file thumbnail while the upload is in progress
 2. **File Name:** Displays "Uploading..." instead of the actual file name until the upload is complete.
@@ -40,7 +40,7 @@ When a file is being uploaded, the loading state is initiated until the file is 
 
 Usually displayed in a form that required to upload single or multiple files.
 
-![file-upload-anatomy@1.5x.png](/design/file-upload-anatomy1.5x.png)
+![file-upload-anatomy.png](/design/file-upload-anatomy.png)
 
 1. **Title**: Indicates the purpose of the file upload section, such as "Supporting Documents".
 2. **File Format**: Tells users what file formats are supported.
@@ -52,7 +52,7 @@ Usually displayed in a form that required to upload single or multiple files.
 
 ### State
 
-![file-upload-state@1.5x.png](/design/file-upload-state1.5x.png)
+![file-upload-state.png](/design/file-upload-state.png)
 
 1. **Default**: The initial state, allowing users to upload files.
 2. **Disabled**: The file upload section is disabled, preventing user interaction.
@@ -62,7 +62,7 @@ Usually displayed in a form that required to upload single or multiple files.
 
 ### Usage example
 
-![file-upload-location@1.5x.png](/design/file-upload-location1.5x.png)
+![file-upload-usage-example.png](/design/file-upload-usage-example.png)
 
 **Location**: The File Upload Group is typically used in forms or modals where users are required to submit documents or files as part of a process (e.g., applications, support tickets). It helps streamline the document submission workflow.
 
