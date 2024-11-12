@@ -2,6 +2,8 @@ import { Paragraph } from "@/components/Paragraph";
 import { clx } from "@myds/react/utils";
 import Section from "../section";
 import { getRosetta } from "@/locales/_server";
+import Image from "next/image";
+import { darkify } from "@/lib/constant";
 
 type Props = {
   lang: "en" | "ms";
@@ -11,32 +13,32 @@ type Props = {
 
 const dataItems = [
   {
-    icon: "/assets/icons/about-icon1.svg",
+    icon: "/common/about-icon-1.svg",
     titleKey: "Home.about.items.1.title" as const,
     descriptionKey: "Home.about.items.1.description" as const,
   },
   {
-    icon: "/assets/icons/about-icon2.svg",
+    icon: "/common/about-icon-2.svg",
     titleKey: "Home.about.items.2.title" as const,
     descriptionKey: "Home.about.items.2.description" as const,
   },
   {
-    icon: "/assets/icons/about-icon3.svg",
+    icon: "/common/about-icon-3.svg",
     titleKey: "Home.about.items.3.title" as const,
     descriptionKey: "Home.about.items.3.description" as const,
   },
   {
-    icon: "/assets/icons/about-icon4.svg",
+    icon: "/common/about-icon-4.svg",
     titleKey: "Home.about.items.4.title" as const,
     descriptionKey: "Home.about.items.4.description" as const,
   },
   {
-    icon: "/assets/icons/about-icon5.svg",
+    icon: "/common/about-icon-5.svg",
     titleKey: "Home.about.items.5.title" as const,
     descriptionKey: "Home.about.items.5.description" as const,
   },
   {
-    icon: "/assets/icons/about-icon6.svg",
+    icon: "/common/about-icon-6.svg",
     titleKey: "Home.about.items.6.title" as const,
     descriptionKey: "Home.about.items.6.description" as const,
   },
@@ -44,6 +46,7 @@ const dataItems = [
 
 export default async function About(props: Props) {
   const { t } = getRosetta(props.lang);
+
   return (
     <Section
       className={clx(
@@ -97,11 +100,22 @@ export default async function About(props: Props) {
               key={index}
               className="flex flex-row items-start gap-[1.125rem] lg:flex-col lg:items-center"
             >
-              <img
+              <Image
                 src={item.icon}
-                className="h-[3.375rem] w-[3.375rem] transition-all"
+                width={54}
+                height={54}
+                className="img-light h-[3.375rem] w-[3.375rem] transition-all"
                 alt={t(item.titleKey)}
               />
+
+              <Image
+                src={darkify(item.icon)}
+                width={54}
+                height={54}
+                className="img-dark h-[3.375rem] w-[3.375rem] transition-all"
+                alt={t(item.titleKey)}
+              />
+
               <div className="flex flex-col items-start gap-[0.5rem] lg:items-center">
                 <div className="text-brand-700 text-balance text-[1rem] font-medium leading-[1.5rem]">
                   {t(item.titleKey)}

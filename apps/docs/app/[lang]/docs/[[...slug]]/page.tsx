@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import { Heading } from "fumadocs-ui/components/heading";
 import Image from "next/image";
+import { darkify } from "@/lib/constant";
 
 interface PageParams {
   params: { slug?: string[]; lang: string };
@@ -50,10 +51,7 @@ export default async function Page({ params }: PageParams) {
               <Heading as="h6" {...props} className="font-body font-semibold" />
             ),
             img: (props: any) => {
-              const [light, dark] = [
-                props.src,
-                props.src.replace(/(\.[\w\d_-]+)$/i, "-dark$1"),
-              ];
+              const [light, dark] = [props.src, darkify(props.src)];
 
               return (
                 <>

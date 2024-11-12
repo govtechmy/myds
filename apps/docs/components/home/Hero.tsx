@@ -9,6 +9,7 @@ import Section from "../section";
 import { RosettaContext } from "@/locales/_client";
 import { Link } from "../myds";
 import { links } from "@/lib/constant";
+import Image from "next/image";
 
 const Hero: FunctionComponent = () => {
   const { t } = useContext(RosettaContext);
@@ -65,10 +66,25 @@ const Hero: FunctionComponent = () => {
         <source srcSet="/assets/hero/image.webp" type="image/webp" />
         <source srcSet="/assets/hero/image.svg" type="image/svg+xml" />
         <div className="w-full overflow-hidden">
-          <img
-            src="/assets/hero/image.svg"
+          <Image
+            src="/common/hero.svg"
             alt="Hero"
+            width={1200}
+            height={1200}
             className={clx(
+              "img-light",
+              "h-[18.75rem] w-full object-cover transition-transform duration-300 hover:scale-105",
+              "md:max-lg:h-[25rem]",
+              "lg:h-[43.75rem]",
+            )}
+          />
+          <Image
+            src="/common/hero-dark.svg"
+            alt="Hero"
+            width={1200}
+            height={1200}
+            className={clx(
+              "img-dark",
               "h-[18.75rem] w-full object-cover transition-transform duration-300 hover:scale-105",
               "md:max-lg:h-[25rem]",
               "lg:h-[43.75rem]",
