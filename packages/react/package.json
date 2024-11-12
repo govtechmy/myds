@@ -104,7 +104,6 @@
     "react-dom": "^18"
   },
   "dependencies": {
-    "@internationalized/date": "^3.5.6",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.1",
@@ -116,7 +115,6 @@
     "@radix-ui/react-toast": "^1.2.2",
     "class-variance-authority": "^0.7.0",
     "mitt": "^3.0.1",
-    "react-aria-components": "^1.4.1",
     "tailwind-merge": "^2.4.0"
   }
 }
