@@ -6,6 +6,11 @@
     "./utils": {
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
+    }
+,
+    "./spinner": {
+      "type": "./src/components/spinner.tsx",
+      "default": "./src/components/spinner.tsx"
     },
     "./icon": {
       "type": "./src/icons/index.ts",
