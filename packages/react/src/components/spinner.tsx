@@ -41,9 +41,11 @@ export const Spinner: React.FC<SpinnerProps> = ({
   size,
   color,
   className = "",
+  ...props
 }) => {
   return (
     <div
+      {...props}
       className={clx("relative flex items-center justify-center", className)}
     >
       <div className={spinnerVariants({ size, color })}></div>
