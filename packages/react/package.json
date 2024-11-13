@@ -91,9 +91,9 @@
       "type": "./src/components/toggle.tsx",
       "default": "./src/components/toggle.tsx"
     },
-    "./datepicker": {
-      "type": "./src/components/datepicker.tsx",
-      "default": "./src/components/datepicker.tsx"
+    "./date-picker": {
+      "type": "./src/components/date-picker.tsx",
+      "default": "./src/components/date-picker.tsx"
     },
     "./daterange-picker": {
       "type": "./src/components/daterange-picker.tsx",

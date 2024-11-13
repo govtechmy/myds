@@ -17,9 +17,9 @@ type DatePickerProps = {
   locale?: "en" | "ms";
   maxYear?: number;
   minYear?: number;
-  onSelect?: (date: Date) => void;
   placeholder?: string;
-  selected?: Date;
+  value?: Date;
+  onValueChange?: (date: Date) => void;
   size?: VariantProps<typeof button_cva>["size"];
   yearOrder?: "asc" | "desc";
 };
@@ -34,15 +34,15 @@ const DatePicker: FC<DatePickerProps> = ({
   formatStr = "dd MMM yyy",
   icon,
   locale = "en",
-  onSelect,
+  onValueChange,
   placeholder,
-  selected,
+  value,
   size,
   ...props
 }) => {
   const [date, setDate] = useControllableState({
-    prop: selected,
-    onChange: onSelect,
+    prop: value,
+    onChange: onValueChange,
     defaultProp: defaultDate,
   });
 

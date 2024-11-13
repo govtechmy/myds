@@ -17,9 +17,9 @@ export type DateRangePickerProps = {
   locale?: "en" | "ms";
   maxYear?: number;
   minYear?: number;
-  onSelect?: (date: DateRange) => void;
+  onValueChange?: (date: DateRange) => void;
   placeholder?: string;
-  selected?: DateRange;
+  value?: DateRange;
   size?: VariantProps<typeof button_cva>["size"];
   toLabel?: string;
   yearOrder?: "asc" | "desc";
@@ -35,16 +35,16 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
   formatStr = "dd MMM yyy",
   fromLabel,
   locale = "en",
-  onSelect,
+  onValueChange,
   placeholder,
-  selected,
+  value,
   size,
   toLabel,
   ...props
 }) => {
   const [selectedDateRange, setSelectedDateRange] = useControllableState({
-    prop: selected,
-    onChange: onSelect,
+    prop: value,
+    onChange: onValueChange,
     defaultProp: defaultDateRange,
   });
 
@@ -134,7 +134,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
       </Popover>
     </div>
   );
-}
+};
 DateRangePicker.displayName = "DateRangePicker";
 
 export { DateRangePicker };

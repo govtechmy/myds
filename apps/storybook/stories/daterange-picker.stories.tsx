@@ -19,7 +19,7 @@ import { createStory } from "../utils";
  *    });
  *
  *    return (
- *      <DateRangePicker selected={dateRange} onSelect={setDateRange} />
+ *      <DateRangePicker selected={dateRange} onValueChange={setDateRange} />
  *    )
  * }
  * ```
@@ -31,7 +31,7 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  args: { onSelect: fn() },
+  args: { onValueChange: fn() },
   argTypes: {
     defaultDateRange: {
       description:
@@ -56,8 +56,7 @@ const meta = {
           summary: "From",
         },
       },
-      description:
-        "The button label for the start date picker.",
+      description: "The button label for the start date picker.",
     },
     formatStr: {
       table: {
@@ -97,7 +96,7 @@ const meta = {
       },
       description: "Minimum selectable year.",
     },
-    onSelect: {
+    onValueChange: {
       table: {
         type: {
           summary: "function",
@@ -108,9 +107,9 @@ const meta = {
     placeholder: {
       description: "Text that appears when no value is set.",
     },
-    selected: {
+    value: {
       description:
-        "The controlled date range currently selected. Should be used in conjunction with `onSelect`.",
+        "The controlled date range currently selected. Should be used in conjunction with `onValueChange`.",
     },
     size: {
       table: {
@@ -131,8 +130,7 @@ const meta = {
           summary: "To",
         },
       },
-      description:
-        "The button label for the end date picker.",
+      description: "The button label for the end date picker.",
     },
     yearOrder: {
       table: {

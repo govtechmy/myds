@@ -1,4 +1,4 @@
-import { DatePicker } from "@myds/react/datepicker";
+import { DatePicker } from "@myds/react/date-picker";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 import { fn } from "@storybook/test";
@@ -23,13 +23,13 @@ import { fn } from "@storybook/test";
  * ```
  */
 const meta = {
-  title: "@myds/react/Datepicker",
+  title: "@myds/react/DatePicker",
   component: DatePicker,
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
-  args: { onSelect: fn() },
+  args: { onValueChange: fn() },
   argTypes: {
     defaultDate: {
       description:
@@ -80,7 +80,7 @@ const meta = {
     placeholder: {
       description: "Text that appears when no value is set.",
     },
-    onSelect: {
+    onValueChange: {
       table: {
         type: {
           summary: "function",
@@ -88,7 +88,7 @@ const meta = {
       },
       description: "Event handler when a day is selected.",
     },
-    selected: {
+    value: {
       description:
         "The controlled date currently selected. Should be used in conjunction with `onSelect`.",
     },
