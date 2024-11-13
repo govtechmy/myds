@@ -86,6 +86,29 @@ const config: PresetsConfig = {
         950: "rgba(var(--_warning-950) / <alpha-value>)",
       },
     }),
+    // container: {
+    //   padding: {
+    //     bp_mobile: "18px",
+    //     bp_tablet: "24px",
+    //     bp_desktop: "24px",
+    //   },
+    //   screens: {
+    //     bp_mobile: "354px",
+    //     bp_tablet: "768px",
+    //     bp_desktop: "1280px",
+    //   },
+    // },
+    // screens: {
+    //   //* Screen sizes
+    //   mobile: "354px",
+    //   tablet: "768px",
+    //   desktop: "1280px",
+
+    //   //* Breakpoints
+    //   bp_mobile: "390px",
+    //   bp_tablet: "816px",
+    //   bp_desktop: "1328px",
+    // },
     extend: {
       spacing: {
         "2.5": "0.625rem",

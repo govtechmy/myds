@@ -1,0 +1,47 @@
+---
+title: Banner fasa
+description: Memaklumkan pengguna tentang tahap pembangunan perkhidmatan dan termasuk pautan untuk menghantar maklum balas. Banner fasa biasanya diletakkan di bawah menu navigasi untuk memaparkan status semasa perkhidmatan, seperti Alpha, Beta, atau Penyelenggaraan.
+---
+
+import { s3 } from "@/lib/constant";
+
+![phase-banner-anatomy.png](/design/phase-banner-anatomy.png)
+
+1. UI/Tag Saiz=M.
+2. Penerangan ringkas mengenai fasa semasa perkhidmatan.
+3. Pautan bagi pengguna untuk menghantar maklum balas mengenai perkhidmatan.
+
+## Paparan Responsif
+
+![phase-banner-responsive.png](/design/phase-banner-responsive.png)
+
+1. **Desktop & Tablet**: Mengandungi UI/Tag Saiz=M dengan padding kiri dan kanan sebanyak 24px untuk kedua-dua paparan desktop dan tablet.
+2. **Telefon**: Di paparan mudah alih, padding kiri dan kanan adalah 18px. UI/Tag Saiz=S berada di sebelah kiri, dan deskripsi akan beralih ke baris baru jika terlalu panjang untuk muat dalam paparan.
+
+## Contoh Penggunaan
+
+### Jenis Status
+
+![phase-banner-example.png](/design/phase-banner-example.png)
+
+Komponen banner fasa digunakan untuk menyampaikan tahap pembangunan perkhidmatan semasa kepada pengguna dalam pelbagai situasi, seperti:
+
+1. **Alpha**: Ditunjukkan apabila memperkenalkan perkhidmatan baru, menggalakkan pengguna memberikan maklum balas untuk menambah baik pengalaman.
+2. **Beta**: Digunakan untuk menunjukkan bahawa perkhidmatan hampir lengkap dan memerlukan input pengguna untuk penyesuaian akhir.
+3. **Public Beta**: Ditunjukkan apabila perkhidmatan tersedia untuk kegunaan yang lebih luas, mengundang semua pengguna untuk menguji dan berkongsi maklum balas.
+4. **Penyelenggaraan**: Menunjukkan bahawa perkhidmatan tidak tersedia buat sementara waktu kerana kemas kini atau pembaikan.
+5. **Tidak Lagi Aktif (Retired)**: Menunjukkan bahawa perkhidmatan tidak lagi aktif.
+
+### Penempatan
+
+Banner fasa boleh diletakkan di bawah menu navigasi sebagai mesej pada tahap perkhidmatan yang relevan dengan halaman. Ia juga boleh ditempatkan di lokasi lain yang menonjol supaya mudah dilihat oleh pengguna, memastikan mereka memahami status semasa perkhidmatan.
+
+**Tingkah Laku Skrol**
+
+Banner fasa tidak melekat bersama dengan bar navigasi; ia akan bergulung keluar dari skrin bersama kandungan halaman, menjadikannya elemen yang tidak mengganggu apabila pengguna menavigasi halaman.
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/phase-banner-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

@@ -1,13 +1,32 @@
 ---
 title: Breadcrumb
-description: Breadcrumb
+description: Breadcrumb adalah alat navigasi yang membantu pengguna memahami lokasi semasa mereka dalam laman web atau aplikasi serta membolehkan mereka kembali ke halaman sebelumnya dengan mudah.
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+![breadcrumb-anatomy.png](/design/breadcrumb-anatomy.png)
 
-## What is Next?
+Elemen utama yang mendefinisikan struktur dan fungsi Breadcrumb.
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+1. **Halaman Induk**: Pautan ke halaman atau bahagian sebelumnya, membantu pengguna menavigasi semula melalui hierarki.
+2. **Halaman Semasa**: Menunjukkan lokasi semasa pengguna dalam laluan navigasi, biasanya tidak boleh diklik.
+3. **Pembungkus (Wrapper)**: Bekas yang menutupi breadcrumb untuk memastikan jarak dan penjajaran yang konsisten.
+
+## Keadaan Hover
+
+![breadcrumb-interaction-state.png](/design/breadcrumb-interaction-state.png)
+
+1. Kawasan untuk tindakan hover dan klik.
+2. Garis bawah untuk halaman induk apabila tetikus berada di atasnya.
+
+## Pembungkus (Wrapper)
+
+![breadcrumb-wrapper.png](/design/breadcrumb-wrapper.png)
+
+1. Penampilan tanpa pembungkus tambahan.
+2. Penampilan alternatif dengan pembungkus untuk fleksibiliti reka bentuk.
+
+## Had Panjang Tajuk
+
+![breadcrumb-overflow-ellipsis.png](/design/breadcrumb-overflow-ellipsis.png)
+
+1. **Had Panjang Tajuk**: Tetapkan lebar maksimum 200px untuk tajuk halaman semasa. Jika tajuk melebihi panjang ini, secara automatik paparkan elipsis (contohnya, "Tajuk Halaman Panjang...") untuk memastikan komponen yang kemas dan teratur.

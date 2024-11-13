@@ -1,0 +1,77 @@
+---
+title: File upload
+description: Allows users to upload and preview files. It features a title, upload guidelines, an upload button, and a list displaying the uploaded items, with built-in error handling for file uploads.
+---
+
+import { s3 } from "@/lib/constant";
+
+## File preview
+
+The file preview is used to display details about a file or media item once it has been uploaded, including the file name, type, and an option to remove the file.
+
+![file-preview-anatomy.png](/design/file-preview-anatomy.png)
+
+1. **Thumbnail/Icon:** Displays a thumbnail for images or videos. An icon is shown for other file types such as PDFs, DOCX, PPTX, XLSX, etc.
+2. **File Name:** The name of the uploaded file, which is truncated if too long.
+3. **File Extension:** The file type displayed at the end of the file name (e.g., .pdf, .jpeg, .docx).
+4. **Trailing Icon:** A close icon that allows the user to remove the uploaded file.
+
+### State
+
+![file-preview-state.png](/design/file-preview-state.png)
+
+1. **Default:** The normal state when a file has been uploaded and is displayed.
+2. **Hover:** When the user hovers over the item, showing possible actions like removing the file.
+   2a. **Hover on Remove icon:** When the user hovers on remove button. Optional adding tooltip to guide user what the button will do.
+
+3. **Disabled:** The item is not interactive, typically when the file cannot be removed or edited.
+4. **Loading:** When the file is in the process of being uploaded.
+
+### Loading
+
+When a file is being uploaded, the loading state is initiated until the file is fully uploaded.
+
+![file-preview-loading.png](/design/file-preview-loading.png)
+
+1. **Spinner:** Displays a loading spinner in place of the file thumbnail while the upload is in progress
+2. **File Name:** Displays "Uploading..." instead of the actual file name until the upload is complete.
+
+## File upload
+
+Usually displayed in a form that required to upload single or multiple files.
+
+![file-upload-anatomy.png](/design/file-upload-anatomy.png)
+
+1. **Title**: Indicates the purpose of the file upload section, such as "Supporting Documents".
+2. **File Format**: Tells users what file formats are supported.
+3. **Max File Size**: Specifies the maximum file size allowed.
+4. **Upload Button**: A button that allows users to upload files.
+5. **Hint/Error Message**: Displays messages to inform users of issues like file size limits or unsupported formats.
+6. **Uploaded File List**: Shows the Uploaded Item component, listing the files that have been uploaded by the user.
+7. **Optional Previously Uploaded File List**: Displays previously uploaded files, if required, allowing users to compare newly uploaded files with older ones. This is rarely used but can be helpful in specific cases.
+
+### State
+
+![file-upload-state.png](/design/file-upload-state.png)
+
+1. **Default**: The initial state, allowing users to upload files.
+2. **Disabled**: The file upload section is disabled, preventing user interaction.
+3. **Loading**: Shows a loading state while files are being uploaded.
+4. **Uploaded**: Indicates that files have been successfully uploaded and are displayed in the uploaded file list.
+5. **Error**: Displays an error message when there is an issue with file uploads (e.g., file size too large or unsupported format).
+
+### Usage example
+
+![file-upload-usage-example.png](/design/file-upload-usage-example.png)
+
+**Location**: The File Upload Group is typically used in forms or modals where users are required to submit documents or files as part of a process (e.g., applications, support tickets). It helps streamline the document submission workflow.
+
+**Width**: The width is usually set to full width to fit the container of the form or modal, ensuring it adapts to the available space.
+
+## Demo
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/file-upload-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

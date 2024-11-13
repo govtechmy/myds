@@ -1,0 +1,30 @@
+---
+title: Butiran
+description: Memberikan maklumat tambahan atau penjelasan yang boleh didedahkan oleh pengguna dengan mengembangkan bahagian tersebut. Ia digunakan dalam borang, modals, halaman, atau artikel untuk memaparkan lebih banyak butiran tanpa mengganggu antara muka.
+---
+
+import { s3 } from "@/lib/constant";
+
+![details-anatomy.png](/design/details-anatomy.png)
+
+1. Teks Tajuk.
+2. Teks Badan.
+3. Chevron Kanan Opaque (Default pada Putaran 0 darjah).
+4. Chevron Kanan Opaque (Putaran 90 darjah).
+
+## Keadaan (State)
+
+![details-state.png](/design/details-state.png)
+
+1. **Ruangan Pencetus Klik** (Tajuk): Kawasan tajuk yang boleh diklik untuk membuka atau menutup butiran.
+2. **Keadaan Hover**: Gariskan teks tajuk apabila tetikus berada di atasnya untuk menunjukkan interaktiviti.
+3. **Keadaan Tertutup (Default)**: Menyembunyikan teks badan (Kebolehlihatan: 0%).
+4. **Keadaan Terbuka**: Klik pada kawasan tajuk untuk membuka dan memaparkan teks badan dalam butiran.
+
+## Demo
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/details-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

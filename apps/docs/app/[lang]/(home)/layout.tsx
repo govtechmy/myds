@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { HomeLayout } from "fumadocs-ui/home-layout";
 import { getMYDSConfig } from "@/app/[lang]/layout.config";
+import Masthead from "@/components/Masthead";
 
 export default function Layout({
   children,
@@ -11,5 +12,10 @@ export default function Layout({
 }): React.ReactElement {
   const { config } = getMYDSConfig(lang);
 
-  return <HomeLayout {...config}>{children}</HomeLayout>;
+  return (
+    <div>
+      <Masthead lang={lang} />
+      <HomeLayout {...config}>{children}</HomeLayout>
+    </div>
+  );
 }

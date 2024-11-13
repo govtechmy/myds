@@ -32,6 +32,10 @@
       "type": "./src/components/select.tsx",
       "default": "./src/components/select.tsx"
     },
+    "./date-field": {
+      "type": "./src/components/date-field.tsx",
+      "default": "./src/components/date-field.tsx"
+    },
     "./pagination": {
       "type": "./src/components/pagination.tsx",
       "default": "./src/components/pagination.tsx"
@@ -91,6 +95,14 @@
     "./toggle": {
       "type": "./src/components/toggle.tsx",
       "default": "./src/components/toggle.tsx"
+    },
+    "./date-picker": {
+      "type": "./src/components/date-picker.tsx",
+      "default": "./src/components/date-picker.tsx"
+    },
+    "./daterange-picker": {
+      "type": "./src/components/daterange-picker.tsx",
+      "default": "./src/components/daterange-picker.tsx"
     }
   },
   "peerDependencies": {
@@ -105,17 +117,20 @@
     "react-dom": "^18"
   },
   "dependencies": {
-    "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-accordion": "^1.2.1",
+    "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-navigation-menu": "^1.2.0",
+    "@radix-ui/react-popover": "^1.1.2",
     "@radix-ui/react-radio-group": "^1.2.1",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",
     "class-variance-authority": "^0.7.0",
+    "date-fns": "^4.1.0",
     "mitt": "^3.0.1",
+    "react-day-picker": "^9.2.1",
     "tailwind-merge": "^2.4.0"
   }
 }

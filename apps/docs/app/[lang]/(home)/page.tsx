@@ -4,6 +4,7 @@ import Feedback from "@/components/home/Feedback";
 import Hero from "@/components/home/Hero";
 import PreviewContent from "@/components/home/PreviewContent";
 import Timeline from "@/components/home/Timeline";
+import { links } from "@/lib/constant";
 import { getRosetta } from "@/locales/_server";
 
 export default async function HomePage({
@@ -18,8 +19,7 @@ export default async function HomePage({
       titleKey: "Home.previewContent.items.1.title",
       descriptionKey: "Home.previewContent.items.1.description",
       img: {
-        svg: "/assets/content1/image.svg",
-        webp: "/assets/content1/image.webp",
+        svg: "/common/preview-1.svg",
         altKey: "Home.previewContent.items.1.tag",
       },
     },
@@ -28,8 +28,7 @@ export default async function HomePage({
       titleKey: "Home.previewContent.items.2.title",
       descriptionKey: "Home.previewContent.items.2.description",
       img: {
-        svg: "/assets/content2/image.svg",
-        webp: "/assets/content2/image.webp",
+        svg: "/common/preview-2.svg",
         altKey: "Home.previewContent.items.2.tag",
       },
     },
@@ -38,8 +37,7 @@ export default async function HomePage({
       titleKey: "Home.previewContent.items.3.title",
       descriptionKey: "Home.previewContent.items.3.description",
       img: {
-        svg: "/assets/content3/image.svg",
-        webp: "/assets/content3/image.webp",
+        svg: "/common/preview-3.svg",
         altKey: "Home.previewContent.items.3.tag",
       },
     },
@@ -47,7 +45,7 @@ export default async function HomePage({
 
   return (
     <>
-      <main className="border-otl-divider divide-otl-gray-200 flex min-h-screen flex-col divide-y">
+      <main className="xl:border-otl-divider divide-otl-divider flex min-h-screen flex-col divide-y">
         <Hero />
         <About lang={params.lang} />
         {previewItems.map((item, i) => (
@@ -96,11 +94,11 @@ Pusat Pentadbiran Kerajaan Persekutuan
               links: [
                 {
                   name: t("Footer.designStandards"),
-                  href: "https://standard.digital.gov.my/",
+                  href: links.standard,
                 },
                 {
                   name: t("Footer.figmaBeta"),
-                  href: "https://www.figma.com/design/svmWSPZarzWrJ116CQ8zpV/MYDS-(Beta)?node-id=7-20696&t=A1mfwrtKyez4lJjE-1",
+                  href: links.figma,
                 },
               ],
             },
@@ -109,11 +107,11 @@ Pusat Pentadbiran Kerajaan Persekutuan
               links: [
                 {
                   name: t("Footer.github"),
-                  href: "https://github.com/govtechmy/myds",
+                  href: links.github,
                 },
                 {
                   name: t("Footer.figma"),
-                  href: "https://www.figma.com/design/svmWSPZarzWrJ116CQ8zpV/MYDS-(Beta)?node-id=7-20696",
+                  href: links.figma,
                 },
               ],
             },

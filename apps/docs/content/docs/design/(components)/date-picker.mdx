@@ -1,13 +1,84 @@
 ---
-title: Date Picker
-description: Date Picker
+title: Date picker
+description: Allows users to select a date from an interactive calendar.
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+import { s3 } from "@/lib/constant";
 
-## What is Next?
+![date-picker-anatomy.png](/design/date-picker-anatomy.png)
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+1. Date selection trigger button.
+2. Month and Year header.
+3. Previous and Next navigation.
+4. Day abbreviation.
+5. Date selection.
+
+## Month and Year picker
+
+The basic function of fate picker is to allow use to pick a date easily. What if user wanted to select a date more than years into the past? Here is where the month and year picker comes in. It consist of 3 views:
+
+1. **Day view** - Show the day of the month
+2. **Month view** - Show the months of year
+3. **Year view** - Show a group of 18 years
+
+![date-picker-month-year-picker.png](/design/date-picker-month-year-picker.png)
+
+1. To navigate to Month view, click the `{Month}` header.
+2. To navigate to Year view, click the `{YYYY}` header.
+3. Click again on `{Month}` header OR `{Mon}` list to go back to Day view.
+4. Click again on `{YYYY}` header OR `{YYYY}` list to go back to Day view.
+
+## Navigate in between views
+
+![date-picker-navigate-views.png](/design/date-picker-navigate-views.png)
+
+**Day view**
+
+1. Go to previous (-1) month.
+2. Go to next (+1) month.
+
+**Month view**
+
+1. Go to previous (-1) year.
+2. Go to next (+1) year.
+
+**Year view (Group by 18 years.)**
+
+1. Scroll up and down throughout the years.
+
+## Language
+
+![date-picker-language.png](/design/date-picker-language.png)
+
+1. English
+2. Malay
+
+## Single date selection
+
+![date-picker-single-date.png](/design/date-picker-single-date.png)
+
+1. Using **Button Type: Secondary** default state when user can navigate to previous month.
+2. Using **Button Type: Secondary** disabled state when user cannot navigate forward. Typically when filtering data only up to latest date.
+3. Using **Button Type: Tertiary** disabled state when the date is from previous month. User can still select since it’s from previous month.
+4. Using **Button Type: Tertiary** default state indicating the date is ready to be selected.
+5. Using **Button Type: Tertiary** hover state when cursor move on the date.
+6. Using **Button Type: Primary** default state when a date is selected.
+7. Using **Button Type: Tertiary** disabled state when the date is not interactive. User cannot select date ahead of latest date.
+
+## Range date selection
+
+![date-picker-date-range.png](/design/date-picker-date-range.png)
+
+1. Date selection trigger button (From & To).
+2. From date selection.
+3. To date selection.
+4. Range selection highlight.
+5. Date hover state in highlighted range. Use **bg-primary-200** for highlighted colour.
+
+## Demo
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/date-picker-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

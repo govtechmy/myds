@@ -5,10 +5,9 @@ import { RosettaProvider } from "@/locales/_client";
 import { clx } from "@myds/react/utils";
 import en from "@/locales/en";
 import ms from "@/locales/ms";
-import Masthead from "@/components/Masthead";
 import { getRosetta } from "@/locales/_server";
-
 import type { Metadata } from "next";
+import Analytics from "@/components/analytics";
 
 interface MetadataProps {
   params: { lang: "en" | "ms" };
@@ -50,6 +49,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang={params.lang} className={clx("font-body")}>
+      <Analytics />
       <body>
         <FumaI18n
           locale={params.lang}
@@ -63,10 +63,35 @@ export default async function RootLayout({
               locale: "ms",
             },
           ]}
-          // translations={{
-          // }}
+          translations={
+            {
+              en: {
+                search: "Search",
+                searchNoResult: "No results found",
+                toc: "On this page",
+                tocNoHeadings: "No Headings",
+                lastUpdate: "Last updated on",
+                chooseLanguage: "Choose a language",
+                nextPage: "Next",
+                previousPage: "Previous",
+                chooseTheme: "Theme",
+                editOnGithub: "Edit on GitHub",
+              },
+              ms: {
+                search: "Cari",
+                searchNoResult: "Tiada hasil ditemui",
+                toc: "Di halaman ini",
+                tocNoHeadings: "Tiada Tajuk",
+                lastUpdate: "Dikemaskini pada",
+                chooseLanguage: "Pilih bahasa",
+                nextPage: "Seterusnya",
+                previousPage: "Sebelumnya",
+                chooseTheme: "Tema",
+                editOnGithub: "Edit di GitHub",
+              },
+            }[params.lang]
+          }
         >
-          <Masthead lang={params.lang as "en" | "ms"} />
           <RosettaProvider locales={{ en, ms }}>
             <RootProvider>{children}</RootProvider>
           </RosettaProvider>

@@ -1,0 +1,52 @@
+---
+title: Cookies banner
+description: Notifies users that the website uses cookies to improve their experience and gives them the option to manage their consent preferences through cookie settings. It typically appears when a user lands on the website for the first time.
+---
+
+import { s3 } from "@/lib/constant";
+
+![cookie-anatomy.png](/design/cookie-anatomy.png)
+
+1. **Description**: A message informing the user about the website's use of cookies. Template: Cookies on `{website}.gov.my`
+2. **Accept or Reject cookies button**: Button allowing the user to accept all cookies or reject cookies.
+3. **Customize**: A button that opens cookie settings, allowing the user to customize their cookies preferences.
+4. **Close Icon**: A trailing icon that allows users to manually dismiss the cookie banner.
+5. **Necessary Cookies Checkbox**: This checkbox is required for the website to function properly. Cannot uncheck.
+6. **Analytics Cookies Checkbox**: This cookies track visitor count, bounce rate and traffic sources.
+7. **Performance Cookies Checkbox**: Used to analyze key website metrics, improving the user experience.
+8. **Accept Cookies Button**: A button to accept the cookies selected under the "Manage" settings.
+9. **Reject All Cookies Button**: A button that rejects all non-essential cookies, used as a secondary option for users who do not want to provide consent for cookies beyond the necessary ones.
+
+## State
+
+![cookie-type.png](/design/cookie-type.png)
+
+1. **Default**: The default state when a user first lands on the website. The banner shows the cookies description and the options to either "Accept All", “Reject all” cookies or "Customize" preferences.
+2. **Customize**: When the user clicks "Customize", checkboxes for Necessary Cookies, Analytics Cookies, and Performance Cookies appear, allowing the user to select or deselect their preferences. All cookies is checked by default. When user uncheck one of these cookies, changes is save immediately.
+
+## Mobile view
+
+![cookie-mobile-view.png](/design/cookie-mobile-view.png)
+
+1. **Desktop**: Cookies banner has 24px padding by default on bigger screens such as desktop and laptop.
+2. **Mobile**: Cookies banner has 18px padding to ensure readability and easy interaction on smaller screens.
+
+## Cookie banner location
+
+The Cookie banner appears in the bottom-left corner for desktop and in the bottom-center for mobile devices. It remains visible until the user interacts with it by either accepting all or rejecting cookies, customize their preferences, or closing the cookie banner.
+
+![cookie-location.png](/design/cookie-location.png)
+
+**Desktop/Tablet**: The Cookie banner is fixed at the bottom left of the screen, with a 24px margin. It has a width of 500px.
+
+**Mobile**: The Cookie banner is centered at the bottom of the screen, with an 18px margin. It stretches to fit the screen width, with 18px margins on both sides.
+
+## Usage example
+
+The cookies banner automatically appears once the page is loaded. Users can then manage their cookie settings by clicking on ‘Customize,’ ‘Accept,’ or ‘Reject.’
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/cookie-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

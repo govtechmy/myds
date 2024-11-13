@@ -1,7 +1,9 @@
 import Section from "../section";
 import { Paragraph } from "@/components/Paragraph";
 import { Tag } from "@/components/Tag";
+import { darkify } from "@/lib/constant";
 import { clx } from "@myds/react/utils";
+import Image from "next/image";
 
 type Props = {
   data: {
@@ -46,14 +48,20 @@ export default async function PreviewContent(props: Props) {
           reversed ? "lg:pl-[1.5rem]" : "lg:pr-[1.5rem]",
         )}
       >
-        {/* TODO: Handle missing (webp) images better */}
-        <source srcSet={data.img.webp} type="image/webp" />
-        <source srcSet={data.img.svg} type="image/svg+xml" />
         <div className="w-full overflow-hidden rounded-[32px]">
-          <img
+          <Image
             src={data.img.svg}
             alt={data.img.alt}
-            className="transition-transform duration-300 hover:scale-105"
+            width={1200}
+            height={500}
+            className="img-light transition-transform duration-300 hover:scale-105"
+          />
+          <Image
+            src={darkify(data.img.svg)}
+            alt={data.img.alt}
+            width={1200}
+            height={500}
+            className="img-dark transition-transform duration-300 hover:scale-105"
           />
         </div>
       </picture>

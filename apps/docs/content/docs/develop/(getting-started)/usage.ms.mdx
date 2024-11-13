@@ -22,7 +22,7 @@ Hanya import komponen & gunakannya, seperti di bawah!
 </Preview>
 
 ```tsx title="Basic Button"
-import { Button } from "@myds/react/button";
+import { Button } from "@govtechmy/myds-react/button";
 
 <Button variant="primary-fill" size="small" onClick={...}>
   Jana Pantun
@@ -31,7 +31,9 @@ import { Button } from "@myds/react/button";
 
 Pastikan untuk merujuk kepada API setiap Komponen untuk mengetahui apa yang tersedia.
 
-### Komposisi<a name="composition"></a>
+<a name="composition"></a>
+
+### Komposisi
 
 Komponen MYDS dibina berteraskan konsep komposisi. Komposisi menawarkan penyesuaian pada tahap terendah, memberikan kebebasan tertinggi kepada pembangun untuk menambah sentuhan tersendiri kepada MYDS.
 Pada masa yang sama, teknik ini juga boleh mencapai yang bertentangan penyesuaian maksima, dengan 'mengganti' props untuk menerapkan kelas atau pendengar acara tersendiri.
@@ -46,8 +48,8 @@ Pada masa yang sama, teknik ini juga boleh mencapai yang bertentangan penyesuaia
 </Preview>
 
 ```tsx title="Anchor dalam bentuk Button"
-import { Button } from "@myds/react/button";
-import { Link } from "@myds/react/link";
+import { Button } from "@govtechmy/myds-react/button";
+import { Link } from "@govtechmy/myds-react/link";
 
 <Button variant="primary-ghost" size="small" asChild>
   <Link href="#composition">
@@ -72,8 +74,8 @@ import { Link } from "@myds/react/link";
 </Preview>
 
 ```tsx title="Button dengan Icon Props yang Diganti"
-import { Button, ButtonIcon } from "@myds/react/button";
-import { ArrowForwardIcon } from "@myds/react/icon";
+import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
+import { ArrowForwardIcon } from "@govtechmy/myds-react/icon";
 
 <Button variant="primary-fill" size="small" onClick={...}>
   Jana Pantun
