@@ -1,4 +1,14 @@
-import { AlertDialog, AlertDialogTrigger } from "@myds/react/alert-dialog";
+import {
+  AlertDialog,
+  AlertDialogClose,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogIcon,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@myds/react/alert-dialog";
 import { Button } from "@myds/react/button";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
@@ -11,63 +21,88 @@ import { createStory } from "../utils";
  * ```tsx
  * import { AlertDialog, AlertDialogTrigger } from "@myds/react/alert-dialog";
  *
- * <AlertDialog
- *   title="Berjaya"
- *   description="Dialog sedang ditunjukkan tanpa sebarang masalah."
- *   actions={{
- *     cancel: "Kembali",
- *     continue: "Teruskan",
- *   }}
- *   variant="success"
- * >
+ * <AlertDialog>
  *   <AlertDialogTrigger>
  *     <Button variant="primary-fill" size="medium">
  *       Tunjuk Dialog
  *     </Button>
  *   </AlertDialogTrigger>
+ *   <AlertDialogContent>
+ *     <AlertDialogHeader>
+ *       <AlertDialogIcon variant="success" />
+ *       <AlertDialogTitle>Berjaya</AlertDialogTitle>
+ *       <AlertDialogDescription>Dialog sedang ditunjukkan tanpa sebarang masalah.</AlertDialogDescription>
+ *     </AlertDialogHeader>
+ *     <AlertDialogFooter>
+ *       <AlertDialogClose>
+ *         <Button variant="default-outline" size="medium">
+ *           Batal
+ *         </Button>
+ *       </AlertDialogClose>
+ *       <AlertDialogClose>
+ *         <Button
+ *           variant="primary-fill"
+ *           size="medium"
+ *         >
+ *           Teruskan
+ *         </Button>
+ *       </AlertDialogClose>
+ *     </AlertDialogFooter>
+ *   </AlertDialogContent>
  * </AlertDialog>
  * ```
  */
 const meta: Meta = {
   title: "@myds/react/AlertDialog",
-  component: ({
-    title,
-    description,
-    actionLabelCancel,
-    actionLabelContinue,
-    triggerButtonVariant,
-    triggerButtonLabel,
-    variant,
-    theme,
-  }) => (
-    <AlertDialog
-      title={title}
-      description={description}
-      actions={{
-        cancel: actionLabelCancel,
-        continue: actionLabelContinue,
-      }}
-      variant={variant}
-      className={theme}
-    >
+  component: ({ triggerButtonVariant, variant, theme }) => (
+    <AlertDialog>
       <AlertDialogTrigger className={theme}>
         <Button variant={triggerButtonVariant} size="medium">
-          {triggerButtonLabel}
+          Tunjuk Dialog
         </Button>
       </AlertDialogTrigger>
+      <AlertDialogContent className={theme}>
+        <AlertDialogHeader>
+          <AlertDialogIcon variant={variant} />
+          <AlertDialogTitle>
+            {variant === "success"
+              ? "Berjaya"
+              : variant === "warning"
+                ? "Perhatian"
+                : variant === "danger"
+                  ? "Bahaya"
+                  : null}
+          </AlertDialogTitle>
+          <AlertDialogDescription>
+            {variant === "success"
+              ? "Dialog sedang ditunjukkan tanpa sebarang masalah."
+              : variant === "warning"
+                ? "Mengubah tetapan ini akan mempengaruhi cara perisian anda berfungsi. Adakah anda mahu meneruskan?"
+                : variant === "danger"
+                  ? "Tindakan ini akan memadamkan data secara kekal dan tidak dapat dikembalikan. Adakah anda mahu meneruskan?"
+                  : null}
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter className={theme}>
+          <AlertDialogClose>
+            <Button variant="default-outline" size="medium">
+              {variant === "warning" ? "Kembali" : "Batal"}
+            </Button>
+          </AlertDialogClose>
+          <AlertDialogClose>
+            <Button
+              variant={variant === "danger" ? "danger-fill" : "primary-fill"}
+              size="medium"
+            >
+              {variant === "success" ? "Teruskan" : "Ya, teruskan"}
+            </Button>
+          </AlertDialogClose>
+        </AlertDialogFooter>
+      </AlertDialogContent>
     </AlertDialog>
   ),
   parameters: {
     layout: "centered",
-    controls: {
-      exclude: [
-        "title",
-        "description",
-        "actionLabelCancel",
-        "actionLabelContinue",
-        "triggerButtonLabel",
-      ],
-    },
   },
   args: {
     variant: "success",
@@ -88,12 +123,7 @@ const meta: Meta = {
     },
   },
 } satisfies Meta<{
-  title: string;
-  description: string;
-  actionLabelCancel: string;
-  actionLabelContinue: string;
   triggerButtonVariant?: "primary-fill" | "danger-fill";
-  triggerButtonLabel: string;
   variant: "success" | "warning" | "danger";
   theme?: "light" | "dark";
 }>;
@@ -104,78 +134,26 @@ type Story = StoryObj<typeof meta>;
 /**
  * This story represents the dialog component with default variant.
  */
-export const SuccessLight: Story = createStory({
-  title: "Berjaya",
-  description: "Dialog sedang ditunjukkan tanpa sebarang masalah.",
-  actionLabelCancel: "Batal",
-  actionLabelContinue: "Teruskan",
-  triggerButtonLabel: "Tunjuk Dialog",
-});
+export const SuccessLight: Story = createStory({});
 
-export const SuccessDark: Story = createStory(
-  {
-    title: "Berjaya",
-    description: "Dialog sedang ditunjukkan tanpa sebarang masalah.",
-    actionLabelCancel: "Batal",
-    actionLabelContinue: "Teruskan",
-    triggerButtonLabel: "Tunjuk Dialog",
-    theme: "dark",
-  },
-  "dark",
-);
+export const SuccessDark: Story = createStory({ theme: "dark" }, "dark");
 
 /**
  * This story represents the dialog component with warning variant.
  */
-export const WarningLight: Story = createStory({
-  title: "Perhatian",
-  description:
-    "Mengubah tetapan ini akan mempengaruhi cara perisian anda berfungsi. Adakah anda mahu meneruskan?",
-  actionLabelCancel: "Kembali",
-  actionLabelContinue: "Ya, teruskan",
-  triggerButtonLabel: "Tunjuk Dialog",
-  variant: "warning",
-});
+export const WarningLight: Story = createStory({ variant: "warning" });
 
 export const WarningDark: Story = createStory(
-  {
-    title: "Perhatian",
-    description:
-      "Mengubah tetapan ini akan mempengaruhi cara perisian anda berfungsi. Adakah anda mahu meneruskan?",
-    actionLabelCancel: "Kembali",
-    actionLabelContinue: "Ya, teruskan",
-    triggerButtonLabel: "Tunjuk Dialog",
-    variant: "warning",
-    theme: "dark",
-  },
+  { variant: "warning", theme: "dark" },
   "dark",
 );
 
 /**
  * This story represents the dialog component with danger variant.
  */
-export const DangerLight: Story = createStory({
-  title: "Bahaya",
-  description:
-    "Tindakan ini akan memadamkan data secara kekal dan tidak dapat dikembalikan. Adakah anda mahu meneruskan?",
-  actionLabelCancel: "Batal",
-  actionLabelContinue: "Ya, teruskan",
-  triggerButtonVariant: "danger-fill",
-  triggerButtonLabel: "Padam data",
-  variant: "danger",
-});
+export const DangerLight: Story = createStory({ variant: "danger" });
 
 export const DangerDark: Story = createStory(
-  {
-    title: "Bahaya",
-    description:
-      "Tindakan ini akan memadamkan data secara kekal dan tidak dapat dikembalikan. Adakah anda mahu meneruskan?",
-    actionLabelCancel: "Batal",
-    actionLabelContinue: "Ya, teruskan",
-    triggerButtonVariant: "danger-fill",
-    triggerButtonLabel: "Padam data",
-    variant: "danger",
-    theme: "dark",
-  },
+  { variant: "danger", theme: "dark" },
   "dark",
 );

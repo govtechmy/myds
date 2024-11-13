@@ -9,74 +9,50 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@myds/react/dialog";
-import { Button } from "@myds/react/button";
 import {
-  WarningCircleIcon,
   CheckCircleIcon,
+  WarningCircleIcon,
   WarningDiamondIcon,
 } from "@myds/react/icon";
+import React from "react";
 
+const AlertDialog = Dialog;
 const AlertDialogTrigger = DialogTrigger;
+const AlertDialogContent = DialogContent;
+const AlertDialogHeader = DialogHeader;
+const AlertDialogTitle = DialogTitle;
+const AlertDialogDescription = DialogDescription;
+const AlertDialogFooter = DialogFooter;
 
-export type AlertDialogVariant = "success" | "warning" | "danger";
+type AlertDialogVariant = "success" | "warning" | "danger";
 
-export interface AlertDialogProps {
-  title: string;
-  description: string;
-  actions: {
-    cancel: string;
-    continue: string;
-  };
-  children: React.ReactNode;
-  variant: AlertDialogVariant;
-  className?: string;
-}
-
-function AlertDialog({
-  title,
-  description,
-  actions,
-  children,
-  variant,
-  className,
-}: AlertDialogProps) {
+function AlertDialogIcon({ variant }: { variant: AlertDialogVariant }) {
   return (
-    <Dialog>
-      {children}
-      <DialogContent withCloseButton={true} className={className}>
-        <DialogHeader>
-          <DialogIcon variant={variant}>
-            {variant === "success" ? (
-              <CheckCircleIcon />
-            ) : variant === "warning" ? (
-              <WarningCircleIcon />
-            ) : (
-              <WarningDiamondIcon />
-            )}
-          </DialogIcon>
-          <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>{description}</DialogDescription>
-        </DialogHeader>
-        <DialogFooter fillWidth={true}>
-          {variant !== "success" && (
-            <DialogClose asChild>
-              <Button variant="default-outline" size="medium">
-                {actions.cancel}
-              </Button>
-            </DialogClose>
-          )}
-          <DialogClose asChild>
-            <Button
-              variant={variant === "danger" ? "danger-fill" : "primary-fill"}
-              size="medium"
-            >
-              {actions.continue}
-            </Button>
-          </DialogClose>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+    <DialogIcon variant={variant}>
+      {variant === "success" ? (
+        <CheckCircleIcon />
+      ) : variant === "warning" ? (
+        <WarningCircleIcon />
+      ) : (
+        <WarningDiamondIcon />
+      )}
+    </DialogIcon>
   );
 }
 
-export { AlertDialog, AlertDialogTrigger };
+function AlertDialogClose({ children }: { children: React.ReactNode }) {
+  return <DialogClose asChild>{children}</DialogClose>;
+}
+
+export {
+  AlertDialog,
+  AlertDialogClose,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogIcon,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  type AlertDialogVariant,
+};
