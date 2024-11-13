@@ -9,7 +9,7 @@ export default defineConfig({
       [
         remarkImage,
         {
-          publicDir: "https://gnu-myds.s3.ap-southeast-1.amazonaws.com",
+          publicDir: "https://d2391uizq0pg2.cloudfront.net",
           useImport: false,
         },
       ],

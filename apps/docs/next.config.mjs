@@ -11,7 +11,7 @@ const config = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "gnu-myds.s3.ap-southeast-1.amazonaws.com",
+        hostname: "d2391uizq0pg2.cloudfront.net",
         port: "",
         pathname: "/**",
       },

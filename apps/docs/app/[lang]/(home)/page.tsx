@@ -19,8 +19,7 @@ export default async function HomePage({
       titleKey: "Home.previewContent.items.1.title",
       descriptionKey: "Home.previewContent.items.1.description",
       img: {
-        svg: "/assets/content1/image.svg",
-        webp: "/assets/content1/image.webp",
+        svg: "/common/preview-1.svg",
         altKey: "Home.previewContent.items.1.tag",
       },
     },
@@ -29,8 +28,7 @@ export default async function HomePage({
       titleKey: "Home.previewContent.items.2.title",
       descriptionKey: "Home.previewContent.items.2.description",
       img: {
-        svg: "/assets/content2/image.svg",
-        webp: "/assets/content2/image.webp",
+        svg: "/common/preview-2.svg",
         altKey: "Home.previewContent.items.2.tag",
       },
     },
@@ -39,8 +37,7 @@ export default async function HomePage({
       titleKey: "Home.previewContent.items.3.title",
       descriptionKey: "Home.previewContent.items.3.description",
       img: {
-        svg: "/assets/content3/image.svg",
-        webp: "/assets/content3/image.webp",
+        svg: "/common/preview-3.svg",
         altKey: "Home.previewContent.items.3.tag",
       },
     },
@@ -48,7 +45,7 @@ export default async function HomePage({
 
   return (
     <>
-      <main className="border-otl-divider divide-otl-gray-200 flex min-h-screen flex-col divide-y">
+      <main className="xl:border-otl-divider divide-otl-divider flex min-h-screen flex-col divide-y">
         <Hero />
         <About lang={params.lang} />
         {previewItems.map((item, i) => (

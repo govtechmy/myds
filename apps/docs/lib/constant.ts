@@ -7,5 +7,9 @@ export const links = {
 };
 
 export const s3 = (path: string) => {
-  return `https://gnu-myds.s3.ap-southeast-1.amazonaws.com${path}`;
+  return `https://d2391uizq0pg2.cloudfront.net${path}`;
+};
+
+export const darkify = (src: string) => {
+  return src.replace(/(\.[\w\d_-]+)$/i, "-dark$1");
 };

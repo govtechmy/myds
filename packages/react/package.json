@@ -27,6 +27,10 @@
       "type": "./src/components/select.tsx",
       "default": "./src/components/select.tsx"
     },
+    "./date-field": {
+      "type": "./src/components/date-field.tsx",
+      "default": "./src/components/date-field.tsx"
+    },
     "./pagination": {
       "type": "./src/components/pagination.tsx",
       "default": "./src/components/pagination.tsx"

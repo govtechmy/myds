@@ -63,7 +63,7 @@ export default function Timeline(props: Props) {
 
   return (
     <div className="w-full">
-      <div className="border-otl-gray-200 mx-auto grid max-w-screen-xl grid-cols-2 border-x lg:grid-cols-12 lg:gap-y-[3.25rem]">
+      <div className="border-otl-divider mx-auto grid max-w-screen-xl grid-cols-2 border-x lg:grid-cols-12 lg:gap-y-[3.25rem]">
         <div
           className={clx(
             "col-span-full gap-y-[1.125rem] space-y-[18px] px-[1.125rem] pt-[3rem]",
@@ -168,7 +168,7 @@ export function ItemList(props: {
                 item.type === "highlight"
                   ? "bg-bg-white-hover"
                   : item.type === "launched"
-                    ? "bg-success-50"
+                    ? "bg-bg-success-50"
                     : item.type === "development"
                       ? "bg-bg-primary-50"
                       : "",
