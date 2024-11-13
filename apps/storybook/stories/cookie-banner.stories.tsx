@@ -10,10 +10,8 @@ import {
   CookieBannerPreferences,
   CookieBannerCustomiser,
 } from "@myds/react/cookie-banner";
-import { useState } from "react";
-import { Button, button_cva } from "@myds/react/button";
-import { clx } from "@myds/react/utils";
-import { CrossIcon } from "@myds/react/icon";
+import { useEffect, useState } from "react";
+import { Button } from "@myds/react/button";
 import { Checkbox } from "@myds/react/checkbox";
 
 /**
@@ -51,13 +49,8 @@ const meta = {
       performance: true,
     });
     const handleAcceptAll = () => {
-      const preferences = {
-        necessary: true,
-        analytics: true,
-        performance: true,
-      };
-      // onAcceptAll?.(preferences);
-      // handleOpenChange(false);
+      setOpen(!open);
+      // define further action of handleAcceptAll
     };
 
     const handleRejectAll = () => {
@@ -66,28 +59,38 @@ const meta = {
         analytics: false,
         performance: false,
       };
-      // onRejectAll?.(preferences);
-      // handleOpenChange(false);
+      setOpen(!open);
+      // define further action of handleRejectAll
     };
+
+    // Reset preferences back to default when dialog closes
+    useEffect(() => {
+      if (!open) {
+        setPreferences({
+          necessary: true,
+          analytics: true,
+          performance: true,
+        });
+      }
+    }, [open]);
     return (
       <div className="flex flex-col items-start gap-4">
         <Button variant="primary-fill" onClick={() => setOpen(true)}>
           Open Cookie Settings
         </Button>
 
-        <CookieBanner {...args} open={open}>
-          <div className="mb-1 flex flex-row justify-between">
-            <CookieBannerHeader className="w-full space-y-0 p-0 pb-1">
+        <CookieBanner open={open} className={args.className}>
+          <div className="mb-1 flex w-full flex-row justify-between">
+            <CookieBannerHeader className="space-y-0 p-0 pb-1">
               <CookieBannerTitle className="text-body-md pb-1">
                 Customise Cookie Preferences
               </CookieBannerTitle>
               <CookieBannerDescription>
-                {/* TODO: if the description is too short, the  placement of the cross will be disrupted*/}
                 This website uses cookies to improve user experience. We need
                 your consent to use some of the cookies.
               </CookieBannerDescription>
             </CookieBannerHeader>
-            <CookieBannerClose />
+            <CookieBannerClose onClick={() => setOpen(!open)} />
           </div>
           <CookieBannerPreferences className="flex flex-col gap-2 py-3">
             <div className="flex flex-row gap-2.5">
@@ -210,68 +213,6 @@ const meta = {
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
-      },
-    },
-    title: {
-      control: "text",
-      description: "The main heading text of the cookie banner",
-      defaultValue: "Customise Cookie Preferences",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "Customise Cookie Preferences" },
-      },
-    },
-    description: {
-      control: "text",
-      description: "Explanatory text about cookie usage",
-      defaultValue:
-        "This website uses cookies to improve user experience. We need your consent to use some of the cookies.",
-      table: {
-        type: { summary: "string" },
-        defaultValue: {
-          summary:
-            "This website uses cookies to improve user experience. We need your consent to use some of the cookies.",
-        },
-      },
-    },
-    onOpenChange: {
-      action: "onOpenChange",
-      control: { type: undefined }, // to remove setup controls link on hover in the storybook
-      description: "Callback when banner visibility changes",
-      table: {
-        type: { summary: "function" },
-      },
-    },
-    onClose: {
-      action: "onClose",
-      control: { type: undefined }, // to remove setup controls link on hover in the storybook
-      description: "Callback when banner is closed",
-      table: {
-        type: { summary: "function" },
-      },
-    },
-    onAcceptAll: {
-      action: "onAcceptAll",
-      control: { type: undefined }, // to remove setup controls link on hover in the storybook
-      description: "Callback when all cookies are accepted",
-      table: {
-        type: { summary: "function" },
-      },
-    },
-    onRejectAll: {
-      action: "onRejectAll",
-      control: { type: undefined }, // to remove setup controls link on hover in the storybook
-      description: "Callback when non-essential cookies are rejected",
-      table: {
-        type: { summary: "function" },
-      },
-    },
-    onSavePreferences: {
-      action: "onSavePreferences",
-      control: { type: undefined }, // to remove setup controls link on hover in the storybook
-      description: "Callback when custom preferences are saved",
-      table: {
-        type: { summary: "function" },
       },
     },
   },

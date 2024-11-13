@@ -1,4 +1,10 @@
-import React, { createContext, forwardRef, useContext, useState } from "react";
+import React, {
+  createContext,
+  forwardRef,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { Button, button_cva } from "./button";
 import {
   Dialog,
@@ -55,13 +61,6 @@ interface CookieBannerPreferencesProps {
   className?: string;
 }
 
-// interface RenderProps {
-//   togglePreferences: () => void;
-// }
-// interface CookieBannerCustomiserProps {
-//   children: (props: RenderProps) => React.ReactNode;
-//   className?: string;
-// }
 type RenderProps = {
   togglePreferences: () => void;
 };
@@ -74,6 +73,13 @@ type CookieBannerCustomiserProps = {
 const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
   ({ open = false, className, children }, ref) => {
     const [showPreferences, setShowPreferences] = useState(false);
+    // Reset showPreferences when dialog closes
+    useEffect(() => {
+      if (!open) {
+        setShowPreferences(false);
+      }
+    }, [open]);
+
     return (
       <CookieBannerContext.Provider
         value={{ showPreferences, setShowPreferences }}
@@ -96,13 +102,19 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
 
 const CookieBannerHeader = DialogHeader;
 const CookieBannerTitle = DialogTitle;
-const CookieBannerClose = ({ className }: { className?: string }) => {
-  // TODO: check if using DialogClose or just button but with onClick since this is a controlled component
-  // TODO: check why the close button doesn't dismiss
+const CookieBannerClose = ({
+  className,
+  onClick,
+}: {
+  className?: string;
+  onClick: () => void;
+}) => {
   return (
-    <DialogClose
+    <Button
+      onClick={onClick}
+      variant={"default-ghost"}
+      size={"small"}
       className={clx(
-        button_cva({ variant: "default-ghost", size: "small" }),
         "size-[1.25rem]",
         "grid place-content-center",
         "text-txt-black-900",
@@ -112,21 +124,7 @@ const CookieBannerClose = ({ className }: { className?: string }) => {
       )}
     >
       <CrossIcon className="stroke-current" />
-    </DialogClose>
-    // <Button
-    //   variant={"default-ghost"}
-    //   size={"small"}
-    //   className={clx(
-    //     "size-[1.25rem]",
-    //     "grid place-content-center",
-    //     "text-txt-black-900",
-    //     "disabled:pointer-events-none",
-    //     "flex-shrink-0",
-    //     className,
-    //   )}
-    // >
-    //   <CrossIcon className="stroke-current" />
-    // </Button>
+    </Button>
   );
 };
 const CookieBannerFooter = DialogFooter;
@@ -163,6 +161,11 @@ const CookieBannerCustomiser = ({
     context.setShowPreferences(!context.showPreferences);
   };
 
+  if (context.showPreferences) {
+    // To hide the cutomizer buttons once clicked to reveal cookie preferences
+    return null;
+  }
+
   return (
     // TODO: Check to see if className is required here.
     <div className={className}>
@@ -183,5 +186,3 @@ export {
   CookieBannerPreferences,
   CookieBannerCustomiser,
 };
-
-// TODO: Should I do title props?
