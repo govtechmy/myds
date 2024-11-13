@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import Spinner from "@myds/react/spinner";
+import { Spinner } from "@myds/react/spinner";
 import { Button } from "@myds/react/button";
 
 /**
@@ -30,7 +30,7 @@ const meta = {
       },
       description: "Size variant of the spinner",
       control: "inline-radio",
-      options: ["sm", "md", "lg"],
+      options: ["small", "medium", "large"],
     },
     color: {
       table: {
@@ -67,35 +67,35 @@ export const DefaultDark: Story = createStory(
  * Small size spinner variation
  */
 export const Small: Story = createStory({
-  size: "sm",
+  size: "small",
 });
 
 export const SmallDark: Story = createStory(
   {
-    size: "sm",
+    size: "small",
     className: "dark",
   },
   "dark",
 );
 
 export const Medium: Story = createStory({
-  size: "md",
+  size: "medium",
 });
 
 export const MediumDark: Story = createStory(
   {
-    size: "md",
+    size: "medium",
     className: "dark",
   },
   "dark",
 );
 export const Large: Story = createStory({
-  size: "lg",
+  size: "large",
 });
 
 export const LargeDark: Story = createStory(
   {
-    size: "lg",
+    size: "large",
     className: "dark",
   },
   "dark",

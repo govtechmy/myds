@@ -1,42 +1,52 @@
 import React from "react";
+import { ComponentProps } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { clx } from "../utils";
 
-interface LoadingSpinnerProps {
-  size?: "sm" | "md" | "lg";
-  color?: "grey" | "white";
+const spinnerVariants = cva(
+  [
+    "animate-spin",
+    "[animation-duration:600ms]",
+    "rounded-full",
+    "bg-[conic-gradient(var(--tw-gradient-stops))]",
+    "from-transparent",
+    "[mask:radial-gradient(transparent_56%,#000_56%)]",
+  ],
+  {
+    variants: {
+      size: {
+        small: "h-4 w-4",
+        medium: "h-5 w-5",
+        large: "h-6 w-6",
+      },
+      color: {
+        gray: "to-txt-black-500",
+        white: "to-white",
+      },
+    },
+    defaultVariants: {
+      size: "small",
+      color: "gray",
+    },
+  },
+);
+
+interface SpinnerProps
+  extends VariantProps<typeof spinnerVariants>,
+    Omit<ComponentProps<"div">, "color"> {
   className?: string;
 }
 
-const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
-  size = "sm",
-  color = "grey",
+export const Spinner: React.FC<SpinnerProps> = ({
+  size,
+  color,
   className = "",
 }) => {
-  const sizeClasses = {
-    sm: "h-4 w-4",
-    md: "h-5 w-5",
-    lg: "h-6 w-6",
-  };
-  const colorClasses = {
-    grey: "to-txt-black-500",
-    white: "to-white",
-  };
-
   return (
-    <div className="relative flex items-center justify-center">
-      <div
-        className={clx(
-          sizeClasses[size],
-          "animate-spin rounded-full [animation-duration:600ms]",
-          "bg-[conic-gradient(var(--tw-gradient-stops))]",
-          "from-transparent",
-          colorClasses[color],
-          "[mask:radial-gradient(transparent_56%,#000_56%)]",
-          className,
-        )}
-      ></div>
+    <div
+      className={clx("relative flex items-center justify-center", className)}
+    >
+      <div className={spinnerVariants({ size, color })}></div>
     </div>
   );
 };
-
-export default LoadingSpinner;
