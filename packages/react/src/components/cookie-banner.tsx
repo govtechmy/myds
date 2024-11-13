@@ -55,13 +55,21 @@ interface CookieBannerPreferencesProps {
   className?: string;
 }
 
-interface RenderProps {
+// interface RenderProps {
+//   togglePreferences: () => void;
+// }
+// interface CookieBannerCustomiserProps {
+//   children: (props: RenderProps) => React.ReactNode;
+//   className?: string;
+// }
+type RenderProps = {
   togglePreferences: () => void;
-}
-interface CookieBannerCustomiserProps {
+};
+
+type CookieBannerCustomiserProps = {
   children: (props: RenderProps) => React.ReactNode;
   className?: string;
-}
+};
 
 const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
   ({ open = false, className, children }, ref) => {
@@ -88,8 +96,41 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
 
 const CookieBannerHeader = DialogHeader;
 const CookieBannerTitle = DialogTitle;
-const CookieBannerClose = DialogClose;
+const CookieBannerClose = ({ className }: { className?: string }) => {
+  // TODO: check if using DialogClose or just button but with onClick since this is a controlled component
+  // TODO: check why the close button doesn't dismiss
+  return (
+    <DialogClose
+      className={clx(
+        button_cva({ variant: "default-ghost", size: "small" }),
+        "size-[1.25rem]",
+        "grid place-content-center",
+        "text-txt-black-900",
+        "disabled:pointer-events-none",
+        "flex-shrink-0",
+        className,
+      )}
+    >
+      <CrossIcon className="stroke-current" />
+    </DialogClose>
+    // <Button
+    //   variant={"default-ghost"}
+    //   size={"small"}
+    //   className={clx(
+    //     "size-[1.25rem]",
+    //     "grid place-content-center",
+    //     "text-txt-black-900",
+    //     "disabled:pointer-events-none",
+    //     "flex-shrink-0",
+    //     className,
+    //   )}
+    // >
+    //   <CrossIcon className="stroke-current" />
+    // </Button>
+  );
+};
 const CookieBannerFooter = DialogFooter;
+const CookieBannerDescription = DialogDescription;
 const CookieBannerPreferences = ({
   children,
   className,
@@ -97,7 +138,7 @@ const CookieBannerPreferences = ({
   const context = useContext(CookieBannerContext);
 
   if (!context) {
-    throw new Error("Must be used within CookieBanner.Root");
+    throw new Error("Must be used within CookieBanner");
   }
 
   if (!context.showPreferences) {
@@ -123,6 +164,7 @@ const CookieBannerCustomiser = ({
   };
 
   return (
+    // TODO: Check to see if className is required here.
     <div className={className}>
       {children({
         togglePreferences,
@@ -137,6 +179,9 @@ export {
   CookieBannerFooter,
   CookieBannerTitle,
   CookieBannerClose,
+  CookieBannerDescription,
   CookieBannerPreferences,
   CookieBannerCustomiser,
 };
+
+// TODO: Should I do title props?
