@@ -5,7 +5,7 @@ export default {
       "The design foundation for building official Malaysian government websites, MYDS provides beautiful pre-built components which streamline development and ensure consistency.",
     openGraph: {
       url: {
-        index: "${baseUrl}/en-MY",
+        index: "https://design.digital.gov.my",
       },
       images: {
         "1": {

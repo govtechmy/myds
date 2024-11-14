@@ -5,7 +5,7 @@ export default {
       "Asas reka bentuk untuk membina laman web rasmi kerajaan Malaysia, MYDS menyediakan komponen pra-dibina yang kemas, memudahkan pembangunan dan menyeragamkan reka bentuk.",
     openGraph: {
       url: {
-        index: "${baseUrl}/ms-MY",
+        index: "https://design.digital.gov.my",
       },
       images: {
         "1": {
