@@ -8,14 +8,12 @@ import React, {
 import { Button, button_cva } from "./button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "./dialog";
-import { Checkbox } from "./checkbox";
 import { CrossIcon } from "../icons";
 import { clx } from "../utils";
 
@@ -70,7 +68,7 @@ type CookieBannerCustomiserProps = {
   className?: string;
 };
 
-const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
+const CookieBannerRoot = forwardRef<CookieBannerRef, CookieBannerProps>(
   ({ open = false, className, children }, ref) => {
     const [showPreferences, setShowPreferences] = useState(false);
     // Reset showPreferences when dialog closes
@@ -175,6 +173,16 @@ const CookieBannerCustomiser = ({
     </div>
   );
 };
+
+const CookieBanner = Object.assign(CookieBannerRoot, {
+  Header: CookieBannerHeader,
+  Title: CookieBannerTitle,
+  Description: CookieBannerDescription,
+  Close: CookieBannerClose,
+  Preference: CookieBannerPreferences,
+  Customiser: CookieBannerCustomiser,
+  Footer: CookieBannerFooter,
+});
 
 export {
   CookieBanner,
