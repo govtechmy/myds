@@ -72,7 +72,7 @@ export default async function HomePage({
             title: t("Home.timeline.cover.title"),
             description: t("Home.timeline.cover.description"),
           }}
-          data={Array.from({ length: 7 }).map((_, i) => ({
+          data={Array.from({ length: 6 }).map((_, i) => ({
             type: t(`Home.timeline.items.${i + 1}.type`),
             year: t(`Home.timeline.items.${i + 1}.year`),
             date: t(`Home.timeline.items.${i + 1}.date`),
