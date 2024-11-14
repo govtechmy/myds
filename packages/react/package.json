@@ -6,6 +6,11 @@
     "./utils": {
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
+    }
+,
+    "./spinner": {
+      "type": "./src/components/spinner.tsx",
+      "default": "./src/components/spinner.tsx"
     },
     "./input-otp": {
       "type": "./src/components/input-otp.tsx",
@@ -82,6 +87,10 @@
     "./button": {
       "type": "./src/components/button.tsx",
       "default": "./src/components/button.tsx"
+    },
+    "./alert-dialog": {
+      "type": "./src/components/alert-dialog.tsx",
+      "default": "./src/components/alert-dialog.tsx"
     },
     "./dialog": {
       "type": "./src/components/dialog.tsx",
