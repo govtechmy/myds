@@ -84,6 +84,10 @@
       "type": "./src/components/button.tsx",
       "default": "./src/components/button.tsx"
     },
+    "./alert-dialog": {
+      "type": "./src/components/alert-dialog.tsx",
+      "default": "./src/components/alert-dialog.tsx"
+    },
     "./dialog": {
       "type": "./src/components/dialog.tsx",
       "default": "./src/components/dialog.tsx"
