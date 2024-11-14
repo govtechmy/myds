@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { CookieBanner } from "@myds/react/cookie-banner";
+import { CookieBanner, CookieBannerClose, CookieBannerCustomiser, CookieBannerDescription, CookieBannerFooter, CookieBannerHeader, CookieBannerPreferences, CookieBannerTitle } from "@myds/react/cookie-banner";
 import { useEffect, useState } from "react";
 import { Button } from "@myds/react/button";
 import { Checkbox } from "@myds/react/checkbox";
@@ -28,18 +28,18 @@ import { Checkbox } from "@myds/react/checkbox";
  *  </Button>
  *  <CookieBanner open={open} className={args.className}>
  *    <div className="mb-1 flex w-full flex-row justify-between">
- *      <CookieBanner.Header className="space-y-0 p-0 pb-1">
- *        <CookieBanner.Title className="text-body-md pb-1">
+ *      <CookieBannerHeader className="space-y-0 p-0 pb-1">
+ *        <CookieBannerTitle className="text-body-md pb-1">
  *          Customise Cookie Preferences
- *        </CookieBanner.Title>
- *        <CookieBanner.Description>
+ *        </CookieBannerTitle>
+ *        <CookieBannerDescription>
  *          This website uses cookies to improve user experience. We need
  *          your consent to use some of the cookies.
- *        </CookieBanner.Description>
- *      </CookieBanner.Header>
- *      <CookieBanner.Close onClick={() => setOpen(!open)} />
+ *        </CookieBannerDescription>
+ *      </CookieBannerHeader>
+ *      <CookieBannerClose onClick={() => setOpen(!open)} />
  *    </div>
- *    <CookieBanner.Preference className="flex flex-col gap-2 py-3">
+ *    <CookieBannerPreferences className="flex flex-col gap-2 py-3">
  *      <div className="flex flex-row gap-2.5">
  *        <Checkbox
  *          id="necessary"
@@ -110,8 +110,8 @@ import { Checkbox } from "@myds/react/checkbox";
  *          </p>
  *        </div>
  *      </div>
- *    </CookieBanner.Preference>
- *    <CookieBanner.Footer
+ *    </CookieBannerPreferences>
+ *    <CookieBannerFooter
  *      fillWidth={false}
  *      className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row"
  *    >
@@ -131,7 +131,7 @@ import { Checkbox } from "@myds/react/checkbox";
  *      >
  *        Reject All
  *      </Button>
- *      <CookieBanner.Customiser asChild>
+ *      <CookieBannerCustomiser asChild>
  *        <Button
  *          variant="primary-outline"
  *          size="medium"
@@ -139,8 +139,8 @@ import { Checkbox } from "@myds/react/checkbox";
  *        >
  *          Customize
  *        </Button>
- *      </CookieBanner.Customiser>
- *    </CookieBanner.Footer>
+ *      </CookieBannerCustomiser>
+ *    </CookieBannerFooter>
  *  </CookieBanner>
  *</div>
  * ```
@@ -188,18 +188,18 @@ const meta = {
 
         <CookieBanner open={open} className={args.className}>
           <div className="mb-1 flex w-full flex-row justify-between">
-            <CookieBanner.Header className="space-y-0 p-0 pb-1">
-              <CookieBanner.Title className="text-body-md pb-1">
+            <CookieBannerHeader className="space-y-0 p-0 pb-1">
+              <CookieBannerTitle className="text-body-md pb-1">
                 Customise Cookie Preferences
-              </CookieBanner.Title>
-              <CookieBanner.Description>
+              </CookieBannerTitle>
+              <CookieBannerDescription>
                 This website uses cookies to improve user experience. We need
                 your consent to use some of the cookies.
-              </CookieBanner.Description>
-            </CookieBanner.Header>
-            <CookieBanner.Close onClick={() => setOpen(!open)} />
+              </CookieBannerDescription>
+            </CookieBannerHeader>
+            <CookieBannerClose onClick={() => setOpen(!open)} />
           </div>
-          <CookieBanner.Preference className="flex flex-col gap-2 py-3">
+          <CookieBannerPreferences className="flex flex-col gap-2 py-3">
             <div className="flex flex-row gap-2.5">
               <Checkbox
                 id="necessary"
@@ -270,8 +270,8 @@ const meta = {
                 </p>
               </div>
             </div>
-          </CookieBanner.Preference>
-          <CookieBanner.Footer
+          </CookieBannerPreferences>
+          <CookieBannerFooter
             fillWidth={false}
             className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row"
           >
@@ -291,16 +291,10 @@ const meta = {
             >
               Reject All
             </Button>
-            <CookieBanner.Customiser asChild>
-              <Button
-                variant="primary-outline"
-                size="medium"
-                className="w-full justify-center sm:w-auto"
-              >
-                Customize
-              </Button>
-            </CookieBanner.Customiser>
-          </CookieBanner.Footer>
+            <CookieBannerCustomiser>
+              Customise
+            </CookieBannerCustomiser>
+          </CookieBannerFooter>
         </CookieBanner>
       </div>
     );

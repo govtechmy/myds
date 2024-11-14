@@ -16,6 +16,7 @@ import {
 } from "./dialog";
 import { CrossIcon } from "../icons";
 import { clx } from "../utils";
+import { Slot } from "@radix-ui/react-slot";
 
 interface CookieBannerProps {
   open?: boolean;
@@ -129,16 +130,12 @@ type RenderProps = {
 };
 
 type CookieBannerCustomiserProps = {
-  children: React.ReactElement<ChildProps>;
+  children: React.ReactNode;
   className?: string;
   asChild?: boolean;
 };
-interface ChildProps {
-  // THe children of the CookieBannerCustomiser must has an onClick props
-  onClick?: (e: React.MouseEvent) => void;
-}
 
-const CookieBannerRoot = forwardRef<CookieBannerRef, CookieBannerProps>(
+const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
   ({ open = false, className, children }, ref) => {
     const [showPreferences, setShowPreferences] = useState(false);
     // Reset showPreferences when dialog closes
@@ -224,7 +221,6 @@ const CookieBannerCustomiser = forwardRef<
   CookieBannerCustomiserProps
 >(({ children, className, asChild = false }, ref) => {
   const context = useContext(CookieBannerContext);
-  console.log(context?.showPreferences);
   if (!context) {
     throw new Error("Must be used within CookieBanner");
   }
@@ -237,32 +233,30 @@ const CookieBannerCustomiser = forwardRef<
     // To hide the cutomizer buttons once clicked to reveal cookie preferences
     return null;
   }
+  if (asChild){
+    if (!React.isValidElement(children)) {
+      throw new Error("asChild requires a valid React element as children");
+    }
+    return (<Slot ref={ref} className={className} onClick = {(e) => {
+      if ("onClick" in children.props && typeof children.props.onClick === "function") 
+      {
+        children.props.onClick(e);
+      }
+      togglePreferences();
+    }}>
+      {children}
+    </Slot>)
 
-  if (asChild && React.isValidElement(children)) {
-    return React.cloneElement(children as React.ReactElement<any>, {
-      ref,
-      onClick: (e: React.MouseEvent) => {
-        if (
-          "onClick" in children.props &&
-          typeof children.props.onClick === "function"
-        ) {
-          children.props.onClick(e);
-        }
-        togglePreferences();
-      },
-    });
   }
 
-  return (
-    <div ref={ref as React.RefObject<HTMLDivElement>} className={className}>
-      {React.cloneElement(children, {
-        onClick: togglePreferences,
-      })}
-    </div>
-  );
+    return (
+      <Button variant="primary-outline" size="medium" className={clx("w-full justify-center sm:w-auto", className)} onClick={togglePreferences}>
+        {children}
+      </Button>
+    )
 });
 
-CookieBannerRoot.displayName = "CookieBannerRoot";
+CookieBanner.displayName = "CookieBanner";
 CookieBannerCustomiser.displayName = "CookieBannerCustomiser";
 CookieBannerFooter.displayName = "CookieBannerFooter";
 CookieBannerDescription.displayName = "CookieBannerDescription";
@@ -271,14 +265,4 @@ CookieBannerPreferences.displayName = "CookieBannerPreferences";
 CookieBannerTitle.displayName = "CookieBannerTitle";
 CookieBannerHeader.displayName = "CookieBannerHeader";
 
-const CookieBanner = Object.assign(CookieBannerRoot, {
-  Header: CookieBannerHeader,
-  Title: CookieBannerTitle,
-  Description: CookieBannerDescription,
-  Close: CookieBannerClose,
-  Preference: CookieBannerPreferences,
-  Customiser: CookieBannerCustomiser,
-  Footer: CookieBannerFooter,
-});
-
-export { CookieBanner };
+export { CookieBanner, CookieBannerHeader, CookieBannerTitle, CookieBannerDescription, CookieBannerClose, CookieBannerPreferences, CookieBannerCustomiser, CookieBannerFooter };
