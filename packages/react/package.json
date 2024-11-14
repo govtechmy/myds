@@ -6,6 +6,11 @@
     "./utils": {
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
+    }
+,
+    "./callout": {
+      "type": "./src/components/callout.tsx",
+      "default": "./src/components/callout.tsx"
     },
     "./icon": {
       "type": "./src/icons/index.ts",
