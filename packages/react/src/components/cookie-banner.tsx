@@ -17,19 +17,6 @@ import {
 import { CrossIcon } from "../icons";
 import { clx } from "../utils";
 
-// TODO: refactor the comment as well
-/**
- * Props for CookieBanner component.
- * @typedef CookieBannerProps
- * @property {boolean} open - Controls the visibility state of the cookie banner.
- * @property {string} title - The main heading text displayed at the top of the cookie banner. The template for the title should be in the form of "Cookies on {websiteName}.gov.my".
- * @property {string} description - The descriptive text explaining the purpose of cookies and data collection to users.
- * @property {function} onOpenChange - Callback function triggered when the banner's open state changes.
- * @property {function} onClose - Callback function triggered when the banner is closed.
- * @property {function} onAcceptAll - Callback function triggered when the user clicks Accept All button without customising the type of cookies to accept.
- * @property {function} onRejectAll - Callback function triggered when the user clicks Reject All button.
- * @property {function} onSavePreferences - Callback function triggered when the user clicks Accept All button after customising the type of cookies to accept.
- */
 interface CookieBannerProps {
   open?: boolean;
   className?: string;
@@ -37,12 +24,90 @@ interface CookieBannerProps {
 }
 type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
 
-// TODO: complete the description
 /**
- * CookieBanner component description.
+ * Root component for the Cookie Banner compound component.
+ * Provides context and base layout for all cookie banner subcomponents.
+ * Must be used as the parent of all other CookieBanner.* components.
+ *
  * @component
  * @example
- * <CookieBanner propName="value" />
+ * <CookieBanner open={isOpen}>
+ *   <CookieBanner.Header>
+ *     <CookieBanner.Title>
+ *       Cookies on example.gov.my
+ *     </CookieBanner.Title>
+ *     <CookieBanner.Close />
+ *   </CookieBanner.Header>
+ *
+ *   <CookieBanner.Description>
+ *     We use cookies to improve your experience.
+ *   </CookieBanner.Description>
+ *
+ *   <CookieBanner.Preference className="flex flex-col gap-2 py-3">
+ *     <div className="flex flex-row gap-2.5">
+ *       <Checkbox
+ *         id="necessary"
+ *         checked={true}
+ *         className="mt-0.5 flex-shrink-0"
+ *         disabled
+ *       />
+ *       <div className="flex flex-col justify-start gap-1">
+ *         <label
+ *           htmlFor="necessary"
+ *           className="text-txt-black-900 text-body-sm font-semibold"
+ *         >
+ *           Necessary
+ *         </label>
+ *         <p className="text-txt-black-500 text-body-sm">
+ *           Enable essential site features like secure log-ins and cookies
+ *           consent settings. We do not store personal data.
+ *         </p>
+ *       </div>
+ *     </div>
+ *   </CookieBanner.Preference>
+ *
+ *   <CookieBanner.Footer
+ *     fillWidth={false}
+ *     className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row"
+ *   >
+ *     <Button
+ *       variant="primary-fill"
+ *       size="medium"
+ *       onClick={handleAcceptAll}
+ *       className="w-full justify-center sm:w-auto"
+ *     >
+ *       Accept All
+ *     </Button>
+ *     <CookieBanner.Customiser asChild>
+ *       <Button
+ *         variant="primary-outline"
+ *         size="medium"
+ *         className="w-full justify-center sm:w-auto"
+ *       >
+ *         Customize
+ *       </Button>
+ *     </CookieBanner.Customiser>
+ *   </CookieBanner.Footer>
+ * </CookieBanner>
+ *
+ * @typedef {Object} CookieBannerProps
+ * @property {boolean} [open=false] - Controls the visibility state of the cookie banner
+ * @property {string} [className] - Optional CSS class name for styling the banner container
+ * @property {React.ReactNode} children - The subcomponents that make up the cookie banner's content
+ * @property {React.Ref<HTMLDivElement>} [ref] - Optional ref that will be forwarded to the underlying DialogContent component
+ *
+ * @context CookieBannerContext
+ * @property {boolean} showPreferences - Current state of preferences visibility
+ * @property {function} setShowPreferences - Function to toggle preferences visibility
+ *
+ * @subcomponents
+ * - CookieBanner.Header - Container for the banner title and close button
+ * - CookieBanner.Title - The banner's title component
+ * - CookieBanner.Description - Component for the banner's descriptive text
+ * - CookieBanner.Close - The close button component
+ * - CookieBanner.Preferences - Container for cookie preference options
+ * - CookieBanner.Customiser - Component to trigger preference customization
+ * - CookieBanner.Actions - Container for action buttons (Accept/Reject All)
  */
 
 interface CookieBannerContextValue {
@@ -64,9 +129,14 @@ type RenderProps = {
 };
 
 type CookieBannerCustomiserProps = {
-  children: (props: RenderProps) => React.ReactNode;
+  children: React.ReactElement<ChildProps>;
   className?: string;
+  asChild?: boolean;
 };
+interface ChildProps {
+  // THe children of the CookieBannerCustomiser must has an onClick props
+  onClick?: (e: React.MouseEvent) => void;
+}
 
 const CookieBannerRoot = forwardRef<CookieBannerRef, CookieBannerProps>(
   ({ open = false, className, children }, ref) => {
@@ -127,10 +197,11 @@ const CookieBannerClose = ({
 };
 const CookieBannerFooter = DialogFooter;
 const CookieBannerDescription = DialogDescription;
-const CookieBannerPreferences = ({
-  children,
-  className,
-}: CookieBannerPreferencesProps) => {
+
+const CookieBannerPreferences = forwardRef<
+  HTMLDivElement,
+  CookieBannerPreferencesProps
+>(({ children, className }, ref) => {
   const context = useContext(CookieBannerContext);
 
   if (!context) {
@@ -142,15 +213,18 @@ const CookieBannerPreferences = ({
   }
 
   return (
-    <div className={clx("flex flex-col gap-2 py-3", className)}>{children}</div>
+    <div ref={ref} className={clx("flex flex-col gap-2 py-3", className)}>
+      {children}
+    </div>
   );
-};
-const CookieBannerCustomiser = ({
-  children,
-  className,
-}: CookieBannerCustomiserProps) => {
-  const context = useContext(CookieBannerContext);
+});
 
+const CookieBannerCustomiser = forwardRef<
+  HTMLElement,
+  CookieBannerCustomiserProps
+>(({ children, className, asChild = false }, ref) => {
+  const context = useContext(CookieBannerContext);
+  console.log(context?.showPreferences);
   if (!context) {
     throw new Error("Must be used within CookieBanner");
   }
@@ -164,15 +238,38 @@ const CookieBannerCustomiser = ({
     return null;
   }
 
+  if (asChild && React.isValidElement(children)) {
+    return React.cloneElement(children as React.ReactElement<any>, {
+      ref,
+      onClick: (e: React.MouseEvent) => {
+        if (
+          "onClick" in children.props &&
+          typeof children.props.onClick === "function"
+        ) {
+          children.props.onClick(e);
+        }
+        togglePreferences();
+      },
+    });
+  }
+
   return (
-    // TODO: Check to see if className is required here.
-    <div className={className}>
-      {children({
-        togglePreferences,
+    <div ref={ref as React.RefObject<HTMLDivElement>} className={className}>
+      {React.cloneElement(children, {
+        onClick: togglePreferences,
       })}
     </div>
   );
-};
+});
+
+CookieBannerRoot.displayName = "CookieBannerRoot";
+CookieBannerCustomiser.displayName = "CookieBannerCustomiser";
+CookieBannerFooter.displayName = "CookieBannerFooter";
+CookieBannerDescription.displayName = "CookieBannerDescription";
+CookieBannerClose.displayName = "CookieBannerClose";
+CookieBannerPreferences.displayName = "CookieBannerPreferences";
+CookieBannerTitle.displayName = "CookieBannerTitle";
+CookieBannerHeader.displayName = "CookieBannerHeader";
 
 const CookieBanner = Object.assign(CookieBannerRoot, {
   Header: CookieBannerHeader,
@@ -184,13 +281,4 @@ const CookieBanner = Object.assign(CookieBannerRoot, {
   Footer: CookieBannerFooter,
 });
 
-export {
-  CookieBanner,
-  CookieBannerHeader,
-  CookieBannerFooter,
-  CookieBannerTitle,
-  CookieBannerClose,
-  CookieBannerDescription,
-  CookieBannerPreferences,
-  CookieBannerCustomiser,
-};
+export { CookieBanner };
