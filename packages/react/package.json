@@ -6,13 +6,15 @@
     "./utils": {
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
-    }
-,
+    },
     "./announce-bar": {
       "type": "./src/components/announce-bar.tsx",
       "default": "./src/components/announce-bar.tsx"
-    }
-,
+    },
+    "./cookie-banner": {
+      "type": "./src/components/cookie-banner.tsx",
+      "default": "./src/components/cookie-banner.tsx"
+    },
     "./spinner": {
       "type": "./src/components/spinner.tsx",
       "default": "./src/components/spinner.tsx"
