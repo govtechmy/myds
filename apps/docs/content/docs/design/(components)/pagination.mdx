@@ -1,13 +1,37 @@
 ---
 title: Pagination
-description: Pagination
+description: Allows users to navigate through a large set of content divided into discrete pages
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+## Type
 
-## What is Next?
+![pagination-type.png](/design/pagination-type.png)
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+1. **Type 1**: Ideal for contexts where users might want to jump to a specific page within a large number of pages.
+2. **Type 2**: Suitable for simpler navigation where users primarily move forward or backward.
+3. **Type 3**: Similar to Type 2, this type displays the current page and total pages on left and navigation buttons on far right.
+
+## Previous & Next button
+
+![pagination-buttons.png](/design/pagination-buttons.png)
+
+Use Button Type=Secondary as button component. When button is disabled, remove box-shadow under the button.
+
+1. **Default**: An element appears when it is not being interacted with.
+2. **Hover**: An element appears when a user moves the mouse pointer over it.
+3. **Focused**: An element appears when it is selected or active, usually through keyboard navigation (TAB) or a mouse click.
+4. **Previous button**: Disabled when user is on 1st page. Enabled when user is on not on first page.
+5. **Next button**: Disabled when user is on the last page. Enabled when user is not on the last page.
+6. **Disabled both buttons**: When there is only 1 page.
+
+## Pagination numbers
+
+![pagination-numbers.png](/design/pagination-numbers.png)
+
+Use Button Type=Tertiary as button component.
+
+1. **Default**
+2. **Hover & Selected**
+3. **Default Focused**
+4. **Not interactive**
+5. **Focused & Selected**

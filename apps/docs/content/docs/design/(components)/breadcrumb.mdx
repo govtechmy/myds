@@ -1,13 +1,32 @@
 ---
 title: Breadcrumb
-description: Breadcrumb
+description: A navigation aid that helps users understand their current location within a website or application and allows them to easily navigate back to previous levels.
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+![breadcrumb-anatomy.png](/design/breadcrumb-anatomy.png)
 
-## What is Next?
+The key elements that define a Breadcrumb’s structure and function.
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+1. **Parent Page**: Links to the preceding page or section, helping users navigate back through the hierarchy.
+2. **Current Page**: Indicates the user’s current location in the navigation path, typically not clickable.
+3. **Wrapper**: A container that holds the breadcrumb trail, ensuring consistent spacing and alignment within the layout.
+
+## Hover state
+
+![breadcrumb-interaction-state.png](/design/breadcrumb-interaction-state.png)
+
+1. Trigger area for hover and click action
+2. Underlined hover state for parents page
+
+## Wrapper
+
+![breadcrumb-wrapper.png](/design/breadcrumb-wrapper.png)
+
+1. Default without wrapper appearance
+2. Alternative with wrapper appearance
+
+## Limit title length
+
+![breadcrumb-overflow-ellipsis.png](/design/breadcrumb-overflow-ellipsis.png)
+
+1. **Limit Title Length**: Set a maximum width of 200px for the current page title. If the title exceeds this length, automatically display an ellipsis (e.g., "Long Page Title...") to maintain a clean and organized layout.

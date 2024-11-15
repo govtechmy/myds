@@ -1,0 +1,91 @@
+---
+title: Dialog amaran
+description: Dialog Amaran ialah pop-up modal yang direka untuk menarik perhatian pengguna bagi tindakan atau mesej penting. Ia terdiri daripada tiga komponen utama, iaitu Tajuk, Kandungan, dan Footer. Komponen ini membentuk dialog yang fleksibel dan kohesif yang boleh digunakan untuk pelbagai jenis amaran atau borang.
+---
+
+![alert-dialog-anatomy.png](/design/alert-dialog-anatomy.png)
+
+Elemen utama yang menentukan struktur dan fungsi Dialog Amaran.
+
+1. **Tajuk**: Bahagian atas yang melekat untuk modal yang panjang dan boleh ditatal, mengandungi tajuk, ikon utama, dan elemen opsional seperti ikon tutup atau status kemas kini terakhir. Pembahagi memisahkan tajuk daripada kandungan di bawahnya.
+2. **Kandungan**: Ruang utama dialog untuk borang, mesej, atau maklumat lain.
+3. **Footer**: Bahagian bawah yang melekat, mengandungi butang tindakan untuk pilihan pengguna, seperti tindakan utama, tindakan sekunder, dan penafian terma & syarat opsional.
+4. **Seruan Tindakan (Callout)**: Memaparkan mesej ralat jika validasi borang gagal, memberi notifikasi kepada pengguna mengenai isu tertentu.
+5. **Lapisan Latar Belakang**: Lapisan gelap 50% di belakang dialog, untuk menumpukan perhatian pada amaran dan menyekat interaksi latar belakang.
+
+## Saiz
+
+### Desktop/Tablet
+
+Ditetapkan di tengah skrin. Lebar maksimum ialah 400px untuk jenis amaran dan 800px untuk jenis borang.
+
+![alert-dialog-usage-example.png](/design/alert-dialog-usage-example.png)
+
+### Telefon Mudah Alih
+
+Diposisikan di tengah skrin dan meregang mengikut lebar skrin, dengan margin 18px di semua sisi. Lebar minimum ialah 300px dan lebar maksimum 100% relatif kepada skrin.
+
+![alert-dialog-usage-example-1.png](/design/alert-dialog-usage-example-1.png)
+
+## Bahagian
+
+Komponen yang membentuk Dialog Amaran.
+
+### Tajuk
+
+Tajuk melekat untuk modal yang panjang dan boleh ditatal bagi memastikan tajuk dan tindakan tetap kelihatan di bahagian atas.
+
+![alert-dialog-header-1.png](/design/alert-dialog-header-1.png)
+
+1. **Tajuk:** Tajuk utama dialog.
+2. **Status Kemas Kini Terakhir (Opsional):** Menunjukkan cap masa kemas kini terakhir jika ikon Tutup tidak ditunjukkan.
+3. **Tab:** Navigasi tab opsional dalam dialog.
+4. **Ikon Tutup (Opsional):** Membolehkan pengguna menutup dialog; jika diaktifkan, Status Kemas Kini Terakhir akan disembunyikan.
+5. **Pembahagi:** Pemisah antara bahagian tajuk dan kandungan.
+
+### Footer
+
+Diposisikan di bahagian bawah, mengandungi butang tindakan untuk membimbing pengguna ke langkah seterusnya.
+
+![alert-dialog-footer-1.png](/design/alert-dialog-footer-1.png)
+
+1. **Tindakan Utama:** Butang tindakan utama, sentiasa kelihatan, biasanya di sebelah kanan untuk desktop atau di tengah untuk mudah alih.
+2. **Tindakan 1:** Tindakan sekunder di sebelah kiri tindakan utama.
+3. **Tindakan Batal:** Terletak bersebelahan dengan Tindakan 1, sering digunakan untuk membatalkan tindakan utama.
+4. **Tindakan 2:** Terletak di sebelah kiri sekali, digunakan untuk tindakan tambahan seperti “Padam Draf.”
+5. **Teks Penafian:** Ditunjukkan sebelum melanjutkan tindakan utama, seperti "Dengan menghantar, anda bersetuju dengan Terma Penggunaan dan Dasar Privasi."
+
+#### Susun Atur Footer
+
+![alert-dialog-footer-2.png](/design/alert-dialog-footer-2.png)
+
+1. **Bersebelahan**: Digunakan untuk desktop atau modal yang lebih besar di mana butang boleh dipaparkan secara mendatar.
+2. **Bertindan**: Digunakan untuk mudah alih atau modal yang lebih kecil, di mana butang dipaparkan dalam susunan menegak.
+
+#### Penjajaran Footer
+
+![alert-dialog-footer-3.png](/design/alert-dialog-footer-3.png)
+
+1. **Kanan**: Secara lalai, menjajarkan tindakan ke kanan, biasanya untuk desktop dan modal yang lebih besar, membantu pengguna mencari tindakan utama (cth., Hantar) di bahagian kanan terakhir.
+2. **Kiri**: Menjajarkan tindakan ke kiri modal.
+3. **Penuh**: Meregangkan tindakan untuk memenuhi bekas, biasanya digunakan untuk mudah alih atau dialog amaran yang lebih kecil.
+
+## Contoh Penggunaan
+
+### Borang
+
+Digunakan untuk aplikasi, tetapan, atau sebarang kandungan interaktif yang memerlukan input pengguna.
+
+![alert-dialog-variation-3.png](/design/alert-dialog-variation-3.png)
+
+![alert-dialog-variation.png](/design/alert-dialog-variation.png)
+
+### Amaran
+
+![alert-dialog-variation-4.png](/design/alert-dialog-variation-4.png)
+
+![alert-dialog-variation-1.png](/design/alert-dialog-variation-1.png)
+
+1. **Berjaya**: Memberi maklum balas kepada pengguna untuk tindakan atau pengesahan yang berjaya.
+2. **Amaran**: Mengingatkan pengguna tentang isu yang memerlukan perhatian.
+3. **Destruktif**: Digunakan apabila pengguna akan melakukan tindakan yang tidak boleh dibatalkan, seperti pemadaman.
