@@ -17,6 +17,10 @@
       "type": "./src/components/spinner.tsx",
       "default": "./src/components/spinner.tsx"
     },
+    "./input-otp": {
+      "type": "./src/components/input-otp.tsx",
+      "default": "./src/components/input-otp.tsx"
+    },
     "./icon": {
       "type": "./src/icons/index.ts",
       "default": "./src/icons/index.ts"
@@ -138,6 +142,7 @@
     "@radix-ui/react-toast": "^1.2.2",
     "class-variance-authority": "^0.7.0",
     "date-fns": "^4.1.0",
+    "input-otp": "^1.4.1",
     "mitt": "^3.0.1",
     "react-day-picker": "^9.2.1",
     "tailwind-merge": "^2.4.0"

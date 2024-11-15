@@ -5,7 +5,7 @@ export default {
       "The design foundation for building official Malaysian government websites, MYDS provides beautiful pre-built components which streamline development and ensure consistency.",
     openGraph: {
       url: {
-        index: "${baseUrl}/en-MY",
+        index: "https://design.digital.gov.my",
       },
       images: {
         "1": {
@@ -105,13 +105,13 @@ export default {
     timeline: {
       cover: {
         tag: "Our Plan",
-        title: "How are we rolling out Malaysia’s first design system?",
+        title: "How are we rolling out Malaysia's first design system?",
         description:
-          "We’ll start with proof-of-concept sites and design docs, then offer a site builder for government agencies and schools to create sites using the design system.",
+          "We'll start with proof-of-concept sites and design docs, then start migrating websites and apps across the whole of government to implement the design system.",
       },
       items: {
         "1": {
-          date: "29 JUL 2024",
+          date: "28 JUL 2024",
           title: "Digital Ministry website launched",
           description:
             "Proof-of-concept for the Malaysia Government Design System, with skin in the game using our own official site!",
@@ -119,37 +119,29 @@ export default {
           year: "2024",
         },
         "2": {
-          date: "29 JUL 2024",
-          title: "MYDS (Beta) launched",
+          date: "28 JUL 2024",
+          title: "MYDS Figma launched",
           description: "Figma opened for public inspection and feedback",
           type: "launched",
           year: "2024",
         },
         "3": {
-          date: "AUG - NOV 2024",
-          title: "Development of Site Builder",
-          description:
-            "The engine behind implementation of the design system. Agencies will use this site builder (i.e. a CMS) to populate content.",
-          type: "development",
+          date: "DEC 2024",
+          title: "MYDS Component Library for React",
+          description: "Component library MYDS for React to be released",
+          type: "none",
           year: "2024",
         },
         "4": {
-          date: "SEP 2024 - JAN 2025",
-          title: "School Sites Revamp",
+          date: "15 NOV 2024",
+          title: "MYDS Design Guideline",
           description:
-            "Proof-of-concept for the scalability of our design system and site builder, working with 10,000 schools nationwide.",
-          type: "none",
+            "The design guideline for MYDS is now available for public viewing",
+          type: "launched",
           year: "2024",
         },
+
         "5": {
-          date: "DEC 2024 - MAR 2025 ",
-          title: "Agency Sites Revamp",
-          description:
-            "Roll-out across government agencies. The site builder (including hosting) will be completely free for the public sector.",
-          type: "none",
-          year: "2024",
-        },
-        "6": {
           date: "MAR 2025",
           title: "Final Stakeholder Consultation",
           description:
@@ -157,7 +149,7 @@ export default {
           type: "none",
           year: "2025",
         },
-        "7": {
+        "6": {
           date: "APR 2025",
           title: "Full Launch of MYDS",
           description:

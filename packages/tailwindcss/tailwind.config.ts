@@ -263,6 +263,30 @@ const config: PresetsConfig = {
       "context-menu":
         "0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 12px 50px 0px rgba(0, 0, 0, 0.10)",
     },
+    keyframes: {
+      "decrease-width": {
+        "0%": { width: "100%" },
+        "100%": { width: "0%" },
+      },
+      "slide-down": {
+        from: { height: "0" },
+        to: { height: "var(--radix-accordion-content-height)" },
+      },
+      "slide-up": {
+        from: { height: "var(--radix-accordion-content-height)" },
+        to: { height: "0" },
+      },
+      "caret-blink": {
+        "0%,70%,100%": { opacity: "1" },
+        "20%,50%": { opacity: "0" },
+      },
+    },
+    animation: {
+      expire: "decrease-width 5s linear",
+      "slide-down": "slide-down 300ms ease-out",
+      "slide-up": "slide-up 300ms ease-out",
+      "caret-blink": "caret-blink 1.25s ease-out infinite",
+    },
   },
   plugins: [tailwindcssAnimate],
 };

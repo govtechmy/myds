@@ -1,84 +1,27 @@
-# Turborepo starter
+# Malaysian Government Design System (MYDS)
 
-This is an official starter Turborepo.
+![myds-hero-img](https://d2391uizq0pg2.cloudfront.net/design/myds-hero-img.png)
 
-## Using this example
+> The Malaysian Government Design System (MYDS) contains the design guideline and the component library for creating consistent and accessible digital services across the Malaysian government.
 
-Run the following command:
+There are two (2) key products in MYDS:
 
-```sh
-npx create-turbo@latest
-```
+1. **Design Language Guideline**: Aimed at designers and project managers, this guideline provides the principles, standards, and best practices for designing user interfaces that are cohesive and user-friendly.
+2. **Component Library** (🚧 _under active development_): Targeted at developers, this library offers a collection of reusable UI components that adhere to the design language guidelines, ensuring consistency and efficiency in development.
 
-## What's inside?
+## Documentation
 
-This Turborepo includes the following packages/apps:
+1. Design Guideline: https://design.digital.gov.my/en/docs/design
+2. Component Library: https://design.digital.gov.my/en/docs/develop
 
-### Apps and Packages
+## Contributing
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+MYDS is an open-source project and welcomes contributions from the public. To contribute:
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+1. **Discuss New Features**: Before submitting a pull request (PR), please open an issue to discuss the feature you would like to add or change. This helps to ensure that your contribution aligns with the project's goals and guidelines.
+2. **Submit a PR**: Once the feature has been discussed and approved, you can submit a PR with your changes. Please follow the contribution guidelines provided in the repository.
 
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+We look forward to collaborating with you to improve MYDS.
 
 ---
 
@@ -86,7 +29,7 @@ Learn more about the power of Turborepo:
 
 ### 1. Tailwind Intellisense Workaround
 
-MyDS uses a unified tailwind config file, as the base config for multiple apps/packages. If you are using Tailwind Intellisense extension on VSCode, you may lose the extension's ability to auto-suggest and CSS preview if you work within `packages/**`. This is because the extension requires `tailwind.config` to be available in the local package workspace, which is not defined in the individual packages.
+MYDS incorporates a unified tailwind config file, as the base config for multiple apps/packages. If you are using Tailwind Intellisense extension on VSCode, you may lose the extension's ability to auto-suggest and CSS preview if you work within `packages/**`. This is because the extension requires `tailwind.config` to be available in the local package workspace, which is not defined in individual packages.
 
 To solve this, add the following in your VSCode **Workspace settings** (_Not your User settings_):
 
@@ -94,10 +37,12 @@ To solve this, add the following in your VSCode **Workspace settings** (_Not you
 // .vscode/settings.json
 {
   "tailwindCSS.experimental.configFile": {
-    "apps/web/tailwind.config.ts": "apps/web/**",
+    "apps/docs/tailwind.config.ts": "apps/docs/**",
     "packages/tailwindcss/tailwind.config.ts": "packages/**"
   }
 }
 ```
 
 This will override Intellisense's auto-config-locator to point to the defined config files and together with its glob scope.
+
+Made with ❤️ by GNU, Kementerian Digital
