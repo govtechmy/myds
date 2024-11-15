@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { Button, button_cva } from "./button";
+import { Button } from "./button";
 import {
   Dialog,
   DialogContent,
