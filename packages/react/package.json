@@ -8,6 +8,11 @@
       "default": "./src/utils/index.ts"
     }
 ,
+    "./announce-bar": {
+      "type": "./src/components/announce-bar.tsx",
+      "default": "./src/components/announce-bar.tsx"
+    }
+,
     "./spinner": {
       "type": "./src/components/spinner.tsx",
       "default": "./src/components/spinner.tsx"
