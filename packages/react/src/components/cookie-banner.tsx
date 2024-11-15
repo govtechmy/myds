@@ -102,13 +102,13 @@ type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
  * @property {function} setShowPreferences - Function to toggle preferences visibility
  *
  * @subcomponents
- * - CookieBanner.Header - Container for the banner title and close button
- * - CookieBanner.Title - The banner's title component
- * - CookieBanner.Description - Component for the banner's descriptive text
- * - CookieBanner.Close - The close button component
- * - CookieBanner.Preferences - Container for cookie preference options
- * - CookieBanner.Customiser - Component to trigger preference customization
- * - CookieBanner.Actions - Container for action buttons (Accept/Reject All)
+ * - CookieBannerHeader - Container for the banner title and close button
+ * - CookieBannerTitle - The banner's title component
+ * - CookieBannerDescription - Component for the banner's descriptive text
+ * - CookieBannerClose - The close button component
+ * - CookieBannerPreferences - Container for cookie preference options
+ * - CookieBannerCustomiser - Component to trigger preference customization
+ * - CookieBannerActions - Container for action buttons (Accept/Reject All)
  */
 
 interface CookieBannerContextValue {
@@ -124,10 +124,6 @@ interface CookieBannerPreferencesProps {
   children: React.ReactNode;
   className?: string;
 }
-
-type RenderProps = {
-  togglePreferences: () => void;
-};
 
 type CookieBannerCustomiserProps = {
   children: React.ReactNode;
@@ -201,13 +197,9 @@ const CookieBannerPreferences = forwardRef<
 >(({ children, className }, ref) => {
   const context = useContext(CookieBannerContext);
 
-  if (!context) {
-    throw new Error("Must be used within CookieBanner");
-  }
+  if (!context) throw new Error("Must be used within CookieBanner");
 
-  if (!context.showPreferences) {
-    return null;
-  }
+  if (!context.showPreferences) return null;
 
   return (
     <div ref={ref} className={clx("flex flex-col gap-2 py-3", className)}>
@@ -233,27 +225,18 @@ const CookieBannerCustomiser = forwardRef<
     // To hide the cutomizer buttons once clicked to reveal cookie preferences
     return null;
   }
-  if (asChild){
-    if (!React.isValidElement(children)) {
-      throw new Error("asChild requires a valid React element as children");
-    }
-    return (<Slot ref={ref} className={className} onClick = {(e) => {
-      if ("onClick" in children.props && typeof children.props.onClick === "function") 
-      {
-        children.props.onClick(e);
-      }
-      togglePreferences();
-    }}>
+
+  const Comp = asChild ? Slot : Button;
+  return (
+    <Comp
+      variant="primary-outline"
+      size="medium"
+      className={clx("w-full justify-center sm:w-auto", className)}
+      onClick={togglePreferences}
+    >
       {children}
-    </Slot>)
-
-  }
-
-    return (
-      <Button variant="primary-outline" size="medium" className={clx("w-full justify-center sm:w-auto", className)} onClick={togglePreferences}>
-        {children}
-      </Button>
-    )
+    </Comp>
+  );
 });
 
 CookieBanner.displayName = "CookieBanner";
@@ -265,4 +248,13 @@ CookieBannerPreferences.displayName = "CookieBannerPreferences";
 CookieBannerTitle.displayName = "CookieBannerTitle";
 CookieBannerHeader.displayName = "CookieBannerHeader";
 
-export { CookieBanner, CookieBannerHeader, CookieBannerTitle, CookieBannerDescription, CookieBannerClose, CookieBannerPreferences, CookieBannerCustomiser, CookieBannerFooter };
+export {
+  CookieBanner,
+  CookieBannerHeader,
+  CookieBannerTitle,
+  CookieBannerDescription,
+  CookieBannerClose,
+  CookieBannerPreferences,
+  CookieBannerCustomiser,
+  CookieBannerFooter,
+};
