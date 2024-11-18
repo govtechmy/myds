@@ -66,7 +66,9 @@ const AnnounceBarTag = forwardRef<HTMLDivElement | ElementRef<typeof Slot>, Anno
       size={size}
       mode={mode}
       dot={dot}
-      className={clx(className)}
+      className={clx("py-0.5 px-2 text-body-xs h-[22px]",
+        "md:py-1 md:px-2 md:text-body-sm md:h-[28px]",
+        className)}
       {...props}
     >
       {children}
@@ -80,7 +82,7 @@ const AnnounceBarDescription = forwardRef<HTMLParagraphElement | ElementRef<type
   asChild = false,
   ...props
 }, ref) => {
-  
+
   const Comp = asChild ? Slot : "p";
   
   return (
@@ -93,11 +95,5 @@ const AnnounceBarDescription = forwardRef<HTMLParagraphElement | ElementRef<type
     </Comp>
   );
 });
-
-
-// 2 components: AnnounceBarTag, AnnounceBarDescription
-// AnnounceBarTag use Tag component with the correct variant (variant as props), size and mode we fix it. Then make asChild props to let the users can overwrite. ClassName is a props also. And let user just pass text as children as well
-// AnnounceBarDescription basically is just a p tag with the className props and our default css style. Then use Link component
-// The whole component (root) should be wrapped with a div component to apply padding and gap 
 
 export { AnnounceBar, AnnounceBarTag, AnnounceBarDescription };

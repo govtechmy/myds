@@ -16,10 +16,15 @@ const tag_cva = cva(
         warning:
           "bg-bg-warning-50 text-txt-warning border-warning-700/20 border",
       },
+      // TODO: check if responsive is required
       size: {
         small: "py-0.5 px-2 text-body-xs h-[22px]",
         medium: "py-1 px-2 text-body-sm h-[28px]",
         large: "py-1 px-2.5 text-body-md h-8",
+        responsive: ["py-0.5 px-2 text-body-xs h-[22px]", 
+          "md:py-1 px-2 text-body-sm h-[28px]", 
+          "lg:py-1 px-2.5 text-body-md h-8"
+        ].join(" ")
       },
       mode: {
         pill: "rounded-full",
@@ -28,7 +33,7 @@ const tag_cva = cva(
     },
     defaultVariants: {
       variant: "default",
-      size: "small",
+      size: "responsive",
       mode: "pill",
     },
   },
@@ -50,7 +55,7 @@ const dot_cva = cva(["inline-block  rounded-full bg-current"], {
  * @property {React.ReactNode} children - The content of the tag (text or HTML elements)
  * @property {boolean} [dot=false] - Whether to show a status dot
  * @property {"default" | "primary" | "success" | "danger" | "warning"} variant - The visual style variant of the tag
- * @property {"small" | "medium" | "large"} size - The size of the tag
+ * @property {"small" | "medium" | "large" | "responsive"} size - The size of the tag
  * @property {"pill" | "default"} mode - The style of the tag (rounded or not)
  */
 interface TagProps extends ComponentProps<"div">, VariantProps<typeof tag_cva> {
