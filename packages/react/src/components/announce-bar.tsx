@@ -1,4 +1,7 @@
-import React, { FunctionComponent } from "react";
+import React, { ComponentProps, ComponentPropsWithoutRef, ElementRef, forwardRef, FunctionComponent } from "react";
+import { clx } from "../utils";
+import { Tag, type TagProps as BaseTagProps } from "./tag";
+import { Slot } from "@radix-ui/react-slot";
 
 /**
  * Props for AnnounceBar component.
@@ -6,8 +9,23 @@ import React, { FunctionComponent } from "react";
  * @property {type} propName - Description of propName
  */
 interface AnnounceBarProps {
-  // Define your props here
+  children: React.ReactNode;
+  className ?: string
 }
+
+type AnnounceBarTagProps = {
+  size?: BaseTagProps['size'];
+  mode?: BaseTagProps['mode'];
+  dot?: BaseTagProps['dot'];
+  asChild?: boolean;
+} & Omit<ComponentProps<"div">, keyof BaseTagProps> & 
+  Omit<BaseTagProps, 'size' | 'mode' | 'dot' | 'ref'>;
+
+type AnnounceBarDescriptionProps = {
+  children: React.ReactNode;
+  className ?: string;
+  asChild ?: boolean
+} & ComponentPropsWithoutRef<"p">;
 
 /**
  * AnnounceBar component description.
@@ -15,15 +33,66 @@ interface AnnounceBarProps {
  * @example
  * <AnnounceBar propName="value" />
  */
-const AnnounceBar: FunctionComponent<AnnounceBarProps> = ({
-  // Destructure your props here
-}) => {
+const AnnounceBar = ({
+  className,
+  children,
+}: AnnounceBarProps) => {
   return (
-    <div>
-      {/* Add your component JSX here */}
+    <div className={clx(
+      "py-2 flex flex-row gap-2 md:mx-6 mx-[18px]",
+      className
+    )}>
+      {children}
     </div>
   );
 };
+
+const AnnounceBarTag = forwardRef<HTMLDivElement | ElementRef<typeof Slot>, AnnounceBarTagProps>(({
+  variant = 'primary',
+  size = "medium",
+  mode = "default",
+  dot = false,
+  children,
+  className,
+  asChild = false,
+  ...props
+}, ref) => {
+  const Comp = asChild ? Slot : Tag;
+  
+  return (
+    <Comp
+      ref={ref as any}
+      variant={variant}
+      size={size}
+      mode={mode}
+      dot={dot}
+      className={clx(className)}
+      {...props}
+    >
+      {children}
+    </Comp>
+  );
+});
+
+const AnnounceBarDescription = forwardRef<HTMLParagraphElement | ElementRef<typeof Slot>, AnnounceBarDescriptionProps>(({
+  children,
+  className,
+  asChild = false,
+  ...props
+}, ref) => {
+  
+  const Comp = asChild ? Slot : "p";
+  
+  return (
+    <Comp
+      ref={ref as any}
+      className={clx("min-height-[28px] text-sm text-black-700", className)}
+      {...props}
+    >
+      {children}
+    </Comp>
+  );
+});
 
 
 // 2 components: AnnounceBarTag, AnnounceBarDescription
@@ -31,4 +100,4 @@ const AnnounceBar: FunctionComponent<AnnounceBarProps> = ({
 // AnnounceBarDescription basically is just a p tag with the className props and our default css style. Then use Link component
 // The whole component (root) should be wrapped with a div component to apply padding and gap 
 
-export { AnnounceBar };
+export { AnnounceBar, AnnounceBarTag, AnnounceBarDescription };
