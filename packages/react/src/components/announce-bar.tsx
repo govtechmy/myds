@@ -6,11 +6,12 @@ import { Slot } from "@radix-ui/react-slot";
 /**
  * Props for AnnounceBar component.
  * @typedef AnnounceBarProps
- * @property {type} propName - Description of propName
+ * @property {string} [className] - Optional CSS class names to be applied to the component.
+ * @property {React.ReactNode} children - The content to be rendered within the AnnounceBar.
  */
-interface AnnounceBarProps {
+interface AnnounceBarProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
   children: React.ReactNode;
-  className ?: string
 }
 
 type AnnounceBarTagProps = {
@@ -31,21 +32,34 @@ type AnnounceBarDescriptionProps = {
  * AnnounceBar component description.
  * @component
  * @example
+ * <AnnounceBar>
+ *        <AnnounceBarTag variant="warning">
+ *          Maintenance
+ *        </AnnounceBarTag>
+ *        <AnnounceBarDescription>
+ *          <p>This service is undergoing maintenance. Thank you for your patience. <Link *underline="always" primary href="#">Send us your feedback here.</Link></p>
+ *        </AnnounceBarDescription>
+ *   </AnnounceBar>
  * <AnnounceBar propName="value" />
  */
-const AnnounceBar = ({
+const AnnounceBar = forwardRef<HTMLDivElement, AnnounceBarProps>(({
   className,
   children,
-}: AnnounceBarProps) => {
+  ...props
+}, ref) => {
   return (
-    <div className={clx(
+    <div
+    ref={ref} 
+    className={clx(
       "py-2 flex flex-row gap-2 md:mx-6 mx-[18px]",
       className
-    )}>
+    )}
+    {...props}
+    >
       {children}
     </div>
   );
-};
+});
 
 const AnnounceBarTag = forwardRef<HTMLDivElement | ElementRef<typeof Slot>, AnnounceBarTagProps>(({
   variant = 'primary',
@@ -68,6 +82,7 @@ const AnnounceBarTag = forwardRef<HTMLDivElement | ElementRef<typeof Slot>, Anno
       dot={dot}
       className={clx("py-0.5 px-2 text-body-xs h-[22px]",
         "md:py-1 md:px-2 md:text-body-sm md:h-[28px]",
+        "flex-shrink-0 whitespace-nowrap",
         className)}
       {...props}
     >
@@ -79,20 +94,17 @@ const AnnounceBarTag = forwardRef<HTMLDivElement | ElementRef<typeof Slot>, Anno
 const AnnounceBarDescription = forwardRef<HTMLParagraphElement | ElementRef<typeof Slot>, AnnounceBarDescriptionProps>(({
   children,
   className,
-  asChild = false,
   ...props
 }, ref) => {
 
-  const Comp = asChild ? Slot : "p";
-  
   return (
-    <Comp
+    <div
       ref={ref as any}
-      className={clx("min-height-[28px] text-sm text-txt-black-700 flex items-center gap-1", className)}
+      className={clx("min-height-[28px] text-sm text-txt-black-700 flex items-center font-body", className)}
       {...props}
     >
         {children}
-    </Comp>
+    </div>
   );
 });
 

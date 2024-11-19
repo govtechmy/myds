@@ -89,7 +89,7 @@ export const LightWarning: Story ={
          <AnnounceBarDescription>
            <p>This service is undergoing maintenance. Thank you for your patience. <Link underline="always" primary href="#">Send us your feedback here.</Link></p>
          </AnnounceBarDescription>
-       </AnnounceBar>
+    </AnnounceBar>
   )}
 };
 
