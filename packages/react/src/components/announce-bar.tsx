@@ -88,12 +88,13 @@ const AnnounceBarDescription = forwardRef<HTMLParagraphElement | ElementRef<type
   return (
     <Comp
       ref={ref as any}
-      className={clx("min-height-[28px] text-sm text-black-700", className)}
+      className={clx("min-height-[28px] text-sm text-black-700 flex items-center gap-1", className)}
       {...props}
     >
-      {children}
+        {children}
     </Comp>
   );
 });
 
-export { AnnounceBar, AnnounceBarTag, AnnounceBarDescription };
+export { AnnounceBar, AnnounceBarTag, AnnounceBarDescription,  };
+export type {AnnounceBarProps}

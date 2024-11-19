@@ -18,7 +18,7 @@ import { Checkbox } from "@myds/react/checkbox";
  *
  * ### Usage
  ```tsx
- * import CookieBanner from "@myds/react/cookie-banner";
+ * import { CookieBanner, CookieBannerClose, CookieBannerCustomiser, CookieBannerDescription, CookieBannerFooter, CookieBannerHeader, CookieBannerPreferences, CookieBannerTitle };
  *
  * const [open, setOpen] = useState(false);
  *
