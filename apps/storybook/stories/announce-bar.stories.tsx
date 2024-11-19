@@ -29,22 +29,10 @@ import { Link } from "@myds/react/link";
  */
 const meta = {
   title: "@myds/react/AnnounceBar",
-  // component: (args: React.ComponentProps<typeof AnnounceBar>) => {
-  //   return (
-  //     <AnnounceBar {...args}>
-  //       <AnnounceBarTag variant="primary">
-  //         Alpha
-  //       </AnnounceBarTag>
-  //       <AnnounceBarDescription>
-  //         <p>This is a new service. Help us improve it. <Link underline="always" primary href="#">Send us your feedback here.</Link></p>
-  //       </AnnounceBarDescription>
-  //     </AnnounceBar>
-  //   );
-  // },
   component: AnnounceBar,
   tags: ["autodocs"],
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
 } satisfies Meta<typeof AnnounceBar>;
 
@@ -52,14 +40,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * This story represents the implementation of AnnounceBar in light mode..
+ * This story represents the implementation of AnnounceBar in light primary mode. It can be utilized in indicating the Alpha stage.
  */
-export const Default: Story = {
-  args: {children: null, className:""},
+export const LightPrimary: Story = {
+  ...createStory({}),
   render: () => {return (
     <AnnounceBar>
-         <AnnounceBarTag variant="warning">
-           Fikri
+         <AnnounceBarTag variant="primary">
+           Alpha
          </AnnounceBarTag>
          <AnnounceBarDescription>
            <p>This is a new service. Help us improve it. <Link underline="always" primary href="#">Send us your feedback here.</Link></p>
@@ -68,8 +56,129 @@ export const Default: Story = {
   )}
 };
 
+
 /**
- * This story represents the implementation of CookieBanner for desktop viewport in light mode.
+ * This story represents the implementation of AnnounceBar in light success mode. It can be utilized in indicating Public Beta stage.
  */
 
-export const LightBeta: Story = createStory({});
+export const LightSuccess: Story ={
+  ...createStory({}),
+  render: () => {return (
+    <AnnounceBar>
+         <AnnounceBarTag variant="success">
+           Public Beta
+         </AnnounceBarTag>
+         <AnnounceBarDescription>
+           <p>Welcome to Public Beta! Try out the service and share your feedback. <Link underline="always" primary href="#">Send us your feedback here.</Link></p>
+         </AnnounceBarDescription>
+       </AnnounceBar>
+  )}
+};
+
+/**
+ * This story represents the implementation of AnnounceBar in light warning mode. It can be utilized in indicating the Maintenance stage.
+ */
+
+export const LightWarning: Story ={
+  ...createStory({}),
+  render: () => {return (
+    <AnnounceBar>
+         <AnnounceBarTag variant="warning">
+           Maintenance
+         </AnnounceBarTag>
+         <AnnounceBarDescription>
+           <p>This service is undergoing maintenance. Thank you for your patience. <Link underline="always" primary href="#">Send us your feedback here.</Link></p>
+         </AnnounceBarDescription>
+       </AnnounceBar>
+  )}
+};
+
+/**
+ * This story represents the implementation of AnnounceBar in light danger mode. It can be utilized in indicating the Retired stage.
+ */
+
+export const LightDanger: Story ={
+  ...createStory({}),
+  render: () => {return (
+    <AnnounceBar>
+         <AnnounceBarTag variant="danger">
+           Retired
+         </AnnounceBarTag>
+         <AnnounceBarDescription>
+           <p>This service has been retired and is no longer available.</p>
+         </AnnounceBarDescription>
+       </AnnounceBar>
+  )}
+};
+
+/**
+ * This story represents the implementation of AnnounceBar in dark primary mode. It can be utilized in indicating the Alpha stage.
+ */
+export const DarkPrimary: Story = {
+  ...createStory({className: "dark"}, "dark"),
+  render: ({className}) => {return (
+    <AnnounceBar className={className}>
+         <AnnounceBarTag variant="primary">
+           Alpha
+         </AnnounceBarTag>
+         <AnnounceBarDescription asChild>
+           <p>This is a new service. Help us improve it. <Link underline="always" primary href="#">Send us your feedback here.</Link></p>
+         </AnnounceBarDescription>
+       </AnnounceBar>
+  )},
+
+ 
+};
+
+ /**
+ * This story represents the implementation of AnnounceBar in dark success mode. It can be utilized in indicating Public Beta stage.
+ */
+
+ export const DarkSuccess: Story ={
+  ...createStory({className: "dark"}, "dark"),
+  render: ({className}) => {return (
+    <AnnounceBar className={className}>
+         <AnnounceBarTag variant="success">
+           Public Beta
+         </AnnounceBarTag>
+         <AnnounceBarDescription asChild>
+           <p>Welcome to Public Beta! Try out the service and share your feedback. <Link underline="always" primary href="#">Send us your feedback here.</Link></p>
+         </AnnounceBarDescription>
+       </AnnounceBar>
+  )}
+};
+/**
+ * This story represents the implementation of AnnounceBar in dark warning mode. It can be utilized in indicating the Maintenance stage.
+ */
+
+export const DarkWarning: Story ={
+  ...createStory({className: "dark"}, "dark"),
+  render: ({className}) => {return (
+    <AnnounceBar className={className}>
+         <AnnounceBarTag variant="warning">
+           Maintenance
+         </AnnounceBarTag>
+         <AnnounceBarDescription>
+           <p>This service is undergoing maintenance. Thank you for your patience. <Link underline="always" primary href="#">Send us your feedback here.</Link></p>
+         </AnnounceBarDescription>
+       </AnnounceBar>
+  )}
+};
+
+/**
+ * This story represents the implementation of AnnounceBar in dark danger mode. It can be utilized in indicating the Retired stage.
+ */
+
+export const DarkDanger: Story ={
+  ...createStory({className: "dark"}, "dark"),
+  render: ({className}) => {return (
+    <AnnounceBar className={className}>
+         <AnnounceBarTag variant="danger">
+           Retired
+         </AnnounceBarTag>
+         <AnnounceBarDescription>
+           <p>This service has been retired and is no longer available.</p>
+         </AnnounceBarDescription>
+       </AnnounceBar>
+  )}
+};

@@ -88,7 +88,7 @@ const AnnounceBarDescription = forwardRef<HTMLParagraphElement | ElementRef<type
   return (
     <Comp
       ref={ref as any}
-      className={clx("min-height-[28px] text-sm text-black-700 flex items-center gap-1", className)}
+      className={clx("min-height-[28px] text-sm text-txt-black-700 flex items-center gap-1", className)}
       {...props}
     >
         {children}
