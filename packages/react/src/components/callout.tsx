@@ -3,120 +3,102 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { clx } from "../utils";
 import { CheckCircleIcon } from "../icons/check-circle";
 import { CrossIcon, InfoIcon, WarningCircleIcon, WarningIcon } from "../icons";
+import { Button } from "./button";
 
-type CalloutVariant = 'success' | 'warning' | 'information' | 'error';
+type CalloutVariant = "success" | "warning" | "information" | "error";
 
-const CalloutContext = React.createContext<CalloutVariant>('information');
-
-const calloutVariants = cva(
-  ["p-3 rounded-md w-[400px] flex group"],
-  {
-    variants: {
-      variant: {
-        success: "bg-bg-success-50 text-txt-success",
-        warning: "bg-bg-warning-50 text-txt-warning",
-        information: "bg-bg-primary-50 text-txt-primary",
-        error: "bg-bg-danger-50 text-txt-danger",
-      },
+const calloutVariants = cva(["p-3 rounded-md w-[400px] flex"], {
+  variants: {
+    variant: {
+      success: "bg-bg-success-50 text-txt-success",
+      warning: "bg-bg-warning-50 text-txt-warning",
+      information: "bg-bg-primary-50 text-txt-primary",
+      error: "bg-bg-danger-50 text-txt-danger",
     },
-    defaultVariants: {
-      variant: "information"
-    }
-  }
-);
+  },
+  defaultVariants: {
+    variant: "information",
+  },
+});
 
-const iconMap: Record<CalloutVariant, React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<
+  CalloutVariant,
+  React.ComponentType<{ className?: string }>
+> = {
   success: CheckCircleIcon,
   warning: WarningCircleIcon,
   information: InfoIcon,
   error: WarningIcon,
 };
 
-const Callout = React.forwardRef<
+const Callout2 = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof calloutVariants>
->(({ className, variant = 'information', children, ...props }, ref) => (
-  <CalloutContext.Provider value={variant as CalloutVariant}>
+>(({ className, variant = "information", children, ...props }, ref) => {
+  const IconComponent = iconMap[variant as CalloutVariant];
+
+  return (
     <div
       ref={ref}
       role="Callout"
-      className={clx(calloutVariants({ variant }), className)}
+      className={clx(
+        calloutVariants({ variant }),
+        "justify-between",
+        "items-center",
+        "has-[p]:items-start",
+        className,
+      )}
       {...props}
     >
-      {children}
+      <div className="mr-2">
+        <IconComponent></IconComponent>
+      </div>
+      <div
+        className={clx(
+          "flex",
+          "has-[p]:block",
+          "grow items-center justify-between",
+        )}
+      >
+        {children}
+      </div>
+      <Button
+        variant="default-ghost"
+        className="text-txt-black-700 ml-2 p-0 hover:bg-transparent"
+      >
+        <CrossIcon className="h-5 w-5"></CrossIcon>
+      </Button>
     </div>
-  </CalloutContext.Provider>
-));
-Callout.displayName = "Callout";
+  );
+});
+Callout2.displayName = "Callout2";
 
-const CalloutInner1 = React.forwardRef<
+const Callout2Title = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => {
-  const variant = React.useContext(CalloutContext);
-  const IconComponent = iconMap[variant];
-  
-  return (
-    <div className="flex gap-2 items-start flex-1 group-has-[p]:self-start group-[:not([p])]:self-center">
-      <div>
-        <IconComponent className="h-5 w-5" />
-      </div>
-      <div className="text-sm space-y-1">
-        {children}
-      </div>
-    </div>
-  );
+  return <div className="text-sm font-semibold">{children}</div>;
 });
-CalloutInner1.displayName = "CalloutInner1";
+Callout2Title.displayName = "Callout2Title";
 
-const CalloutInner1Header = React.forwardRef<
+const Callout2Content = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => {  
+>(({ className, children, ...props }, ref) => {
   return (
-    <div className="text-sm font-semibold">{children}</div>
-  );
-});
-CalloutInner1Header.displayName = "CalloutInner1Header";
-
-const CalloutInner1Content = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => {  
-  return (
-    <p className="font-normal text-txt-black-900">{children}</p>
-  );
-});
-CalloutInner1Content.displayName = "CalloutInner1Content";
-
-const CalloutInner1Button = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => {  
-  return (
-    <div className="flex gap-1 pt-2">
+    <p className="text-txt-black-900 pb-3 pt-1 text-sm font-normal">
       {children}
-    </div>
+    </p>
   );
 });
-CalloutInner1Button.displayName = "CalloutInner1Button";
+Callout2Content.displayName = "Callout2Content";
 
-const CalloutInner2 = React.forwardRef<
+const Callout2Button = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => (
-  <div className="flex items-center gap-2 group-has-[p]:self-start group-[:not([p])]:self-center">
-    {children}
-    <CrossIcon className="text-txt-black-500" />
-  </div>
-));
-CalloutInner2.displayName = "CalloutInner2";
+>(({ className, children, ...props }, ref) => {
+  return <div className="flex gap-1">{children}</div>;
+});
+Callout2Button.displayName = "Callout2Button";
 
-export { 
-  Callout, 
-  CalloutInner1, 
-  CalloutInner2,
-  CalloutInner1Header,
-  CalloutInner1Content,
-  CalloutInner1Button
-};
+export { Callout2, Callout2Title, Callout2Content, Callout2Button };
