@@ -2,49 +2,41 @@ import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 import {
-  Callout2,
-  Callout2Button,
-  Callout2Content,
-  Callout2Title,
+  Callout,
+  CalloutButton,
+  CalloutContent,
+  CalloutTitle,
 } from "@myds/react/callout";
 import { Button } from "@myds/react/button";
 
 /**
  * ### Overview
- * The Callout component is used to display important messages, alerts, or notifications
- * with different semantic meanings through variants. It supports success, warning,
- * information, and error states, each with appropriate styling and icons.
- *
- * > In design we trust, with colors bright and bold,
- * > Each variant tells a story that needs to be told.
- * > From success to warning, information to more,
- * > Our Callout component opens communication's door.
+ * The Callout component notifies users about important information related to their actions inside a Forms.
+ * Callouts can indicate success, warnings, errors, or provide additional information depending on the context inside a form
  *
  * ### Usage
  * ```tsx
  * import { Callout, CalloutTitle, CalloutDescription } from "@myds/react/callout";
+ * import { Button } from "@myds/react/button";
  *
- * <Callout variant="success">
- *   <CalloutTitle>Success Message</CalloutTitle>
- *   <CalloutDescription>Your action was completed successfully.</CalloutDescription>
+ * <Callout>
+ *  <CalloutTitle>Title</CalloutTitle>
+ *   <CalloutContent> A space for explaination of the success, warning, info or error </CalloutContent>
+ *   <CalloutButton>
+ *    <Button variant="default-outline">Primary Button</Button>
+ *   </CalloutButton>
  * </Callout>
  * ```
  */
 const meta = {
   title: "@myds/react/Callout",
-  component: Callout2,
+  component: Callout,
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
-  args: { onClick: fn() },
   argTypes: {
     variant: {
-      table: {
-        type: {
-          summary: "enum",
-        },
-      },
       description:
         "Determines the visual style and semantic meaning of the callout",
       control: "inline-radio",
@@ -54,54 +46,47 @@ const meta = {
       description: "Additional CSS classes to apply to the callout",
       control: "text",
     },
-    children: {
-      description: "Content to be displayed within the callout",
-      control: "text",
-    },
   },
-} satisfies Meta<typeof Callout2>;
+} satisfies Meta<typeof Callout>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const calloutDefault: Story = {
-  ...createStory({}),
-  render: () => <Callout2></Callout2>,
-};
+export const CalloutDefault: Story = createStory({});
 
 export const calloutDefaultWithTitle: Story = {
   ...createStory({}),
   render: () => (
-    <Callout2>
-      <Callout2Title>Title</Callout2Title>
-    </Callout2>
+    <Callout>
+      <CalloutTitle>Title</CalloutTitle>
+    </Callout>
   ),
 };
 
 export const calloutDefaultWithTitleAndPrimaryButton: Story = {
   ...createStory({}),
   render: () => (
-    <Callout2>
-      <Callout2Title>Title</Callout2Title>
-      <Callout2Button>
+    <Callout>
+      <CalloutTitle>Title</CalloutTitle>
+      <CalloutButton>
         <Button variant="default-outline">Primary Button</Button>
-      </Callout2Button>
-    </Callout2>
+      </CalloutButton>
+    </Callout>
   ),
 };
 
 export const calloutDefaultWithTitlePrimaryButtonAndDescription: Story = {
   ...createStory({}),
   render: () => (
-    <Callout2>
-      <Callout2Title>Title</Callout2Title>
-      <Callout2Content>
+    <Callout>
+      <CalloutTitle>Title</CalloutTitle>
+      <CalloutContent>
         A space for explaination of the success, warning, info or error
-      </Callout2Content>
-      <Callout2Button>
+      </CalloutContent>
+      <CalloutButton>
         <Button variant="default-outline">Primary Button</Button>
-      </Callout2Button>
-    </Callout2>
+      </CalloutButton>
+    </Callout>
   ),
 };
 
@@ -109,63 +94,189 @@ export const calloutDefaultWithTitleDescriptionPrimaryAndSecondaryButton: Story 
   {
     ...createStory({}),
     render: () => (
-      <Callout2>
-        <Callout2Title>Title</Callout2Title>
-        <Callout2Content>
+      <Callout>
+        <CalloutTitle>Title</CalloutTitle>
+        <CalloutContent>
           A space for explaination of the success, warning, info or error
-        </Callout2Content>
-        <Callout2Button>
+        </CalloutContent>
+        <CalloutButton>
           <Button variant="default-outline">Primary Button</Button>
           <Button variant="default-ghost">Secondary Button</Button>
-        </Callout2Button>
-      </Callout2>
+        </CalloutButton>
+      </Callout>
     ),
   };
 
 export const calloutSuccess: Story = {
   ...createStory({}),
   render: () => (
-    <Callout2 variant="success">
-      <Callout2Title>Title</Callout2Title>
-      <Callout2Button>
+    <Callout variant="success">
+      <CalloutTitle>Title</CalloutTitle>
+      <CalloutButton>
         <Button variant="default-outline">Primary Button</Button>
-      </Callout2Button>
-    </Callout2>
+      </CalloutButton>
+    </Callout>
   ),
 };
 
 export const calloutWarning: Story = {
   ...createStory({}),
   render: () => (
-    <Callout2 variant="warning">
-      <Callout2Title>Title</Callout2Title>
-      <Callout2Button>
+    <Callout variant="warning">
+      <CalloutTitle>Title</CalloutTitle>
+      <CalloutButton>
         <Button variant="default-outline">Primary Button</Button>
-      </Callout2Button>
-    </Callout2>
+      </CalloutButton>
+    </Callout>
   ),
 };
 
 export const calloutInformation: Story = {
   ...createStory({}),
   render: () => (
-    <Callout2 variant="information">
-      <Callout2Title>Title</Callout2Title>
-      <Callout2Button>
+    <Callout variant="information">
+      <CalloutTitle>Title</CalloutTitle>
+      <CalloutButton>
         <Button variant="default-outline">Primary Button</Button>
-      </Callout2Button>
-    </Callout2>
+      </CalloutButton>
+    </Callout>
   ),
 };
 
 export const calloutError: Story = {
   ...createStory({}),
   render: () => (
-    <Callout2 variant="error">
-      <Callout2Title>Title</Callout2Title>
-      <Callout2Button>
+    <Callout variant="error">
+      <CalloutTitle>Title</CalloutTitle>
+      <CalloutButton>
         <Button variant="default-outline">Primary Button</Button>
-      </Callout2Button>
-    </Callout2>
+      </CalloutButton>
+    </Callout>
+  ),
+};
+
+export const CalloutDefaultDark: Story = {
+  ...createStory({}, "dark"),
+  render: () => (
+    <div className="dark">
+      <Callout></Callout>
+    </div>
+  ),
+};
+
+export const calloutDefaultDarkWithTitle: Story = {
+  ...createStory({}, "dark"),
+  render: () => (
+    <div className="dark">
+      <Callout>
+        <CalloutTitle>Title</CalloutTitle>
+      </Callout>
+    </div>
+  ),
+};
+
+export const calloutDefaultDarkWithTitleAndPrimaryButton: Story = {
+  ...createStory({}, "dark"),
+  render: () => (
+    <div className="dark">
+      <Callout>
+        <CalloutTitle>Title</CalloutTitle>
+        <CalloutButton>
+          <Button variant="default-outline">Primary Button</Button>
+        </CalloutButton>
+      </Callout>
+    </div>
+  ),
+};
+
+export const calloutDefaultDarkWithTitlePrimaryButtonAndDescription: Story = {
+  ...createStory({}, "dark"),
+  render: () => (
+    <div className="dark">
+      <Callout>
+        <CalloutTitle>Title</CalloutTitle>
+        <CalloutContent>
+          A space for explaination of the success, warning, info or error
+        </CalloutContent>
+        <CalloutButton>
+          <Button variant="default-outline">Primary Button</Button>
+        </CalloutButton>
+      </Callout>
+    </div>
+  ),
+};
+
+export const calloutDefaultDarkWithTitleDescriptionPrimaryAndSecondaryButton: Story =
+  {
+    ...createStory({}, "dark"),
+    render: () => (
+      <div className="dark">
+        <Callout>
+          <CalloutTitle>Title</CalloutTitle>
+          <CalloutContent>
+            A space for explaination of the success, warning, info or error
+          </CalloutContent>
+          <CalloutButton>
+            <Button variant="default-outline">Primary Button</Button>
+            <Button variant="default-ghost">Secondary Button</Button>
+          </CalloutButton>
+        </Callout>
+      </div>
+    ),
+  };
+
+export const calloutSuccessDark: Story = {
+  ...createStory({}, "dark"),
+  render: () => (
+    <div className="dark">
+      <Callout variant="success">
+        <CalloutTitle>Title</CalloutTitle>
+        <CalloutButton>
+          <Button variant="default-outline">Primary Button</Button>
+        </CalloutButton>
+      </Callout>
+    </div>
+  ),
+};
+
+export const calloutWarningDark: Story = {
+  ...createStory({}, "dark"),
+  render: () => (
+    <div className="dark">
+      <Callout variant="warning">
+        <CalloutTitle>Title</CalloutTitle>
+        <CalloutButton>
+          <Button variant="default-outline">Primary Button</Button>
+        </CalloutButton>
+      </Callout>
+    </div>
+  ),
+};
+
+export const calloutInformationDark: Story = {
+  ...createStory({}, "dark"),
+  render: () => (
+    <div className="dark">
+      <Callout variant="information">
+        <CalloutTitle>Title</CalloutTitle>
+        <CalloutButton>
+          <Button variant="default-outline">Primary Button</Button>
+        </CalloutButton>
+      </Callout>
+    </div>
+  ),
+};
+
+export const calloutErrorDark: Story = {
+  ...createStory({}, "dark"),
+  render: () => (
+    <div className="dark">
+      <Callout variant="error">
+        <CalloutTitle>Title</CalloutTitle>
+        <CalloutButton>
+          <Button variant="default-outline">Primary Button</Button>
+        </CalloutButton>
+      </Callout>
+    </div>
   ),
 };

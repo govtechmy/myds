@@ -31,7 +31,7 @@ const iconMap: Record<
   error: WarningIcon,
 };
 
-const Callout2 = React.forwardRef<
+const Callout = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof calloutVariants>
 >(({ className, variant = "information", children, ...props }, ref) => {
@@ -40,7 +40,7 @@ const Callout2 = React.forwardRef<
   return (
     <div
       ref={ref}
-      role="Callout"
+      role="Alert"
       className={clx(
         calloutVariants({ variant }),
         "justify-between",
@@ -71,17 +71,17 @@ const Callout2 = React.forwardRef<
     </div>
   );
 });
-Callout2.displayName = "Callout2";
+Callout.displayName = "Callout";
 
-const Callout2Title = React.forwardRef<
+const CalloutTitle = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => {
   return <div className="text-sm font-semibold">{children}</div>;
 });
-Callout2Title.displayName = "Callout2Title";
+CalloutTitle.displayName = "CalloutTitle";
 
-const Callout2Content = React.forwardRef<
+const CalloutContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => {
@@ -91,14 +91,14 @@ const Callout2Content = React.forwardRef<
     </p>
   );
 });
-Callout2Content.displayName = "Callout2Content";
+CalloutContent.displayName = "CalloutContent";
 
-const Callout2Button = React.forwardRef<
+const CalloutButton = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => {
   return <div className="flex gap-1">{children}</div>;
 });
-Callout2Button.displayName = "Callout2Button";
+CalloutButton.displayName = "CalloutButton";
 
-export { Callout2, Callout2Title, Callout2Content, Callout2Button };
+export { Callout, CalloutTitle, CalloutContent, CalloutButton };
