@@ -6,32 +6,78 @@ import {
   SearchBarClearButton,
   SearchBarInputContainer,
   SearchBarSearchButton,
-  SearchBarResultsPopover,
+  SearchBarResultsDropdown,
   SearchBarResultsList,
   SearchBarResultsItem,
   SearchBarResultsGroup,
   SearchBarHint,
 } from "@myds/react/search-bar";
-import { ComponentProps, useState } from "react";
+import { ComponentProps, useEffect, useRef, useState } from "react";
 import {
   ChevronRightIcon,
   MoneyIcon,
   StarIcon,
   TrophyIcon,
+  UserIcon,
 } from "@myds/react/icon";
 import { Pill } from "@myds/react/pill";
 
 /**
  * ### Overview
- * Insert a brief description of the component here.
- *
- * > Insert a ChatGPT pantun here
+ * Allow users to enter a query or keyword to search through content within a website.
  *
  * ### Usage
  * ```tsx
- * import SearchBar from "@myds/react/search-bar";
+ * import {
+ *   SearchBar,
+ *   SearchBarInput,
+ *   SearchBarClearButton,
+ *   SearchBarInputContainer,
+ *   SearchBarSearchButton,
+ *   SearchBarResultsDropdown,
+ *   SearchBarResultsList,
+ *   SearchBarResultsItem,
+ *   SearchBarResultsGroup,
+ *   SearchBarHint,
+ * } from "@myds/react/search-bar";
  *
- * <SearchBar />
+ * const [hasFocus, setHasFocus] = useState(false);
+ * const [query, setQuery] = useState("");
+ * const isDropdownOpen = query.length > 0 && hasFocus;
+ *
+ * <SearchBar
+ *   onBlur={(e) => {
+ *     const blurredByChild = e.currentTarget.contains(e.relatedTarget);
+ *     if (blurredByChild) return;
+ *     setHasFocus(false);
+ *   }}
+ *   onFocus={() => setHasFocus(true)}
+ * >
+ *   <SearchBarInputContainer>
+ *     <SearchBarInput value={query} onValueChange={setQuery} />
+ *     <SearchBarHint>
+ *       Press <Pill size="small">/</Pill> to search
+ *     </SearchBarHint>
+ *     <SearchBarClearButton />
+ *     <SearchBarSearchButton />
+ *   </SearchBarInputContainer>
+ *   <SearchBarResultsDropdown open={isDropdownOpen}>
+ *     <SearchBarResultsList>
+ *       <SearchBarResultsItem
+ *         value="foo"
+ *         onSelect={(item) => console.log(item)}
+ *       >
+ *         Foo
+ *       </SearchBarResultsItem>
+ *       <SearchBarResultsItem
+ *         value="bar"
+ *         onSelect={(item) => console.log(item)}
+ *       >
+ *         Bar
+ *       </SearchBarResultsItem>
+ *     </SearchBarResultsList>
+ *   </SearchBarResultsDropdown>
+ * </SearchBar>
  * ```
  */
 const meta = {
@@ -41,7 +87,7 @@ const meta = {
   parameters: {
     layout: "padded",
   },
-  args: { size: "medium" },
+  args: { size: "large" },
   argTypes: {
     size: {
       table: {
@@ -60,10 +106,101 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const DemoSearchBar = (props: ComponentProps<typeof SearchBar>) => {
+const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
   const [hasFocus, setHasFocus] = useState(false);
   const [query, setQuery] = useState("");
-  const isPopoverOpen = query.length > 0 && hasFocus;
+  const isDropdownOpen = query.length > 0 && hasFocus;
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "/") {
+        inputRef.current?.focus();
+        e.preventDefault();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  const results = notableMalaysians.filter((person) =>
+    person.name.toLowerCase().includes(query.toLocaleLowerCase()),
+  );
+
+  return (
+    <SearchBar
+      onBlur={(e) => {
+        const blurredByChild = e.currentTarget.contains(e.relatedTarget);
+        if (blurredByChild) return;
+        setHasFocus(false);
+      }}
+      onFocus={() => setHasFocus(true)}
+      {...props}
+    >
+      <SearchBarInputContainer>
+        <SearchBarInput
+          ref={inputRef}
+          placeholder="Search by name"
+          value={query}
+          onValueChange={setQuery}
+        />
+        {!hasFocus && props.size === "large" && (
+          <SearchBarHint>
+            Press <Pill size="small">/</Pill> to search
+          </SearchBarHint>
+        )}
+        <SearchBarClearButton onClick={() => setQuery("")} />
+        <SearchBarSearchButton />
+      </SearchBarInputContainer>
+      <SearchBarResultsDropdown open={isDropdownOpen}>
+        <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
+          {!results.length && (
+            <p className="text-txt-black-900 text-center">No results found</p>
+          )}
+          {results.map((item) => (
+            <SearchBarResultsItem
+              key={item.name}
+              value={item.name}
+              onSelect={() => {
+                alert(`${item.name} - ${item.note}`);
+              }}
+            >
+              <span className="bg-primary-50 text-txt-primary rounded-full p-px">
+                <UserIcon className="size-4" />
+              </span>
+              <p className="line-clamp-1 flex-1">
+                {item.name}{" "}
+                <span className="text-txt-black-500 text-xs">{item.note}</span>
+              </p>
+              <ChevronRightIcon />
+            </SearchBarResultsItem>
+          ))}
+        </SearchBarResultsList>
+      </SearchBarResultsDropdown>
+    </SearchBar>
+  );
+};
+
+const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
+  const [hasFocus, setHasFocus] = useState(false);
+  const [query, setQuery] = useState("");
+  const isDropdownOpen = query.length > 0 && hasFocus;
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "/") {
+        inputRef.current?.focus();
+        e.preventDefault();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   const results = notableMalaysians.filter((person) =>
     person.name.toLowerCase().includes(query.toLocaleLowerCase()),
@@ -91,6 +228,7 @@ const DemoSearchBar = (props: ComponentProps<typeof SearchBar>) => {
     >
       <SearchBarInputContainer>
         <SearchBarInput
+          ref={inputRef}
           placeholder="Search by name"
           value={query}
           onValueChange={setQuery}
@@ -103,7 +241,7 @@ const DemoSearchBar = (props: ComponentProps<typeof SearchBar>) => {
         <SearchBarClearButton onClick={() => setQuery("")} />
         <SearchBarSearchButton />
       </SearchBarInputContainer>
-      <SearchBarResultsPopover open={isPopoverOpen}>
+      <SearchBarResultsDropdown open={isDropdownOpen}>
         <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
           {!results.length && (
             <p className="text-txt-black-900 text-center">No results found</p>
@@ -139,17 +277,25 @@ const DemoSearchBar = (props: ComponentProps<typeof SearchBar>) => {
             </SearchBarResultsGroup>
           ))}
         </SearchBarResultsList>
-      </SearchBarResultsPopover>
+      </SearchBarResultsDropdown>
     </SearchBar>
   );
 };
 
 export const Light = createRender((args: Story["args"]) => {
-  return <DemoSearchBar {...args} />;
+  return <DemoBasicSearchBar {...args} />;
+}, "light");
+
+export const LightGrouped = createRender((args: Story["args"]) => {
+  return <DemoGroupedSearchBar {...args} />;
 }, "light");
 
 export const Dark = createRender((args: Story["args"]) => {
-  return <DemoSearchBar {...args} className="dark" />;
+  return <DemoBasicSearchBar {...args} className="dark" />;
+}, "dark");
+
+export const DarkGrouped = createRender((args: Story["args"]) => {
+  return <DemoGroupedSearchBar {...args} className="dark" />;
 }, "dark");
 
 const notableMalaysians = [
