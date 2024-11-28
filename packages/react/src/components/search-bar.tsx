@@ -111,8 +111,13 @@ export const SearchBarInputContainer: FunctionComponent<
  */
 export const SearchBarInput: FunctionComponent<
   ComponentProps<typeof Command.Input>
-> = forwardRef(({ className, onValueChange, ...props }, ref) => {
+> = forwardRef(({ className, value, onValueChange, ...props }, ref) => {
   const { onQueryChange } = useContext(SearchBarContext);
+
+  useEffect(() => {
+    onQueryChange(value || "");
+  }, [value]);
+
   return (
     <Command.Input
       ref={ref}
@@ -120,6 +125,7 @@ export const SearchBarInput: FunctionComponent<
         "text-txt-black-900 placeholder:text-txt-black-500 flex-1 bg-transparent focus:outline-none",
         className,
       )}
+      value={value}
       onValueChange={(value) => {
         onQueryChange(value);
         onValueChange?.(value);
