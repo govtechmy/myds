@@ -41,18 +41,7 @@ import { Pill } from "@myds/react/pill";
  *   SearchBarHint,
  * } from "@myds/react/search-bar";
  *
- * const [hasFocus, setHasFocus] = useState(false);
- * const [query, setQuery] = useState("");
- * const isDropdownOpen = query.length > 0 && hasFocus;
- *
- * <SearchBar
- *   onBlur={(e) => {
- *     const blurredByChild = e.currentTarget.contains(e.relatedTarget);
- *     if (blurredByChild) return;
- *     setHasFocus(false);
- *   }}
- *   onFocus={() => setHasFocus(true)}
- * >
+ * <SearchBar size="large">
  *   <SearchBarInputContainer>
  *     <SearchBarInput value={query} onValueChange={setQuery} />
  *     <SearchBarHint>
@@ -61,7 +50,7 @@ import { Pill } from "@myds/react/pill";
  *     <SearchBarClearButton />
  *     <SearchBarSearchButton />
  *   </SearchBarInputContainer>
- *   <SearchBarResultsDropdown open={isDropdownOpen}>
+ *   <SearchBarResultsDropdown>
  *     <SearchBarResultsList>
  *       <SearchBarResultsItem
  *         value="foo"
@@ -109,7 +98,6 @@ type Story = StoryObj<typeof meta>;
 const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
   const [hasFocus, setHasFocus] = useState(false);
   const [query, setQuery] = useState("");
-  const isDropdownOpen = query.length > 0 && hasFocus;
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -123,28 +111,22 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [inputRef]);
 
   const results = notableMalaysians.filter((person) =>
     person.name.toLowerCase().includes(query.toLocaleLowerCase()),
   );
 
   return (
-    <SearchBar
-      onBlur={(e) => {
-        const blurredByChild = e.currentTarget.contains(e.relatedTarget);
-        if (blurredByChild) return;
-        setHasFocus(false);
-      }}
-      onFocus={() => setHasFocus(true)}
-      {...props}
-    >
+    <SearchBar {...props}>
       <SearchBarInputContainer>
         <SearchBarInput
           ref={inputRef}
           placeholder="Search by name"
           value={query}
           onValueChange={setQuery}
+          onFocus={() => setHasFocus(true)}
+          onBlur={() => setHasFocus(false)}
         />
         {!hasFocus && props.size === "large" && (
           <SearchBarHint>
@@ -154,7 +136,7 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
         <SearchBarClearButton onClick={() => setQuery("")} />
         <SearchBarSearchButton />
       </SearchBarInputContainer>
-      <SearchBarResultsDropdown open={isDropdownOpen}>
+      <SearchBarResultsDropdown>
         <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
           {!results.length && (
             <p className="text-txt-black-900 text-center">No results found</p>
@@ -186,7 +168,6 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
 const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
   const [hasFocus, setHasFocus] = useState(false);
   const [query, setQuery] = useState("");
-  const isDropdownOpen = query.length > 0 && hasFocus;
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -200,7 +181,7 @@ const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [inputRef]);
 
   const results = notableMalaysians.filter((person) =>
     person.name.toLowerCase().includes(query.toLocaleLowerCase()),
@@ -217,21 +198,15 @@ const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
   }
 
   return (
-    <SearchBar
-      onBlur={(e) => {
-        const blurredByChild = e.currentTarget.contains(e.relatedTarget);
-        if (blurredByChild) return;
-        setHasFocus(false);
-      }}
-      onFocus={() => setHasFocus(true)}
-      {...props}
-    >
+    <SearchBar {...props}>
       <SearchBarInputContainer>
         <SearchBarInput
           ref={inputRef}
           placeholder="Search by name"
           value={query}
           onValueChange={setQuery}
+          onFocus={() => setHasFocus(true)}
+          onBlur={() => setHasFocus(false)}
         />
         {!hasFocus && props.size === "large" && (
           <SearchBarHint>
@@ -241,7 +216,7 @@ const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
         <SearchBarClearButton onClick={() => setQuery("")} />
         <SearchBarSearchButton />
       </SearchBarInputContainer>
-      <SearchBarResultsDropdown open={isDropdownOpen}>
+      <SearchBarResultsDropdown>
         <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
           {!results.length && (
             <p className="text-txt-black-900 text-center">No results found</p>

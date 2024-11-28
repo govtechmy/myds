@@ -3,6 +3,8 @@ import React, {
   ComponentProps,
   useContext,
   forwardRef,
+  useState,
+  useEffect,
 } from "react";
 import { Command } from "cmdk";
 import { Button, ButtonProps } from "./button";
@@ -15,9 +17,14 @@ const DEFAULT_SIZE: SearchBarSize = "medium";
 
 type Context = {
   size: SearchBarSize;
+  onQueryChange: (query: string) => void;
+  isDropdownOpen: boolean;
 };
+
 const SearchBarContext = React.createContext<Context>({
   size: DEFAULT_SIZE,
+  onQueryChange: () => {},
+  isDropdownOpen: false,
 });
 
 interface SearchBarProps extends ComponentProps<typeof Command> {
@@ -29,13 +36,36 @@ interface SearchBarProps extends ComponentProps<typeof Command> {
  * @see https://github.com/pacocoursey/cmdk#command-cmdk-root
  */
 const SearchBar: FunctionComponent<SearchBarProps> = forwardRef(
-  ({ children, className, size = DEFAULT_SIZE, ...props }, ref) => {
+  (
+    { children, className, size = DEFAULT_SIZE, onFocus, onBlur, ...props },
+    ref,
+  ) => {
+    const [hasFocus, setHasFocus] = useState(false);
+    const [query, setQuery] = useState("");
+    const isDropdownOpen = query.length > 0 && hasFocus;
+
     return (
-      <SearchBarContext.Provider value={{ size }}>
+      <SearchBarContext.Provider
+        value={{ size, isDropdownOpen, onQueryChange: setQuery }}
+      >
         <Command
           ref={ref}
           className={clx("relative", className)}
           shouldFilter={false}
+          onFocus={(e) => {
+            onFocus?.(e);
+            if (!e.isDefaultPrevented()) {
+              setHasFocus(true);
+            }
+          }}
+          onBlur={(e) => {
+            onBlur?.(e);
+            if (!e.isDefaultPrevented()) {
+              const blurredByChild = e.currentTarget.contains(e.relatedTarget);
+              if (blurredByChild) return;
+              setHasFocus(false);
+            }
+          }}
           {...props}
         >
           {children}
@@ -81,7 +111,8 @@ export const SearchBarInputContainer: FunctionComponent<
  */
 export const SearchBarInput: FunctionComponent<
   ComponentProps<typeof Command.Input>
-> = forwardRef(({ className, ...props }, ref) => {
+> = forwardRef(({ className, onValueChange, ...props }, ref) => {
+  const { onQueryChange } = useContext(SearchBarContext);
   return (
     <Command.Input
       ref={ref}
@@ -89,6 +120,10 @@ export const SearchBarInput: FunctionComponent<
         "text-txt-black-900 placeholder:text-txt-black-500 flex-1 bg-transparent focus:outline-none",
         className,
       )}
+      onValueChange={(value) => {
+        onQueryChange(value);
+        onValueChange?.(value);
+      }}
       {...props}
     />
   );
@@ -172,14 +207,14 @@ const search_bar_results_dropdown_cva = cva(
   },
 );
 export const SearchBarResultsDropdown: FunctionComponent<
-  ComponentProps<"div"> & { open: boolean }
-> = ({ className, open, ...props }) => {
-  const { size } = useContext(SearchBarContext);
+  ComponentProps<"div">
+> = ({ className, ...props }) => {
+  const { size, isDropdownOpen } = useContext(SearchBarContext);
   return (
     <div
       className={clx(
         search_bar_results_dropdown_cva({ size, className }),
-        !open && "hidden",
+        !isDropdownOpen && "hidden",
       )}
       {...props}
     />
