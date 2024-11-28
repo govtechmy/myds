@@ -1,4 +1,9 @@
-import React, { FunctionComponent, ComponentProps, useContext } from "react";
+import React, {
+  FunctionComponent,
+  ComponentProps,
+  useContext,
+  forwardRef,
+} from "react";
 import { Command } from "cmdk";
 import { Button, ButtonProps } from "./button";
 import { CrossIcon, SearchIcon } from "../icons";
@@ -33,19 +38,22 @@ interface SearchBarProps {
  */
 const SearchBar: FunctionComponent<
   ComponentProps<typeof Command> & { size?: SearchBarSize }
-> = ({ children, className, size = DEFAULT_SIZE, ...props }) => {
-  return (
-    <SearchBarContext.Provider value={{ size }}>
-      <Command
-        className={clx("relative", className)}
-        shouldFilter={false}
-        {...props}
-      >
-        {children}
-      </Command>
-    </SearchBarContext.Provider>
-  );
-};
+> = forwardRef(
+  ({ children, className, size = DEFAULT_SIZE, ...props }, ref) => {
+    return (
+      <SearchBarContext.Provider value={{ size }}>
+        <Command
+          ref={ref}
+          className={clx("relative", className)}
+          shouldFilter={false}
+          {...props}
+        >
+          {children}
+        </Command>
+      </SearchBarContext.Provider>
+    );
+  },
+);
 
 const search_bar_input_container_cva = cva(
   [
@@ -135,6 +143,21 @@ export const SearchBarClearButton: FunctionComponent<ButtonProps> = ({
   );
 };
 
+export const SearchBarHint: FunctionComponent<ComponentProps<"div">> = ({
+  className,
+  ...props
+}) => {
+  return (
+    <div
+      className={clx(
+        "text-txt-black-500 flex items-center gap-1 text-sm",
+        className,
+      )}
+      {...props}
+    />
+  );
+};
+
 const search_bar_results_popover_cva = cva(
   [
     "-z-10 bg-bg-white absolute w-full border border-t-0 border-otl-gray-200 shadow px-[6px] py-[8px] shadow-context-menu",
@@ -154,7 +177,7 @@ const search_bar_results_popover_cva = cva(
   },
 );
 export const SearchBarResultsPopover: FunctionComponent<
-  ComponentProps<"div"> & { open?: boolean }
+  ComponentProps<"div"> & { open: boolean }
 > = ({ className, open, ...props }) => {
   const { size } = useContext(SearchBarContext);
   return (
@@ -170,8 +193,14 @@ export const SearchBarResultsPopover: FunctionComponent<
 
 export const SearchBarResultsList: FunctionComponent<
   ComponentProps<typeof Command.List>
-> = (props) => {
-  return <Command.List {...props} />;
+> = ({ children, ...props }) => {
+  return (
+    <Command.List {...props}>
+      {/* We include a hidden item to prevent cmdk from focusing on the first item automatically. */}
+      <Command.Item className="hidden">--</Command.Item>
+      {children}
+    </Command.List>
+  );
 };
 
 export const SearchBarResultsGroup: FunctionComponent<
@@ -201,12 +230,6 @@ export const SearchBarResultsItem: FunctionComponent<
       {...props}
     />
   );
-};
-
-export const SearchBarResultsEmpty: FunctionComponent<
-  ComponentProps<typeof Command.Empty>
-> = (props) => {
-  return <Command.Empty {...props} />;
 };
 
 export { SearchBar };

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { createRender, createStory } from "../utils";
+import { createRender } from "../utils";
 import {
   SearchBar,
   SearchBarInput,
@@ -9,8 +9,8 @@ import {
   SearchBarResultsPopover,
   SearchBarResultsList,
   SearchBarResultsItem,
-  SearchBarResultsEmpty,
   SearchBarResultsGroup,
+  SearchBarHint,
 } from "@myds/react/search-bar";
 import { ComponentProps, useState } from "react";
 import {
@@ -19,6 +19,7 @@ import {
   StarIcon,
   TrophyIcon,
 } from "@myds/react/icon";
+import { Pill } from "@myds/react/pill";
 
 /**
  * ### Overview
@@ -62,14 +63,11 @@ type Story = StoryObj<typeof meta>;
 const DemoSearchBar = (props: ComponentProps<typeof SearchBar>) => {
   const [hasFocus, setHasFocus] = useState(false);
   const [query, setQuery] = useState("");
-  const hasSearchQuery = query.length > 0;
-  const isPopoverOpen = hasSearchQuery && hasFocus;
+  const isPopoverOpen = query.length > 0 && hasFocus;
 
-  const results = isPopoverOpen
-    ? notableMalaysians.filter((person) =>
-        person.name.toLowerCase().includes(query.toLocaleLowerCase()),
-      )
-    : [];
+  const results = notableMalaysians.filter((person) =>
+    person.name.toLowerCase().includes(query.toLocaleLowerCase()),
+  );
 
   const groupedResults: Record<string, typeof results> = {};
   for (const item of results) {
@@ -82,30 +80,43 @@ const DemoSearchBar = (props: ComponentProps<typeof SearchBar>) => {
   }
 
   return (
-    <SearchBar {...props}>
+    <SearchBar
+      onBlur={(e) => {
+        const blurredByChild = e.currentTarget.contains(e.relatedTarget);
+        if (blurredByChild) return;
+        setHasFocus(false);
+      }}
+      onFocus={() => setHasFocus(true)}
+      {...props}
+    >
       <SearchBarInputContainer>
         <SearchBarInput
-          placeholder="Search by keywords (e.g. category)"
+          placeholder="Search by name"
           value={query}
           onValueChange={setQuery}
-          onFocus={() => setHasFocus(true)}
-          onBlur={() => setHasFocus(false)}
         />
-        <SearchBarClearButton onClick={(e) => setQuery("")} />
+        {!hasFocus && props.size === "large" && (
+          <SearchBarHint>
+            Press <Pill size="small">/</Pill> to search
+          </SearchBarHint>
+        )}
+        <SearchBarClearButton onClick={() => setQuery("")} />
         <SearchBarSearchButton />
       </SearchBarInputContainer>
       <SearchBarResultsPopover open={isPopoverOpen}>
         <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
-          <SearchBarResultsEmpty>
-            <p className="text-center">No results found</p>
-          </SearchBarResultsEmpty>
+          {!results.length && (
+            <p className="text-txt-black-900 text-center">No results found</p>
+          )}
           {Object.entries(groupedResults).map(([group, items]) => (
             <SearchBarResultsGroup key={group} heading={group}>
               {items.map((item) => (
                 <SearchBarResultsItem
                   key={item.name}
                   value={item.name}
-                  onSelect={() => alert(item.name)}
+                  onSelect={() => {
+                    alert(`${item.name} - ${item.note}`);
+                  }}
                 >
                   <span className="bg-primary-50 text-txt-primary rounded-full p-px">
                     {group === "Arts" ? (
