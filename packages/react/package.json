@@ -12,6 +12,10 @@
       "type": "./src/components/callout.tsx",
       "default": "./src/components/callout.tsx"
     },
+    "./announce-bar": {
+      "type": "./src/components/announce-bar.tsx",
+      "default": "./src/components/announce-bar.tsx"
+    },
     "./cookie-banner": {
       "type": "./src/components/cookie-banner.tsx",
       "default": "./src/components/cookie-banner.tsx"
