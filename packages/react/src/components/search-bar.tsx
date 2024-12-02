@@ -212,9 +212,10 @@ const search_bar_results_dropdown_cva = cva(
     },
   },
 );
-export const SearchBarResultsDropdown: FunctionComponent<
-  ComponentProps<"div">
-> = ({ className, ...props }) => {
+export const SearchBarResults: FunctionComponent<ComponentProps<"div">> = ({
+  className,
+  ...props
+}) => {
   const { size, isDropdownOpen } = useContext(SearchBarContext);
   return (
     <div

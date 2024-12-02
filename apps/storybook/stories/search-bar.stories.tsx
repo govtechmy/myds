@@ -6,7 +6,7 @@ import {
   SearchBarClearButton,
   SearchBarInputContainer,
   SearchBarSearchButton,
-  SearchBarResultsDropdown,
+  SearchBarResults,
   SearchBarResultsList,
   SearchBarResultsItem,
   SearchBarResultsGroup,
@@ -34,7 +34,7 @@ import { Pill } from "@myds/react/pill";
  *   SearchBarClearButton,
  *   SearchBarInputContainer,
  *   SearchBarSearchButton,
- *   SearchBarResultsDropdown,
+ *   SearchBarResults,
  *   SearchBarResultsList,
  *   SearchBarResultsItem,
  *   SearchBarResultsGroup,
@@ -50,7 +50,7 @@ import { Pill } from "@myds/react/pill";
  *     <SearchBarClearButton />
  *     <SearchBarSearchButton />
  *   </SearchBarInputContainer>
- *   <SearchBarResultsDropdown>
+ *   <SearchBarResults>
  *     <SearchBarResultsList>
  *       <SearchBarResultsItem
  *         value="foo"
@@ -65,7 +65,7 @@ import { Pill } from "@myds/react/pill";
  *         Bar
  *       </SearchBarResultsItem>
  *     </SearchBarResultsList>
- *   </SearchBarResultsDropdown>
+ *   </SearchBarResults>
  * </SearchBar>
  * ```
  */
@@ -136,7 +136,7 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
         <SearchBarClearButton onClick={() => setQuery("")} />
         <SearchBarSearchButton />
       </SearchBarInputContainer>
-      <SearchBarResultsDropdown>
+      <SearchBarResults>
         <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
           {!results.length && (
             <p className="text-txt-black-900 text-center">No results found</p>
@@ -160,7 +160,7 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
             </SearchBarResultsItem>
           ))}
         </SearchBarResultsList>
-      </SearchBarResultsDropdown>
+      </SearchBarResults>
     </SearchBar>
   );
 };
@@ -216,7 +216,7 @@ const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
         <SearchBarClearButton onClick={() => setQuery("")} />
         <SearchBarSearchButton />
       </SearchBarInputContainer>
-      <SearchBarResultsDropdown>
+      <SearchBarResults>
         <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
           {!results.length && (
             <p className="text-txt-black-900 text-center">No results found</p>
@@ -252,7 +252,7 @@ const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
             </SearchBarResultsGroup>
           ))}
         </SearchBarResultsList>
-      </SearchBarResultsDropdown>
+      </SearchBarResults>
     </SearchBar>
   );
 };
