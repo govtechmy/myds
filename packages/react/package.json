@@ -7,6 +7,10 @@
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
     },
+    "./navbar": {
+      "type": "./src/components/navbar.tsx",
+      "default": "./src/components/navbar.tsx"
+    },
     "./cookie-banner": {
       "type": "./src/components/cookie-banner.tsx",
       "default": "./src/components/cookie-banner.tsx"
