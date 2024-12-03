@@ -101,7 +101,19 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  argTypes: {},
+  argTypes: {
+    children: {
+      control: false,
+      description: "Content for the Navbar sections",
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
+    },
+    showMenu: {
+      control: false,
+      description: "State to control the open and close of menu",
+    },
+  },
 } satisfies Meta<typeof Navbar>;
 
 export default meta;
