@@ -95,15 +95,13 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
-  const [hasFocus, setHasFocus] = useState(false);
-  const [query, setQuery] = useState("");
-  const inputRef = useRef<HTMLInputElement>(null);
+function useFocusOnKeyPress<T extends HTMLElement>(key: string) {
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "/") {
-        inputRef.current?.focus();
+      if (e.key === key) {
+        ref.current?.focus();
         e.preventDefault();
       }
     };
@@ -111,14 +109,30 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [inputRef]);
+  }, [ref]);
+
+  return ref;
+}
+
+const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
+  const [hasFocus, setHasFocus] = useState(false);
+  const [query, setQuery] = useState("");
+  const hasQuery = query.length > 0;
+  const inputRef = useFocusOnKeyPress<HTMLInputElement>("/");
 
   const results = notableMalaysians.filter((person) =>
     person.name.toLowerCase().includes(query.toLocaleLowerCase()),
   );
 
   return (
-    <SearchBar {...props}>
+    <SearchBar
+      {...props}
+      onBlur={(e) => {
+        const blurredByChild = e.currentTarget.contains(e.relatedTarget);
+        if (blurredByChild) return;
+        setHasFocus(false);
+      }}
+    >
       <SearchBarInputContainer>
         <SearchBarInput
           ref={inputRef}
@@ -126,7 +140,6 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
           value={query}
           onValueChange={setQuery}
           onFocus={() => setHasFocus(true)}
-          onBlur={() => setHasFocus(false)}
         />
         {!hasFocus && props.size === "large" && (
           <SearchBarHint>
@@ -136,30 +149,39 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
         <SearchBarClearButton onClick={() => setQuery("")} />
         <SearchBarSearchButton />
       </SearchBarInputContainer>
-      <SearchBarResults>
-        <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
-          {!results.length && (
-            <p className="text-txt-black-900 text-center">No results found</p>
-          )}
-          {results.map((item) => (
-            <SearchBarResultsItem
-              key={item.name}
-              value={item.name}
-              onSelect={() => {
-                alert(`${item.name} - ${item.note}`);
-              }}
-            >
-              <span className="bg-primary-50 text-txt-primary rounded-full p-px">
-                <UserIcon className="size-4" />
-              </span>
-              <p className="line-clamp-1 flex-1">
-                {item.name}{" "}
-                <span className="text-txt-black-500 text-xs">{item.note}</span>
-              </p>
-              <ChevronRightIcon />
-            </SearchBarResultsItem>
-          ))}
-        </SearchBarResultsList>
+      <SearchBarResults open={hasFocus}>
+        {!hasQuery && (
+          <p className="text-txt-black-900 text-center">
+            Start typing to search
+          </p>
+        )}
+        {hasQuery && !results.length && (
+          <p className="text-txt-black-900 text-center">No results found</p>
+        )}
+        {hasQuery && results.length > 0 && (
+          <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
+            {results.map((item) => (
+              <SearchBarResultsItem
+                key={item.name}
+                value={item.name}
+                onSelect={() => {
+                  alert(`${item.name} - ${item.note}`);
+                }}
+              >
+                <span className="bg-primary-50 text-txt-primary rounded-full p-px">
+                  <UserIcon className="size-4" />
+                </span>
+                <p className="line-clamp-1 flex-1">
+                  {item.name}{" "}
+                  <span className="text-txt-black-500 text-xs">
+                    {item.note}
+                  </span>
+                </p>
+                <ChevronRightIcon />
+              </SearchBarResultsItem>
+            ))}
+          </SearchBarResultsList>
+        )}
       </SearchBarResults>
     </SearchBar>
   );
@@ -168,20 +190,8 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
 const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
   const [hasFocus, setHasFocus] = useState(false);
   const [query, setQuery] = useState("");
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "/") {
-        inputRef.current?.focus();
-        e.preventDefault();
-      }
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [inputRef]);
+  const hasQuery = query.length > 0;
+  const inputRef = useFocusOnKeyPress<HTMLInputElement>("/");
 
   const results = notableMalaysians.filter((person) =>
     person.name.toLowerCase().includes(query.toLocaleLowerCase()),
@@ -216,42 +226,49 @@ const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
         <SearchBarClearButton onClick={() => setQuery("")} />
         <SearchBarSearchButton />
       </SearchBarInputContainer>
-      <SearchBarResults>
-        <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
-          {!results.length && (
-            <p className="text-txt-black-900 text-center">No results found</p>
-          )}
-          {Object.entries(groupedResults).map(([group, items]) => (
-            <SearchBarResultsGroup key={group} heading={group}>
-              {items.map((item) => (
-                <SearchBarResultsItem
-                  key={item.name}
-                  value={item.name}
-                  onSelect={() => {
-                    alert(`${item.name} - ${item.note}`);
-                  }}
-                >
-                  <span className="bg-primary-50 text-txt-primary rounded-full p-px">
-                    {group === "Arts" ? (
-                      <StarIcon className="size-4" />
-                    ) : group === "Sports" ? (
-                      <TrophyIcon className="size-4" />
-                    ) : (
-                      <MoneyIcon className="size-4" />
-                    )}
-                  </span>
-                  <p className="line-clamp-1 flex-1">
-                    {item.name}{" "}
-                    <span className="text-txt-black-500 text-xs">
-                      {item.note}
+      <SearchBarResults open={hasFocus}>
+        {!hasQuery && (
+          <p className="text-txt-black-900 text-center">
+            Start typing to search
+          </p>
+        )}
+        {hasQuery && !results.length && (
+          <p className="text-txt-black-900 text-center">No results found</p>
+        )}
+        {hasQuery && results.length > 0 && (
+          <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
+            {Object.entries(groupedResults).map(([group, items]) => (
+              <SearchBarResultsGroup key={group} heading={group}>
+                {items.map((item) => (
+                  <SearchBarResultsItem
+                    key={item.name}
+                    value={item.name}
+                    onSelect={() => {
+                      alert(`${item.name} - ${item.note}`);
+                    }}
+                  >
+                    <span className="bg-primary-50 text-txt-primary rounded-full p-px">
+                      {group === "Arts" ? (
+                        <StarIcon className="size-4" />
+                      ) : group === "Sports" ? (
+                        <TrophyIcon className="size-4" />
+                      ) : (
+                        <MoneyIcon className="size-4" />
+                      )}
                     </span>
-                  </p>
-                  <ChevronRightIcon />
-                </SearchBarResultsItem>
-              ))}
-            </SearchBarResultsGroup>
-          ))}
-        </SearchBarResultsList>
+                    <p className="line-clamp-1 flex-1">
+                      {item.name}{" "}
+                      <span className="text-txt-black-500 text-xs">
+                        {item.note}
+                      </span>
+                    </p>
+                    <ChevronRightIcon />
+                  </SearchBarResultsItem>
+                ))}
+              </SearchBarResultsGroup>
+            ))}
+          </SearchBarResultsList>
+        )}
       </SearchBarResults>
     </SearchBar>
   );
