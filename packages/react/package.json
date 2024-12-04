@@ -20,6 +20,10 @@
       "type": "./src/components/cookie-banner.tsx",
       "default": "./src/components/cookie-banner.tsx"
     },
+    "./search-bar": {
+      "type": "./src/components/search-bar.tsx",
+      "default": "./src/components/search-bar.tsx"
+    },
     "./spinner": {
       "type": "./src/components/spinner.tsx",
       "default": "./src/components/spinner.tsx"
@@ -148,6 +152,7 @@
     "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",
     "class-variance-authority": "^0.7.0",
+    "cmdk": "^1.0.4",
     "date-fns": "^4.1.0",
     "input-otp": "^1.4.1",
     "mitt": "^3.0.1",
