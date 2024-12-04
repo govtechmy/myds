@@ -5,10 +5,9 @@
     "index",
     "(getting-started)/install",
     "(getting-started)/project-configuration",
-
     "(getting-started)/usage",
 
-    "---Components---",
+    "---Komponen 🚧---",
     "(components)/accordion",
     "(components)/anchor",
     "(components)/banner",

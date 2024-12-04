@@ -1,13 +1,36 @@
 ---
 title: Accordion
-description: Accordion
+description: Organize and display content in a compact, collapsible format, commonly used for FAQ sections.
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+import { s3 } from "@/lib/constant";
 
-## What is Next?
+![accordion-anatomy.png](/design/accordion-anatomy.png)
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+The key elements that define a Accordion’s structure and function.
+
+1. **Header text**: The main title or label for the accordion section.
+2. **Body text**: The content that expands or collapses within the accordion.
+3. **Chevron Down (Default)**: The default icon, displayed at a rotation of 0 degrees, indicating that the section is closed.
+4. **Chevron Down (Expanded)**: The icon rotates to 180 degrees to indicate the section is open.
+
+## State
+
+![accordion-variation.png](/design/accordion-variation.png)
+
+Defines how a Accordion visually responds to user actions like hover, focus, or click, providing feedback and enhancing usability.
+
+1. **Click trigger area (Header)**: The clickable area on the header that expands or collapses the accordion when clicked, providing access to the body content.
+2. **Hover state**: Underline the Header text.
+3. **Closed state (Default)**: Hide Body text (Opacity:0%).
+4. **Opened state**: Click on trigger area (Head) to open accordion showing Body text.
+
+## Demo
+
+The example video below demonstrates the Accordion’s interaction and intended functionality in action.
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/accordion-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

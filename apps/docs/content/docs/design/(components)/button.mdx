@@ -1,13 +1,69 @@
 ---
 title: Button
-description: Button
+description: A fundamental UI element used to trigger actions or events. It ensures consistency, accessibility, and a clear call to action.
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+import { s3 } from "@/lib/constant";
 
-## What is Next?
+## Type
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+![button-type.png](/design/button-type.png)
+
+1. Primary
+2. Secondary
+3. Secondary Colour
+4. Tertiary
+5. Tertiary Colour
+6. Danger Primary
+7. Danger Secondary
+8. Danger Tertiary
+
+## Size
+
+Each button size is designed to cater to different form or action needs, ensuring optimal readability and user experience.
+
+![button-size.png](/design/button-size.png)
+
+## Appearance state
+
+![button-state.png](/design/button-state.png)
+
+1. **Default:** An element appears when it is not being interacted with. It’s the initial appearance of the element.
+2. **Hover:** An element appears when a user moves the mouse pointer over it. This state provides a visual feedback to indicate that the element is interactive.
+3. **Focused:** An element appears when it is selected or active, usually through keyboard navigation (TAB) or a mouse click. This state is crucial for accessibility, helping users identify the currently active element.
+4. **Disabled:** An element appears when it is not available for interaction. This state is used to prevent users from interacting with elements that are not currently active or available.
+
+## Leading & Trailing icon
+
+![button-leading-trailling.png](/design/button-leading-trailling.png)
+
+1. **Leading icon:** Placed before the text inside a button. It visually enhances the button by indicating the action's purpose at a glance.
+   E.g. Download icon, Arrow backward icon, Thrash icon, cross icon
+2. **Trailing icon:** Placed after the text inside a button. It complements the text and often indicates further action or direction.
+   E.g. Arrow forward icon
+
+## Counter
+
+A counter in a button component is a small numeric indicator displayed within a button.
+
+It provides a visual representation of a count related to the button's function, such as the number of selected filters, notifications, or items in a cart.
+
+![button-counter.png](/design/button-counter.png)
+
+## Icon only
+
+The primary visual element of the button is an icon that clearly indicates the action or function without text.
+
+E.g. Plus icon, Pencil icon, Hamburger icon, Trash icon
+
+![button-icon-only.png](/design/button-icon-only.png)
+
+## Demo
+
+Take note of how button moves down by 0.5 pixels when clicked.
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/button-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

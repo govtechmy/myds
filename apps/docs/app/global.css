@@ -30,4 +30,24 @@
   html {
     @apply scroll-smooth;
   }
+
+  /** Need to do this because fumadocs preset is overriding custom breakpoints. For: navbar, footer */
+  .max-w-container {
+    @apply !max-w-screen-xl xl:!px-0;
+  }
+  .container {
+    @apply !max-w-screen-xl xl:!px-0;
+  }
+
+  td {
+    @apply !align-middle;
+  }
+  .light .img-dark {
+    display: none;
+  }
+
+  /* If data-theme="dark", show dark image and hide light image */
+  .dark .img-light {
+    display: none;
+  }
 }

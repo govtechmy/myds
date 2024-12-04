@@ -5,7 +5,7 @@ export default {
       "Asas reka bentuk untuk membina laman web rasmi kerajaan Malaysia, MYDS menyediakan komponen pra-dibina yang kemas, memudahkan pembangunan dan menyeragamkan reka bentuk.",
     openGraph: {
       url: {
-        index: "${baseUrl}/ms-MY",
+        index: "https://design.digital.gov.my",
       },
       images: {
         "1": {
@@ -109,62 +109,53 @@ export default {
         tag: "Pelan Kami",
         title: "Bagaimana kami melancarkan sistem reka bentuk untuk Malaysia?",
         description:
-          "Kami akan bermula dengan laman konsep dan dokumen reka bentuk, kemudian menyediakan pembina laman untuk agensi kerajaan dan sekolah membina laman ikut sistem reka bentuk.",
+          "Kami akan memulakan dengan pembinaan bukti konsep dan dokumen reka bentuk. Kemudian akan melancarkan migrasi laman web dan aplikasi di seluruh kerajaan untuk melaksanakan sistem reka bentuk.",
       },
       items: {
         "1": {
-          date: "29 JUL 2024",
+          date: "28 JUL 2024",
           title: "Laman Kementerian Digital dilancarkan",
           description:
             "Laman konsep untuk Sistem Reka Bentuk Kerajaan Malaysia, dengan laman rasmi kami sebagai contoh praktikal!",
-          type: "dilancarkan",
+          type: "launched",
           year: "2024",
         },
         "2": {
-          date: "29 JUL 2024",
+          date: "28 JUL 2024",
           title: "MYDS (Beta) dilancarkan",
           description: "Figma dibuka untuk pemeriksaan dan maklum balas awam.",
-          type: "dilancarkan",
+          type: "launched",
           year: "2024",
         },
         "3": {
-          date: "OGO - NOV 2024",
-          title: "Pembangunan Pembina Laman",
-          description:
-            "Enjin di sebalik pelaksanaan sistem reka bentuk. Agensi akan guna pembina laman ini (iaitu CMS) untuk tambah kandungan.",
-          type: "pembangunan",
+          date: "DIS 2024",
+          title: "Pustaka Komponen MYDS untuk React",
+          description: "Pustaka komponen MYDS untuk React akan diterbitkan.",
+          type: "none",
           year: "2024",
         },
         "4": {
-          date: "SEP 2024 - JAN 2025",
-          title: "Penambahbaikan Laman Sekolah",
+          date: "15 NOV 2024",
+          title: "Garis Panduan Reka Bentuk MYDS",
           description:
-            "Laman konsep untuk menguji skalabiliti sistem reka bentuk dan pembina laman kami dengan 10,000 sekolah di seluruh negara.",
-          type: "tiada",
+            "Garis panduan reka bentuk untuk MYDS kini sedia untuk tontonan awam",
+          type: "launched",
           year: "2024",
         },
         "5": {
-          date: "DIS 2024 - MAC 2025 ",
-          title: "Penambahbaikan Laman Agensi",
-          description:
-            "Pelaksanaan di agensi-agensi kerajaan. Pembina laman (termasuk hosting) adalah percuma untuk sektor awam.",
-          type: "tiada",
-          year: "2024",
-        },
-        "6": {
           date: "MAC 2025",
           title: "Perundingan dengan Pihak Berkepentingan",
           description:
             "Pratonton dan ujian dengan komuniti IT tempatan, industri, dan pegawai sektor awam lain.",
-          type: "tiada",
+          type: "none",
           year: "2025",
         },
-        "7": {
+        "6": {
           date: "APR 2025",
           title: "Pelancaran Penuh MYDS",
           description:
             "Sistem reka bentuk sedia digunakan untuk membangun produk masa depan. Era baru untuk laman gov.my bermula!",
-          type: "tiada",
+          type: "none",
           year: "2025",
         },
       },

@@ -50,7 +50,7 @@ const dot_cva = cva(["inline-block  rounded-full bg-current"], {
  * @property {React.ReactNode} children - The content of the tag (text or HTML elements)
  * @property {boolean} [dot=false] - Whether to show a status dot
  * @property {"default" | "primary" | "success" | "danger" | "warning"} variant - The visual style variant of the tag
- * @property {"small" | "medium" | "large"} size - The size of the tag
+ * @property {"small" | "medium" | "large" } size - The size of the tag
  * @property {"pill" | "default"} mode - The style of the tag (rounded or not)
  */
 interface TagProps extends ComponentProps<"div">, VariantProps<typeof tag_cva> {
@@ -81,3 +81,4 @@ const Tag = forwardRef<HTMLDivElement, TagProps>(
 Tag.displayName = "Tag";
 
 export { Tag };
+export type { TagProps }

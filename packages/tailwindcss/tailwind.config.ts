@@ -15,7 +15,7 @@ const config: PresetsConfig = {
       inherit: colors.inherit,
       transparent: colors.transparent,
       white: {
-        DEFAULT: "rgba(var(--_white))",
+        DEFAULT: "rgb(var(--_white))",
         disabled: "rgba(var(--_white)/ 0.4)",
       },
       gray: {
@@ -86,6 +86,29 @@ const config: PresetsConfig = {
         950: "rgba(var(--_warning-950) / <alpha-value>)",
       },
     }),
+    // container: {
+    //   padding: {
+    //     bp_mobile: "18px",
+    //     bp_tablet: "24px",
+    //     bp_desktop: "24px",
+    //   },
+    //   screens: {
+    //     bp_mobile: "354px",
+    //     bp_tablet: "768px",
+    //     bp_desktop: "1280px",
+    //   },
+    // },
+    // screens: {
+    //   //* Screen sizes
+    //   mobile: "354px",
+    //   tablet: "768px",
+    //   desktop: "1280px",
+
+    //   //* Breakpoints
+    //   bp_mobile: "390px",
+    //   bp_tablet: "816px",
+    //   bp_desktop: "1328px",
+    // },
     extend: {
       spacing: {
         "2.5": "0.625rem",
@@ -120,7 +143,7 @@ const config: PresetsConfig = {
         mono: ["Roboto Mono", ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        "bg-white": "rgba(var(--bg-white))",
+        "bg-white": "rgb(var(--bg-white))",
         "bg-white-hover": "rgba(var(--bg-white-hover))",
         "bg-white-disabled": "rgba(var(--bg-white-disabled))",
         "bg-washed": "rgba(var(--bg-washed))",
@@ -186,7 +209,7 @@ const config: PresetsConfig = {
         "txt-white-disabled": "rgba(var(--txt-white-disabled))",
         "txt-black-900": "rgba(var(--txt-black-900))",
         "txt-black-700": "rgba(var(--txt-black-700))",
-        "txt-black-500": "rgba(var(--txt-black-500))",
+        "txt-black-500": "rgb(var(--txt-black-500))",
         "txt-black-disabled": "rgba(var(--txt-black-disabled))",
         "txt-primary": "rgba(var(--txt-primary))",
         "txt-primary-disabled": "rgba(var(--txt-primary-disabled))",
@@ -214,6 +237,25 @@ const config: PresetsConfig = {
         "fr-primary": "rgba(var(--fr-primary))",
         "fr-danger": "rgba(var(--fr-danger))",
       },
+      keyframes: {
+        "decrease-width": {
+          "0%": { width: "100%" },
+          "100%": { width: "0%" },
+        },
+        "slide-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "slide-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        expire: "decrease-width 5s linear",
+        "slide-down": "slide-down 300ms ease-out",
+        "slide-up": "slide-up 300ms ease-out",
+      },
     },
     boxShadow: {
       button: "0px 1px 3px 0px rgba(0, 0, 0, 0.07)",
@@ -234,11 +276,16 @@ const config: PresetsConfig = {
         from: { height: "var(--radix-accordion-content-height)" },
         to: { height: "0" },
       },
+      "caret-blink": {
+        "0%,70%,100%": { opacity: "1" },
+        "20%,50%": { opacity: "0" },
+      },
     },
     animation: {
       expire: "decrease-width 5s linear",
       "slide-down": "slide-down 300ms ease-out",
       "slide-up": "slide-up 300ms ease-out",
+      "caret-blink": "caret-blink 1.25s ease-out infinite",
     },
   },
   plugins: [tailwindcssAnimate],

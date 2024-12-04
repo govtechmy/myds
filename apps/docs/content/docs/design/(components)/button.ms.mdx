@@ -1,13 +1,70 @@
 ---
-title: Button
-description: Button
+title: Butang
+description: Butang adalah elemen asas UI yang digunakan untuk mencetuskan tindakan atau acara. Ia memastikan konsistensi, kebolehcapaian, dan seruan tindakan yang jelas.
 ---
 
-MyDS is Malaysia’s very own design system. Design and build beautiful, usable products with MyDS.
+import { s3 } from "@/lib/constant";
 
-## What is Next?
+## Jenis
 
-<Cards>
-  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
-  <Card title="Learn more about Fumadocs" href="https://fumadocs.vercel.app" />
-</Cards>
+![button-type.png](/design/button-type.png)
+
+1. Utama (Primary)
+2. Sekunder (Secondary)
+3. Warna Sekunder (Secondary Colour)
+4. Tertiari (Tertiary)
+5. Warna Tertiari (Tertiary Colour)
+6. Bahaya Utama (Danger Primary)
+7. Bahaya Sekunder (Danger Secondary)
+8. Bahaya Tertiari (Danger Tertiary)
+
+## Saiz
+
+Setiap saiz butang direka untuk memenuhi keperluan bentuk atau tindakan yang berbeza, memastikan keterbacaan dan pengalaman pengguna yang optimum.
+
+![button-size.png](/design/button-size.png)
+
+## Keadaan (States)
+
+![button-state.png](/design/button-state.png)
+
+1. **Asal:** Penampilan awal apabila elemen tidak berinteraksi dengan pengguna.
+2. **Hover**: Elemen yang berubah apabila tetikus pengguna berada di atasnya, memberikan maklum balas visual untuk menunjukkan interaktiviti.
+3. **Fokus**: Penampilan apabila elemen dipilih atau aktif, biasanya melalui navigasi papan kekunci (TAB) atau klik tetikus. Keadaan ini penting untuk kebolehcapaian, membantu pengguna mengenal pasti elemen yang aktif.
+4. **Dilumpuhkan (Disabled):** Elemen muncul apabila ia tidak tersedia untuk interaksi, menghalang pengguna daripada berinteraksi dengan elemen yang tidak aktif atau tidak tersedia.
+
+## Ikon hadapan & belakang
+
+![button-leading-trailling.png](/design/button-leading-trailling.png)
+
+1. **Ikon Hadapan:** Diletakkan sebelum teks dalam butang, memberikan petunjuk visual tentang tujuan tindakan dengan cepat.
+   Contoh: Ikon muat turun, ikon anak panah belakang, ikon tong sampah, ikon silang.
+
+2. **Ikon Belakang:** Diletakkan selepas teks dalam butang, melengkapi teks dan menunjukkan tindakan tambahan atau arah.
+   Contoh: Ikon anak panah hadapan.
+
+## Penghitung
+
+Penghitung dalam butang adalah penunjuk angka kecil yang dipaparkan dalam butang.
+
+Ia menyediakan gambaran visual tentang kiraan berkaitan fungsi butang, seperti bilangan penapis terpilih, notifikasi, atau item dalam troli.
+
+![button-counter.png](/design/button-counter.png)
+
+## Ikon sahaja
+
+Butang yang hanya mengandungi ikon sebagai elemen visual utama yang dengan jelas menunjukkan tindakan atau fungsi tanpa teks.
+
+Contoh: Ikon tambah, ikon pensil, ikon menu hamburger, ikon tong sampah.
+
+![button-icon-only.png](/design/button-icon-only.png)
+
+## Demo
+
+Perhatikan bahawa butang bergerak ke bawah sebanyak 0.5 piksel apabila diklik.
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/button-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

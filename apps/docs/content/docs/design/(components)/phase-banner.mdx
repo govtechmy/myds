@@ -1,0 +1,47 @@
+---
+title: Phase banner
+description: Informs users about the service's development stage and includes a link for submitting feedback. The phase banner is typically placed below the navigation menu to display the current status of the service, such as Alpha, Beta, or Maintenance.
+---
+
+import { s3 } from "@/lib/constant";
+
+![phase-banner-anatomy.png](/design/phase-banner-anatomy.png)
+
+1. UI/Tag Size=M
+2. Provide a brief description of the current phase of the service.
+3. A link for users to submit feedback on the service.
+
+## Responsive view
+
+![phase-banner-responsive.png](/design/phase-banner-responsive.png)
+
+1. **Desktop & Tablet**: Contains UI/Tag size=M. Both desktop and tablet have the same padding left & right: 24px.
+2. **Mobile**: On mobile, padding left & right: 18px. UI/Tag size=S remain on the left side while the break the description if it’s too long to fit in the view.
+
+## Usage examples
+
+### Status type
+
+![phase-banner-example.png](/design/phase-banner-example.png)
+
+The phase banner component is used to communicate the current development stage of a service to users. It can be utilized in various scenarios, such as:
+
+1. **Alpha**: Displayed when introducing a new service, encouraging users to provide feedback to improve the experience.
+2. **Beta**: Used to indicate that the service is nearly complete and seeks user input for final adjustments.
+3. **Public Beta**: Shown when the service is available for wider use, inviting all users to test and share their feedback.
+4. **Maintenance**: Indicates that the service is temporarily unavailable due to updates or fixes, keeping users informed.
+5. **Retired**: Communicates that the service is no longer active.
+
+### Placement
+
+The phase banner can be placed below the navigation menu to indicate that this is a service-level message relevant to the page. Additionally, it can be positioned in any other prominent location where it will be easily noticeable by users, ensuring they understand the current status of the service.
+
+**Scroll behaviour**
+
+The phase banner is not sticky with the navigation bar; it should scroll off the screen with the page content, ensuring it remains a non-intrusive element as users navigate the page.
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/phase-banner-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

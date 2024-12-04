@@ -1,0 +1,55 @@
+---
+title: Toast
+description: Notifikasi tidak mengganggu yang muncul sementara di skrin untuk memberikan maklum balas atau memberi amaran kepada pengguna tentang sesuatu peristiwa.
+---
+
+import { s3 } from "@/lib/constant";
+
+![toast-anatomy.png](/design/toast-anatomy.png)
+
+1. **Ikon Utama**: Menunjukkan jenis toast (contohnya, berjaya, ralat, info).
+2. **Tajuk**: Teks utama yang menyampaikan mesej utama toast.
+3. **Deskripsi**: Teks tambahan yang memberikan konteks atau butiran lanjut.
+4. **Bar Kemajuan**: Penunjuk visual dengan tempoh lalai selama 3 saat sebelum toast ditutup secara automatik.
+5. **Ikon Tutup (Pilihan)**: Ikon yang membolehkan pengguna menutup toast secara manual.
+
+## Jenis
+
+![toast-type.png](/design/toast-type.png)
+
+1. **Berjaya**: Menunjukkan tindakan yang berjaya, seperti membuat permintaan baharu atau menghantar borang.
+2. **Amaran**: Mengingatkan pengguna tentang perkara penting yang memerlukan perhatian, seperti melaporkan spam.
+3. **Maklumat**: Memberikan maklumat tambahan untuk memastikan pengguna dimaklumkan.
+4. **Ralat**: Memaklumkan pengguna tentang ralat yang memerlukan penyelesaian sebelum meneruskan.
+
+## Keadaan Ikon Tutup
+
+![toast-close-icon.png](/design/toast-close-icon.png)
+
+1. **Keadaan Tidak Aktif**: Apabila toast sedang ditutup, ikon Tutup dalam keadaan dinonaktifkan.
+2. **Keadaan Asal**: Semasa tempoh lalai 3 saat sebelum toast ditutup secara automatik, ikon Tutup diaktifkan, membolehkan pengguna menutupnya secara manual.
+
+## Lokasi Toast
+
+Toast muncul selepas pengguna melakukan tindakan, menunjukkan hasil sama ada berjaya, ralat, amaran, atau maklumat.
+
+![toast-location.png](/design/toast-location.png)
+
+**Desktop/Tablet**: Toast dipasang di bahagian bawah kanan skrin, dengan margin 24px. Lebar minimum ialah 300px dan maksimum 600px.
+
+**Telefon Mudah Alih**: Toast dipasang di tengah bawah skrin, dengan margin 18px. Lebar mengikut lebar skrin dengan margin 18px di kedua-dua sisi.
+
+## Toast dengan Bar Kemajuan
+
+![toast-progress-bar.png](/design/toast-progress-bar.png)
+
+1. Dalam senario berjaya, toast dipaparkan bersama bar kemajuan dengan animasi gelongsor ke atas dan keluar selama 200ms. Bar kemajuan bermula dari lebar 100% dan berakhir pada 0% dalam tempoh 3 saat.
+2. Toast akan ditutup secara automatik dengan animasi gelongsor ke bawah selama 200ms selepas 3 saat bersama dengan bar kemajuan.
+
+## Demo
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/toast-demo.mov")} type="video/mp4" />
+  </video>
+</figure>

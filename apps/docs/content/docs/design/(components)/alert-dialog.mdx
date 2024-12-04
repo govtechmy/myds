@@ -1,0 +1,92 @@
+---
+title: Alert dialog
+description: A modal pop-up designed to capture user attention for important actions or messages. It consists of three main components, which are Header, Content, and Footer. These elements together form a flexible and cohesive dialog structure that can accommodate different types of alerts or forms.
+---
+
+![alert-dialog-anatomy.png](/design/alert-dialog-anatomy.png)
+
+The key elements that define an Alert Dialog’s structure and function.
+
+1. **Header**: The sticky top section for long, scrollable modals, featuring a title, leading icon, and optional elements like a close icon or last updated status. A divider separates the header from the content below.
+2. **Content**: The main area of the dialog for forms, messages, or other information.
+3. **Footer**: The sticky bottom section, containing action buttons for user decisions, such as the primary action, secondary actions, and an optional terms & conditions disclaimer.
+4. **Callout**: Displays error messages if form validation fails, notifying the user of specific issues.
+5. **Background Overlay**: A 50% black opacity overlay behind the dialog, drawing attention to the alert and blocking background interactions.
+
+## Size
+
+### Desktop/Tablet
+
+Fixed at the center of the screen. It has a maximum width of 400px for alert type and 800px for form type.
+
+![alert-dialog-usage-example.png](/design/alert-dialog-usage-example.png)
+
+### Mobile
+
+Positioned at center of the screen. It stretches to fit the screen width, maintaining the 18px margins on all sides. It has a minimum width of 300px and maximum width of 100% relative to screen.
+
+![alert-dialog-usage-example-1.png](/design/alert-dialog-usage-example-1.png)
+
+## Section
+
+Parts that make up the alert dialog.
+
+### Header
+
+A sticky header for long, scrollable modals to keep the title and actions accessible at the top.
+
+![alert-dialog-header-1.png](/design/alert-dialog-header-1.png)
+
+1. **Title:** The main heading of the dialog.
+2. **Optional Last Updated Status:** Displays the last update timestamp if Close Icon is hidden.
+3. **Tab:** Optional tab navigation within the dialog.
+4. **Optional Close Icon:** Allows the user to close the dialog; if enabled, Last Updated Status is hidden.
+5. **Divider:** A separator between the header and content sections.
+
+### Footer
+
+Positioned at the bottom, containing action buttons to guide users on their next steps.
+
+![alert-dialog-footer-1.png](/design/alert-dialog-footer-1.png)
+
+1. **Primary Action:** The main action button, always visible, typically on the right for desktop or centered for mobile.
+2. **Action 1:** Secondary action placed next to the primary action on the left.
+3. **Cancel Action:** Positioned next to Action 1, often used to cancel the primary action.
+4. **Action 2:** Located at the far left, used for additional actions like “Delete Draft.”
+5. **Disclaimer text:** Shown before proceeding with the primary action, such as "By submitting, you agree to Terms of Use and Privacy Policy.”
+
+#### Footer Layout
+
+![alert-dialog-footer-2.png](/design/alert-dialog-footer-2.png)
+
+1. **Side-by-Side:** Typically used on desktop or larger modals where buttons can be displayed horizontally.
+2. **Stacked:** Used for mobile or smaller modals, where buttons are displayed in a vertical stack.
+
+#### Footer Alignment
+
+![alert-dialog-footer-3.png](/design/alert-dialog-footer-3.png)
+
+1. **Right:** By default aligns actions to the right, usually for desktop and larger modals.
+   This is most common because it helps users naturally locate the primary action (e.g., Submit) as the last button on the right, where the eye naturally rests.
+2. **Left:** Aligns actions to the left of the modal.
+3. **Full:** Stretches actions to fill the container, commonly used on mobile or smaller alert dialog.
+
+## Usage example
+
+### Forms
+
+Used for applications, settings, or any interactive content requiring user input.
+
+![alert-dialog-variation-3.png](/design/alert-dialog-variation-3.png)
+
+![alert-dialog-variation.png](/design/alert-dialog-variation.png)
+
+### Alerts
+
+![alert-dialog-variation-4.png](/design/alert-dialog-variation-4.png)
+
+![alert-dialog-variation-1.png](/design/alert-dialog-variation-1.png)
+
+1. **Success**: Provides feedback to the user for successful actions or confirmations.
+2. **Warning**: Alerts the user about a potential issue or something that requires attention.
+3. **Destructive**: Used when a user is about to perform an irreversible action, like deletion.
