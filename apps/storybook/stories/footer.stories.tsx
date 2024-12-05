@@ -1,23 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 import {
+  Address,
   Footer,
-  FooterContent,
-  FooterContentAgencySection,
-  FooterAgencyHeader,
-  FooterAgencyAddress,
-  FooterAgencyMediaLinks,
-  FooterAgencyMediaLinksLogoPath,
-  FooterContentLinkSection,
-  FooterContentLinkSectionTitle,
-  FooterContentLinkSectionContent,
-  FooterGeneralLink,
-  FooterDisclaimer,
-  FooterDisclaimerGroup,
-  FooterDisclaimerGroupRights,
-  FooterDisclaimerGroupDisclaimer,
-  FooterDisclaimerLastUpdate,
-  FooterContentLinkSectionWrapper,
+  FooterBottomSection,
+  FooterCopyright,
+  FooterContentLink,
+  FooterMainInfo,
+  FooterTimestamp,
+  FooterTopSection,
+  ImageExporter,
+  SocialMedia,
+  FooterCopyrightDate,
+  FooterCopyrightLink,
+  FooterCopyrightUtilityWrapper,
 } from "@myds/react/footer";
 import { FacebookIcon } from "../../../packages/react/src/icons/facebook";
 import { InstagramIcon } from "../../../packages/react/src/icons/instagram";
@@ -34,21 +30,18 @@ import { TiktokIcon } from "../../../packages/react/src/icons/tiktok";
  * ```tsx
  * import {
  *   Footer,
- *   FooterContent,
- *   FooterContentAgencySection,
- *   FooterAgencyHeader,
- *   FooterAgencyAddress,
- *   FooterAgencyMediaLinks,
- *   FooterAgencyMediaLinksLogoPath,
- *   FooterContentLinkSection,
- *   FooterContentLinkSectionTitle,
- *   FooterContentLinkSectionContent,
- *   FooterGeneralLink,
- *   FooterDisclaimer,
- *   FooterDisclaimerGroup,
- *   FooterDisclaimerGroupRights,
- *   FooterDisclaimerGroupDisclaimer,
- *   FooterDisclaimerLastUpdate,
+ *   Address,
+ *   FooterBottomSection,
+ *   FooterCopyright,
+ *   FooterContentLink,
+ *   FooterMainInfo,
+ *   FooterTimestamp,
+ *   FooterTopSection,
+ *   ImageExporter,
+ *   SocialMedia,
+ *   FooterCopyrightDate,
+ *   FooterCopyrightLink,
+ *   FooterCopyrightUtilityWrapper,
  * } from "@myds/react/footer";
  * ```
  */
@@ -78,89 +71,82 @@ type Story = StoryObj<typeof meta>;
  * Default example showing basic usage of the Footer component
  */
 export const Default: Story = {
+  ...createStory({}, "light"),
   render: () => {
-    const socialMediaIconsSample = [
+    const links = {
+      "Title 1": [
+        { name: "Link 1", href: "https://www.google.com/" },
+        { name: "Link 2", href: "https://www.google.com/" },
+        { name: "Link 3", href: "https://www.google.com/" },
+        { name: "Link 4", href: "https://www.google.com/" },
+      ],
+      "Title 2": [
+        { name: "Link 1", href: "https://www.google.com/" },
+        { name: "Link 2", href: "https://www.google.com/" },
+        { name: "Link 3", href: "https://www.google.com/" },
+        { name: "Link 4", href: "https://www.google.com/" },
+      ],
+      "Title 3": [
+        { name: "Link 1", href: "https://www.google.com/" },
+        { name: "Link 2", href: "https://www.google.com/" },
+        { name: "Link 3", href: "https://www.google.com/" },
+        { name: "Link 4", href: "https://www.google.com/" },
+      ],
+    };
+
+    const social_media = [
       {
-        href: "https://facebook.com/sample",
         icon: <FacebookIcon />,
+        name: "Facebook",
+        href: "https://www.facebook.com/KementerianDigitalMalaysia/",
       },
       {
-        href: "https://instagram.com/sample",
-        icon: <InstagramIcon />,
+        icon: <TiktokIcon />,
+        name: "Tiktok",
+        href: "https://www.tiktok.com/@kementeriandigital",
       },
     ];
 
     return (
-      <Footer>
-        <FooterContent>
-          <FooterContentAgencySection>
-            <FooterAgencyHeader
-              imageSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-              imageAlt="JataNegara"
-            >
-              AgencyName
-            </FooterAgencyHeader>
-            <FooterAgencyAddress>
-              Agency Address 1,{"\n"}
-              Agency Address 2{"\n"}
-              Agency Address 3
-            </FooterAgencyAddress>
-            <FooterAgencyMediaLinks>
-              <FooterAgencyMediaLinksLogoPath icons={socialMediaIconsSample} />
-            </FooterAgencyMediaLinks>
-          </FooterContentAgencySection>
-
-          <FooterContentLinkSection>
-            <FooterContentLinkSectionWrapper>
-              <FooterContentLinkSectionTitle>
-                Title 1
-              </FooterContentLinkSectionTitle>
-              <FooterContentLinkSectionContent>
-                <FooterGeneralLink href="">Link 1</FooterGeneralLink>
-                <FooterGeneralLink href="">Link 2</FooterGeneralLink>
-                <FooterGeneralLink href="">Link 3</FooterGeneralLink>
-                <FooterGeneralLink href="">Link 4</FooterGeneralLink>
-              </FooterContentLinkSectionContent>
-            </FooterContentLinkSectionWrapper>
-            <FooterContentLinkSectionWrapper>
-              <FooterContentLinkSectionTitle>
-                Title 2
-              </FooterContentLinkSectionTitle>
-              <FooterContentLinkSectionContent>
-                <FooterGeneralLink href="">Link 1</FooterGeneralLink>
-                <FooterGeneralLink href="">Link 2</FooterGeneralLink>
-                <FooterGeneralLink href="">Link 3</FooterGeneralLink>
-                <FooterGeneralLink href="">Link 4</FooterGeneralLink>
-              </FooterContentLinkSectionContent>
-            </FooterContentLinkSectionWrapper>
-
-            <FooterContentLinkSectionWrapper>
-              <FooterContentLinkSectionTitle>
-                Open Source
-              </FooterContentLinkSectionTitle>
-              <FooterContentLinkSectionContent>
-                <FooterGeneralLink href="">Github Repo</FooterGeneralLink>
-                <FooterGeneralLink href="">Figma</FooterGeneralLink>
-              </FooterContentLinkSectionContent>
-            </FooterContentLinkSectionWrapper>
-          </FooterContentLinkSection>
-        </FooterContent>
-
-        <FooterDisclaimer>
-          <FooterDisclaimerGroup>
-            <FooterDisclaimerGroupRights>
-              All Rights Reserved © {new Date().getFullYear()}
-            </FooterDisclaimerGroupRights>
-            <FooterDisclaimerGroupDisclaimer>
-              <FooterGeneralLink href="">Disclaimer</FooterGeneralLink>
-              <FooterGeneralLink href="">Privacy Policy</FooterGeneralLink>
-            </FooterDisclaimerGroupDisclaimer>
-          </FooterDisclaimerGroup>
-          <FooterDisclaimerLastUpdate>
-            Last Updated: 12 Jun 2024
-          </FooterDisclaimerLastUpdate>
-        </FooterDisclaimer>
-      </Footer>
+      <div className="light">
+        <Footer>
+          <FooterTopSection>
+            <FooterMainInfo>
+              <ImageExporter
+                imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+                imgAlt="JataNegara"
+              >
+                Ministry of Digital
+              </ImageExporter>
+              <Address>
+                Aras 13, 14 & 15, Blok Menara,{"\n"}
+                Menara Usahawan{"\n"}
+                No. 18, Persiaran Perdana, Presint 2{"\n"}
+                Pusat Pentadbiran Kerajaan Persekutuan{"\n"}
+                62000 Putrajaya, Malaysia
+              </Address>
+              <SocialMedia social_media={social_media}>Follow Us</SocialMedia>
+            </FooterMainInfo>
+            <FooterContentLink links={links}></FooterContentLink>
+          </FooterTopSection>
+          <FooterBottomSection>
+            <FooterCopyright>
+              <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
+              <FooterCopyrightUtilityWrapper>
+                <FooterCopyrightLink href="www.google.com">
+                  Disclaimer
+                </FooterCopyrightLink>
+                <FooterCopyrightLink href="www.google.com">
+                  Privacy Policy
+                </FooterCopyrightLink>
+              </FooterCopyrightUtilityWrapper>
+            </FooterCopyright>
+            <FooterTimestamp time="2024-12-05T10:00:00Z">
+              Last Updated:
+            </FooterTimestamp>
+          </FooterBottomSection>
+        </Footer>
+      </div>
     );
   },
 };
@@ -169,106 +155,97 @@ export const Default: Story = {
  * Custom footer configuration with complete layout including agency information,
  * navigation links, social media, and disclaimer.
  */
+
 export const Custom: Story = {
+  ...createStory({}, "light"),
   render: () => {
-    const socialMediaIcons = [
+    const links = {
+      "About Us": [
+        { name: "Ministry of Digital", href: "https://www.google.com/" },
+        { name: "Directory", href: "https://www.google.com/" },
+        { name: "Achievements", href: "https://www.google.com/" },
+        { name: "Policy", href: "https://www.google.com/" },
+        { name: "Media", href: "https://www.google.com/" },
+        { name: "Contact Us", href: "https://www.google.com/" },
+      ],
+      "Quick Links": [
+        { name: "SpotMe", href: "https://www.google.com/" },
+        { name: "MyGovUC", href: "https://www.google.com/" },
+        { name: "DDMS", href: "https://www.google.com/" },
+        { name: "MyMesyuarat", href: "https://www.google.com/" },
+        { name: "ePenyata Gaji", href: "https://www.google.com/" },
+        { name: "HRMIS", href: "https://www.google.com/" },
+        { name: "ePerolehan", href: "https://www.google.com/" },
+      ],
+      "Open Source": [
+        { name: "Github Repo", href: "https://www.google.com/" },
+        { name: "Figma", href: "https://www.google.com/" },
+      ],
+    };
+
+    const social_media = [
       {
-        href: "https://facebook.com/ministryofdigital",
         icon: <FacebookIcon />,
+        name: "Facebook",
+        href: "https://www.facebook.com/KementerianDigitalMalaysia/",
       },
       {
-        href: "https://instagram.com/ministryofdigital",
-        icon: <InstagramIcon />,
-      },
-      {
-        href: "https://twitter.com/ministryofdigital",
         icon: <TwitterIcon />,
+        name: "X",
+        href: "https://x.com/KemDigitalMsia",
       },
       {
-        href: "https://tiktok.com/@ministryofdigital",
+        icon: <InstagramIcon />,
+        name: "Instagram",
+        href: "https://www.instagram.com/kementeriandigitalmalaysia/",
+      },
+      {
         icon: <TiktokIcon />,
+        name: "Tiktok",
+        href: "https://www.tiktok.com/@kementeriandigital",
       },
     ];
 
     return (
-      <Footer>
-        <FooterContent>
-          <FooterContentAgencySection>
-            <FooterAgencyHeader
-              imageSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-              imageAlt="JataNegara"
-            >
-              Ministry of Digital
-            </FooterAgencyHeader>
-            <FooterAgencyAddress>
-              Aras 13, 14 & 15, Blok Menara,{"\n"}
-              Menara Usahawan{"\n"}
-              No. 18, Persiaran Perdana, Presint 2{"\n"}
-              Pusat Pentadbiran Kerajaan Persekutuan{"\n"}
-              62000 Putrajaya, Malaysia
-            </FooterAgencyAddress>
-            <FooterAgencyMediaLinks>
-              <FooterAgencyMediaLinksLogoPath icons={socialMediaIcons} />
-            </FooterAgencyMediaLinks>
-          </FooterContentAgencySection>
-
-          <FooterContentLinkSection>
-            <FooterContentLinkSectionWrapper>
-              <FooterContentLinkSectionTitle>
-                About Us
-              </FooterContentLinkSectionTitle>
-              <FooterContentLinkSectionContent>
-                <FooterGeneralLink href="">
-                  Ministry of Digital
-                </FooterGeneralLink>
-                <FooterGeneralLink href="">Directory</FooterGeneralLink>
-                <FooterGeneralLink href="">Achievements</FooterGeneralLink>
-                <FooterGeneralLink href="">Policy</FooterGeneralLink>
-                <FooterGeneralLink href="">Media</FooterGeneralLink>
-                <FooterGeneralLink href="">Contact Us</FooterGeneralLink>
-              </FooterContentLinkSectionContent>
-            </FooterContentLinkSectionWrapper>
-            <FooterContentLinkSectionWrapper>
-              <FooterContentLinkSectionTitle>
-                Quick Links
-              </FooterContentLinkSectionTitle>
-              <FooterContentLinkSectionContent>
-                <FooterGeneralLink href="">SpotMe</FooterGeneralLink>
-                <FooterGeneralLink href="">MyGovUC</FooterGeneralLink>
-                <FooterGeneralLink href="">DDMS</FooterGeneralLink>
-                <FooterGeneralLink href="">MyMesyuarat</FooterGeneralLink>
-                <FooterGeneralLink href="">ePenyata Gaji</FooterGeneralLink>
-                <FooterGeneralLink href="">HRMIS</FooterGeneralLink>
-                <FooterGeneralLink href="">ePerolehan</FooterGeneralLink>
-              </FooterContentLinkSectionContent>
-            </FooterContentLinkSectionWrapper>
-            <FooterContentLinkSectionWrapper>
-              <FooterContentLinkSectionTitle>
-                Open Source
-              </FooterContentLinkSectionTitle>
-              <FooterContentLinkSectionContent>
-                <FooterGeneralLink href="">Github Repo</FooterGeneralLink>
-                <FooterGeneralLink href="">Figma</FooterGeneralLink>
-              </FooterContentLinkSectionContent>
-            </FooterContentLinkSectionWrapper>
-          </FooterContentLinkSection>
-        </FooterContent>
-
-        <FooterDisclaimer>
-          <FooterDisclaimerGroup>
-            <FooterDisclaimerGroupRights>
-              All Rights Reserved © {new Date().getFullYear()}
-            </FooterDisclaimerGroupRights>
-            <FooterDisclaimerGroupDisclaimer>
-              <FooterGeneralLink href="">Disclaimer</FooterGeneralLink>
-              <FooterGeneralLink href="">Privacy Policy</FooterGeneralLink>
-            </FooterDisclaimerGroupDisclaimer>
-          </FooterDisclaimerGroup>
-          <FooterDisclaimerLastUpdate>
-            Last Updated: 5 November 2024 at 00:59 pm
-          </FooterDisclaimerLastUpdate>
-        </FooterDisclaimer>
-      </Footer>
+      <div className="light">
+        <Footer>
+          <FooterTopSection>
+            <FooterMainInfo>
+              <ImageExporter
+                imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+                imgAlt="JataNegara"
+              >
+                Ministry of Digital
+              </ImageExporter>
+              <Address>
+                Aras 13, 14 & 15, Blok Menara,{"\n"}
+                Menara Usahawan{"\n"}
+                No. 18, Persiaran Perdana, Presint 2{"\n"}
+                Pusat Pentadbiran Kerajaan Persekutuan{"\n"}
+                62000 Putrajaya, Malaysia
+              </Address>
+              <SocialMedia social_media={social_media}>Follow Us</SocialMedia>
+            </FooterMainInfo>
+            <FooterContentLink links={links}></FooterContentLink>
+          </FooterTopSection>
+          <FooterBottomSection>
+            <FooterCopyright>
+              <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
+              <FooterCopyrightUtilityWrapper>
+                <FooterCopyrightLink href="www.google.com">
+                  Disclaimer
+                </FooterCopyrightLink>
+                <FooterCopyrightLink href="www.google.com">
+                  Privacy Policy
+                </FooterCopyrightLink>
+              </FooterCopyrightUtilityWrapper>
+            </FooterCopyright>
+            <FooterTimestamp time="2024-12-05T10:00:00Z">
+              Last Updated:
+            </FooterTimestamp>
+          </FooterBottomSection>
+        </Footer>
+      </div>
     );
   },
 };
@@ -276,106 +253,95 @@ export const Custom: Story = {
 /*
  * Dark theme variant of the footer
  */
+
 export const CustomDark: Story = {
   ...createStory({}, "dark"),
   render: () => {
-    const socialMediaIcons = [
+    const links = {
+      "About Us": [
+        { name: "Ministry of Digital", href: "https://www.google.com/" },
+        { name: "Directory", href: "https://www.google.com/" },
+        { name: "Achievements", href: "https://www.google.com/" },
+        { name: "Policy", href: "https://www.google.com/" },
+        { name: "Media", href: "https://www.google.com/" },
+        { name: "Contact Us", href: "https://www.google.com/" },
+      ],
+      "Quick Links": [
+        { name: "SpotMe", href: "https://www.google.com/" },
+        { name: "MyGovUC", href: "https://www.google.com/" },
+        { name: "DDMS", href: "https://www.google.com/" },
+        { name: "MyMesyuarat", href: "https://www.google.com/" },
+        { name: "ePenyata Gaji", href: "https://www.google.com/" },
+        { name: "HRMIS", href: "https://www.google.com/" },
+        { name: "ePerolehan", href: "https://www.google.com/" },
+      ],
+      "Open Source": [
+        { name: "Github Repo", href: "https://www.google.com/" },
+        { name: "Figma", href: "https://www.google.com/" },
+      ],
+    };
+
+    const social_media = [
       {
-        href: "https://facebook.com/ministryofdigital",
         icon: <FacebookIcon />,
+        name: "Facebook",
+        href: "https://www.facebook.com/KementerianDigitalMalaysia/",
       },
       {
-        href: "https://instagram.com/ministryofdigital",
-        icon: <InstagramIcon />,
-      },
-      {
-        href: "https://twitter.com/ministryofdigital",
         icon: <TwitterIcon />,
+        name: "X",
+        href: "https://x.com/KemDigitalMsia",
       },
       {
-        href: "https://tiktok.com/@ministryofdigital",
+        icon: <InstagramIcon />,
+        name: "Instagram",
+        href: "https://www.instagram.com/kementeriandigitalmalaysia/",
+      },
+      {
         icon: <TiktokIcon />,
+        name: "Tiktok",
+        href: "https://www.tiktok.com/@kementeriandigital",
       },
     ];
 
     return (
       <div className="dark">
         <Footer>
-          <FooterContent>
-            <FooterContentAgencySection>
-              <FooterAgencyHeader
-                imageSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-                imageAlt="JataNegara"
+          <FooterTopSection>
+            <FooterMainInfo>
+              <ImageExporter
+                imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+                imgAlt="JataNegara"
               >
                 Ministry of Digital
-              </FooterAgencyHeader>
-              <FooterAgencyAddress>
+              </ImageExporter>
+              <Address>
                 Aras 13, 14 & 15, Blok Menara,{"\n"}
                 Menara Usahawan{"\n"}
                 No. 18, Persiaran Perdana, Presint 2{"\n"}
                 Pusat Pentadbiran Kerajaan Persekutuan{"\n"}
                 62000 Putrajaya, Malaysia
-              </FooterAgencyAddress>
-              <FooterAgencyMediaLinks>
-                <FooterAgencyMediaLinksLogoPath icons={socialMediaIcons} />
-              </FooterAgencyMediaLinks>
-            </FooterContentAgencySection>
-            <FooterContentLinkSection>
-              <FooterContentLinkSectionWrapper>
-                <FooterContentLinkSectionTitle>
-                  About Us
-                </FooterContentLinkSectionTitle>
-                <FooterContentLinkSectionContent>
-                  <FooterGeneralLink href="">
-                    Ministry of Digital
-                  </FooterGeneralLink>
-                  <FooterGeneralLink href="">Directory</FooterGeneralLink>
-                  <FooterGeneralLink href="">Achievements</FooterGeneralLink>
-                  <FooterGeneralLink href="">Policy</FooterGeneralLink>
-                  <FooterGeneralLink href="">Media</FooterGeneralLink>
-                  <FooterGeneralLink href="">Contact Us</FooterGeneralLink>
-                </FooterContentLinkSectionContent>
-              </FooterContentLinkSectionWrapper>
-              <FooterContentLinkSectionWrapper>
-                <FooterContentLinkSectionTitle>
-                  Quick Links
-                </FooterContentLinkSectionTitle>
-                <FooterContentLinkSectionContent>
-                  <FooterGeneralLink href="">SpotMe</FooterGeneralLink>
-                  <FooterGeneralLink href="">MyGovUC</FooterGeneralLink>
-                  <FooterGeneralLink href="">DDMS</FooterGeneralLink>
-                  <FooterGeneralLink href="">MyMesyuarat</FooterGeneralLink>
-                  <FooterGeneralLink href="">ePenyata Gaji</FooterGeneralLink>
-                  <FooterGeneralLink href="">HRMIS</FooterGeneralLink>
-                  <FooterGeneralLink href="">ePerolehan</FooterGeneralLink>
-                </FooterContentLinkSectionContent>
-              </FooterContentLinkSectionWrapper>
-              <FooterContentLinkSectionWrapper>
-                <FooterContentLinkSectionTitle>
-                  Open Source
-                </FooterContentLinkSectionTitle>
-                <FooterContentLinkSectionContent>
-                  <FooterGeneralLink href="">Github Repo</FooterGeneralLink>
-                  <FooterGeneralLink href="">Figma</FooterGeneralLink>
-                </FooterContentLinkSectionContent>
-              </FooterContentLinkSectionWrapper>
-            </FooterContentLinkSection>
-          </FooterContent>
-
-          <FooterDisclaimer>
-            <FooterDisclaimerGroup>
-              <FooterDisclaimerGroupRights>
-                All Rights Reserved © {new Date().getFullYear()}
-              </FooterDisclaimerGroupRights>
-              <FooterDisclaimerGroupDisclaimer>
-                <FooterGeneralLink href="">Disclaimer</FooterGeneralLink>
-                <FooterGeneralLink href="">Privacy Policy</FooterGeneralLink>
-              </FooterDisclaimerGroupDisclaimer>
-            </FooterDisclaimerGroup>
-            <FooterDisclaimerLastUpdate>
-              Last Updated: 5 November 2024 at 00:59 pm
-            </FooterDisclaimerLastUpdate>
-          </FooterDisclaimer>
+              </Address>
+              <SocialMedia social_media={social_media}>Follow Us</SocialMedia>
+            </FooterMainInfo>
+            <FooterContentLink links={links}></FooterContentLink>
+          </FooterTopSection>
+          <FooterBottomSection>
+            <FooterCopyright>
+              <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
+              <FooterCopyrightUtilityWrapper>
+                <FooterCopyrightLink href="www.google.com">
+                  Disclaimer
+                </FooterCopyrightLink>
+                <FooterCopyrightLink href="www.google.com">
+                  Privacy Policy
+                </FooterCopyrightLink>
+              </FooterCopyrightUtilityWrapper>
+            </FooterCopyright>
+            <FooterTimestamp time="2024-12-05T10:00:00Z">
+              Last Updated:
+            </FooterTimestamp>
+          </FooterBottomSection>
         </Footer>
       </div>
     );
