@@ -12,13 +12,13 @@ import {
   ImageWithTitle,
   SocialMedia,
   FooterCopyrightDate,
-  FooterCopyrightLink,
-  FooterCopyrightUtilityWrapper,
+  FooterCopyrightLinkWrapper,
 } from "@myds/react/footer";
 import { FacebookIcon } from "../../../packages/react/src/icons/facebook";
 import { InstagramIcon } from "../../../packages/react/src/icons/instagram";
 import { TwitterIcon } from "../../../packages/react/src/icons/twitter";
 import { TiktokIcon } from "../../../packages/react/src/icons/tiktok";
+import { Link } from "@myds/react/link";
 
 /**
  * ### Overview
@@ -40,8 +40,7 @@ import { TiktokIcon } from "../../../packages/react/src/icons/tiktok";
  *   ImageWithTitle,
  *   SocialMedia,
  *   FooterCopyrightDate,
- *   FooterCopyrightLink,
- *   FooterCopyrightUtilityWrapper,
+ *   FooterCopyrightLinkWrapper,
  * } from "@myds/react/footer";
  * ```
  */
@@ -132,14 +131,14 @@ export const Default: Story = {
           <FooterBottomSection>
             <FooterCopyright>
               <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
-              <FooterCopyrightUtilityWrapper>
-                <FooterCopyrightLink href="www.google.com">
+              <FooterCopyrightLinkWrapper>
+                <Link href="www.google.com" underline="hover">
                   Disclaimer
-                </FooterCopyrightLink>
-                <FooterCopyrightLink href="www.google.com">
+                </Link>
+                <Link href="www.google.com" underline="hover">
                   Privacy Policy
-                </FooterCopyrightLink>
-              </FooterCopyrightUtilityWrapper>
+                </Link>
+              </FooterCopyrightLinkWrapper>
             </FooterCopyright>
             <FooterTimestamp time="2024-12-05T10:00:00Z">
               Last Updated:
@@ -231,14 +230,14 @@ export const Custom: Story = {
           <FooterBottomSection>
             <FooterCopyright>
               <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
-              <FooterCopyrightUtilityWrapper>
-                <FooterCopyrightLink href="www.google.com">
+              <FooterCopyrightLinkWrapper>
+                <Link href="https://www.google.com" underline="hover">
                   Disclaimer
-                </FooterCopyrightLink>
-                <FooterCopyrightLink href="www.google.com">
-                  Privacy Policy
-                </FooterCopyrightLink>
-              </FooterCopyrightUtilityWrapper>
+                </Link>
+                <Link href="https://www.google.com" underline="hover">
+                  Disclaimer
+                </Link>
+              </FooterCopyrightLinkWrapper>
             </FooterCopyright>
             <FooterTimestamp time="2024-12-05T10:00:00Z">
               Last Updated:
@@ -329,14 +328,14 @@ export const CustomDark: Story = {
           <FooterBottomSection>
             <FooterCopyright>
               <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
-              <FooterCopyrightUtilityWrapper>
-                <FooterCopyrightLink href="www.google.com">
+              <FooterCopyrightLinkWrapper>
+                <Link href="www.google.com" underline="hover">
                   Disclaimer
-                </FooterCopyrightLink>
-                <FooterCopyrightLink href="www.google.com">
+                </Link>
+                <Link href="www.google.com" underline="hover">
                   Privacy Policy
-                </FooterCopyrightLink>
-              </FooterCopyrightUtilityWrapper>
+                </Link>
+              </FooterCopyrightLinkWrapper>
             </FooterCopyright>
             <FooterTimestamp time="2024-12-05T10:00:00Z">
               Last Updated:

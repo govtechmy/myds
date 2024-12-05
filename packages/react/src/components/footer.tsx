@@ -1,5 +1,6 @@
 import { ComponentProps, FunctionComponent, PropsWithChildren } from "react";
 import { clx } from "../utils";
+import { Link } from "./link";
 
 // Main Footer
 //====================================================================================================
@@ -75,15 +76,16 @@ const FooterContent: FunctionComponent<FooterLinkProps> = ({
         <p className="font-semibold">{category}</p>
         <div className="grid grid-cols-2 flex-col gap-y-2 sm:grid-cols-4 sm:gap-x-6 lg:flex lg:w-[200px] lg:gap-2">
           {items.map(({ name, href }) => (
-            <a
+            <Link
               key={name}
               className="text-txt-black-700 underline-font hover:text-txt-black-900 text-sm hover:underline"
               href={href}
               target="_blank"
               rel="noopener noreferrer"
+              underline="none"
             >
               {name}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
@@ -159,15 +161,17 @@ const SocialMedia: FunctionComponent<SocialMediaProps> = ({
     <p className="text-txt-black-900 text-sm font-semibold">{children}</p>
     <div className="flex gap-3">
       {social_media.map(({ icon, href, name }) => (
-        <a
+        <Link
           key={name}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={name}
+          underline="none"
+          className="hover:text-txt-black-900"
         >
           {icon}
-        </a>
+        </Link>
       ))}
     </div>
   </div>
@@ -223,9 +227,11 @@ const FooterCopyrightDate: FunctionComponent<ComponentProps<"div">> = ({
   </>
 );
 
-const FooterCopyrightUtilityWrapper: FunctionComponent<
-  ComponentProps<"div">
-> = ({ children, className, ...props }) => (
+const FooterCopyrightLinkWrapper: FunctionComponent<ComponentProps<"div">> = ({
+  children,
+  className,
+  ...props
+}) => (
   <div
     className={clx(
       "text-txt-black-700 flex flex-wrap gap-x-3 gap-y-2",
@@ -235,26 +241,6 @@ const FooterCopyrightUtilityWrapper: FunctionComponent<
   >
     {children}
   </div>
-);
-
-const FooterCopyrightLink: FunctionComponent<ComponentProps<"a">> = ({
-  className,
-  href,
-  children,
-  ...props
-}) => (
-  <a
-    className={clx(
-      "underline-font text-black-700 hover:text-foreground text-sm hover:underline",
-      className,
-    )}
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    {...props}
-  >
-    {children}
-  </a>
 );
 
 interface FooterTimestampProps extends ComponentProps<"time"> {
@@ -294,7 +280,6 @@ export {
   FooterBottomSection,
   FooterCopyright,
   FooterCopyrightDate,
-  FooterCopyrightUtilityWrapper,
-  FooterCopyrightLink,
+  FooterCopyrightLinkWrapper,
   FooterTimestamp,
 };
