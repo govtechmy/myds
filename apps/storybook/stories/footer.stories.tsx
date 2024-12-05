@@ -14,11 +14,11 @@ import {
   FooterCopyrightDate,
   FooterCopyrightLinkWrapper,
 } from "@myds/react/footer";
+import { Link } from "@myds/react/link";
 import { FacebookIcon } from "../../../packages/react/src/icons/facebook";
 import { InstagramIcon } from "../../../packages/react/src/icons/instagram";
 import { TwitterIcon } from "../../../packages/react/src/icons/twitter";
-import { TiktokIcon } from "../../../packages/react/src/icons/tiktok";
-import { Link } from "@myds/react/link";
+import { TikTokIcon } from "../../../packages/react/src/icons/tiktok";
 
 /**
  * ### Overview
@@ -100,7 +100,7 @@ export const Default: Story = {
         href: "https://www.facebook.com/KementerianDigitalMalaysia/",
       },
       {
-        icon: <TiktokIcon />,
+        icon: <TikTokIcon />,
         name: "Tiktok",
         href: "https://www.tiktok.com/@kementeriandigital",
       },
@@ -118,9 +118,9 @@ export const Default: Story = {
                 Organization Title
               </ImageWithTitle>
               <Address>
-                Sample Address Line 1{"\n"}
-                Sample Street Name, Sample Area{"\n"}
-                Sample District, Sample City{"\n"}
+                Sample Address Line 1,{"\n"}
+                Sample Street Name, Sample Area,{"\n"}
+                Sample District, Sample City,{"\n"}
                 12345 Sample Postal Code,{"\n"}
                 Sample Country
               </Address>
@@ -199,7 +199,7 @@ export const Custom: Story = {
         href: "https://www.instagram.com/kementeriandigitalmalaysia/",
       },
       {
-        icon: <TiktokIcon />,
+        icon: <TikTokIcon />,
         name: "Tiktok",
         href: "https://www.tiktok.com/@kementeriandigital",
       },
@@ -297,7 +297,7 @@ export const CustomDark: Story = {
         href: "https://www.instagram.com/kementeriandigitalmalaysia/",
       },
       {
-        icon: <TiktokIcon />,
+        icon: <TikTokIcon />,
         name: "Tiktok",
         href: "https://www.tiktok.com/@kementeriandigital",
       },
