@@ -93,13 +93,13 @@ const FooterContent: FunctionComponent<FooterLinkProps> = ({
 
 //====================================================================================================
 
-// ImageExporter
-interface ImageExporterProps extends ComponentProps<"div"> {
+// ImageWithTitle
+interface ImageWithTitleProps extends ComponentProps<"div"> {
   imgSrc: string;
   imgAlt: string;
 }
 
-const ImageExporter: FunctionComponent<ImageExporterProps> = ({
+const ImageWithTitle: FunctionComponent<ImageWithTitleProps> = ({
   children,
   className,
   imgSrc,
@@ -287,7 +287,7 @@ export {
   Footer,
   FooterTopSection,
   FooterMainInfo,
-  ImageExporter,
+  ImageWithTitle,
   Address,
   SocialMedia,
   FooterContent,

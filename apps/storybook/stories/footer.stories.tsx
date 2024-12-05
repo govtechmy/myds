@@ -9,7 +9,7 @@ import {
   FooterMainInfo,
   FooterTimestamp,
   FooterTopSection,
-  ImageExporter,
+  ImageWithTitle,
   SocialMedia,
   FooterCopyrightDate,
   FooterCopyrightLink,
@@ -37,7 +37,7 @@ import { TiktokIcon } from "../../../packages/react/src/icons/tiktok";
  *   FooterMainInfo,
  *   FooterTimestamp,
  *   FooterTopSection,
- *   ImageExporter,
+ *   ImageWithTitle,
  *   SocialMedia,
  *   FooterCopyrightDate,
  *   FooterCopyrightLink,
@@ -112,18 +112,18 @@ export const Default: Story = {
         <Footer>
           <FooterTopSection>
             <FooterMainInfo>
-              <ImageExporter
+              <ImageWithTitle
                 imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
                 imgAlt="JataNegara"
               >
-                Ministry of Digital
-              </ImageExporter>
+                Organization Title
+              </ImageWithTitle>
               <Address>
-                Aras 13, 14 & 15, Blok Menara,{"\n"}
-                Menara Usahawan{"\n"}
-                No. 18, Persiaran Perdana, Presint 2{"\n"}
-                Pusat Pentadbiran Kerajaan Persekutuan{"\n"}
-                62000 Putrajaya, Malaysia
+                Sample Address Line 1{"\n"}
+                Sample Street Name, Sample Area{"\n"}
+                Sample District, Sample City{"\n"}
+                12345 Sample Postal Code,{"\n"}
+                Sample Country
               </Address>
               <SocialMedia social_media={social_media}>Follow Us</SocialMedia>
             </FooterMainInfo>
@@ -211,12 +211,12 @@ export const Custom: Story = {
         <Footer>
           <FooterTopSection>
             <FooterMainInfo>
-              <ImageExporter
+              <ImageWithTitle
                 imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
                 imgAlt="JataNegara"
               >
                 Ministry of Digital
-              </ImageExporter>
+              </ImageWithTitle>
               <Address>
                 Aras 13, 14 & 15, Blok Menara,{"\n"}
                 Menara Usahawan{"\n"}
@@ -309,12 +309,12 @@ export const CustomDark: Story = {
         <Footer>
           <FooterTopSection>
             <FooterMainInfo>
-              <ImageExporter
+              <ImageWithTitle
                 imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
                 imgAlt="JataNegara"
               >
                 Ministry of Digital
-              </ImageExporter>
+              </ImageWithTitle>
               <Address>
                 Aras 13, 14 & 15, Blok Menara,{"\n"}
                 Menara Usahawan{"\n"}
