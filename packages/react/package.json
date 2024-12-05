@@ -6,8 +6,7 @@
     "./utils": {
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
-    }
-,
+    },
     "./callout": {
       "type": "./src/components/callout.tsx",
       "default": "./src/components/callout.tsx"
@@ -31,6 +30,10 @@
     "./input-otp": {
       "type": "./src/components/input-otp.tsx",
       "default": "./src/components/input-otp.tsx"
+    },
+    "./footer": {
+      "type": "./src/components/footer.tsx",
+      "default": "./src/components/footer.tsx"
     },
     "./icon": {
       "type": "./src/icons/index.ts",
