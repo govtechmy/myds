@@ -5,7 +5,7 @@ import {
   Footer,
   FooterBottomSection,
   FooterCopyright,
-  FooterContentLink,
+  FooterContent,
   FooterMainInfo,
   FooterTimestamp,
   FooterTopSection,
@@ -33,7 +33,7 @@ import { TiktokIcon } from "../../../packages/react/src/icons/tiktok";
  *   Address,
  *   FooterBottomSection,
  *   FooterCopyright,
- *   FooterContentLink,
+ *   FooterContent,
  *   FooterMainInfo,
  *   FooterTimestamp,
  *   FooterTopSection,
@@ -127,7 +127,7 @@ export const Default: Story = {
               </Address>
               <SocialMedia social_media={social_media}>Follow Us</SocialMedia>
             </FooterMainInfo>
-            <FooterContentLink links={links}></FooterContentLink>
+            <FooterContent links={links}></FooterContent>
           </FooterTopSection>
           <FooterBottomSection>
             <FooterCopyright>
@@ -226,7 +226,7 @@ export const Custom: Story = {
               </Address>
               <SocialMedia social_media={social_media}>Follow Us</SocialMedia>
             </FooterMainInfo>
-            <FooterContentLink links={links}></FooterContentLink>
+            <FooterContent links={links}></FooterContent>
           </FooterTopSection>
           <FooterBottomSection>
             <FooterCopyright>
@@ -324,7 +324,7 @@ export const CustomDark: Story = {
               </Address>
               <SocialMedia social_media={social_media}>Follow Us</SocialMedia>
             </FooterMainInfo>
-            <FooterContentLink links={links}></FooterContentLink>
+            <FooterContent links={links}></FooterContent>
           </FooterTopSection>
           <FooterBottomSection>
             <FooterCopyright>

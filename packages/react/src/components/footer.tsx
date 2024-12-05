@@ -1,23 +1,6 @@
 import { ComponentProps, FunctionComponent, PropsWithChildren } from "react";
 import { clx } from "../utils";
 
-{
-  /* <Footer>
-  <FooterTopSection>
-    <FooterMainInfo>
-      <ImageExporter></ImageExporter>
-      <Address></Address>
-      <SocialMedia></SocialMedia>
-    </FooterMainInfo>
-    <FooterLink></FooterLink>
-  </FooterTopSection>
-  <FooterBottomSection>
-    <FooterCopyright></FooterCopyright>
-    <FooterTimestamp></FooterTimestamp>
-  </FooterBottomSection>
-</Footer>; */
-}
-
 // Main Footer
 //====================================================================================================
 const Footer: FunctionComponent<ComponentProps<"div">> = ({
@@ -38,11 +21,6 @@ const Footer: FunctionComponent<ComponentProps<"div">> = ({
   </div>
 );
 //====================================================================================================
-
-// <FooterTopSection>
-//   <FooterMainInfo></FooterMainInfo>
-//   <FooterLink></FooterLink>
-// </FooterTopSection>
 
 //Footer Top Section
 //====================================================================================================
@@ -82,7 +60,7 @@ interface FooterLinkProps extends ComponentProps<"div"> {
   links: LinksObject;
 }
 
-const FooterContentLink: FunctionComponent<FooterLinkProps> = ({
+const FooterContent: FunctionComponent<FooterLinkProps> = ({
   children,
   className,
   links,
@@ -114,12 +92,6 @@ const FooterContentLink: FunctionComponent<FooterLinkProps> = ({
 );
 
 //====================================================================================================
-
-//   <FooterMainInfo>
-//     <ImageExporter></ImageExporter>
-//     <Address></Address>
-//     <SocialMedia></SocialMedia>
-//   </FooterMainInfo>
 
 // ImageExporter
 interface ImageExporterProps extends ComponentProps<"div"> {
@@ -202,14 +174,6 @@ const SocialMedia: FunctionComponent<SocialMediaProps> = ({
 );
 
 //====================================================================================================
-
-// <FooterBottomSection>
-//   <FooterCopyright>
-//    <FooterCopyrightDate>
-// .  <FooterCopyrightLink>
-//   </FooterCopyright>
-//   <FooterTimestamp></FooterTimestamp>
-// </FooterBottomSection>;
 
 //Footer Bottom Section
 //====================================================================================================
@@ -326,7 +290,7 @@ export {
   ImageExporter,
   Address,
   SocialMedia,
-  FooterContentLink,
+  FooterContent,
   FooterBottomSection,
   FooterCopyright,
   FooterCopyrightDate,
@@ -334,18 +298,3 @@ export {
   FooterCopyrightLink,
   FooterTimestamp,
 };
-
-/* <Footer>
-  <FooterTopSection>
-    <FooterMainInfo>
-      <ImageExporter></ImageExporter>
-      <Address></Address>
-      <SocialMedia></SocialMedia>
-    </FooterMainInfo>
-    <FooterLink></FooterLink>
-  </FooterTopSection>
-  <FooterBottomSection>
-    <FooterCopyright></FooterCopyright>
-    <FooterTimestamp></FooterTimestamp>
-  </FooterBottomSection>
-</Footer>; */
