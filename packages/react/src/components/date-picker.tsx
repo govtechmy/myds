@@ -2,10 +2,11 @@ import { FC, ReactElement } from "react";
 import { Matcher } from "react-day-picker";
 import { enGB, ms } from "date-fns/locale";
 import { format } from "date-fns";
-import { useControllableState } from "../hooks/use-controllable-state";
+import { useControllableState, useMediaQuery } from "../hooks";
 import { CalendarIcon } from "../icons/calendar";
 import { Button, button_cva, ButtonIcon } from "./button";
 import { Calendar } from "./calendar";
+import { Dialog, DialogContent, DialogTrigger } from "./dialog";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { VariantProps } from "class-variance-authority";
 
@@ -51,6 +52,32 @@ const DatePicker: FC<DatePickerProps> = ({
     format(date, formatStr, {
       locale: _locale,
     });
+
+  const isMobile = useMediaQuery("(max-width: 640px)");
+
+  if (isMobile)
+    return (
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="default-outline" size={size}>
+            <ButtonIcon>{icon ?? <CalendarIcon />}</ButtonIcon>
+            {date ? formatDate(date) : placeholder}
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="w-[304px] p-0">
+          <Calendar
+            disabled={disabled}
+            locale={_locale}
+            mode="single"
+            month={date}
+            onSelect={setDate}
+            required
+            selected={date}
+            {...props}
+          />
+        </DialogContent>
+      </Dialog>
+    );
 
   return (
     <Popover>
