@@ -8,10 +8,9 @@ import {
   ReactElement,
 } from "react";
 import * as DropdownPrimitive from "@radix-ui/react-dropdown-menu";
-
-import { clx } from "../utils";
 import { cva, VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
+import { Button } from "./button";
 
 /**----------------------------------------------
  * *                   INFO
@@ -23,10 +22,19 @@ import { Slot } from "@radix-ui/react-slot";
 const Dropdown = DropdownPrimitive.Root;
 
 const DropdownTrigger: ForwardRefExoticComponent<
-  ComponentProps<typeof DropdownPrimitive.Trigger>
-> = forwardRef(({ className, asChild = true, ...props }, ref) => {
-  return <DropdownPrimitive.Trigger ref={ref} asChild={asChild} {...props} />;
-});
+  ComponentProps<typeof DropdownPrimitive.Trigger> &
+    ComponentPropsWithoutRef<typeof Button>
+> = forwardRef(
+  ({ className, asChild, variant = "default-outline", ...props }, ref) => {
+    const Comp = asChild ? Slot : Button;
+
+    return (
+      <DropdownPrimitive.Trigger asChild ref={ref}>
+        <Comp variant={variant} className={className} {...props} />
+      </DropdownPrimitive.Trigger>
+    );
+  },
+);
 
 // const DropdownGroup = DropdownPrimitive.Group;
 

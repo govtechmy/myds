@@ -14,7 +14,8 @@ import {
   OptionsIcon,
   SettingIcon,
 } from "@myds/react/icon";
-import { Button, ButtonIcon } from "@myds/react/button";
+import { ButtonIcon } from "@myds/react/button";
+import { Link } from "@myds/react/link";
 
 /**
  * ### Overview
@@ -38,15 +39,14 @@ import { Button, ButtonIcon } from "@myds/react/button";
   DropdownItemIcon,
   DropdownTrigger,
 } from "@myds/react/dropdown";
+import { ButtonIcon } from "@myds/react/button";
  *
 * //* Basic
  * <Dropdown>
  *   <DropdownTrigger>
-*       <Button variant="default-outline">
-*        <ButtonIcon>
-*          <OptionsIcon />
-*        </ButtonIcon>
-*      </Button>
+*      <ButtonIcon>
+*        <OptionsIcon />
+*      </ButtonIcon>
 *    </DropdownTrigger>,
 *    <DropdownContent>
 *      <DropdownItem>Profile</DropdownItem>
@@ -59,11 +59,9 @@ import { Button, ButtonIcon } from "@myds/react/button";
 * //* With icon
 * <Dropdown>
 *   <DropdownTrigger>
-*       <Button variant="default-outline">
-*        <ButtonIcon>
-*          <OptionsIcon />
-*        </ButtonIcon>
-*      </Button>
+*      <ButtonIcon>
+*        <OptionsIcon />
+*      </ButtonIcon>
 *    </DropdownTrigger>,
 *   <DropdownContent side="bottom" align="end">
 *       <DropdownItem>
@@ -108,16 +106,23 @@ const meta = {
     children: {
       type: "string",
       control: "select",
-      options: ["basic", "with_icon"],
+      options: ["basic", "custom_trigger", "with_icon"],
       description: "Select different dropdown scenarios",
       mapping: {
         basic: [
-          <DropdownTrigger>
-            <Button variant="default-outline">
-              <ButtonIcon>
-                <OptionsIcon />
-              </ButtonIcon>
-            </Button>
+          <DropdownTrigger>User</DropdownTrigger>,
+          <DropdownContent>
+            <DropdownItem>Profile</DropdownItem>
+            <DropdownItem disabled>Billing</DropdownItem>
+            <DropdownItem>Team</DropdownItem>
+            <DropdownItem>Subscription</DropdownItem>
+          </DropdownContent>,
+        ],
+        custom_trigger: [
+          <DropdownTrigger asChild>
+            <Link href="#" primary underline="always">
+              hello
+            </Link>
           </DropdownTrigger>,
           <DropdownContent>
             <DropdownItem>Profile</DropdownItem>
@@ -128,11 +133,9 @@ const meta = {
         ],
         with_icon: [
           <DropdownTrigger>
-            <Button variant="default-outline">
-              <ButtonIcon>
-                <OptionsIcon />
-              </ButtonIcon>
-            </Button>
+            <ButtonIcon>
+              <OptionsIcon />
+            </ButtonIcon>
           </DropdownTrigger>,
           <DropdownContent side="bottom" align="end">
             <DropdownItem>
@@ -171,6 +174,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Basic: Story = createStory({
   children: "basic",
+});
+
+export const CustomTrigger: Story = createStory({
+  children: "custom_trigger",
 });
 
 export const WithIcon: Story = createStory({
