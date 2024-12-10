@@ -4,17 +4,21 @@ import {
   ElementRef,
   forwardRef,
   ForwardRefExoticComponent,
-  HTMLAttributes,
   JSXElementConstructor,
   ReactElement,
 } from "react";
-
 import * as DropdownPrimitive from "@radix-ui/react-dropdown-menu";
-import { ChevronRightIcon } from "../icons";
 
 import { clx } from "../utils";
 import { cva, VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
+
+/**----------------------------------------------
+ * *                   INFO
+ *   Commented components remain pending
+ *   until design for the use case are finalised
+ *
+ *---------------------------------------------**/
 
 const Dropdown = DropdownPrimitive.Root;
 
@@ -24,49 +28,49 @@ const DropdownTrigger: ForwardRefExoticComponent<
   return <DropdownPrimitive.Trigger ref={ref} asChild={asChild} {...props} />;
 });
 
-const DropdownGroup = DropdownPrimitive.Group;
+// const DropdownGroup = DropdownPrimitive.Group;
 
-const DropdownPortal = DropdownPrimitive.Portal;
+// const DropdownPortal = DropdownPrimitive.Portal;
 
-const DropdownSub = DropdownPrimitive.Sub;
+// const DropdownSub = DropdownPrimitive.Sub;
 
-const DropdownRadioGroup = DropdownPrimitive.RadioGroup;
+// const DropdownRadioGroup = DropdownPrimitive.RadioGroup;
 
-const DropdownSubTrigger = forwardRef<
-  ElementRef<typeof DropdownPrimitive.SubTrigger>,
-  ComponentPropsWithoutRef<typeof DropdownPrimitive.SubTrigger> & {
-    inset?: boolean;
-  }
->(({ className, inset, children, ...props }, ref) => (
-  <DropdownPrimitive.SubTrigger
-    ref={ref}
-    className={clx(
-      "focus:bg-accent data-[state=open]:bg-accent flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
-      inset && "pl-8",
-      className,
-    )}
-    {...props}
-  >
-    {children}
-    <ChevronRightIcon className="ml-auto" />
-  </DropdownPrimitive.SubTrigger>
-));
-DropdownSubTrigger.displayName = DropdownPrimitive.SubTrigger.displayName;
+// const DropdownSubTrigger = forwardRef<
+//   ElementRef<typeof DropdownPrimitive.SubTrigger>,
+//   ComponentPropsWithoutRef<typeof DropdownPrimitive.SubTrigger> & {
+//     inset?: boolean;
+//   }
+// >(({ className, inset, children, ...props }, ref) => (
+//   <DropdownPrimitive.SubTrigger
+//     ref={ref}
+//     className={clx(
+//       "focus:bg-accent data-[state=open]:bg-accent flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+//       inset && "pl-8",
+//       className,
+//     )}
+//     {...props}
+//   >
+//     {children}
+//     <ChevronRightIcon className="ml-auto" />
+//   </DropdownPrimitive.SubTrigger>
+// ));
+// DropdownSubTrigger.displayName = DropdownPrimitive.SubTrigger.displayName;
 
-const DropdownSubContent = forwardRef<
-  ElementRef<typeof DropdownPrimitive.SubContent>,
-  ComponentPropsWithoutRef<typeof DropdownPrimitive.SubContent>
->(({ className, ...props }, ref) => (
-  <DropdownPrimitive.SubContent
-    ref={ref}
-    className={clx(
-      "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden rounded-md border p-1 shadow-lg",
-      className,
-    )}
-    {...props}
-  />
-));
-DropdownSubContent.displayName = DropdownPrimitive.SubContent.displayName;
+// const DropdownSubContent = forwardRef<
+//   ElementRef<typeof DropdownPrimitive.SubContent>,
+//   ComponentPropsWithoutRef<typeof DropdownPrimitive.SubContent>
+// >(({ className, ...props }, ref) => (
+//   <DropdownPrimitive.SubContent
+//     ref={ref}
+//     className={clx(
+//       "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden rounded-md border p-1 shadow-lg",
+//       className,
+//     )}
+//     {...props}
+//   />
+// ));
+// DropdownSubContent.displayName = DropdownPrimitive.SubContent.displayName;
 
 const dropdown_content_cva = cva([
   "bg-bg-dialog border-otl-gray-200 shadow-context-menu z-50 min-w-[10rem] overflow-hidden rounded-md border p-[5px]",
@@ -196,42 +200,42 @@ DropdownItemIcon.displayName = "DropdownItemIcon";
 // ));
 // DropdownRadioItem.displayName = DropdownPrimitive.RadioItem.displayName;
 
-const DropdownLabel = forwardRef<
-  ElementRef<typeof DropdownPrimitive.Label>,
-  ComponentPropsWithoutRef<typeof DropdownPrimitive.Label>
->(({ className, ...props }, ref) => (
-  <DropdownPrimitive.Label
-    ref={ref}
-    className={clx("px-2 py-1.5 text-xs font-semibold", className)}
-    {...props}
-  />
-));
-DropdownLabel.displayName = DropdownPrimitive.Label.displayName;
+// const DropdownLabel = forwardRef<
+//   ElementRef<typeof DropdownPrimitive.Label>,
+//   ComponentPropsWithoutRef<typeof DropdownPrimitive.Label>
+// >(({ className, ...props }, ref) => (
+//   <DropdownPrimitive.Label
+//     ref={ref}
+//     className={clx("px-2 py-1.5 text-xs font-semibold", className)}
+//     {...props}
+//   />
+// ));
+// DropdownLabel.displayName = DropdownPrimitive.Label.displayName;
 
-const DropdownSeparator = forwardRef<
-  ElementRef<typeof DropdownPrimitive.Separator>,
-  ComponentPropsWithoutRef<typeof DropdownPrimitive.Separator>
->(({ className, ...props }, ref) => (
-  <DropdownPrimitive.Separator
-    ref={ref}
-    className={clx("bg-otl-divider -mx-1 my-1 h-px", className)}
-    {...props}
-  />
-));
-DropdownSeparator.displayName = DropdownPrimitive.Separator.displayName;
+// const DropdownSeparator = forwardRef<
+//   ElementRef<typeof DropdownPrimitive.Separator>,
+//   ComponentPropsWithoutRef<typeof DropdownPrimitive.Separator>
+// >(({ className, ...props }, ref) => (
+//   <DropdownPrimitive.Separator
+//     ref={ref}
+//     className={clx("bg-otl-divider -mx-1 my-1 h-px", className)}
+//     {...props}
+//   />
+// ));
+// DropdownSeparator.displayName = DropdownPrimitive.Separator.displayName;
 
-const DropdownShortcut = ({
-  className,
-  ...props
-}: HTMLAttributes<HTMLSpanElement>) => {
-  return (
-    <span
-      className={clx("ml-auto text-xs tracking-widest opacity-60", className)}
-      {...props}
-    />
-  );
-};
-DropdownShortcut.displayName = "DropdownShortcut";
+// const DropdownShortcut = ({
+//   className,
+//   ...props
+// }: HTMLAttributes<HTMLSpanElement>) => {
+//   return (
+//     <span
+//       className={clx("ml-auto text-xs tracking-widest opacity-60", className)}
+//       {...props}
+//     />
+//   );
+// };
+// DropdownShortcut.displayName = "DropdownShortcut";
 
 export {
   Dropdown,
@@ -241,13 +245,13 @@ export {
   DropdownItemIcon,
   // DropdownCheckboxItem,
   // DropdownRadioItem,
-  DropdownLabel,
-  DropdownSeparator,
-  DropdownShortcut,
-  DropdownGroup,
-  DropdownPortal,
-  DropdownSub,
-  DropdownSubContent,
-  DropdownSubTrigger,
-  DropdownRadioGroup,
+  // DropdownLabel,
+  // DropdownSeparator,
+  // DropdownShortcut,
+  // DropdownGroup,
+  // DropdownPortal,
+  // DropdownSub,
+  // DropdownSubContent,
+  // DropdownSubTrigger,
+  // DropdownRadioGroup,
 };
