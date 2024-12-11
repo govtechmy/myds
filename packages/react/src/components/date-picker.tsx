@@ -2,7 +2,7 @@ import { FC, ReactElement } from "react";
 import { Matcher } from "react-day-picker";
 import { enGB, ms } from "date-fns/locale";
 import { format } from "date-fns";
-import { useControllableState, useMediaQuery } from "../hooks";
+import { useControllableState } from "../hooks";
 import { CalendarIcon } from "../icons/calendar";
 import { Button, button_cva, ButtonIcon } from "./button";
 import { Calendar } from "./calendar";
@@ -53,19 +53,23 @@ const DatePicker: FC<DatePickerProps> = ({
       locale: _locale,
     });
 
-  const isMobile = useMediaQuery("(max-width: 640px)");
-
-  if (isMobile)
-    return (
+  return (
+    <>
+      {/* Mobile */}
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="default-outline" size={size}>
+          <Button
+            variant="default-outline"
+            size={size}
+            className="flex lg:hidden"
+          >
             <ButtonIcon>{icon ?? <CalendarIcon />}</ButtonIcon>
             {date ? formatDate(date) : placeholder}
           </Button>
         </DialogTrigger>
-        <DialogContent className="w-[304px] p-0">
+        <DialogContent className="w-fit">
           <Calendar
+            className="w-[304px]"
             disabled={disabled}
             locale={_locale}
             mode="single"
@@ -77,29 +81,33 @@ const DatePicker: FC<DatePickerProps> = ({
           />
         </DialogContent>
       </Dialog>
-    );
 
-  return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button variant="default-outline" size={size}>
-          <ButtonIcon>{icon ?? <CalendarIcon />}</ButtonIcon>
-          {date ? formatDate(date) : placeholder}
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-[304px] p-0" align="start">
-        <Calendar
-          disabled={disabled}
-          locale={_locale}
-          mode="single"
-          month={date}
-          onSelect={setDate}
-          required
-          selected={date}
-          {...props}
-        />
-      </PopoverContent>
-    </Popover>
+      {/* Desktop */}
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            variant="default-outline"
+            size={size}
+            className="hidden lg:flex"
+          >
+            <ButtonIcon>{icon ?? <CalendarIcon />}</ButtonIcon>
+            {date ? formatDate(date) : placeholder}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-[304px] p-0" align="start">
+          <Calendar
+            disabled={disabled}
+            locale={_locale}
+            mode="single"
+            month={date}
+            onSelect={setDate}
+            required
+            selected={date}
+            {...props}
+          />
+        </PopoverContent>
+      </Popover>
+    </>
   );
 };
 DatePicker.displayName = "DatePicker";
