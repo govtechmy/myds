@@ -4,9 +4,9 @@ import { cva } from "class-variance-authority";
 
 const Tooltip: ForwardRefExoticComponent<
   ComponentProps<typeof TooltipPrimitive.Root>
-> = forwardRef(({ ...props }, ref) => {
+> = forwardRef((props, ref) => {
   return (
-    <TooltipPrimitive.Provider>
+    <TooltipPrimitive.Provider delayDuration={500}>
       <TooltipPrimitive.Root {...props} />
     </TooltipPrimitive.Provider>
   );
@@ -24,10 +24,12 @@ const tooltip_content_cva = cva(
   {
     variants: {
       side: {
-        top: "before:-bottom-4 before:border-t-bg-black-900",
-        right: "before:-left-4 before:border-r-bg-black-900",
-        bottom: "before:-top-4 before:border-b-bg-black-900",
-        left: "before:-right-4 before:border-l-bg-black-900",
+        top: "before:data-[side=top]:-bottom-4 before:data-[side=bottom]:-top-4 before:data-[side=top]:border-t-bg-black-900 before:data-[side=bottom]:border-b-bg-black-900",
+        right:
+          "before:data-[side=right]:-left-4 before:data-[side=right]:border-r-bg-black-900 before:data-[side=left]:-right-4 before:data-[side=left]:border-l-bg-black-900",
+        bottom:
+          "before:data-[side=top]:-bottom-4 before:data-[side=bottom]:-top-4 before:data-[side=top]:border-t-bg-black-900 before:data-[side=bottom]:border-b-bg-black-900",
+        left: "before:data-[side=right]:-left-4 before:data-[side=right]:border-r-bg-black-900 before:data-[side=left]:-right-4 before:data-[side=left]:border-l-bg-black-900",
       },
       align: {
         start: "",
