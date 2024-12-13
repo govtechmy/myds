@@ -222,7 +222,7 @@ export const Basic: Story = createStory({
 });
 
 export const CustomTrigger: Story = createStory({
-  children: "basic",
+  children: "custom-trigger",
 });
 
 export const TopStart: Story = createStory({
