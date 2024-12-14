@@ -57,7 +57,9 @@ const TableHead: ForwardRefExoticComponent<ComponentProps<"th">> = forwardRef(
     <th
       ref={ref}
       className={clx(
-        "text-txt-black-500 border-otl-gray-200 h-[30px] border-b-2 pb-2 pr-3 text-left align-middle text-xs font-medium [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+        "text-txt-black-500 border-otl-gray-200 h-[30px] border-b-2 pb-2 pr-3 text-left align-middle text-xs font-medium",
+        "[&:has([role=checkbox])]:w-8 [&:has([role=checkbox])]:pl-1",
+        "[&:has([role=radio])]:w-8 [&:has([role=radio])]:pl-1",
         className,
       )}
       {...props}
@@ -71,7 +73,9 @@ const TableCell: ForwardRefExoticComponent<ComponentProps<"td">> = forwardRef(
     <td
       ref={ref}
       className={clx(
-        "border-otl-gray-200 text-black-700 border-b py-4 pr-3 align-middle text-sm font-medium sm:py-3 [&>[role=checkbox]]:translate-y-[2px]",
+        "border-otl-gray-200 text-black-700 border-b py-4 pr-3 align-middle text-sm font-medium sm:py-3",
+        "[&:has([role=checkbox])]:w-8 [&:has([role=checkbox])]:pl-1",
+        "[&:has([role=radio])]:w-8 [&:has([role=radio])]:pl-1",
         className,
       )}
       {...props}

@@ -3,13 +3,12 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
-  Header,
   getSortedRowModel,
-  Table as TTable,
   getFacetedUniqueValues,
-  Row,
-  Cell,
   RowData,
+  RowSelectionState,
+  createColumnHelper,
+  DeepKeys,
 } from "@tanstack/react-table";
 import {
   Table,
@@ -20,15 +19,27 @@ import {
   TableRow,
   TableTooltip,
 } from "./table";
-import { ReactNode, useEffect, useState } from "react";
-import { ArrowDownIcon } from "../icons/arrow-down";
-import { ArrowUpIcon } from "../icons/arrow-up";
+import {
+  ComponentProps,
+  ComponentPropsWithoutRef,
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { ColumnCollapseIcon } from "../icons/column-collapse";
 import { ColumnExpandIcon } from "../icons/column-expand";
 import { clx, pick } from "../utils";
 import { Button } from "./button";
-import { FilterAscIcon, FilterDescIcon, FilterIcon } from "../icons";
-
+import {
+  FilterAscIcon,
+  FilterDescIcon,
+  FilterIcon,
+  ReloadIcon,
+} from "../icons";
+import { Checkbox } from "./checkbox";
 /**
  * Way to define the ColumnMeta type in @tanstack/react-table
  * @see https://tanstack.com/table/v8/docs/api/core/column-def#meta
@@ -45,29 +56,27 @@ declare module "@tanstack/react-table" {
   }
 }
 
-interface DataTableProps<TData> {
+interface DataTableProps<TData extends Record<string, any>> {
   className?: string;
   columns: ColumnDef<TData>[];
   data: TData[];
-  filterable?: boolean;
-  filter?: (
-    table: TTable<TData>,
-    headers: Header<TData, unknown>[],
-  ) => ReactNode;
-  onRowSelection?: (value: string[]) => void;
-  isMerged?: (row: Row<TData>) => Cell<TData, unknown> | false | undefined;
+  selection?: {
+    rowId: keyof TData;
+    mode: "checkbox" | "radio";
+    header?: ReactNode;
+    onSelectionChange?: (value: string[]) => void;
+  };
 }
 
-const DataTable = <TData,>({
+const DataTable = <TData extends Record<string, any>>({
   columns,
   data,
-  filter,
-  isMerged,
+  selection,
 }: DataTableProps<TData>) => {
   const [expandableColumns, setExpandableColumns] = useState(
-    pick(columns, "id", (item) => item.meta?.expandable || false),
+    pick(columns, "id", () => false),
   );
-
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const toggleColumnWidth = (columnId: string) => {
     setExpandableColumns((prev) => ({
       ...prev,
@@ -75,11 +84,29 @@ const DataTable = <TData,>({
     }));
   };
 
-  const table = useReactTable({
+  const _columns = useMemo(() => {
+    switch (selection?.mode) {
+      case "checkbox":
+        return [
+          Column.Checkbox<TData>({ header: selection.header }),
+          ...columns,
+        ];
+      case "radio":
+        return [Column.Radio<TData>({ header: selection.header }), ...columns];
+      default:
+        return columns;
+    }
+  }, [columns, selection?.mode]);
+
+  const table = useReactTable<TData>({
     data,
-    columns,
-    columnResizeMode: "onChange",
-    enableColumnFilters: true,
+    columns: _columns,
+    state: { rowSelection },
+    enableMultiRowSelection: selection?.mode === "checkbox",
+    getRowId: selection?.rowId
+      ? (row) => row[selection.rowId] as string
+      : undefined,
+    onRowSelectionChange: setRowSelection,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
@@ -90,27 +117,31 @@ const DataTable = <TData,>({
   const headerGroups = table.getHeaderGroups();
   const tableRow = table.getRowModel().rows;
 
-  useEffect(() => {
-    const mergedObj = { ...expandableColumns };
-    Object.keys(expandableColumns).forEach((columnId) => {
-      const longVisibleRows = table.getRowModel().rows.filter((row) => {
-        const value = row.getValue(columnId) as string | null;
-        return value !== null && value?.length >= 30;
-      });
+  // useEffect(() => {
+  //   const mergedObj = { ...expandableColumns };
+  //   Object.keys(expandableColumns).forEach((columnId) => {
+  //     const longVisibleRows = table.getRowModel().rows.filter((row) => {
+  //       const value = row.getValue(columnId) as string | null;
+  //       return value !== null && value?.length >= 30;
+  //     });
 
-      if (longVisibleRows.length == 0) {
-        mergedObj[columnId] = null;
-      } else {
-        mergedObj[columnId] = false;
-      }
-    });
-    setExpandableColumns(mergedObj);
-  }, [tableRow]);
+  //     if (longVisibleRows.length == 0) {
+  //       mergedObj[columnId] = null;
+  //     } else {
+  //       mergedObj[columnId] = false;
+  //     }
+  //   });
+  //   setExpandableColumns(mergedObj);
+  // }, [tableRow]);
+
+  useEffect(() => {
+    if (!selection) return;
+    selection?.onSelectionChange?.(Object.keys(table.getState().rowSelection));
+  }, [table.getState().rowSelection]);
 
   return (
     <>
-      {filter ? filter(table, headerGroups[0]!.headers) : <></>}
-
+      {/* {filter ? filter(table, headerGroups[0]!.headers) : <></>} */}
       <Table className="w-[inherit]">
         <TableHeader>
           {headerGroups.map((headerGroup) => {
@@ -138,7 +169,6 @@ const DataTable = <TData,>({
                             header.column.columnDef.header,
                             header.getContext(),
                           )}
-                          {/* */}
 
                           <div className="flex justify-end gap-1">
                             {/* Expand */}
@@ -193,47 +223,34 @@ const DataTable = <TData,>({
         <TableBody>
           {table?.getRowModel()?.rows?.length > 0 ? (
             table.getRowModel().rows.map((row) => {
-              const mergedRow = isMerged ? isMerged(row) : undefined;
+              // const mergedRow = isMerged ? isMerged(row) : undefined;
+              const mergedRow = undefined;
 
               return (
                 <TableRow key={row.id}>
-                  {mergedRow ? (
-                    <TableCell
-                      id={mergedRow.id}
-                      key={mergedRow.id}
-                      colSpan={6}
-                      className="text-center font-bold"
-                    >
-                      {flexRender(
-                        mergedRow.column.columnDef.cell,
-                        mergedRow.getContext(),
-                      )}
-                    </TableCell>
-                  ) : (
-                    row.getVisibleCells().map((cell) => {
-                      const columnDef = cell.column.columnDef;
-                      const headerId = columnDef.id as string;
-                      const canExpand = expandableColumns[headerId];
-                      return (
-                        <TableCell
-                          id={cell.id}
-                          key={cell.id}
-                          className={clx(
-                            "sm:whitespace-nowrap",
-                            "whitespace-normal break-words",
-                            typeof expandableColumns[headerId] === "boolean" &&
-                              `truncate ${!canExpand && "max-w-[230px]"}`,
-                            cell.column.columnDef.meta?.className?.cell,
-                          )}
-                        >
-                          {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext(),
-                          )}
-                        </TableCell>
-                      );
-                    })
-                  )}
+                  {row.getVisibleCells().map((cell) => {
+                    const columnDef = cell.column.columnDef;
+                    const headerId = columnDef.id as string;
+                    const canExpand = expandableColumns[headerId];
+                    return (
+                      <TableCell
+                        id={cell.id}
+                        key={cell.id}
+                        className={clx(
+                          "sm:whitespace-nowrap",
+                          "whitespace-normal break-words",
+                          typeof expandableColumns[headerId] === "boolean" &&
+                            `truncate ${!canExpand && "max-w-[230px]"}`,
+                          cell.column.columnDef.meta?.className?.cell,
+                        )}
+                      >
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext(),
+                        )}
+                      </TableCell>
+                    );
+                  })}
                 </TableRow>
               );
             })
@@ -253,4 +270,102 @@ const DataTable = <TData,>({
   );
 };
 
-export { DataTable, type ColumnDef };
+type CheckboxColumnProps<T> = Omit<
+  ComponentPropsWithoutRef<typeof Checkbox>,
+  "onClick" | "checked" | "onCheckedChange" | "value"
+> & {
+  header?: ReactNode;
+};
+
+const checkboxColumn = <TData extends Record<string, any>>(
+  props: CheckboxColumnProps<TData>,
+) => {
+  const columnHelper = createColumnHelper<TData>();
+  return columnHelper.display({
+    id: "checkbox",
+    header: ({ table }) => (
+      <div className="flex items-center gap-1">
+        <Checkbox
+          checked={
+            table.getIsAllRowsSelected() ||
+            (table.getIsSomeRowsSelected() && "indeterminate")
+          }
+          disabled={props?.disabled}
+          onClick={table.getToggleAllRowsSelectedHandler()}
+        />
+        {props?.header}
+      </div>
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        {...props}
+        checked={row.getIsSelected()}
+        value={row.id}
+        disabled={props?.disabled || !row.getCanSelect()}
+        onClick={row.getToggleSelectedHandler()}
+      />
+    ),
+  });
+};
+
+type RadioColumnProps<T> = Omit<
+  ComponentPropsWithoutRef<"input">,
+  "value" | "onValueChange"
+> & {
+  header: ReactNode;
+};
+
+const radioColumn = <TData extends Record<string, any>>(
+  props: RadioColumnProps<TData>,
+) => {
+  const columnHelper = createColumnHelper<TData>();
+  return columnHelper.display({
+    id: "radio",
+    header: ({ table }) => (
+      <div className="flex items-center gap-1 pl-0.5">
+        <Button
+          size="small"
+          variant="default-ghost"
+          onClick={() => table.resetRowSelection(false)}
+          className="invisible px-1 py-0 transition data-[selected=true]:visible"
+          data-selected={table.getIsSomeRowsSelected()}
+        >
+          <ReloadIcon className="text-txt-black-500 size-3.5 rotate-45" />
+        </Button>
+        {props?.header}
+      </div>
+    ),
+    // typeof props?.header === "string" ? props?.header : () => props?.header,
+    cell: ({ row, getValue, table }) => (
+      <div
+        className={clx(
+          "shadow-button hover:border-otl-gray-300 border-otl-gray-200 flex aspect-square size-4 items-center justify-center rounded-full border",
+          "focus-within:ring-fr-primary focus-within:ring-4 focus-within:ring-opacity-40 focus:outline-none",
+          "has-[:checked]:bg-primary-600 has-[:disabled]:has-[:checked]::bg-primary-600 has-[:checked]:border-none has-[:disabled]:opacity-30",
+        )}
+      >
+        <input
+          type="radio"
+          role="radio"
+          id={row.id}
+          value={row.id}
+          checked={row.getIsSelected()}
+          disabled={props?.disabled || !row.getCanSelect()}
+          onClick={row.getToggleSelectedHandler()}
+          className={clx(
+            "disabled:bg-bg-washed relative h-full w-full disabled:cursor-not-allowed",
+            "before:bg-bg-white before:contents-[''] appearance-none before:absolute before:left-[5px] before:top-[5px] before:size-[6px] before:rounded-full",
+          )}
+          {...props}
+        />
+      </div>
+    ),
+  });
+};
+
+const Column = {
+  Checkbox: checkboxColumn,
+  Radio: radioColumn,
+};
+
+export { DataTable, Column, type ColumnDef };

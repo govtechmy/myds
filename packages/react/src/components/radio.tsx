@@ -53,7 +53,6 @@ const Radio = React.forwardRef<
     </RadioContext.Provider>
   );
 });
-Radio.displayName = RadioGroupPrimitive.Root.displayName;
 
 const RadioItem: FunctionComponent<
   ComponentProps<"div"> & { disabled?: boolean }

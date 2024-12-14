@@ -1,7 +1,7 @@
-import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { DataTable, type ColumnDef } from "@myds/react/data-table";
+import { DataTable } from "@myds/react/data-table";
+import type { TypeWithDeepControls } from "storybook-addon-deep-controls";
 
 /**
  * ### Overview
@@ -60,7 +60,7 @@ const meta: Meta<typeof DataTable> = {
           tooltip: "Position of the employee",
         },
       },
-    ] satisfies ColumnDef<EmployeeProps>[],
+    ],
     data: [
       {
         id: 1,
@@ -88,13 +88,34 @@ const meta: Meta<typeof DataTable> = {
       },
       {
         id: 5,
-        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        name: "Charlie",
         age: 28,
         position: "Data Scientist",
       },
     ],
+    // selection: {
+    //   rowId: "id",
+    //   mode: "radio",
+    //   onSelectionChange: (rows) => console.log(rows, "test"),
+    // },
   },
-} satisfies Meta<typeof DataTable>;
+  argTypes: {
+    // "selection.mode": {
+    //   table: {
+    //     defaultValue: {
+    //       summary: "none",
+    //     },
+    //     type: {
+    //       summary: "enum",
+    //       detail: "small, medium, large",
+    //     },
+    //     category: "myds API",
+    //   },
+    //   control: "inline-radio",
+    //   options: ["checkbox", "radio"],
+    // },
+  },
+} satisfies TypeWithDeepControls<Meta<typeof DataTable>>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -108,3 +129,19 @@ type Story = StoryObj<typeof meta>;
  */
 
 export const Default: Story = createStory({});
+
+export const Selection_Checkbox: Story = createStory({
+  selection: {
+    rowId: "id",
+    mode: "checkbox",
+    onSelectionChange: (rows: any) => console.log(rows, "test"),
+  },
+});
+
+export const Selection_Radio: Story = createStory({
+  selection: {
+    rowId: "id",
+    mode: "radio",
+    onSelectionChange: (rows: any) => console.log(rows, "test"),
+  },
+});
