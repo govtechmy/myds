@@ -73,7 +73,7 @@ const TableCell: ForwardRefExoticComponent<ComponentProps<"td">> = forwardRef(
     <td
       ref={ref}
       className={clx(
-        "border-otl-gray-200 text-black-700 border-b py-4 pr-3 align-middle text-sm font-medium sm:py-3",
+        "border-otl-gray-200 text-black-700 border-b py-1.5 pr-3 align-middle text-sm leading-[33.11px]",
         "[&:has([role=checkbox])]:w-8 [&:has([role=checkbox])]:pl-1",
         "[&:has([role=radio])]:w-8 [&:has([role=radio])]:pl-1",
         className,

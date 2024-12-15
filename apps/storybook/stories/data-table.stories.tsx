@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { DataTable } from "@myds/react/data-table";
+import { ColumnDef, DataTable } from "@myds/react/data-table";
 import type { TypeWithDeepControls } from "storybook-addon-deep-controls";
+import { Button } from "@myds/react/button";
+import { Tag } from "@myds/react/tag";
 
 /**
  * ### Overview
@@ -60,7 +62,25 @@ const meta: Meta<typeof DataTable> = {
           tooltip: "Position of the employee",
         },
       },
-    ],
+      {
+        id: "status",
+        header: "Status",
+        cell: () => {
+          return (
+            <Tag variant="success" size={"small"} mode="pill">
+              Success
+            </Tag>
+          );
+        },
+      },
+      {
+        id: "action",
+        header: "Action",
+        cell: () => {
+          return <Button variant="default-outline">Edit</Button>;
+        },
+      },
+    ] satisfies ColumnDef<EmployeeProps>[],
     data: [
       {
         id: 1,
@@ -93,44 +113,15 @@ const meta: Meta<typeof DataTable> = {
         position: "Data Scientist",
       },
     ],
-    // selection: {
-    //   rowId: "id",
-    //   mode: "radio",
-    //   onSelectionChange: (rows) => console.log(rows, "test"),
-    // },
-  },
-  argTypes: {
-    // "selection.mode": {
-    //   table: {
-    //     defaultValue: {
-    //       summary: "none",
-    //     },
-    //     type: {
-    //       summary: "enum",
-    //       detail: "small, medium, large",
-    //     },
-    //     category: "myds API",
-    //   },
-    //   control: "inline-radio",
-    //   options: ["checkbox", "radio"],
-    // },
   },
 } satisfies TypeWithDeepControls<Meta<typeof DataTable>>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/**
- * Storybook stories for different variants of a component.
- *
- * @example
- * export const Default: Story = createStory({ ... });
- * export const DarkDefault: Story = createStory({ ... , className="dark"}, "dark");
- */
-
 export const Default: Story = createStory({});
 
-export const Selection_Checkbox: Story = createStory({
+export const SelectionCheckbox: Story = createStory({
   selection: {
     rowId: "id",
     mode: "checkbox",
@@ -138,10 +129,12 @@ export const Selection_Checkbox: Story = createStory({
   },
 });
 
-export const Selection_Radio: Story = createStory({
+export const SelectionRadio: Story = createStory({
   selection: {
     rowId: "id",
     mode: "radio",
     onSelectionChange: (rows: any) => console.log(rows, "test"),
   },
 });
+
+export const PinnedColumns: Story = createStory({});

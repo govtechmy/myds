@@ -8,7 +8,6 @@ import {
   RowData,
   RowSelectionState,
   createColumnHelper,
-  DeepKeys,
 } from "@tanstack/react-table";
 import {
   Table,
@@ -20,11 +19,8 @@ import {
   TableTooltip,
 } from "./table";
 import {
-  ComponentProps,
   ComponentPropsWithoutRef,
-  createContext,
   ReactNode,
-  useContext,
   useEffect,
   useMemo,
   useState,
@@ -40,6 +36,7 @@ import {
   ReloadIcon,
 } from "../icons";
 import { Checkbox } from "./checkbox";
+import { cva } from "class-variance-authority";
 /**
  * Way to define the ColumnMeta type in @tanstack/react-table
  * @see https://tanstack.com/table/v8/docs/api/core/column-def#meta
@@ -66,12 +63,21 @@ interface DataTableProps<TData extends Record<string, any>> {
     header?: ReactNode;
     onSelectionChange?: (value: string[]) => void;
   };
+  pins?: {
+    left?: string[];
+    right?: string[];
+  };
 }
+
+const column_pin_cva = cva([], {
+  variants: {},
+});
 
 const DataTable = <TData extends Record<string, any>>({
   columns,
   data,
   selection,
+  pins,
 }: DataTableProps<TData>) => {
   const [expandableColumns, setExpandableColumns] = useState(
     pick(columns, "id", () => false),
@@ -101,7 +107,13 @@ const DataTable = <TData extends Record<string, any>>({
   const table = useReactTable<TData>({
     data,
     columns: _columns,
-    state: { rowSelection },
+    state: {
+      rowSelection,
+      columnPinning: {
+        left: pins?.left,
+        right: pins?.right,
+      },
+    },
     enableMultiRowSelection: selection?.mode === "checkbox",
     getRowId: selection?.rowId
       ? (row) => row[selection.rowId] as string
@@ -114,26 +126,6 @@ const DataTable = <TData extends Record<string, any>>({
     debugHeaders: false,
   });
 
-  const headerGroups = table.getHeaderGroups();
-  const tableRow = table.getRowModel().rows;
-
-  // useEffect(() => {
-  //   const mergedObj = { ...expandableColumns };
-  //   Object.keys(expandableColumns).forEach((columnId) => {
-  //     const longVisibleRows = table.getRowModel().rows.filter((row) => {
-  //       const value = row.getValue(columnId) as string | null;
-  //       return value !== null && value?.length >= 30;
-  //     });
-
-  //     if (longVisibleRows.length == 0) {
-  //       mergedObj[columnId] = null;
-  //     } else {
-  //       mergedObj[columnId] = false;
-  //     }
-  //   });
-  //   setExpandableColumns(mergedObj);
-  // }, [tableRow]);
-
   useEffect(() => {
     if (!selection) return;
     selection?.onSelectionChange?.(Object.keys(table.getState().rowSelection));
@@ -144,7 +136,7 @@ const DataTable = <TData extends Record<string, any>>({
       {/* {filter ? filter(table, headerGroups[0]!.headers) : <></>} */}
       <Table className="w-[inherit]">
         <TableHeader>
-          {headerGroups.map((headerGroup) => {
+          {table.getHeaderGroups().map((headerGroup) => {
             return (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
@@ -223,9 +215,6 @@ const DataTable = <TData extends Record<string, any>>({
         <TableBody>
           {table?.getRowModel()?.rows?.length > 0 ? (
             table.getRowModel().rows.map((row) => {
-              // const mergedRow = isMerged ? isMerged(row) : undefined;
-              const mergedRow = undefined;
-
               return (
                 <TableRow key={row.id}>
                   {row.getVisibleCells().map((cell) => {
@@ -322,7 +311,7 @@ const radioColumn = <TData extends Record<string, any>>(
   return columnHelper.display({
     id: "radio",
     header: ({ table }) => (
-      <div className="flex items-center gap-1 pl-0.5">
+      <div className="flex items-center gap-1">
         <Button
           size="small"
           variant="default-ghost"
@@ -330,12 +319,11 @@ const radioColumn = <TData extends Record<string, any>>(
           className="invisible px-1 py-0 transition data-[selected=true]:visible"
           data-selected={table.getIsSomeRowsSelected()}
         >
-          <ReloadIcon className="text-txt-black-500 size-3.5 rotate-45" />
+          <ReloadIcon className="text-txt-black-500 size-4 rotate-45" />
         </Button>
         {props?.header}
       </div>
     ),
-    // typeof props?.header === "string" ? props?.header : () => props?.header,
     cell: ({ row, getValue, table }) => (
       <div
         className={clx(
@@ -368,4 +356,4 @@ const Column = {
   Radio: radioColumn,
 };
 
-export { DataTable, Column, type ColumnDef };
+export { DataTable, type ColumnDef };
