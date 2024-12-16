@@ -72,8 +72,11 @@ const TableCell: ForwardRefExoticComponent<ComponentProps<"td">> = forwardRef(
   ({ className, ...props }, ref) => (
     <td
       ref={ref}
+      role="gridcell"
+      tabIndex={-1}
       className={clx(
         "border-otl-gray-200 text-black-700 border-b py-1.5 pr-3 align-middle text-sm leading-[33.11px]",
+        "focus:outline-primary-600/20 rounded-[1px] focus:z-20 focus:outline-[3px] focus:outline-offset-0",
         "[&:has([role=checkbox])]:w-8 [&:has([role=checkbox])]:pl-1",
         "[&:has([role=radio])]:w-8 [&:has([role=radio])]:pl-1",
         className,
@@ -109,6 +112,17 @@ const TableTooltip: ForwardRefExoticComponent<ComponentProps<typeof Tooltip>> =
   });
 TableTooltip.displayName = "TableTooltip";
 
+const TableSkeleton: ForwardRefExoticComponent<ComponentProps<"div">> =
+  forwardRef(({ className, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className="animate-shimmer direction-reverse from-bg-black-100 via-bg-black-300 to-bg-black-100 min-h-3 w-full rounded-full bg-gradient-to-r bg-[length:200%_50%]"
+        {...props}
+      />
+    );
+  });
+
 export {
   Table,
   TableHeader,
@@ -119,4 +133,5 @@ export {
   TableCell,
   TableCaption,
   TableTooltip,
+  TableSkeleton,
 };

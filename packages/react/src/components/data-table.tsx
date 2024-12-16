@@ -1,4 +1,5 @@
 import {
+  type Column,
   ColumnDef,
   flexRender,
   getCoreRowModel,
@@ -8,6 +9,7 @@ import {
   RowData,
   RowSelectionState,
   createColumnHelper,
+  Row,
 } from "@tanstack/react-table";
 import {
   Table,
@@ -16,15 +18,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  TableSkeleton,
   TableTooltip,
 } from "./table";
-import {
-  ComponentPropsWithoutRef,
-  ReactNode,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { CSSProperties, ReactNode, useEffect, useMemo, useState } from "react";
 import { ColumnCollapseIcon } from "../icons/column-collapse";
 import { ColumnExpandIcon } from "../icons/column-expand";
 import { clx, pick } from "../utils";
@@ -57,11 +54,13 @@ interface DataTableProps<TData extends Record<string, any>> {
   className?: string;
   columns: ColumnDef<TData>[];
   data: TData[];
+  loading?: boolean;
   selection?: {
-    rowId: keyof TData;
+    id_by: keyof TData;
     mode: "checkbox" | "radio";
-    header?: ReactNode;
     onSelectionChange?: (value: string[]) => void;
+    enableRowSelection?: boolean | ((row: Row<TData>) => boolean);
+    enableSubRowSelection?: boolean | ((row: Row<TData>) => boolean);
   };
   pins?: {
     left?: string[];
@@ -69,8 +68,32 @@ interface DataTableProps<TData extends Record<string, any>> {
   };
 }
 
-const column_pin_cva = cva([], {
-  variants: {},
+const column_pinning_cva = cva(["bg-bg-white"], {
+  variants: {
+    direction: {
+      left: "sticky z-10",
+      right: "sticky z-10 pl-2",
+      false: "",
+    },
+    isLast: {
+      true: "",
+      false: "",
+    },
+  },
+  compoundVariants: [
+    {
+      direction: ["left"],
+      isLast: true,
+      className:
+        "before:right-0 before:border-none before:outline-none before:bottom-0 before:pointer-events-none before:contents-[''] before:absolute top-0 before:w-1 before:bg-transparent before:h-full before:py-0 before:shadow-[inset_3px_0_8px_-8px]",
+    },
+    {
+      direction: ["right"],
+      isLast: true,
+      className:
+        "before:left-0 before:border-none before:outline-none before:bottom-0 before:pointer-events-none before:contents-[''] before:absolute top-0 before:w-1 before:bg-transparent before:h-full before:py-0 before:shadow-[inset_-3px_0_8px_-8px]",
+    },
+  ],
 });
 
 const DataTable = <TData extends Record<string, any>>({
@@ -78,7 +101,9 @@ const DataTable = <TData extends Record<string, any>>({
   data,
   selection,
   pins,
+  loading,
 }: DataTableProps<TData>) => {
+  // const { gridProps, getCellProps } = useGridKeyboardNavigation(5, 5);
   const [expandableColumns, setExpandableColumns] = useState(
     pick(columns, "id", () => false),
   );
@@ -93,12 +118,9 @@ const DataTable = <TData extends Record<string, any>>({
   const _columns = useMemo(() => {
     switch (selection?.mode) {
       case "checkbox":
-        return [
-          Column.Checkbox<TData>({ header: selection.header }),
-          ...columns,
-        ];
+        return [Column.Checkbox<TData>(), ...columns];
       case "radio":
-        return [Column.Radio<TData>({ header: selection.header }), ...columns];
+        return [Column.Radio<TData>(), ...columns];
       default:
         return columns;
     }
@@ -114,9 +136,11 @@ const DataTable = <TData extends Record<string, any>>({
         right: pins?.right,
       },
     },
+    enableRowSelection: selection?.enableRowSelection,
+    enableSubRowSelection: selection?.enableSubRowSelection,
     enableMultiRowSelection: selection?.mode === "checkbox",
-    getRowId: selection?.rowId
-      ? (row) => row[selection.rowId] as string
+    getRowId: selection?.id_by
+      ? (row) => row[selection.id_by] as string
       : undefined,
     onRowSelectionChange: setRowSelection,
     getCoreRowModel: getCoreRowModel(),
@@ -134,7 +158,11 @@ const DataTable = <TData extends Record<string, any>>({
   return (
     <>
       {/* {filter ? filter(table, headerGroups[0]!.headers) : <></>} */}
-      <Table className="w-[inherit]">
+      <Table
+        style={{
+          width: Boolean(pins) ? table.getTotalSize() : undefined,
+        }}
+      >
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => {
             return (
@@ -152,8 +180,15 @@ const DataTable = <TData extends Record<string, any>>({
                         "group transition",
                         [expandable, sortable].some(Boolean) &&
                           "hover:border-otl-primary-300 data-[expanded=true]:border-otl-primary-300",
+                        column_pinning_cva({
+                          direction: header.column.getIsPinned(),
+                          isLast: header.column.getIsLastColumn(
+                            header.column.getIsPinned(),
+                          ),
+                        }),
                         header.column.columnDef.meta?.className?.header,
                       )}
+                      style={{ ...getCommonPinningStyles(header.column) }}
                     >
                       {header.isPlaceholder ? null : (
                         <div className="flex items-center justify-between gap-2 whitespace-nowrap">
@@ -213,7 +248,17 @@ const DataTable = <TData extends Record<string, any>>({
           })}
         </TableHeader>
         <TableBody>
-          {table?.getRowModel()?.rows?.length > 0 ? (
+          {loading ? (
+            Array.from({ length: 5 }).map((_, index) => (
+              <TableRow key={index}>
+                {table.getAllLeafColumns().map((column) => (
+                  <TableCell key={column.id} className="py-3">
+                    <TableSkeleton />
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))
+          ) : table?.getRowModel()?.rows?.length > 0 ? (
             table.getRowModel().rows.map((row) => {
               return (
                 <TableRow key={row.id}>
@@ -231,7 +276,15 @@ const DataTable = <TData extends Record<string, any>>({
                           typeof expandableColumns[headerId] === "boolean" &&
                             `truncate ${!canExpand && "max-w-[230px]"}`,
                           cell.column.columnDef.meta?.className?.cell,
+                          cell.column.getIsPinned() && "bg-bg-white",
+                          column_pinning_cva({
+                            direction: cell.column.getIsPinned(),
+                            isLast: cell.column.getIsLastColumn(
+                              cell.column.getIsPinned(),
+                            ),
+                          }),
                         )}
+                        style={{ ...getCommonPinningStyles(cell.column) }}
                       >
                         {flexRender(
                           cell.column.columnDef.cell,
@@ -259,57 +312,40 @@ const DataTable = <TData extends Record<string, any>>({
   );
 };
 
-type CheckboxColumnProps<T> = Omit<
-  ComponentPropsWithoutRef<typeof Checkbox>,
-  "onClick" | "checked" | "onCheckedChange" | "value"
-> & {
-  header?: ReactNode;
-};
-
-const checkboxColumn = <TData extends Record<string, any>>(
-  props: CheckboxColumnProps<TData>,
-) => {
+const checkboxColumn = <TData extends Record<string, any>>() => {
   const columnHelper = createColumnHelper<TData>();
   return columnHelper.display({
     id: "checkbox",
+    size: 46,
+    enableResizing: true,
     header: ({ table }) => (
-      <div className="flex items-center gap-1">
-        <Checkbox
-          checked={
-            table.getIsAllRowsSelected() ||
-            (table.getIsSomeRowsSelected() && "indeterminate")
-          }
-          disabled={props?.disabled}
-          onClick={table.getToggleAllRowsSelectedHandler()}
-        />
-        {props?.header}
-      </div>
+      <Checkbox
+        key="checkbox-all"
+        checked={
+          table.getIsAllRowsSelected() ||
+          (table.getIsSomeRowsSelected() && "indeterminate")
+        }
+        onClick={table.getToggleAllRowsSelectedHandler()}
+      />
     ),
     cell: ({ row }) => (
       <Checkbox
-        {...props}
+        key={`checkbox-${row.id}`}
         checked={row.getIsSelected()}
         value={row.id}
-        disabled={props?.disabled || !row.getCanSelect()}
+        disabled={!row.getCanSelect()}
         onClick={row.getToggleSelectedHandler()}
       />
     ),
   });
 };
 
-type RadioColumnProps<T> = Omit<
-  ComponentPropsWithoutRef<"input">,
-  "value" | "onValueChange"
-> & {
-  header: ReactNode;
-};
-
-const radioColumn = <TData extends Record<string, any>>(
-  props: RadioColumnProps<TData>,
-) => {
+const radioColumn = <TData extends Record<string, any>>() => {
   const columnHelper = createColumnHelper<TData>();
   return columnHelper.display({
     id: "radio",
+    size: 46,
+    enableResizing: false,
     header: ({ table }) => (
       <div className="flex items-center gap-1">
         <Button
@@ -321,7 +357,6 @@ const radioColumn = <TData extends Record<string, any>>(
         >
           <ReloadIcon className="text-txt-black-500 size-4 rotate-45" />
         </Button>
-        {props?.header}
       </div>
     ),
     cell: ({ row, getValue, table }) => (
@@ -338,17 +373,27 @@ const radioColumn = <TData extends Record<string, any>>(
           id={row.id}
           value={row.id}
           checked={row.getIsSelected()}
-          disabled={props?.disabled || !row.getCanSelect()}
+          disabled={!row.getCanSelect()}
           onClick={row.getToggleSelectedHandler()}
           className={clx(
             "disabled:bg-bg-washed relative h-full w-full disabled:cursor-not-allowed",
             "before:bg-bg-white before:contents-[''] appearance-none before:absolute before:left-[5px] before:top-[5px] before:size-[6px] before:rounded-full",
           )}
-          {...props}
         />
       </div>
     ),
   });
+};
+
+const getCommonPinningStyles = <TData extends Record<string, any>>(
+  column: Column<TData>,
+): CSSProperties => {
+  const isPinned = column.getIsPinned();
+  return {
+    left: isPinned === "left" ? `${column.getStart("left")}px` : undefined,
+    right: isPinned === "right" ? `${column.getAfter("right")}px` : undefined,
+    width: column.getSize(),
+  };
 };
 
 const Column = {
