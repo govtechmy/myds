@@ -10,6 +10,9 @@ import {
   RowSelectionState,
   createColumnHelper,
   Row,
+  CellContext,
+  ExpandedState,
+  getExpandedRowModel,
 } from "@tanstack/react-table";
 import {
   Table,
@@ -26,8 +29,9 @@ import { CSSProperties, ReactNode, useEffect, useMemo, useState } from "react";
 import { ColumnCollapseIcon } from "../icons/column-collapse";
 import { ColumnExpandIcon } from "../icons/column-expand";
 import { clx, pick } from "../utils";
-import { Button } from "./button";
+import { Button, ButtonIcon } from "./button";
 import {
+  ChevronRightIcon,
   FilterAscIcon,
   FilterDescIcon,
   FilterIcon,
@@ -63,9 +67,12 @@ interface DataTableProps<TData extends Record<string, any>> {
     enableRowSelection?: boolean | ((row: Row<TData>) => boolean);
     enableSubRowSelection?: boolean | ((row: Row<TData>) => boolean);
   };
-  pins?: {
+  pin?: {
     left?: string[];
     right?: string[];
+  };
+  nest?: {
+    id_by: keyof TData;
   };
   emptyState?: ReactNode;
 }
@@ -102,7 +109,8 @@ const DataTable = <TData extends Record<string, any>>({
   columns,
   data,
   selection,
-  pins,
+  pin,
+  nest,
   loading,
   className,
   emptyState,
@@ -112,6 +120,7 @@ const DataTable = <TData extends Record<string, any>>({
     pick(columns, "id", () => false),
   );
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
+  const [expandedSelection, setExpandedSelection] = useState<ExpandedState>({});
   const toggleColumnWidth = (columnId: string) => {
     setExpandableColumns((prev) => ({
       ...prev,
@@ -134,10 +143,11 @@ const DataTable = <TData extends Record<string, any>>({
     data,
     columns: _columns,
     state: {
-      rowSelection,
+      expanded: expandedSelection,
+      rowSelection: rowSelection,
       columnPinning: {
-        left: pins?.left,
-        right: pins?.right,
+        left: pin?.left,
+        right: pin?.right,
       },
     },
     enableRowSelection: selection?.enableRowSelection,
@@ -146,7 +156,10 @@ const DataTable = <TData extends Record<string, any>>({
     getRowId: selection?.id_by
       ? (row) => row[selection.id_by] as string
       : undefined,
+    getSubRows: nest ? (row) => row[nest.id_by] : undefined,
+    onExpandedChange: setExpandedSelection,
     onRowSelectionChange: setRowSelection,
+    getExpandedRowModel: getExpandedRowModel(),
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
@@ -165,7 +178,7 @@ const DataTable = <TData extends Record<string, any>>({
       <Table
         className={className}
         style={{
-          width: Boolean(pins) ? table.getTotalSize() : undefined,
+          width: Boolean(pin) ? table.getTotalSize() : undefined,
         }}
       >
         <TableHeader>
@@ -387,6 +400,36 @@ const radioColumn = <TData extends Record<string, any>>() => {
   });
 };
 
+const expandCell = <TData extends Record<string, any>>(
+  { row, getValue }: CellContext<TData, unknown>,
+  cell?: ReactNode,
+) => {
+  const useDefault = !cell || JSON.stringify(cell) === JSON.stringify({});
+  return (
+    <div
+      className="flex gap-1"
+      style={{ paddingLeft: `calc(${row.depth}rem + 4px)` }}
+    >
+      {row.getCanExpand() && (
+        <Button
+          size="small"
+          variant="default-ghost"
+          onClick={row.getToggleExpandedHandler()}
+          data-expanded={row.getIsExpanded()}
+        >
+          <ButtonIcon
+            data-expanded={row.getIsExpanded()}
+            className="transform transition-transform data-[expanded=true]:rotate-90"
+          >
+            <ChevronRightIcon />
+          </ButtonIcon>
+        </Button>
+      )}
+      {useDefault ? (getValue() as string) : cell}
+    </div>
+  );
+};
+
 const getCommonPinningStyles = <TData extends Record<string, any>>(
   column: Column<TData>,
 ): CSSProperties => {
@@ -402,5 +445,8 @@ const Column = {
   Checkbox: checkboxColumn,
   Radio: radioColumn,
 };
+const Cell = {
+  Expand: expandCell,
+};
 
-export { DataTable, type ColumnDef };
+export { DataTable, Cell, type ColumnDef };

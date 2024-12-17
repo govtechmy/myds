@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { ColumnDef, DataTable } from "@myds/react/data-table";
+import { Cell, ColumnDef, DataTable } from "@myds/react/data-table";
 import type { TypeWithDeepControls } from "storybook-addon-deep-controls";
 import { Button } from "@myds/react/button";
 import { Tag } from "@myds/react/tag";
@@ -360,6 +360,176 @@ export const FixedHeader: Story = createStory({
   ],
 });
 
+const nested_data = [
+  {
+    id: 1,
+    name: "John Doe",
+    age: 25,
+    position: "Software Engineer",
+    children: [
+      {
+        id: 11,
+        name: "John Doe Jr.",
+        age: 5,
+        position: "Software Engineer",
+        children: [
+          {
+            id: 111,
+            name: "John Doe-raemon",
+            age: 5,
+            position: "Software Engineer",
+          },
+          {
+            id: 112,
+            name: "John 'Penat' Doe",
+            age: 5,
+            position: "Software Engineer",
+          },
+        ],
+      },
+      {
+        id: 12,
+        name: "John Doe Jr.",
+        age: 5,
+        position: "Software Engineer",
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Jane Doe",
+    age: 30,
+    position: "Product Manager",
+    children: [
+      {
+        id: 21,
+        name: "Jane Doe Jr.",
+        age: 5,
+        position: "Software Engineer",
+      },
+      {
+        id: 22,
+        name: "Jane Doe Jr.",
+        age: 5,
+        position: "Software Engineer",
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "Alice",
+    age: 22,
+    position: "Designer",
+    children: [
+      {
+        id: 31,
+        name: "Alice Jr.",
+        age: 5,
+        position: "Software Engineer",
+      },
+      {
+        id: 32,
+        name: "Alice Jr.",
+        age: 5,
+        position: "Software Engineer",
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: "Bob",
+    age: 35,
+    position: "Software Engineer",
+    children: [
+      {
+        id: 41,
+        name: "Bob Jr.",
+        age: 5,
+        position: "Software Engineer",
+      },
+      {
+        id: 42,
+        name: "Bob Jr.",
+        age: 5,
+        position: "Software Engineer",
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: "Charlie",
+    age: 28,
+    position: "Data Scientist",
+    children: [
+      {
+        id: 51,
+        name: "Charlie Jr.",
+        age: 5,
+        position: "Software Engineer",
+      },
+      {
+        id: 52,
+        name: "Charlie Jr.",
+        age: 5,
+        position: "Software Engineer",
+      },
+    ],
+  },
+];
+
+export const NestedRows: Story = createStory({
+  columns: [
+    {
+      id: "name",
+      header: "Name",
+      accessorKey: "name",
+      size: 180,
+      meta: {
+        expandable: true,
+      },
+      cell: Cell.Expand,
+    },
+    {
+      id: "age",
+      header: "Age",
+      accessorKey: "age",
+      meta: {
+        expandable: false,
+      },
+    },
+    {
+      id: "position",
+      header: "Position",
+      accessorKey: "position",
+      meta: {
+        expandable: true,
+      },
+    },
+    {
+      id: "status",
+      header: "Status",
+      cell: () => {
+        return (
+          <Tag variant="success" size={"small"} mode="pill">
+            Success
+          </Tag>
+        );
+      },
+    },
+    {
+      id: "action",
+      header: "Action",
+      cell: () => {
+        return <Button variant="default-outline">Edit</Button>;
+      },
+    },
+  ] satisfies ColumnDef<EmployeeProps>[],
+  data: nested_data,
+  nest: {
+    id_by: "children",
+  },
+});
+
 export const PinnedColumns: Story = createStory({
   columns: [
     {
@@ -514,7 +684,7 @@ export const PinnedColumns: Story = createStory({
     mode: "radio",
     onSelectionChange: (rows: any) => console.log(rows, "test"),
   },
-  pins: {
+  pin: {
     left: ["radio", "name", "age"],
     right: ["position"],
   },
