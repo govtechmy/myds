@@ -5,13 +5,10 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
 
 const Table: ForwardRefExoticComponent<ComponentProps<"table">> = forwardRef(
   ({ className, ...props }, ref) => (
-    <div className="relative w-full overflow-x-auto">
+    <div className={clx("relative w-full overflow-auto", className)}>
       <table
         ref={ref}
-        className={clx(
-          "w-full caption-bottom border-separate border-spacing-0 text-sm",
-          className,
-        )}
+        className="w-full caption-bottom border-separate border-spacing-0 text-sm"
         {...props}
       />
     </div>
@@ -21,11 +18,7 @@ Table.displayName = "Table";
 
 const TableHeader: ForwardRefExoticComponent<ComponentProps<"thead">> =
   forwardRef(({ className, ...props }, ref) => (
-    <thead
-      ref={ref}
-      className={clx("[&_tr]:border-b-2", className)}
-      {...props}
-    />
+    <thead ref={ref} className={clx("sticky top-0", className)} {...props} />
   ));
 TableHeader.displayName = "TableHeader";
 
@@ -47,7 +40,14 @@ TableFooter.displayName = "TableFooter";
 
 const TableRow: ForwardRefExoticComponent<ComponentProps<"tr">> = forwardRef(
   ({ className, ...props }, ref) => (
-    <tr ref={ref} className={clx("border-b", className)} {...props} />
+    <tr
+      ref={ref}
+      className={clx(
+        "*:border-otl-gray-200 *:border-b [&_th]:first:border-t-2 [&_th]:last:border-b-2 [&_th]:only:border-t-0",
+        className,
+      )}
+      {...props}
+    />
   ),
 );
 TableRow.displayName = "TableRow";
@@ -57,7 +57,7 @@ const TableHead: ForwardRefExoticComponent<ComponentProps<"th">> = forwardRef(
     <th
       ref={ref}
       className={clx(
-        "text-txt-black-500 border-otl-gray-200 h-[30px] border-b-2 pb-2 pr-3 text-left align-middle text-xs font-medium",
+        "text-txt-black-500 min-h-[30px] py-3 pr-3 text-left align-middle text-xs font-medium",
         "[&:has([role=checkbox])]:w-8 [&:has([role=checkbox])]:pl-1",
         "[&:has([role=radio])]:w-8 [&:has([role=radio])]:pl-1",
         className,
@@ -123,6 +123,24 @@ const TableSkeleton: ForwardRefExoticComponent<ComponentProps<"div">> =
     );
   });
 
+TableSkeleton.displayName = "TableSkeleton";
+
+const TableEmpty: ForwardRefExoticComponent<ComponentProps<"td">> = forwardRef(
+  ({ className, children, colSpan = 100, ...props }, ref) => {
+    return (
+      <TableCell
+        ref={ref}
+        colSpan={colSpan}
+        className="text-txt-black-500 py-8 text-center"
+        {...props}
+      >
+        {children || "No data available"}
+      </TableCell>
+    );
+  },
+);
+TableEmpty.displayName = "TableEmpty";
+
 export {
   Table,
   TableHeader,
@@ -134,4 +152,5 @@ export {
   TableCaption,
   TableTooltip,
   TableSkeleton,
+  TableEmpty,
 };

@@ -15,6 +15,7 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableEmpty,
   TableHead,
   TableHeader,
   TableRow,
@@ -66,6 +67,7 @@ interface DataTableProps<TData extends Record<string, any>> {
     left?: string[];
     right?: string[];
   };
+  emptyState?: ReactNode;
 }
 
 const column_pinning_cva = cva(["bg-bg-white"], {
@@ -102,6 +104,8 @@ const DataTable = <TData extends Record<string, any>>({
   selection,
   pins,
   loading,
+  className,
+  emptyState,
 }: DataTableProps<TData>) => {
   // const { gridProps, getCellProps } = useGridKeyboardNavigation(5, 5);
   const [expandableColumns, setExpandableColumns] = useState(
@@ -159,6 +163,7 @@ const DataTable = <TData extends Record<string, any>>({
     <>
       {/* {filter ? filter(table, headerGroups[0]!.headers) : <></>} */}
       <Table
+        className={className}
         style={{
           width: Boolean(pins) ? table.getTotalSize() : undefined,
         }}
@@ -298,12 +303,9 @@ const DataTable = <TData extends Record<string, any>>({
             })
           ) : (
             <TableRow>
-              <TableCell
-                colSpan={table.getAllLeafColumns().length}
-                className="text-dim-500 h-24 text-center"
-              >
-                No data available
-              </TableCell>
+              <TableEmpty colSpan={table.getAllLeafColumns().length}>
+                {emptyState || "No data available"}
+              </TableEmpty>
             </TableRow>
           )}
         </TableBody>

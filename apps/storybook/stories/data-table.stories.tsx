@@ -177,21 +177,27 @@ export const GroupedHeader: Story = createStory({
     },
     {
       id: "status",
-      header: "Status",
-      cell: () => {
-        return (
-          <Tag variant="success" size={"small"} mode="pill">
-            Success
-          </Tag>
-        );
-      },
-    },
-    {
-      id: "action",
-      header: "Action",
-      cell: () => {
-        return <Button variant="default-outline">Edit</Button>;
-      },
+      header: "Application",
+      columns: [
+        {
+          id: "status",
+          header: "Status",
+          cell: () => {
+            return (
+              <Tag variant="success" size={"small"} mode="pill">
+                Success
+              </Tag>
+            );
+          },
+        },
+        {
+          id: "action",
+          header: "Action",
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+        },
+      ],
     },
   ],
   data: [
@@ -221,6 +227,132 @@ export const GroupedHeader: Story = createStory({
     },
     {
       id: 5,
+      name: "Charlie",
+      age: 28,
+      position: "Data Scientist",
+    },
+  ],
+});
+
+export const EmptyState: Story = createStory({ data: [] });
+
+export const FixedHeader: Story = createStory({
+  className: "max-h-[300px]",
+  columns: [
+    {
+      id: "employee",
+      header: "Employee",
+      columns: [
+        {
+          id: "name",
+          header: "Name",
+          accessorKey: "name",
+          size: 180,
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          id: "age",
+          header: "Age",
+          accessorKey: "age",
+
+          meta: {
+            expandable: false,
+          },
+        },
+        {
+          id: "position",
+          header: "Position",
+          accessorKey: "position",
+          meta: {
+            expandable: true,
+          },
+        },
+      ],
+    },
+    {
+      id: "status",
+      header: "Application",
+      columns: [
+        {
+          id: "status",
+          header: "Status",
+          cell: () => {
+            return (
+              <Tag variant="success" size={"small"} mode="pill">
+                Success
+              </Tag>
+            );
+          },
+        },
+        {
+          id: "action",
+          header: "Action",
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+        },
+      ],
+    },
+  ],
+  data: [
+    {
+      id: 1,
+      name: "John Doe",
+      age: 25,
+      position: "Software Engineer",
+    },
+    {
+      id: 2,
+      name: "Jane Doe",
+      age: 30,
+      position: "Product Manager",
+    },
+    {
+      id: 3,
+      name: "Alice",
+      age: 22,
+      position: "Designer",
+    },
+    {
+      id: 4,
+      name: "Bob",
+      age: 35,
+      position: "Software Engineer",
+    },
+    {
+      id: 5,
+      name: "Charlie",
+      age: 28,
+      position: "Data Scientist",
+    },
+    {
+      id: 6,
+      name: "Ali",
+      age: 25,
+      position: "Software Engineer",
+    },
+    {
+      id: 7,
+      name: "Jane",
+      age: 30,
+      position: "Product Manager",
+    },
+    {
+      id: 8,
+      name: "Alicia",
+      age: 22,
+      position: "Designer",
+    },
+    {
+      id: 9,
+      name: "Bobby",
+      age: 35,
+      position: "Software Engineer",
+    },
+    {
+      id: 10,
       name: "Charlie",
       age: 28,
       position: "Data Scientist",
