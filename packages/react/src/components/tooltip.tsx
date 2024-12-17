@@ -18,7 +18,7 @@ const TooltipContent = React.forwardRef<
     align="start"
     asChild={false}
     className={clx(
-      "bg-bg-black-900 border-bg-black-900 shadow-context-menu text-txt-white data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade z-50 min-w-[50px] max-w-[250px] border px-3 py-2 will-change-[transform,opacity]",
+      "bg-bg-black-900 border-bg-black-900 shadow-context-menu text-txt-white data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade z-50 min-w-[50px] max-w-[250px] rounded-sm border px-3 py-2 will-change-[transform,opacity]",
       className,
     )}
     {...props}
