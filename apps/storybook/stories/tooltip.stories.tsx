@@ -30,7 +30,7 @@ import { TooltipContent } from "@myds/react/_tooltip";
  * ```
  */
 const meta = {
-  title: "@myds/react/Tooltipz",
+  title: "@myds/react/Tooltip",
   component: Tooltip,
   tags: ["autodocs"],
   parameters: {
@@ -141,7 +141,8 @@ const EdgeTooltipDemo = (props: any) => {
             <QuestionCircleIcon />
           </TooltipTrigger>
           <TooltipContent side="right">
-            This tooltip has side assigned as "right"
+            This tooltip has side assigned as "right" but shown on the left side
+            as collision boundary prevents from colliding
           </TooltipContent>
         </Tooltip>
       </div>

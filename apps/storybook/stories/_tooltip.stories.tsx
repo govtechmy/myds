@@ -1,4 +1,3 @@
-import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@myds/react/_tooltip";
@@ -19,7 +18,8 @@ import { Button } from "@myds/react/button";
  * ```
  */
 const meta = {
-  title: "@myds/react/_Tooltip",
+  // rename this as for some reason, storybook still has clashing title even with the _
+  title: "@myds/react/_Tooltipz",
   component: Tooltip,
   tags: ["autodocs"],
   parameters: {
