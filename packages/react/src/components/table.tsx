@@ -32,7 +32,11 @@ const TableFooter: ForwardRefExoticComponent<ComponentProps<"tfoot">> =
   forwardRef(({ className, ...props }, ref) => (
     <tfoot
       ref={ref}
-      className={clx("border-t font-medium", className)}
+      className={clx(
+        "font-medium",
+        "[&_td]:border-otl-gray-200 [&_td]:border-y-2",
+        className,
+      )}
       {...props}
     />
   ));
@@ -43,7 +47,8 @@ const TableRow: ForwardRefExoticComponent<ComponentProps<"tr">> = forwardRef(
     <tr
       ref={ref}
       className={clx(
-        "*:border-otl-gray-200 *:border-b [&_th]:first:border-t-2 [&_th]:last:border-b-2 [&_th]:only:border-t-0",
+        "*:border-otl-gray-200 *:border-b",
+        "[&_th]:first:border-t-2 [&_th]:last:border-b-2 [&_th]:only:border-t-0",
         className,
       )}
       {...props}

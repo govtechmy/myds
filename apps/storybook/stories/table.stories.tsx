@@ -6,6 +6,7 @@ import {
   TableBody,
   TableCaption,
   TableCell,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -136,5 +137,63 @@ export const RowSpan: Story = createStory({
         <TableCell className="text-end"> RM 450 </TableCell>
       </TableRow>
     </TableBody>,
+  ],
+});
+
+export const Footer: Story = createStory({
+  children: [
+    <TableCaption>Tax Assessment Year 2023</TableCaption>,
+    <TableHeader>
+      <TableRow>
+        <TableHead>Category</TableHead>
+        <TableHead>Chargeable Income</TableHead>
+        <TableHead>Calculation (RM)</TableHead>
+        <TableHead className="text-center">Rate</TableHead>
+        <TableHead className="text-end">Tax</TableHead>
+      </TableRow>
+    </TableHeader>,
+    <TableBody>
+      <TableRow>
+        <TableCell> A </TableCell>
+        <TableCell> 0 - 5,000 </TableCell>
+        <TableCell> On the First 5,000 </TableCell>
+        <TableCell className="text-center"> 0% </TableCell>
+        <TableCell className="text-end"> RM 0 </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell rowSpan={2}> B </TableCell>
+        <TableCell rowSpan={2}> 5,000 - 20,000 </TableCell>
+        <TableCell> On the First 5,000 </TableCell>
+        <TableCell rowSpan={2} className="text-center">
+          1%
+        </TableCell>
+        <TableCell className="text-end"> RM 0 </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell> Next 15,000 </TableCell>
+        <TableCell className="text-end"> RM 150 </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell rowSpan={2}> C </TableCell>
+        <TableCell rowSpan={2}> 20,001 - 35,000 </TableCell>
+        <TableCell> On the First 20,000 </TableCell>
+        <TableCell rowSpan={2} className="text-center">
+          3%
+        </TableCell>
+        <TableCell className="text-end"> RM 150 </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell> Next 15,000 </TableCell>
+        <TableCell className="text-end"> RM 450 </TableCell>
+      </TableRow>
+    </TableBody>,
+    <TableFooter>
+      <TableRow>
+        <TableCell colSpan={4} className="text-end font-medium">
+          Total Tax
+        </TableCell>
+        <TableCell className="text-end font-medium">RM 600 </TableCell>
+      </TableRow>
+    </TableFooter>,
   ],
 });

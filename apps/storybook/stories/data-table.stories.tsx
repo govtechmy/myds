@@ -5,26 +5,109 @@ import type { TypeWithDeepControls } from "storybook-addon-deep-controls";
 import { Button } from "@myds/react/button";
 import { Tag } from "@myds/react/tag";
 
-/**
- * ### Overview
- * Insert a brief description of the component here.
- *
- * > Insert a ChatGPT pantun here
- *
- * ### Usage
- * ```tsx
- * import Table from "@myds/react/table";
- *
- * <Table />
- * ```
- */
-
 type EmployeeProps = {
   id: number;
   name: string;
   age: number;
   position: string;
 };
+
+/**
+ * ### Overview
+ *  `DataTable` component is used to display tabular data with various features such as expandable rows, sortable columns, and custom cell rendering.
+ *
+ * Features include:
+ * - ✅ Expandable rows
+ * - ✅ Sortable columns
+ * - ✅ Custom cell rendering
+ * - ✅ Selection modes: `checkbox` | `radio`
+ * - ✅ Nested rows
+ * - ✅ Footer
+ * - ✅ Pinned columns
+ * - ✅ Loading state
+ * - ✅ Empty state
+ * - ✅ Grouped headers
+ * - ✅ Fixed header
+ *
+ * ### Usage
+ * ```tsx
+ * import Table from "@myds/react/table";
+ *
+ * <DataTable
+ * columns={[
+ *   {
+ *     accessorKey: 'name',
+ *     header: 'Name',
+ *     id: 'name',
+ *     meta: {
+ *       expandable: true
+ *     }
+ *   },
+ *   {
+ *     accessorKey: 'age',
+ *     header: 'Age',
+ *     id: 'age',
+ *     meta: {
+ *       expandable: false,
+ *       tooltip: 'Age of the employee'
+ *     }
+ *   },
+ *   {
+ *     accessorKey: 'position',
+ *     header: 'Position',
+ *     id: 'position',
+ *     meta: {
+ *       expandable: true,
+ *       sortable: true,
+ *       tooltip: 'Position of the employee'
+ *     }
+ *   },
+ *   {
+ *     cell: () => {},
+ *     header: 'Status',
+ *     id: 'status'
+ *   },
+ *   {
+ *     cell: () => {},
+ *     header: 'Action',
+ *     id: 'action'
+ *   }
+ * ]}
+ * data={[
+ *   {
+ *     age: 25,
+ *     id: 1,
+ *     name: 'John Doe',
+ *     position: 'Software Engineer'
+ *   },
+ *   {
+ *     age: 30,
+ *     id: 2,
+ *     name: 'Jane Doe',
+ *     position: 'Product Manager'
+ *   },
+ *   {
+ *     age: 22,
+ *     id: 3,
+ *     name: 'Alice',
+ *     position: 'Designer'
+ *   },
+ *   {
+ *     age: 35,
+ *     id: 4,
+ *     name: 'Bob',
+ *     position: 'Software Engineer'
+ *   },
+ *   {
+ *     age: 28,
+ *     id: 5,
+ *     name: 'Charlie',
+ *     position: 'Data Scientist'
+ *   }
+ * ]}
+ * />
+ * ```
+ */
 
 const meta: Meta<typeof DataTable> = {
   title: "@myds/react/DataTable",
@@ -530,6 +613,57 @@ export const NestedRows: Story = createStory({
   },
 });
 
+export const Footer: Story = createStory({
+  columns: [
+    {
+      id: "name",
+      header: "Name",
+      accessorKey: "name",
+      meta: {
+        expandable: true,
+      },
+      footer: ({ table }) => `No. of Employees: ${table.getRowCount()}`,
+    },
+    {
+      id: "age",
+      header: "Age",
+      accessorKey: "age",
+      meta: {
+        expandable: false,
+        tooltip: "Age of the employee",
+      },
+    },
+    {
+      id: "position",
+      header: "Position",
+      accessorKey: "position",
+      meta: {
+        expandable: true,
+        sortable: true,
+        tooltip: "Position of the employee",
+      },
+    },
+    {
+      id: "status",
+      header: "Status",
+      cell: () => {
+        return (
+          <Tag variant="success" size={"small"} mode="pill">
+            Success
+          </Tag>
+        );
+      },
+    },
+    {
+      id: "action",
+      header: "Action",
+      cell: () => {
+        return <Button variant="default-outline">Edit</Button>;
+      },
+    },
+  ] satisfies ColumnDef<EmployeeProps>[],
+});
+
 export const PinnedColumns: Story = createStory({
   columns: [
     {
@@ -685,7 +819,7 @@ export const PinnedColumns: Story = createStory({
     onSelectionChange: (rows: any) => console.log(rows, "test"),
   },
   pin: {
-    left: ["radio", "name", "age"],
+    left: ["_radio", "name", "age"],
     right: ["position"],
   },
 });

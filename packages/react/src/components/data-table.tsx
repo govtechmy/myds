@@ -19,6 +19,7 @@ import {
   TableBody,
   TableCell,
   TableEmpty,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -77,33 +78,58 @@ interface DataTableProps<TData extends Record<string, any>> {
   emptyState?: ReactNode;
 }
 
-const column_pinning_cva = cva(["bg-bg-white"], {
+const pin_cva = cva(["bg-bg-white"], {
   variants: {
-    direction: {
+    pin_direction: {
       left: "sticky z-10",
       right: "sticky z-10 pl-2",
       false: "",
     },
-    isLast: {
+    pin_last: {
       true: "",
       false: "",
     },
   },
   compoundVariants: [
     {
-      direction: ["left"],
-      isLast: true,
+      pin_direction: ["left"],
+      pin_last: true,
       className:
         "before:right-0 before:border-none before:outline-none before:bottom-0 before:pointer-events-none before:contents-[''] before:absolute top-0 before:w-1 before:bg-transparent before:h-full before:py-0 before:shadow-[inset_3px_0_8px_-8px]",
     },
     {
-      direction: ["right"],
-      isLast: true,
+      pin_direction: ["right"],
+      pin_last: true,
       className:
         "before:left-0 before:border-none before:outline-none before:bottom-0 before:pointer-events-none before:contents-[''] before:absolute top-0 before:w-1 before:bg-transparent before:h-full before:py-0 before:shadow-[inset_-3px_0_8px_-8px]",
     },
   ],
 });
+
+// data-expanded={expandableColumns[header.id]}
+// data-pinned={header.column.getIsPinned()}
+// className={clx(
+//   "group transition",
+//   [expandable, sortable].some(Boolean) &&
+//     "hover:border-otl-primary-300 data-[expanded=true]:border-otl-primary-300",
+const th_cva = cva(
+  ["group transition data-[expanded=true]:border-otl-primary-300"],
+  {
+    variants: {
+      expandable: {
+        true: "hover:border-otl-primary-300",
+      },
+      sortable: {
+        true: "hover:border-otl-primary-300",
+      },
+    },
+  },
+);
+
+const cell_cva = cva([
+  "md:whitespace-nowrap whitespace-normal break-words",
+  "data-[expanded=true]:truncate max-w-[230px]",
+]);
 
 const DataTable = <TData extends Record<string, any>>({
   columns,
@@ -194,13 +220,12 @@ const DataTable = <TData extends Record<string, any>>({
                       key={header.id}
                       colSpan={header.colSpan}
                       data-expanded={expandableColumns[header.id]}
+                      data-pinned={header.column.getIsPinned()}
                       className={clx(
-                        "group transition",
-                        [expandable, sortable].some(Boolean) &&
-                          "hover:border-otl-primary-300 data-[expanded=true]:border-otl-primary-300",
-                        column_pinning_cva({
-                          direction: header.column.getIsPinned(),
-                          isLast: header.column.getIsLastColumn(
+                        th_cva({ expandable, sortable }),
+                        pin_cva({
+                          pin_direction: header.column.getIsPinned(),
+                          pin_last: header.column.getIsLastColumn(
                             header.column.getIsPinned(),
                           ),
                         }),
@@ -281,26 +306,21 @@ const DataTable = <TData extends Record<string, any>>({
               return (
                 <TableRow key={row.id}>
                   {row.getVisibleCells().map((cell) => {
-                    const columnDef = cell.column.columnDef;
-                    const headerId = columnDef.id as string;
-                    const canExpand = expandableColumns[headerId];
                     return (
                       <TableCell
                         id={cell.id}
                         key={cell.id}
+                        data-expanded={expandableColumns[cell.column.id]}
+                        data-pinned={cell.column.getIsPinned()}
                         className={clx(
-                          "sm:whitespace-nowrap",
-                          "whitespace-normal break-words",
-                          typeof expandableColumns[headerId] === "boolean" &&
-                            `truncate ${!canExpand && "max-w-[230px]"}`,
-                          cell.column.columnDef.meta?.className?.cell,
-                          cell.column.getIsPinned() && "bg-bg-white",
-                          column_pinning_cva({
-                            direction: cell.column.getIsPinned(),
-                            isLast: cell.column.getIsLastColumn(
+                          cell_cva(),
+                          pin_cva({
+                            pin_direction: cell.column.getIsPinned(),
+                            pin_last: cell.column.getIsLastColumn(
                               cell.column.getIsPinned(),
                             ),
                           }),
+                          cell.column.columnDef.meta?.className?.cell,
                         )}
                         style={{ ...getCommonPinningStyles(cell.column) }}
                       >
@@ -322,6 +342,38 @@ const DataTable = <TData extends Record<string, any>>({
             </TableRow>
           )}
         </TableBody>
+        <TableFooter>
+          {table.getFooterGroups().map((footerGroup) => (
+            <TableRow key={footerGroup.id}>
+              {footerGroup.headers.map((header) => (
+                <TableCell
+                  key={header.id}
+                  colSpan={header.colSpan}
+                  data-expanded={expandableColumns[header.column.id]}
+                  data-pinned={header.column.getIsPinned()}
+                  className={clx(
+                    cell_cva(),
+                    pin_cva({
+                      pin_direction: header.column.getIsPinned(),
+                      pin_last: header.column.getIsLastColumn(
+                        header.column.getIsPinned(),
+                      ),
+                    }),
+                    header.column.columnDef.meta?.className?.cell,
+                  )}
+                  style={{ ...getCommonPinningStyles(header.column) }}
+                >
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.footer,
+                        header.getContext(),
+                      )}
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
+        </TableFooter>
       </Table>
     </>
   );
@@ -330,7 +382,7 @@ const DataTable = <TData extends Record<string, any>>({
 const checkboxColumn = <TData extends Record<string, any>>() => {
   const columnHelper = createColumnHelper<TData>();
   return columnHelper.display({
-    id: "checkbox",
+    id: "_checkbox",
     size: 46,
     enableResizing: true,
     header: ({ table }) => (
@@ -358,7 +410,7 @@ const checkboxColumn = <TData extends Record<string, any>>() => {
 const radioColumn = <TData extends Record<string, any>>() => {
   const columnHelper = createColumnHelper<TData>();
   return columnHelper.display({
-    id: "radio",
+    id: "_radio",
     size: 46,
     enableResizing: false,
     header: ({ table }) => (
@@ -374,7 +426,7 @@ const radioColumn = <TData extends Record<string, any>>() => {
         </Button>
       </div>
     ),
-    cell: ({ row, getValue, table }) => (
+    cell: ({ row }) => (
       <div
         className={clx(
           "shadow-button hover:border-otl-gray-300 border-otl-gray-200 flex aspect-square size-4 items-center justify-center rounded-full border",
@@ -441,10 +493,17 @@ const getCommonPinningStyles = <TData extends Record<string, any>>(
   };
 };
 
+/**
+ * Reserved columns for DataTable
+ */
 const Column = {
   Checkbox: checkboxColumn,
   Radio: radioColumn,
 };
+
+/**
+ * Reserved cells for DataTable
+ */
 const Cell = {
   Expand: expandCell,
 };
