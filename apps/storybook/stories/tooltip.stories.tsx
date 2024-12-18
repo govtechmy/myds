@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { Tooltip } from "@myds/react/tooltip";
+import { Tooltip, TooltipTrigger } from "@myds/react/tooltip";
 import { QuestionCircleIcon } from "@myds/react/icon";
+import { TooltipContent } from "@myds/react/_tooltip";
 
 /**
  * ### Overview
@@ -18,76 +19,90 @@ import { QuestionCircleIcon } from "@myds/react/icon";
  *
  * ### Usage
  * ```tsx
- * // Provide tooltip provider for the usage. It can be at root level or within any specific context.
+ * import { Tooltip, TooltipTrigger, TooltipContent } from "@myds/react/tooltip";
  *
- * // in `app/layout.tsx`
- * import { TooltipProvider } from "@myds/react/tooltip";
- *
- * <TooltipProvider>{children}</TooltipProvider>
- *
- * // usage context
- * import { Tooltip } from "@myds/react/tooltip";
- *
- * <Tooltip content="Hello from the other side">
- *    <QuestionCircleIcon />
+ * <Tooltip>
+ *    <TooltipTrigger>
+ *      <QuestionCircleIcon />
+ *    </TooltipTrigger>
+ *    <TooltipContent>What does the fox says?</TooltipContent>,
  * </Tooltip>
  * ```
  */
 const meta = {
-  title: "@myds/react/Tooltip",
+  title: "@myds/react/Tooltipz",
   component: Tooltip,
+  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
-  args: {
-    side: "top",
-    align: "center",
-    open: true,
-  },
+  args: { children: "basic", open: undefined },
   argTypes: {
-    side: {
-      table: {
-        type: {
-          summary: "enum",
-        },
-      },
-      description: "The position the content will appear",
-      control: "inline-radio",
-      options: ["top", "left", "right", "bottom"],
-    },
-    sideOffset: {
-      table: {
-        defaultValue: {
-          summary: "0",
-        },
-      },
-      description: "The offset position of content from the trigger",
-      control: "number",
-    },
-    align: {
-      table: {
-        type: {
-          summary: "enum",
-        },
-      },
-      description: "The position where the tooltip content will anchor to",
-      control: "inline-radio",
-      options: ["center", "start", "end"],
-    },
-    alignOffset: {
-      table: {
-        defaultValue: {
-          summary: "0",
-        },
-      },
-      description: "The offset position of content from the anchor position",
-      control: "number",
+    open: {
+      type: "boolean",
+      control: "radio",
+      options: [true, false, undefined],
     },
     children: {
-      description: "The trigger component",
-    },
-    container: {
-      description: "Specify a container element to portal the content into.",
+      type: "string",
+      control: "select",
+      options: [
+        "basic",
+        "top",
+        "bottom",
+        "left",
+        "right",
+        "edge-right",
+        "edge-left",
+      ],
+      mapping: {
+        basic: [
+          <TooltipTrigger>
+            <QuestionCircleIcon />
+          </TooltipTrigger>,
+          <TooltipContent>What does the fox says?</TooltipContent>,
+        ],
+        top: [
+          <TooltipTrigger>
+            <QuestionCircleIcon />
+          </TooltipTrigger>,
+          <TooltipContent side="top" align="center">
+            What does the fox says?
+          </TooltipContent>,
+        ],
+        bottom: [
+          <TooltipTrigger>
+            <QuestionCircleIcon />
+          </TooltipTrigger>,
+          <TooltipContent side="bottom" align="center">
+            What does the fox says?
+          </TooltipContent>,
+        ],
+        left: [
+          <TooltipTrigger>
+            <QuestionCircleIcon />
+          </TooltipTrigger>,
+          <TooltipContent side="left" align="center">
+            What does the fox says?
+          </TooltipContent>,
+        ],
+        right: [
+          <TooltipTrigger>
+            <QuestionCircleIcon />
+          </TooltipTrigger>,
+          <TooltipContent side="right" align="center">
+            What does the fox says?
+          </TooltipContent>,
+        ],
+        basicDark: [
+          <TooltipTrigger>
+            <QuestionCircleIcon className="text-bg-white" />
+          </TooltipTrigger>,
+          <TooltipContent className="dark" side="right">
+            What does the fox says?
+          </TooltipContent>,
+        ],
+      },
     },
   },
 } satisfies Meta<typeof Tooltip>;
@@ -100,7 +115,24 @@ type Story = StoryObj<typeof meta>;
  *
  */
 
-export const Default: Story = createStory({
-  children: <QuestionCircleIcon />,
-  content: "Hello from the other side",
+export const Basic: Story = createStory({
+  children: "basic",
 });
+export const Top: Story = createStory({
+  children: "top",
+});
+export const Right: Story = createStory({
+  children: "right",
+});
+export const Left: Story = createStory({
+  children: "left",
+});
+export const Bottom: Story = createStory({
+  children: "bottom",
+});
+export const BasicDark: Story = createStory(
+  {
+    children: "basicDark",
+  },
+  "dark",
+);

@@ -16,15 +16,7 @@ const Tooltip: ForwardRefExoticComponent<
   );
 });
 
-const TooltipTrigger: ForwardRefExoticComponent<
-  ComponentProps<typeof TooltipPrimitive.Trigger>
-> = forwardRef(({ children, asChild = true }, ref) => {
-  return (
-    <TooltipPrimitive.Trigger ref={ref} asChild={asChild}>
-      {children}
-    </TooltipPrimitive.Trigger>
-  );
-});
+const TooltipTrigger = TooltipPrimitive.Trigger;
 
 const TooltipContent: ForwardRefExoticComponent<
   ComponentProps<typeof TooltipPrimitive.Content> &
