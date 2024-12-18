@@ -28,3 +28,23 @@ const twMergeConfig = extendTailwindMerge({
 export const clx = (...args: ClassNameValue[]): string => {
   return twMergeConfig(args);
 };
+
+/**
+ * Pick into key-pairs from array of objects.
+ * @param results Array of objects
+ * @param key Key of record
+ * @param value Value of record
+ * @returns {Record<string, any>} ObjectMap
+ */
+export const pick = <T = string>(
+  results: Array<T>,
+  key: keyof T | ((item: T) => string),
+  value: keyof T | ((item: T) => unknown),
+): Record<string, any> => {
+  return results.reduce((previous, current) => {
+    const _key = typeof key === "function" ? key(current) : current[key];
+    const _value =
+      typeof value === "function" ? value(current) : current[value];
+    return { ...previous, [_key as string]: _value };
+  }, {});
+};

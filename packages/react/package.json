@@ -6,8 +6,19 @@
     "./utils": {
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
-    }
-,
+    },
+    "./_tooltip": {
+      "type": "./src/components/_tooltip.tsx",
+      "default": "./src/components/_tooltip.tsx"
+    },
+    "./table": {
+      "type": "./src/components/table.tsx",
+      "default": "./src/components/table.tsx"
+    },
+    "./data-table": {
+      "type": "./src/components/data-table.tsx",
+      "default": "./src/components/data-table.tsx"
+    },
     "./callout": {
       "type": "./src/components/callout.tsx",
       "default": "./src/components/callout.tsx"
@@ -156,6 +167,8 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",
+    "@radix-ui/react-tooltip": "^1.1.4",
+    "@tanstack/react-table": "^8.20.5",
     "class-variance-authority": "^0.7.0",
     "cmdk": "^1.0.4",
     "date-fns": "^4.1.0",
