@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { Tooltip, TooltipTrigger } from "@myds/react/tooltip";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@myds/react/tooltip";
 import { QuestionCircleIcon } from "@myds/react/icon";
-import { TooltipContent } from "@myds/react/_tooltip";
 
 /**
  * ### Overview
