@@ -26,8 +26,6 @@ const TooltipContent: ForwardRefExoticComponent<
     <TooltipPrimitive.Portal container={container} forceMount={forceMount}>
       <TooltipPrimitive.Content
         ref={ref}
-        side="top"
-        align="center"
         asChild={false}
         className={clx(
           "bg-bg-black-900 border-bg-black-900 shadow-context-menu text-txt-white data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade z-50 min-w-[50px] max-w-[250px] rounded-sm border px-3 py-2 text-xs transition-none will-change-[transform,opacity]",

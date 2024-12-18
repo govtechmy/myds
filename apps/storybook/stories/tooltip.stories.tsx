@@ -130,6 +130,97 @@ export const Left: Story = createStory({
 export const Bottom: Story = createStory({
   children: "bottom",
 });
+
+const EdgeTooltipDemo = (props: any) => {
+  return (
+    <div className="flex h-[100vh] flex-col items-center justify-center gap-4 p-10">
+      <div className="flex w-full">
+        <div className="flex-1" />
+        <Tooltip>
+          <TooltipTrigger>
+            <QuestionCircleIcon />
+          </TooltipTrigger>
+          <TooltipContent side="right">
+            This tooltip has side assigned as "right"
+          </TooltipContent>
+        </Tooltip>
+      </div>
+      <div className="flex w-full">
+        <div className="flex-1" />
+        <Tooltip>
+          <TooltipTrigger>
+            <QuestionCircleIcon />
+          </TooltipTrigger>
+          <TooltipContent side="bottom" align="end">
+            This tooltip has side assigned as "bottom"
+          </TooltipContent>
+        </Tooltip>
+      </div>
+      <Tooltip>
+        <TooltipTrigger>
+          <QuestionCircleIcon />
+        </TooltipTrigger>
+        <TooltipContent>Hello world</TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger>
+          <QuestionCircleIcon />
+        </TooltipTrigger>
+        <TooltipContent side="right">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger>
+          <QuestionCircleIcon />
+        </TooltipTrigger>
+        <TooltipContent side="left">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger>
+          <QuestionCircleIcon />
+        </TooltipTrigger>
+        <TooltipContent side="bottom">Hello world</TooltipContent>
+      </Tooltip>
+      <div className="w-full">
+        <Tooltip>
+          <TooltipTrigger>
+            <QuestionCircleIcon />
+          </TooltipTrigger>
+          <TooltipContent side="left">Hello world</TooltipContent>
+        </Tooltip>
+      </div>
+      <div className="w-full">
+        <Tooltip>
+          <TooltipTrigger>
+            <QuestionCircleIcon />
+          </TooltipTrigger>
+          <TooltipContent side="top" align="start">
+            Hello wodsdasdsadsarld
+          </TooltipContent>
+        </Tooltip>
+      </div>
+    </div>
+  );
+};
+
+export const EdgeTooltips: Story = {
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      story: {
+        inline: false,
+        height: "500px",
+      },
+    },
+  },
+  render: () => <EdgeTooltipDemo />,
+};
+
 export const BasicDark: Story = createStory(
   {
     children: "basicDark",
