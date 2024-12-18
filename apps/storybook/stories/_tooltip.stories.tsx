@@ -1,7 +1,7 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@myds/react/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@myds/react/_tooltip";
 import { InfoIcon } from "@myds/react/icon";
 import { Button } from "@myds/react/button";
 
@@ -19,7 +19,7 @@ import { Button } from "@myds/react/button";
  * ```
  */
 const meta = {
-  title: "@myds/react/Tooltip",
+  title: "@myds/react/_Tooltip",
   component: Tooltip,
   tags: ["autodocs"],
   parameters: {

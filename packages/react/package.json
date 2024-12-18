@@ -7,9 +7,9 @@
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
     },
-    "./tooltip": {
-      "type": "./src/components/tooltip.tsx",
-      "default": "./src/components/tooltip.tsx"
+    "./_tooltip": {
+      "type": "./src/components/_tooltip.tsx",
+      "default": "./src/components/_tooltip.tsx"
     },
     "./table": {
       "type": "./src/components/table.tsx",

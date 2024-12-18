@@ -1,7 +1,7 @@
 import { QuestionCircleIcon } from "../icons";
 import { clx } from "../utils";
 import { forwardRef, ForwardRefExoticComponent, ComponentProps } from "react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./_tooltip";
 
 const Table: ForwardRefExoticComponent<ComponentProps<"table">> = forwardRef(
   ({ className, ...props }, ref) => (
