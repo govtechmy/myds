@@ -31,18 +31,20 @@ import { XIcon } from "@myds/react/icon";
  * ### Usage
  * ```tsx
  * import {
- *   Footer,
- *   Address,
- *   FooterBottomSection,
- *   FooterCopyright,
- *   FooterContent,
- *   FooterMainInfo,
- *   FooterTimestamp,
- *   FooterTopSection,
- *   ImageWithTitle,
- *   SocialMedia,
- *   FooterCopyrightDate,
- *   FooterCopyrightLinkWrapper,
+  Footer,
+  FooterTopSection,
+  FooterMainInfo,
+  ImageWithTitle,
+  Address,
+  SocialMedia,
+  SocialMediaItem,
+  FooterContent,
+  FooterContentColumn,
+  FooterBottomSection,
+  FooterCopyright,
+  FooterCopyrightDate,
+  FooterCopyrightLinkWrapper,
+  FooterTimestamp,
  * } from "@myds/react/footer";
  * ```
  */
