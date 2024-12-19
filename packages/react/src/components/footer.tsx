@@ -125,41 +125,49 @@ const Address: FunctionComponent<ComponentProps<"p">> = ({
 );
 
 // Social Media
-interface SocialMediaItem {
-  icon: React.ReactNode;
-  href: string;
-  name: string;
+interface SocialMediaProps extends React.ComponentProps<"div"> {
+  title?: string;
+  children: ReactNode;
 }
-interface SocialMediaProps extends ComponentProps<"div"> {
-  social_media: SocialMediaItem[];
-}
+
 const SocialMedia: FunctionComponent<SocialMediaProps> = ({
+  title,
   children,
   className,
-  social_media,
   ...props
 }) => (
   <div
     className={clx("text-txt-black-700 space-y-2 lg:space-y-3", className)}
     {...props}
   >
-    <p className="text-txt-black-900 text-sm font-semibold">{children}</p>
-    <div className="flex gap-3">
-      {social_media.map(({ icon, href, name }) => (
-        <Link
-          key={name}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={name}
-          underline="none"
-          className="hover:text-txt-black-900"
-        >
-          {icon}
-        </Link>
-      ))}
-    </div>
+    {title && (
+      <p className="text-txt-black-900 text-sm font-semibold">{title}</p>
+    )}
+    <div className="flex gap-3">{children}</div>
   </div>
+);
+
+interface SocialMediaItemProps {
+  icon: ReactNode;
+  href: string;
+  name: string;
+}
+
+const SocialMediaItem: FunctionComponent<SocialMediaItemProps> = ({
+  icon,
+  href,
+  name,
+}) => (
+  <Link
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={name}
+    underline="none"
+    className="hover:text-txt-black-900"
+  >
+    {icon}
+  </Link>
 );
 
 //====================================================================================================
@@ -261,6 +269,7 @@ export {
   ImageWithTitle,
   Address,
   SocialMedia,
+  SocialMediaItem,
   FooterContent,
   FooterContentColumn,
   FooterBottomSection,

@@ -14,12 +14,14 @@ import {
   FooterCopyrightDate,
   FooterCopyrightLinkWrapper,
   FooterContentColumn,
+  SocialMediaItem,
 } from "@myds/react/footer";
 import { Link } from "@myds/react/link";
 import { FacebookIcon } from "../../../packages/react/src/icons/facebook";
 import { InstagramIcon } from "../../../packages/react/src/icons/instagram";
 import { TwitterIcon } from "../../../packages/react/src/icons/twitter";
 import { TikTokIcon } from "../../../packages/react/src/icons/tiktok";
+import { XIcon } from "@myds/react/icon";
 
 /**
  * ### Overview
@@ -104,7 +106,18 @@ export const Default: Story = {
                 12345 Sample Postal Code,{"\n"}
                 Sample Country
               </Address>
-              <SocialMedia social_media={social_media}>Follow Us</SocialMedia>
+              <SocialMedia title="Follow Us">
+                <SocialMediaItem
+                  icon={<FacebookIcon />}
+                  href={"www.google.com"}
+                  name={"Facebook"}
+                />
+                <SocialMediaItem
+                  icon={<TikTokIcon />}
+                  href={"www.google.com"}
+                  name={"Facebook"}
+                />
+              </SocialMedia>
             </FooterMainInfo>
             <FooterContent>
               <FooterContentColumn title={"Title 1"}>
@@ -216,7 +229,28 @@ export const Custom: Story = {
                 Pusat Pentadbiran Kerajaan Persekutuan{"\n"}
                 62000 Putrajaya, Malaysia
               </Address>
-              <SocialMedia social_media={social_media}>Follow Us</SocialMedia>
+              <SocialMedia title="Follow Us">
+                <SocialMediaItem
+                  icon={<FacebookIcon />}
+                  href={"www.google.com"}
+                  name={"Facebook"}
+                />
+                <SocialMediaItem
+                  icon={<XIcon />}
+                  href={"www.google.com"}
+                  name={"Facebook"}
+                />
+                <SocialMediaItem
+                  icon={<InstagramIcon />}
+                  href={"www.google.com"}
+                  name={"Facebook"}
+                />
+                <SocialMediaItem
+                  icon={<TikTokIcon />}
+                  href={"www.google.com"}
+                  name={"Facebook"}
+                />
+              </SocialMedia>
             </FooterMainInfo>
             <FooterContent>
               <FooterContentColumn title={"About Us"}>
@@ -345,7 +379,28 @@ export const CustomDark: Story = {
                 Pusat Pentadbiran Kerajaan Persekutuan{"\n"}
                 62000 Putrajaya, Malaysia
               </Address>
-              <SocialMedia social_media={social_media}>Follow Us</SocialMedia>
+              <SocialMedia title="Follow Us">
+                <SocialMediaItem
+                  icon={<FacebookIcon />}
+                  href={"www.google.com"}
+                  name={"Facebook"}
+                />
+                <SocialMediaItem
+                  icon={<XIcon />}
+                  href={"www.google.com"}
+                  name={"Facebook"}
+                />
+                <SocialMediaItem
+                  icon={<InstagramIcon />}
+                  href={"www.google.com"}
+                  name={"Facebook"}
+                />
+                <SocialMediaItem
+                  icon={<TikTokIcon />}
+                  href={"www.google.com"}
+                  name={"Facebook"}
+                />
+              </SocialMedia>
             </FooterMainInfo>
             <FooterContent>
               <FooterContentColumn title={"About Us"}>
