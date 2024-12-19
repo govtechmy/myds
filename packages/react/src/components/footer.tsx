@@ -1,4 +1,4 @@
-import { ComponentProps, FunctionComponent, PropsWithChildren } from "react";
+import { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { clx } from "../utils";
 import { Link } from "./link";
 
@@ -49,47 +49,32 @@ const FooterMainInfo: FunctionComponent<ComponentProps<"div">> = ({
   </div>
 );
 
-//Footer Link
+//Footer Content
 
-interface LinkItem {
-  name: string;
-  href: string;
+interface FooterContentProps {
+  children: React.ReactNode;
 }
 
-type LinksObject = Record<string, LinkItem[]>;
-interface FooterLinkProps extends ComponentProps<"div"> {
-  links: LinksObject;
+const FooterContent: FunctionComponent<FooterContentProps> = ({ children }) => (
+  <div className="text-txt-black-900 flex flex-col gap-6 text-sm lg:flex-row">
+    {children}
+  </div>
+);
+
+interface FooterContentColumnProps {
+  children: ReactNode;
+  title: string;
 }
 
-const FooterContent: FunctionComponent<FooterLinkProps> = ({
+const FooterContentColumn: FunctionComponent<FooterContentColumnProps> = ({
+  title,
   children,
-  className,
-  links,
-  ...props
 }) => (
-  <div
-    className="text-txt-black-900 flex flex-col gap-6 text-sm lg:flex-row"
-    {...props}
-  >
-    {Object.entries(links).map(([category, items]) => (
-      <div className="space-y-2" key={category}>
-        <p className="font-semibold">{category}</p>
-        <div className="grid grid-cols-2 flex-col gap-y-2 sm:grid-cols-4 sm:gap-x-6 lg:flex lg:w-[200px] lg:gap-2">
-          {items.map(({ name, href }) => (
-            <Link
-              key={name}
-              className="text-txt-black-700 underline-font hover:text-txt-black-900 text-sm hover:underline"
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              underline="none"
-            >
-              {name}
-            </Link>
-          ))}
-        </div>
-      </div>
-    ))}
+  <div className="space-y-2">
+    <p className="font-semibold">{title}</p>
+    <div className="grid grid-cols-2 flex-col gap-y-2 sm:grid-cols-4 sm:gap-x-6 lg:flex lg:w-[200px] lg:gap-2">
+      {children}
+    </div>
   </div>
 );
 
@@ -277,6 +262,7 @@ export {
   Address,
   SocialMedia,
   FooterContent,
+  FooterContentColumn,
   FooterBottomSection,
   FooterCopyright,
   FooterCopyrightDate,

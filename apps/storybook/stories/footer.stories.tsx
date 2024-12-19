@@ -13,6 +13,7 @@ import {
   SocialMedia,
   FooterCopyrightDate,
   FooterCopyrightLinkWrapper,
+  FooterContentColumn,
 } from "@myds/react/footer";
 import { Link } from "@myds/react/link";
 import { FacebookIcon } from "../../../packages/react/src/icons/facebook";
@@ -72,27 +73,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   ...createStory({}, "light"),
   render: () => {
-    const links = {
-      "Title 1": [
-        { name: "Link 1", href: "https://www.google.com/" },
-        { name: "Link 2", href: "https://www.google.com/" },
-        { name: "Link 3", href: "https://www.google.com/" },
-        { name: "Link 4", href: "https://www.google.com/" },
-      ],
-      "Title 2": [
-        { name: "Link 1", href: "https://www.google.com/" },
-        { name: "Link 2", href: "https://www.google.com/" },
-        { name: "Link 3", href: "https://www.google.com/" },
-        { name: "Link 4", href: "https://www.google.com/" },
-      ],
-      "Title 3": [
-        { name: "Link 1", href: "https://www.google.com/" },
-        { name: "Link 2", href: "https://www.google.com/" },
-        { name: "Link 3", href: "https://www.google.com/" },
-        { name: "Link 4", href: "https://www.google.com/" },
-      ],
-    };
-
     const social_media = [
       {
         icon: <FacebookIcon />,
@@ -126,7 +106,44 @@ export const Default: Story = {
               </Address>
               <SocialMedia social_media={social_media}>Follow Us</SocialMedia>
             </FooterMainInfo>
-            <FooterContent links={links}></FooterContent>
+            <FooterContent>
+              <FooterContentColumn title={"Title 1"}>
+                <Link href="www.google.com" underline="hover">
+                  Link 1
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Link 2
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Link 3
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Link 4
+                </Link>
+              </FooterContentColumn>
+              <FooterContentColumn title={"Title 2"}>
+                <Link href="www.google.com" underline="hover">
+                  Link 1
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Link 2
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Link 3
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Link 4
+                </Link>
+              </FooterContentColumn>
+              <FooterContentColumn title={"Open Source"}>
+                <Link href="www.google.com" underline="hover">
+                  Github Repo
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Figma
+                </Link>
+              </FooterContentColumn>
+            </FooterContent>
           </FooterTopSection>
           <FooterBottomSection>
             <FooterCopyright>
@@ -158,30 +175,6 @@ export const Default: Story = {
 export const Custom: Story = {
   ...createStory({}, "light"),
   render: () => {
-    const links = {
-      "About Us": [
-        { name: "Ministry of Digital", href: "https://www.google.com/" },
-        { name: "Directory", href: "https://www.google.com/" },
-        { name: "Achievements", href: "https://www.google.com/" },
-        { name: "Policy", href: "https://www.google.com/" },
-        { name: "Media", href: "https://www.google.com/" },
-        { name: "Contact Us", href: "https://www.google.com/" },
-      ],
-      "Quick Links": [
-        { name: "SpotMe", href: "https://www.google.com/" },
-        { name: "MyGovUC", href: "https://www.google.com/" },
-        { name: "DDMS", href: "https://www.google.com/" },
-        { name: "MyMesyuarat", href: "https://www.google.com/" },
-        { name: "ePenyata Gaji", href: "https://www.google.com/" },
-        { name: "HRMIS", href: "https://www.google.com/" },
-        { name: "ePerolehan", href: "https://www.google.com/" },
-      ],
-      "Open Source": [
-        { name: "Github Repo", href: "https://www.google.com/" },
-        { name: "Figma", href: "https://www.google.com/" },
-      ],
-    };
-
     const social_media = [
       {
         icon: <FacebookIcon />,
@@ -225,7 +218,62 @@ export const Custom: Story = {
               </Address>
               <SocialMedia social_media={social_media}>Follow Us</SocialMedia>
             </FooterMainInfo>
-            <FooterContent links={links}></FooterContent>
+            <FooterContent>
+              <FooterContentColumn title={"About Us"}>
+                <Link href="www.google.com" underline="hover">
+                  Ministry Of Digital
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Directory
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Achievements
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Directory
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Policy
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Media
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Contact Us
+                </Link>
+              </FooterContentColumn>
+              <FooterContentColumn title={"Quick Links"}>
+                <Link href="https://www.google.com" underline="hover">
+                  SpotMe
+                </Link>
+                <Link href="https://www.google.com" underline="hover">
+                  MyGovUC
+                </Link>
+                <Link href="https://www.google.com" underline="hover">
+                  DDMS
+                </Link>
+                <Link href="https://www.google.com" underline="hover">
+                  MyMesyuarat
+                </Link>
+                <Link href="https://www.google.com" underline="hover">
+                  ePenyata Gaji
+                </Link>
+                <Link href="https://www.google.com" underline="hover">
+                  HRMIS
+                </Link>
+                <Link href="https://www.google.com" underline="hover">
+                  ePerolehan
+                </Link>
+              </FooterContentColumn>
+              <FooterContentColumn title={"Open Source"}>
+                <Link href="https://github.com" underline="hover">
+                  GitHub Repo
+                </Link>
+                <Link href="https://www.figma.com" underline="hover">
+                  Figma
+                </Link>
+              </FooterContentColumn>
+            </FooterContent>
           </FooterTopSection>
           <FooterBottomSection>
             <FooterCopyright>
@@ -256,30 +304,6 @@ export const Custom: Story = {
 export const CustomDark: Story = {
   ...createStory({}, "dark"),
   render: () => {
-    const links = {
-      "About Us": [
-        { name: "Ministry of Digital", href: "https://www.google.com/" },
-        { name: "Directory", href: "https://www.google.com/" },
-        { name: "Achievements", href: "https://www.google.com/" },
-        { name: "Policy", href: "https://www.google.com/" },
-        { name: "Media", href: "https://www.google.com/" },
-        { name: "Contact Us", href: "https://www.google.com/" },
-      ],
-      "Quick Links": [
-        { name: "SpotMe", href: "https://www.google.com/" },
-        { name: "MyGovUC", href: "https://www.google.com/" },
-        { name: "DDMS", href: "https://www.google.com/" },
-        { name: "MyMesyuarat", href: "https://www.google.com/" },
-        { name: "ePenyata Gaji", href: "https://www.google.com/" },
-        { name: "HRMIS", href: "https://www.google.com/" },
-        { name: "ePerolehan", href: "https://www.google.com/" },
-      ],
-      "Open Source": [
-        { name: "Github Repo", href: "https://www.google.com/" },
-        { name: "Figma", href: "https://www.google.com/" },
-      ],
-    };
-
     const social_media = [
       {
         icon: <FacebookIcon />,
@@ -323,17 +347,72 @@ export const CustomDark: Story = {
               </Address>
               <SocialMedia social_media={social_media}>Follow Us</SocialMedia>
             </FooterMainInfo>
-            <FooterContent links={links}></FooterContent>
+            <FooterContent>
+              <FooterContentColumn title={"About Us"}>
+                <Link href="www.google.com" underline="hover">
+                  Ministry Of Digital
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Directory
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Achievements
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Directory
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Policy
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Media
+                </Link>
+                <Link href="www.google.com" underline="hover">
+                  Contact Us
+                </Link>
+              </FooterContentColumn>
+              <FooterContentColumn title={"Quick Links"}>
+                <Link href="https://www.google.com" underline="hover">
+                  SpotMe
+                </Link>
+                <Link href="https://www.google.com" underline="hover">
+                  MyGovUC
+                </Link>
+                <Link href="https://www.google.com" underline="hover">
+                  DDMS
+                </Link>
+                <Link href="https://www.google.com" underline="hover">
+                  MyMesyuarat
+                </Link>
+                <Link href="https://www.google.com" underline="hover">
+                  ePenyata Gaji
+                </Link>
+                <Link href="https://www.google.com" underline="hover">
+                  HRMIS
+                </Link>
+                <Link href="https://www.google.com" underline="hover">
+                  ePerolehan
+                </Link>
+              </FooterContentColumn>
+              <FooterContentColumn title={"Open Source"}>
+                <Link href="https://github.com" underline="hover">
+                  GitHub Repo
+                </Link>
+                <Link href="https://www.figma.com" underline="hover">
+                  Figma
+                </Link>
+              </FooterContentColumn>
+            </FooterContent>
           </FooterTopSection>
           <FooterBottomSection>
             <FooterCopyright>
               <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
               <FooterCopyrightLinkWrapper>
-                <Link href="www.google.com" underline="hover">
+                <Link href="https://www.google.com" underline="hover">
                   Disclaimer
                 </Link>
-                <Link href="www.google.com" underline="hover">
-                  Privacy Policy
+                <Link href="https://www.google.com" underline="hover">
+                  Disclaimer
                 </Link>
               </FooterCopyrightLinkWrapper>
             </FooterCopyright>
