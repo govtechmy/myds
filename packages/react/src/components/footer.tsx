@@ -72,7 +72,7 @@ const FooterContentColumn: FunctionComponent<FooterContentColumnProps> = ({
 }) => (
   <div className="space-y-2">
     <p className="font-semibold">{title}</p>
-    <div className="grid grid-cols-2 flex-col gap-y-2 sm:grid-cols-4 sm:gap-x-6 lg:flex lg:w-[200px] lg:gap-2">
+    <div className="text-txt-black-700 grid grid-cols-2 flex-col gap-y-2 sm:grid-cols-4 sm:gap-x-6 lg:flex lg:w-[200px] lg:gap-2">
       {children}
     </div>
   </div>

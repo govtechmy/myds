@@ -19,7 +19,6 @@ import {
 import { Link } from "@myds/react/link";
 import { FacebookIcon } from "../../../packages/react/src/icons/facebook";
 import { InstagramIcon } from "../../../packages/react/src/icons/instagram";
-import { TwitterIcon } from "../../../packages/react/src/icons/twitter";
 import { TikTokIcon } from "../../../packages/react/src/icons/tiktok";
 import { XIcon } from "@myds/react/icon";
 
@@ -102,44 +101,84 @@ export const Default: Story = {
                 <SocialMediaItem
                   icon={<TikTokIcon />}
                   href={"www.google.com"}
-                  name={"Facebook"}
+                  name={"TikTok"}
                 />
               </SocialMedia>
             </FooterMainInfo>
             <FooterContent>
               <FooterContentColumn title={"Title 1"}>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Link 1
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Link 2
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Link 3
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Link 4
                 </Link>
               </FooterContentColumn>
               <FooterContentColumn title={"Title 2"}>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Link 1
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Link 2
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Link 3
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Link 4
                 </Link>
               </FooterContentColumn>
               <FooterContentColumn title={"Open Source"}>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Github Repo
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Figma
                 </Link>
               </FooterContentColumn>
@@ -149,10 +188,18 @@ export const Default: Story = {
             <FooterCopyright>
               <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
               <FooterCopyrightLinkWrapper>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Disclaimer
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Privacy Policy
                 </Link>
               </FooterCopyrightLinkWrapper>
@@ -202,72 +249,136 @@ export const Custom: Story = {
                 <SocialMediaItem
                   icon={<XIcon />}
                   href={"www.google.com"}
-                  name={"Facebook"}
+                  name={"X"}
                 />
                 <SocialMediaItem
                   icon={<InstagramIcon />}
                   href={"www.google.com"}
-                  name={"Facebook"}
+                  name={"Instagram"}
                 />
                 <SocialMediaItem
                   icon={<TikTokIcon />}
                   href={"www.google.com"}
-                  name={"Facebook"}
+                  name={"TikTok"}
                 />
               </SocialMedia>
             </FooterMainInfo>
             <FooterContent>
               <FooterContentColumn title={"About Us"}>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Ministry Of Digital
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Directory
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Achievements
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Directory
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Policy
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Media
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Contact Us
                 </Link>
               </FooterContentColumn>
               <FooterContentColumn title={"Quick Links"}>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   SpotMe
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   MyGovUC
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   DDMS
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   MyMesyuarat
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   ePenyata Gaji
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   HRMIS
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   ePerolehan
                 </Link>
               </FooterContentColumn>
               <FooterContentColumn title={"Open Source"}>
-                <Link href="https://github.com" underline="hover">
+                <Link
+                  href="https://github.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   GitHub Repo
                 </Link>
-                <Link href="https://www.figma.com" underline="hover">
+                <Link
+                  href="https://www.figma.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Figma
                 </Link>
               </FooterContentColumn>
@@ -277,11 +388,19 @@ export const Custom: Story = {
             <FooterCopyright>
               <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
               <FooterCopyrightLinkWrapper>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Disclaimer
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
-                  Disclaimer
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Privacy Policy
                 </Link>
               </FooterCopyrightLinkWrapper>
             </FooterCopyright>
@@ -329,72 +448,136 @@ export const CustomDark: Story = {
                 <SocialMediaItem
                   icon={<XIcon />}
                   href={"www.google.com"}
-                  name={"Facebook"}
+                  name={"X"}
                 />
                 <SocialMediaItem
                   icon={<InstagramIcon />}
                   href={"www.google.com"}
-                  name={"Facebook"}
+                  name={"Instagram"}
                 />
                 <SocialMediaItem
                   icon={<TikTokIcon />}
                   href={"www.google.com"}
-                  name={"Facebook"}
+                  name={"TikTok"}
                 />
               </SocialMedia>
             </FooterMainInfo>
             <FooterContent>
               <FooterContentColumn title={"About Us"}>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Ministry Of Digital
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Directory
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Achievements
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Directory
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Policy
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Media
                 </Link>
-                <Link href="www.google.com" underline="hover">
+                <Link
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Contact Us
                 </Link>
               </FooterContentColumn>
               <FooterContentColumn title={"Quick Links"}>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   SpotMe
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   MyGovUC
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   DDMS
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   MyMesyuarat
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   ePenyata Gaji
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   HRMIS
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   ePerolehan
                 </Link>
               </FooterContentColumn>
               <FooterContentColumn title={"Open Source"}>
-                <Link href="https://github.com" underline="hover">
+                <Link
+                  href="https://github.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   GitHub Repo
                 </Link>
-                <Link href="https://www.figma.com" underline="hover">
+                <Link
+                  href="https://www.figma.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Figma
                 </Link>
               </FooterContentColumn>
@@ -404,11 +587,19 @@ export const CustomDark: Story = {
             <FooterCopyright>
               <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
               <FooterCopyrightLinkWrapper>
-                <Link href="https://www.google.com" underline="hover">
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
                   Disclaimer
                 </Link>
-                <Link href="https://www.google.com" underline="hover">
-                  Disclaimer
+                <Link
+                  href="https://www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Privacy Policy
                 </Link>
               </FooterCopyrightLinkWrapper>
             </FooterCopyright>
