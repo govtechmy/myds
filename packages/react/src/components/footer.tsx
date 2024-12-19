@@ -237,14 +237,16 @@ const FooterCopyrightLinkWrapper: FunctionComponent<ComponentProps<"div">> = ({
 );
 
 interface FooterTimestampProps extends ComponentProps<"time"> {
-  time: string;
+  time: string | number | Date;
 }
+
 const FooterTimestamp: FunctionComponent<FooterTimestampProps> = ({
   children,
   className,
   time,
   ...props
 }) => {
+  const date = new Date(time);
   const formattedTime = new Intl.DateTimeFormat("en-GB", {
     year: "numeric",
     month: "long",
@@ -253,14 +255,16 @@ const FooterTimestamp: FunctionComponent<FooterTimestampProps> = ({
     minute: "2-digit",
     hour12: true,
     timeZone: "Asia/Kuala_Lumpur",
-  }).format(new Date(time));
+  }).format(date);
 
   return (
-    <time dateTime={time} className={clx(className)} {...props}>
+    <time dateTime={date.toISOString()} className={className} {...props}>
       {children} {formattedTime}
     </time>
   );
 };
+
+export default FooterTimestamp;
 
 export {
   Footer,

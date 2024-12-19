@@ -75,19 +75,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   ...createStory({}, "light"),
   render: () => {
-    const social_media = [
-      {
-        icon: <FacebookIcon />,
-        name: "Facebook",
-        href: "https://www.facebook.com/KementerianDigitalMalaysia/",
-      },
-      {
-        icon: <TikTokIcon />,
-        name: "Tiktok",
-        href: "https://www.tiktok.com/@kementeriandigital",
-      },
-    ];
-
     return (
       <div className="light">
         <Footer>
@@ -188,29 +175,6 @@ export const Default: Story = {
 export const Custom: Story = {
   ...createStory({}, "light"),
   render: () => {
-    const social_media = [
-      {
-        icon: <FacebookIcon />,
-        name: "Facebook",
-        href: "https://www.facebook.com/KementerianDigitalMalaysia/",
-      },
-      {
-        icon: <TwitterIcon />,
-        name: "X",
-        href: "https://x.com/KemDigitalMsia",
-      },
-      {
-        icon: <InstagramIcon />,
-        name: "Instagram",
-        href: "https://www.instagram.com/kementeriandigitalmalaysia/",
-      },
-      {
-        icon: <TikTokIcon />,
-        name: "Tiktok",
-        href: "https://www.tiktok.com/@kementeriandigital",
-      },
-    ];
-
     return (
       <div className="light">
         <Footer>
@@ -338,29 +302,6 @@ export const Custom: Story = {
 export const CustomDark: Story = {
   ...createStory({}, "dark"),
   render: () => {
-    const social_media = [
-      {
-        icon: <FacebookIcon />,
-        name: "Facebook",
-        href: "https://www.facebook.com/KementerianDigitalMalaysia/",
-      },
-      {
-        icon: <TwitterIcon />,
-        name: "X",
-        href: "https://x.com/KemDigitalMsia",
-      },
-      {
-        icon: <InstagramIcon />,
-        name: "Instagram",
-        href: "https://www.instagram.com/kementeriandigitalmalaysia/",
-      },
-      {
-        icon: <TikTokIcon />,
-        name: "Tiktok",
-        href: "https://www.tiktok.com/@kementeriandigital",
-      },
-    ];
-
     return (
       <div className="dark">
         <Footer>
@@ -471,9 +412,7 @@ export const CustomDark: Story = {
                 </Link>
               </FooterCopyrightLinkWrapper>
             </FooterCopyright>
-            <FooterTimestamp time="2024-12-05T10:00:00Z">
-              Last Updated:
-            </FooterTimestamp>
+            <FooterTimestamp time={new Date()}>Last Updated:</FooterTimestamp>
           </FooterBottomSection>
         </Footer>
       </div>
