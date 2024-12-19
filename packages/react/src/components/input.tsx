@@ -83,6 +83,7 @@ const Input: ForwardRefExoticComponent<InputProps> = forwardRef(
           className,
         )}
       >
+        {/* TODO: check if aria-describedBy is required or not */}
         <div className="flex flex-row">
           <InputContext.Provider value={{ size }}>
             {prepend}
@@ -191,4 +192,138 @@ InputIcon.displayName = "InputIcon";
 
 /*========================================================================================================================*/
 
-export { Input, InputAddon, InputIcon };
+const input_label_cva = cva(["text-txt-black-700"], {
+  variants: {
+    size: {
+      small: "text-body-sm",
+      medium: "text-body-md",
+      large: "text-body-lg",
+    },
+  },
+  defaultVariants: {
+    size: "medium",
+  },
+});
+// TODO: modify this if required (simplify)
+interface InputLabelProps
+  extends Omit<React.ComponentPropsWithoutRef<"label">, "size">,
+    VariantProps<typeof input_label_cva> {
+  // htmlFor is already included in label props, but we'll make it required
+  htmlFor: string;
+  asChild?: boolean;
+}
+
+const InputLabel = forwardRef<HTMLLabelElement, InputLabelProps>(
+  ({ className, children, size, htmlFor, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "label";
+
+    return (
+      <Comp
+        ref={ref}
+        htmlFor={htmlFor}
+        className={input_label_cva({ size, className })}
+        {...props}
+      >
+        {children}
+      </Comp>
+    );
+  },
+);
+InputLabel.displayName = "InputLabel";
+
+/*========================================================================================================================*/
+
+const input_hint_cva = cva("", {
+  variants: {
+    size: {
+      small: "text-body-xs",
+      medium: "text-body-sm",
+      large: "text-body-md",
+    },
+  },
+});
+
+// TODO: modify this
+interface InputHintProps
+  extends React.ComponentPropsWithoutRef<"p">,
+    VariantProps<typeof input_hint_cva> {
+  error?: boolean;
+  asChild?: boolean;
+}
+
+const InputHint = forwardRef<HTMLParagraphElement, InputHintProps>(
+  ({ className, children, error, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "p";
+
+    return (
+      <Comp
+        ref={ref}
+        className={clx(
+          input_hint_cva({ size, className }),
+          error ? "text-txt-danger" : "text-txt-black-500",
+        )}
+        {...props}
+      >
+        {children}
+      </Comp>
+    );
+  },
+);
+
+InputHint.displayName = "InputHint";
+
+/*========================================================================================================================*/
+
+const input_text_cva = cva(
+  [
+    "w-full rounded border border-gray-200 bg-bg-white",
+    "placeholder:text-txt-black-500 text-txt-black-700 transition-colors",
+    // TODO: recheck classes for focus and disabled
+    "focus:ring focus:ring-fr-primary focus:border-otl-primary-300",
+    "disabled:bg-bg-washed disabled:cursor-not-allowed disabled:text-txt-black-disabled",
+  ],
+  {
+    variants: {
+      size: {
+        small: "min-h-[100px] p-2.5 text-body-sm placeholder:text-body-sm",
+        medium: "min-h-[120px] p-3 text-body-md placeholder:text-body-md",
+        large: "min-h-[150px] p-3.5 text-body-lg placeholder:text-body-lg",
+      },
+    },
+    defaultVariants: {
+      size: "medium",
+    },
+  },
+);
+
+interface InputTextProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
+    VariantProps<typeof input_text_cva> {
+  // You might want to add more specific props here
+  error?: boolean;
+}
+// TODO: check the interface
+
+const InputText = forwardRef<HTMLInputElement, InputTextProps>(
+  ({ className, size, error, ...props }, ref) => {
+    return (
+      <input
+        type="text"
+        ref={ref}
+        className={clx(
+          input_text_cva({ size, className }),
+          error &&
+            // TODO: check shadow applied or not
+            // TODO: check if border and focus got or not
+            // TODO: check if there is another way to use clx with cva
+            "border-ot-danger-300 focus:border-otl-danger-300 shadow-button",
+        )}
+        {...props}
+      />
+    );
+  },
+);
+
+InputText.displayName = "InputText";
+
+export { Input, InputAddon, InputIcon, InputLabel, InputHint, InputText };
