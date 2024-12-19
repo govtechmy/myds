@@ -39,6 +39,10 @@
       "type": "./src/components/search-bar.tsx",
       "default": "./src/components/search-bar.tsx"
     },
+    "./tooltip": {
+      "type": "./src/components/tooltip.tsx",
+      "default": "./src/components/tooltip.tsx"
+    },
     "./spinner": {
       "type": "./src/components/spinner.tsx",
       "default": "./src/components/spinner.tsx"
@@ -153,6 +157,8 @@
     "@types/node": "^22.7.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
     "react-dom": "^18"
   },
   "dependencies": {
