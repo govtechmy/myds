@@ -1,4 +1,3 @@
-import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 import {
@@ -6,8 +5,8 @@ import {
   SummaryListAction,
   SummaryListBody,
   SummaryListHeader,
-  SummaryListKey,
-  SummaryListValue,
+  SummaryListTerm,
+  SummaryListDetail,
 } from "@myds/react/summary-list";
 import { Tag } from "@myds/react/tag";
 import { Button } from "@myds/react/button";
@@ -40,24 +39,24 @@ export const SummaryListCustom: Story = {
       <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
 
       <SummaryListBody>
-        <SummaryListKey>Application ID</SummaryListKey>
-        <SummaryListValue>SUB12345</SummaryListValue>
+        <SummaryListTerm>Application ID</SummaryListTerm>
+        <SummaryListDetail>SUB12345</SummaryListDetail>
         <SummaryListAction></SummaryListAction>
 
-        <SummaryListKey>Applicant Name</SummaryListKey>
-        <SummaryListValue>Lee Ming Wei</SummaryListValue>
+        <SummaryListTerm>Applicant Name</SummaryListTerm>
+        <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
         <SummaryListAction></SummaryListAction>
 
-        <SummaryListKey>Submission Date</SummaryListKey>
-        <SummaryListValue>15/10/2024 17:35:00</SummaryListValue>
+        <SummaryListTerm>Submission Date</SummaryListTerm>
+        <SummaryListDetail>15/10/2024 17:35:00</SummaryListDetail>
         <SummaryListAction></SummaryListAction>
 
-        <SummaryListKey>Subsidy Type</SummaryListKey>
-        <SummaryListValue>Petrol Subsidy</SummaryListValue>
+        <SummaryListTerm>Subsidy Type</SummaryListTerm>
+        <SummaryListDetail>Petrol Subsidy</SummaryListDetail>
         <SummaryListAction></SummaryListAction>
 
-        <SummaryListKey>Status</SummaryListKey>
-        <SummaryListValue className="py-2">
+        <SummaryListTerm>Status</SummaryListTerm>
+        <SummaryListDetail className="py-2">
           <Tag
             variant="warning"
             size={"medium"}
@@ -66,26 +65,26 @@ export const SummaryListCustom: Story = {
           >
             Pending
           </Tag>
-        </SummaryListValue>
+        </SummaryListDetail>
         <SummaryListAction>
           <Button variant="primary-ghost" className="h-8">
             <SwapIcon /> Refresh
           </Button>
         </SummaryListAction>
 
-        <SummaryListKey>Document Submitted</SummaryListKey>
-        <SummaryListValue>
+        <SummaryListTerm>Document Submitted</SummaryListTerm>
+        <SummaryListDetail>
           <div>Proof Of Income</div>
           <div>ID Copy</div>
-        </SummaryListValue>
+        </SummaryListDetail>
         <SummaryListAction>
           <Button variant="primary-ghost" className="h-8">
             Add More
           </Button>
         </SummaryListAction>
 
-        <SummaryListKey>Expected Response Date</SummaryListKey>
-        <SummaryListValue>23/03/2023 17:35:00</SummaryListValue>
+        <SummaryListTerm>Expected Response Date</SummaryListTerm>
+        <SummaryListDetail>23/03/2023 17:35:00</SummaryListDetail>
         <SummaryListAction></SummaryListAction>
       </SummaryListBody>
     </SummaryList>
@@ -100,24 +99,24 @@ export const SummaryListCustomDark: Story = {
         <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
 
         <SummaryListBody>
-          <SummaryListKey>Application ID</SummaryListKey>
-          <SummaryListValue>SUB12345</SummaryListValue>
+          <SummaryListTerm>Application ID</SummaryListTerm>
+          <SummaryListDetail>SUB12345</SummaryListDetail>
           <SummaryListAction></SummaryListAction>
 
-          <SummaryListKey>Applicant Name</SummaryListKey>
-          <SummaryListValue>Lee Ming Wei</SummaryListValue>
+          <SummaryListTerm>Applicant Name</SummaryListTerm>
+          <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
           <SummaryListAction></SummaryListAction>
 
-          <SummaryListKey>Submission Date</SummaryListKey>
-          <SummaryListValue>15/10/2024 17:35:00</SummaryListValue>
+          <SummaryListTerm>Submission Date</SummaryListTerm>
+          <SummaryListDetail>15/10/2024 17:35:00</SummaryListDetail>
           <SummaryListAction></SummaryListAction>
 
-          <SummaryListKey>Subsidy Type</SummaryListKey>
-          <SummaryListValue>Petrol Subsidy</SummaryListValue>
+          <SummaryListTerm>Subsidy Type</SummaryListTerm>
+          <SummaryListDetail>Petrol Subsidy</SummaryListDetail>
           <SummaryListAction></SummaryListAction>
 
-          <SummaryListKey>Status</SummaryListKey>
-          <SummaryListValue className="py-2">
+          <SummaryListTerm>Status</SummaryListTerm>
+          <SummaryListDetail className="py-2">
             <Tag
               variant="warning"
               size={"medium"}
@@ -126,26 +125,26 @@ export const SummaryListCustomDark: Story = {
             >
               Pending
             </Tag>
-          </SummaryListValue>
+          </SummaryListDetail>
           <SummaryListAction>
             <Button variant="primary-ghost" className="h-8">
               <SwapIcon /> Refresh
             </Button>
           </SummaryListAction>
 
-          <SummaryListKey>Document Submitted</SummaryListKey>
-          <SummaryListValue>
+          <SummaryListTerm>Document Submitted</SummaryListTerm>
+          <SummaryListDetail>
             <div>Proof Of Income</div>
             <div>ID Copy</div>
-          </SummaryListValue>
+          </SummaryListDetail>
           <SummaryListAction>
             <Button variant="primary-ghost" className="h-8">
               Add More
             </Button>
           </SummaryListAction>
 
-          <SummaryListKey>Expected Response Date</SummaryListKey>
-          <SummaryListValue>23/03/2023 17:35:00</SummaryListValue>
+          <SummaryListTerm>Expected Response Date</SummaryListTerm>
+          <SummaryListDetail>23/03/2023 17:35:00</SummaryListDetail>
           <SummaryListAction></SummaryListAction>
         </SummaryListBody>
       </SummaryList>

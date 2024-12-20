@@ -47,7 +47,7 @@ const SummaryListBody: FunctionComponent<ComponentProps<"div">> = ({
   </div>
 );
 
-const SummaryListKey: FunctionComponent<ComponentProps<"dt">> = ({
+const SummaryListTerm: FunctionComponent<ComponentProps<"dt">> = ({
   children,
   className,
   ...props
@@ -57,7 +57,7 @@ const SummaryListKey: FunctionComponent<ComponentProps<"dt">> = ({
   </dt>
 );
 
-const SummaryListValue: FunctionComponent<ComponentProps<"dd">> = ({
+const SummaryListDetail: FunctionComponent<ComponentProps<"dd">> = ({
   children,
   className,
   ...props
@@ -83,7 +83,7 @@ export {
   SummaryList,
   SummaryListHeader,
   SummaryListBody,
-  SummaryListKey,
-  SummaryListValue,
+  SummaryListTerm,
+  SummaryListDetail,
   SummaryListAction,
 };
