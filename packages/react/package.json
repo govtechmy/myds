@@ -7,10 +7,6 @@
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
     },
-    "./_tooltip": {
-      "type": "./src/components/_tooltip.tsx",
-      "default": "./src/components/_tooltip.tsx"
-    },
     "./table": {
       "type": "./src/components/table.tsx",
       "default": "./src/components/table.tsx"
@@ -43,6 +39,10 @@
       "type": "./src/components/tooltip.tsx",
       "default": "./src/components/tooltip.tsx"
     },
+    "./_tooltip": {
+      "type": "./src/components/tooltip.tsx",
+      "default": "./src/components/tooltip.tsx"
+    },
     "./spinner": {
       "type": "./src/components/spinner.tsx",
       "default": "./src/components/spinner.tsx"
@@ -50,6 +50,10 @@
     "./input-otp": {
       "type": "./src/components/input-otp.tsx",
       "default": "./src/components/input-otp.tsx"
+    },
+    "./footer": {
+      "type": "./src/components/footer.tsx",
+      "default": "./src/components/footer.tsx"
     },
     "./icon": {
       "type": "./src/icons/index.ts",
