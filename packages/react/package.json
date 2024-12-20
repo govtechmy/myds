@@ -6,13 +6,19 @@
     "./utils": {
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
-    }
-,
-    "./text-area": {
-      "type": "./src/components/text-area.tsx",
-      "default": "./src/components/text-area.tsx"
-    }
-,
+    },
+    "./textarea": {
+      "type": "./src/components/textarea.tsx",
+      "default": "./src/components/textarea.tsx"
+    },
+    "./table": {
+      "type": "./src/components/table.tsx",
+      "default": "./src/components/table.tsx"
+    },
+    "./data-table": {
+      "type": "./src/components/data-table.tsx",
+      "default": "./src/components/data-table.tsx"
+    },
     "./callout": {
       "type": "./src/components/callout.tsx",
       "default": "./src/components/callout.tsx"
@@ -33,6 +39,14 @@
       "type": "./src/components/search-bar.tsx",
       "default": "./src/components/search-bar.tsx"
     },
+    "./tooltip": {
+      "type": "./src/components/tooltip.tsx",
+      "default": "./src/components/tooltip.tsx"
+    },
+    "./_tooltip": {
+      "type": "./src/components/tooltip.tsx",
+      "default": "./src/components/tooltip.tsx"
+    },
     "./spinner": {
       "type": "./src/components/spinner.tsx",
       "default": "./src/components/spinner.tsx"
@@ -40,6 +54,10 @@
     "./input-otp": {
       "type": "./src/components/input-otp.tsx",
       "default": "./src/components/input-otp.tsx"
+    },
+    "./footer": {
+      "type": "./src/components/footer.tsx",
+      "default": "./src/components/footer.tsx"
     },
     "./icon": {
       "type": "./src/icons/index.ts",
@@ -147,6 +165,8 @@
     "@types/node": "^22.7.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
     "react-dom": "^18"
   },
   "dependencies": {
@@ -161,6 +181,8 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",
+    "@radix-ui/react-tooltip": "^1.1.4",
+    "@tanstack/react-table": "^8.20.5",
     "class-variance-authority": "^0.7.0",
     "cmdk": "^1.0.4",
     "date-fns": "^4.1.0",

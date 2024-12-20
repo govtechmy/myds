@@ -1,7 +1,7 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { TextArea } from "@myds/react/text-area";
+import { TextArea } from "@myds/react/textarea";
 
 /**
  * ### Overview
