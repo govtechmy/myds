@@ -52,6 +52,8 @@ export * from './excel-file';
 export * from './expand';
 export * from './eye-hide';
 export * from './eye-show';
+export * from './filter-asc';
+export * from './filter-desc';
 export * from './filter';
 export * from './flag';
 export * from './folder-minus';

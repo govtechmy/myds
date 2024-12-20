@@ -32,8 +32,8 @@ type DocsConfig = {
 export const getDocsConfig = (): DocsConfig => {
   const menu: Array<LinkItemType & Option> = [
     {
-      title: "Dasar Prinsip",
-      text: "Dasar Prinsip",
+      title: "Prinsip Rekabentuk",
+      text: "Prinsip Rekabentuk",
       description: "Prinsip & motivasi reka bentuk",
       url: "/docs/prinsip",
       active: "nested-url",

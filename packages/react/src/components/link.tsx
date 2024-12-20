@@ -1,13 +1,29 @@
 import { Slot } from "@radix-ui/react-slot";
-import React, { ComponentPropsWithoutRef, forwardRef } from "react";
-import { clx } from "../utils";
+import React, {
+  ComponentProps,
+  forwardRef,
+  ForwardRefExoticComponent,
+} from "react";
+import { cva, VariantProps } from "class-variance-authority";
 
-interface LinkProps extends ComponentPropsWithoutRef<"a"> {
+interface LinkProps extends ComponentProps<"a">, VariantProps<typeof link_cva> {
   asChild?: boolean;
   newTab?: boolean;
-  primary?: boolean;
-  underline: "always" | "hover" | "none";
 }
+
+const link_cva = cva(["text-inherit transition-colors outline-none"], {
+  variants: {
+    underline: {
+      always: "underline",
+      hover: "hover:underline",
+      none: "",
+    },
+    primary: {
+      true: "text-txt-primary",
+      false: "text-inherit",
+    },
+  },
+});
 
 /**
  * The Link component extends the `<a>` element, customised according to the MYDS theme.
@@ -15,7 +31,7 @@ interface LinkProps extends ComponentPropsWithoutRef<"a"> {
  * <Link href="https://design.digital.gov.my" newTab primary underline="always">MYDS</Link>
  * @see {@link https://design.digital.gov.my/?path=/docs/myds-react-link--docs}
  */
-const Link = forwardRef<HTMLAnchorElement, LinkProps>(
+const Link: ForwardRefExoticComponent<LinkProps> = forwardRef(
   (
     {
       asChild,
@@ -29,22 +45,12 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     },
     ref,
   ) => {
-    const _className = clx(
-      primary ? "text-txt-primary" : "text-inherit",
-      underline == "always"
-        ? "underline"
-        : underline == "hover"
-          ? "hover:underline"
-          : "",
-      className,
-    );
-
     if (newTab)
       return (
         <a
           ref={ref}
           href={href}
-          className={_className}
+          className={link_cva({ primary, underline, className })}
           target="_blank"
           {...props}
         >
@@ -54,8 +60,14 @@ const Link = forwardRef<HTMLAnchorElement, LinkProps>(
       );
 
     const Comp = asChild ? Slot : "a";
+
     return (
-      <Comp ref={ref} href={href} className={_className} {...props}>
+      <Comp
+        ref={ref}
+        href={href}
+        className={link_cva({ primary, underline, className })}
+        {...props}
+      >
         {children}
       </Comp>
     );
