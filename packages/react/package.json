@@ -7,6 +7,10 @@
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
     },
+    "./textarea": {
+      "type": "./src/components/textarea.tsx",
+      "default": "./src/components/textarea.tsx"
+    },
     "./table": {
       "type": "./src/components/table.tsx",
       "default": "./src/components/table.tsx"
