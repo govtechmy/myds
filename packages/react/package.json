@@ -31,6 +31,10 @@
       "type": "./src/components/tooltip.tsx",
       "default": "./src/components/tooltip.tsx"
     },
+    "./_tooltip": {
+      "type": "./src/components/tooltip.tsx",
+      "default": "./src/components/tooltip.tsx"
+    },
     "./spinner": {
       "type": "./src/components/spinner.tsx",
       "default": "./src/components/spinner.tsx"
