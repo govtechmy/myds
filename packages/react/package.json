@@ -8,6 +8,11 @@
       "default": "./src/utils/index.ts"
     }
 ,
+    "./text-area": {
+      "type": "./src/components/text-area.tsx",
+      "default": "./src/components/text-area.tsx"
+    }
+,
     "./callout": {
       "type": "./src/components/callout.tsx",
       "default": "./src/components/callout.tsx"
