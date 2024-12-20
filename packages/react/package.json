@@ -7,6 +7,14 @@
       "type": "./src/utils/index.ts",
       "default": "./src/utils/index.ts"
     },
+    "./table": {
+      "type": "./src/components/table.tsx",
+      "default": "./src/components/table.tsx"
+    },
+    "./data-table": {
+      "type": "./src/components/data-table.tsx",
+      "default": "./src/components/data-table.tsx"
+    },
     "./callout": {
       "type": "./src/components/callout.tsx",
       "default": "./src/components/callout.tsx"
