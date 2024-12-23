@@ -19,6 +19,10 @@
       "type": "./src/components/data-table.tsx",
       "default": "./src/components/data-table.tsx"
     },
+    "./summary-list": {
+      "type": "./src/components/summary-list.tsx",
+      "default": "./src/components/summary-list.tsx"
+    },
     "./callout": {
       "type": "./src/components/callout.tsx",
       "default": "./src/components/callout.tsx"
