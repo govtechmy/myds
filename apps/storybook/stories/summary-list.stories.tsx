@@ -7,6 +7,8 @@ import {
   SummaryListHeader,
   SummaryListTerm,
   SummaryListDetail,
+  SummaryListRow,
+  SummaryListAddition,
 } from "@myds/react/summary-list";
 import { Tag } from "@myds/react/tag";
 import { Button } from "@myds/react/button";
@@ -35,117 +37,155 @@ type Story = StoryObj<typeof meta>;
 export const SummaryListCustom: Story = {
   ...createStory({}),
   render: () => (
-    <SummaryList>
-      <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
+    <div className="w-[660px]">
+      <SummaryList>
+        <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
 
-      <SummaryListBody>
-        <SummaryListTerm>Application ID</SummaryListTerm>
-        <SummaryListDetail>SUB12345</SummaryListDetail>
-        <SummaryListAction></SummaryListAction>
+        <SummaryListBody>
+          <SummaryListRow>
+            <SummaryListTerm>Application ID</SummaryListTerm>
+            <SummaryListDetail>SUB12345</SummaryListDetail>
+            <SummaryListAction></SummaryListAction>
+          </SummaryListRow>
 
-        <SummaryListTerm>Applicant Name</SummaryListTerm>
-        <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
-        <SummaryListAction></SummaryListAction>
+          <SummaryListRow>
+            <SummaryListTerm>Applicant Name</SummaryListTerm>
+            <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
+            <SummaryListAction>
+              <Button variant="primary-ghost" className="h-8">
+                Edit Name
+              </Button>
+            </SummaryListAction>
+          </SummaryListRow>
 
-        <SummaryListTerm>Submission Date</SummaryListTerm>
-        <SummaryListDetail>15/10/2024 17:35:00</SummaryListDetail>
-        <SummaryListAction></SummaryListAction>
+          <SummaryListRow>
+            <SummaryListTerm>Submission Date</SummaryListTerm>
+            <SummaryListDetail>15/10/2024 17:35:00</SummaryListDetail>
+            <SummaryListAction></SummaryListAction>
+          </SummaryListRow>
 
-        <SummaryListTerm>Subsidy Type</SummaryListTerm>
-        <SummaryListDetail>Petrol Subsidy</SummaryListDetail>
-        <SummaryListAction></SummaryListAction>
+          <SummaryListRow>
+            <SummaryListTerm>Subsidy Type</SummaryListTerm>
+            <SummaryListDetail>Petrol Subsidy</SummaryListDetail>
+            <SummaryListAction>
+              <Button variant="primary-ghost" className="h-8">
+                Change
+              </Button>
+            </SummaryListAction>
+          </SummaryListRow>
 
-        <SummaryListTerm>Status</SummaryListTerm>
-        <SummaryListDetail className="py-2">
-          <Tag
-            variant="warning"
-            size={"medium"}
-            className="h-fit"
-            mode={"default"}
-          >
-            Pending
-          </Tag>
-        </SummaryListDetail>
-        <SummaryListAction>
-          <Button variant="primary-ghost" className="h-8">
-            <SwapIcon /> Refresh
-          </Button>
-        </SummaryListAction>
+          <SummaryListRow>
+            <SummaryListTerm>Status</SummaryListTerm>
+            <SummaryListDetail className="py-2">
+              <Tag
+                variant="warning"
+                size={"medium"}
+                className="h-fit"
+                mode={"default"}
+              >
+                Pending
+              </Tag>
+            </SummaryListDetail>
+            <SummaryListAction>
+              <Button variant="primary-ghost" className="h-8">
+                <SwapIcon /> Refresh
+              </Button>
+            </SummaryListAction>
+          </SummaryListRow>
 
-        <SummaryListTerm>Document Submitted</SummaryListTerm>
-        <SummaryListDetail>
-          <div>Proof Of Income</div>
-          <div>ID Copy</div>
-        </SummaryListDetail>
-        <SummaryListAction>
-          <Button variant="primary-ghost" className="h-8">
-            Add More
-          </Button>
-        </SummaryListAction>
+          <SummaryListRow>
+            <SummaryListTerm>Document Submitted</SummaryListTerm>
+            <SummaryListDetail>
+              <div>Proof Of Income</div>
+              <div>ID Copy</div>
+            </SummaryListDetail>
+            <SummaryListAction>
+              <Button variant="primary-ghost" className="h-8">
+                Add More
+              </Button>
+            </SummaryListAction>
+          </SummaryListRow>
 
-        <SummaryListTerm>Expected Response Date</SummaryListTerm>
-        <SummaryListDetail>23/03/2023 17:35:00</SummaryListDetail>
-        <SummaryListAction></SummaryListAction>
-      </SummaryListBody>
-    </SummaryList>
+          <SummaryListRow>
+            <SummaryListTerm>Expected Response Date</SummaryListTerm>
+            <SummaryListDetail>23/03/2023 17:35:00</SummaryListDetail>
+            <SummaryListAction></SummaryListAction>
+          </SummaryListRow>
+        </SummaryListBody>
+      </SummaryList>
+    </div>
   ),
 };
 
 export const SummaryListCustomDark: Story = {
   ...createStory({}, "dark"),
   render: () => (
-    <div className="dark">
+    <div className="dark w-[660px]">
       <SummaryList>
         <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
 
         <SummaryListBody>
-          <SummaryListTerm>Application ID</SummaryListTerm>
-          <SummaryListDetail>SUB12345</SummaryListDetail>
-          <SummaryListAction></SummaryListAction>
+          <SummaryListRow>
+            <SummaryListTerm>Application ID</SummaryListTerm>
+            <SummaryListDetail>SUB12345</SummaryListDetail>
+            <SummaryListAction></SummaryListAction>
+          </SummaryListRow>
 
-          <SummaryListTerm>Applicant Name</SummaryListTerm>
-          <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
-          <SummaryListAction></SummaryListAction>
+          <SummaryListRow>
+            <SummaryListTerm>Applicant Name</SummaryListTerm>
+            <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
+            <SummaryListAction></SummaryListAction>
+          </SummaryListRow>
 
-          <SummaryListTerm>Submission Date</SummaryListTerm>
-          <SummaryListDetail>15/10/2024 17:35:00</SummaryListDetail>
-          <SummaryListAction></SummaryListAction>
+          <SummaryListRow>
+            <SummaryListTerm>Submission Date</SummaryListTerm>
+            <SummaryListDetail>15/10/2024 17:35:00</SummaryListDetail>
+            <SummaryListAction></SummaryListAction>
+          </SummaryListRow>
 
-          <SummaryListTerm>Subsidy Type</SummaryListTerm>
-          <SummaryListDetail>Petrol Subsidy</SummaryListDetail>
-          <SummaryListAction></SummaryListAction>
+          <SummaryListRow>
+            <SummaryListTerm>Subsidy Type</SummaryListTerm>
+            <SummaryListDetail>Petrol Subsidy</SummaryListDetail>
+            <SummaryListAction></SummaryListAction>
+          </SummaryListRow>
 
-          <SummaryListTerm>Status</SummaryListTerm>
-          <SummaryListDetail className="py-2">
-            <Tag
-              variant="warning"
-              size={"medium"}
-              className="h-fit"
-              mode={"default"}
-            >
-              Pending
-            </Tag>
-          </SummaryListDetail>
-          <SummaryListAction>
-            <Button variant="primary-ghost" className="h-8">
-              <SwapIcon /> Refresh
-            </Button>
-          </SummaryListAction>
+          <SummaryListRow>
+            <SummaryListTerm>Status</SummaryListTerm>
+            <SummaryListDetail className="py-2">
+              <Tag
+                variant="warning"
+                size={"medium"}
+                className="h-fit"
+                mode={"default"}
+              >
+                Pending
+              </Tag>
+            </SummaryListDetail>
+            <SummaryListAction>
+              <Button variant="primary-ghost" className="h-8">
+                <SwapIcon /> Refresh
+              </Button>
+            </SummaryListAction>
+          </SummaryListRow>
 
-          <SummaryListTerm>Document Submitted</SummaryListTerm>
-          <SummaryListDetail>
-            <div>Proof Of Income</div>
-            <div>ID Copy</div>
-          </SummaryListDetail>
-          <SummaryListAction>
-            <Button variant="primary-ghost" className="h-8">
-              Add More
-            </Button>
-          </SummaryListAction>
+          <SummaryListRow>
+            <SummaryListTerm>Document Submitted</SummaryListTerm>
+            <SummaryListDetail>
+              <div>Proof Of Income</div>
+              <div>ID Copy</div>
+            </SummaryListDetail>
+            <SummaryListAction>
+              <Button variant="primary-ghost" className="h-8">
+                Add More
+              </Button>
+            </SummaryListAction>
+          </SummaryListRow>
 
-          <SummaryListTerm>Expected Response Date</SummaryListTerm>
-          <SummaryListDetail>23/03/2023 17:35:00</SummaryListDetail>
-          <SummaryListAction></SummaryListAction>
+          <SummaryListRow>
+            <SummaryListTerm>Expected Response Date</SummaryListTerm>
+            <SummaryListDetail>23/03/2023 17:35:00</SummaryListDetail>
+            <SummaryListAction></SummaryListAction>
+          </SummaryListRow>
         </SummaryListBody>
       </SummaryList>
     </div>

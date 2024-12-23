@@ -27,63 +27,100 @@ const SummaryListHeader: FunctionComponent<ComponentProps<"div">> = ({
   </h1>
 );
 
-const SummaryListBody: FunctionComponent<ComponentProps<"div">> = ({
+const SummaryListBody: FunctionComponent<ComponentProps<"table">> = ({
   children,
   className,
   ...props
 }) => (
-  <div
+  <table
     className={clx(
-      "grid w-full grid-cols-[minmax(120px,_180px)_1fr_minmax(120px,_1fr)]",
-      "text-sm font-medium",
-      "grid-rows-auto min-h-[40px]",
+      "w-full text-sm font-medium",
+      "min-h-[40px]",
       "relative",
-      "[&>*:nth-child(n+1)]:border-otl-gray-200 [&>*:nth-child(n+1)]:border-b",
+      className,
+    )}
+    {...props}
+  >
+    <tbody>{children}</tbody>
+  </table>
+);
+
+const SummaryListRow: FunctionComponent<ComponentProps<"tr">> = ({
+  children,
+  className,
+  ...props
+}) => (
+  <tr className={clx("border-otl-gray-200 border-b", className)} {...props}>
+    {children}
+  </tr>
+);
+
+const SummaryListTerm: FunctionComponent<ComponentProps<"td">> = ({
+  children,
+  className,
+  ...props
+}) => (
+  <td
+    role="dt"
+    className={clx(
+      "text-txt-black-500 flex min-w-[190px] items-start py-3 pr-3",
       className,
     )}
     {...props}
   >
     {children}
-  </div>
+  </td>
 );
 
-const SummaryListTerm: FunctionComponent<ComponentProps<"dt">> = ({
+const SummaryListDetail: FunctionComponent<ComponentProps<"td">> = ({
   children,
   className,
   ...props
 }) => (
-  <dt className={clx("text-txt-black-500 py-3 pr-3", className)} {...props}>
-    {children}
-  </dt>
-);
-
-const SummaryListDetail: FunctionComponent<ComponentProps<"dd">> = ({
-  children,
-  className,
-  ...props
-}) => (
-  <dd className={clx("text-txt-black-900 py-3 pr-3", className)} {...props}>
-    {children}
-  </dd>
-);
-
-const SummaryListAction: FunctionComponent<ComponentProps<"dd">> = ({
-  children,
-  className,
-  ...props
-}) => (
-  <dd
-    className={clx("inline-flex justify-end py-2 pr-3", className)}
+  <td
+    role="dd"
+    className={clx("text-txt-black-900 w-full py-3 pr-3", className)}
     {...props}
   >
     {children}
-  </dd>
+  </td>
 );
+
+const SummaryListAction: FunctionComponent<ComponentProps<"td">> = ({
+  children,
+  className,
+  ...props
+}) => (
+  <td
+    role="dd"
+    className={clx("flex w-fit items-start py-1.5 pr-3 text-right", className)}
+    {...props}
+  >
+    <div className="flex justify-end">{children}</div>
+  </td>
+);
+
+const SummaryListAddition: FunctionComponent<ComponentProps<"td">> = ({
+  children,
+  className,
+  ...props
+}) => (
+  <td
+    role="dd"
+    className={clx("text-txt-black-900 min-w-36 py-2 pr-3", className)}
+    {...props}
+  >
+    {children}
+  </td>
+);
+
 export {
   SummaryList,
   SummaryListHeader,
   SummaryListBody,
+  SummaryListRow,
   SummaryListTerm,
   SummaryListDetail,
   SummaryListAction,
+  SummaryListAddition,
 };
