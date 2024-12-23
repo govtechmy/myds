@@ -93,10 +93,10 @@ const SummaryListAction: FunctionComponent<ComponentProps<"td">> = ({
 }) => (
   <td
     role="dd"
-    className={clx("flex w-fit items-start py-1.5 pr-3 text-right", className)}
+    className={clx("flex justify-end py-1.5 pr-3 text-right", className)}
     {...props}
   >
-    <div className="flex justify-end">{children}</div>
+    {children}
   </td>
 );
 
