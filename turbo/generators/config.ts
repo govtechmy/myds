@@ -80,7 +80,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       if (_data.has_story) {
         actions.push({
           type: "add",
-          path: "{{ turbo.paths.root }}/apps/storybook/stories/{{ dashCase title }}.stories.ts",
+          path: "{{ turbo.paths.root }}/apps/storybook/stories/{{ dashCase title }}.stories.tsx",
           templateFile: "templates/react-story.hbs",
         });
       }

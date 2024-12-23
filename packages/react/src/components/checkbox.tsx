@@ -67,6 +67,7 @@ const Checkbox = React.forwardRef<
     <CheckboxPrimitive.Root
       ref={ref}
       className={clx(checkbox_cva({ size, className }))}
+      role="checkbox"
       {...ariaProps}
       {...props}
     >

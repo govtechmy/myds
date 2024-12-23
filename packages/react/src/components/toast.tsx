@@ -45,8 +45,8 @@ interface ToastViewportProps
   extends React.ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport> {}
 
 const toast_viewport_cva = cva([
-  "fixed top-0 flex max-h-screen w-full overflow-hidden flex-col-reverse gap-1",
-  "p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-sm",
+  "fixed flex max-h-screen w-full overflow-hidden flex-col-reverse gap-1",
+  "p-4.5 sm:p-6 bottom-0 right-0 sm:top-auto sm:flex-col md:max-w-sm",
 ]);
 
 const ToastViewport = React.forwardRef<
