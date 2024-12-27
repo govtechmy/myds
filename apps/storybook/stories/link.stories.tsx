@@ -1,5 +1,5 @@
-import { Button, ButtonIcon } from "@myds/react/button";
-import { Link } from "@myds/react/link";
+import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
+import { Link } from "@govtechmy/myds-react/link";
 import type { Meta, StoryObj } from "@storybook/react";
 import ArrowBack from "../react/arrow-back";
 import { createStory } from "../utils";
@@ -10,13 +10,13 @@ import { createStory } from "../utils";
  *
  * ### Usage
  * ```tsx
- * import { Link } from "@myds/react/link";
+ * import { Link } from "@govtechmy/myds-react/link";
  *
  * <Link primary href="https://design.digital.gov.my" underline="always">Malaysia's Official Design System</Link>
  * ```
  */
 const meta = {
-  title: "@myds/react/Link",
+  title: "@govtechmy/myds-react/Link",
   component: Link,
   tags: ["autodocs"],
   parameters: {

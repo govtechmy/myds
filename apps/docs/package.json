@@ -1,5 +1,5 @@
 {
-  "name": "@myds/docs",
+  "name": "@govtechmy/myds-docs",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,8 +9,8 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
-    "@myds/react": "workspace:*",
-    "@myds/tailwindcss": "workspace:*",
+    "@govtechmy/myds-react": "workspace:*",
+    "@govtechmy/myds-css": "workspace:*",
     "fumadocs-core": "14.2.1",
     "fumadocs-mdx": "11.1.1",
     "fumadocs-ui": "13.4.10",

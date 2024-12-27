@@ -1,6 +1,6 @@
 import { createPreset, Preset } from "fumadocs-ui/tailwind-plugin";
 import { Config } from "tailwindcss";
-import { preset, preset_fumadocs } from "@myds/tailwindcss";
+import { preset, preset_fumadocs } from "@govtechmy/myds-css";
 
 const config: Config = {
   content: [
@@ -9,7 +9,7 @@ const config: Config = {
     "./content/**/*.{md,mdx}",
     "./mdx-components.{ts,tsx}",
     "./node_modules/fumadocs-ui/dist/**/*.js",
-    // This is a workaround; In final build, @myds/tailwindcss output full css for users to import
+    // This is a workaround; In final build, @govtechmy/myds-css output full css for users to import
     // Issue: Styles are not being applied if below line is not added
     "../../packages/react/src/**/*.{ts,tsx}",
   ],

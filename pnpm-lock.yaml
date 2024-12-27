@@ -32,12 +32,12 @@ importers:
 
   apps/docs:
     dependencies:
-      '@myds/react':
-        specifier: workspace:*
-        version: link:../../packages/react
-      '@myds/tailwindcss':
+      '@govtechmy/myds-css':
         specifier: workspace:*
         version: link:../../packages/tailwindcss
+      '@govtechmy/myds-react':
+        specifier: workspace:*
+        version: link:../../packages/react
       fumadocs-core:
         specifier: 14.2.1
         version: 14.2.1(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -87,12 +87,12 @@ importers:
 
   apps/standard:
     dependencies:
-      '@myds/react':
-        specifier: workspace:*
-        version: link:../../packages/react
-      '@myds/tailwindcss':
+      '@govtechmy/myds-css':
         specifier: workspace:*
         version: link:../../packages/tailwindcss
+      '@govtechmy/myds-react':
+        specifier: workspace:*
+        version: link:../../packages/react
       fumadocs-core:
         specifier: 14.2.1
         version: 14.2.1(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -142,12 +142,12 @@ importers:
 
   apps/storybook:
     dependencies:
-      '@myds/react':
-        specifier: workspace:*
-        version: link:../../packages/react
-      '@myds/tailwindcss':
+      '@govtechmy/myds-css':
         specifier: workspace:*
         version: link:../../packages/tailwindcss
+      '@govtechmy/myds-react':
+        specifier: workspace:*
+        version: link:../../packages/react
       '@vitejs/plugin-react':
         specifier: ^4.3.2
         version: 4.3.3(vite@5.4.11(@types/node@22.9.0))
@@ -241,6 +241,9 @@ importers:
 
   packages/react:
     dependencies:
+      '@govtechmy/myds-react':
+        specifier: workspace:*
+        version: 'link:'
       '@radix-ui/react-accordion':
         specifier: ^1.2.1
         version: 1.2.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -305,9 +308,6 @@ importers:
         specifier: ^2.4.0
         version: 2.5.4
     devDependencies:
-      '@myds/tailwindcss':
-        specifier: workspace:*
-        version: link:../tailwindcss
       '@swc/core':
         specifier: ^1.10.1
         version: 1.10.1(@swc/helpers@0.5.5)

@@ -5,6 +5,7 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "module": "NodeNext",
-    "target": "es6"
+    "target": "es6",
+    "noEmit": true
   }
 }

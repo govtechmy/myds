@@ -1,14 +1,18 @@
 {
-  "name": "@myds/tailwindcss",
+  "name": "@govtechmy/myds-css",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "tailwindcss -i ./styles/input.tailwind.css -o ./styles/output.tailwind.css --watch"
+    "dev": "tailwindcss -i ./styles/input.tailwind.css -o ./styles/output.tailwind.css --watch",
+    "build": "tailwindcss -i ./styles/input.tailwind.css -o ./dist/index.css --minify"
   },
   "exports": {
     ".": {
       "type": "./index.ts",
       "default": "./index.ts"
+    },
+    "./full.css": {
+      "default": "./dist/index.css"
     },
     "./color.css": {
       "default": "./styles/theme/color.css"

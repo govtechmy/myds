@@ -1,6 +1,6 @@
 import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { Toggle, ToggleThumb } from "@myds/react/toggle";
+import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 import { createStory } from "../utils";
 
 /**
@@ -27,7 +27,7 @@ import { createStory } from "../utils";
  *
  * Basic usage:
  * ```tsx
- * import { Toggle, ToggleThumb } from "@myds/react/toggle"
+ * import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle"
  *
  * function MyComponent() {
  *   const [isChecked, setIsChecked] = React.useState(false);
@@ -41,7 +41,7 @@ import { createStory } from "../utils";
  *
  * With label:
  * ```tsx
- * import { Toggle, ToggleLabel, ToggleThumb } from "@myds/react/toggle"
+ * import { Toggle, ToggleLabel, ToggleThumb } from "@govtechmy/myds-react/toggle"
  *
  * <Toggle defaultChecked={true} onCheckedChange={handleChange}>
  *   <ToggleLabel>Enable notifications</ToggleLabel>
@@ -74,7 +74,7 @@ import { createStory } from "../utils";
  */
 
 const meta: Meta<typeof Toggle> = {
-  title: "@myds/react/Toggle",
+  title: "@govtechmy/myds-react/Toggle",
   component: Toggle,
   parameters: {
     layout: "centered",

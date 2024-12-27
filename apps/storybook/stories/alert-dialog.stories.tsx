@@ -8,8 +8,8 @@ import {
   AlertDialogIcon,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@myds/react/alert-dialog";
-import { Button } from "@myds/react/button";
+} from "@govtechmy/myds-react/alert-dialog";
+import { Button } from "@govtechmy/myds-react/button";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 
@@ -19,7 +19,7 @@ import { createStory } from "../utils";
  *
  * ### Usage
  * ```tsx
- * import { AlertDialog, AlertDialogTrigger } from "@myds/react/alert-dialog";
+ * import { AlertDialog, AlertDialogTrigger } from "@govtechmy/myds-react/alert-dialog";
  *
  * <AlertDialog>
  *   <AlertDialogTrigger>
@@ -53,7 +53,7 @@ import { createStory } from "../utils";
  * ```
  */
 const meta: Meta = {
-  title: "@myds/react/AlertDialog",
+  title: "@govtechmy/myds-react/AlertDialog",
   component: ({ triggerButtonVariant, variant, theme }) => (
     <AlertDialog>
       <AlertDialogTrigger className={theme}>

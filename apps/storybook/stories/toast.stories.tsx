@@ -1,16 +1,16 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { AutoToast } from "@myds/react/toast";
-import { useToast } from "@myds/react/hooks";
-import { Button } from "@myds/react/button";
+import { AutoToast } from "@govtechmy/myds-react/toast";
+import { useToast } from "@govtechmy/myds-react/hooks";
+import { Button } from "@govtechmy/myds-react/button";
 import React from "react";
 
 const DemoToast = (props: any) => {
   const { toast } = useToast();
 
   return (
-    <div className="flex h-[100vh] w-full items-center justify-center gap-1">
+    <div className="flex h-screen w-full items-center justify-center gap-1">
       <Button
         variant={"default-outline"}
         onClick={() => {
@@ -80,7 +80,7 @@ const DemoToast = (props: any) => {
 /**
  * ### Overview
  *
- * This file contains the implementation of a Toast component using `@myds/react/toast`.
+ * This file contains the implementation of a Toast component using `@govtechmy/myds-react/toast`.
  * The `DemoToast` component demonstrates various toast notifications such as message, info, success, warning, and error.
  *
  * > Toast enak dimakan pagi,
@@ -91,7 +91,7 @@ const DemoToast = (props: any) => {
  *
  * ### Usage
  * ```tsx
- * import { AutoToast, ToastRoot, ToastIcon, ToastProgress, ToastProvider, ToastViewport, ToastTitle, ToastDescription } from "@myds/react/toast";
+ * import { AutoToast, ToastRoot, ToastIcon, ToastProgress, ToastProvider, ToastViewport, ToastTitle, ToastDescription } from "@govtechmy/myds-react/toast";
  *
  * <button
  *  onClick={() => {
@@ -141,7 +141,7 @@ const DemoToast = (props: any) => {
  * ```
  */
 const meta = {
-  title: "@myds/react/Toast",
+  title: "@govtechmy/myds-react/Toast",
   component: DemoToast,
   tags: ["autodocs"],
   parameters: {

@@ -15,12 +15,12 @@ import {
   FooterCopyrightLinkWrapper,
   FooterContentColumn,
   SocialMediaItem,
-} from "@myds/react/footer";
-import { Link } from "@myds/react/link";
+} from "@govtechmy/myds-react/footer";
+import { Link } from "@govtechmy/myds-react/link";
 import { FacebookIcon } from "../../../packages/react/src/icons/facebook";
 import { InstagramIcon } from "../../../packages/react/src/icons/instagram";
 import { TikTokIcon } from "../../../packages/react/src/icons/tiktok";
-import { XIcon } from "@myds/react/icon";
+import { XIcon } from "@govtechmy/myds-react/icon";
 
 /**
  * ### Overview
@@ -45,12 +45,12 @@ import { XIcon } from "@myds/react/icon";
  * FooterCopyrightDate,
  * FooterCopyrightLinkWrapper,
  * FooterTimestamp,
- * } from "@myds/react/footer";
+ * } from "@govtechmy/myds-react/footer";
  * ```
  */
 
 const meta = {
-  title: "@myds/react/Footer",
+  title: "@govtechmy/myds-react/Footer",
   component: Footer,
   tags: ["autodocs"],
   parameters: {
