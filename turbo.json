@@ -9,6 +9,9 @@
     "check-exports": {
       "dependsOn": ["^check-exports"]
     },
+    "release": {
+      "dependsOn": ["^build"]
+    },
     "dev": {
       "persistent": true,
       "cache": false
