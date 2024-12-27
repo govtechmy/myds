@@ -1,4 +1,5 @@
-export type { PresetsConfig as preset } from "tailwindcss/types/config";
+import type { PresetsConfig } from "tailwindcss/types/config";
+export declare const preset: PresetsConfig;
 export declare const preset_fumadocs: {
   light: {
     background: string;
