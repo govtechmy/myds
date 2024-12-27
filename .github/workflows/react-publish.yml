@@ -43,7 +43,7 @@ jobs:
         id: changeset
         uses: changesets/action@v1
         with:
-          publish: pnpm build --filter=@govtechmy/myds-react
+          publish: pnpm release --filter=@govtechmy/myds-react
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
