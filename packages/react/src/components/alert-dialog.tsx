@@ -8,12 +8,12 @@ import {
   DialogIcon,
   DialogTitle,
   DialogTrigger,
-} from "@govtechmy/myds-react/dialog";
+} from "./dialog";
 import {
   CheckCircleIcon,
   WarningCircleIcon,
   WarningDiamondIcon,
-} from "@govtechmy/myds-react/icon";
+} from "../icons";
 import React from "react";
 
 const AlertDialog = Dialog;

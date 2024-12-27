@@ -1,6 +1,7 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig((options) => ({
+  ...options,
   entryPoints: [
     "src/components/**/*.tsx",
     "src/hooks/**/*.ts",
@@ -8,8 +9,9 @@ export default defineConfig((options) => ({
     "src/icons/index.ts",
   ],
   format: ["cjs", "esm"],
+  clean: true,
   dts: true,
   sourcemap: true,
   external: ["react"],
-  ...options,
+  minify: true,
 }));

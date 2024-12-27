@@ -1,7 +1,6 @@
 {
   "name": "@govtechmy/myds-react",
   "version": "0.0.0",
-  "sideEffects": false,
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
@@ -198,7 +197,6 @@
     }
   },
   "peerDependencies": {
-    "@govtechmy/myds-react": "workspace:*",
     "react": "^18"
   },
   "publishConfig": {
