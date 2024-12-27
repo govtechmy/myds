@@ -1,26 +1,22 @@
-name: "@myds/react ci"
+name: "@govtechmy/myds-react - ci"
 
 on:
   push:
     branches:
-      - feat/publish
+      - "**"
+    paths:
+      - "packages/react/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  setup:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Install Node.js and pnpm
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -28,12 +24,14 @@ jobs:
           version: 9
           run_install: false
 
-      - name: Install dependencies
-        run: pnpm install
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
 
-  build:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Build @govtechmy/myds-react
         run: pnpm build --filter=@govtechmy/myds-react

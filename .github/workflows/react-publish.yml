@@ -1,0 +1,47 @@
+name: "@govtechmy/myds-react - publish"
+
+on:
+  push:
+    branches:
+      - "feat/publish"
+      # - "main"
+    paths:
+      - "packages/react/**"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node.js and pnpm
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # - name: Build @govtechmy/myds-react
+      #   run: pnpm build --filter=@govtechmy/myds-react
+
+      - name: Create PR to Publish stable package
+        id: changeset
+        uses: changesets/action@v1
+        with:
+          publish: pnpm build --filter=@govtechmy/myds-react
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
