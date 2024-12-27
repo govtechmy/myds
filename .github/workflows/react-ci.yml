@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - "**"
-    # paths:
-    #   - "packages/react/**"
+    paths:
+      - "packages/react/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

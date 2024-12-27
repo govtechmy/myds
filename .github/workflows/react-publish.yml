@@ -3,9 +3,9 @@ name: "@govtechmy/myds-react - publish"
 on:
   workflow_dispatch:
 
-    # branches:
-    # - "feat/publish"
-    # - "main"
+  push:
+    branches:
+      - "feat/publish"
     # paths:
     #   - "packages/react/**"
 
