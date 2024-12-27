@@ -6,7 +6,7 @@
     "dev": "turbo dev",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo build --filter=docs^... && changeset publish",
+    "release": "turbo build --filter=@govtechmy/myds-react --filter=@govtechmy/myds-css && changeset publish",
     "lint": "turbo lint",
     "start": "turbo start",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
