@@ -241,9 +241,6 @@ importers:
 
   packages/react:
     dependencies:
-      '@govtechmy/myds-react':
-        specifier: workspace:*
-        version: 'link:'
       '@radix-ui/react-accordion':
         specifier: ^1.2.1
         version: 1.2.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
