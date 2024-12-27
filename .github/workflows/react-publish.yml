@@ -1,9 +1,10 @@
 name: "@govtechmy/myds-react - publish"
 
 on:
-  push:
-    branches:
-      - "feat/publish"
+  workflow_dispatch:
+
+    # branches:
+    # - "feat/publish"
     # - "main"
     # paths:
     #   - "packages/react/**"
@@ -19,16 +20,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Node.js and pnpm
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
