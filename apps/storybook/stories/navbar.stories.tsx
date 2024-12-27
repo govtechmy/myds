@@ -5,14 +5,24 @@ import {
   BrandLogo,
   NavbarContainer,
   NavbarActionGroup,
-  DesktopNavigationMenu,
-  MobileMenuToggle,
-  LanguageSelector,
-  MobileNavigationMenu,
-  UtilityButton,
+  NavItemsDropdown,
+  NavItemsDropdownItems,
+  NavItemsMenu,
+  NavigationMenuCombo,
+  NavItemsMenuMobile,
+  NavItemsDropdownMobile,
+  NavItemsDropdownItemsMobile,
 } from "@myds/react/navbar";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@myds/react/select";
 import React, { useState } from "react";
 import { clx } from "@myds/react/utils";
+import { GlobeIcon } from "@myds/react/icon";
 
 /**
  * ### Overview
@@ -22,75 +32,91 @@ import { clx } from "@myds/react/utils";
  *
  * ### Usage
  * ```tsx
- * import {
- *   Navbar,
- *   BrandLogo,
- *   NavbarContainer,
- *   NavbarActionGroup,
- *   DesktopNavigationMenu,
- *   MobileMenuToggle,
- *   LanguageSelector,
- *   MobileNavigationMenu,
- * } from "@myds/react/navbar";
- *
- * import React, { useState } from "react";
- * import clx from "classnames";
- *
- * export default function SampleImporter() {
- *   const nav_items = [
- *     { name: "Menu 1", href: "/Menu1" },
- *     { name: "Menu 2", href: "/Menu2" },
- *     {
- *       name: "Menu Dropdown",
- *       href: [
- *         { name: "Sub Menu 1", href: "/sub-menu-1" },
- *         { name: "Sub Menu 2", href: "/sub-menu-2" },
- *         { name: "Sub Menu 3", href: "/sub-menu-3" },
- *       ],
- *     },
- *     { name: "Menu 3", href: "/Menu3" },
- *   ];
- *
- *   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
- *   const [value, setValue] = React.useState("EN");
- *   const [showMenu, setMenu] = useState<boolean>(false);
- *   const handleToggle = () => {
- *     setIsDarkMode(!isDarkMode);
- *   };
- *
- *   return (
- *       <Navbar showMenu={showMenu} className="px-2">
- *         <NavbarContainer>
- *           <BrandLogo
- *             type="acronym"
- *             imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
- *           >
- *             MYDS
- *           </BrandLogo>
- *           <MobileNavigationMenu
- *             showMenu={showMenu}
- *             setMenu={setMenu}
- *             nav_items={nav_items}
- *           ></MobileNavigationMenu>
- *           <DesktopNavigationMenu nav_items={nav_items} />
- *         </NavbarContainer>
- *         <NavbarActionGroup>
- *           <UtilityButton
- *             isDarkMode={isDarkMode}
- *             handleToggle={handleToggle}
- *           ></UtilityButton>
- *           <LanguageSelector
- *             value={value}
- *             setValue={setValue}
- *           ></LanguageSelector>
- *           <MobileMenuToggle
- *             showMenu={showMenu}
- *             setMenu={setMenu}
- *           ></MobileMenuToggle>
- *         </NavbarActionGroup>
- *       </Navbar>
- *   );
- * }
+      <Navbar showMenu={showMenu} className="px-2">
+        <NavbarContainer>
+          <BrandLogo
+            type="shortname"
+            imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+          >
+            MYDS
+          </BrandLogo>
+          <NavigationMenuCombo
+            showMenu={showMenu}
+            setMenu={setMenu}
+            childrenDesktop={
+              <>
+                <NavItemsMenu href="/menu1" active={false}>
+                  Menu 1
+                </NavItemsMenu>
+                <NavItemsMenu href="/menu2" active={false}>
+                  Menu 2
+                </NavItemsMenu>
+
+                <NavItemsDropdown menu="Menu Dropdown">
+                  <NavItemsDropdownItems href="/submenu1">
+                    Submenu 1
+                  </NavItemsDropdownItems>
+                  <NavItemsDropdownItems href="/submenu2">
+                    Submenu 2
+                  </NavItemsDropdownItems>
+                  <NavItemsDropdownItems href="/submenu3">
+                    Submenu 3
+                  </NavItemsDropdownItems>
+                </NavItemsDropdown>
+
+                <NavItemsMenu href="/menu3" active={false}>
+                  Menu 3
+                </NavItemsMenu>
+              </>
+            }
+            childrenMobile={
+              <>
+                <NavItemsMenuMobile href="/menu1" active={false}>
+                  Menu 1
+                </NavItemsMenuMobile>
+                <NavItemsMenuMobile href="/menu2" active={false}>
+                  Menu 2
+                </NavItemsMenuMobile>
+
+                <NavItemsDropdownMobile menu="Menu Dropdown">
+                  <NavItemsDropdownItemsMobile href="/submenu1">
+                    Submenu 1
+                  </NavItemsDropdownItemsMobile>
+                  <NavItemsDropdownItemsMobile href="/submenu2">
+                    Submenu 2
+                  </NavItemsDropdownItemsMobile>
+                  <NavItemsDropdownItemsMobile href="/submenu3">
+                    Submenu 3
+                  </NavItemsDropdownItemsMobile>
+                </NavItemsDropdownMobile>
+
+                <NavItemsMenuMobile href="/menu3" active={false}>
+                  Menu 3
+                </NavItemsMenuMobile>
+              </>
+            }
+          ></NavigationMenuCombo>
+        </NavbarContainer>
+        <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
+          <Select
+            value={value}
+            onValueChange={setValue}
+            defaultValue="EN"
+            multiple={false}
+            variant="outline"
+            size="medium"
+          >
+            <SelectTrigger>
+              <GlobeIcon className="h-4 w-4"></GlobeIcon>
+              <SelectValue>{(value) => value || "EN"}</SelectValue>
+            </SelectTrigger>
+            <SelectContent className="font-body rounded-[4px] py-1">
+              <SelectItem value="EN">EN</SelectItem>
+              <SelectItem value="BM">BM</SelectItem>
+            </SelectContent>
+          </Select>
+        </NavbarActionGroup>
+      </Navbar>
  * ```
  */
 
@@ -120,20 +146,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const DemoNavbar = () => {
-  const nav_items = [
-    { name: "Menu 1", href: "/Menu1" },
-    { name: "Menu 2", href: "/Menu3" },
-    {
-      name: "Menu Dropdown",
-      href: [
-        { name: "Sub Menu 1", href: "/sub-menu-1" },
-        { name: "Sub Menu 2", href: "/sub-menu-2" },
-        { name: "Sub Menu 3", href: "/sub-menu-3" },
-      ],
-    },
-    { name: "Menu 3", href: "/Menu3" },
-  ];
-
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
   const [value, setValue] = React.useState("EN");
   const [showMenu, setMenu] = useState<boolean>(false);
@@ -146,32 +158,86 @@ const DemoNavbar = () => {
       <Navbar showMenu={showMenu} className="px-2">
         <NavbarContainer>
           <BrandLogo
-            type="acronym"
+            type="shortname"
             imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
           >
             MYDS
           </BrandLogo>
-          <MobileNavigationMenu
+          <NavigationMenuCombo
             showMenu={showMenu}
             setMenu={setMenu}
-            nav_items={nav_items}
-          ></MobileNavigationMenu>
+            childrenDesktop={
+              <>
+                <NavItemsMenu href="/menu1" active={false}>
+                  Menu 1
+                </NavItemsMenu>
+                <NavItemsMenu href="/menu2" active={false}>
+                  Menu 2
+                </NavItemsMenu>
 
-          <DesktopNavigationMenu nav_items={nav_items} />
+                <NavItemsDropdown menu="Menu Dropdown">
+                  <NavItemsDropdownItems href="/submenu1">
+                    Submenu 1
+                  </NavItemsDropdownItems>
+                  <NavItemsDropdownItems href="/submenu2">
+                    Submenu 2
+                  </NavItemsDropdownItems>
+                  <NavItemsDropdownItems href="/submenu3">
+                    Submenu 3
+                  </NavItemsDropdownItems>
+                </NavItemsDropdown>
+
+                <NavItemsMenu href="/menu3" active={false}>
+                  Menu 3
+                </NavItemsMenu>
+              </>
+            }
+            childrenMobile={
+              <>
+                <NavItemsMenuMobile href="/menu1" active={false}>
+                  Menu 1
+                </NavItemsMenuMobile>
+                <NavItemsMenuMobile href="/menu2" active={false}>
+                  Menu 2
+                </NavItemsMenuMobile>
+
+                <NavItemsDropdownMobile menu="Menu Dropdown">
+                  <NavItemsDropdownItemsMobile href="/submenu1">
+                    Submenu 1
+                  </NavItemsDropdownItemsMobile>
+                  <NavItemsDropdownItemsMobile href="/submenu2">
+                    Submenu 2
+                  </NavItemsDropdownItemsMobile>
+                  <NavItemsDropdownItemsMobile href="/submenu3">
+                    Submenu 3
+                  </NavItemsDropdownItemsMobile>
+                </NavItemsDropdownMobile>
+
+                <NavItemsMenuMobile href="/menu3" active={false}>
+                  Menu 3
+                </NavItemsMenuMobile>
+              </>
+            }
+          ></NavigationMenuCombo>
         </NavbarContainer>
-        <NavbarActionGroup>
-          <UtilityButton
-            isDarkMode={isDarkMode}
-            handleToggle={handleToggle}
-          ></UtilityButton>
-          <LanguageSelector
+        <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
+          <Select
             value={value}
-            setValue={setValue}
-          ></LanguageSelector>
-          <MobileMenuToggle
-            showMenu={showMenu}
-            setMenu={setMenu}
-          ></MobileMenuToggle>
+            onValueChange={setValue}
+            defaultValue="EN"
+            multiple={false}
+            variant="outline"
+            size="medium"
+          >
+            <SelectTrigger>
+              <GlobeIcon className="h-4 w-4"></GlobeIcon>
+              <SelectValue>{(value) => value || "EN"}</SelectValue>
+            </SelectTrigger>
+            <SelectContent className="font-body rounded-[4px] py-1">
+              <SelectItem value="EN">EN</SelectItem>
+              <SelectItem value="BM">BM</SelectItem>
+            </SelectContent>
+          </Select>
         </NavbarActionGroup>
       </Navbar>
     </div>
