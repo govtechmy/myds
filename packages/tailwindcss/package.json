@@ -1,7 +1,6 @@
 {
   "name": "@govtechmy/myds-css",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1-beta.0",
   "scripts": {
     "dev": "tailwindcss -i ./styles/input.tailwind.css -o ./styles/output.tailwind.css --watch",
     "build": "tailwindcss -i ./styles/input.tailwind.css -o ./dist/index.css --minify"

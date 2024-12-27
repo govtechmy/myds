@@ -1,0 +1,17 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@govtechmy/myds-react": "0.0.0",
+    "@govtechmy/myds-css": "0.0.0",
+    "@govtechmy/myds-docs": "0.0.0",
+    "@govtechmy/myds-standard": "0.0.0",
+    "@govtechmy/myds-storybook": "0.0.0",
+    "@myds/eslint-config": "0.0.0",
+    "@myds/typescript-config": "0.0.0",
+    "@govtechmy/myds-cli": "0.0.0"
+  },
+  "changesets": [
+    "kind-geckos-behave"
+  ]
+}

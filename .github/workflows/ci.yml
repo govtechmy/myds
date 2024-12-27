@@ -1,10 +1,8 @@
 name: "@myds/react ci"
 
 on:
-  pull_request:
   push:
     branches:
-      - main
       - feat/publish
 
 concurrency:
@@ -39,49 +37,3 @@ jobs:
     steps:
       - name: Build @govtechmy/myds-react
         run: pnpm build --filter=@govtechmy/myds-react
-#     # steps:
-#     #   - name: Checkout
-#     #     uses: actions/checkout@v4
-
-#     #   - name: Install Node.js
-#     #     uses: actions/setup-node@v4
-#     #     with:
-#     #       node-version: 20
-#     #       cache: "pnpm"
-
-#     #   - name: Install pnpm
-#     #     uses: pnpm/action-setup@v4
-#     #     with:
-#     #       version: 9
-#     #       run_install: false
-
-#     #   - name: Cache pnpm dependencies
-#     #     uses: actions/cache@v3
-#     #     with:
-#     #       path: |
-#     #         ~/.pnpm-store
-#     #         node_modules
-#     #       key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}-node-${{ matrix.node-version }}
-#     #       restore-keys: ${{ runner.os }}-pnpm-
-
-#     #   - name: Install dependencies
-#     #     run: pnpm install
-
-#     #   - name: Build project
-#     #     run: pnpm run build
-
-#   ci:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v4
-
-#       - name: Use Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: "20"
-
-#       - name: Install dependencies
-#         run: pnpm install
-
-#       - name: Run CI
-#         run: npm run ci
