@@ -48,15 +48,15 @@ const SearchBar: FunctionComponent<SearchBarProps> = forwardRef(
 
 const search_bar_input_container_cva = cva(
   [
-    "flex items-center gap-1 bg-bg-white border border-otl-gray-200 shadow-button",
+    "flex items-center bg-bg-white border border-otl-gray-200 shadow-button",
     "has-[input:focus]:ring has-[input:focus]:ring-otl-primary-200 has-[input:focus]:border-otl-primary-300",
   ],
   {
     variants: {
       size: {
-        small: "px-[10px] py-[3px] rounded-sm text-sm",
-        medium: "px-[12px] py-[7px] rounded-md text-md",
-        large: "px-[18px] py-[6px] rounded-full text-md",
+        small: "pl-[10px] pr-2 py-[6px] gap-2 rounded-sm text-sm",
+        medium: "px-[12px] pr-2.5 py-[7px] gap-2 rounded-md text-md",
+        large: "pl-[18px] pr-1.5 py-[6px] gap-2.5 rounded-full text-md",
       },
     },
     defaultVariants: {
@@ -216,7 +216,7 @@ export const SearchBarResultsGroup: FunctionComponent<
     <Command.Group
       className={clx(
         "my-2 text-sm first:mt-0 last:mt-0",
-        "[&_[cmdk-group-heading]]:text-txt-black-500 [&_[cmdk-group-heading]]:mb-1 [&_[cmdk-group-heading]]:ml-2 [&_[cmdk-group-heading]]:font-medium",
+        "[&_[cmdk-group-heading]]:text-txt-black-500 [&_[cmdk-group-heading]]:mb-1 [&_[cmdk-group-heading]]:ml-3 [&_[cmdk-group-heading]]:font-medium",
         className,
       )}
       {...props}
@@ -234,7 +234,7 @@ export const SearchBarResultsItem: FunctionComponent<
   return (
     <Command.Item
       className={clx(
-        "data-[selected=true]:bg-bg-washed text-txt-black-900 flex cursor-pointer items-center gap-2 rounded px-2 py-1",
+        "data-[selected=true]:bg-bg-washed text-txt-black-900 flex cursor-pointer items-center gap-2 rounded px-3 py-2",
         className,
       )}
       {...props}
