@@ -1,4 +1,4 @@
-name: "@govtechmy/myds-react - ci"
+name: "ci"
 
 on:
   push:

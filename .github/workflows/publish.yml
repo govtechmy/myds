@@ -1,4 +1,4 @@
-name: "@govtechmy/myds-react - publish"
+name: "publish"
 
 on:
   workflow_dispatch:

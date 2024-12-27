@@ -3,10 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "tailwindcss -i ./styles/input.tailwind.css -o ./styles/output.tailwind.css --watch",
-    "build": "tailwindcss -i ./styles/input.tailwind.css -o ./dist/index.css --minify",
-    "ci": "pnpm build",
-    "prepublishOnly": "pnpm ci",
-    "release": "pnpm ci && changeset publish"
+    "build": "tailwindcss -i ./styles/input.tailwind.css -o ./dist/index.css --minify"
   },
   "files": [
     "dist",

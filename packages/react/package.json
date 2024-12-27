@@ -4,10 +4,7 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "check-exports": "attw --pack . --profile node16",
-    "ci": "pnpm build && pnpm check-exports",
-    "prepublishOnly": "pnpm ci",
-    "release": "pnpm ci && changeset publish"
+    "check-exports": "attw --pack . --profile node16"
   },
   "files": [
     "dist"
