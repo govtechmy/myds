@@ -1,6 +1,6 @@
-@import "@govtechmy/myds-css/color.css";
-@import "@govtechmy/myds-css/light.css";
-@import "@govtechmy/myds-css/dark.css";
+@import "@govtechmy/myds-style/color.css";
+@import "@govtechmy/myds-style/light.css";
+@import "@govtechmy/myds-style/dark.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap");
 

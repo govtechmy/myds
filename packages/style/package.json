@@ -1,11 +1,12 @@
 {
-  "name": "@govtechmy/myds-css",
+  "name": "@govtechmy/myds-style",
   "version": "0.0.1",
   "scripts": {
     "dev": "tailwindcss -i ./styles/input.tailwind.css -o ./styles/output.tailwind.css --watch",
     "build": "tailwindcss -i ./styles/input.tailwind.css -o ./dist/index.css --minify"
   },
   "files": [
+    "README.md",
     "dist",
     "styles",
     "index.d.ts",

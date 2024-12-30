@@ -4,7 +4,8 @@ name: "@myds/react beta release"
 # 1. Ideal way to handle prereleases (beta)
 # 2. Cases to trigger beta release
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

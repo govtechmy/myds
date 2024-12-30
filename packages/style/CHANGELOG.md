@@ -1,4 +1,4 @@
-# @govtechmy/myds-css
+# @govtechmy/myds-style
 
 ## 0.0.1
 

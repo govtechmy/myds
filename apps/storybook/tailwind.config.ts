@@ -1,5 +1,5 @@
 import { Config } from "tailwindcss";
-import { preset } from "@govtechmy/myds-css";
+import { preset } from "@govtechmy/myds-style";
 
 const config: Config = {
   content: [
