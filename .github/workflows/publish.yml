@@ -3,9 +3,9 @@ name: "publish"
 on:
   workflow_dispatch:
 
-  # push:
-  #   branches:
-  #     - "feat/publish"
+  push:
+    branches:
+      - "feat/publish"
   # paths:
   #   - "packages/react/**"
 
