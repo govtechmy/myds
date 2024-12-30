@@ -1,15 +1,428 @@
 ---
-title: Button
-description: Button
+title: Butang
+description: Elemen UI asas yang digunakan untuk mencetuskan tindakan atau acara. Ia memastikan konsistensi, kebolehcapaian, dan panggilan tindakan yang jelas.
 ---
 
-import { InfoIcon } from "@govtechmy/myds-react/icon";
+import {
+  InfoIcon,
+  ArrowForwardIcon,
+  ArrowBackIcon,
+  UploadIcon,
+  CopyIcon,
+  TrashIcon,
+} from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import {
+  PreviewButton,
+  Button,
+  ButtonIcon,
+  ButtonCounter,
+  Link,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
-<Callout
-  type="info"
-  title="Note"
-  className="bg-bg-primary-50 text-txt-primary border-transparent"
-  icon={<InfoIcon className="size-5" />}
->
-  Dalam pembinaan
-</Callout>
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="flex justify-center">
+      <PreviewButton
+        variant="primary-fill"
+        size="small"
+        pantun="Berjalan-jalan ke kota tua, Membeli kuih di pasar pagi. Membuka jalan menuju dunia, 'Button' ditekan dengan jari. -- Copilot"
+      >
+        <span className="text-white">Jana Pantun</span>
+      </PreviewButton>
+      </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { Button } from "@govtechmy/myds-react/button";
+
+<Button variant="primary-fill" size="small" onClick={...}>
+  Jana Pantun
+</Button>;
+```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-button--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/button.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import {
+  Button,
+  ButtonIcon,
+  ButtonCounter,
+} from "@govtechmy/myds-react/button";
+```
+
+```tsx copy
+export default () => (
+  <Button>
+    <ButtonIcon />
+    <ButtonCounter />
+  </Button>
+);
+```
+
+## Contoh
+
+### Varian
+
+Gunakan prop `variant` untuk menukar gaya butang!
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+      <Button
+        variant="primary-fill"
+        size="small"
+      >
+        <span className="text-white">Primary Fill</span>
+      </Button>
+
+      <Button
+        variant="primary-outline"
+        size="small"
+      >
+        <span>Primary Outline</span>
+      </Button>
+
+      <Button
+        variant="primary-ghost"
+        size="small"
+      >
+        <span>Primary Ghost</span>
+      </Button>
+      </div>
+
+  <div className="flex justify-center items-center h-fit gap-1">
+      <Button
+        variant="danger-fill"
+        size="small"
+    
+      >
+        <span className="text-white">Danger Fill</span>
+      </Button>
+
+      <Button
+        variant="danger-outline"
+        size="small"
+      >
+        <span>Danger Outline</span>
+      </Button>
+
+      <Button
+        variant="danger-ghost"
+        size="small"
+      >
+        <span>Danger Ghost</span>
+      </Button>
+      </div>
+
+  <div className="flex justify-center items-center h-fit gap-1">
+      <Button
+        variant="default-outline"
+        size="small"
+      >
+        <span>Default Outline</span>
+      </Button>
+
+      <Button
+        variant="default-ghost"
+        size="small"
+      >
+        <span>Default Ghost</span>
+      </Button>
+      </div>
+
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { Button } from "@govtechmy/myds-react/button";
+
+/** Varian: Primary **/
+
+<Button variant="primary-fill">Primary Fill</Button>;
+<Button variant="primary-outline">Primary Outline</Button>;
+<Button variant="primary-ghost">Primary Ghost</Button>;
+
+/** Varian: Danger **/
+
+<Button variant="danger-fill">Danger Fill</Button>;
+<Button variant="danger-outline">Danger Outline</Button>;
+<Button variant="danger-ghost">Danger Ghost</Button>;
+
+/** Varian: Default **/
+
+<Button variant="default-outline">Default Outline</Button>;
+<Button variant="default-ghost">Default Ghost</Button>;
+```
+  </Tab>
+</Tabs>
+
+### Saiz
+
+Gunakan prop `size` untuk menukar saiz butang!
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+      <Button size="small" variant="default-outline">
+        <span>small</span>
+      </Button>
+
+      <Button
+        size="medium"
+        variant="default-outline"
+      >
+        <span>medium</span>
+      </Button>
+
+      <Button
+        variant="default-outline"
+        size="large"
+      >
+        <span>large</span>
+      </Button>
+      </div>
+
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { Button } from "@govtechmy/myds-react/button";
+
+/** Saiz **/
+
+<Button size="small" variant="default-outline">small</Button>;
+<Button size="medium" variant="default-outline">medium</Button>;
+<Button size="large" variant="default-outline">large</Button>;
+```
+  </Tab>
+</Tabs>
+
+### Dengan Ikon
+
+Gunakan `<ButtonIcon>` untuk menambah ikon tindakan pada butang.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+     <Button variant="default-outline" size="medium">
+      <ButtonIcon>
+        <ArrowBackIcon />
+      </ButtonIcon>
+      <span>Go back</span>
+    </Button>
+     
+    <Button variant="default-outline" size="medium">
+      <span>Go forward</span>
+      <ButtonIcon>
+        <ArrowForwardIcon />
+      </ButtonIcon>
+    </Button>
+
+      </div>
+
+  </div>
+  </Tab>
+  <Tab value="Kod">
+```tsx 
+import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
+import {
+  ArrowForwardIcon,
+  ArrowBackIcon,
+} from "@govtechmy/myds-react/icon";
+
+/** Dengan Ikon; Posisi: Mula **/
+
+<Button variant="default-outline" size="medium">
+  <ButtonIcon>
+    <ArrowBackIcon />
+  </ButtonIcon>
+  <span>Go back</span>
+</Button>
+
+/** Dengan Ikon; Posisi: Akhir **/
+
+<Button variant="default-outline" size="medium">
+  <span>Go forward</span>
+  <ButtonIcon>
+    <ArrowForwardIcon />
+  </ButtonIcon>
+</Button>
+```
+  </Tab>
+</Tabs>
+
+### Ikon Sahaja
+
+Untuk Butang dengan ikon sahaja - gunakan hanya `<ButtonIcon>` sebagai anak.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="flex justify-center items-center h-fit gap-1">
+    <Button variant="primary-fill" size="small">
+      <ButtonIcon>
+        <UploadIcon />
+      </ButtonIcon>
+    </Button>
+
+    <Button variant="default-outline" size="small">
+      <ButtonIcon>
+        <CopyIcon />
+      </ButtonIcon>
+    </Button>
+
+    <Button variant="danger-fill" size="small">
+      <ButtonIcon>
+        <TrashIcon />
+      </ButtonIcon>
+    </Button>
+
+      </div>
+
+  </Tab>
+  <Tab value="Kod">
+```tsx 
+import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
+import {
+  UploadIcon,
+  CopyIcon,
+  TrashIcon,
+} from "@govtechmy/myds-react/icon";
+
+<Button variant="primary-fill" size="small">
+  <ButtonIcon>
+    <UploadIcon />
+  </ButtonIcon>
+</Button>
+
+<Button variant="default-outline" size="small">
+  <ButtonIcon>
+    <CopyIcon />
+  </ButtonIcon>
+</Button>
+
+<Button variant="danger-fill" size="small">
+  <ButtonIcon>
+    <TrashIcon />
+  </ButtonIcon>
+</Button>
+```
+  </Tab>
+</Tabs>
+
+### Dengan Penghitung
+
+Gunakan `<ButtonCounter>` untuk menambah maklumat berangka pada butang.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+     <Button variant="primary-fill" size="medium">
+      <span className="text-white">Tapisan</span>
+      <ButtonCounter>
+        5
+      </ButtonCounter>
+    </Button>
+    <Button variant="default-outline" size="medium">
+      <span>Tapisan</span>
+      <ButtonCounter>
+        <span className="text-white">5</span>
+      </ButtonCounter>
+    </Button>
+
+    <Button variant="danger-fill" size="medium">
+      <span className="text-white">Tapisan</span>
+      <ButtonCounter>
+        <span>5</span>
+      </ButtonCounter>
+    </Button>
+
+  </div>
+
+  </div>
+  </Tab>
+  <Tab value="Kod">
+```tsx
+import { Button, ButtonCounter } from "@govtechmy/myds-react/button";
+
+<Button variant="primary-fill" size="medium">
+  Tapisan
+  <ButtonCounter>5</ButtonCounter>
+</Button>
+
+<Button variant="default-outline" size="medium">
+  Tapisan
+  <ButtonCounter>5</ButtonCounter>
+</Button>
+
+<Button variant="danger-fill" size="medium">
+  Tapisan
+  <ButtonCounter>5</ButtonCounter>
+</Button>
+```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### Button
+
+<TypeTable
+  type={{
+    variant: {
+      description: "Gaya varian butang",
+      type: "enum",
+      typeDescription:
+        "primary-fill | primary-outline | primary-ghost | danger-fill | danger-outline | danger-ghost | default-outline | default-ghost",
+      default: "default-outline",
+    },
+    size: {
+      description: "Saiz butang",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+  }}
+/>
+
+### ButtonIcon
+
+<TypeTable
+  type={{
+    children: {
+      description:
+        "Import mana-mana komponen ikon dari @govtechmy/myds-react/icon",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### ButtonCounter
+
+<TypeTable
+  type={{
+    children: {
+      description: "Nilai berangka untuk dipaparkan",
+      type: "ReactNode",
+    },
+  }}
+/>
