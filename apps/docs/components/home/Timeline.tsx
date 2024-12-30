@@ -3,7 +3,7 @@ import { Tag } from "@/components/Tag";
 import Checkmark from "@/icons/checkmark";
 import Production from "@/icons/production";
 import Star from "@/icons/star";
-import { clx } from "@myds/react/utils";
+import { clx } from "@govtechmy/myds-react/utils";
 
 type DataItem = {
   type: string;

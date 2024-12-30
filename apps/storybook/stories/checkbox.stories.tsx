@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Checkbox } from "@myds/react/checkbox";
+import { Checkbox } from "@govtechmy/myds-react/checkbox";
 import { createStory } from "../utils";
 
 /**
@@ -20,7 +20,7 @@ import { createStory } from "../utils";
  *
  * ### Usage
  * ```tsx
- * import { Checkbox } from "@myds/react/checkbox";
+ * import { Checkbox } from "@govtechmy/myds-react/checkbox";
  *
  * // Default checkbox (small size)
  * <Checkbox>Default Checkbox</Checkbox>
@@ -39,7 +39,7 @@ import { createStory } from "../utils";
  * ```
  */
 const meta: Meta<typeof Checkbox> = {
-  title: "@myds/react/Checkbox",
+  title: "@govtechmy/myds-react/Checkbox",
   component: Checkbox,
   parameters: {
     layout: "centered",

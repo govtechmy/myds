@@ -1,7 +1,7 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { Input, InputAddon, InputIcon } from "@myds/react/input";
+import { Input, InputAddon, InputIcon } from "@govtechmy/myds-react/input";
 import ArrowBack from "../react/arrow-back";
 import ArrowForward from "../react/arrow-forward";
 
@@ -15,7 +15,7 @@ import ArrowForward from "../react/arrow-forward";
  *
  * ### Usage
  * ```tsx
- * import { Input } from "@myds/react/input";
+ * import { Input } from "@govtechmy/myds-react/input";
  *
  * //* Default
  * <Input />
@@ -35,7 +35,7 @@ import ArrowForward from "../react/arrow-forward";
  * ```
  */
 const meta = {
-  title: "@myds/react/Input",
+  title: "@govtechmy/myds-react/Input",
   component: Input,
   tags: ["autodocs"],
   parameters: {

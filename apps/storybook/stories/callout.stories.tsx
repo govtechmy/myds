@@ -6,8 +6,8 @@ import {
   CalloutButton,
   CalloutContent,
   CalloutTitle,
-} from "@myds/react/callout";
-import { Button } from "@myds/react/button";
+} from "@govtechmy/myds-react/callout";
+import { Button } from "@govtechmy/myds-react/button";
 
 /**
  * ### Overview
@@ -16,8 +16,8 @@ import { Button } from "@myds/react/button";
  *
  * ### Usage
  * ```tsx
- * import { Callout, CalloutTitle, CalloutDescription } from "@myds/react/callout";
- * import { Button } from "@myds/react/button";
+ * import { Callout, CalloutTitle, CalloutDescription } from "@govtechmy/myds-react/callout";
+ * import { Button } from "@govtechmy/myds-react/button";
  *
  * <Callout>
  *  <CalloutTitle>Title</CalloutTitle>
@@ -29,7 +29,7 @@ import { Button } from "@myds/react/button";
  * ```
  */
 const meta = {
-  title: "@myds/react/Callout",
+  title: "@govtechmy/myds-react/Callout",
   component: Callout,
   tags: ["autodocs"],
   parameters: {

@@ -1,4 +1,4 @@
-import { clx } from "@myds/react/utils";
+import { clx } from "@govtechmy/myds-react/utils";
 import { FunctionComponent, ReactNode } from "react";
 
 interface SectionProps {

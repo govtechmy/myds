@@ -1,173 +1,217 @@
 {
-  "name": "@myds/react",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@govtechmy/myds-react",
+  "version": "0.0.2",
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "check-exports": "attw --pack . --profile node16"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "exports": {
     "./utils": {
-      "type": "./src/utils/index.ts",
-      "default": "./src/utils/index.ts"
+      "type": "./dist/utils/index.d.ts",
+      "import": "./dist/utils/index.mjs",
+      "require": "./dist/utils/index.js"
     },
     "./textarea": {
-      "type": "./src/components/textarea.tsx",
-      "default": "./src/components/textarea.tsx"
+      "type": "./dist/components/textarea.d.ts",
+      "import": "./dist/components/textarea.mjs",
+      "require": "./dist/components/textarea.js"
     },
     "./table": {
-      "type": "./src/components/table.tsx",
-      "default": "./src/components/table.tsx"
+      "type": "./dist/components/table.d.ts",
+      "import": "./dist/components/table.mjs",
+      "require": "./dist/components/table.js"
     },
     "./data-table": {
-      "type": "./src/components/data-table.tsx",
-      "default": "./src/components/data-table.tsx"
+      "type": "./dist/components/data-table.d.ts",
+      "import": "./dist/components/data-table.mjs",
+      "require": "./dist/components/data-table.js"
     },
     "./callout": {
-      "type": "./src/components/callout.tsx",
-      "default": "./src/components/callout.tsx"
+      "type": "./dist/components/callout.d.ts",
+      "import": "./dist/components/callout.mjs",
+      "require": "./dist/components/callout.js"
     },
     "./announce-bar": {
-      "type": "./src/components/announce-bar.tsx",
-      "default": "./src/components/announce-bar.tsx"
+      "type": "./dist/components/announce-bar.d.ts",
+      "import": "./dist/components/announce-bar.mjs",
+      "require": "./dist/components/announce-bar.js"
     },
     "./dropdown": {
-      "type": "./src/components/dropdown.tsx",
-      "default": "./src/components/dropdown.tsx"
+      "type": "./dist/components/dropdown.d.ts",
+      "import": "./dist/components/dropdown.mjs",
+      "require": "./dist/components/dropdown.js"
     },
     "./cookie-banner": {
-      "type": "./src/components/cookie-banner.tsx",
-      "default": "./src/components/cookie-banner.tsx"
+      "type": "./dist/components/cookie-banner.d.ts",
+      "import": "./dist/components/cookie-banner.mjs",
+      "require": "./dist/components/cookie-banner.js"
     },
     "./search-bar": {
-      "type": "./src/components/search-bar.tsx",
-      "default": "./src/components/search-bar.tsx"
+      "type": "./dist/components/search-bar.d.ts",
+      "import": "./dist/components/search-bar.mjs",
+      "require": "./dist/components/search-bar.js"
     },
     "./tooltip": {
-      "type": "./src/components/tooltip.tsx",
-      "default": "./src/components/tooltip.tsx"
-    },
-    "./_tooltip": {
-      "type": "./src/components/tooltip.tsx",
-      "default": "./src/components/tooltip.tsx"
+      "type": "./dist/components/tooltip.d.ts",
+      "import": "./dist/components/tooltip.mjs",
+      "require": "./dist/components/tooltip.js"
     },
     "./spinner": {
-      "type": "./src/components/spinner.tsx",
-      "default": "./src/components/spinner.tsx"
+      "type": "./dist/components/spinner.d.ts",
+      "import": "./dist/components/spinner.mjs",
+      "require": "./dist/components/spinner.js"
     },
     "./input-otp": {
-      "type": "./src/components/input-otp.tsx",
-      "default": "./src/components/input-otp.tsx"
+      "type": "./dist/components/input-otp.d.ts",
+      "import": "./dist/components/input-otp.mjs",
+      "require": "./dist/components/input-otp.js"
     },
     "./footer": {
-      "type": "./src/components/footer.tsx",
-      "default": "./src/components/footer.tsx"
+      "type": "./dist/components/footer.d.ts",
+      "import": "./dist/components/footer.mjs",
+      "require": "./dist/components/footer.js"
     },
     "./icon": {
-      "type": "./src/icons/index.ts",
-      "default": "./src/icons/index.ts"
+      "type": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.mjs",
+      "require": "./dist/icons/index.js"
     },
     "./masthead": {
-      "type": "./src/components/masthead.tsx",
-      "default": "./src/components/masthead.tsx"
+      "type": "./dist/components/masthead.d.ts",
+      "import": "./dist/components/masthead.mjs",
+      "require": "./dist/components/masthead.js"
     },
     "./label": {
-      "type": "./src/components/label.tsx",
-      "default": "./src/components/label.tsx"
+      "type": "./dist/components/label.d.ts",
+      "import": "./dist/components/label.mjs",
+      "require": "./dist/components/label.js"
     },
     "./skiplink": {
-      "type": "./src/components/skiplink.tsx",
-      "default": "./src/components/skiplink.tsx"
+      "type": "./dist/components/skiplink.d.ts",
+      "import": "./dist/components/skiplink.mjs",
+      "require": "./dist/components/skiplink.js"
     },
     "./select": {
-      "type": "./src/components/select.tsx",
-      "default": "./src/components/select.tsx"
+      "type": "./dist/components/select.d.ts",
+      "import": "./dist/components/select.mjs",
+      "require": "./dist/components/select.js"
     },
     "./date-field": {
-      "type": "./src/components/date-field.tsx",
-      "default": "./src/components/date-field.tsx"
+      "type": "./dist/components/date-field.d.ts",
+      "import": "./dist/components/date-field.mjs",
+      "require": "./dist/components/date-field.js"
     },
     "./pagination": {
-      "type": "./src/components/pagination.tsx",
-      "default": "./src/components/pagination.tsx"
+      "type": "./dist/components/pagination.d.ts",
+      "import": "./dist/components/pagination.mjs",
+      "require": "./dist/components/pagination.js"
     },
     "./input": {
-      "type": "./src/components/input.tsx",
-      "default": "./src/components/input.tsx"
+      "type": "./dist/components/input.d.ts",
+      "import": "./dist/components/input.mjs",
+      "require": "./dist/components/input.js"
     },
     "./tag": {
-      "type": "./src/components/tag.tsx",
-      "default": "./src/components/tag.tsx"
+      "type": "./dist/components/tag.d.ts",
+      "import": "./dist/components/tag.mjs",
+      "require": "./dist/components/tag.js"
     },
     "./pill": {
-      "type": "./src/components/pill.tsx",
-      "default": "./src/components/pill.tsx"
+      "type": "./dist/components/pill.d.ts",
+      "import": "./dist/components/pill.mjs",
+      "require": "./dist/components/pill.js"
     },
     "./tabs": {
-      "type": "./src/components/tabs.tsx",
-      "default": "./src/components/tabs.tsx"
+      "type": "./dist/components/tabs.d.ts",
+      "import": "./dist/components/tabs.mjs",
+      "require": "./dist/components/tabs.js"
     },
     "./checkbox": {
-      "type": "./src/components/checkbox.tsx",
-      "default": "./src/components/checkbox.tsx"
+      "type": "./dist/components/checkbox.d.ts",
+      "import": "./dist/components/checkbox.mjs",
+      "require": "./dist/components/checkbox.js"
     },
     "./hooks": {
-      "type": "./src/hooks/index.ts",
-      "default": "./src/hooks/index.ts"
+      "type": "./dist/hooks/index.d.ts",
+      "import": "./dist/hooks/index.mjs",
+      "require": "./dist/hooks/index.j"
     },
     "./toast": {
-      "type": "./src/components/toast.tsx",
-      "default": "./src/components/toast.tsx"
+      "type": "./dist/components/toast.d.ts",
+      "import": "./dist/components/toast.mjs",
+      "require": "./dist/components/toast.js"
     },
     "./radio": {
-      "type": "./src/components/radio.tsx",
-      "default": "./src/components/radio.tsx"
+      "type": "./dist/components/radio.d.ts",
+      "import": "./dist/components/radio.mjs",
+      "require": "./dist/components/radio.js"
     },
     "./breadcrumb": {
-      "type": "./src/components/breadcrumb.tsx",
-      "default": "./src/components/breadcrumb.tsx"
+      "type": "./dist/components/breadcrumb.d.ts",
+      "import": "./dist/components/breadcrumb.mjs",
+      "require": "./dist/components/breadcrumb.js"
     },
     "./accordion": {
-      "default": "./src/components/accordion.tsx",
-      "type": "./src/components/accordion.tsx"
+      "type": "./dist/components/accordion.d.ts",
+      "import": "./dist/components/accordion.mjs",
+      "require": "./dist/components/accordion.js"
     },
     "./button": {
-      "type": "./src/components/button.tsx",
-      "default": "./src/components/button.tsx"
+      "type": "./dist/components/button.d.ts",
+      "import": "./dist/components/button.mjs",
+      "require": "./dist/components/button.js"
     },
     "./alert-dialog": {
-      "type": "./src/components/alert-dialog.tsx",
-      "default": "./src/components/alert-dialog.tsx"
+      "type": "./dist/components/alert-dialog.d.ts",
+      "import": "./dist/components/alert-dialog.mjs",
+      "require": "./dist/components/alert-dialog.js"
     },
     "./dialog": {
-      "type": "./src/components/dialog.tsx",
-      "default": "./src/components/dialog.tsx"
+      "type": "./dist/components/dialog.d.ts",
+      "import": "./dist/components/dialog.mjs",
+      "require": "./dist/components/dialog.js"
     },
     "./link": {
-      "type": "./src/components/link.tsx",
-      "default": "./src/components/link.tsx"
+      "type": "./dist/components/link.d.ts",
+      "import": "./dist/components/link.mjs",
+      "require": "./dist/components/link.js"
     },
     "./toggle": {
-      "type": "./src/components/toggle.tsx",
-      "default": "./src/components/toggle.tsx"
+      "type": "./dist/components/toggle.d.ts",
+      "import": "./dist/components/toggle.mjs",
+      "require": "./dist/components/toggle.js"
     },
     "./date-picker": {
-      "type": "./src/components/date-picker.tsx",
-      "default": "./src/components/date-picker.tsx"
+      "type": "./dist/components/date-picker.d.ts",
+      "import": "./dist/components/date-picker.mjs",
+      "require": "./dist/components/date-picker.js"
     },
     "./daterange-picker": {
-      "type": "./src/components/daterange-picker.tsx",
-      "default": "./src/components/daterange-picker.tsx"
+      "type": "./dist/components/daterange-picker.d.ts",
+      "import": "./dist/components/daterange-picker.mjs",
+      "require": "./dist/components/daterange-picker.js"
     }
   },
   "peerDependencies": {
-    "@myds/tailwindcss": "workspace:*",
     "react": "^18"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
-    "@myds/tailwindcss": "workspace:*",
+    "@swc/core": "^1.10.1",
     "@types/node": "^22.7.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tsup": "^8.3.5"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.1",
