@@ -132,7 +132,7 @@ type CookieBannerCustomiserProps = {
 };
 
 const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
-  ({ open = false, className, children }, ref) => {
+  ({ open = false, className, children, ...props }, ref) => {
     const [showPreferences, setShowPreferences] = useState(false);
     // Reset showPreferences when dialog closes
     useEffect(() => {
@@ -152,6 +152,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
               className,
             )}
             ref={ref}
+            {...props}
           >
             {children}
           </DialogContent>
@@ -166,6 +167,7 @@ const CookieBannerTitle = DialogTitle;
 const CookieBannerClose = ({
   className,
   onClick,
+  ...props
 }: {
   className?: string;
   onClick: () => void;
@@ -183,6 +185,7 @@ const CookieBannerClose = ({
         "flex-shrink-0",
         className,
       )}
+      {...props}
     >
       <CrossIcon className="stroke-current" />
     </Button>
@@ -194,7 +197,7 @@ const CookieBannerDescription = DialogDescription;
 const CookieBannerPreferences = forwardRef<
   HTMLDivElement,
   CookieBannerPreferencesProps
->(({ children, className }, ref) => {
+>(({ children, className, ...props }, ref) => {
   const context = useContext(CookieBannerContext);
 
   if (!context) throw new Error("Must be used within CookieBanner");
@@ -202,7 +205,11 @@ const CookieBannerPreferences = forwardRef<
   if (!context.showPreferences) return null;
 
   return (
-    <div ref={ref} className={clx("flex flex-col gap-2 py-3", className)}>
+    <div
+      ref={ref}
+      className={clx("flex flex-col gap-2 py-3", className)}
+      {...props}
+    >
       {children}
     </div>
   );
@@ -211,7 +218,7 @@ const CookieBannerPreferences = forwardRef<
 const CookieBannerCustomiser = forwardRef<
   HTMLElement,
   CookieBannerCustomiserProps
->(({ children, className, asChild = false }, ref) => {
+>(({ children, className, asChild = false, ...props }, ref) => {
   const context = useContext(CookieBannerContext);
   if (!context) {
     throw new Error("Must be used within CookieBanner");
@@ -233,6 +240,7 @@ const CookieBannerCustomiser = forwardRef<
       size="medium"
       className={clx("w-full justify-center sm:w-auto", className)}
       onClick={togglePreferences}
+      {...props}
     >
       {children}
     </Comp>
