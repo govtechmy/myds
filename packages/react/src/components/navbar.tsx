@@ -22,15 +22,13 @@ import { VariantProps, cva } from "class-variance-authority";
 import { Link } from "./link";
 
 const headerVariant = cva(
-  ["font-semibold max-w-[223px] font-heading"],
+  ["font-semibold max-w-[223px] font-heading text-txt-black-900"],
 
   {
     variants: {
       type: {
         shortname: "text-lg leading-[26px]  ",
-        //more than 10 words
         longname: "text-xs leading-[14px] line-clamp-2",
-        //more than 26 words
       },
     },
     defaultVariants: {
@@ -172,33 +170,29 @@ const NavigationMenuCombo: FunctionComponent<NavigationMenuProps> = ({
   childrenMobile,
 }) => {
   return [
-    <NavigationMenu.Root
-      key="desktop"
-      className="relative z-10 hidden w-max justify-center xl:flex"
-    >
-      <NavigationMenu.List className="group flex list-none justify-center space-x-1">
-        {childrenDesktop}
-      </NavigationMenu.List>
-      <div className="absolute right-0 top-full">
-        <NavigationMenu.Viewport className="origin-top-center shadow-card data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 medium:w-[var(--radix-navigation-menu-viewport-width)] relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-lg" />
-      </div>
-    </NavigationMenu.Root>,
+    <NavigationMenu.Root key="desktop">
+      <Sheet key="mobile" open={showMenu} onOpenChange={setMenu}>
+        <NavigationMenu.List className="group hidden list-none justify-center space-x-1 xl:flex">
+          {childrenDesktop}
+        </NavigationMenu.List>
+        <div className="relative right-0 top-full">
+          <NavigationMenu.Viewport className="shadow-card data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 medium:w-[var(--radix-navigation-menu-viewport-width)] absolute mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-lg" />
+        </div>
 
-    <Sheet key="mobile" open={showMenu} onOpenChange={setMenu}>
-      <SheetContent
-        side="top"
-        className="bg-bg-white absolute top-full -z-10 flex flex-col gap-1 rounded-b-xl p-3 xl:hidden"
-      >
-        {childrenMobile}
-      </SheetContent>
-      <SheetPortal>
-        <SheetOverlay className="z-40" />
-      </SheetPortal>
-    </Sheet>,
+        <SheetContent
+          side="top"
+          className="bg-bg-white absolute top-full -z-10 flex flex-col gap-1 rounded-b-xl p-3 xl:hidden"
+        >
+          {childrenMobile}
+        </SheetContent>
+        <SheetPortal>
+          <SheetOverlay className="z-40" />
+        </SheetPortal>
+      </Sheet>
+    </NavigationMenu.Root>,
   ];
 };
 
-//For Desktop
 interface NavItemsMenuProps {
   children: React.ReactNode;
   href: string;
@@ -210,8 +204,9 @@ const NavItemsMenu: FunctionComponent<NavItemsMenuProps> = ({
   href,
   active = false,
 }) => {
-  return (
-    <NavigationMenu.Item>
+  return [
+    // Desktop
+    <NavigationMenu.Item className="list-none">
       <Link
         href={href}
         data-state={active ? "open" : "close"}
@@ -219,12 +214,33 @@ const NavItemsMenu: FunctionComponent<NavItemsMenuProps> = ({
         className={clx(
           button_cva({ variant: "default-ghost" }),
           "data-[state=open]:bg-bg-washed w-max bg-transparent transition-colors",
+          "hidden lg:block",
+          window.location.pathname.includes(href) && "bg-bg-washed-active",
         )}
       >
         {children}
       </Link>
-    </NavigationMenu.Item>
-  );
+    </NavigationMenu.Item>,
+    // Mobile
+    <SheetClose asChild>
+      <Link
+        href={href}
+        data-state={active ? "open" : "close"}
+        underline="none"
+        className={clx(
+          button_cva({
+            variant: "default-ghost",
+            size: "medium",
+          }),
+          "data-[state=open]:bg-bg-washed flex w-full justify-start text-left text-base",
+          "block lg:hidden",
+          window.location.pathname.includes(href) && "bg-bg-washed-active",
+        )}
+      >
+        {children}
+      </Link>
+    </SheetClose>,
+  ];
 };
 
 interface NavItemsDropdownProps {
@@ -236,8 +252,9 @@ const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
   children,
   menu,
 }) => {
-  return (
-    <NavigationMenu.Item>
+  return [
+    //Desktop
+    <NavigationMenu.Item className="relative hidden xl:block">
       <NavigationMenu.Trigger
         className={clx(
           button_cva({ variant: "default-ghost" }),
@@ -250,84 +267,26 @@ const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
           aria-hidden="true"
         />
       </NavigationMenu.Trigger>
-      <NavigationMenu.Content className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 medium:absolute medium:w-auto left-0 top-0 w-full">
-        <ul className="bg-bg-white shadow-card rounded-lg border p-3">
+      <NavigationMenu.Content
+        className={clx(
+          "data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out",
+          "data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out",
+          "data-[motion=from-end]:slide-in-from-right-52",
+          "data-[motion=from-start]:slide-in-from-left-52",
+          "data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52",
+        )}
+      >
+        <ul className="bg-bg-white shadow-card list-none rounded-lg border p-3">
           {children}
         </ul>
       </NavigationMenu.Content>
-    </NavigationMenu.Item>
-  );
-};
-
-interface NavItemsDropdownItemsProps {
-  href: string;
-  children: React.ReactNode;
-}
-
-const NavItemsDropdownItems: FunctionComponent<NavItemsDropdownItemsProps> = ({
-  children,
-  href,
-}) => {
-  return (
-    <li>
-      <Link
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        underline="none"
-        className={clx(
-          button_cva({ variant: "default-ghost" }),
-          "data-[state=open]:bg-bg-washed block w-full justify-start bg-transparent transition-colors",
-        )}
-      >
-        {children}
-      </Link>
-    </li>
-  );
-};
-
-//For Mobile
-interface NavItemsMenuPropsMobile {
-  children: React.ReactNode;
-  href: string;
-  active: boolean;
-}
-
-const NavItemsMenuMobile: FunctionComponent<NavItemsMenuPropsMobile> = ({
-  children,
-  href,
-  active = false,
-}) => {
-  return (
-    <SheetClose asChild>
-      <Link
-        href={href}
-        data-state={active ? "open" : "close"}
-        underline="none"
-        className={clx(
-          button_cva({
-            variant: "default-ghost",
-            size: "medium",
-          }),
-          "data-[state=open]:bg-bg-washed w-full justify-start text-base",
-        )}
-      >
-        {children}
-      </Link>
-    </SheetClose>
-  );
-};
-
-interface NavItemsDropdownPropsMobile {
-  children: React.ReactNode;
-  menu: string;
-}
-
-const NavItemsDropdownMobile: FunctionComponent<
-  NavItemsDropdownPropsMobile
-> = ({ children, menu }) => {
-  return (
-    <Accordion className="bg-bg-white" type="single" collapsible>
+    </NavigationMenu.Item>,
+    //Mobile
+    <Accordion
+      className="bg-bg-white block xl:hidden"
+      type="single"
+      collapsible
+    >
       <AccordionItem className="border-0" value="item-1">
         <AccordionTrigger
           className={clx(
@@ -342,20 +301,40 @@ const NavItemsDropdownMobile: FunctionComponent<
         </AccordionTrigger>
         <AccordionContent>{children}</AccordionContent>
       </AccordionItem>
-    </Accordion>
-  );
+    </Accordion>,
+  ];
 };
 
-interface NavItemsDropdownItemsPropsMobile {
+interface NavItemsDropdownItemsProps {
   href: string;
   children: React.ReactNode;
 }
 
-const NavItemsDropdownItemsMobile: FunctionComponent<
-  NavItemsDropdownItemsPropsMobile
-> = ({ children, href }) => {
-  return (
-    <SheetClose asChild>
+const NavItemsDropdownItems: FunctionComponent<NavItemsDropdownItemsProps> = ({
+  children,
+  href,
+}) => {
+  return [
+    //Desktop
+    <li className="hidden list-none lg:block">
+      <Link
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        underline="none"
+        className={clx(
+          button_cva({ variant: "default-ghost" }),
+          "data-[state=open]:bg-bg-washed block w-full justify-start bg-transparent transition-colors",
+          "text-left",
+          window.location.pathname.includes(href) && "bg-bg-washed-active",
+        )}
+      >
+        {children}
+      </Link>
+    </li>,
+
+    //Mobile
+    <SheetClose asChild className="lg:hidden">
       <Link
         href={href}
         target="_blank"
@@ -366,13 +345,15 @@ const NavItemsDropdownItemsMobile: FunctionComponent<
             variant: "default-ghost",
             size: "medium",
           }),
-          "data-[state=open]:bg-bg-washed w-full justify-start text-sm",
+          window.location.pathname.includes(href) && "bg-bg-washed-active",
+          "data-[state=open]:bg-bg-washed justify-starttext-sm w-full",
+          "h-10 pl-6",
         )}
       >
         {children}
       </Link>
-    </SheetClose>
-  );
+    </SheetClose>,
+  ];
 };
 
 export {
@@ -384,7 +365,4 @@ export {
   NavItemsMenu,
   NavItemsDropdown,
   NavItemsDropdownItems,
-  NavItemsMenuMobile,
-  NavItemsDropdownMobile,
-  NavItemsDropdownItemsMobile,
 };
