@@ -49,8 +49,9 @@ const AccordionTrigger = React.forwardRef<
   <AccordionBase.Header className="flex">
     <AccordionBase.Trigger
       className={clx(
-        "text-txt-black-500 font-body bg-bg-white hover:text-txt-black-900 data-[state=open]:text-txt-black-900 group flex flex-1 cursor-pointer items-center justify-between py-4 text-base font-medium leading-none hover:underline",
+        "text-txt-black-700 font-body bg-bg-white hover:text-txt-black-900 data-[state=open]:text-txt-black-900 group flex flex-1 cursor-pointer items-center justify-between py-4 text-base font-medium leading-none hover:underline",
         "outline-none focus-visible:underline",
+        "data-[disabled]:text-txt-black-disabled data-[disabled]:cursor-not-allowed data-[disabled]:hover:no-underline",
         className,
       )}
       {...props}
@@ -58,7 +59,7 @@ const AccordionTrigger = React.forwardRef<
     >
       {children}
       <ChevronDownIcon
-        className="text-txt-black-500 transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-180"
+        className="text-txt-black-500 group-data-[disabled]:text-txt-black-disabled transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-180"
         aria-hidden
       />
     </AccordionBase.Trigger>
