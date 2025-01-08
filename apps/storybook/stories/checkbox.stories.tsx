@@ -32,7 +32,7 @@ import { createStory } from "../utils";
  * <Checkbox checked>Checked Checkbox</Checkbox>
  *
  * // Indeterminate checkbox
- * <Checkbox indeterminate>Indeterminate Checkbox</Checkbox>
+ * <Checkbox checked="indeterminate">Indeterminate Checkbox</Checkbox>
  *
  * // Disabled checkbox
  * <Checkbox disabled>Disabled Checkbox</Checkbox>
