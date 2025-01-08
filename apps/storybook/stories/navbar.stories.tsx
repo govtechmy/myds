@@ -123,7 +123,7 @@ const meta = {
   component: Navbar,
   tags: ["autodocs"],
   parameters: {
-    layout: "centered",
+    layout: "full",
   },
   argTypes: {
     children: {
@@ -184,6 +184,18 @@ const DemoNavbar = () => {
                   <NavItemsDropdownItems href="/submenu3">
                     Submenu 3
                   </NavItemsDropdownItems>
+                  <NavItemsDropdownItems href="/submenu1">
+                    Submenu 4
+                  </NavItemsDropdownItems>
+                  <NavItemsDropdownItems href="/submenu2">
+                    Submenu 5
+                  </NavItemsDropdownItems>
+                  <NavItemsDropdownItems href="/submenu3">
+                    Submenu 6
+                  </NavItemsDropdownItems>
+                  <NavItemsDropdownItems href="/submenu3">
+                    Submenu 7
+                  </NavItemsDropdownItems>
                 </NavItemsDropdown>
 
                 <NavItemsMenu href="/menu3" active={false}>
@@ -208,6 +220,18 @@ const DemoNavbar = () => {
                   </NavItemsDropdownItems>
                   <NavItemsDropdownItems href="/submenu3">
                     Submenu 3
+                  </NavItemsDropdownItems>
+                  <NavItemsDropdownItems href="/submenu1">
+                    Submenu 4
+                  </NavItemsDropdownItems>
+                  <NavItemsDropdownItems href="/submenu2">
+                    Submenu 5
+                  </NavItemsDropdownItems>
+                  <NavItemsDropdownItems href="/submenu3">
+                    Submenu 6
+                  </NavItemsDropdownItems>
+                  <NavItemsDropdownItems href="/submenu3">
+                    Submenu 7
                   </NavItemsDropdownItems>
                 </NavItemsDropdown>
                 <NavItemsMenu href="/menu3" active={false}>
@@ -414,12 +438,20 @@ const KementerianDigitalNavbar = () => {
 };
 
 export const NavbarCustomMyds = createRender((args: Story["args"]) => {
-  return <DemoNavbar />;
+  return (
+    <div className="h-[300px]">
+      <DemoNavbar />
+    </div>
+  );
 }, "light");
 
 export const NavbarCustomKementerianDigital = createRender(
   (args: Story["args"]) => {
-    return <KementerianDigitalNavbar />;
+    return (
+      <div className="h-[300px]">
+        <KementerianDigitalNavbar />
+      </div>
+    );
   },
   "light",
 );
