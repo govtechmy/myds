@@ -1,5 +1,171 @@
 ---
-title: spinner
-description: spinner
+title: Spinner
+description: Komponen pemuat yang boleh disesuaikan untuk memberikan maklum balas visual semasa pemuatan.
 ---
 
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { Button } from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Spinner } from "@govtechmy/myds-react/spinner";
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="flex justify-center">
+        <Spinner/>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+  
+  ```tsx 
+import { Spinner } from "@govtechmy/myds-react/spinner";
+
+<Spinner>
+
+```
+</Tab>
+</Tabs>
+
+<Quicklinks
+links={{
+storybook:
+  "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-spinner--docs",
+ source:
+  "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/spinner.tsx",
+}}
+/>
+
+## Penggunaan
+
+```tsx copy
+import { Spinner } from "@govtechmy/myds-react/spinner";
+```
+
+```tsx copy
+export default () => (
+    <Spinner>
+);
+```
+
+## Contoh
+
+### Varian
+
+Gunakan prop `color` untuk menukar gaya pemuat!
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="space-y-2">
+        <div className="flex items-center justify-center">
+            <Button variant="default-outline">Memuatkan Kelabu <Spinner/></Button>
+        </div>
+        <div className="flex items-center justify-center">
+            <Button>Memuatkan Putih<Spinner color={"white"}/></Button>
+        </div>
+        <div className="flex items-center justify-center">
+            <Button variant="default-outline">Memuatkan Default <Spinner/></Button>
+        </div>
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { Spinner } from "@govtechmy/myds-react/spinner";
+
+/** Warna: Kelabu **/
+<Button variant="default-outline">
+  Memuatkan Kelabu
+  <Spinner color={"gray"} />
+</Button>
+
+/** Warna: Putih **/
+<Button>
+  Memuatkan Putih
+  <Spinner color={"white"} />
+</Button>
+
+/** Varian: Default **/
+<Button variant="default-outline">
+  Memuatkan Default
+  <Spinner />
+</Button>
+
+```
+  </Tab>
+</Tabs>
+
+### Saiz
+
+Gunakan prop `size` untuk menukar saiz pemuat!
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-2">
+
+      <Button variant="default-outline">
+        <span>kecil</span><Spinner size={"small"}/>
+      </Button>
+
+      <Button variant="default-outline">
+        <span>sederhana</span><Spinner size={"medium"}/>
+      </Button>
+
+      <Button variant="default-outline">
+        <span>besar</span><Spinner size={"large"}/>
+      </Button>
+
+      <Button variant="default-outline">
+        <span>default</span><Spinner/>
+      </Button>
+      </div>
+
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx
+import { Button } from "@govtechmy/myds-react/button";
+
+/** Saiz **/
+<Button variant="default-outline">
+    <span>kecil</span><Spinner size={"small"}/>
+</Button>
+
+<Button variant="default-outline">
+    <span>sederhana</span><Spinner size={"medium"}/>
+</Button>
+
+<Button variant="default-outline">
+    <span>besar</span><Spinner size={"large"}/>
+</Button>
+
+<Button variant="default-outline">
+    <span>default</span><Spinner/>
+</Button>
+```
+
+  </Tab>
+</Tabs>
+
+
+## Props
+
+### Spinner
+
+<TypeTable
+  type={{
+    color: {
+      description: "Varian warna pemuat",
+      type: "enum",
+      typeDescription:
+        "white | gray ",
+      default: "gray",
+    },
+    size: {
+      description: "Saiz pemuat",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+  }}
+/>
