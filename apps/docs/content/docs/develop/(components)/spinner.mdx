@@ -1,5 +1,186 @@
 ---
-title: spinner
-description: spinner
+title: Spinner
+description: A customizable loading spinner component that provides visual feedback for loading states.
 ---
+
+import {
+  InfoIcon,
+  ArrowForwardIcon,
+  ArrowBackIcon,
+  UploadIcon,
+  CopyIcon,
+  TrashIcon,
+} from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import {
+  PreviewButton,
+  Button,
+  ButtonIcon,
+  ButtonCounter,
+  Link,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Spinner } from "@govtechmy/myds-react/spinner";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="flex justify-center">
+        <Spinner/>
+    </div>
+  </Tab>
+  <Tab value="Code">
+  
+  ```tsx 
+import { Spinner } from "@govtechmy/myds-react/spinner";
+
+<Spinner>
+
+```
+</Tab>
+</Tabs>
+
+<Quicklinks
+links={{
+storybook:
+  "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-spinner--docs",
+source:
+  "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/spinner.tsx",
+}}
+/>
+
+## Usage
+
+```tsx copy
+import { Spinner } from "@govtechmy/myds-react/spinner";
+```
+
+```tsx copy
+export default () => (
+    <Spinner>
+);
+```
+
+## Examples
+
+### Variants
+
+Use the `color` prop to change the spinner style!
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="space-y-2">
+        <div className="flex items-center justify-center">
+            <Button variant="default-outline">Loading Gray <Spinner/></Button>
+        </div>
+        <div className="flex items-center justify-center">
+            <Button>Loading White<Spinner color={"white"}/></Button>
+        </div>
+        <div className="flex items-center justify-center">
+            <Button variant="default-outline">Loading Default <Spinner/></Button>
+        </div>
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+import { Spinner } from "@govtechmy/myds-react/spinner";
+
+/** Color: Gray **/
+<Button variant="default-outline">
+    Loading Gray
+    <Spinner color={"gray"} />
+</Button>
+
+/** Color: White **/
+<Button >
+    Loading White
+    <Spinner color={"white"} />
+</Button>
+
+/** Varian: Default **/
+<Button variant="default-outline">
+    Loading Default
+    <Spinner />
+</Button>
+
+```
+  </Tab>
+</Tabs>
+
+### Size
+
+Use the `size` prop to change the spinner size!
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-2">
+
+      <Button variant="default-outline">
+        <span>small</span><Spinner size={"small"}/>
+      </Button>
+
+      <Button variant="default-outline">
+        <span>medium</span><Spinner size={"medium"}/>
+      </Button>
+
+      <Button variant="default-outline">
+        <span>large</span><Spinner size={"large"}/>
+      </Button>
+
+      <Button variant="default-outline">
+        <span>default</span><Spinner/>
+      </Button>
+      </div>
+
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+import { Button } from "@govtechmy/myds-react/button";
+
+/** Size **/
+<Button variant="default-outline">
+    <span>small</span><Spinner size={"small"}/>
+</Button>
+
+<Button variant="default-outline">
+    <span>medium</span><Spinner size={"medium"}/>
+</Button>
+
+<Button variant="default-outline">
+    <span>large</span><Spinner size={"large"}/>
+</Button>
+      
+<Button variant="default-outline">
+    <span>default</span><Spinner/>
+</Button>
+```
+
+  </Tab>
+</Tabs>
+
+
+## Props
+
+### Spinner
+
+<TypeTable
+  type={{
+    color: {
+      description: "Color variant of the spinner",
+      type: "enum",
+      typeDescription:
+        "white | gray ",
+      default: "gray",
+    },
+    size: {
+      description: "Sizes of the spinner",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+  }}
+/>
 
