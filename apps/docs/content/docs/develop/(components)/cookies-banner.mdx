@@ -144,6 +144,7 @@ import { CookiesBannerPreview } from "@/components/cookies-banner-preview";
       </CookieBannerFooter>
     </CookieBanner>
     ```
+
   </Tab>
 </Tabs>
 
@@ -153,5 +154,127 @@ import { CookiesBannerPreview } from "@/components/cookies-banner-preview";
       "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-cookiesbanner--docs",
     source:
       "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/cookie-banner.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import {
+  CookieBanner,
+  CookieBannerClose,
+  CookieBannerCustomiser,
+  CookieBannerDescription,
+  CookieBannerFooter,
+  CookieBannerHeader,
+  CookieBannerPreferences,
+  CookieBannerTitle,
+} from "@govtechmy/myds-react/cookie-banner";
+```
+
+```tsx copy
+export default () => (
+  <CookieBanner>
+    <CookieBannerHeader>
+      <CookieBannerTitle />
+      <CookieBannerClose />
+    </CookieBannerHeader>
+    <CookieBannerDescription />
+    <CookieBannerPreferences />
+    <CookieBannerFooter>
+      <CookieBannerCustomiser />
+    </CookieBannerFooter>
+  </CookieBanner>
+);
+```
+## Props
+
+### CookieBanner
+Houses all the constituent components of the cookie banners. The component is a controlled component. It is being built on `Dialog` and `DialogContent`.
+<TypeTable
+  type={{
+    open: {
+      description: "State to control cookie banners open or close",
+      type: "boolean",
+      typeDescription:
+        "true | false",
+        default: 'false'
+    }
+  }}
+/>
+
+### CookieBannerHeader
+Contains the `CookieBannerTitle` and `CookieBannerClose` components. It is being built on `DialogHeader`.
+
+### CookieBannerTitle
+To customise the title of the cookie banner. It is being built on `DialogTitle`.
+<TypeTable
+  type={{
+    asChild: {
+      description: "Renders the child element instead of the default element, while preserving the component's props and functionality.",
+      type: "boolean",
+      typeDescription:
+        "true | false",
+        default: 'false'
+    }
+  }}
+/>
+
+### CookieBannerClose
+To change the `open` state of the Cookie Banner.
+<TypeTable
+  type={{
+    onClick: {
+      description: "Handler called when the close button is clicked to control the banner's visibility.",
+      type: "function", 
+      typeDescription: "() => void",
+    }
+  }}
+/>
+
+### CookieBannerPreferences
+A container component that wraps cookie preference options, typically containing checkboxes and descriptions for different cookie categories.
+<TypeTable
+  type={{
+    asChild: {
+      description: "Renders the child element instead of the default element, while preserving the component's props and functionality.",
+      type: "boolean",
+      typeDescription:
+        "true | false",
+        default: 'false'
+    }
+  }}
+/>
+
+### CookieBannerFooter
+Contains action elements like buttons and the customiser for cookie preferences. Built on top of `DialogFooter` to provides a consistent layout for cookie banner actions.
+
+<TypeTable
+  type={{
+    fillWidth: {
+      description: "When true, makes all direct children take up equal width and centers their content.",
+      type: "boolean",
+      typeDescription: "true | false",
+      default: "false"
+    },
+    className: {
+      description: "Optional CSS class to style the footer. Will be merged with default classes.",
+      type: "string",
+      typeDescription: "string"
+    }
+  }}
+/>
+
+### CookieBannerCustomiser
+A button component that toggles the visibility of cookie preference options. By default, renders as a Button component but can be customized using `asChild` props.
+
+<TypeTable
+  type={{
+    asChild: {
+      description: "Renders the child element instead of the default button element, while preserving the component's props and functionality.",
+      type: "boolean",
+      typeDescription: "true | false",
+      default: "false"
+    }
   }}
 />
