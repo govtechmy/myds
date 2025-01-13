@@ -53,14 +53,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/**
- * Storybook stories for different variants of a component.
- *
- * @example
- * export const Default: Story = createStory({ ... });
- * export const DarkDefault: Story = createStory({ ... , className="dark"}, "dark");
- */
-
 export const Default: Story = {
   args: {
     placeholder: "Enter your message here...",
