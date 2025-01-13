@@ -15,6 +15,7 @@
     "(components)/button",
     "(components)/callout",
     "(components)/checkbox",
+    "(components)/cookies-banner",
     "(components)/chip",
     "(components)/date-picker",
     "(components)/pagination",
