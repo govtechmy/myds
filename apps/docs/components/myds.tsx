@@ -4,6 +4,7 @@ import { Button } from "@govtechmy/myds-react/button";
 import { ComponentProps, FunctionComponent } from "react";
 export * from "@govtechmy/myds-react/button";
 export * from "@govtechmy/myds-react/link";
+export * from "@govtechmy/myds-react/skiplink";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
