@@ -18,7 +18,8 @@
     "(components)/chip",
     "(components)/date-picker",
     "(components)/pagination",
-    "(components)/radio"
+    "(components)/radio",
+    "(components)/skiplink"
   ],
   "root": true
 }
