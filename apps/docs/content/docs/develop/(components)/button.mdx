@@ -271,24 +271,24 @@ import {
 
 ### Icon Only
 
-For buttons with sole icon - use `<ButtonIcon>` as the only element in Button's `children`.
+For buttons with sole icon - set `iconOnly=true` & use `<ButtonIcon>` as the only element in the `children`.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
   <div className="flex justify-center items-center h-fit gap-1">
-    <Button variant="primary-fill" size="small">
+    <Button variant="primary-fill" size="small" iconOnly>
       <ButtonIcon>
         <UploadIcon />
       </ButtonIcon>
     </Button>
 
-    <Button variant="default-outline" size="small">
+    <Button variant="default-outline" size="small" iconOnly>
       <ButtonIcon>
         <CopyIcon />
       </ButtonIcon>
     </Button>
 
-    <Button variant="danger-fill" size="small">
+    <Button variant="danger-fill" size="small" iconOnly>
       <ButtonIcon>
         <TrashIcon />
       </ButtonIcon>
@@ -306,19 +306,19 @@ import {
   TrashIcon,
 } from "@govtechmy/myds-react/icon";
 
-<Button variant="primary-fill" size="small">
+<Button variant="primary-fill" size="small" iconOnly>
   <ButtonIcon>
     <UploadIcon />
   </ButtonIcon>
 </Button>
 
-<Button variant="default-outline" size="small">
+<Button variant="default-outline" size="small" iconOnly>
   <ButtonIcon>
     <CopyIcon />
   </ButtonIcon>
 </Button>
 
-<Button variant="danger-fill" size="small">
+<Button variant="danger-fill" size="small" iconOnly>
   <ButtonIcon>
     <TrashIcon />
   </ButtonIcon>
@@ -401,6 +401,19 @@ import { Button, ButtonCounter } from "@govtechmy/myds-react/button";
       typeDescription: "small | medium | large",
       default: "small",
     },
+    iconOnly: {
+      description: "Button with sole icon",
+      type: "boolean",
+      default: "false",
+    },
+    children: {
+      description: "Content of the button",
+      type: "ReactNode",
+    },
+    className: {
+      description: "Additional styles",
+      type: "string",
+    },
   }}
 />
 
@@ -412,6 +425,10 @@ import { Button, ButtonCounter } from "@govtechmy/myds-react/button";
       description: "Import any icon component from @govtechmy/myds-react/icon",
       type: "ReactNode",
     },
+    className: {
+      description: "Additional styles",
+      type: "string",
+    },
   }}
 />
 
@@ -422,6 +439,10 @@ import { Button, ButtonCounter } from "@govtechmy/myds-react/button";
     children: {
       description: "Numeric information to be displayed",
       type: "ReactNode",
+    },
+    className: {
+      description: "Additional styles",
+      type: "string",
     },
   }}
 />
