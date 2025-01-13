@@ -50,4 +50,8 @@
   .dark .img-light {
     display: none;
   }
+
+  .reset-style {
+    @apply !my-0 text-inherit;
+  }
 }
