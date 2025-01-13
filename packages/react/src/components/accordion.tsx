@@ -16,14 +16,7 @@ import { ChevronDownIcon } from "../icons/chevron-down";
  * <Accordion propName="value" />
  */
 
-const Accordion = React.forwardRef<
-  React.ElementRef<typeof AccordionBase.Root>,
-  React.ComponentProps<typeof AccordionBase.Root>
->((props, forwardedRef) => (
-  <AccordionBase.Root {...props} ref={forwardedRef} />
-));
-
-Accordion.displayName = "Accordion";
+const Accordion = AccordionBase.Root;
 
 const AccordionItem = React.forwardRef<
   React.ComponentRef<typeof AccordionBase.Item>,
@@ -83,4 +76,4 @@ const AccordionContent = React.forwardRef<
   </AccordionBase.Content>
 ));
 
-export { AccordionTrigger, AccordionContent, Accordion, AccordionItem };
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
