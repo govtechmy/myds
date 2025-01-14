@@ -34,7 +34,7 @@ const tag_cva = cva(
   },
 );
 
-const dot_cva = cva(["inline-block  rounded-full bg-current"], {
+const dot_cva = cva(["inline-block rounded-full text-inherit bg-current"], {
   variants: {
     size: {
       small: "size-1.5",
@@ -81,4 +81,4 @@ const Tag = forwardRef<HTMLDivElement, TagProps>(
 Tag.displayName = "Tag";
 
 export { Tag };
-export type { TagProps }
+export type { TagProps };
