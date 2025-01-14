@@ -16,7 +16,9 @@ import { clx } from "@govtechmy/myds-react/utils";
  * ```ts
  * import Skiplink from "@govtechmy/myds-react/skiplink";
  *
- * <Skiplink href="#main-content" text="Skip to main content"/>
+ * <Skiplink href="#main-content">
+ * <span>Skip to main content</span>
+ * </Skiplink>
  * ```
  */
 const meta = {

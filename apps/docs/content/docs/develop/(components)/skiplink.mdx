@@ -1,0 +1,114 @@
+---
+title: Skiplink
+description: This component enables users to bypass repetitive navigation links and jumps directly to the main content. It enhances accessibility for keyboard and screen reader users by improving navigation efficiency and is typically hidden until focused.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import {
+  Skiplink
+} from "@/components/myds";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="justify-center relative not-prose">
+      <Skiplink href="#main-content">
+        {/* Text-inherit for span to overwrite Fumadocs text color */}
+        <span className="text-inherit">Skip to main content</span>
+      </Skiplink>
+      <nav className="h-[200px] bg-slate-800 block">
+        <div className="items-center justify-between">
+          <div className="text-xl font-bold">Logo</div>
+          <ul className="flex gap-6">
+            <li>
+              <a href="#" className="text-black-700">
+                <span>Home</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-black-700">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-black-700">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main id="main-content" className="flex-1" tabIndex={-1}>
+        <div className="mx-auto max-w-7xl">
+          <h1 className="mb-4 text-2xl font-bold">Main Content</h1>
+          <span className="text-slate-600">
+            To navigate using the skip link: Press the Tab key after clicking on the preview window. A skip link will appear at the top of the story's viewport (overlapping the menu bar). This
+            skiplink component allows you to bypass the navigation menu and
+            jump directly to the main content. Press Enter while the skip
+            link is focused to activate it. You'll be taken straight to the
+            main content area, saving you from having to tab through all the
+            navigation items. This feature is particularly helpful for
+            keyboard users and people using screen readers.
+          </span>
+        </div>
+      </main>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { Skiplink } from "@govtechmy/myds-react/skiplink";
+
+    <Skiplink href="#main-content">
+      <span>Skip to main content</span>
+    </Skiplink>
+    <main id="main-content">
+      <span className="text-slate-600">
+        Main content here
+      </span>
+    </main>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-skiplink--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/skiplink.tsx",
+  }}
+/>
+
+## Usage
+```tsx copy
+import { Skiplink } from "@govtechmy/myds-react/skiplink";
+```
+
+```tsx copy
+export default () => (
+  <Skiplink href="#main-content">
+    <span>Skip to main content</span>
+  </Skiplink>
+  <main id="main-content">
+    <span className="text-slate-600">
+      Main content here
+    </span>
+  </main>
+);
+```
+
+## Props
+
+### Skiplink
+<TypeTable
+  type={{
+    href: {
+      description: "Specifies the target destination's ID that the skip link should navigate to when activated.",
+      type: "string",
+      typeDescription: "-",
+      default: "-",
+    }
+  }}
+/>
