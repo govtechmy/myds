@@ -2,6 +2,7 @@
 
 import { Button } from "@govtechmy/myds-react/button";
 import { ComponentProps, FunctionComponent } from "react";
+export * from "@govtechmy/myds-react/toggle";
 export * from "@govtechmy/myds-react/button";
 export * from "@govtechmy/myds-react/link";
 
