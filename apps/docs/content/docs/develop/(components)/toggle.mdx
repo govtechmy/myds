@@ -8,6 +8,7 @@ import Preview from "@/components/preview";
 import {
   Toggle,
   ToggleThumb,
+  ControlledToggle,
 } from "@/components/myds";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
@@ -133,3 +134,67 @@ import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
   </Tab>
 </Tabs>
 
+
+### Controlled Toggle
+
+Toggle can be handled by Controlled Method
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="space-y-2">
+        <div className="flex justify-center items-center h-fit ">
+            <ControlledToggle/>
+        </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+```tsx
+import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+
+const ControlledToggle = () => {
+  const [isChecked, setIsChecked] = React.useState(false);
+  return (
+    <div className="flex flex-col items-center justify-center">
+      <p>Current state: {isChecked ? "On" : "Off"}</p>
+      <Toggle checked={isChecked} onCheckedChange={setIsChecked}>
+        <ToggleThumb />
+      </Toggle>
+    </div>
+  );
+};
+
+```
+
+  </Tab>
+</Tabs> 
+
+
+### Uncontrolled Toggle
+
+Toggle can be handled by Internally
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="space-y-2">
+        <div className="flex flex-col justify-center items-center h-fit ">
+          <p className="">This toggle manages its own state internally.</p>
+          <Toggle defaultChecked={false}>
+            <ToggleThumb />
+           </Toggle>
+        </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+```tsx
+import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+
+<p className="">This toggle manages its own state internally.</p>
+<Toggle defaultChecked={false}>
+  <ToggleThumb />
+</Toggle>
+
+
+```
+
+  </Tab>
+</Tabs> 
