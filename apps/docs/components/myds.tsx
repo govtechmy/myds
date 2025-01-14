@@ -6,6 +6,8 @@ export * from "@govtechmy/myds-react/button";
 export * from "@govtechmy/myds-react/link";
 export * from "@govtechmy/myds-react/skiplink";
 export * from "@govtechmy/myds-react/accordion";
+export * from "@govtechmy/myds-react/toast";
+import { useToast } from "@govtechmy/myds-react/hooks";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
@@ -13,4 +15,22 @@ interface PreviewButtonProps extends ComponentProps<typeof Button> {
 
 export const PreviewButton: FunctionComponent<PreviewButtonProps> = (props) => {
   return <Button {...props} onClick={() => alert(props.pantun)} />;
+};
+
+export const ToastTriggerButton: FunctionComponent = (props) => {
+  const { toast } = useToast();
+  return (
+    <Button
+      {...props}
+      onClick={() => {
+        toast({
+          variant: "message",
+          title: "Hello, world!",
+          description: "this is a description",
+        });
+      }}
+    >
+      Click to trigger toast
+    </Button>
+  );
 };

@@ -21,7 +21,8 @@
     "(components)/pagination",
     "(components)/radio",
     "(components)/skiplink",
-    "(components)/text-area"
+    "(components)/text-area",
+    "(components)/toast"
   ],
   "root": true
 }
