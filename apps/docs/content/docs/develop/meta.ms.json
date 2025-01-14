@@ -20,6 +20,7 @@
     "(components)/date-picker",
     "(components)/pagination",
     "(components)/radio",
+    "(components)/skiplink",
     "(components)/text-area"
   ],
   "root": true

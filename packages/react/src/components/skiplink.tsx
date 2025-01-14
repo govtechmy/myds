@@ -24,7 +24,7 @@ const Skiplink = forwardRef<HTMLAnchorElement, SkiplinkProps>(
           className={clx(
             // to hide the element
             "shadow-context-menu",
-            "absolute size-[1px]",
+            "absolute z-[99] size-[1px]",
             "overflow-hidden",
             "whitespace-nowrap",
             "[clip-path:inset(50%)]",
