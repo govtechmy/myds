@@ -8,6 +8,19 @@ import {
   CalloutTitle,
 } from "@govtechmy/myds-react/callout";
 import { Button } from "@govtechmy/myds-react/button";
+import { ComponentProps } from "react";
+
+const CalloutDemo = (props: ComponentProps<typeof Callout>) => {
+  return (
+    <Callout {...props}>
+      <CalloutTitle>Scheduled System Maintenance</CalloutTitle>
+      <CalloutContent>
+        Online services will be down for maintenance on Saturday from 10 PM to 2
+        AM. Thank you for your patience!
+      </CalloutContent>
+    </Callout>
+  );
+};
 
 /**
  * ### Overview
@@ -21,7 +34,7 @@ import { Button } from "@govtechmy/myds-react/button";
  *
  * <Callout>
  *  <CalloutTitle>Title</CalloutTitle>
- *   <CalloutContent> A space for explaination of the success, warning, info or error </CalloutContent>
+ *   <CalloutContent> Online services will be down for maintenance on Saturday from 10 PM to 2 AM. Thank you for your patience! </CalloutContent>
  *   <CalloutAction>
  *    <Button variant="default-outline">Primary Button</Button>
  *   </CalloutAction>
@@ -30,17 +43,20 @@ import { Button } from "@govtechmy/myds-react/button";
  */
 const meta = {
   title: "@govtechmy/myds-react/Callout",
-  component: Callout,
+  component: CalloutDemo,
   tags: ["autodocs"],
   parameters: {
-    layout: "centered",
+    layout: "padded",
+  },
+  args: {
+    variant: "info",
   },
   argTypes: {
     variant: {
       description:
         "Determines the visual style and semantic meaning of the callout",
-      control: "inline-radio",
-      options: ["success", "warning", "info", "error"],
+      control: "radio",
+      options: ["success", "warning", "info", "danger"],
     },
     className: {
       description: "Additional CSS classes to apply to the callout",
@@ -76,12 +92,12 @@ export const calloutDefaultWithTitleAndPrimaryButton: Story = {
 };
 
 export const calloutDefaultWithTitlePrimaryButtonAndDescription: Story = {
-  ...createStory({}),
   render: () => (
     <Callout>
       <CalloutTitle>Title</CalloutTitle>
       <CalloutContent>
-        A space for explaination of the success, warning, info or error
+        Online services will be down for maintenance on Saturday from 10 PM to 2
+        AM. Thank you for your patience!
       </CalloutContent>
       <CalloutAction>
         <Button variant="default-outline">Primary Button</Button>
@@ -97,7 +113,8 @@ export const calloutDefaultWithTitleDescriptionPrimaryAndSecondaryButton: Story 
       <Callout>
         <CalloutTitle>Title</CalloutTitle>
         <CalloutContent>
-          A space for explaination of the success, warning, info or error
+          Online services will be down for maintenance on Saturday from 10 PM to
+          2 AM. Thank you for your patience!
         </CalloutContent>
         <CalloutAction>
           <Button variant="default-outline">Primary Button</Button>
@@ -196,7 +213,8 @@ export const calloutDefaultDarkWithTitlePrimaryButtonAndDescription: Story = {
       <Callout>
         <CalloutTitle>Title</CalloutTitle>
         <CalloutContent>
-          A space for explaination of the success, warning, info or error
+          Online services will be down for maintenance on Saturday from 10 PM to
+          2 AM. Thank you for your patience!
         </CalloutContent>
         <CalloutAction>
           <Button variant="default-outline">Primary Button</Button>
@@ -214,7 +232,8 @@ export const calloutDefaultDarkWithTitleDescriptionPrimaryAndSecondaryButton: St
         <Callout>
           <CalloutTitle>Title</CalloutTitle>
           <CalloutContent>
-            A space for explaination of the success, warning, info or error
+            Online services will be down for maintenance on Saturday from 10 PM
+            to 2 AM. Thank you for your patience!
           </CalloutContent>
           <CalloutAction>
             <Button variant="default-outline">Primary Button</Button>

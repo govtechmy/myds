@@ -17,9 +17,9 @@ type CalloutVariant = "success" | "warning" | "info" | "danger";
 
 const calloutVariants = cva(
   [
-    "flex justify-between items-center",
+    "flex justify-between items-center gap-2",
     "p-3 rounded-md w-full",
-    "has-[p]:items-start",
+    "[&:has([role=definition])]:items-start",
   ],
   {
     variants: {
@@ -37,10 +37,10 @@ const calloutVariants = cva(
 );
 
 const iconMap: Record<CalloutVariant, ReactNode> = {
-  success: <CheckCircleIcon className="mr-2 size-5 shrink-0" />,
-  warning: <WarningCircleIcon className="mr-2 size-5 shrink-0" />,
-  info: <InfoIcon className="mr-2 size-5 shrink-0" />,
-  danger: <WarningIcon className="mr-2 size-5 shrink-0" />,
+  success: <CheckCircleIcon className="size-5 shrink-0" />,
+  warning: <WarningCircleIcon className="size-5 shrink-0" />,
+  info: <InfoIcon className="size-5 shrink-0" />,
+  danger: <WarningIcon className="size-5 shrink-0" />,
 };
 
 interface CalloutProps
@@ -82,7 +82,7 @@ const Callout: ForwardRefExoticComponent<CalloutProps> = forwardRef(
             {...props}
           >
             {variant && iconMap[variant]}
-            <div className="flex grow items-center justify-between has-[p]:block">
+            <div className="flex grow items-center justify-between gap-2 [&:has([role=definition])]:block [&:has([role=definition])]:space-y-1">
               {children}
             </div>
             {dismissible && show && (
@@ -111,6 +111,7 @@ const CalloutTitle: ForwardRefExoticComponent<ComponentProps<"p">> = forwardRef(
     return (
       <p
         ref={ref}
+        role="term"
         className={clx("text-sm font-semibold", className)}
         {...props}
       >
@@ -126,8 +127,9 @@ const CalloutContent: ForwardRefExoticComponent<ComponentProps<"p">> =
     return (
       <p
         ref={ref}
+        role="definition"
         className={clx(
-          "text-txt-black-900 pb-3 pt-1 text-sm font-normal",
+          "text-txt-black-900 text-sm font-normal leading-5",
           className,
         )}
         {...props}
