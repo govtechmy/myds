@@ -20,9 +20,10 @@
     "(components)/date-picker",
     "(components)/pagination",
     "(components)/radio",
-    "(components)/text-area",
+    "(components)/skiplink",
     "(components)/tag",
-    "(components)/skiplink"
+    "(components)/text-area",
+    "(components)/toast"
   ],
   "root": true
 }
