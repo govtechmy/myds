@@ -11,13 +11,10 @@ import {
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
-<AutoToast />    
-
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
   <div className="flex justify-center">
-    <ToastTriggerButton />
-    
+    <ToastTriggerButton toastVariant="message" text="Message variant"/>
   </div>
   </Tab>
   <Tab value="Code">
@@ -92,9 +89,37 @@ ToastDescription
 />
 
 ## Usage
+### Simple Usage
+For simple usage, `AutoToast` can be used directly. It is a pre-assembled, simplified version of the `Toast` that handles common use cases. 
+```tsx copy
+import { AutoToast }from "@govtechmy/myds-react/toast";
+
+// put the component high up the layout tree
+<AutoToast />
+```
 
 ```tsx copy
-import { AutoToast, 
+// to publish or emit a new event to the Toast 
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+export default () => (
+  const { toast } = useToast();
+<button
+  onClick={() => {
+    toast({ variant: "message", 
+    title: "Hello, world!", 
+    description: "this is a message toast description" 
+    });
+  }}>
+    Message
+</button>
+);
+```
+
+### Advanced Usage
+Instead of using `AutoToast`, the `Toast` component can be assembled manually for more control.
+```tsx copy
+import {
 ToastRoot, 
 ToastIcon, 
 ToastProgress, 
@@ -103,9 +128,7 @@ ToastViewport,
 ToastTitle, 
 ToastDescription 
 } from "@govtechmy/myds-react/toast";
-```
 
-```tsx copy
 export default () => (
   <ToastProvider>
       {toasts.map((toast, index) => (
@@ -131,6 +154,108 @@ export default () => (
 );
 ```
 
+```tsx copy
+// to publish or emit a new event to the Toast 
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+export default () => (
+  const { toast } = useToast();
+<button
+  onClick={() => {
+    toast({ variant: "message", 
+    title: "Hello, world!", 
+    description: "this is a message toast description" 
+    });
+  }}>
+    Message
+</button>
+);
+```
+
 ## Examples
 
 ### Variant
+5 variants of toast are availablle: `message`, `info`, `success`, `warning` and `error`. The examples of use cases are:
+1. `success` variant can be used to indicates a successful action such as creating a new request or submitting a form.
+2. `warning` variant can alert the users to take notice, often used for reminders or actions that require attention, such as reporting spam.
+3. `information` variant can provides additional details to keep user informed.
+4. `error` variant can be used to notify the user of an error that requires resolution before proceeding.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+      <ToastTriggerButton toastVariant="message" text="Message" variant="default-outline"/>
+      <ToastTriggerButton toastVariant="success" text="Success" variant="default-outline"/>
+      <ToastTriggerButton toastVariant="info" text="Info" variant="default-outline"/>
+      <ToastTriggerButton toastVariant="warning" text="Warning" variant="default-outline"/>
+      <ToastTriggerButton toastVariant="error" text="Error" variant="default-outline"/>
+  </div>
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+// autotoast for simple usage
+import { Button } from "@govtechmy/myds-react/button";
+import { AutoToast }from "@govtechmy/myds-react/toast";
+
+// put the component high up the layout tree
+<AutoToast />
+
+// to publish or emit a new event to the Toast 
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+const { toast } = useToast();
+<button
+  onClick={() => {
+    toast({ variant: "message", 
+    title: "Hello, world!", 
+    description: "this is a message toast description" 
+    });
+  }}>
+    Message
+</button>
+
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+### ToastProvider
+`ToastProvider` is abstracted from Radix UI's `ToastProvider`. Please refer to the API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/toast#provider).
+
+### ToastViewport
+`ToastViewport` is abstracted from Radix UI's `ToastViewport`. Please refer to the API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/toast#viewport).
+
+### ToastRoot
+`ToastRoot` is abstracted from Radix UI's `ToastRoot`. Please refer to the API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/toast#root).
+<TypeTable
+  type={{
+    variant: {
+      description: "Style variant of the toast",
+      type: "enum",
+      typeDescription:
+        "message | success | info | warning | error",
+      default: "message",
+    },
+    duration: {
+      description: "Time (ms) before toast disappears",
+      type: "number",
+      default: "5000"
+    },
+  }}
+/>
+
+### ToastTitle
+`ToastTitle` is abstracted from Radix UI's `ToastTitle`. Please refer to the API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/toast#title).
+
+### ToastDescription
+`ToastDescription` is abstracted from Radix UI's `ToastDescription`. Please refer to the API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/toast#description).
+
+
+### ToastClose
+`ToastClose` is abstracted from Radix UI's `ToastClose`. Please refer to the API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/toast#close).
+
+
+

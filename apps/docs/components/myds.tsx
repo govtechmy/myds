@@ -12,25 +12,31 @@ import { useToast } from "@govtechmy/myds-react/hooks";
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
 }
+interface ToastTriggerButtonProps extends ComponentProps<typeof Button> {
+  toastVariant: "message" | "success" | "info" | "warning" | "error";
+  text?: string;
+}
 
 export const PreviewButton: FunctionComponent<PreviewButtonProps> = (props) => {
   return <Button {...props} onClick={() => alert(props.pantun)} />;
 };
 
-export const ToastTriggerButton: FunctionComponent = (props) => {
+export const ToastTriggerButton: FunctionComponent<ToastTriggerButtonProps> = (
+  props,
+) => {
   const { toast } = useToast();
   return (
     <Button
       {...props}
       onClick={() => {
         toast({
-          variant: "message",
+          variant: props.toastVariant,
           title: "Hello, world!",
           description: "this is a description",
         });
       }}
     >
-      Click to trigger toast
+      {props.text}
     </Button>
   );
 };
