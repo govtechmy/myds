@@ -24,7 +24,7 @@ export const ControlledToggle: FunctionComponent<PreviewToggleProps> = (
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <p>Current state: {isChecked ? "On" : "Off"}</p>
+      <p>State: {isChecked ? "On" : "Off"}</p>
       <Toggle
         checked={isChecked}
         onCheckedChange={(checked) => setIsChecked(checked)}

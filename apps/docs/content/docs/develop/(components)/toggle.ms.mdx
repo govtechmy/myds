@@ -1,4 +1,196 @@
 ---
 title: Toggle
-description: The Toggle component is a versatile switch that allows users to toggle between two states.
+description: Komponen Toggle adalah suis serba guna yang membolehkan pengguna beralih antara dua keadaan.
 ---
+
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { Toggle, ToggleThumb, ControlledToggle } from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="flex justify-center">
+      <Toggle>
+        <ToggleThumb />
+      </Toggle>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+
+    <Toggle>
+      <ToggleThumb />
+    </Toggle>
+    ```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-toggle--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/toggle.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+```
+
+```tsx copy
+export default () => (
+  <Toggle>
+    <ToggleThumb />
+  </Toggle>
+);
+```
+
+## Contoh
+
+### Saiz
+
+Gunakan prop `size` untuk menukar saiz toggle!
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="space-y-2">
+        <div className="flex justify-center items-center h-fit gap-1">
+            <Toggle size="small">
+              <ToggleThumb/>
+            </Toggle>
+            <Toggle size='medium'>
+              <ToggleThumb/>
+            </Toggle>
+            <Toggle size="large">
+              <ToggleThumb/>
+            </Toggle>
+        </div>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+
+<Toggle size="small">
+  <ToggleThumb />
+</Toggle>
+
+<Toggle size="medium">
+  <ToggleThumb />
+</Toggle>
+
+<Toggle size="large">
+  <ToggleThumb />
+</Toggle>
+
+```
+  </Tab>
+</Tabs>
+
+### Dinyahaktifkan
+
+Gunakan prop `disabled` untuk menukar kepada gaya dinyahaktifkan!
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2">
+    <div className="flex justify-center items-center h-fit gap-1">
+        <Toggle disabled = {true}>
+         <ToggleThumb />
+        </Toggle>
+    </div>
+    <div className="flex justify-center items-center h-fit gap-1">
+        <Toggle disabled = {true} defaultChecked = {true}>
+         <ToggleThumb />
+        </Toggle>
+    </div>
+
+  </div>
+  </Tab>
+  <Tab value="Kod">
+```tsx
+import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+
+<Toggle disabled = {true}>
+    <ToggleThumb />
+</Toggle>
+
+<Toggle disabled = {true} defaultChecked = {true}>
+    <ToggleThumb />
+</Toggle>
+
+```
+
+  </Tab>
+</Tabs>
+
+### Toggle Terkawal
+
+Toggle boleh dikendalikan menggunakan Kaedah Terkawal
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="space-y-2">
+        <div className="flex justify-center items-center h-fit ">
+            <ControlledToggle/>
+        </div>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+```tsx
+import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+
+const ControlledToggle = () => {
+const [isChecked, setIsChksecked] = React.useState(false);
+return (
+
+<div className="flex flex-col items-center justify-center">
+  <p>State: {isChecked ? "On" : "Off"}</p>
+  <Toggle checked={isChecked} onCheckedChange={setIsChecked}>
+    <ToggleThumb />
+  </Toggle>
+</div>
+); };
+
+```
+
+  </Tab>
+</Tabs>
+
+
+### Toggle Tak Terkawal
+
+Toggle boleh dikendalikan secara dalaman
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="space-y-2">
+        <div className="flex flex-col justify-center items-center h-fit ">
+          <p className="">Toggle ini menguruskan statusnya sendiri secara dalaman.</p>
+          <Toggle defaultChecked={false}>
+            <ToggleThumb />
+           </Toggle>
+        </div>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+```tsx
+import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+
+<p className="">Toggle ini menguruskan statusnya sendiri secara dalaman.</p>
+<Toggle defaultChecked={false}>
+  <ToggleThumb />
+</Toggle>
+
+
+```
+
+  </Tab>
+</Tabs>
