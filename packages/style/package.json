@@ -10,7 +10,8 @@
     "dist",
     "styles",
     "index.d.ts",
-    "index.js"
+    "index.js",
+    "tailwind.config.js"
   ],
   "exports": {
     ".": {
