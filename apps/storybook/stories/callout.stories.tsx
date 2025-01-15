@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 import {
   Callout,
-  CalloutButton,
+  CalloutAction,
   CalloutContent,
   CalloutTitle,
 } from "@govtechmy/myds-react/callout";
@@ -22,9 +22,9 @@ import { Button } from "@govtechmy/myds-react/button";
  * <Callout>
  *  <CalloutTitle>Title</CalloutTitle>
  *   <CalloutContent> A space for explaination of the success, warning, info or error </CalloutContent>
- *   <CalloutButton>
+ *   <CalloutAction>
  *    <Button variant="default-outline">Primary Button</Button>
- *   </CalloutButton>
+ *   </CalloutAction>
  * </Callout>
  * ```
  */
@@ -40,7 +40,7 @@ const meta = {
       description:
         "Determines the visual style and semantic meaning of the callout",
       control: "inline-radio",
-      options: ["success", "warning", "information", "error"],
+      options: ["success", "warning", "info", "error"],
     },
     className: {
       description: "Additional CSS classes to apply to the callout",
@@ -68,9 +68,9 @@ export const calloutDefaultWithTitleAndPrimaryButton: Story = {
   render: () => (
     <Callout>
       <CalloutTitle>Title</CalloutTitle>
-      <CalloutButton>
+      <CalloutAction>
         <Button variant="default-outline">Primary Button</Button>
-      </CalloutButton>
+      </CalloutAction>
     </Callout>
   ),
 };
@@ -83,9 +83,9 @@ export const calloutDefaultWithTitlePrimaryButtonAndDescription: Story = {
       <CalloutContent>
         A space for explaination of the success, warning, info or error
       </CalloutContent>
-      <CalloutButton>
+      <CalloutAction>
         <Button variant="default-outline">Primary Button</Button>
-      </CalloutButton>
+      </CalloutAction>
     </Callout>
   ),
 };
@@ -99,10 +99,10 @@ export const calloutDefaultWithTitleDescriptionPrimaryAndSecondaryButton: Story 
         <CalloutContent>
           A space for explaination of the success, warning, info or error
         </CalloutContent>
-        <CalloutButton>
+        <CalloutAction>
           <Button variant="default-outline">Primary Button</Button>
           <Button variant="default-ghost">Secondary Button</Button>
-        </CalloutButton>
+        </CalloutAction>
       </Callout>
     ),
   };
@@ -112,9 +112,9 @@ export const calloutSuccess: Story = {
   render: () => (
     <Callout variant="success">
       <CalloutTitle>Title</CalloutTitle>
-      <CalloutButton>
+      <CalloutAction>
         <Button variant="default-outline">Primary Button</Button>
-      </CalloutButton>
+      </CalloutAction>
     </Callout>
   ),
 };
@@ -124,9 +124,9 @@ export const calloutWarning: Story = {
   render: () => (
     <Callout variant="warning">
       <CalloutTitle>Title</CalloutTitle>
-      <CalloutButton>
+      <CalloutAction>
         <Button variant="default-outline">Primary Button</Button>
-      </CalloutButton>
+      </CalloutAction>
     </Callout>
   ),
 };
@@ -134,11 +134,11 @@ export const calloutWarning: Story = {
 export const calloutInformation: Story = {
   ...createStory({}),
   render: () => (
-    <Callout variant="information">
+    <Callout variant="info">
       <CalloutTitle>Title</CalloutTitle>
-      <CalloutButton>
+      <CalloutAction>
         <Button variant="default-outline">Primary Button</Button>
-      </CalloutButton>
+      </CalloutAction>
     </Callout>
   ),
 };
@@ -146,11 +146,11 @@ export const calloutInformation: Story = {
 export const calloutError: Story = {
   ...createStory({}),
   render: () => (
-    <Callout variant="error">
+    <Callout variant="danger">
       <CalloutTitle>Title</CalloutTitle>
-      <CalloutButton>
+      <CalloutAction>
         <Button variant="default-outline">Primary Button</Button>
-      </CalloutButton>
+      </CalloutAction>
     </Callout>
   ),
 };
@@ -181,9 +181,9 @@ export const calloutDefaultDarkWithTitleAndPrimaryButton: Story = {
     <div className="dark">
       <Callout>
         <CalloutTitle>Title</CalloutTitle>
-        <CalloutButton>
+        <CalloutAction>
           <Button variant="default-outline">Primary Button</Button>
-        </CalloutButton>
+        </CalloutAction>
       </Callout>
     </div>
   ),
@@ -198,9 +198,9 @@ export const calloutDefaultDarkWithTitlePrimaryButtonAndDescription: Story = {
         <CalloutContent>
           A space for explaination of the success, warning, info or error
         </CalloutContent>
-        <CalloutButton>
+        <CalloutAction>
           <Button variant="default-outline">Primary Button</Button>
-        </CalloutButton>
+        </CalloutAction>
       </Callout>
     </div>
   ),
@@ -216,10 +216,10 @@ export const calloutDefaultDarkWithTitleDescriptionPrimaryAndSecondaryButton: St
           <CalloutContent>
             A space for explaination of the success, warning, info or error
           </CalloutContent>
-          <CalloutButton>
+          <CalloutAction>
             <Button variant="default-outline">Primary Button</Button>
             <Button variant="default-ghost">Secondary Button</Button>
-          </CalloutButton>
+          </CalloutAction>
         </Callout>
       </div>
     ),
@@ -231,9 +231,9 @@ export const calloutSuccessDark: Story = {
     <div className="dark">
       <Callout variant="success">
         <CalloutTitle>Title</CalloutTitle>
-        <CalloutButton>
+        <CalloutAction>
           <Button variant="default-outline">Primary Button</Button>
-        </CalloutButton>
+        </CalloutAction>
       </Callout>
     </div>
   ),
@@ -245,9 +245,9 @@ export const calloutWarningDark: Story = {
     <div className="dark">
       <Callout variant="warning">
         <CalloutTitle>Title</CalloutTitle>
-        <CalloutButton>
+        <CalloutAction>
           <Button variant="default-outline">Primary Button</Button>
-        </CalloutButton>
+        </CalloutAction>
       </Callout>
     </div>
   ),
@@ -257,11 +257,11 @@ export const calloutInformationDark: Story = {
   ...createStory({}, "dark"),
   render: () => (
     <div className="dark">
-      <Callout variant="information">
+      <Callout variant="info">
         <CalloutTitle>Title</CalloutTitle>
-        <CalloutButton>
+        <CalloutAction>
           <Button variant="default-outline">Primary Button</Button>
-        </CalloutButton>
+        </CalloutAction>
       </Callout>
     </div>
   ),
@@ -271,11 +271,11 @@ export const calloutErrorDark: Story = {
   ...createStory({}, "dark"),
   render: () => (
     <div className="dark">
-      <Callout variant="error">
+      <Callout variant="danger">
         <CalloutTitle>Title</CalloutTitle>
-        <CalloutButton>
+        <CalloutAction>
           <Button variant="default-outline">Primary Button</Button>
-        </CalloutButton>
+        </CalloutAction>
       </Callout>
     </div>
   ),

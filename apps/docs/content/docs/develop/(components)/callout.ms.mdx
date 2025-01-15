@@ -1,15 +1,282 @@
 ---
 title: Callout
-description: Callout
+description: Memaklumkan pengguna tentang maklumat penting berkaitan dengan tindakan mereka di dalam Borang. Callout boleh menunjukkan kejayaan, amaran, ralat, atau memberikan maklumat tambahan bergantung pada konteks di dalam borang.
 ---
 
-import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  Button,
+  Callout,
+  CalloutAction,
+  CalloutContent,
+  CalloutTitle,
+  DismissibleCalloutExample,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
-<Callout
-  type="info"
-  title="Note"
-  className="bg-bg-primary-50 text-txt-primary border-transparent"
-  icon={<InfoIcon className="size-5" />}
->
-  Dalam pembinaan
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose">
+  <Callout>
+      <CalloutTitle>Tajuk</CalloutTitle>
+      <CalloutContent>
+        <span>Penerangan untuk menjelaskan kejayaan, amaran, maklumat atau peristiwa ralat</span>
+      </CalloutContent>
+      <CalloutAction>
+        <Button variant="default-outline">Butang Utama</Button>
+      </CalloutAction>
+  </Callout>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { Callout, CalloutAction, CalloutTitle, CalloutContent } from "@govtechmy/myds-react/callout";
+
+<Callout>
+    <CalloutTitle>Tajuk</CalloutTitle>
+    <CalloutContent>
+      Penerangan untuk menjelaskan kejayaan, amaran, maklumat atau peristiwa ralat
+    </CalloutContent>
+    <CalloutAction>
+      <Button variant="default-outline">Panggilan untuk Bertindak</Button>
+    </CalloutAction>
 </Callout>
+```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-callout--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/callout.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import {
+  Callout,
+  CalloutAction,
+  CalloutTitle,
+  CalloutContent,
+} from "@govtechmy/myds-react/callout";
+```
+
+```tsx copy
+export default () => (
+  <Callout>
+    <CalloutTitle />
+    <CalloutContent />
+    <CalloutAction />
+  </Callout>
+);
+```
+
+## Contoh
+
+### Varian
+
+Gunakan prop `variant` untuk menukar gaya callout!
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2 not-prose">
+  <Callout>
+      <CalloutTitle>Tajuk</CalloutTitle>
+      <CalloutContent>
+        <span>Penerangan untuk menjelaskan kejayaan, amaran, maklumat atau peristiwa ralat</span>
+      </CalloutContent>
+      <CalloutAction>
+        <Button variant="default-outline">Panggilan untuk Bertindak</Button>
+      </CalloutAction>
+  </Callout>
+  <Callout variant="success">
+    <CalloutTitle>Tajuk</CalloutTitle>
+    <CalloutContent>
+      <span>Penerangan untuk menjelaskan kejayaan, amaran, maklumat atau peristiwa ralat</span>
+    </CalloutContent>
+    <CalloutAction>
+      <Button variant="default-outline">Panggilan untuk Bertindak</Button>
+    </CalloutAction>
+  </Callout>
+  <Callout variant="warning">
+    <CalloutTitle>Tajuk</CalloutTitle>
+    <CalloutContent>
+      <span>Penerangan untuk menjelaskan kejayaan, amaran, maklumat atau peristiwa ralat</span>
+    </CalloutContent>
+    <CalloutAction>
+      <Button variant="default-outline">Panggilan untuk Bertindak</Button>
+    </CalloutAction>
+  </Callout>
+  <Callout variant="danger">
+    <CalloutTitle>Tajuk</CalloutTitle>
+    <CalloutContent>
+      <span>Penerangan untuk menjelaskan kejayaan, amaran, maklumat atau peristiwa ralat</span>
+    </CalloutContent>
+    <CalloutAction>
+      <Button variant="default-outline">Panggilan untuk Bertindak</Button>
+    </CalloutAction>
+  </Callout>
+  </div>
+  </Tab>
+  <Tab value="Kod">
+```tsx 
+/** Varian: info **/
+
+<Callout variant="info">
+  <CalloutTitle>Tajuk</CalloutTitle>
+  <CalloutContent>
+    Penerangan untuk menjelaskan kejayaan, amaran, maklumat atau peristiwa ralat
+  </CalloutContent>
+  <CalloutAction>
+    <Button variant="default-outline">Panggilan untuk Bertindak</Button>
+  </CalloutAction>
+</Callout>
+
+/** Varian: success **/
+
+<Callout variant="success">
+  <CalloutTitle>Tajuk</CalloutTitle>
+  <CalloutContent>
+    Penerangan untuk menjelaskan kejayaan, amaran, maklumat atau peristiwa ralat
+  </CalloutContent>
+  <CalloutAction>
+    <Button variant="default-outline">Panggilan untuk Bertindak</Button>
+  </CalloutAction>
+</Callout>
+
+/** Varian: warning **/
+
+<Callout variant="warning">
+  <CalloutTitle>Tajuk</CalloutTitle>
+  <CalloutContent>
+    Penerangan untuk menjelaskan kejayaan, amaran, maklumat atau peristiwa ralat
+  </CalloutContent>
+  <CalloutAction>
+    <Button variant="default-outline">Panggilan untuk Bertindak</Button>
+  </CalloutAction>
+</Callout>
+
+/** Varian: danger **/
+
+<Callout variant="danger">
+  <CalloutTitle>Tajuk</CalloutTitle>
+  <CalloutContent>
+    Penerangan untuk menjelaskan kejayaan, amaran, maklumat atau peristiwa ralat
+  </CalloutContent>
+  <CalloutAction>
+    <Button variant="default-outline">Panggilan untuk Bertindak</Button>
+  </CalloutAction>
+</Callout>
+```
+
+  </Tab>
+</Tabs>
+
+### Boleh Dihapuskan
+
+Jika panggilan keluar boleh dihapuskan, anda boleh memaparkan **butang tutup** di sudut kanan atas panggilan keluar dengan mengisytiharkan prop `dismissible`.
+Untuk menangkap peristiwa hapus, anda boleh menggunakan prop `onDismiss`.
+
+Untuk menghapuskan panggilan keluar secara programatik melalui mana-mana pendengar peristiwa di dalam anak `CalloutAction`, anda boleh menggunakan fungsi `dismiss` yang dihantar sebagai argumen kepada prop render.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose space-y-2">
+      <DismissibleCalloutExample
+        type="basic"
+        title="Asas - Keadaan Hapus Tidak Terkawal"
+        description="Anda boleh menangkap peristiwa hapus menggunakan prop onDismiss. Semak konsol untuk peristiwa hapus."
+      />
+      <DismissibleCalloutExample
+        type="action"
+        title="Tindakan - Hapus Callout melalui Prop Render CalloutAction"
+        description="Anda boleh memanggil peristiwa hapus secara programatik melalui mana-mana pendengar peristiwa di dalam anak CalloutAction"
+      />
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    // Asas - Keadaan Hapus Tidak Terkawal
+    <Callout
+      dismissible
+      onDismiss={() => {
+        console.log("MYDS: Peristiwa hapus ditangkap!");
+      }}
+    >
+      <CalloutTitle>Tajuk</CalloutTitle>
+      <CalloutContent>
+        <span>
+          Penerangan untuk menjelaskan kejayaan, amaran, maklumat atau peristiwa ralat
+        </span>
+      </CalloutContent>
+      <CalloutAction>
+        <Button variant="default-outline">Panggilan untuk Bertindak</Button>
+      </CalloutAction>
+    </Callout>
+
+    // Tindakan - Hapus Callout melalui Prop Render CalloutAction
+    <Callout
+      dismissible
+      onDismiss={() => {
+        console.log("MYDS: Peristiwa hapus ditangkap!");
+      }}
+    >
+      <CalloutTitle>Tajuk</CalloutTitle>
+      <CalloutContent>
+        <span>
+          Penerangan untuk menjelaskan kejayaan, amaran, maklumat atau peristiwa ralat
+        </span>
+      </CalloutContent>
+      <CalloutAction>
+        {(dismiss) =>
+          (<Button
+            variant="default-outline"
+            onClick={() => {
+              alert("Tindakan diambil sebelum panggilan keluar dihapuskan");
+              dismiss();
+            }}>
+          Panggilan untuk Bertindak
+        </Button>)}
+      </CalloutAction>
+    </Callout>
+    ```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### Callout
+
+<TypeTable
+  type={{
+    variant: {
+      description: "Gaya varian panggilan keluar",
+      type: "enum",
+      typeDescription: "info | success | warning | danger",
+      default: "info",
+    },
+    dismissible: {
+      description:
+        "Sama ada untuk memaparkan butang hapus [X] di sudut kanan atas",
+      type: "boolean",
+    },
+    onDismiss: {
+      description: "Untuk menangkap peristiwa hapus",
+      type: "function",
+    },
+  }}
+/>
+
+### CalloutAction
+
+<TypeTable
+  type={{
+    children: {
+      type: "ReactNode | ((dismiss) => ReactNode)",
+    },
+  }}
+/>
