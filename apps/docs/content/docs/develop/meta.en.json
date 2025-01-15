@@ -19,6 +19,7 @@
     "(components)/chip",
     "(components)/cookies-banner",
     "(components)/date-picker",
+    "(components)/footer",
     "(components)/pagination",
     "(components)/radio",
     "(components)/skiplink",
