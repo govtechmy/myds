@@ -1,0 +1,188 @@
+---
+title: Tag
+description: Tag merupakan penunjuk visual digunakan untuk menunjukkan keadaan atau status semasa sesuatu item, proses, atau entiti. Ia disediakan dalam pelbagai gaya untuk mewakili keadaan yang berbeza.
+---
+
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { Tag } from "@govtechmy/myds-react/tag";
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+<div className="flex justify-center">
+      <Tag size="medium" dot={true}>Default</Tag>
+      </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { Tag } from "@govtechmy/myds-react/tag";
+
+<Tag size="medium" dot={true}>Default</Tag>
+```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-tag--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/tag.tsx",
+  }}
+/>
+
+## Usage
+```tsx copy
+import { Tag } from "@govtechmy/myds-react/tag";
+```
+
+```tsx copy
+export default () => (
+  <Tag size="medium" dot={true}>Default</Tag>
+  <Tag size="small" dot={false} variant="warning" mode="default">
+    <span>Default</span>
+  </Tag>
+);
+```
+
+## Contoh
+
+### Variant
+Gunakan props `variant` untuk menukar gaya visual tag. Pilihan yang disokong adalah `default`, `primary`, `success`, `danger`, dan `warning`.
+
+#### Garis Panduan
+1. `primary` berkait dengan jenama produk.
+2. `success` mewakili hasil (outcome) yang berjaya.
+3. `danger` menunjukkan isu kritikal atau ralat (error).
+4. `warning` bertindak untuk memberi amaran kepada pengguna tentang potensi masalah.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+      <Tag size="medium" dot={true} variant="default">Default</Tag>
+      <Tag size="medium" dot={true} variant="primary">Primary</Tag>
+      <Tag size="medium" dot={true} variant="success">Success</Tag>
+      <Tag size="medium" dot={true} variant="danger">Danger</Tag>
+      <Tag size="medium" dot={true} variant="warning">Warning</Tag>
+    </div>
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { Tag } from "@govtechmy/myds-react/tag";
+
+<Tag size="medium" dot={true} variant="default">Default</Tag>
+<Tag size="medium" dot={true} variant="primary">Primary</Tag>
+<Tag size="medium" dot={true} variant="success">Success</Tag>
+<Tag size="medium" dot={true} variant="danger">Danger</Tag>
+<Tag size="medium" dot={true} variant="warning">Warning</Tag>
+
+```
+  </Tab>
+</Tabs>
+
+### Size
+Gunakan props `size` untuk menukar saiz komponen tag. Pilihan yang disokong adalah `small`, `medium`, dan `large`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+      <Tag size="small" dot={true} variant="primary">Small</Tag>
+      <Tag size="medium" dot={true} variant="primary">Medium</Tag>
+      <Tag size="large" dot={true} variant="primary">Large</Tag>
+    </div>
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { Tag } from "@govtechmy/myds-react/tag";
+
+<Tag size="small" dot={true} variant="primary">Small</Tag>
+<Tag size="medium" dot={true} variant="primary">Medium</Tag>
+<Tag size="large" dot={true} variant="primary">Large</Tag>
+
+```
+  </Tab>
+</Tabs>
+
+### Mode 
+Gunakan props `mode` untuk menukar jenis komponen tag. Mode `default` memberikan tag bucu (border radius) yang sedikit bulat, manakala mode `pill` memberikannya penampilan yang bulat sepenuhnya (rounded).
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+      <Tag size="medium" dot={true} variant="success" mode="default">Default</Tag>
+      <Tag size="medium" dot={true} variant="success" mode="pill">Pill</Tag>
+    </div>
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { Tag } from "@govtechmy/myds-react/tag";
+
+<Tag size="medium" dot={true} variant="success" mode="default">Default</Tag>
+<Tag size="medium" dot={true} variant="success" mode="pill">Pill</Tag>
+
+```
+  </Tab>
+</Tabs>
+
+### Dot 
+Props `dot` digunakan untuk mengubah penampilan titik di dalam komponen `tag`. Titik status pilihan ini boleh bertindak sebagai penunjuk visual untuk mewakili keadaan atau status semasa sesuatu item.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+      <Tag size="medium" dot={false} variant="warning" mode="default">No Dot</Tag>
+      <Tag size="medium" dot={true} variant="warning" mode="default">Dot</Tag>
+    </div>
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { Tag } from "@govtechmy/myds-react/tag";
+
+<Tag size="medium" dot={false} variant="warning" mode="default">No Dot</Tag>
+<Tag size="medium" dot={true} variant="warning" mode="default">Dot</Tag>
+
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+### Tag
+
+<TypeTable
+  type={{
+    variant: {
+      description: "Gaya variant untuk tag",
+      type: "enum",
+      typeDescription: "default | primary | success | danger | warning",
+      default: "default",
+    },
+    size: {
+      description: "Saiz tag",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    dot: {
+      description: "Sama ada untuk menunjukkan titik status dalam tag",
+      type: "boolean",
+      default: "false",
+    },
+    mode: {
+      description: "Gaya tag (bulat sepenuhnya atau tidak)",
+      type: "enum",
+      typeDescription: "pill | default",
+      default: "pill",
+    }
+  }}
+/>

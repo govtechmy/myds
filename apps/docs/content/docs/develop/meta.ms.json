@@ -21,6 +21,7 @@
     "(components)/pagination",
     "(components)/radio",
     "(components)/skiplink",
+    "(components)/tag",
     "(components)/text-area",
     "(components)/toast"
   ],
