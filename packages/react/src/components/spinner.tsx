@@ -35,14 +35,19 @@ interface SpinnerProps
   extends VariantProps<typeof spinnerVariants>,
     Omit<ComponentProps<"div">, "color"> {
   className?: string;
+  show?: boolean;
 }
 
 export const Spinner: React.FC<SpinnerProps> = ({
   size,
   color,
   className = "",
+  show=true,
   ...props
 }) => {
+  if (!show) {
+    return (null)
+  }
   return (
     <div
       {...props}

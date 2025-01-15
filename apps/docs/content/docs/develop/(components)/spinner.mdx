@@ -21,7 +21,7 @@ import { Spinner } from "@govtechmy/myds-react/spinner";
   ```tsx 
 import { Spinner } from "@govtechmy/myds-react/spinner";
 
-<Spinner>
+<Spinner/>
 
 ```
 </Tab>
@@ -44,7 +44,7 @@ import { Spinner } from "@govtechmy/myds-react/spinner";
 
 ```tsx copy
 export default () => (
-    <Spinner>
+    <Spinner/>
 );
 ```
 
@@ -148,6 +148,44 @@ import { Button } from "@govtechmy/myds-react/button";
 </Tabs>
 
 
+
+### Show
+
+Use the `show` prop to show or hide the spinner
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-2">
+
+      <Button variant="default-outline">
+        <span>Spinner Show</span><Spinner show={true}/>
+      </Button>
+
+      <Button variant="default-outline">
+        <span>Spinner Hide</span><Spinner show={false}/>
+      </Button>
+      </div>
+
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+import { Button } from "@govtechmy/myds-react/button";
+
+/** Show or Hide **/
+<Button variant="default-outline">
+  <span>Spinner Show</span><Spinner show={true}/>
+</Button>
+
+<Button variant="default-outline">
+  <span>Spinner Hide</span><Spinner show={false}/>
+</Button>
+```
+
+  </Tab>
+</Tabs>
+
 ## Props
 
 ### Spinner
@@ -167,6 +205,12 @@ import { Button } from "@govtechmy/myds-react/button";
       typeDescription: "small | medium | large",
       default: "small",
     },
+    show:{
+      description:"Show or Hide Spinner",
+      type:"boolean",
+      typeDescription: "true | false",
+      default: "true", 
+    }
   }}
 />
 
