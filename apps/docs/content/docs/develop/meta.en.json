@@ -10,6 +10,7 @@
     "---Components 🚧---",
     "(components)/accordion",
     "(components)/anchor",
+    "(components)/announcebar",
     "(components)/banner",
     "(components)/breadcrumb",
     "(components)/button",
@@ -21,7 +22,9 @@
     "(components)/pagination",
     "(components)/radio",
     "(components)/skiplink",
+    "(components)/tag",
     "(components)/text-area",
+    "(components)/toast",
     "(components)/toggle"
   ],
   "root": true

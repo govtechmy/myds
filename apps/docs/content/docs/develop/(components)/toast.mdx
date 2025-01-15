@@ -1,0 +1,261 @@
+---
+title: Toast
+description: Non-intrusive notification that appears temporarily on the screen to provide feedback or alert the user of an event.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import {
+  AutoToast, ToastRoot, ToastIcon, ToastProgress, ToastProvider, ToastViewport, ToastTitle, ToastDescription, ToastTriggerButton
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center">
+    <ToastTriggerButton toastVariant="message" text="Message variant"/>
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+  import { AutoToast, 
+ToastRoot, 
+ToastIcon, 
+ToastProgress, 
+ToastProvider, 
+ToastViewport, 
+ToastTitle, 
+ToastDescription 
+}from "@govtechmy/myds-react/toast";
+ 
+  <button
+   onClick={() => {
+     toast({ variant: "message", 
+     title: "Hello, world!", 
+     description: "this is a description" 
+     });
+   }}>
+     Message
+  </button>
+ 
+  //* Simple usage
+  <AutoToast />
+ 
+  //* Advanced usage
+  const { toasts, subscribe, unsubscribe } = useToast();
+ 
+  useEffect(() => {
+    subscribe();
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+ 
+  return (
+    <ToastProvider>
+      {toasts.map((toast, index) => (
+        <ToastRoot
+          key={props.id || index}
+          variant={toast.variant || "message"}
+          {...props}
+        >
+          <ToastIcon />
+          <div className="space-y-1">
+            <ToastTitle>{toast.title}</ToastTitle>
+            {toast.description && (
+              <ToastDescription>{toast.description}</ToastDescription>
+            )}
+          </div>
+          <ToastClose />
+          <ToastProgress />
+         </ToastRoot>
+     ))}
+ 
+      <ToastViewport />
+    </ToastProvider>
+  );
+  ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-toast--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/toast.tsx",
+  }}
+/>
+
+## Usage
+### Simple Usage
+For simple usage, `AutoToast` can be used directly. It is a pre-assembled, simplified version of the `Toast` that handles common use cases. 
+```tsx copy
+import { AutoToast }from "@govtechmy/myds-react/toast";
+
+// put the component high up the layout tree
+<AutoToast />
+```
+
+```tsx copy
+// to publish or emit a new event to the Toast 
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+export default () => (
+  const { toast } = useToast();
+<button
+  onClick={() => {
+    toast({ variant: "message", 
+    title: "Hello, world!", 
+    description: "this is a message toast description" 
+    });
+  }}>
+    Message
+</button>
+);
+```
+
+### Advanced Usage
+Instead of using `AutoToast`, the `Toast` component can be assembled manually for more control.
+```tsx copy
+import {
+ToastRoot, 
+ToastIcon, 
+ToastProgress, 
+ToastProvider, 
+ToastViewport, 
+ToastTitle, 
+ToastDescription 
+} from "@govtechmy/myds-react/toast";
+
+export default () => (
+  <ToastProvider>
+      {toasts.map((toast, index) => (
+        <ToastRoot
+          key={props.id || index}
+          variant={toast.variant || "message"}
+          {...props}
+        >
+          <ToastIcon />
+          <div className="space-y-1">
+            <ToastTitle>{toast.title}</ToastTitle>
+            {toast.description && (
+              <ToastDescription>{toast.description}</ToastDescription>
+            )}
+          </div>
+          <ToastClose />
+          <ToastProgress />
+         </ToastRoot>
+     ))}
+ 
+      <ToastViewport />
+    </ToastProvider>
+);
+```
+
+```tsx copy
+// to publish or emit a new event to the Toast 
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+export default () => (
+  const { toast } = useToast();
+<button
+  onClick={() => {
+    toast({ variant: "message", 
+    title: "Hello, world!", 
+    description: "this is a message toast description" 
+    });
+  }}>
+    Message
+</button>
+);
+```
+
+## Examples
+
+### Variant
+5 variants of toast are availablle: `message`, `info`, `success`, `warning` and `error`. The examples of use cases are:
+1. `success` variant can be used to indicates a successful action such as creating a new request or submitting a form.
+2. `warning` variant can alert the users to take notice, often used for reminders or actions that require attention, such as reporting spam.
+3. `information` variant can provides additional details to keep user informed.
+4. `error` variant can be used to notify the user of an error that requires resolution before proceeding.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+      <ToastTriggerButton toastVariant="message" text="Message" variant="default-outline"/>
+      <ToastTriggerButton toastVariant="success" text="Success" variant="default-outline"/>
+      <ToastTriggerButton toastVariant="info" text="Info" variant="default-outline"/>
+      <ToastTriggerButton toastVariant="warning" text="Warning" variant="default-outline"/>
+      <ToastTriggerButton toastVariant="error" text="Error" variant="default-outline"/>
+  </div>
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+// autotoast for simple usage
+import { Button } from "@govtechmy/myds-react/button";
+import { AutoToast }from "@govtechmy/myds-react/toast";
+
+// put the component high up the layout tree
+<AutoToast />
+
+// to publish or emit a new event to the Toast 
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+const { toast } = useToast();
+<button
+  onClick={() => {
+    toast({ variant: "message", 
+    title: "Hello, world!", 
+    description: "this is a message toast description" 
+    });
+  }}>
+    Message
+</button>
+
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+### ToastProvider
+`ToastProvider` is abstracted from Radix UI's `ToastProvider`. Please refer to the API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/toast#provider).
+
+### ToastViewport
+`ToastViewport` is abstracted from Radix UI's `ToastViewport`. Please refer to the API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/toast#viewport).
+
+### ToastRoot
+`ToastRoot` is abstracted from Radix UI's `ToastRoot`. Please refer to the API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/toast#root).
+<TypeTable
+  type={{
+    variant: {
+      description: "Style variant of the toast",
+      type: "enum",
+      typeDescription:
+        "message | success | info | warning | error",
+      default: "message",
+    },
+    duration: {
+      description: "Time (ms) before toast disappears",
+      type: "number",
+      default: "5000"
+    },
+  }}
+/>
+
+### ToastTitle
+`ToastTitle` is abstracted from Radix UI's `ToastTitle`. Please refer to the API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/toast#title).
+
+### ToastDescription
+`ToastDescription` is abstracted from Radix UI's `ToastDescription`. Please refer to the API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/toast#description).
+
+
+### ToastClose
+`ToastClose` is abstracted from Radix UI's `ToastClose`. Please refer to the API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/toast#close).
+
+
+
