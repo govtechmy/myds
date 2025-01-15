@@ -1,4 +1,4 @@
-import React, { ComponentProps, FunctionComponent } from "react";
+import { ComponentProps, FunctionComponent } from "react";
 import { clx } from "../utils";
 
 const SummaryList: FunctionComponent<ComponentProps<"div">> = ({
