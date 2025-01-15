@@ -10,6 +10,7 @@
     "---Components 🚧---",
     "(components)/accordion",
     "(components)/anchor",
+    "(components)/announcebar",
     "(components)/banner",
     "(components)/breadcrumb",
     "(components)/button",

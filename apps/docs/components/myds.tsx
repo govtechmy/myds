@@ -6,6 +6,7 @@ export * from "@govtechmy/myds-react/button";
 export * from "@govtechmy/myds-react/link";
 export * from "@govtechmy/myds-react/skiplink";
 export * from "@govtechmy/myds-react/accordion";
+export * from "@govtechmy/myds-react/announce-bar";
 export * from "@govtechmy/myds-react/toast";
 import { useToast } from "@govtechmy/myds-react/hooks";
 

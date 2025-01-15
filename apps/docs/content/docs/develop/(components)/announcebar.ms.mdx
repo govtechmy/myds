@@ -1,0 +1,227 @@
+---
+title: Bar Pengumuman
+description: Memaklumkan pengguna tentang tahap pembangunan perkhidmatan dan termasuk pautan untuk menghantar maklum balas. Banner fasa biasanya diletakkan di bawah menu navigasi untuk memaparkan status semasa perkhidmatan, seperti Alpha, Beta, atau Penyelenggaraan.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  AnnounceBar,
+  AnnounceBarTag,
+  AnnounceBarDescription,
+  Link,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose">
+     <AnnounceBar>
+        <AnnounceBarTag variant="primary">Alpha</AnnounceBarTag>
+        <AnnounceBarDescription>
+          <p>
+            <span>Ini adalah perkhidmatan baru. Bantu kami memperbaikinya. </span>
+            <Link underline="always" primary href="#">
+              <span>Hantar maklum balas anda di sini.</span>
+            </Link>
+          </p>
+        </AnnounceBarDescription>
+      </AnnounceBar>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx copy
+    import { 
+        AnnounceBar, 
+        AnnounceBarTag, 
+        AnnounceBarDescription 
+    } from "@govtechmy/myds-react/announce-bar";
+
+    <AnnounceBar>
+        <AnnounceBarTag variant="primary">Alpha</AnnounceBarTag>
+        <AnnounceBarDescription>
+            Ini adalah perkhidmatan baru. Bantu kami memperbaikinya.
+            <Link underline="always" primary href="#">
+                Hantar maklum balas anda di sini.
+            </Link>
+        </AnnounceBarDescription>
+    </AnnounceBar>
+    ```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-announcebar--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/announce-bar.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import {
+  AnnounceBar,
+  AnnounceBar,
+  AnnounceBarTag,
+  AnnounceBarDescription,
+} from "@govtechmy/myds-react/announce-bar";
+```
+
+```tsx copy
+export default () => (
+  <AnnounceBar>
+    <AnnounceBarTag />
+    <AnnounceBarDescription />
+  </AnnounceBar>
+);
+```
+
+## Contoh
+
+### Varian
+
+Gunakan prop `variant` untuk menukar gaya bar pengumuman!
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2 not-prose">
+    <AnnounceBar>
+        <AnnounceBarTag variant="primary">Alpha</AnnounceBarTag>
+        <AnnounceBarDescription>
+            <p>
+            <span>Ini adalah perkhidmatan baru. Bantu kami memperbaikinya. </span>
+            <Link underline="always" primary href="#">
+                <span>Hantar maklum balas anda di sini.</span>
+            </Link>
+            </p>
+        </AnnounceBarDescription>
+    </AnnounceBar>
+    <AnnounceBar>
+        <AnnounceBarTag variant="default">Alpha</AnnounceBarTag>
+        <AnnounceBarDescription>
+            <p>
+            <span>Ini adalah perkhidmatan baru. Bantu kami memperbaikinya. </span>
+            <Link underline="always" primary href="#">
+                <span>Hantar maklum balas anda di sini.</span>
+            </Link>
+            </p>
+        </AnnounceBarDescription>
+    </AnnounceBar>
+    <AnnounceBar>
+        <AnnounceBarTag variant="success">Alpha</AnnounceBarTag>
+        <AnnounceBarDescription>
+            <p>
+            <span>Ini adalah perkhidmatan baru. Bantu kami memperbaikinya. </span>
+            <Link underline="always" primary href="#">
+                <span>Hantar maklum balas anda di sini.</span>
+            </Link>
+            </p>
+        </AnnounceBarDescription>
+    </AnnounceBar>
+    <AnnounceBar>
+        <AnnounceBarTag variant="warning">Alpha</AnnounceBarTag>
+        <AnnounceBarDescription>
+            <p>
+            <span>Ini adalah perkhidmatan baru. Bantu kami memperbaikinya. </span>
+            <Link underline="always" primary href="#">
+                <span>Hantar maklum balas anda di sini.</span>
+            </Link>
+            </p>
+        </AnnounceBarDescription>
+    </AnnounceBar>
+    <AnnounceBar>
+        <AnnounceBarTag variant="danger">Alpha</AnnounceBarTag>
+        <AnnounceBarDescription>
+            <p>
+            <span>Ini adalah perkhidmatan baru. Bantu kami memperbaikinya. </span>
+            <Link underline="always" primary href="#">
+                <span>Hantar maklum balas anda di sini.</span>
+            </Link>
+            </p>
+        </AnnounceBarDescription>
+    </AnnounceBar>
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx
+    /** Varian: Primary **/
+
+    <AnnounceBar>
+        <AnnounceBarTag variant="primary">Alpha</AnnounceBarTag>
+        <AnnounceBarDescription>
+            Ini adalah perkhidmatan baru. Bantu kami memperbaikinya.
+            <Link underline="always" primary href="#">
+            Hantar maklum balas anda di sini.
+            </Link>
+        </AnnounceBarDescription>
+    </AnnounceBar>
+
+    /** Varian: Default **/
+
+    <AnnounceBar>
+        <AnnounceBarTag variant="default">Alpha</AnnounceBarTag>
+        <AnnounceBarDescription>
+            Ini adalah perkhidmatan baru. Bantu kami memperbaikinya.
+            <Link underline="always" primary href="#">
+            Hantar maklum balas anda di sini.
+            </Link>
+        </AnnounceBarDescription>
+    </AnnounceBar>
+
+    /** Varian: Success **/
+
+    <AnnounceBar>
+        <AnnounceBarTag variant="success">Alpha</AnnounceBarTag>
+        <AnnounceBarDescription>
+            Ini adalah perkhidmatan baru. Bantu kami memperbaikinya.
+            <Link underline="always" primary href="#">
+            Hantar maklum balas anda di sini.
+            </Link>
+        </AnnounceBarDescription>
+    </AnnounceBar>
+
+    /** Varian: Warning **/
+
+    <AnnounceBar>
+        <AnnounceBarTag variant="warning">Alpha</AnnounceBarTag>
+        <AnnounceBarDescription>
+            Ini adalah perkhidmatan baru. Bantu kami memperbaikinya.
+            <Link underline="always" primary href="#">
+            Hantar maklum balas anda di sini.
+            </Link>
+        </AnnounceBarDescription>
+    </AnnounceBar>
+
+    /** Varian: Danger **/
+
+    <AnnounceBar>
+        <AnnounceBarTag variant="danger">Alpha</AnnounceBarTag>
+        <AnnounceBarDescription>
+            Ini adalah perkhidmatan baru. Bantu kami memperbaikinya.
+            <Link underline="always" primary href="#">
+                Hantar maklum balas anda di sini.
+            </Link>
+        </AnnounceBarDescription>
+    </AnnounceBar>
+    ```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### AnnounceBarTag
+
+<TypeTable
+  type={{
+    variant: {
+      description: "Gaya varian butang",
+      type: "enum",
+      typeDescription:
+        "primary-fill | primary-outline | primary-ghost | danger-fill | danger-outline | danger-ghost | default-outline | default-ghost",
+      default: "default-outline",
+    },
+  }}
+/>
