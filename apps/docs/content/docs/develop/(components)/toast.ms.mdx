@@ -1,0 +1,262 @@
+---
+title: Toast
+description: Notifikasi tidak mengganggu yang muncul sementara pada skrin untuk memberikan maklum balas atau memaklumkan pengguna tentang sesuatu peristiwa.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import {
+  AutoToast, ToastRoot, ToastIcon, ToastProgress, ToastProvider, ToastViewport, ToastTitle, ToastDescription, ToastTriggerButton
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="flex justify-center">
+    <ToastTriggerButton toastVariant="message" text="Message variant"/>
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+  import { AutoToast, 
+ToastRoot, 
+ToastIcon, 
+ToastProgress, 
+ToastProvider, 
+ToastViewport, 
+ToastTitle, 
+ToastDescription 
+}from "@govtechmy/myds-react/toast";
+ 
+  <button
+   onClick={() => {
+     toast({ variant: "message", 
+     title: "Hello, world!", 
+     description: "this is a description" 
+     });
+   }}>
+     Message
+  </button>
+ 
+  //* Simple usage
+  <AutoToast />
+ 
+  //* Advanced usage
+  const { toasts, subscribe, unsubscribe } = useToast();
+ 
+  useEffect(() => {
+    subscribe();
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+ 
+  return (
+    <ToastProvider>
+      {toasts.map((toast, index) => (
+        <ToastRoot
+          key={props.id || index}
+          variant={toast.variant || "message"}
+          {...props}
+        >
+          <ToastIcon />
+          <div className="space-y-1">
+            <ToastTitle>{toast.title}</ToastTitle>
+            {toast.description && (
+              <ToastDescription>{toast.description}</ToastDescription>
+            )}
+          </div>
+          <ToastClose />
+          <ToastProgress />
+         </ToastRoot>
+     ))}
+ 
+      <ToastViewport />
+    </ToastProvider>
+  );
+  ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-toast--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/toast.tsx",
+  }}
+/>
+
+## Penggunaan
+### Penggunaan Mudah
+Untuk penggunaan mudah, `AutoToast` boleh digunakan secara terus untuk mengendalikan kes penggunaan biasa.
+```tsx copy
+import { AutoToast }from "@govtechmy/myds-react/toast";
+
+// put the component high up the layout tree
+<AutoToast />
+```
+
+```tsx copy
+// to publish or emit a new event to the Toast 
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+export default () => (
+  const { toast } = useToast();
+<button
+  onClick={() => {
+    toast({ variant: "message", 
+    title: "Hello, world!", 
+    description: "this is a message toast description" 
+    });
+  }}>
+    Message
+</button>
+);
+```
+
+### Penggunaan Lanjutan
+Sebagai alternatif kepada penggunaan AutoToast, konstituensi komponen `Toast` boleh disusun secara manual.
+```tsx copy
+import {
+ToastRoot, 
+ToastIcon, 
+ToastProgress, 
+ToastProvider, 
+ToastViewport, 
+ToastTitle, 
+ToastDescription 
+} from "@govtechmy/myds-react/toast";
+
+export default () => (
+  <ToastProvider>
+      {toasts.map((toast, index) => (
+        <ToastRoot
+          key={props.id || index}
+          variant={toast.variant || "message"}
+          {...props}
+        >
+          <ToastIcon />
+          <div className="space-y-1">
+            <ToastTitle>{toast.title}</ToastTitle>
+            {toast.description && (
+              <ToastDescription>{toast.description}</ToastDescription>
+            )}
+          </div>
+          <ToastClose />
+          <ToastProgress />
+         </ToastRoot>
+     ))}
+ 
+      <ToastViewport />
+    </ToastProvider>
+);
+```
+
+```tsx copy
+// to publish or emit a new event to the Toast 
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+export default () => (
+  const { toast } = useToast();
+<button
+  onClick={() => {
+    toast({ variant: "message", 
+    title: "Hello, world!", 
+    description: "this is a message toast description" 
+    });
+  }}>
+    Message
+</button>
+);
+```
+
+## Contoh
+
+### Variant
+5 varian toast tersedia: `message`, `info`, `success`, `warning` dan `error`. Contoh penggunaan adalah:
+
+1. Varian `success` boleh digunakan untuk menunjukkan tindakan yang berjaya seperti membuat permintaan baharu atau menghantar borang.
+2. Varian `warning` boleh memberi amaran kepada pengguna untuk mengambil perhatian, sering digunakan untuk peringatan atau tindakan yang memerlukan perhatian, seperti melaporkan spam.
+3. Varian `info` boleh memberikan maklumat tambahan untuk memastikan pengguna sentiasa maklum.
+4. Varian `error` boleh digunakan untuk memberitahu pengguna tentang ralat yang memerlukan penyelesaian sebelum meneruskan.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+      <ToastTriggerButton toastVariant="message" text="Message" variant="default-outline"/>
+      <ToastTriggerButton toastVariant="success" text="Success" variant="default-outline"/>
+      <ToastTriggerButton toastVariant="info" text="Info" variant="default-outline"/>
+      <ToastTriggerButton toastVariant="warning" text="Warning" variant="default-outline"/>
+      <ToastTriggerButton toastVariant="error" text="Error" variant="default-outline"/>
+  </div>
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+// autotoast for simple usage
+import { Button } from "@govtechmy/myds-react/button";
+import { AutoToast }from "@govtechmy/myds-react/toast";
+
+// put the component high up the layout tree
+<AutoToast />
+
+// to publish or emit a new event to the Toast 
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+const { toast } = useToast();
+<button
+  onClick={() => {
+    toast({ variant: "message", 
+    title: "Hello, world!", 
+    description: "this is a message toast description" 
+    });
+  }}>
+    Message
+</button>
+
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+### ToastProvider
+`ToastProvider`  menggunakan `ToastProvider` dari komponen perpustakaan Radix UI. Sila rujuk kepada rujukan API dalam [documentasi ini](https://www.radix-ui.com/primitives/docs/components/toast#provider).
+
+### ToastViewport
+`ToastViewport` menggunakan `ToastViewport` dari komponen perpustakaan Radiux UI. Sila rujuk kepada rujukan API dalam  [dokumentasi ini](https://www.radix-ui.com/primitives/docs/components/toast#viewport).
+
+### ToastRoot
+`ToastRoot` menggunakan `ToastRoot` dari komponen perpustakaan Radiux UI. Sila rujuk kepada rujukan API dalam  [dokumentasi ini](https://www.radix-ui.com/primitives/docs/components/toast#root).
+<TypeTable
+  type={{
+    variant: {
+      description: "Style variant of the toast",
+      type: "enum",
+      typeDescription:
+        "message | success | info | warning | error",
+      default: "message",
+    },
+    duration: {
+      description: "Time (ms) before toast disappears",
+      type: "number",
+      default: "5000"
+    },
+  }}
+/>
+
+### ToastTitle
+`ToastTitle` menggunakan `ToastTitle` dari komponen perpustakaan Radiux UI. Sila rujuk kepada rujukan API dalam  [dokumentasi ini](https://www.radix-ui.com/primitives/docs/components/toast#title).
+
+### ToastDescription
+`ToastDescription` menggunakan `ToastDescription` dari komponen perpustakaan Radiux UI. Sila rujuk kepada rujukan API dalam  [dokumentasi ini](https://www.radix-ui.com/primitives/docs/components/toast#description).
+
+
+### ToastClose
+`ToastClose` menggunakan `ToastClose` dari komponen perpustakaan Radiux UI. Sila rujuk kepada rujukan API dalam  [dokumentasi ini](https://www.radix-ui.com/primitives/docs/components/toast#close).
+
+
+

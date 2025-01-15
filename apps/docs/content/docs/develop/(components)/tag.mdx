@@ -1,0 +1,188 @@
+---
+title: Tag
+description: Tag is a visual indicator. It can be used to show the current state or status of an item, process, or entity. It likely comes in various styles to represent different states. Available in multiple sizes to fit your design needs. Use the appropriate variant to effectively communicate status at a glance.
+---
+
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { Tag } from "@govtechmy/myds-react/tag";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+<div className="flex justify-center">
+      <Tag size="medium" dot={true}>Default</Tag>
+      </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+import { Tag } from "@govtechmy/myds-react/tag";
+
+<Tag size="medium" dot={true}>Default</Tag>
+```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-tag--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/tag.tsx",
+  }}
+/>
+
+## Usage
+```tsx copy
+import { Tag } from "@govtechmy/myds-react/tag";
+```
+
+```tsx copy
+export default () => (
+  <Tag size="medium" dot={true}>Default</Tag>
+  <Tag size="small" dot={false} variant="warning" mode="default">
+    <span>Default</span>
+  </Tag>
+);
+```
+
+## Examples
+
+### Variant
+Use the `variant` props to change the visual style variant of the tag. The current options supported are `default`, `primary`, `success`, `danger`, and `warning`.
+
+#### Guidelines
+1. `primary` is related to product's brand.
+2. `success` to represents a successful outcome.
+3. `danger` to indicates a critical issue or error.
+4. `warning` to warn user of a potential issue.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+      <Tag size="medium" dot={true} variant="default">Default</Tag>
+      <Tag size="medium" dot={true} variant="primary">Primary</Tag>
+      <Tag size="medium" dot={true} variant="success">Success</Tag>
+      <Tag size="medium" dot={true} variant="danger">Danger</Tag>
+      <Tag size="medium" dot={true} variant="warning">Warning</Tag>
+    </div>
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+import { Tag } from "@govtechmy/myds-react/tag";
+
+<Tag size="medium" dot={true} variant="default">Default</Tag>
+<Tag size="medium" dot={true} variant="primary">Primary</Tag>
+<Tag size="medium" dot={true} variant="success">Success</Tag>
+<Tag size="medium" dot={true} variant="danger">Danger</Tag>
+<Tag size="medium" dot={true} variant="warning">Warning</Tag>
+
+```
+  </Tab>
+</Tabs>
+
+### Size
+Use the `size` props to change the size of the tag component. The current options supported are `small`, `medium`, and `large`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+      <Tag size="small" dot={true} variant="primary">Small</Tag>
+      <Tag size="medium" dot={true} variant="primary">Medium</Tag>
+      <Tag size="large" dot={true} variant="primary">Large</Tag>
+    </div>
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+import { Tag } from "@govtechmy/myds-react/tag";
+
+<Tag size="small" dot={true} variant="primary">Small</Tag>
+<Tag size="medium" dot={true} variant="primary">Medium</Tag>
+<Tag size="large" dot={true} variant="primary">Large</Tag>
+
+```
+  </Tab>
+</Tabs>
+
+### Mode 
+Use the `mode` props to change the type of the tag component. The `default` mode gives the tag a slightly rounded edges, while `pill` mode gives it a fully rounded appearance.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+      <Tag size="medium" dot={true} variant="success" mode="default">Default</Tag>
+      <Tag size="medium" dot={true} variant="success" mode="pill">Pill</Tag>
+    </div>
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+import { Tag } from "@govtechmy/myds-react/tag";
+
+<Tag size="medium" dot={true} variant="success" mode="default">Default</Tag>
+<Tag size="medium" dot={true} variant="success" mode="pill">Pill</Tag>
+
+```
+  </Tab>
+</Tabs>
+
+### Dot 
+The `dot` props to toggle the dot appearance. The optional status dot can act as visual indicator to represent the current state or status of an item.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="space-y-2">
+  <div className="flex justify-center items-center h-fit gap-1">
+      <Tag size="medium" dot={false} variant="warning" mode="default">No Dot</Tag>
+      <Tag size="medium" dot={true} variant="warning" mode="default">Dot</Tag>
+    </div>
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+import { Tag } from "@govtechmy/myds-react/tag";
+
+<Tag size="medium" dot={false} variant="warning" mode="default">No Dot</Tag>
+<Tag size="medium" dot={true} variant="warning" mode="default">Dot</Tag>
+
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+### Tag
+
+<TypeTable
+  type={{
+    variant: {
+      description: "Style variant of the tag",
+      type: "enum",
+      typeDescription: "default | primary | success | danger | warning",
+      default: "default",
+    },
+    size: {
+      description: "Sizes of the tag",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    dot: {
+      description: "Whether to show a status dot in the tag",
+      type: "boolean",
+      default: "false",
+    },
+    mode: {
+      description: "The style of the tag (rounded or not)",
+      type: "enum",
+      typeDescription: "pill | default",
+      default: "pill",
+    }
+  }}
+/>
