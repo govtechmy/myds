@@ -1,7 +1,9 @@
 "use client";
 
+import React, { useState, ComponentProps, FunctionComponent } from "react";
 import { Button } from "@govtechmy/myds-react/button";
-import { ComponentProps, FunctionComponent } from "react";
+import { Toggle, ToggleThumb } from "./myds";
+export * from "@govtechmy/myds-react/toggle";
 export * from "@govtechmy/myds-react/button";
 export * from "@govtechmy/myds-react/link";
 export * from "@govtechmy/myds-react/skiplink";
@@ -39,5 +41,26 @@ export const ToastTriggerButton: FunctionComponent<ToastTriggerButtonProps> = (
     >
       {props.text}
     </Button>
+  );
+};
+
+interface PreviewToggleProps extends ComponentProps<typeof Toggle> {}
+
+export const ControlledToggle: FunctionComponent<PreviewToggleProps> = (
+  props,
+) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  return (
+    <div className="flex flex-col items-center justify-center">
+      <p>State: {isChecked ? "On" : "Off"}</p>
+      <Toggle
+        checked={isChecked}
+        onCheckedChange={(checked) => setIsChecked(checked)}
+        {...props}
+      >
+        <ToggleThumb />
+      </Toggle>
+    </div>
   );
 };

@@ -16,15 +16,16 @@
     "(components)/button",
     "(components)/callout",
     "(components)/checkbox",
-    "(components)/cookies-banner",
     "(components)/chip",
+    "(components)/cookies-banner",
     "(components)/date-picker",
     "(components)/pagination",
     "(components)/radio",
     "(components)/skiplink",
     "(components)/tag",
     "(components)/text-area",
-    "(components)/toast"
+    "(components)/toast",
+    "(components)/toggle"
   ],
   "root": true
 }
