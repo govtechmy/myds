@@ -15,10 +15,13 @@
     "(components)/button",
     "(components)/callout",
     "(components)/checkbox",
+    "(components)/cookies-banner",
     "(components)/chip",
     "(components)/date-picker",
     "(components)/pagination",
     "(components)/radio",
+    "(components)/skiplink",
+    "(components)/text-area",
     "(components)/spinner"
   ],
   "root": true

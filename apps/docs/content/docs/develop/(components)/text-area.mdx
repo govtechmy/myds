@@ -1,0 +1,130 @@
+---
+title: TextArea
+description: This component is a multi-line text input component designed for longer form content. Unlike the Input component which is limited to a single line, it expands vertically to accommodate multiple lines of text.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { TextArea } from "@govtechmy/myds-react/textarea";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center">
+  <TextArea placeholder="Placeholder text displayed when the text area is empty." size={'small'} />    
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+import { TextArea } from "@govtechmy/myds-react/textarea";
+
+<TextArea placeholder="Placeholder text displayed when the text area is empty." 
+size={'small'}
+/>
+```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-textarea--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/textarea.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import { TextArea } from "@govtechmy/myds-react/textarea";
+```
+
+```tsx copy
+export default () => (
+  <TextArea placeholder="Placeholder text displayed when the text area is empty." 
+  size={'small'} 
+  disabled={false}
+  />
+);
+```
+
+## Examples
+### Size
+Controls the input field's size variant. Supports `small`, `medium`, or `large`.
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="space-y-2">
+  <div className="flex flex-col justify-center items-center h-fit gap-5">
+      <TextArea size="small" placeholder="Enter your text for your small TextArea."/>
+      <TextArea size="medium" placeholder="Enter your text for your medium TextArea."/>
+      <TextArea size="large"placeholder="Enter your text for your large TextArea." />
+      </div>
+
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+import { TextArea } from "@govtechmy/myds-react/textarea";
+
+/** Size props*/
+
+<TextArea size="small" placeholder="Enter your text for your small TextArea."/>
+<TextArea size="medium" placeholder="Enter your text for your medium TextArea."/>
+<TextArea size="large"placeholder="Enter your text for your large TextArea." />
+```
+  </Tab>
+</Tabs>
+
+### Disabled
+The `disabled` props can be used to disable user input and applies a visual styling to indicate the field cannot be edited.
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="space-y-2">
+  <div className="flex flex-col justify-center items-center h-fit gap-5">
+      <TextArea size="small" placeholder="The TextArea has been disabled." disabled/>
+      <TextArea size="medium" placeholder="The TextArea has been disabled." disabled/>
+      <TextArea size="large"placeholder="The TextArea has been disabled." disabled/>
+      </div>
+
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+import { TextArea } from "@govtechmy/myds-react/textarea";
+
+/** Size props*/
+
+<TextArea size="small" placeholder="The TextArea has been disabled." disabled/>
+<TextArea size="medium" placeholder="The TextArea has been disabled." disabled/>
+<TextArea size="large" placeholder="The TextArea has been disabled." disabled/>
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+### TextArea
+<TypeTable
+  type={{
+    size: {
+      description: "Sizes of the TextArea",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "medium",
+    },
+    disabled: {
+    description: "Makes the TextArea non-interactive and visually indicates it's disabled.",
+      type: "boolean",
+      typeDescription: "true | false ",
+      default: "false",
+    },
+    placeholder: {
+    description: "Displays placeholder text when the input field is empty.",
+      type: "string",
+      typeDescription: "-",
+      default: "-",
+    },
+  }}
+/>
