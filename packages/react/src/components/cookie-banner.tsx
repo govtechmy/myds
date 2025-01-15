@@ -33,18 +33,18 @@ type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
  * @component
  * @example
  * <CookieBanner open={isOpen}>
- *   <CookieBanner.Header>
- *     <CookieBanner.Title>
+ *   <CookieBannerHeader>
+ *     <CookieBannerTitle>
  *       Cookies on example.gov.my
- *     </CookieBanner.Title>
- *     <CookieBanner.Close />
- *   </CookieBanner.Header>
+ *     </CookieBannerTitle>
+ *     <CookieBannerClose />
+ *   </CookieBannerHeader>
  *
- *   <CookieBanner.Description>
+ *   <CookieBannerDescription>
  *     We use cookies to improve your experience.
- *   </CookieBanner.Description>
+ *   </CookieBannerDescription>
  *
- *   <CookieBanner.Preference className="flex flex-col gap-2 py-3">
+ *   <CookieBannerPreference className="flex flex-col gap-2 py-3">
  *     <div className="flex flex-row gap-2.5">
  *       <Checkbox
  *         id="necessary"
@@ -65,9 +65,9 @@ type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
  *         </p>
  *       </div>
  *     </div>
- *   </CookieBanner.Preference>
+ *   </CookieBannerPreference>
  *
- *   <CookieBanner.Footer
+ *   <CookieBannerFooter
  *     fillWidth={false}
  *     className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row"
  *   >
@@ -79,7 +79,7 @@ type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
  *     >
  *       Accept All
  *     </Button>
- *     <CookieBanner.Customiser asChild>
+ *     <CookieBannerCustomiser asChild>
  *       <Button
  *         variant="primary-outline"
  *         size="medium"
@@ -87,8 +87,8 @@ type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
  *       >
  *         Customize
  *       </Button>
- *     </CookieBanner.Customiser>
- *   </CookieBanner.Footer>
+ *     </CookieBannerCustomiser>
+ *   </CookieBannerFooter>
  * </CookieBanner>
  *
  * @typedef {Object} CookieBannerProps

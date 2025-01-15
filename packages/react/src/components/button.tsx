@@ -79,10 +79,33 @@ const button_cva = cva(
         medium: "py-2 px-3 text-body-md",
         large: "py-2.5 px-4 text-body-lg",
       },
+
+      iconOnly: {
+        true: "aspect-square rounded-md",
+        false: "",
+      },
     },
+    compoundVariants: [
+      {
+        iconOnly: true,
+        size: "small",
+        className: "p-2",
+      },
+      {
+        iconOnly: true,
+        size: "medium",
+        className: "p-2.5",
+      },
+      {
+        iconOnly: true,
+        size: "large",
+        className: "p-3",
+      },
+    ],
     defaultVariants: {
       variant: "primary-fill",
       size: "small",
+      iconOnly: false,
     },
   },
 );
@@ -91,6 +114,7 @@ export interface ButtonProps
   extends ComponentProps<"button">,
     VariantProps<typeof button_cva> {
   asChild?: boolean;
+  iconOnly?: boolean;
 }
 
 const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
@@ -102,26 +126,11 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
       size = "small",
       children,
       asChild = false,
+      iconOnly = false,
       ...props
     },
     ref,
   ) => {
-    const iconOnly = (size: ButtonProps["size"]) => {
-      if (!size) return;
-      if (Array.isArray(children)) return;
-      if (!React.isValidElement(children)) return;
-
-      // @ts-expect-error
-      if (children.type.displayName !== ButtonIcon.displayName) return;
-      return clx(
-        "aspect-square rounded-md",
-        {
-          small: "p-2",
-          medium: "p-2.5",
-          large: "p-3",
-        }[size],
-      );
-    };
     const Comp = asChild ? Slot : "button";
 
     return (
@@ -129,10 +138,7 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
         <Comp
           ref={ref}
           type={type}
-          className={clx(
-            button_cva({ variant, size, className }),
-            iconOnly(size),
-          )}
+          className={button_cva({ variant, size, className, iconOnly })}
           {...props}
         >
           {children}
@@ -147,6 +153,7 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
 const ButtonContext = createContext<VariantProps<typeof button_cva>>({
   variant: "primary-fill",
   size: "small",
+  iconOnly: false,
 });
 
 /*========================================================================================================================*/
