@@ -31,6 +31,10 @@
       "import": "./dist/components/data-table.mjs",
       "require": "./dist/components/data-table.js"
     },
+    "./summary-list": {
+      "type": "./src/components/summary-list.tsx",
+      "default": "./src/components/summary-list.tsx"
+    },
     "./callout": {
       "type": "./dist/components/callout.d.ts",
       "import": "./dist/components/callout.mjs",

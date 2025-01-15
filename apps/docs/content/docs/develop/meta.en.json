@@ -22,7 +22,9 @@
     "(components)/pagination",
     "(components)/radio",
     "(components)/skiplink",
-    "(components)/text-area"
+    "(components)/tag",
+    "(components)/text-area",
+    "(components)/toast"
   ],
   "root": true
 }
