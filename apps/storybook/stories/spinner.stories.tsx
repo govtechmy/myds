@@ -11,7 +11,7 @@ import { Button } from "@govtechmy/myds-react/button";
  * ```tsx
  * import { Spinner } from "@govtechmy/myds-react/spinner";
  *
- * <LoadingSpinner />
+ * <Spinner />
  * ```
  */
 const meta = {
@@ -41,6 +41,16 @@ const meta = {
       description: "Color variant of the spinner",
       control: "inline-radio",
       options: ["grey", "white"],
+    },
+    show: {
+      table: {
+        type: {
+          summary: "boolean",
+        },
+      },
+      description: "Show or Hide the spinner",
+      control: "inline-radio",
+      options: ["true", "false"],
     },
   },
 } satisfies Meta<typeof Spinner>;
@@ -111,3 +121,20 @@ export const WithButton: Story = {
   ),
 };
 WithButton.storyName = "Spinner with Button Disabled";
+
+export const HiddenAndShow: Story = {
+  ...createStory({}),
+  render: () => (
+    <div className="space-y-2">
+      <Button>
+        <Spinner show={true} color={"white"}></Spinner>
+        Not Hidden Spinner
+      </Button>
+      <Button>
+        <Spinner show={false}></Spinner>
+        Hidden Spinner
+      </Button>
+    </div>
+  ),
+};
+HiddenAndShow.storyName = "Spinner Show or Hidden";
