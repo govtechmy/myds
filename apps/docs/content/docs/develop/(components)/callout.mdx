@@ -171,16 +171,66 @@ Use the `variant` prop to change the callout style!
   </CalloutAction>
 </Callout>
 ```
+  </Tab>
+</Tabs>
 
+### Layout
+
+A basic callout consisting of **title** and **action** will be displayed an **inline** manner,
+while callouts with all three elements (**title**, **content** & **action**) will be displayed in a **stacked** manner.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="space-y-2 not-prose">
+  <Callout>
+      <CalloutTitle>Title</CalloutTitle>
+      <CalloutAction>
+        <Button variant="default-outline">Call to Action</Button>
+      </CalloutAction>
+  </Callout>
+  <Callout>
+    <CalloutTitle>Title</CalloutTitle>
+    <CalloutContent>
+      <span>A description to explain the success, warning, info or error event</span>
+    </CalloutContent>
+    <CalloutAction>
+      <Button variant="default-outline">Call to Action</Button>
+    </CalloutAction>
+  </Callout>
+  </div>
+  </Tab>
+  <Tab value="Code">
+```tsx 
+/** Layout: Inline **/
+
+<Callout variant="info">
+  <CalloutTitle>Title</CalloutTitle>
+  <CalloutAction>
+    <Button variant="default-outline">Call to Action</Button>
+  </CalloutAction>
+</Callout>
+
+/** Layout: Stacked **/
+
+<Callout variant="success">
+  <CalloutTitle>Title</CalloutTitle>
+  <CalloutContent>
+    A description to explain the success, warning, info or error event
+  </CalloutContent>
+  <CalloutAction>
+    <Button variant="default-outline">Call to Action</Button>
+  </CalloutAction>
+</Callout>
+```
   </Tab>
 </Tabs>
 
 ### Dismissible
 
-If the callout is dismissible, you can display a **close button** on the top right corner of the callout by declaring the `dismissible` prop.
+If the callout is dismissible, you can display a **close button** on the top right corner by declaring the `dismissible` prop.
 To capture the dismiss event, you may use the `onDismiss` prop.
 
-To dismiss the callout programmatically through any of the event listeners inside `CalloutAction`'s children, you may use the `dismiss` function passed as an argument to the render prop.
+To dismiss the callout programmatically via event listeners inside `CalloutAction`'s children, you may use the `dismiss` function passed as an argument to the render prop.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
@@ -193,7 +243,7 @@ To dismiss the callout programmatically through any of the event listeners insid
       <DismissibleCalloutExample
         type="action"
         title="Action - Dismiss Callout via CalloutAction Render Prop"
-        description="You can invoke the dismiss event programmatically through any of event listeners inside CalloutAction's children"
+        description="You can invoke the dismiss event programmatically via event listeners inside CalloutAction's children"
       />
     </div>
   </Tab>

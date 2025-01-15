@@ -112,7 +112,7 @@ const CalloutTitle: ForwardRefExoticComponent<ComponentProps<"p">> = forwardRef(
       <p
         ref={ref}
         role="term"
-        className={clx("text-sm font-semibold", className)}
+        className={clx("text-sm font-semibold text-inherit", className)}
         {...props}
       >
         {children}
@@ -129,7 +129,7 @@ const CalloutContent: ForwardRefExoticComponent<ComponentProps<"p">> =
         ref={ref}
         role="definition"
         className={clx(
-          "text-txt-black-900 text-sm font-normal leading-5",
+          "text-txt-black-900 peer text-sm font-normal leading-5",
           className,
         )}
         {...props}
@@ -141,14 +141,22 @@ const CalloutContent: ForwardRefExoticComponent<ComponentProps<"p">> =
 CalloutContent.displayName = "CalloutContent";
 
 interface CalloutActionProps extends Omit<ComponentProps<"div">, "children"> {
-  children: ReactNode | ((handleDismiss: () => void) => ReactNode);
+  children: ReactNode | ((dismiss: () => void) => ReactNode);
 }
 
 const CalloutAction: ForwardRefExoticComponent<CalloutActionProps> = forwardRef(
   ({ className, children, ...props }, ref) => {
     const { handleDismiss } = useContext(CalloutContext);
     return (
-      <div ref={ref} className={clx("flex gap-1", className)} {...props}>
+      <div
+        ref={ref}
+        className={clx(
+          "flex gap-1",
+          "peer-[&[role=definition]]:pt-2",
+          className,
+        )}
+        {...props}
+      >
         {typeof children === "function" ? children(handleDismiss) : children}
       </div>
     );
