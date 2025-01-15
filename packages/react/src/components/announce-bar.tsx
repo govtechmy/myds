@@ -1,36 +1,7 @@
-import React, {
-  ComponentProps,
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  ForwardRefExoticComponent,
-  FunctionComponent,
-} from "react";
+import { ComponentProps, forwardRef, ForwardRefExoticComponent } from "react";
 import { clx } from "../utils";
-import { Tag, type TagProps as BaseTagProps } from "./tag";
+import { Tag } from "./tag";
 import { Slot } from "@radix-ui/react-slot";
-
-/**
- * Props for AnnounceBar component.
- * @typedef AnnounceBarProps
- * @property {string} [className] - Optional CSS class names to be applied to the component.
- * @property {React.ReactNode} children - The content to be rendered within the AnnounceBar.
- */
-interface AnnounceBarProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
-  children: React.ReactNode;
-}
-
-type AnnounceBarTagProps = {
-  asChild?: boolean;
-} & Omit<ComponentProps<"div">, keyof BaseTagProps> &
-  Omit<BaseTagProps, "size" | "mode" | "dot" | "ref">;
-
-type AnnounceBarDescriptionProps = {
-  children: React.ReactNode;
-  className?: string;
-  asChild?: boolean;
-} & ComponentPropsWithoutRef<"p">;
 
 /**
  * AnnounceBar component description.
@@ -46,8 +17,8 @@ type AnnounceBarDescriptionProps = {
  *   </AnnounceBar>
  * <AnnounceBar propName="value" />
  */
-const AnnounceBar = forwardRef<HTMLDivElement, AnnounceBarProps>(
-  ({ className, children, ...props }, ref) => {
+const AnnounceBar: ForwardRefExoticComponent<ComponentProps<"div">> =
+  forwardRef(({ className, children, ...props }, ref) => {
     return (
       <div
         ref={ref}
@@ -57,8 +28,7 @@ const AnnounceBar = forwardRef<HTMLDivElement, AnnounceBarProps>(
         {children}
       </div>
     );
-  },
-);
+  });
 
 const AnnounceBarTag: ForwardRefExoticComponent<
   ComponentProps<typeof Tag> & { asChild?: boolean }
@@ -84,23 +54,20 @@ const AnnounceBarTag: ForwardRefExoticComponent<
   },
 );
 
-const AnnounceBarDescription = forwardRef<
-  HTMLParagraphElement | ElementRef<typeof Slot>,
-  AnnounceBarDescriptionProps
->(({ children, className, ...props }, ref) => {
-  return (
-    <div
-      ref={ref as any}
-      className={clx(
-        "min-height-[28px] text-txt-black-700 font-body flex items-center text-sm",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-});
+const AnnounceBarDescription: ForwardRefExoticComponent<ComponentProps<"div">> =
+  forwardRef(({ children, className, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={clx(
+          "min-height-[28px] text-txt-black-700 font-body flex items-center text-sm",
+          className,
+        )}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  });
 
 export { AnnounceBar, AnnounceBarTag, AnnounceBarDescription };
-export type { AnnounceBarProps };
