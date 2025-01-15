@@ -1,0 +1,50 @@
+name: "publish"
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - "feat/publish"
+  # paths:
+  #   - "packages/react/**"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.8
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      # - name: Build @govtechmy/myds-react
+      #   run: pnpm build --filter=@govtechmy/myds-react
+
+      - name: Create PR to Publish stable package
+        id: changeset
+        uses: changesets/action@v1
+        with:
+          publish: pnpm release
+          createGithubReleases: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

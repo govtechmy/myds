@@ -1,7 +1,7 @@
 import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { TextArea } from "@myds/react/textarea";
+import { TextArea } from "@govtechmy/myds-react/textarea";
 
 /**
  * ### Overview
@@ -16,13 +16,13 @@ import { TextArea } from "@myds/react/textarea";
  *
  * ### Usage
  * ```tsx
- * import TextArea from "@myds/react/text-area";
+ * import TextArea from "@govtechmy/myds-react/text-area";
  *
  * <TextArea />
  * ```
  */
 const meta = {
-  title: "@myds/react/TextArea",
+  title: "@govtechmy/myds-react/TextArea",
   component: TextArea,
   tags: ["autodocs"],
   parameters: {
@@ -52,14 +52,6 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-/**
- * Storybook stories for different variants of a component.
- *
- * @example
- * export const Default: Story = createStory({ ... });
- * export const DarkDefault: Story = createStory({ ... , className="dark"}, "dark");
- */
 
 export const Default: Story = {
   args: {

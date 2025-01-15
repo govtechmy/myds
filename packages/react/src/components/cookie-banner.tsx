@@ -33,18 +33,18 @@ type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
  * @component
  * @example
  * <CookieBanner open={isOpen}>
- *   <CookieBanner.Header>
- *     <CookieBanner.Title>
+ *   <CookieBannerHeader>
+ *     <CookieBannerTitle>
  *       Cookies on example.gov.my
- *     </CookieBanner.Title>
- *     <CookieBanner.Close />
- *   </CookieBanner.Header>
+ *     </CookieBannerTitle>
+ *     <CookieBannerClose />
+ *   </CookieBannerHeader>
  *
- *   <CookieBanner.Description>
+ *   <CookieBannerDescription>
  *     We use cookies to improve your experience.
- *   </CookieBanner.Description>
+ *   </CookieBannerDescription>
  *
- *   <CookieBanner.Preference className="flex flex-col gap-2 py-3">
+ *   <CookieBannerPreference className="flex flex-col gap-2 py-3">
  *     <div className="flex flex-row gap-2.5">
  *       <Checkbox
  *         id="necessary"
@@ -65,9 +65,9 @@ type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
  *         </p>
  *       </div>
  *     </div>
- *   </CookieBanner.Preference>
+ *   </CookieBannerPreference>
  *
- *   <CookieBanner.Footer
+ *   <CookieBannerFooter
  *     fillWidth={false}
  *     className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row"
  *   >
@@ -79,7 +79,7 @@ type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
  *     >
  *       Accept All
  *     </Button>
- *     <CookieBanner.Customiser asChild>
+ *     <CookieBannerCustomiser asChild>
  *       <Button
  *         variant="primary-outline"
  *         size="medium"
@@ -87,8 +87,8 @@ type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
  *       >
  *         Customize
  *       </Button>
- *     </CookieBanner.Customiser>
- *   </CookieBanner.Footer>
+ *     </CookieBannerCustomiser>
+ *   </CookieBannerFooter>
  * </CookieBanner>
  *
  * @typedef {Object} CookieBannerProps
@@ -132,7 +132,7 @@ type CookieBannerCustomiserProps = {
 };
 
 const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
-  ({ open = false, className, children }, ref) => {
+  ({ open = false, className, children, ...props }, ref) => {
     const [showPreferences, setShowPreferences] = useState(false);
     // Reset showPreferences when dialog closes
     useEffect(() => {
@@ -152,6 +152,7 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
               className,
             )}
             ref={ref}
+            {...props}
           >
             {children}
           </DialogContent>
@@ -166,6 +167,7 @@ const CookieBannerTitle = DialogTitle;
 const CookieBannerClose = ({
   className,
   onClick,
+  ...props
 }: {
   className?: string;
   onClick: () => void;
@@ -183,6 +185,7 @@ const CookieBannerClose = ({
         "flex-shrink-0",
         className,
       )}
+      {...props}
     >
       <CrossIcon className="stroke-current" />
     </Button>
@@ -194,7 +197,7 @@ const CookieBannerDescription = DialogDescription;
 const CookieBannerPreferences = forwardRef<
   HTMLDivElement,
   CookieBannerPreferencesProps
->(({ children, className }, ref) => {
+>(({ children, className, ...props }, ref) => {
   const context = useContext(CookieBannerContext);
 
   if (!context) throw new Error("Must be used within CookieBanner");
@@ -202,7 +205,11 @@ const CookieBannerPreferences = forwardRef<
   if (!context.showPreferences) return null;
 
   return (
-    <div ref={ref} className={clx("flex flex-col gap-2 py-3", className)}>
+    <div
+      ref={ref}
+      className={clx("flex flex-col gap-2 py-3", className)}
+      {...props}
+    >
       {children}
     </div>
   );
@@ -211,7 +218,7 @@ const CookieBannerPreferences = forwardRef<
 const CookieBannerCustomiser = forwardRef<
   HTMLElement,
   CookieBannerCustomiserProps
->(({ children, className, asChild = false }, ref) => {
+>(({ children, className, asChild = false, ...props }, ref) => {
   const context = useContext(CookieBannerContext);
   if (!context) {
     throw new Error("Must be used within CookieBanner");
@@ -233,6 +240,7 @@ const CookieBannerCustomiser = forwardRef<
       size="medium"
       className={clx("w-full justify-center sm:w-auto", className)}
       onClick={togglePreferences}
+      {...props}
     >
       {children}
     </Comp>

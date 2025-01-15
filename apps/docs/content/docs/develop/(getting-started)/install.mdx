@@ -13,13 +13,13 @@ MYDS can be configured in various ways, depending on the requirement of your pro
     ### Install packages
     <Tabs items={["npm", "yarn", "pnpm"]}>
         ```sh tab="npm"
-        npm i @govtechmy/myds-react @govtechmy/myds-tailwindcss 
+        npm i @govtechmy/myds-react @govtechmy/myds-style 
         ```
         ```sh tab="yarn"
-        yarn add @govtechmy/myds-react @govtechmy/myds-tailwindcss
+        yarn add @govtechmy/myds-react @govtechmy/myds-style
         ```
         ```sh tab="pnpm"
-        pnpm add @govtechmy/myds-react @govtechmy/myds-tailwindcss
+        pnpm add @govtechmy/myds-react @govtechmy/myds-style
         ```
     </Tabs>
 
@@ -33,14 +33,14 @@ You may import the full MYDS stylesheet in one of (2) ways below.
 
 ```ts
 // Place in the bundle entry point (eg. index.{ts,js})
-import "@govtechmy/myds-tailwindcss/full.css";
+import "@govtechmy/myds-style/full.css";
 ```
 
 #### B. Import via CSS
 
 ```css
 /* Place in the CSS entry point */
-@import "@govtechmy/myds-tailwindcss/full.css";
+@import "@govtechmy/myds-style/full.css";
 ```
 
 For more advanced configuration, please read the [Project Configuration](./project-configuration)

@@ -1,0 +1,108 @@
+---
+title: Skiplink
+description: Komponen ini membolehkan pengguna melangkau pautan navigasi dan terus ke kandungan utama. Ia meningkatkan kebolehcapaian untuk pengguna papan kekunci dan pembaca skrin.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import {
+  Skiplink
+} from "@/components/myds";
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
+  <Tab value="Pratonton">
+    <div className="justify-center relative not-prose">
+      <Skiplink href="#main-content">
+        {/* Text-inherit for span to overwrite Fumadocs text color */}
+        <span className="text-inherit">Skip to main content</span>
+      </Skiplink>
+      <nav className="h-[200px] bg-slate-800 block">
+        <div className="items-center justify-between">
+          <div className="text-xl font-bold">Logo</div>
+          <ul className="flex gap-6">
+            <li>
+              <a href="#" className="text-black-700">
+                <span>Home</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-black-700">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#" className="text-black-700">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main id="main-content" className="flex-1" tabIndex={-1}>
+        <div className="mx-auto max-w-7xl">
+          <h1 className="mb-4 text-2xl font-bold">Main Content</h1>
+          <span className="text-slate-600">
+            Untuk menggunakan skiplink component: Tekan kekunci Tab selepas mengklik dalam kawasan tab 'Pratonton'. Komponen skiplink akan muncul dan membolehkan anda melangkau menu navigasi dan terus ke kandungan utama.
+          </span>
+        </div>
+      </main>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx 
+    import { Skiplink } from "@govtechmy/myds-react/skiplink";
+
+    <Skiplink href="#main-content">
+      <span>Skip to main content</span>
+    </Skiplink>
+    <main id="main-content">
+      <span className="text-slate-600">
+        Main content here
+      </span>
+    </main>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-skiplink--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/skiplink.tsx",
+  }}
+/>
+
+## Usage
+```tsx copy
+import { Skiplink } from "@govtechmy/myds-react/skiplink";
+```
+
+```tsx copy
+export default () => (
+  <Skiplink href="#main-content">
+    <span>Skip to main content</span>
+  </Skiplink>
+  <main id="main-content">
+    <span className="text-slate-600">
+      Main content here
+    </span>
+  </main>
+);
+```
+
+## Props
+
+### Skiplink
+<TypeTable
+  type={{
+    href: {
+      description: "Menentukan ID buat sasaran destinasi HTML elemen yang pautan langkau perlu navigasi apabila diaktifkan.",
+      type: "string",
+      typeDescription: "-",
+      default: "-",
+    }
+  }}
+/>

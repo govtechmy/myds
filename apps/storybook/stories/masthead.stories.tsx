@@ -8,7 +8,7 @@ import {
   MastheadSection,
   MastheadSectionTitle,
   MastheadSectionBody,
-} from "@myds/react/masthead";
+} from "@govtechmy/myds-react/masthead";
 import { Lock2Icon } from "../../../packages/react/src/icons/lock-2";
 import SolidLockIcon from "../../../packages/react/src/icons/solid-lock";
 import { GovMyIcon } from "../../../packages/react/src/icons/gov-my";
@@ -41,7 +41,7 @@ import { createStory } from "../utils";
  * ### Usage
  * ```tsx
  * // Basic usage with all defaults
- * import { Masthead } from "@myds/react/masthead";
+ * import { Masthead } from "@govtechmy/myds-react/masthead";
  *
  * const MyPage = () => <Masthead />;
  *
@@ -78,7 +78,7 @@ import { createStory } from "../utils";
  */
 
 const meta = {
-  title: "@myds/react/Masthead",
+  title: "@govtechmy/myds-react/Masthead",
   component: Masthead,
   tags: ["autodocs"],
   parameters: {

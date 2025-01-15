@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@myds/react/button";
+import { Button } from "@govtechmy/myds-react/button";
 import {
   Dialog,
   DialogClose,
@@ -10,10 +10,10 @@ import {
   DialogIcon,
   DialogTitle,
   DialogTrigger,
-} from "@myds/react/dialog";
+} from "@govtechmy/myds-react/dialog";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { WarningCircleIcon } from "@myds/react/icon";
+import { WarningCircleIcon } from "@govtechmy/myds-react/icon";
 
 /**
  * ### Overview
@@ -32,7 +32,7 @@ import { WarningCircleIcon } from "@myds/react/icon";
  *
  * ### Usage
  * ```tsx
- * import { Button } from "@myds/react/button";
+ * import { Button } from "@govtechmy/myds-react/button";
  * import {
  *   Dialog,
  *   DialogContent,
@@ -40,7 +40,7 @@ import { WarningCircleIcon } from "@myds/react/icon";
  *   DialogHeader,
  *   DialogTitle,
  *   DialogTrigger,
- * } from "@myds/react/dialog";
+ * } from "@govtechmy/myds-react/dialog";
  *
  * <Dialog>
  *   <DialogTrigger>
@@ -76,7 +76,7 @@ import { WarningCircleIcon } from "@myds/react/icon";
  * ```
  */
 const meta: Meta = {
-  title: "@myds/react/Dialog",
+  title: "@govtechmy/myds-react/Dialog",
   component: ({
     withCloseButton,
     withFooterTopBorder,

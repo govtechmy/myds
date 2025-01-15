@@ -1,14 +1,9 @@
-import type { PresetsConfig } from "tailwindcss/types/config";
-import tailwindcssAnimate from "tailwindcss-animate";
-import defaultTheme from "tailwindcss/defaultTheme";
+const defaultTheme = require("tailwindcss/defaultTheme");
 
-const config: PresetsConfig = {
+/** @type {import('tailwindcss/types/config').PresetsConfig} */
+module.exports = {
   //* `content` is for debugging purpose only -- inspect the generated css in styles/output.tailwind.css
-  content: [
-    "../react/src/**/*.{js,jsx,ts,tsx}",
-    "../../apps/storybook/**/*.{js,jsx,ts,tsx}",
-    "../../apps/storybook/**/*.stories.{js,jsx,ts,tsx}",
-  ],
+  content: ["../react/src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     colors: ({ colors, theme }) => ({
       current: colors.current,
@@ -111,8 +106,8 @@ const config: PresetsConfig = {
     // },
     extend: {
       spacing: {
-        "2.5": "0.625rem",
-        "4.5": "1.125rem",
+        2.5: "0.625rem",
+        4.5: "1.125rem",
       },
       fontSize: {
         DEFAULT: ["0.875rem", { lineHeight: "1.25rem" }],
@@ -290,6 +285,5 @@ const config: PresetsConfig = {
         "0px 2px 6px 0px rgba(0, 0, 0, 0.05), 0px 12px 50px 0px rgba(0, 0, 0, 0.10)",
     },
   },
-  plugins: [tailwindcssAnimate],
+  plugins: [require("tailwindcss-animate")],
 };
-export default config;

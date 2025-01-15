@@ -1,9 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { CookieBanner, CookieBannerClose, CookieBannerCustomiser, CookieBannerDescription, CookieBannerFooter, CookieBannerHeader, CookieBannerPreferences, CookieBannerTitle } from "@myds/react/cookie-banner";
+import {
+  CookieBanner,
+  CookieBannerClose,
+  CookieBannerCustomiser,
+  CookieBannerDescription,
+  CookieBannerFooter,
+  CookieBannerHeader,
+  CookieBannerPreferences,
+  CookieBannerTitle,
+} from "@govtechmy/myds-react/cookie-banner";
 import { useEffect, useState } from "react";
-import { Button } from "@myds/react/button";
-import { Checkbox } from "@myds/react/checkbox";
+import { Button } from "@govtechmy/myds-react/button";
+import { Checkbox } from "@govtechmy/myds-react/checkbox";
 
 /**
  * ### Overview
@@ -147,7 +156,7 @@ import { Checkbox } from "@myds/react/checkbox";
  */
 
 const meta = {
-  title: "@myds/React/CookiesBanner",
+  title: "@govtechmy/myds-react/CookiesBanner",
   component: (args: React.ComponentProps<typeof CookieBanner>) => {
     const [open, setOpen] = useState(false);
     const [preferences, setPreferences] = useState({
@@ -291,9 +300,7 @@ const meta = {
             >
               Reject All
             </Button>
-            <CookieBannerCustomiser>
-              Customise
-            </CookieBannerCustomiser>
+            <CookieBannerCustomiser>Customise</CookieBannerCustomiser>
           </CookieBannerFooter>
         </CookieBanner>
       </div>

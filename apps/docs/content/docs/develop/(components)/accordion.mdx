@@ -1,15 +1,421 @@
 ---
 title: Accordion
-description: Accordion
+description: Organize and display content in a compact, collapsible format, commonly used for FAQ sections.
 ---
 
-import { InfoIcon } from "@myds/react/icon";
+import {
+  InfoIcon,
+  ArrowForwardIcon,
+  ArrowBackIcon,
+  UploadIcon,
+  CopyIcon,
+  TrashIcon,
+} from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
 
-<Callout
-  type="info"
-  title="Note"
-  className="bg-bg-primary-50 text-txt-primary border-transparent"
-  icon={<InfoIcon className="size-5" />}
->
-  Work in progress
-</Callout>
+import {
+  PreviewButton,
+  Button,
+  ButtonIcon,
+  ButtonCounter,
+  Link,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+export const items = {
+  default: [
+    <AccordionItem key="item-1" value="item-1">
+      <AccordionTrigger>What is MYDS?</AccordionTrigger>
+      <AccordionContent>
+        MYDS is a design system for building official Malaysian government
+        products over the web. MYDS provides beautiful pre-built components
+        which streamline development and promote consistency across government
+        products.
+      </AccordionContent>
+    </AccordionItem>,
+    <AccordionItem key="item-2" value="item-2">
+      <AccordionTrigger>Who is it built for?</AccordionTrigger>
+      <AccordionContent>
+        It is built for developers and designers who are working on Malaysian
+        government products. It is also built for anyone in public service who
+        wants to try building Malaysian inspired products.
+      </AccordionContent>
+    </AccordionItem>,
+    <AccordionItem key="item-3" value="item-3">
+      <AccordionTrigger>Is it open source?</AccordionTrigger>
+      <AccordionContent>
+        Yes, we are open source. You can find the source code on our GitHub{" "}
+        <a
+          className="text-txt-primary"
+          href="https://github.com/govtechmy/myds"
+        >
+          (@govtechmy)
+        </a>{" "}
+        repository.
+      </AccordionContent>
+    </AccordionItem>,
+  ],
+  disabled: [
+    <AccordionItem key="item-1" value="item-1">
+      <AccordionTrigger>What is MYDS?</AccordionTrigger>
+      <AccordionContent>
+        MYDS is a design system for building official Malaysian government
+        products over the web. MYDS provides beautiful pre-built components
+        which streamline development and promote consistency across government
+        products.
+      </AccordionContent>
+    </AccordionItem>,
+    <AccordionItem key="item-2" value="item-2" disabled>
+      <AccordionTrigger>Example of disabled AccordionItem ⛔</AccordionTrigger>
+      <AccordionContent>
+        It is built for developers and designers who are working on Malaysian
+        government products. It is also built for anyone in public service who
+        wants to try building Malaysian inspired products.
+      </AccordionContent>
+    </AccordionItem>,
+    <AccordionItem key="item-3" value="item-3">
+      <AccordionTrigger>Is it open source?</AccordionTrigger>
+      <AccordionContent>
+        Yes, we are open source. You can find the source code on our GitHub{" "}
+        <a
+          className="text-txt-primary"
+          href="https://github.com/govtechmy/myds"
+        >
+          (@govtechmy)
+        </a>{" "}
+        repository.
+      </AccordionContent>
+    </AccordionItem>,
+  ],
+};
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+    <div className="w-full">
+      <Accordion type="single" defaultValue="item-1">
+       {items.default}
+      </Accordion>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+import {
+  AccordionTrigger,
+  AccordionContent,
+  Accordion,
+  AccordionItem,
+} from "@govtechmy/myds-react/accordion";
+    
+    <Accordion type="single" defaultValue="item-1" collapsible>
+      <AccordionItem key="item-1" value="item-1">
+        <AccordionTrigger>What is MYDS?</AccordionTrigger>
+        <AccordionContent>
+          MYDS is a design system for building official Malaysian government
+          products over the web. MYDS provides beautiful pre-built components
+          which streamline development and promote consistency across government
+          products.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem key="item-2" value="item-2">
+        <AccordionTrigger>Who is it built for?</AccordionTrigger>
+        <AccordionContent>
+          It is built for developers and designers who are working on Malaysian
+          government products. It is also built for anyone in public service who
+          wants to try building Malaysian inspired products.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem key="item-3" value="item-3">
+        <AccordionTrigger>Is it open source?</AccordionTrigger>
+        <AccordionContent>
+          Yes, we are open source. You can find the source code on our GitHub{" "}
+          <a className="text-txt-primary" href="https://github.com/govtechmy/myds">
+            (@govtechmy)
+          </a>
+          repository.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-accordion--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/accordion.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import {
+  AccordionTrigger,
+  AccordionContent,
+  Accordion,
+  AccordionItem,
+} from "@govtechmy/myds-react/accordion";
+```
+
+```tsx copy
+export default () => (
+  <Accordion>
+    <AccordionItem>
+      <AccordionTrigger></AccordionTrigger>
+      <AccordionContent></AccordionContent>
+    </AccordionItem>
+  </Accordion>
+);
+```
+
+## Examples
+
+### Type
+
+Use the `type` prop to change how the content should be displayed!
+
+- `single`: only allow one content to be shown at a time
+
+- `multiple`: allow multiple contents to be shown at the same time.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+    <Accordion type="multiple" defaultValue="item-1">
+      {items.default}
+    </Accordion>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Accordion type="multiple" defaultValue="item-1">
+      <AccordionItem key="item-1" value="item-1">
+        <AccordionTrigger>What is MYDS?</AccordionTrigger>
+        <AccordionContent>
+          MYDS is a design system for building official Malaysian government
+          products over the web. MYDS provides beautiful pre-built components
+          which streamline development and promote consistency across government
+          products.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem key="item-2" value="item-2">
+        <AccordionTrigger>Who is it built for?</AccordionTrigger>
+        <AccordionContent>
+          It is built for developers and designers who are working on Malaysian
+          government products. It is also built for anyone in public service who
+          wants to try building Malaysian inspired products.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem key="item-3" value="item-3">
+        <AccordionTrigger>Is it open source?</AccordionTrigger>
+        <AccordionContent>
+          Yes, we are open source. You can find the source code on our GitHub{" "}
+          <a
+            className="text-txt-primary"
+            href="https://github.com/govtechmy/myds"
+          >
+            (@govtechmy)
+          </a>
+          repository.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+    ```
+  </Tab>
+</Tabs>
+
+### Collapsible
+
+Use the `collapsible` prop to determine whether all the accordion is collapsible! By default, it is set to `true`. Please note this only works when `type="single"`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+
+<Accordion type="single" defaultValue="item-1" collapsible={false}>
+  {items.default}
+</Accordion>
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+  <Accordion type="single" defaultValue="item-1" collapsible={false}>
+    <AccordionItem key="item-1" value="item-1">
+      <AccordionTrigger>What is MYDS?</AccordionTrigger>
+      <AccordionContent>
+        MYDS is a design system for building official Malaysian government
+        products over the web. MYDS provides beautiful pre-built components
+        which streamline development and promote consistency across government
+        products.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem key="item-2" value="item-2">
+      <AccordionTrigger>Who is it built for?</AccordionTrigger>
+      <AccordionContent>
+        It is built for developers and designers who are working on Malaysian
+        government products. It is also built for anyone in public service who
+        wants to try building Malaysian inspired products.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem key="item-3" value="item-3">
+      <AccordionTrigger>Is it open source?</AccordionTrigger>
+      <AccordionContent>
+        Yes, we are open source. You can find the source code on our GitHub{" "}
+        <a className="text-txt-primary" href="https://github.com/govtechmy/myds">
+          (@govtechmy)
+        </a>
+        repository.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+```
+  </Tab>
+</Tabs>
+
+### Disabled
+
+The `disabled` prop exists in both `Accordion` and `AccordionItem` components.
+
+Setting `disabled` to `true` in `Accordion` will disable all the `AccordionItem` components, while in `AccordionItem` will disable the respective `AccordionItem`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+    <Accordion type="single" defaultValue="item-1">
+      {items.disabled}
+    </Accordion>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Accordion type="single" defaultValue="item-1">
+      <AccordionItem key="item-1" value="item-1">
+        <AccordionTrigger>What is MYDS?</AccordionTrigger>
+        <AccordionContent>
+          MYDS is a design system for building official Malaysian government
+          products over the web. MYDS provides beautiful pre-built components
+          which streamline development and promote consistency across government
+          products.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem key="item-2" value="item-2" disabled>
+        <AccordionTrigger>Who is it built for?</AccordionTrigger>
+        <AccordionContent>
+          It is built for developers and designers who are working on Malaysian
+          government products. It is also built for anyone in public service who
+          wants to try building Malaysian inspired products.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem key="item-3" value="item-3">
+        <AccordionTrigger>Is it open source?</AccordionTrigger>
+        <AccordionContent>
+          Yes, we are open source. You can find the source code on our GitHub{" "}
+          <a
+            className="text-txt-primary"
+            href="https://github.com/govtechmy/myds"
+          >
+            (@govtechmy)
+          </a>
+          repository.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### Accordion
+
+<TypeTable
+  type={{
+    type: {
+      type: "enum",
+      typeDescription: "single | multiple",
+      default: "small",
+    },
+    value: {
+      description:
+        "The controlled value of the item to expand. Must be used in conjunction with onValueChange.",
+      type: "string|string[]",
+    },
+    defaultValue: {
+      description:
+        "The value of the item to expand when initially rendered. Use when you do not need to control the state of the items.",
+      type: "string|string[]",
+    },
+    onValueChange: {
+      description:
+        "Event handler called when the expanded state of an item changes and type is 'single'.",
+      type: "string|string[]",
+    },
+    collapsible: {
+      description:
+        "When type is 'single', allows closing content when clicking trigger for an open item.",
+      type: "string|string[]",
+    },
+    disabled: {
+      description:
+        "When true, prevents the user from interacting with the accordion and all its items.",
+      type: "string|string[]",
+    },
+  }}
+/>
+
+### AccordionItem
+
+<TypeTable
+  type={{
+    asChild: {
+      description:
+        "The controlled value of the item to expand. Must be used in conjunction with onValueChange.",
+      type: "boolean",
+      default: "false",
+    },
+    value: {
+      description:
+        "The controlled value of the item to expand. Must be used in conjunction with onValueChange.",
+      type: "string|string[]",
+    },
+    disabled: {
+      description:
+        "When true, prevents the user from interacting with the accordion and all its items.",
+      type: "string|string[]",
+    },
+  }}
+/>
+
+### AccordionTrigger
+
+<TypeTable
+  type={{
+    asChild: {
+      description:
+        "The controlled value of the item to expand. Must be used in conjunction with onValueChange.",
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
+
+### AccordionContent
+
+<TypeTable
+  type={{
+    asChild: {
+      description:
+        "The controlled value of the item to expand. Must be used in conjunction with onValueChange.",
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
+
+<small>
+  For more in-depth customization, you can refer to API references in this
+  [documentation](https://www.radix-ui.com/primitives/docs/components/accordion#api-reference)
+</small>

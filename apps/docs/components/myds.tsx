@@ -1,9 +1,11 @@
 "use client";
 
-import { Button } from "@myds/react/button";
+import { Button } from "@govtechmy/myds-react/button";
 import { ComponentProps, FunctionComponent } from "react";
-export * from "@myds/react/button";
-export * from "@myds/react/link";
+export * from "@govtechmy/myds-react/button";
+export * from "@govtechmy/myds-react/link";
+export * from "@govtechmy/myds-react/skiplink";
+export * from "@govtechmy/myds-react/accordion";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;

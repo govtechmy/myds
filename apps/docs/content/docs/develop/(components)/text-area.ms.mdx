@@ -1,0 +1,132 @@
+---
+title: TextArea
+description: Komponen ini adalah komponen input teks berbilang baris untuk kandungan yang lebih panjang. Berbanding dengan komponen `Input` yang terhad kepada satu baris, komponen ini boleh menampung berbilang baris teks.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { TextArea } from "@govtechmy/myds-react/textarea";
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="flex justify-center">
+  <TextArea 
+  placeholder="Placeholder text displayed when the text area is empty." 
+  size={'small'} />    
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { TextArea } from "@govtechmy/myds-react/textarea";
+
+<TextArea placeholder="Placeholder text displayed when the text area is empty." 
+size={'small'}
+/>
+```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-textarea--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/textarea.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import { TextArea } from "@govtechmy/myds-react/textarea";
+```
+
+```tsx copy
+export default () => (
+  <TextArea placeholder="Placeholder text displayed when the text area is empty." 
+  size={'small'} 
+  disabled={false}
+  />
+);
+```
+
+## Contoh
+### Size
+Mengawal varian saiz komponen. Menerima nilai `small`, `medium`, atau `large`.
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2">
+  <div className="flex flex-col justify-center items-center h-fit gap-5">
+      <TextArea size="small" placeholder="Enter your text for your small TextArea."/>
+      <TextArea size="medium" placeholder="Enter your text for your medium TextArea."/>
+      <TextArea size="large"placeholder="Enter your text for your large TextArea." />
+      </div>
+
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { TextArea } from "@govtechmy/myds-react/textarea";
+
+/** Size props*/
+
+<TextArea size="small" placeholder="Enter your text for your small TextArea."/>
+<TextArea size="medium" placeholder="Enter your text for your medium TextArea."/>
+<TextArea size="large"placeholder="Enter your text for your large TextArea." />
+```
+  </Tab>
+</Tabs>
+
+### Disabled
+Props in boleh digunakan untuk menyahaktifkan input pengguna dan menggunakan gaya visual untuk menunjukkan medan ini tidak boleh disunting.
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+  <div className="space-y-2">
+  <div className="flex flex-col justify-center items-center h-fit gap-5">
+      <TextArea size="small" placeholder="The TextArea has been disabled." disabled/>
+      <TextArea size="medium" placeholder="The TextArea has been disabled." disabled/>
+      <TextArea size="large"placeholder="The TextArea has been disabled." disabled/>
+      </div>
+
+  </div>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx 
+import { TextArea } from "@govtechmy/myds-react/textarea";
+
+/** Size props*/
+
+<TextArea size="small" placeholder="The TextArea has been disabled." disabled/>
+<TextArea size="medium" placeholder="The TextArea has been disabled." disabled/>
+<TextArea size="large" placeholder="The TextArea has been disabled." disabled/>
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+### TextArea
+<TypeTable
+  type={{
+    size: {
+      description: "Saiz untuk TextArea",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "medium",
+    },
+    disabled: {
+    description: "Menjadikan TextArea tidak interaktif dan menunjukkan secara visual bahawa ia dinyahaktifkan.",
+      type: "boolean",
+      typeDescription: "true | false ",
+      default: "false",
+    },
+    placeholder: {
+    description: "Memaparkan teks 'placeholder' apabila medan input kosong.",
+      type: "string",
+      typeDescription: "-",
+      default: "-",
+    },
+  }}
+/>

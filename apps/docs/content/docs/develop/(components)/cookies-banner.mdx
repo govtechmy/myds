@@ -1,0 +1,275 @@
+---
+title: Cookies Banner
+description: Notifies users that the website uses cookies to improve their experience and gives them the option to manage their consent preferences through cookie settings. It typically appears when a user lands on the website for the first time.
+---
+
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+import Preview from "@/components/preview";
+import {
+  PreviewButton,
+  Button,
+  ButtonIcon,
+  ButtonCounter,
+  Link,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Quicklinks } from "@/components/quicklinks";
+import { CookiesBannerPreview } from "@/components/cookies-banner-preview";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="flex justify-center">
+      <CookiesBannerPreview />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import {
+      CookieBanner,
+      CookieBannerClose,
+      CookieBannerCustomiser,
+      CookieBannerDescription,
+      CookieBannerFooter,
+      CookieBannerHeader,
+      CookieBannerPreferences,
+      CookieBannerTitle,
+    } from "@govtechmy/myds-react/cookie-banner";
+
+    <CookieBanner open={open}>
+      <div className="mb-1 flex w-full flex-row justify-between">
+        <CookieBannerHeader className="space-y-0 p-0 pb-1">
+          <CookieBannerTitle className="text-body-md pb-1">
+            Customise Cookie Preferences
+          </CookieBannerTitle>
+          <CookieBannerDescription>
+            This website uses cookies to improve user experience. We need your
+            consent to use some of the cookies.
+          </CookieBannerDescription>
+        </CookieBannerHeader>
+        <CookieBannerClose onClick={() => setOpen(!open)} />
+      </div>
+      <CookieBannerPreferences className="flex flex-col gap-2 py-3">
+        <div className="flex flex-row gap-2.5">
+          <Checkbox
+            id="necessary"
+            checked={true}
+            className="mt-0.5 flex-shrink-0"
+            disabled
+          />
+          <div className="flex flex-col justify-start gap-1">
+            <label
+              htmlFor="necessary"
+              className="text-txt-black-900 text-body-sm font-semibold"
+            >
+              Necessary
+            </label>
+            <p className="text-txt-black-500 text-body-sm">
+              Enable essential site features like secure log-ins and cookies
+              consent settings. We do not store personal data.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-row space-x-2.5">
+          <Checkbox
+            id="analytics"
+            checked={preferences.analytics}
+            onCheckedChange={(checked: boolean) => {
+              setPreferences((prev) => ({
+                ...prev,
+                analytics: checked,
+              }));
+            }}
+            className="mt-0.5 flex-shrink-0"
+          />
+          <div className="flex flex-col space-y-1">
+            <label
+              htmlFor="analytics"
+              className="text-txt-black-900 text-body-sm font-semibold"
+            >
+              Analytics
+            </label>
+            <p className="text-txt-black-500 text-body-sm">
+              Track metrics like visitor count, bounce rate, and traffic
+              sources.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-row space-x-2.5">
+          <Checkbox
+            id="performance"
+            checked={preferences.performance}
+            onCheckedChange={(checked: boolean) => {
+              setPreferences((prev) => ({
+                ...prev,
+                performance: checked,
+              }));
+            }}
+            className="mt-0.5 flex-shrink-0"
+          />
+          <div className="flex flex-col space-y-1">
+            <label
+              htmlFor="performance"
+              className="text-txt-black-900 text-body-sm font-semibold"
+            >
+              Performance
+            </label>
+            <p className="text-txt-black-500 text-body-sm">
+              Help analyze key website metrics, improving the user experience.
+            </p>
+          </div>
+        </div>
+      </CookieBannerPreferences>
+      <CookieBannerFooter
+        fillWidth={false}
+        className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row"
+      >
+        <Button
+          variant="primary-fill"
+          size="medium"
+          onClick={handleAcceptAll}
+          className="w-full justify-center sm:w-auto"
+        >
+          Accept All
+        </Button>
+        <Button
+          variant="primary-fill"
+          size="medium"
+          onClick={handleRejectAll}
+          className="w-full justify-center sm:w-auto"
+        >
+          Reject All
+        </Button>
+        <CookieBannerCustomiser>Customise</CookieBannerCustomiser>
+      </CookieBannerFooter>
+    </CookieBanner>
+    ```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-cookiesbanner--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/cookie-banner.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx 
+import {
+  CookieBanner,
+  CookieBannerClose,
+  CookieBannerCustomiser,
+  CookieBannerDescription,
+  CookieBannerFooter,
+  CookieBannerHeader,
+  CookieBannerPreferences,
+  CookieBannerTitle,
+} from "@govtechmy/myds-react/cookie-banner";
+```
+
+```tsx 
+export default () => (
+  <CookieBanner>
+    <CookieBannerHeader>
+      <CookieBannerTitle />
+      <CookieBannerClose />
+    </CookieBannerHeader>
+    <CookieBannerDescription />
+    <CookieBannerPreferences />
+    <CookieBannerFooter>
+      <CookieBannerCustomiser />
+    </CookieBannerFooter>
+  </CookieBanner>
+);
+```
+## Props
+
+### CookieBanner
+Houses all the constituent components of the cookie banners. The component is a controlled component. It is being built on `Dialog` and `DialogContent`.
+<TypeTable
+  type={{
+    open: {
+      description: "State to control cookie banners open or close",
+      type: "boolean",
+      typeDescription:
+        "true | false",
+        default: 'false'
+    }
+  }}
+/>
+
+### CookieBannerHeader
+Contains the `CookieBannerTitle` and `CookieBannerClose` components. It is being built on `DialogHeader`.
+
+### CookieBannerTitle
+To customise the title of the cookie banner. It is being built on `DialogTitle`.
+<TypeTable
+  type={{
+    asChild: {
+      description: "Renders the child element instead of the default element, while preserving the component's props and functionality.",
+      type: "boolean",
+      typeDescription:
+        "true | false",
+        default: 'false'
+    }
+  }}
+/>
+
+### CookieBannerClose
+To change the `open` state of the Cookie Banner.
+<TypeTable
+  type={{
+    onClick: {
+      description: "Handler called when the close button is clicked to control the banner's visibility.",
+      type: "function", 
+      typeDescription: "() => void",
+    }
+  }}
+/>
+
+### CookieBannerPreferences
+A container component that wraps cookie preference options, typically containing checkboxes and descriptions for different cookie categories.
+<TypeTable
+  type={{
+    asChild: {
+      description: "Renders the child element instead of the default element, while preserving the component's props and functionality.",
+      type: "boolean",
+      typeDescription:
+        "true | false",
+        default: 'false'
+    }
+  }}
+/>
+
+### CookieBannerFooter
+Contains action elements like buttons and the customiser for cookie preferences. Built on top of `DialogFooter` to provides a consistent layout for cookie banner actions.
+
+<TypeTable
+  type={{
+    fillWidth: {
+      description: "When true, makes all direct children take up equal width and centers their content.",
+      type: "boolean",
+      typeDescription: "true | false",
+      default: "false"
+    }
+  }}
+/>
+
+### CookieBannerCustomiser
+A button component that toggles the visibility of cookie preference options. By default, renders as a Button component but can be customized using `asChild` props.
+
+<TypeTable
+  type={{
+    asChild: {
+      description: "Renders the child element instead of the default button element, while preserving the component's props and functionality.",
+      type: "boolean",
+      typeDescription: "true | false",
+      default: "false"
+    }
+  }}
+/>

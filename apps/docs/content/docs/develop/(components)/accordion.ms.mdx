@@ -1,15 +1,417 @@
 ---
-title: Accordion
-description: Accordion
+title: Akordion
+description: Susun dan paparkan kandungan dalam format yang padat dan boleh dilipat, biasanya digunakan untuk bahagian FAQ.
 ---
 
-import { InfoIcon } from "@myds/react/icon";
+import {
+  InfoIcon,
+  ArrowForwardIcon,
+  ArrowBackIcon,
+  UploadIcon,
+  CopyIcon,
+  TrashIcon,
+} from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
 
-<Callout
-  type="info"
-  title="Note"
-  className="bg-bg-primary-50 text-txt-primary border-transparent"
-  icon={<InfoIcon className="size-5" />}
->
-  Dalam pembinaan
-</Callout>
+import {
+  PreviewButton,
+  Button,
+  ButtonIcon,
+  ButtonCounter,
+  Link,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+export const items = {
+  default: [
+    <AccordionItem key="item-1" value="item-1">
+      <AccordionTrigger>Apa itu MYDS?</AccordionTrigger>
+      <AccordionContent>
+        MYDS adalah sistem reka bentuk untuk membina produk rasmi kerajaan
+        Malaysia di web. MYDS menyediakan komponen pra-bina yang cantik yang
+        memudahkan pembangunan dan mempromosikan konsistensi di seluruh produk
+        kerajaan.
+      </AccordionContent>
+    </AccordionItem>,
+    <AccordionItem key="item-2" value="item-2">
+      <AccordionTrigger>Siapa yang dibina untuk?</AccordionTrigger>
+      <AccordionContent>
+        Ia dibina untuk pembangun dan pereka yang bekerja pada produk kerajaan
+        Malaysia. Ia juga dibina untuk sesiapa sahaja dalam perkhidmatan awam
+        yang ingin mencuba membina produk yang diilhamkan oleh Malaysia.
+      </AccordionContent>
+    </AccordionItem>,
+    <AccordionItem key="item-3" value="item-3">
+      <AccordionTrigger>Adakah ia sumber terbuka?</AccordionTrigger>
+      <AccordionContent>
+        Ya, kami adalah sumber terbuka. Anda boleh mencari kod sumber di GitHub
+        kami{" "}
+        <a
+          className="text-txt-primary"
+          href="https://github.com/govtechmy/myds"
+        >
+          (@govtechmy)
+        </a>{" "}
+        repositori.
+      </AccordionContent>
+    </AccordionItem>,
+  ],
+  disabled: [
+    <AccordionItem key="item-1" value="item-1">
+      <AccordionTrigger>Apa itu MYDS?</AccordionTrigger>
+      <AccordionContent>
+        MYDS adalah sistem reka bentuk untuk membina produk rasmi kerajaan
+        Malaysia di web. MYDS menyediakan komponen pra-bina yang cantik yang
+        memudahkan pembangunan dan mempromosikan konsistensi di seluruh produk
+        kerajaan.
+      </AccordionContent>
+    </AccordionItem>,
+    <AccordionItem key="item-2" value="item-2" disabled>
+      <AccordionTrigger>Siapa yang dibina untuk?</AccordionTrigger>
+      <AccordionContent>
+        Ia dibina untuk pembangun dan pereka yang bekerja pada produk kerajaan
+        Malaysia. Ia juga dibina untuk sesiapa sahaja dalam perkhidmatan awam
+        yang ingin mencuba membina produk yang diilhamkan oleh Malaysia.
+      </AccordionContent>
+    </AccordionItem>,
+    <AccordionItem key="item-3" value="item-3">
+      <AccordionTrigger>Adakah ia sumber terbuka?</AccordionTrigger>
+      <AccordionContent>
+        Ya, kami adalah sumber terbuka. Anda boleh mencari kod sumber di GitHub
+        kami{" "}
+        <a
+          className="text-txt-primary"
+          href="https://github.com/govtechmy/myds"
+        >
+          (@govtechmy)
+        </a>{" "}
+        repositori.
+      </AccordionContent>
+    </AccordionItem>,
+  ],
+};
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose">
+    <div className="w-full">
+      <Accordion type="single" defaultValue="item-1">
+       {items.default}
+      </Accordion>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+import {
+  AccordionTrigger,
+  AccordionContent,
+  Accordion,
+  AccordionItem,
+} from "@govtechmy/myds-react/accordion";
+    
+    <Accordion type="single" defaultValue="item-1" collapsible>
+      <AccordionItem key="item-1" value="item-1">
+        <AccordionTrigger>Apa itu MYDS?</AccordionTrigger>
+        <AccordionContent>
+          MYDS adalah sistem reka bentuk untuk membina produk rasmi kerajaan Malaysia di web. MYDS menyediakan komponen pra-bina yang cantik yang memudahkan pembangunan dan mempromosikan konsistensi di seluruh produk kerajaan.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem key="item-2" value="item-2">
+        <AccordionTrigger>Siapa yang dibina untuk?</AccordionTrigger>
+        <AccordionContent>
+          Ia dibina untuk pembangun dan pereka yang bekerja pada produk kerajaan Malaysia. Ia juga dibina untuk sesiapa sahaja dalam perkhidmatan awam yang ingin mencuba membina produk yang diilhamkan oleh Malaysia.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem key="item-3" value="item-3">
+        <AccordionTrigger>Adakah ia sumber terbuka?</AccordionTrigger>
+        <AccordionContent>
+          Ya, kami adalah sumber terbuka. Anda boleh mencari kod sumber di GitHub kami{" "}
+          <a className="text-txt-primary" href="https://github.com/govtechmy/myds">
+            (@govtechmy)
+          </a>
+          repositori.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-accordion--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/accordion.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import {
+  AccordionTrigger,
+  AccordionContent,
+  Accordion,
+  AccordionItem,
+} from "@govtechmy/myds-react/accordion";
+```
+
+```tsx copy
+export default () => (
+  <Accordion>
+    <AccordionItem>
+      <AccordionTrigger></AccordionTrigger>
+      <AccordionContent></AccordionContent>
+    </AccordionItem>
+  </Accordion>
+);
+```
+
+## Contoh
+
+### Jenis
+
+Gunakan prop `type` untuk menukar cara kandungan dipaparkan!
+
+- `single`: hanya benarkan satu kandungan ditunjukkan pada satu masa
+
+- `multiple`: benarkan beberapa kandungan ditunjukkan pada masa yang sama.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose">
+    <Accordion type="multiple" defaultValue="item-1">
+      {items.default}
+    </Accordion>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Accordion type="multiple" defaultValue="item-1">
+      <AccordionItem key="item-1" value="item-1">
+        <AccordionTrigger>Apa itu MYDS?</AccordionTrigger>
+        <AccordionContent>
+          MYDS adalah sistem reka bentuk untuk membina produk rasmi kerajaan
+          Malaysia di web. MYDS menyediakan komponen pra-bina yang cantik yang
+          memudahkan pembangunan dan mempromosikan konsistensi di seluruh produk
+          kerajaan.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem key="item-2" value="item-2">
+        <AccordionTrigger>Siapa yang dibina untuk?</AccordionTrigger>
+        <AccordionContent>
+          Ia dibina untuk pembangun dan pereka yang bekerja pada produk kerajaan
+          Malaysia. Ia juga dibina untuk sesiapa sahaja dalam perkhidmatan awam
+          yang ingin mencuba membina produk yang diilhamkan oleh Malaysia.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem key="item-3" value="item-3">
+        <AccordionTrigger>Adakah ia sumber terbuka?</AccordionTrigger>
+        <AccordionContent>
+          Ya, kami adalah sumber terbuka. Anda boleh mencari kod sumber di
+          GitHub kami{" "}
+          <a
+            className="text-txt-primary"
+            href="https://github.com/govtechmy/myds"
+          >
+            (@govtechmy)
+          </a>
+          repositori.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+    ```
+  </Tab>
+</Tabs>
+
+### Boleh Dilipat
+
+Gunakan prop `collapsible` untuk menentukan sama ada semua akordion boleh dilipat! Secara lalai, ia ditetapkan kepada `true`. Sila ambil perhatian ini hanya berfungsi apabila `type="single"`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose">
+
+<Accordion type="single" defaultValue="item-1" collapsible={false}>
+  {items.default}
+</Accordion>
+  </Tab>
+  <Tab value="Kod">
+  ```tsx
+  <Accordion type="single" defaultValue="item-1" collapsible={false}>
+    <AccordionItem key="item-1" value="item-1">
+      <AccordionTrigger>Apa itu MYDS?</AccordionTrigger>
+      <AccordionContent>
+        MYDS adalah sistem reka bentuk untuk membina produk rasmi kerajaan Malaysia di web. MYDS menyediakan komponen pra-bina yang cantik yang memudahkan pembangunan dan mempromosikan konsistensi di seluruh produk kerajaan.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem key="item-2" value="item-2">
+      <AccordionTrigger>Siapa yang dibina untuk?</AccordionTrigger>
+      <AccordionContent>
+        Ia dibina untuk pembangun dan pereka yang bekerja pada produk kerajaan Malaysia. Ia juga dibina untuk sesiapa sahaja dalam perkhidmatan awam yang ingin mencuba membina produk yang diilhamkan oleh Malaysia.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem key="item-3" value="item-3">
+      <AccordionTrigger>Adakah ia sumber terbuka?</AccordionTrigger>
+      <AccordionContent>
+        Ya, kami adalah sumber terbuka. Anda boleh mencari kod sumber di GitHub kami{" "}
+        <a className="text-txt-primary" href="https://github.com/govtechmy/myds">
+          (@govtechmy)
+        </a>
+        repositori.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+```
+  </Tab>
+</Tabs>
+
+### Dilumpuh
+
+Prop `disabled` wujud dalam kedua-dua komponen `Accordion` dan `AccordionItem`.
+
+Menetapkan `disabled` kepada `true` dalam `Accordion` akan melumpuhkan semua komponen `AccordionItem`, manakala dalam `AccordionItem` akan melumpuhkan `AccordionItem` yang berkenaan.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose">
+    <Accordion type="single" defaultValue="item-1">
+      {items.disabled}
+    </Accordion>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Accordion type="single" defaultValue="item-1">
+      <AccordionItem key="item-1" value="item-1">
+        <AccordionTrigger>Apa itu MYDS?</AccordionTrigger>
+        <AccordionContent>
+          MYDS adalah sistem reka bentuk untuk membina produk rasmi kerajaan
+          Malaysia di web. MYDS menyediakan komponen pra-bina yang cantik yang
+          memudahkan pembangunan dan mempromosikan konsistensi di seluruh produk
+          kerajaan.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem key="item-2" value="item-2" disabled>
+        <AccordionTrigger>Siapa yang dibina untuk?</AccordionTrigger>
+        <AccordionContent>
+          Ia dibina untuk pembangun dan pereka yang bekerja pada produk kerajaan
+          Malaysia. Ia juga dibina untuk sesiapa sahaja dalam perkhidmatan awam
+          yang ingin mencuba membina produk yang diilhamkan oleh Malaysia.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem key="item-3" value="item-3">
+        <AccordionTrigger>Adakah ia sumber terbuka?</AccordionTrigger>
+        <AccordionContent>
+          Ya, kami adalah sumber terbuka. Anda boleh mencari kod sumber di
+          GitHub kami{" "}
+          <a
+            className="text-txt-primary"
+            href="https://github.com/govtechmy/myds"
+          >
+            (@govtechmy)
+          </a>
+          repositori.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### Accordion
+
+<TypeTable
+  type={{
+    type: {
+      type: "enum",
+      typeDescription: "single | multiple",
+      default: "small",
+    },
+    value: {
+      description:
+        "Nilai terkawal item untuk dikembangkan. Mesti digunakan bersama dengan onValueChange.",
+      type: "string|string[]",
+    },
+    defaultValue: {
+      description:
+        "Nilai item untuk dikembangkan apabila mula-mula dipaparkan. Gunakan apabila anda tidak perlu mengawal keadaan item.",
+      type: "string|string[]",
+    },
+    onValueChange: {
+      description:
+        "Pengendali acara dipanggil apabila keadaan berkembang item berubah dan jenis adalah 'single'.",
+      type: "string|string[]",
+    },
+    collapsible: {
+      description:
+        "Apabila jenis adalah 'single', membenarkan penutupan kandungan apabila mengklik pencetus untuk item yang dibuka.",
+      type: "string|string[]",
+    },
+    disabled: {
+      description:
+        "Apabila benar, menghalang pengguna daripada berinteraksi dengan akordion dan semua itemnya.",
+      type: "string|string[]",
+    },
+  }}
+/>
+
+### AccordionItem
+
+<TypeTable
+  type={{
+    asChild: {
+      description:
+        "Nilai terkawal item untuk dikembangkan. Mesti digunakan bersama dengan onValueChange.",
+      type: "boolean",
+      default: "false",
+    },
+    value: {
+      description:
+        "Nilai terkawal item untuk dikembangkan. Mesti digunakan bersama dengan onValueChange.",
+      type: "string|string[]",
+    },
+    disabled: {
+      description:
+        "Apabila benar, menghalang pengguna daripada berinteraksi dengan akordion dan semua itemnya.",
+      type: "string|string[]",
+    },
+  }}
+/>
+
+### AccordionTrigger
+
+<TypeTable
+  type={{
+    asChild: {
+      description:
+        "Nilai terkawal item untuk dikembangkan. Mesti digunakan bersama dengan onValueChange.",
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
+
+### AccordionContent
+
+<TypeTable
+  type={{
+    asChild: {
+      description:
+        "Nilai terkawal item untuk dikembangkan. Mesti digunakan bersama dengan onValueChange.",
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
+
+<small>
+  Untuk penyesuaian yang lebih mendalam, anda boleh merujuk kepada rujukan API
+  dalam
+  [dokumentasi](https://www.radix-ui.com/primitives/docs/components/accordion#api-reference)
+  ini.
+</small>

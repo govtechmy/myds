@@ -1,4 +1,4 @@
-import { clx } from "@myds/react/utils";
+import { clx } from "@govtechmy/myds-react/utils";
 import type { ReactElement, ReactNode } from "react";
 import { useEffect, useRef } from "react";
 

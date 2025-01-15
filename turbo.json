@@ -6,8 +6,8 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
-    "check-types": {
-      "dependsOn": ["^check-types"]
+    "check-exports": {
+      "dependsOn": ["^check-exports"]
     },
     "dev": {
       "persistent": true,
