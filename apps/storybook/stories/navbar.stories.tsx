@@ -9,18 +9,23 @@ import {
   NavItemsDropdownItems,
   NavItemsMenu,
   NavigationMenuCombo,
-} from "@myds/react/navbar";
+} from "@govtechmy/myds-react/navbar";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@myds/react/select";
+} from "@govtechmy/myds-react/select";
 import React, { useState } from "react";
-import { clx } from "@myds/react/utils";
-import { GlobeIcon, MoonIcon, SearchIcon, SunIcon } from "@myds/react/icon";
-import { Button } from "@myds/react/button";
+import { clx } from "@govtechmy/myds-react/utils";
+import {
+  GlobeIcon,
+  MoonIcon,
+  SearchIcon,
+  SunIcon,
+} from "@govtechmy/myds-react/icon";
+import { Button } from "@govtechmy/myds-react/button";
 
 /**
  * ### Overview
@@ -119,7 +124,7 @@ import { Button } from "@myds/react/button";
  */
 
 const meta = {
-  title: "@myds/react/Navbar",
+  title: "@govtechmy/myds-react/Navbar",
   component: Navbar,
   tags: ["autodocs"],
   parameters: {
