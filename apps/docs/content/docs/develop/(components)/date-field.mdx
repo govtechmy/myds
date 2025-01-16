@@ -1,0 +1,170 @@
+---
+title: Date Field
+description: Allows users to input a date in a structured format using separate fields for day, month, and year.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import { DateField } from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+export const NOW = new Date().toISOString().split("T")[0];
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <DateField />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DateField />
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-date-field--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/date-field.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import { DateField } from "@govtechmy/myds-react/date-field";
+```
+
+```tsx copy
+export default () => <DateField />;
+```
+
+## Examples
+
+### Size
+
+Use the `size` prop to change the checkbox size!
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col items-center gap-3">
+      <DateField size="small" />
+      <DateField size="medium" />
+      <DateField size="large" />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DateField size="small" />
+    <DateField size="medium" />
+    <DateField size="large" />
+    ```
+  </Tab>
+</Tabs>
+
+### Uncontrolled vs Controlled State
+
+To use the date field in the uncontrolled state, set the `defaultValue` prop to the initial value of the date field.
+
+To use the date field in the controlled state, set the `value` prop to the current value of the date field and provide an `onValueChange` event listener to handle the change.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+        <div>
+            Uncontrolled
+            <DateField defaultValue={NOW} />
+        </div>
+        <div>
+            Controlled
+            <DateField value={NOW} />
+        </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    // Uncontrolled state
+    <DateField defaultValue={new Date().toISOString().split("T")[0]} />
+
+    // Controlled state
+    <DateField value={new Date().toISOString().split("T")[0]} />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Disabled
+
+Date field can be disabled by setting the `disabled` prop to `true`. When disabled, the date field will not be interactive.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center">
+      <DateField defaultValue={NOW} disabled />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DateField defaultValue={new Date().toISOString().split("T")[0]} disabled />
+    ```
+  </Tab>
+</Tabs>
+
+### Invalid
+
+Invalid state is triggered when a date field fails validation. To indicate an invalid date field, set the `invalid` prop to `true`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center">
+      <DateField defaultValue={NOW} invalid />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DateField defaultValue={new Date().toISOString().split("T")[0]} invalid />
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### DateField
+
+<TypeTable
+  type={{
+    size: {
+      description: "Size of the date field",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    defaultValue: {
+      description: "Initial state of the date field (uncontrolled)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    value: {
+      description: "State of the date field (controlled)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    onChange: {
+      description: "Change event listener (controlled)",
+      type: "(date: string ) => void",
+      typeDescription: "date: yyyy-mm-dd",
+      default: "",
+    },
+    disabled: {
+      description: "Disabled state for date field",
+      type: "boolean",
+      default: "false",
+    },
+    invalid: {
+      description: "Invalid state for date field",
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
