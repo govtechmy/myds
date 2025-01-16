@@ -31,7 +31,7 @@ const meta = {
   },
   args: { onValueChange: fn() },
   argTypes: {
-    defaultDate: {
+    defaultValue: {
       description:
         "The default date when initially rendered. Use when you do not need to control the state of the date picker.",
     },
@@ -129,5 +129,5 @@ type Story = StoryObj<typeof meta>;
  * The default DatePicker
  */
 export const Default: Story = createStory({
-  defaultDate: new Date(1957, 7, 31),
+  defaultValue: new Date(1957, 7, 31),
 });

@@ -11,7 +11,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { VariantProps } from "class-variance-authority";
 
 type DatePickerProps = {
-  defaultDate?: Date;
+  defaultValue?: Date;
   disabled?: Matcher | Matcher[];
   formatStr?: string;
   icon?: ReactElement;
@@ -30,13 +30,13 @@ type DatePickerProps = {
  * @see {@link https://design.digital.gov.my/?path=/docs/myds-react-datepicker--docs}
  */
 const DatePicker: FC<DatePickerProps> = ({
-  defaultDate,
+  defaultValue,
   disabled,
   formatStr = "dd MMM yyy",
   icon,
   locale = "en",
   onValueChange,
-  placeholder,
+  placeholder = "dd / mm / yyyy",
   value,
   size,
   ...props
@@ -44,7 +44,7 @@ const DatePicker: FC<DatePickerProps> = ({
   const [date, setDate] = useControllableState({
     prop: value,
     onChange: onValueChange,
-    defaultProp: defaultDate,
+    defaultProp: defaultValue,
   });
 
   const _locale = locale === "en" ? enGB : ms;
@@ -62,6 +62,7 @@ const DatePicker: FC<DatePickerProps> = ({
             variant="default-outline"
             size={size}
             className="flex lg:hidden"
+            disabled={disabled === true}
           >
             <ButtonIcon>{icon ?? <CalendarIcon />}</ButtonIcon>
             {date ? formatDate(date) : placeholder}
@@ -89,6 +90,7 @@ const DatePicker: FC<DatePickerProps> = ({
             variant="default-outline"
             size={size}
             className="hidden lg:flex"
+            disabled={disabled === true}
           >
             <ButtonIcon>{icon ?? <CalendarIcon />}</ButtonIcon>
             {date ? formatDate(date) : placeholder}
