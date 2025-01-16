@@ -1,4 +1,5 @@
 import {
+  type Table as TTable,
   type Column,
   ColumnDef,
   flexRender,
@@ -26,7 +27,16 @@ import {
   TableSkeleton,
   TableTooltip,
 } from "./table";
-import { CSSProperties, ReactNode, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  CSSProperties,
+  FunctionComponent,
+  ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { ColumnCollapseIcon } from "../icons/column-collapse";
 import { ColumnExpandIcon } from "../icons/column-expand";
 import { clx, pick } from "../utils";
@@ -106,12 +116,6 @@ const pin_cva = cva(["bg-bg-white"], {
   ],
 });
 
-// data-expanded={expandableColumns[header.id]}
-// data-pinned={header.column.getIsPinned()}
-// className={clx(
-//   "group transition",
-//   [expandable, sortable].some(Boolean) &&
-//     "hover:border-otl-primary-300 data-[expanded=true]:border-otl-primary-300",
 const th_cva = cva(
   ["group transition data-[expanded=true]:border-otl-primary-300"],
   {
@@ -131,17 +135,30 @@ const cell_cva = cva([
   "data-[expanded=true]:truncate max-w-[230px]",
 ]);
 
-const DataTable = <TData extends Record<string, any>>({
-  columns,
-  data,
-  selection,
-  pin,
-  nest,
-  loading,
+interface DataTableContextProps<TData extends Record<string, any>> {
+  table: TTable<TData> | null;
+  expandableColumns: Record<string, any>;
+  toggleColumnWidth: (columnId: string) => void;
+  loading?: DataTableProps<TData>["loading"];
+  emptyState?: DataTableProps<TData>["emptyState"];
+}
+
+const DataTableContext = createContext<DataTableContextProps<any>>({
+  table: null,
+  expandableColumns: {},
+  toggleColumnWidth: () => {},
+});
+
+interface DataTableProviderProps<TData extends Record<string, any>>
+  extends DataTableProps<TData> {
+  children: ReactNode;
+}
+const DataTableProvider = <TData extends Record<string, any>>({
+  children,
   className,
-  emptyState,
-}: DataTableProps<TData>) => {
-  // const { gridProps, getCellProps } = useGridKeyboardNavigation(5, 5);
+  ...props
+}: DataTableProviderProps<TData>) => {
+  const { columns, data, selection, pin, nest } = props;
   const [expandableColumns, setExpandableColumns] = useState(
     pick(columns, "id", () => false),
   );
@@ -199,187 +216,224 @@ const DataTable = <TData extends Record<string, any>>({
   }, [table.getState().rowSelection]);
 
   return (
-    <>
-      {/* {filter ? filter(table, headerGroups[0]!.headers) : <></>} */}
+    <DataTableContext.Provider
+      value={{ table, expandableColumns, toggleColumnWidth, ...props }}
+    >
       <Table
         className={className}
         style={{
-          width: Boolean(pin) ? table.getTotalSize() : undefined,
+          width: Boolean(props.pin) ? table.getTotalSize() : undefined,
         }}
       >
-        <TableHeader>
-          {table.getHeaderGroups().map((headerGroup) => {
-            return (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  const { tooltip, expandable, sortable } =
-                    header.column.columnDef.meta || {};
-                  return (
-                    <TableHead
-                      id={header.id}
-                      key={header.id}
-                      colSpan={header.colSpan}
-                      data-expanded={expandableColumns[header.id]}
-                      data-pinned={header.column.getIsPinned()}
-                      className={clx(
-                        th_cva({ expandable, sortable }),
-                        pin_cva({
-                          pin_direction: header.column.getIsPinned(),
-                          pin_last: header.column.getIsLastColumn(
-                            header.column.getIsPinned(),
-                          ),
-                        }),
-                        header.column.columnDef.meta?.className?.header,
-                      )}
-                      style={{ ...getCommonPinningStyles(header.column) }}
-                    >
-                      {header.isPlaceholder ? null : (
-                        <div className="flex items-center justify-between gap-2 whitespace-nowrap">
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext(),
-                          )}
+        {children}
+      </Table>
+    </DataTableContext.Provider>
+  );
+};
 
-                          <div className="flex justify-end gap-1">
-                            {/* Expand */}
-                            {expandable && (
-                              <Button
-                                size="small"
-                                variant={"primary-outline"}
-                                onClick={() => toggleColumnWidth(header.id)}
-                                className="invisible hidden rounded-md px-1 py-0 group-hover:visible data-[expanded=true]:visible lg:block"
-                                data-expanded={expandableColumns[header.id]}
-                              >
-                                {expandableColumns[header.id] ? (
-                                  <ColumnCollapseIcon className="text-txt-primary size-4" />
-                                ) : (
-                                  <ColumnExpandIcon className="text-txt-primary size-4" />
-                                )}
-                              </Button>
-                            )}
+const DataTableHeader: FunctionComponent = () => {
+  const { table, expandableColumns, toggleColumnWidth } =
+    useContext(DataTableContext);
 
-                            {/* Sortable */}
-                            {sortable && (
-                              <Button
-                                size="small"
-                                variant={"primary-outline"}
-                                onClick={header.column.getToggleSortingHandler()}
-                                className="invisible hidden rounded-md px-1 py-0 group-hover:visible data-[sorted=true]:visible lg:block"
-                                data-sorted={Boolean(
-                                  header.column.getIsSorted(),
-                                )}
-                              >
-                                {{
-                                  desc: <FilterDescIcon className="size-4" />,
-                                  asc: <FilterAscIcon className="size-4" />,
-                                }[header.column.getIsSorted() as string] ?? (
-                                  <FilterIcon className="size-4" />
-                                )}
-                              </Button>
-                            )}
+  if (!table) return null;
 
-                            {/* Tooltip */}
-                            {tooltip && <TableTooltip>{tooltip}</TableTooltip>}
-                          </div>
-                        </div>
-                      )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            );
-          })}
-        </TableHeader>
-        <TableBody>
-          {loading ? (
-            Array.from({ length: 5 }).map((_, index) => (
-              <TableRow key={index}>
-                {table.getAllLeafColumns().map((column) => (
-                  <TableCell key={column.id} className="py-3">
-                    <TableSkeleton />
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
-          ) : table?.getRowModel()?.rows?.length > 0 ? (
-            table.getRowModel().rows.map((row) => {
+  return (
+    <TableHeader>
+      {table.getHeaderGroups().map((headerGroup) => {
+        return (
+          <TableRow key={headerGroup.id}>
+            {headerGroup.headers.map((header) => {
+              const { tooltip, expandable, sortable } =
+                header.column.columnDef.meta || {};
               return (
-                <TableRow key={row.id}>
-                  {row.getVisibleCells().map((cell) => {
-                    return (
-                      <TableCell
-                        id={cell.id}
-                        key={cell.id}
-                        data-expanded={expandableColumns[cell.column.id]}
-                        data-pinned={cell.column.getIsPinned()}
-                        className={clx(
-                          cell_cva(),
-                          pin_cva({
-                            pin_direction: cell.column.getIsPinned(),
-                            pin_last: cell.column.getIsLastColumn(
-                              cell.column.getIsPinned(),
-                            ),
-                          }),
-                          cell.column.columnDef.meta?.className?.cell,
-                        )}
-                        style={{ ...getCommonPinningStyles(cell.column) }}
-                      >
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext(),
-                        )}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })
-          ) : (
-            <TableRow>
-              <TableEmpty colSpan={table.getAllLeafColumns().length}>
-                {emptyState || "No data available"}
-              </TableEmpty>
-            </TableRow>
-          )}
-        </TableBody>
-        <TableFooter>
-          {table.getFooterGroups().map((footerGroup) => (
-            <TableRow key={footerGroup.id}>
-              {footerGroup.headers.map((header) => (
-                <TableCell
+                <TableHead
+                  id={header.id}
                   key={header.id}
                   colSpan={header.colSpan}
-                  data-expanded={expandableColumns[header.column.id]}
+                  data-expanded={expandableColumns[header.id]}
                   data-pinned={header.column.getIsPinned()}
                   className={clx(
-                    cell_cva(),
+                    th_cva({ expandable, sortable }),
                     pin_cva({
                       pin_direction: header.column.getIsPinned(),
                       pin_last: header.column.getIsLastColumn(
                         header.column.getIsPinned(),
                       ),
                     }),
-                    header.column.columnDef.meta?.className?.cell,
+                    header.column.columnDef.meta?.className?.header,
                   )}
                   style={{ ...getCommonPinningStyles(header.column) }}
                 >
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.footer,
+                  {header.isPlaceholder ? null : (
+                    <div className="flex items-center justify-between gap-2 whitespace-nowrap">
+                      {flexRender(
+                        header.column.columnDef.header,
                         header.getContext(),
                       )}
-                </TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableFooter>
-      </Table>
-    </>
+
+                      <div className="flex justify-end gap-1">
+                        {/* Expand */}
+                        {expandable && (
+                          <Button
+                            size="small"
+                            variant={"primary-outline"}
+                            onClick={() => toggleColumnWidth(header.id)}
+                            className="invisible hidden rounded-md px-1 py-0 group-hover:visible data-[expanded=true]:visible lg:block"
+                            data-expanded={expandableColumns[header.id]}
+                          >
+                            {expandableColumns[header.id] ? (
+                              <ColumnCollapseIcon className="text-txt-primary size-4" />
+                            ) : (
+                              <ColumnExpandIcon className="text-txt-primary size-4" />
+                            )}
+                          </Button>
+                        )}
+
+                        {/* Sortable */}
+                        {sortable && (
+                          <Button
+                            size="small"
+                            variant={"primary-outline"}
+                            onClick={header.column.getToggleSortingHandler()}
+                            className="invisible hidden rounded-md px-1 py-0 group-hover:visible data-[sorted=true]:visible lg:block"
+                            data-sorted={Boolean(header.column.getIsSorted())}
+                          >
+                            {{
+                              desc: <FilterDescIcon className="size-4" />,
+                              asc: <FilterAscIcon className="size-4" />,
+                            }[header.column.getIsSorted() as string] ?? (
+                              <FilterIcon className="size-4" />
+                            )}
+                          </Button>
+                        )}
+
+                        {/* Tooltip */}
+                        {tooltip && <TableTooltip>{tooltip}</TableTooltip>}
+                      </div>
+                    </div>
+                  )}
+                </TableHead>
+              );
+            })}
+          </TableRow>
+        );
+      })}
+    </TableHeader>
   );
 };
 
-const checkboxColumn = <TData extends Record<string, any>>() => {
+const DataTableBody: FunctionComponent = () => {
+  const { table, expandableColumns, loading, emptyState } =
+    useContext(DataTableContext);
+
+  if (!table)
+    throw new Error("Table instance failed to initialize. Please check");
+
+  return (
+    <TableBody>
+      {loading ? (
+        Array.from({ length: 5 }).map((_, index) => (
+          <TableRow key={index}>
+            {table.getAllLeafColumns().map((column) => (
+              <TableCell key={column.id} className="py-3">
+                <TableSkeleton />
+              </TableCell>
+            ))}
+          </TableRow>
+        ))
+      ) : table?.getRowModel()?.rows?.length > 0 ? (
+        table.getRowModel().rows.map((row) => {
+          return (
+            <TableRow key={row.id}>
+              {row.getVisibleCells().map((cell) => {
+                return (
+                  <TableCell
+                    id={cell.id}
+                    key={cell.id}
+                    data-expanded={expandableColumns[cell.column.id]}
+                    data-pinned={cell.column.getIsPinned()}
+                    className={clx(
+                      cell_cva(),
+                      pin_cva({
+                        pin_direction: cell.column.getIsPinned(),
+                        pin_last: cell.column.getIsLastColumn(
+                          cell.column.getIsPinned(),
+                        ),
+                      }),
+                      cell.column.columnDef.meta?.className?.cell,
+                    )}
+                    style={{ ...getCommonPinningStyles(cell.column) }}
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                );
+              })}
+            </TableRow>
+          );
+        })
+      ) : (
+        <TableRow>
+          <TableEmpty colSpan={table.getAllLeafColumns().length}>
+            {emptyState || "No data available"}
+          </TableEmpty>
+        </TableRow>
+      )}
+    </TableBody>
+  );
+};
+
+const DataTableFooter: FunctionComponent = () => {
+  const { table, expandableColumns } = useContext(DataTableContext);
+
+  if (!table) return null;
+
+  const footers = table
+    .getFooterGroups()
+    .map((group) =>
+      group.headers.map((header) => header.column.columnDef.footer),
+    )
+    .flat()
+    .filter(Boolean);
+
+  if (footers.length === 0) return;
+
+  return (
+    <TableFooter>
+      {table.getFooterGroups().map((footerGroup) => (
+        <TableRow key={footerGroup.id}>
+          {footerGroup.headers.map((header) => (
+            <TableCell
+              key={header.id}
+              colSpan={header.colSpan}
+              data-expanded={expandableColumns[header.column.id]}
+              data-pinned={header.column.getIsPinned()}
+              className={clx(
+                cell_cva(),
+                pin_cva({
+                  pin_direction: header.column.getIsPinned(),
+                  pin_last: header.column.getIsLastColumn(
+                    header.column.getIsPinned(),
+                  ),
+                }),
+                header.column.columnDef.meta?.className?.cell,
+              )}
+              style={{ ...getCommonPinningStyles(header.column) }}
+            >
+              {header.isPlaceholder
+                ? null
+                : flexRender(
+                    header.column.columnDef.footer,
+                    header.getContext(),
+                  )}
+            </TableCell>
+          ))}
+        </TableRow>
+      ))}
+    </TableFooter>
+  );
+};
+
+const CheckboxColumn = <TData extends Record<string, any>>() => {
   const columnHelper = createColumnHelper<TData>();
   return columnHelper.display({
     id: "_checkbox",
@@ -407,7 +461,7 @@ const checkboxColumn = <TData extends Record<string, any>>() => {
   });
 };
 
-const radioColumn = <TData extends Record<string, any>>() => {
+const RadioColumn = <TData extends Record<string, any>>() => {
   const columnHelper = createColumnHelper<TData>();
   return columnHelper.display({
     id: "_radio",
@@ -452,7 +506,7 @@ const radioColumn = <TData extends Record<string, any>>() => {
   });
 };
 
-const expandCell = <TData extends Record<string, any>>(
+const ExpandCell = <TData extends Record<string, any>>(
   { row, getValue }: CellContext<TData, unknown>,
   cell?: ReactNode,
 ) => {
@@ -497,15 +551,27 @@ const getCommonPinningStyles = <TData extends Record<string, any>>(
  * Reserved columns for DataTable
  */
 const Column = {
-  Checkbox: checkboxColumn,
-  Radio: radioColumn,
+  Checkbox: CheckboxColumn,
+  Radio: RadioColumn,
 };
 
 /**
  * Reserved cells for DataTable
  */
 const Cell = {
-  Expand: expandCell,
+  Expand: ExpandCell,
+};
+
+const DataTable = <TData extends Record<string, any>>(
+  props: DataTableProps<TData>,
+) => {
+  return (
+    <DataTableProvider<TData> {...props}>
+      <DataTableHeader />
+      <DataTableBody />
+      <DataTableFooter />
+    </DataTableProvider>
+  );
 };
 
 export { DataTable, Cell, type ColumnDef };

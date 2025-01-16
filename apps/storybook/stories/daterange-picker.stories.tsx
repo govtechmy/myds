@@ -1,4 +1,4 @@
-import { DateRangePicker } from "@myds/react/daterange-picker";
+import { DateRangePicker } from "@govtechmy/myds-react/daterange-picker";
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import { createStory } from "../utils";
@@ -10,7 +10,7 @@ import { createStory } from "../utils";
  * ### Usage
  * ```ts
  * import * as React from "react"
- * import { DateRange, DateRangePicker } from "@myds/react/daterange-picker";
+ * import { DateRange, DateRangePicker } from "@govtechmy/myds-react/daterange-picker";
  *
  * export function DateRangePickerDemo() {
  *    const [dateRange, setDateRange] = React.useState<DateRange | undefined>({
@@ -25,7 +25,7 @@ import { createStory } from "../utils";
  * ```
  */
 const meta = {
-  title: "@myds/react/DateRangePicker",
+  title: "@govtechmy/myds-react/DateRangePicker",
   component: DateRangePicker,
   tags: ["autodocs"],
   parameters: {

@@ -13,13 +13,13 @@ MYDS boleh ditetapkan dengan pelbagai cara, bergantung kepada keperluan projek a
     ### Pemasangan pakej
     <Tabs items={["npm", "yarn", "pnpm"]}>
         ```sh tab="npm"
-        npm i @govtechmy/myds-react @govtechmy/myds-tailwindcss 
+        npm i @govtechmy/myds-react @govtechmy/myds-style 
         ```
         ```sh tab="yarn"
-        yarn add @govtechmy/myds-react @govtechmy/myds-tailwindcss
+        yarn add @govtechmy/myds-react @govtechmy/myds-style
         ```
         ```sh tab="pnpm"
-        pnpm add @govtechmy/myds-react @govtechmy/myds-tailwindcss
+        pnpm add @govtechmy/myds-react @govtechmy/myds-style
         ```
     </Tabs>
 
@@ -35,14 +35,14 @@ Anda boleh 'import' stylesheet MYDS secara keseluruhan mengikut salah satu cara 
 
 ```ts
 // Letakkan dalam fail permulaan JS/TS (eg. index.{ts,js})
-import "@govtechmy/myds-tailwindcss/full.css";
+import "@govtechmy/myds-style/full.css";
 ```
 
 #### B. Import melalui CSS
 
 ```css
 /* Letakkan dalam fail permulaan CSS  */
-@import "@govtechmy/myds-tailwindcss/full.css";
+@import "@govtechmy/myds-style/full.css";
 ```
 
 Untuk tetapan yang lebih lanjut, sila baca [Konfigurasi Projek](./project-configuration)

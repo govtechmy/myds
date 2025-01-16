@@ -1,5 +1,7 @@
 {
-  "type": "commonjs",
+  "name": "@govtechmy/myds-cli",
+  "private": true,
+  "version": "0.0.0",
   "devDependencies": {
     "@turbo/gen": "^2.1.3"
   }

@@ -1,4 +1,3 @@
-import { fn } from "@storybook/test";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 import {
@@ -6,7 +5,7 @@ import {
   AccordionContent,
   Accordion,
   AccordionItem,
-} from "@myds/react/accordion";
+} from "@govtechmy/myds-react/accordion";
 import React from "react";
 
 /**
@@ -23,7 +22,7 @@ import React from "react";
  *   AccordionContent,
  *   Accordion,
  *   AccordionItem,
- * } from "@myds/react/accordion";
+ * } from "@govtechmy/myds-react/accordion";
  *
  * const AccordionDemo = () => (
  *   <Accordion type="single" defaultValue="item-1" collapsible>
@@ -52,7 +51,7 @@ import React from "react";
  */
 
 const meta = {
-  title: "@myds/react/Accordion",
+  title: "@govtechmy/myds-react/Accordion",
   component: Accordion,
   tags: ["autodocs"],
   parameters: {
@@ -176,3 +175,53 @@ export const AccordionDark: Story = createStory(
   },
   "dark",
 );
+
+export const AccordionDisabled: Story = createStory({
+  type: "multiple",
+  disabled: true,
+  children: [
+    <AccordionItem key="item-1" value="item-1" disabled>
+      <AccordionTrigger>This item has been disabled</AccordionTrigger>
+      <AccordionContent>
+        Yes. It adheres to the WAI-ARIA design pattern.
+      </AccordionContent>
+    </AccordionItem>,
+    <AccordionItem key="item-2" value="item-2">
+      <AccordionTrigger>Is it styled?</AccordionTrigger>
+      <AccordionContent>
+        Yes. It comes with default styles that matches the other components'
+        aesthetic.
+      </AccordionContent>
+    </AccordionItem>,
+    <AccordionItem key="item-3" value="item-3">
+      <AccordionTrigger>Is it animated?</AccordionTrigger>
+      <AccordionContent>
+        Yes. It's animated by default, but you can disable it if you prefer.
+      </AccordionContent>
+    </AccordionItem>,
+  ],
+});
+
+export const AccordionItemDisabled: Story = createStory({
+  children: [
+    <AccordionItem key="item-1" value="item-1" disabled>
+      <AccordionTrigger>This item has been disabled</AccordionTrigger>
+      <AccordionContent>
+        Yes. It adheres to the WAI-ARIA design pattern.
+      </AccordionContent>
+    </AccordionItem>,
+    <AccordionItem key="item-2" value="item-2">
+      <AccordionTrigger>Is it styled?</AccordionTrigger>
+      <AccordionContent>
+        Yes. It comes with default styles that matches the other components'
+        aesthetic.
+      </AccordionContent>
+    </AccordionItem>,
+    <AccordionItem key="item-3" value="item-3">
+      <AccordionTrigger>Is it animated?</AccordionTrigger>
+      <AccordionContent>
+        Yes. It's animated by default, but you can disable it if you prefer.
+      </AccordionContent>
+    </AccordionItem>,
+  ],
+});

@@ -5,7 +5,7 @@ import ChevronDown from "@/icons/chevron-down";
 import EncryptedLock from "@/icons/encrypted-lock";
 import GovMY from "@/icons/govmy";
 import SolidLock from "@/icons/solid-lock";
-import { clx } from "@myds/react/utils";
+import { clx } from "@govtechmy/myds-react/utils";
 
 import { useState } from "react";
 import Collapse from "./Collapse";

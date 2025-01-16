@@ -1,0 +1,60 @@
+name: "@myds/react beta release"
+
+# TODO: Workflow requires more thought on:
+# 1. Ideal way to handle prereleases (beta)
+# 2. Cases to trigger beta release
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node.js and pnpm
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build @govtechmy/myds-react
+        run: pnpm build --filter=@govtechmy/myds-react
+
+      - name: Enter prerelease mode if not already
+        run: pnpm changeset pre enter beta || true
+
+      - name: Create beta version
+        run: pnpm changeset version --pre beta
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "ci: version beta packages"
+          git push
+
+      - name: Publish beta package
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm publish --tag beta --access public --filter=@govtechmy/myds-react
+
+      - name: Push tags
+        run: |
+          git push --follow-tags

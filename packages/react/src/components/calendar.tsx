@@ -75,7 +75,7 @@ const Calendar: FC<CalendarProps> = ({
       showOutsideDays={showOutsideDays}
       month={month}
       onMonthChange={setMonth}
-      className={clx("pb-4.5 p-3", view !== "day" && "h-[326px]", className)}
+      className={clx("w-full pb-4.5 p-3", view !== "day" && "h-[326px]", className)}
       classNames={{
         months: "flex flex-col h-full",
         month: "flex flex-col h-full gap-y-1.5",

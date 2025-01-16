@@ -2,12 +2,13 @@ import "@/app/global.css";
 import { RootProvider } from "fumadocs-ui/provider";
 import { I18nProvider as FumaI18n } from "fumadocs-ui/i18n";
 import { RosettaProvider } from "@/locales/_client";
-import { clx } from "@myds/react/utils";
+import { clx } from "@govtechmy/myds-react/utils";
 import en from "@/locales/en";
 import ms from "@/locales/ms";
 import { getRosetta } from "@/locales/_server";
 import type { Metadata } from "next";
 import Analytics from "@/components/analytics";
+import { AutoToast } from "@/components/myds";
 
 interface MetadataProps {
   params: { lang: "en" | "ms" };
@@ -91,6 +92,7 @@ export default async function RootLayout({
           }
         >
           <RosettaProvider locales={{ en, ms }}>
+            <AutoToast />
             <RootProvider>{children}</RootProvider>
           </RosettaProvider>
         </FumaI18n>

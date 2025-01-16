@@ -10,15 +10,23 @@
     "---Komponen 🚧---",
     "(components)/accordion",
     "(components)/anchor",
+    "(components)/announcebar",
     "(components)/banner",
     "(components)/breadcrumb",
     "(components)/button",
     "(components)/callout",
     "(components)/checkbox",
     "(components)/chip",
+    "(components)/cookies-banner",
     "(components)/date-picker",
     "(components)/pagination",
-    "(components)/radio"
+    "(components)/radio",
+    "(components)/skiplink",
+    "(components)/spinner",
+    "(components)/tag",
+    "(components)/text-area",
+    "(components)/toast",
+    "(components)/toggle"
   ],
   "root": true
 }

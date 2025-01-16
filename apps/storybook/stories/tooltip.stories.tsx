@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { Tooltip, TooltipTrigger, TooltipContent } from "@myds/react/tooltip";
-import { QuestionCircleIcon } from "@myds/react/icon";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@govtechmy/myds-react/tooltip";
+import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
 
 /**
  * ### Overview
@@ -18,7 +22,7 @@ import { QuestionCircleIcon } from "@myds/react/icon";
  *
  * ### Usage
  * ```tsx
- * import { Tooltip, TooltipTrigger, TooltipContent } from "@myds/react/tooltip";
+ * import { Tooltip, TooltipTrigger, TooltipContent } from "@govtechmy/myds-react/tooltip";
  *
  * <Tooltip>
  *    <TooltipTrigger>
@@ -29,7 +33,7 @@ import { QuestionCircleIcon } from "@myds/react/icon";
  * ```
  */
 const meta = {
-  title: "@myds/react/Tooltip",
+  title: "@govtechmy/myds-react/Tooltip",
   component: Tooltip,
   tags: ["autodocs"],
   parameters: {

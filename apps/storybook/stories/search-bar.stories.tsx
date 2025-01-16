@@ -11,7 +11,7 @@ import {
   SearchBarResultsItem,
   SearchBarResultsGroup,
   SearchBarHint,
-} from "@myds/react/search-bar";
+} from "@govtechmy/myds-react/search-bar";
 import { ComponentProps, useEffect, useRef, useState } from "react";
 import {
   ChevronRightIcon,
@@ -19,8 +19,8 @@ import {
   StarIcon,
   TrophyIcon,
   UserIcon,
-} from "@myds/react/icon";
-import { Pill } from "@myds/react/pill";
+} from "@govtechmy/myds-react/icon";
+import { Pill } from "@govtechmy/myds-react/pill";
 
 /**
  * ### Overview
@@ -39,7 +39,7 @@ import { Pill } from "@myds/react/pill";
  *   SearchBarResultsItem,
  *   SearchBarResultsGroup,
  *   SearchBarHint,
- * } from "@myds/react/search-bar";
+ * } from "@govtechmy/myds-react/search-bar";
  *
  * <SearchBar size="large">
  *   <SearchBarInputContainer>
@@ -70,7 +70,7 @@ import { Pill } from "@myds/react/pill";
  * ```
  */
 const meta = {
-  title: "@myds/react/SearchBar",
+  title: "@govtechmy/myds-react/SearchBar",
   component: SearchBar,
   tags: ["autodocs"],
   parameters: {
@@ -95,12 +95,15 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-function useFocusOnKeyPress<T extends HTMLElement>(key: string) {
+function useFocusOnKeyPress<T extends HTMLElement>(
+  key: string,
+  isFocused: boolean,
+) {
   const ref = useRef<T>(null);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === key) {
+      if (!isFocused && e.key === key) {
         ref.current?.focus();
         e.preventDefault();
       }
@@ -109,7 +112,7 @@ function useFocusOnKeyPress<T extends HTMLElement>(key: string) {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [ref]);
+  }, [isFocused, ref]);
 
   return ref;
 }
@@ -118,7 +121,7 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
   const [hasFocus, setHasFocus] = useState(false);
   const [query, setQuery] = useState("");
   const hasQuery = query.length > 0;
-  const inputRef = useFocusOnKeyPress<HTMLInputElement>("/");
+  const inputRef = useFocusOnKeyPress<HTMLInputElement>("/", hasFocus);
 
   const results = notableMalaysians.filter((person) =>
     person.name.toLowerCase().includes(query.toLocaleLowerCase()),
@@ -140,21 +143,21 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
           value={query}
           onValueChange={setQuery}
           onFocus={() => setHasFocus(true)}
+          onBlur={() => setHasFocus(false)}
         />
-        {!hasFocus && props.size === "large" && (
-          <SearchBarHint>
-            Press <Pill size="small">/</Pill> to search
-          </SearchBarHint>
+        {query ? (
+          <SearchBarClearButton onClick={() => setQuery("")} />
+        ) : (
+          !hasFocus &&
+          props.size === "large" && (
+            <SearchBarHint className="hidden lg:flex">
+              Press <Pill size="small">/</Pill> to search
+            </SearchBarHint>
+          )
         )}
-        <SearchBarClearButton onClick={() => setQuery("")} />
         <SearchBarSearchButton />
       </SearchBarInputContainer>
-      <SearchBarResults open={hasFocus}>
-        {!hasQuery && (
-          <p className="text-txt-black-900 text-center">
-            Start typing to search
-          </p>
-        )}
+      <SearchBarResults open={!!query}>
         {hasQuery && !results.length && (
           <p className="text-txt-black-900 text-center">No results found</p>
         )}
@@ -191,7 +194,7 @@ const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
   const [hasFocus, setHasFocus] = useState(false);
   const [query, setQuery] = useState("");
   const hasQuery = query.length > 0;
-  const inputRef = useFocusOnKeyPress<HTMLInputElement>("/");
+  const inputRef = useFocusOnKeyPress<HTMLInputElement>("/", hasFocus);
 
   const results = notableMalaysians.filter((person) =>
     person.name.toLowerCase().includes(query.toLocaleLowerCase()),
@@ -218,20 +221,19 @@ const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
           onFocus={() => setHasFocus(true)}
           onBlur={() => setHasFocus(false)}
         />
-        {!hasFocus && props.size === "large" && (
-          <SearchBarHint>
-            Press <Pill size="small">/</Pill> to search
-          </SearchBarHint>
+        {query ? (
+          <SearchBarClearButton onClick={() => setQuery("")} />
+        ) : (
+          !hasFocus &&
+          props.size === "large" && (
+            <SearchBarHint className="hidden lg:flex">
+              Press <Pill size="small">/</Pill> to search
+            </SearchBarHint>
+          )
         )}
-        <SearchBarClearButton onClick={() => setQuery("")} />
         <SearchBarSearchButton />
       </SearchBarInputContainer>
-      <SearchBarResults open={hasFocus}>
-        {!hasQuery && (
-          <p className="text-txt-black-900 text-center">
-            Start typing to search
-          </p>
-        )}
+      <SearchBarResults open={!!query}>
         {hasQuery && !results.length && (
           <p className="text-txt-black-900 text-center">No results found</p>
         )}
