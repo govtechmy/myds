@@ -1,0 +1,170 @@
+---
+title: Medan Tarikh
+description: Membolehkan pengguna memasukkan tarikh dalam format berstruktur menggunakan medan berasingan untuk hari, bulan, dan tahun.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import { DateField } from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+export const NOW = new Date().toISOString().split("T")[0];
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose flex justify-center">
+    <DateField />
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DateField />
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-date-field--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/date-field.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import { DateField } from "@govtechmy/myds-react/date-field";
+```
+
+```tsx copy
+export default () => <DateField />;
+```
+
+## Contoh
+
+### Saiz
+
+Gunakan prop `size` untuk menukar saiz medan tarikh!
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col items-center gap-3">
+      <DateField size="small" />
+      <DateField size="medium" />
+      <DateField size="large" />
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DateField size="small" />
+    <DateField size="medium" />
+    <DateField size="large" />
+    ```
+  </Tab>
+</Tabs>
+
+### Keadaan Tidak Terkawal vs Terkawal
+
+Untuk menggunakan medan tarikh dalam keadaan tidak terkawal, tetapkan prop `defaultValue` kepada nilai awal medan tarikh.
+
+Untuk menggunakan medan tarikh dalam keadaan terkawal, tetapkan prop `value` kepada nilai semasa medan tarikh dan sediakan pendengar acara `onValueChange` untuk mengendalikan perubahan.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+        <div>
+            Tidak Terkawal
+            <DateField defaultValue={NOW} />
+        </div>
+        <div>
+            Terkawal
+            <DateField value={NOW} />
+        </div>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    // Keadaan tidak terkawal
+    <DateField defaultValue={new Date().toISOString().split("T")[0]} />
+
+    // Keadaan terkawal
+    <DateField value={new Date().toISOString().split("T")[0]} />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Dilumpuhkan
+
+Medan tarikh boleh dilumpuhkan dengan menetapkan prop `disabled` kepada `true`. Apabila dilumpuhkan, medan tarikh tidak akan interaktif.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center">
+      <DateField defaultValue={NOW} disabled />
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DateField defaultValue={new Date().toISOString().split("T")[0]} disabled />
+    ```
+  </Tab>
+</Tabs>
+
+### Tidak Sah
+
+Keadaan tidak sah dicetuskan apabila medan tarikh gagal pengesahan. Untuk menunjukkan medan tarikh tidak sah, tetapkan prop `invalid` kepada `true`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center">
+      <DateField defaultValue={NOW} invalid />
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DateField defaultValue={new Date().toISOString().split("T")[0]} invalid />
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### DateField
+
+<TypeTable
+  type={{
+    size: {
+      description: "Saiz medan tarikh",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    defaultValue: {
+      description: "Keadaan awal medan tarikh (tidak terkawal)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    value: {
+      description: "Keadaan medan tarikh (terkawal)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    onChange: {
+      description: "Pendengar acara perubahan (terkawal)",
+      type: "(date: string ) => void",
+      typeDescription: "date: yyyy-mm-dd",
+      default: "",
+    },
+    disabled: {
+      description: "Keadaan dilumpuhkan untuk medan tarikh",
+      type: "boolean",
+      default: "false",
+    },
+    invalid: {
+      description: "Keadaan tidak sah untuk medan tarikh",
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>

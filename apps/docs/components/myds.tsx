@@ -14,6 +14,7 @@ export * from "@govtechmy/myds-react/callout";
 export * from "@govtechmy/myds-react/breadcrumb";
 export * from "@govtechmy/myds-react/checkbox";
 export * from "@govtechmy/myds-react/label";
+export * from "@govtechmy/myds-react/date-field";
 import {
   Callout,
   CalloutTitle,
