@@ -11,6 +11,7 @@ export * from "@govtechmy/myds-react/accordion";
 export * from "@govtechmy/myds-react/announce-bar";
 export * from "@govtechmy/myds-react/toast";
 export * from "@govtechmy/myds-react/callout";
+export * from "@govtechmy/myds-react/breadcrumb";
 import {
   Callout,
   CalloutTitle,
