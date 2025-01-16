@@ -15,6 +15,7 @@ export * from "@govtechmy/myds-react/breadcrumb";
 export * from "@govtechmy/myds-react/checkbox";
 export * from "@govtechmy/myds-react/label";
 export * from "@govtechmy/myds-react/date-field";
+export * from "@govtechmy/myds-react/date-picker";
 import {
   Callout,
   CalloutTitle,
@@ -22,6 +23,7 @@ import {
   CalloutAction,
 } from "@govtechmy/myds-react/callout";
 import { useToast } from "@govtechmy/myds-react/hooks";
+import { DatePicker } from "@govtechmy/myds-react/date-picker";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
@@ -117,5 +119,14 @@ export const ControlledToggle: FunctionComponent<PreviewToggleProps> = (
         <ToggleThumb />
       </Toggle>
     </div>
+  );
+};
+
+export const CustomDisableDatePicker: FunctionComponent = () => {
+  return (
+    <DatePicker
+      defaultValue={new Date()}
+      disabled={(date) => date.getDate() === 13}
+    />
   );
 };

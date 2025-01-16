@@ -1,15 +1,276 @@
 ---
 title: Date Picker
-description: Date Picker
+description: Allows users to select a date from an interactive calendar.
 ---
 
-import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import { DatePicker, CustomDisableDatePicker } from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
-<Callout
-  type="info"
-  title="Note"
-  className="bg-bg-primary-50 text-txt-primary border-transparent"
-  icon={<InfoIcon className="size-5" />}
->
-  Work in progress
-</Callout>
+export const NOW = new Date();
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <DatePicker />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DatePicker />
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-date-picker--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/date-picker.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import { DatePicker } from "@govtechmy/myds-react/date-picker";
+```
+
+```tsx copy
+export default () => <DatePicker />;
+```
+
+## Examples
+
+### Size
+
+Use the `size` prop to change the checkbox size!
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col items-center gap-3">
+      <DatePicker size="small" />
+      <DatePicker size="medium" />
+      <DatePicker size="large" />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DatePicker size="small" />
+    <DatePicker size="medium" />
+    <DatePicker size="large" />
+    ```
+  </Tab>
+</Tabs>
+
+### Uncontrolled vs Controlled State
+
+To use the date picker in the uncontrolled state, set the `defaultValue` prop to the initial value of the date picker.
+
+To use the date picker in the controlled state, set the `value` prop to the current value of the date picker and provide an `onValueChange` event listener to handle the change.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+        <div>
+            Uncontrolled
+            <DatePicker defaultValue={NOW} />
+        </div>
+        <div>
+            Controlled
+            <DatePicker value={NOW} />
+        </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    // Uncontrolled state
+    <DatePicker defaultValue={new Date().toISOString().split("T")[0]} />
+
+    // Controlled state
+    <DatePicker value={new Date().toISOString().split("T")[0]} />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Disabled
+
+There are many ways to interact with DatePicker `disabled` state. Date picker can be disabled entirely by setting the `disabled` prop to `true`.
+
+For a finer control on which dates to disable, you can pass a `Matcher | Matcher[]` that defines the rules for disabling dates.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose space-y-2">
+      <div className="flex items-center gap-3">
+        Disable all dates
+        <DatePicker defaultValue={NOW} disabled />
+      </div>
+      <div className="flex items-center gap-3">
+        Disable dates before today
+        <DatePicker defaultValue={NOW} disabled={{ before: new Date() }} />
+      </div>
+      <div className="flex items-center gap-3">
+        Disable dates after today
+        <DatePicker defaultValue={NOW} disabled={{ after: new Date() }} />
+      </div>
+      <div className="flex items-center gap-3">
+        Disable dates outside of range
+        <DatePicker
+          defaultValue={NOW}
+          disabled={{
+            before: new Date().setDate(new Date().getDate() - 1),
+            after: new Date().setDate(new Date().getDate() + 1),
+          }}
+        />
+      </div>
+      <div className="flex items-center gap-3">
+        Disable dates by days of week (eg. Saturday and Sunday)
+        <DatePicker
+          defaultValue={NOW}
+          disabled={{
+            dayOfWeek: [0, 6],
+          }}
+        />
+      </div>
+      <div className="flex items-center gap-3">
+        Disable dates by callback function (eg. disable every 13th of the month)
+        <CustomDisableDatePicker />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    // Disable all dates
+    <DatePicker defaultValue={new Date()} disabled />
+    
+    // Disable dates before today
+    <DatePicker defaultValue={new Date()} disabled={{ before: new Date() }} />
+
+    // Disable dates after today
+    <DatePicker defaultValue={new Date()} disabled={{ after: new Date() }} />
+
+    // Disable dates outside of range
+    <DatePicker
+      defaultValue={new Date()}
+      disabled={{
+        before: new Date().setDate(new Date().getDate() - 1),
+        after: new Date().setDate(new Date().getDate() + 1),
+      }}
+    />
+
+    // Disable dates by days of week (eg. Saturday and Sunday)
+    <DatePicker
+      defaultValue={new Date()}
+      disabled={{
+        dayOfWeek: [0, 6],
+      }}
+    />
+
+    // Disable dates by callback function (eg. disable every 13th of the month)
+    <DatePicker
+      defaultValue={new Date()}
+      disabled={(date) => date.getDate() === 13}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Maximum and Minimum Year
+
+You can set the maximum and minimum year for the date picker by passing the `minYear` and `maxYear` props.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center">
+      <DatePicker defaultValue={NOW} maxYear={2030} minYear={2020} />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DatePicker defaultValue={new Date()} maxYear={2030} minYear={2020} />
+    ```
+  </Tab>
+</Tabs>
+
+### Year Sort Order
+
+You can set the sorting order of the years in the year dropdown by passing the `yearOrder` prop.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        Ascending
+        <DatePicker defaultValue={NOW} yearOrder="asc" />
+      </div>
+      <div>
+        Descending
+        <DatePicker defaultValue={NOW} yearOrder="desc" />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+```tsx
+<DatePicker defaultValue={new Date()} yearOrder="asc" />
+
+<DatePicker defaultValue={new Date()} yearOrder="desc" />
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+### DatePicker
+
+<TypeTable
+  type={{
+    size: {
+      description: "Size of the date picker",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    defaultValue: {
+      description: "Initial state of the date picker (uncontrolled)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    value: {
+      description: "State of the date picker (controlled)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    onValueChange: {
+      description: "Change event listener (controlled)",
+      type: "(date: Date ) => void",
+    },
+    placeholder: {
+      description: "Placeholder text for the date picker",
+      type: "string",
+      default: "dd / mm / yyyy",
+    },
+    disabled: {
+      description: "Disabled state for date picker",
+      type: "boolean | Matcher | Matcher[]",
+      default: "false",
+    },
+    maxYear: {
+      description: "Maximum year for the date picker",
+      type: "number",
+      default: "2099",
+    },
+    minYear: {
+      description: "Minimum year for the date picker",
+      type: "number",
+      default: "1900",
+    },
+    yearOrder: {
+      description: "Sorting order for the year selection",
+      type: "asc | desc",
+      default: "asc",
+    },
+  }}
+/>
