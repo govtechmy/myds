@@ -1,15 +1,175 @@
 ---
 title: Checkbox
-description: Checkbox
+description: Allows users to make a binary choice, such as selecting or not selecting an option. It is commonly used in forms, settings, and filters to capture user input and preferences.
 ---
 
-import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import { Checkbox, Label } from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
-<Callout
-  type="info"
-  title="Note"
-  className="bg-bg-primary-50 text-txt-primary border-transparent"
-  icon={<InfoIcon className="size-5" />}
->
-  Work in progress
-</Callout>
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <Checkbox defaultChecked />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Checkbox defaultChecked />
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-checkbox--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/checkbox.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import { Checkbox } from "@govtechmy/myds-react/checkbox";
+```
+
+```tsx copy
+export default () => <Checkbox />;
+```
+
+## Examples
+
+### Size
+
+Use the `size` prop to change the checkbox size!
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col items-center gap-3">
+      <Checkbox defaultChecked size="small" />
+      <Checkbox defaultChecked size="medium" />
+      <Checkbox defaultChecked size="large" />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Checkbox defaultChecked size="small" />
+    <Checkbox defaultChecked size="medium" />
+    <Checkbox defaultChecked size="large" />
+    ```
+  </Tab>
+</Tabs>
+
+### Uncontrolled vs Controlled State
+
+The `checked` prop allows you to control the state of the checkbox. If you don't provide the `checked` prop, the checkbox will be uncontrolled.
+
+To manage the state of controlled checkboxes, you need to provide the `checked` prop and handle via `onCheckedChange` event listener.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col items-center">
+      <Label className="flex items-center gap-2">
+        <Checkbox defaultChecked />
+        <span>Uncontrolled state</span>
+      </Label>
+      <Label className="flex items-center gap-2">
+        <Checkbox checked={true} />
+        <span>Controlled state</span>
+      </Label>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    // Uncontrolled state
+    <Label>
+      <Checkbox defaultChecked />
+      <span>Uncontrolled state</span>
+    </Label>
+
+    // Controlled state
+    <Label>
+      <Checkbox checked={true} />
+      <span>Controlled state</span>
+    </Label>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Disabled
+
+Checkbox can be disabled by setting the `disabled` prop to `true`. When disabled, the checkbox will not be interactive.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center">
+      <Label className="flex items-center gap-2">
+        <Checkbox defaultChecked disabled />
+        <span>Disabled state</span>
+      </Label>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Label>
+      <Checkbox defaultChecked disabled />
+      <span>Disabled state</span>
+    </Label>
+    ```
+  </Tab>
+</Tabs>
+
+### Indeterminate
+
+Indeterminate state is used when a checkbox is part of a group of checkboxes and some of the checkboxes are checked while others are not. It is commonly used in a parent checkbox to indicate that some of its children checkboxes are checked.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center">
+      <Label className="flex items-center gap-2">
+        <Checkbox defaultChecked="indeterminate" />
+        <span>Indeterminate state</span>
+      </Label>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Label>
+      <Checkbox defaultChecked="indeterminate" />
+      <span>Indeterminate state</span>
+    </Label>
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### Checkbox
+
+<TypeTable
+  type={{
+    size: {
+      description: "Size of the checkbox",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    defaultChecked: {
+      description: "Initial checked state of the checkbox (uncontrolled)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    checked: {
+      description: "State of the checkbox (controlled)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    onCheckedChange: {
+      description: "Checked event listener (controlled)",
+      type: "(checked: boolean | indeterminate) => void",
+      default: "false",
+    },
+  }}
+/>
