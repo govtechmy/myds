@@ -17,6 +17,7 @@ export * from "@govtechmy/myds-react/label";
 export * from "@govtechmy/myds-react/date-field";
 export * from "@govtechmy/myds-react/date-picker";
 export * from "@govtechmy/myds-react/daterange-picker";
+export * from "@govtechmy/myds-react/pill";
 import {
   Callout,
   CalloutTitle,
@@ -26,6 +27,7 @@ import {
 import { useToast } from "@govtechmy/myds-react/hooks";
 import { DatePicker } from "@govtechmy/myds-react/date-picker";
 import { DateRangePicker } from "@govtechmy/myds-react/daterange-picker";
+import { Pill } from "@govtechmy/myds-react/pill";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
@@ -147,3 +149,9 @@ export const CustomDisableDateRangePicker: FunctionComponent = () => {
 };
 
 export { NOW, YESTERDAY, TOMORROW };
+interface PillWithTrailingXButtonProps extends ComponentProps<typeof Pill> {}
+export const PillWithTrailingXButton: FunctionComponent<
+  PillWithTrailingXButtonProps
+> = (props) => {
+  return <Pill onDismiss={() => {}} {...props} />;
+};
