@@ -75,21 +75,26 @@ const Calendar: FC<CalendarProps> = ({
       showOutsideDays={showOutsideDays}
       month={month}
       onMonthChange={setMonth}
-      className={clx("w-full pb-4.5 p-3", view !== "day" && "h-[326px]", className)}
+      className={clx(
+        "pb-4.5 w-full p-3",
+        view !== "day" && "h-[326px]",
+        className,
+      )}
       classNames={{
         months: "flex flex-col h-full",
         month: "flex flex-col h-full gap-y-1.5",
         month_caption: "",
         caption_label: "text-sm font-medium",
         nav: "absolute right-3 flex gap-2 items-center",
-        button_previous: clx(
-          buttonVariants({ variant: "default-outline" }),
-          "size-8 p-2",
-        ),
-        button_next: clx(
-          buttonVariants({ variant: "default-outline" }),
-          "size-8 p-2",
-        ),
+        button_previous: buttonVariants({
+          variant: "default-outline",
+          iconOnly: true,
+        }),
+        button_next: buttonVariants({
+          variant: "default-outline",
+          iconOnly: true,
+        }),
+        chevron: "size-4",
         month_grid: "w-full border-collapse space-y-1",
         weekdays: "flex",
         weekday: "text-txt-black-500 font-normal w-10 text-body-xs py-2",
@@ -117,9 +122,9 @@ const Calendar: FC<CalendarProps> = ({
       components={{
         Chevron(props) {
           if (props.orientation === "left") {
-            return <ChevronLeftIcon className="size-4" {...props} />;
+            return <ChevronLeftIcon {...props} />;
           }
-          return <ChevronRightIcon className="size-4" {...props} />;
+          return <ChevronRightIcon {...props} />;
         },
         CaptionLabel(props) {
           const toggle = (monthOrYear: "month" | "year", formatStr: string) => (
