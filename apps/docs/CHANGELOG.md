@@ -1,5 +1,12 @@
 # @govtechmy/myds-docs
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies [97ed561]
+  - @govtechmy/myds-style@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes
