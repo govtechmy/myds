@@ -19,6 +19,7 @@
     "(components)/cookies-banner",
     "(components)/date-field",
     "(components)/date-picker",
+    "(components)/daterange-picker",
     "(components)/pagination",
     "(components)/radio",
     "(components)/skiplink",
