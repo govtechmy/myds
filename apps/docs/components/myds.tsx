@@ -16,6 +16,7 @@ export * from "@govtechmy/myds-react/checkbox";
 export * from "@govtechmy/myds-react/label";
 export * from "@govtechmy/myds-react/date-field";
 export * from "@govtechmy/myds-react/date-picker";
+export * from "@govtechmy/myds-react/daterange-picker";
 import {
   Callout,
   CalloutTitle,
@@ -24,6 +25,7 @@ import {
 } from "@govtechmy/myds-react/callout";
 import { useToast } from "@govtechmy/myds-react/hooks";
 import { DatePicker } from "@govtechmy/myds-react/date-picker";
+import { DateRangePicker } from "@govtechmy/myds-react/daterange-picker";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
@@ -122,6 +124,10 @@ export const ControlledToggle: FunctionComponent<PreviewToggleProps> = (
   );
 };
 
+const [NOW, YESTERDAY, TOMORROW] = [new Date(), new Date(), new Date()];
+YESTERDAY.setDate(NOW.getDate() - 1);
+TOMORROW.setDate(NOW.getDate() + 1);
+
 export const CustomDisableDatePicker: FunctionComponent = () => {
   return (
     <DatePicker
@@ -130,3 +136,14 @@ export const CustomDisableDatePicker: FunctionComponent = () => {
     />
   );
 };
+
+export const CustomDisableDateRangePicker: FunctionComponent = () => {
+  return (
+    <DateRangePicker
+      defaultValue={{ from: YESTERDAY, to: TOMORROW }}
+      disabled={(date) => date.getDate() === 13}
+    />
+  );
+};
+
+export { NOW, YESTERDAY, TOMORROW };

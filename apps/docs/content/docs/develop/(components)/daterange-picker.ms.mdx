@@ -1,0 +1,327 @@
+---
+title: Pemilih Julat Tarikh
+description: Membolehkan pengguna memilih julat tarikh dari kalendar interaktif.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  DatePicker,
+  DateRangePicker,
+  CustomDisableDateRangePicker,
+  NOW,
+  YESTERDAY,
+  TOMORROW,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+export const DEFAULT_DATERANGE = { from: YESTERDAY, to: TOMORROW };
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose flex justify-center">
+    <DateRangePicker />
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DateRangePicker />
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-daterangepicker--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/daterange-picker.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import { DateRangePicker } from "@govtechmy/myds-react/date-picker";
+```
+
+```tsx copy
+export default () => <DateRangePicker />;
+```
+
+## Contoh
+
+### Saiz
+
+Gunakan prop `size` untuk menukar saiz pemilih julat tarikh!
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col items-center gap-3">
+      <DateRangePicker size="small" />
+      <DateRangePicker size="medium" />
+      <DateRangePicker size="large" />
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DateRangePicker size="small" />
+    <DateRangePicker size="medium" />
+    <DateRangePicker size="large" />
+    ```
+  </Tab>
+</Tabs>
+
+### Keadaan Tidak Terkawal vs Terkawal
+
+Untuk menggunakan pemilih julat tarikh dalam keadaan tidak terkawal, tetapkan prop `defaultValue` kepada nilai awal pemilih julat tarikh.
+
+Untuk menggunakan pemilih julat tarikh dalam keadaan terkawal, tetapkan prop `value` kepada nilai semasa pemilih julat tarikh dan sediakan pendengar acara `onValueChange` untuk mengendalikan perubahan.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+        <div>
+            Tidak Terkawal
+            <DateRangePicker defaultValue={{ from: YESTERDAY, to: TOMORROW }} />
+        </div>
+        <div>
+            Terkawal
+            <DateRangePicker value={{ from: YESTERDAY, to: TOMORROW }} />
+        </div>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    // Keadaan tidak terkawal
+    <DatePicker defaultValue={{ from: new Date(/* semalam */), to: new Date(/* esok */) }} />
+
+    // Keadaan terkawal
+    <DatePicker value={{ from: new Date(/* semalam */), to: new Date(/* esok */) }} />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Dilumpuhkan
+
+Terdapat banyak cara untuk berinteraksi dengan keadaan `disabled` Pemilih Julat Tarikh. Pemilih julat tarikh boleh dilumpuhkan sepenuhnya dengan menetapkan prop `disabled` kepada `true`.
+
+Untuk kawalan yang lebih halus pada tarikh yang hendak dilumpuhkan, anda boleh menghantar `Matcher | Matcher[]` yang mentakrifkan peraturan untuk melumpuhkan tarikh.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose space-y-2">
+      <div className="flex items-center gap-3">
+        Lumpuhkan semua tarikh
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} disabled />
+      </div>
+      <div className="flex items-center gap-3">
+        Lumpuhkan tarikh sebelum semalam
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} disabled={{ before: YESTERDAY }} />
+      </div>
+      <div className="flex items-center gap-3">
+        Lumpuhkan tarikh selepas esok
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} disabled={{ after: TOMORROW }} />
+      </div>
+      <div className="flex items-center gap-3">
+        Lumpuhkan tarikh di luar julat
+        <DateRangePicker
+          defaultValue={DEFAULT_DATERANGE}
+          disabled={{
+            before: new Date().setDate(new Date().getDate() - 1),
+            after: new Date().setDate(new Date().getDate() + 1),
+          }}
+        />
+      </div>
+      <div className="flex items-center flex-wrap gap-3">
+        Lumpuhkan tarikh mengikut hari dalam minggu (cth. Sabtu dan Ahad)
+        <DateRangePicker
+          defaultValue={DEFAULT_DATERANGE}
+          disabled={{
+            dayOfWeek: [0, 6],
+          }}
+        />
+      </div>
+      <div className="flex items-center gap-3">
+        Lumpuhkan tarikh mengikut fungsi panggilan balik (cth. lumpuhkan setiap 13hb bulan)
+        <CustomDisableDateRangePicker />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    // Lumpuhkan semua tarikh
+    <DateRangePicker defaultValue={{ from: new Date(/* semalam */), to: new Date(/* esok */) }} disabled />
+    
+    // Lumpuhkan tarikh sebelum semalam
+    <DateRangePicker defaultValue={{ from: new Date(/* semalam */), to: new Date(/* esok */) }} disabled={{ before: new Date(/* semalam */) }} />
+
+    // Lumpuhkan tarikh selepas esok
+    <DateRangePicker defaultValue={{ from: new Date(/* semalam */), to: new Date(/* esok */) }} disabled={{ after: new Date(/* esok */) }} />
+
+    // Lumpuhkan tarikh di luar julat
+    <DateRangePicker
+      defaultValue={{ from: new Date(/* semalam */), to: new Date(/* esok */) }}
+      disabled={{
+        before: new Date().setDate(new Date().getDate() - 1),
+        after: new Date().setDate(new Date().getDate() + 1),
+      }}
+    />
+
+    // Lumpuhkan tarikh mengikut hari dalam minggu (cth. Sabtu dan Ahad)
+    <DateRangePicker
+      defaultValue={{ from: new Date(/* semalam */), to: new Date(/* esok */) }}
+      disabled={{
+        dayOfWeek: [0, 6],
+      }}
+    />
+
+    // Lumpuhkan tarikh mengikut fungsi panggilan balik (cth. lumpuhkan setiap 13hb bulan)
+    <DateRangePicker
+      defaultValue={{ from: new Date(/* semalam */), to: new Date(/* esok */) }}
+      disabled={(date) => date.getDate() === 13}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Tahun Maksimum dan Minimum
+
+Anda boleh menetapkan tahun maksimum dan minimum untuk pemilih julat tarikh dengan menghantar prop `minYear` dan `maxYear`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center">
+      <DateRangePicker
+        defaultValue={DEFAULT_DATERANGE}
+        maxYear={2030}
+        minYear={2020}
+      />
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DateRangePicker
+      defaultValue={{
+        from: new Date(/* semalam */),
+        to: new Date(/* esok */),
+      }}
+      maxYear={2030}
+      minYear={2020}
+    />
+    ```
+  </Tab>
+</Tabs>
+
+### Susunan Tahun
+
+Anda boleh menetapkan susunan pengisihan tahun dalam dropdown tahun dengan menghantar prop `yearOrder`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        Menaik
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} yearOrder="asc" />
+      </div>
+      <div>
+        Menurun
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} yearOrder="desc" />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+```tsx
+<DatePicker defaultValue={{ from: new Date(/* semalam */), to: new Date(/* esok */) }} yearOrder="asc" />
+
+<DatePicker defaultValue={{ from: new Date(/* semalam */), to: new Date(/* esok */) }} yearOrder="desc" />
+```
+  </Tab>
+</Tabs>
+
+### Locale
+
+Komponen ini menyokong dwibahasa, anda boleh menghantar prop `locale` untuk menetapkan bahasa digunakan.
+
+Nilai lalai adalah `en` untuk English. Untuk menukar kepada Bahasa Melayu, tetapkan `ms`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        English
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} locale="en" />
+      </div>
+      <div>
+        Bahasa Melayu
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} locale="ms" />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+```tsx
+<DatePicker defaultValue={{ from: new Date(/* semalam */), to: new Date(/* esok */) }} locale="en" />
+
+<DatePicker defaultValue={{ from: new Date(/* semalam */), to: new Date(/* esok */) }} locale="ms" />
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+### DateRangePicker
+
+<TypeTable
+  type={{
+    size: {
+      description: "Saiz pemilih julat tarikh",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    defaultValue: {
+      description: "Keadaan awal pemilih julat tarikh (tidak terkawal)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    value: {
+      description: "Keadaan pemilih julat tarikh (terkawal)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    onValueChange: {
+      description: "Pendengar acara perubahan (terkawal)",
+      type: "(date: Date ) => void",
+    },
+    placeholder: {
+      description: "Teks pemegang tempat untuk pemilih julat tarikh",
+      type: "string",
+      default: "dd / mm / yyyy",
+    },
+    disabled: {
+      description: "Keadaan dilumpuhkan untuk pemilih julat tarikh",
+      type: "boolean | Matcher | Matcher[]",
+      default: "false",
+    },
+    maxYear: {
+      description: "Tahun maksimum untuk pemilih julat tarikh",
+      type: "number",
+      default: "2099",
+    },
+    minYear: {
+      description: "Tahun minimum untuk pemilih julat tarikh",
+      type: "number",
+      default: "1900",
+    },
+    yearOrder: {
+      description: "Susunan pengisihan untuk pemilihan tahun",
+      type: "asc | desc",
+      default: "asc",
+    },
+    locale: {
+      description: "Bahasa untuk pemilih julat tarikh",
+      type: "en | ms",
+      default: "en",
+    },
+  }}
+/>
