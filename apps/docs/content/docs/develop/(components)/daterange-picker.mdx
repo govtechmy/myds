@@ -72,9 +72,9 @@ Use the `size` prop to change the checkbox size!
 
 ### Uncontrolled vs Controlled State
 
-To use the date picker in the uncontrolled state, set the `defaultValue` prop to the initial value of the date picker.
+To use the daterange picker in the uncontrolled state, set the `defaultValue` prop to the initial value of the daterange picker.
 
-To use the date picker in the controlled state, set the `value` prop to the current value of the date picker and provide an `onValueChange` event listener to handle the change.
+To use the daterange picker in the controlled state, set the `value` prop to the current value of the daterange picker and provide an `onValueChange` event listener to handle the change.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
@@ -103,7 +103,7 @@ To use the date picker in the controlled state, set the `value` prop to the curr
 
 ### Disabled
 
-There are many ways to interact with DatePicker `disabled` state. Date picker can be disabled entirely by setting the `disabled` prop to `true`.
+There are many ways to interact with DateRangePicker `disabled` state. Daterange picker can be disabled entirely by setting the `disabled` prop to `true`.
 
 For a finer control on which dates to disable, you can pass a `Matcher | Matcher[]` that defines the rules for disabling dates.
 
@@ -187,7 +187,7 @@ For a finer control on which dates to disable, you can pass a `Matcher | Matcher
 
 ### Maximum and Minimum Year
 
-You can set the maximum and minimum year for the date picker by passing the `minYear` and `maxYear` props.
+You can set the maximum and minimum year for the daterange picker by passing the `minYear` and `maxYear` props.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
@@ -241,7 +241,7 @@ You can set the sorting order of the years in the year dropdown by passing the `
 
 ### Locale
 
-To support different locales, you can pass the `locale` prop to the date picker.
+To support different locales, you can pass the `locale` prop to the daterange picker.
 
 Default value is `en`. To switch to Bahasa Melayu, pass `ms`.
 
@@ -319,7 +319,7 @@ Default value is `en`. To switch to Bahasa Melayu, pass `ms`.
       default: "asc",
     },
     locale: {
-      description: "Locale for the date picker",
+      description: "Locale for the daterange picker",
       type: "en | ms",
       default: "en",
     },
