@@ -1,13 +1,11 @@
 import {
   AlertDialog,
-  AlertDialogClose,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogIcon,
+  AlertDialogAction,
   AlertDialogTitle,
   AlertDialogTrigger,
+  AlertDialogClose,
 } from "@govtechmy/myds-react/alert-dialog";
 import { Button } from "@govtechmy/myds-react/button";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -33,7 +31,7 @@ import { createStory } from "../utils";
  *       <AlertDialogTitle>Berjaya</AlertDialogTitle>
  *       <AlertDialogDescription>Dialog sedang ditunjukkan tanpa sebarang masalah.</AlertDialogDescription>
  *     </AlertDialogHeader>
- *     <AlertDialogFooter>
+ *     <AlertDialogAction>
  *       <AlertDialogClose>
  *         <Button variant="default-outline" size="medium">
  *           Batal
@@ -47,7 +45,7 @@ import { createStory } from "../utils";
  *           Teruskan
  *         </Button>
  *       </AlertDialogClose>
- *     </AlertDialogFooter>
+ *     </AlertDialogAction>
  *   </AlertDialogContent>
  * </AlertDialog>
  * ```
@@ -55,35 +53,33 @@ import { createStory } from "../utils";
 const meta: Meta = {
   title: "@govtechmy/myds-react/AlertDialog",
   component: ({ triggerButtonVariant, variant, theme }) => (
-    <AlertDialog>
+    <AlertDialog variant={variant}>
       <AlertDialogTrigger className={theme}>
         <Button variant={triggerButtonVariant} size="medium">
           Tunjuk Dialog
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent className={theme}>
-        <AlertDialogHeader>
-          <AlertDialogIcon variant={variant} />
-          <AlertDialogTitle>
-            {variant === "success"
-              ? "Berjaya"
-              : variant === "warning"
-                ? "Perhatian"
-                : variant === "danger"
-                  ? "Bahaya"
-                  : null}
-          </AlertDialogTitle>
-          <AlertDialogDescription>
-            {variant === "success"
-              ? "Dialog sedang ditunjukkan tanpa sebarang masalah."
-              : variant === "warning"
-                ? "Mengubah tetapan ini akan mempengaruhi cara perisian anda berfungsi. Adakah anda mahu meneruskan?"
-                : variant === "danger"
-                  ? "Tindakan ini akan memadamkan data secara kekal dan tidak dapat dikembalikan. Adakah anda mahu meneruskan?"
-                  : null}
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter className={theme}>
+        <AlertDialogTitle>
+          {variant === "success"
+            ? "Berjaya"
+            : variant === "warning"
+              ? "Perhatian"
+              : variant === "danger"
+                ? "Bahaya"
+                : null}
+        </AlertDialogTitle>
+        <AlertDialogDescription>
+          {variant === "success"
+            ? "Dialog sedang ditunjukkan tanpa sebarang masalah."
+            : variant === "warning"
+              ? "Mengubah tetapan ini akan mempengaruhi cara perisian anda berfungsi. Adakah anda mahu meneruskan?"
+              : variant === "danger"
+                ? "Tindakan ini akan memadamkan data secara kekal dan tidak dapat dikembalikan. Adakah anda mahu meneruskan?"
+                : null}
+        </AlertDialogDescription>
+
+        <AlertDialogAction>
           <AlertDialogClose>
             <Button variant="default-outline" size="medium">
               {variant === "warning" ? "Kembali" : "Batal"}
@@ -97,7 +93,7 @@ const meta: Meta = {
               {variant === "success" ? "Teruskan" : "Ya, teruskan"}
             </Button>
           </AlertDialogClose>
-        </AlertDialogFooter>
+        </AlertDialogAction>
       </AlertDialogContent>
     </AlertDialog>
   ),
@@ -119,12 +115,12 @@ const meta: Meta = {
       name: "Trigger Button Variant",
       description: "The variant of the alert dialog trigger",
       control: "inline-radio",
-      options: ["primary-fill", "danger-fill"],
+      options: ["primary-fill", "danger-fill", "default-outline"],
     },
   },
 } satisfies Meta<{
   triggerButtonVariant?: "primary-fill" | "danger-fill";
-  variant: "success" | "warning" | "danger";
+  variant: "default" | "info" | "success" | "warning" | "danger";
   theme?: "light" | "dark";
 }>;
 
