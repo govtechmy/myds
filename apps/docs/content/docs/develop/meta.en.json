@@ -21,6 +21,7 @@
     "(components)/date-picker",
     "(components)/daterange-picker",
     "(components)/pagination",
+    "(components)/pill",
     "(components)/radio",
     "(components)/skiplink",
     "(components)/spinner",
