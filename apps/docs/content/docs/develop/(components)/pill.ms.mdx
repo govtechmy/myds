@@ -67,7 +67,7 @@ Gunakan prop `size` untuk menukar saiz pil.
 
 ### Dengan Butang "x" Mengekori
 
-Hantarkan fungsi panggil balik ke prop `onDelete` untuk menunjukkan butang "x" di belakang.
+Hantarkan fungsi panggil balik ke prop `onDismiss` untuk menunjukkan butang "x" di belakang.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex justify-center items-end gap-1">
@@ -77,14 +77,14 @@ Hantarkan fungsi panggil balik ke prop `onDelete` untuk menunjukkan butang "x" d
     ```tsx 
     import { Pill } from "@govtechmy/myds-react/pill";
 
-    <Pill onDelete={...}>Dengan butang "x" mengekori</Pill>
+    <Pill onDismiss={...}>Dengan butang "x" mengekori</Pill>
     ```
   </Tab>
 </Tabs>
 
 ## Dinyahaktifkan
 
-Pil boleh dinyahaktifkan dengan menetapkan prop `disabled` kepada `true`. Apabila dinyahaktifkan, pil tidak akan interaktif. Jika prop `onDelete` ditetapkan, butang "x" akan disembunyikan.
+Pil boleh dinyahaktifkan dengan menetapkan prop `disabled` kepada `true`. Apabila dinyahaktifkan, pil tidak akan interaktif. Jika prop `onDismiss` ditetapkan, butang "x" akan disembunyikan.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex justify-center items-end gap-1">
@@ -95,8 +95,8 @@ Pil boleh dinyahaktifkan dengan menetapkan prop `disabled` kepada `true`. Apabil
     ```tsx 
     import { Pill } from "@govtechmy/myds-react/pill";
 
-    <Pill onDelete={...}>Enabled</Pill>
-    <Pill disabled onDelete={...}>Disabled</Pill>
+    <Pill onDismiss={...}>Enabled</Pill>
+    <Pill disabled onDismiss={...}>Disabled</Pill>
     ```
   </Tab>
 </Tabs>
@@ -117,7 +117,7 @@ Pil boleh dinyahaktifkan dengan menetapkan prop `disabled` kepada `true`. Apabil
       type: "boolean",
       default: "false",
     },
-    onDelete: {
+    onDismiss: {
       description: 'Callback function yang dipanggil apabila butang "x" mengekori diklik',
       type: "function",
     },

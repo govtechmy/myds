@@ -67,7 +67,7 @@ Use the `size` prop to change the pill size.
 
 ### With Trailing "x" Button
 
-Pass a callback function to the `onDelete` prop to show a trailing "x" button.
+Pass a callback function to the `onDismiss` prop to show a trailing "x" button.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex justify-center items-end gap-1">
@@ -77,14 +77,14 @@ Pass a callback function to the `onDelete` prop to show a trailing "x" button.
     ```tsx 
     import { Pill } from "@govtechmy/myds-react/pill";
 
-    <Pill onDelete={...}>With trailing "x" button</Pill>
+    <Pill onDismiss={...}>With trailing "x" button</Pill>
     ```
   </Tab>
 </Tabs>
 
 ## Disabled
 
-Pill can be disabled by setting the `disabled` prop to `true`. When disabled, the pill will not be interactive. If the `onDelete` prop is set, the "x" button will be hidden.
+Pill can be disabled by setting the `disabled` prop to `true`. When disabled, the pill will not be interactive. If the `onDismiss` prop is set, the "x" button will be hidden.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex justify-center items-end gap-1">
@@ -95,8 +95,8 @@ Pill can be disabled by setting the `disabled` prop to `true`. When disabled, th
     ```tsx 
     import { Pill } from "@govtechmy/myds-react/pill";
 
-    <Pill onDelete={...}>Enabled</Pill>
-    <Pill disabled onDelete={...}>Disabled</Pill>
+    <Pill onDismiss={...}>Enabled</Pill>
+    <Pill disabled onDismiss={...}>Disabled</Pill>
     ```
   </Tab>
 </Tabs>
@@ -117,7 +117,7 @@ Pill can be disabled by setting the `disabled` prop to `true`. When disabled, th
       type: "boolean",
       default: "false",
     },
-    onDelete: {
+    onDismiss: {
       description: 'A callback function that is called when the trailing "x" button is clicked',
       type: "function",
     },
