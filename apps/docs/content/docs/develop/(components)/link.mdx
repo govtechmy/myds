@@ -1,0 +1,86 @@
+---
+title: Link
+description: This component extends the <a> HTML element (or anchor element) and is used to display hyperlinks.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Link } from "@/components/myds";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="justify-center relative not-prose">
+      <Link href="https://design.digital.gov.my" primary newTab underline="always">
+        {/* Text-inherit for span to overwrite Fumadocs text color */}
+        <span className="text-inherit">Malaysia's Official Design System</span>
+      </Link>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { Link } from "@govtechmy/myds-react/link";
+
+    <Link href="https://design.digital.gov.my" primary newTab underline="always">
+      {/* The link's destination should be indicated here. */}
+      Malaysia's Official Design System
+    </Link>
+    ```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-link--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/link.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import { Link } from "@govtechmy/myds-react/link";
+```
+
+```tsx copy
+export default () => (
+  <Link href="https://design.digital.gov.my" primary newTab underline="always">
+    {/* Content within each <Link> should indicate the link's destination. */}
+    Malaysia's Official Design System
+  </Link>
+);
+```
+
+## Props
+
+### Link
+
+<TypeTable
+  type={{
+    href: {
+      description: "The URL that the hyperlink points to.",
+      type: "string",
+      default: "-",
+    },
+    newTab: {
+      description: "Controls whether the link opens in a new tab.",
+      type: "boolean",
+      default: "false",
+    },
+    primary: {
+      description: "Sets the text colour to primary or inherit it from parent.",
+      type: "boolean",
+      default: "false",
+    },
+    underline: {
+      description: "Controls when the link should have an underline.",
+      type: "enum",
+      typeDescription: "always | hover | none",
+      default: "always",
+    },
+  }}
+/>

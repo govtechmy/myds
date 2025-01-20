@@ -9,7 +9,6 @@
 
     "---Komponen 🚧---",
     "(components)/accordion",
-    "(components)/anchor",
     "(components)/announcebar",
     "(components)/banner",
     "(components)/breadcrumb",
@@ -19,6 +18,7 @@
     "(components)/cookies-banner",
     "(components)/date-field",
     "(components)/date-picker",
+    "(components)/link",
     "(components)/pagination",
     "(components)/radio",
     "(components)/skiplink",
