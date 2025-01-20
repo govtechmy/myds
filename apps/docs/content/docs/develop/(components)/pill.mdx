@@ -82,6 +82,25 @@ Pass a callback function to the `onDelete` prop to show a trailing "x" button.
   </Tab>
 </Tabs>
 
+## Disabled
+
+Pill can be disabled by setting the `disabled` prop to `true`. When disabled, the pill will not be interactive. If the `onDelete` prop is set, the "x" button will be hidden.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center items-end gap-1">
+      <PillWithTrailingXButton>Enabled</PillWithTrailingXButton>
+      <PillWithTrailingXButton disabled>Disabled</PillWithTrailingXButton>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { Pill } from "@govtechmy/myds-react/pill";
+
+    <Pill onDelete={...}>Enabled</Pill>
+    <Pill disabled onDelete={...}>Disabled</Pill>
+    ```
+  </Tab>
+</Tabs>
+
 ## Props
 
 ### Pill

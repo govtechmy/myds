@@ -82,6 +82,25 @@ Hantarkan fungsi panggil balik ke prop `onDelete` untuk menunjukkan butang "x" d
   </Tab>
 </Tabs>
 
+## Dinyahaktifkan
+
+Pil boleh dinyahaktifkan dengan menetapkan prop `disabled` kepada `true`. Apabila dinyahaktifkan, pil tidak akan interaktif. Jika prop `onDelete` ditetapkan, butang "x" akan disembunyikan.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center items-end gap-1">
+      <PillWithTrailingXButton>Enabled</PillWithTrailingXButton>
+      <PillWithTrailingXButton disabled>Disabled</PillWithTrailingXButton>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { Pill } from "@govtechmy/myds-react/pill";
+
+    <Pill onDelete={...}>Enabled</Pill>
+    <Pill disabled onDelete={...}>Disabled</Pill>
+    ```
+  </Tab>
+</Tabs>
+
 ## Props
 
 ### Pill
