@@ -6,6 +6,7 @@ import {
   ReactElement,
   JSXElementConstructor,
   cloneElement,
+  ReactNode,
 } from "react";
 import { CrossIcon } from "../icons/cross";
 import { clx } from "../utils";
@@ -13,22 +14,28 @@ import { button_cva } from "./button";
 import { cva } from "class-variance-authority";
 
 const Dialog = DialogPrimitive.Root;
+type DialogProps = ComponentProps<typeof Dialog>;
 
 /*========================================================================================================================*/
 
 const DialogTrigger = DialogPrimitive.Trigger;
-const DialogClose = DialogPrimitive.Close;
+type DialogTriggerProps = ComponentProps<typeof DialogTrigger>;
 
 /*========================================================================================================================*/
 
-interface DialogContentProps
+const DialogClose = DialogPrimitive.Close;
+type DialogCloseProps = ComponentProps<typeof DialogClose>;
+
+/*========================================================================================================================*/
+
+interface DialogBodyProps
   extends ComponentProps<typeof DialogPrimitive.Content> {
   dismissible?: boolean;
   onDismiss?: () => void;
 }
 
-const DialogContent: ForwardRefExoticComponent<DialogContentProps> = forwardRef(
-  ({ className, children, dismissible, onDismiss, ...props }, ref) => {
+const DialogBody: ForwardRefExoticComponent<DialogBodyProps> = forwardRef(
+  ({ className, children, dismissible = true, onDismiss, ...props }, ref) => {
     return (
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay
@@ -43,7 +50,7 @@ const DialogContent: ForwardRefExoticComponent<DialogContentProps> = forwardRef(
         <DialogPrimitive.Content
           ref={ref}
           className={clx(
-            "fixed left-[50%] top-[50%] z-[1000] translate-x-[-50%] translate-y-[-50%]",
+            "fixed left-[50%] top-[50%] z-[1000] box-border translate-x-[-50%] translate-y-[-50%]",
             "w-full min-w-[300px] max-w-[calc(100dvw-36px)] sm:max-w-lg",
             "flex flex-col items-start",
             "rounded-lg shadow-lg",
@@ -54,6 +61,9 @@ const DialogContent: ForwardRefExoticComponent<DialogContentProps> = forwardRef(
             "duration-200",
             className,
           )}
+          onInteractOutside={
+            !dismissible ? (e) => e.preventDefault() : undefined
+          }
           {...props}
         >
           {children}
@@ -81,16 +91,44 @@ const DialogContent: ForwardRefExoticComponent<DialogContentProps> = forwardRef(
 
 /*========================================================================================================================*/
 
-interface DialogHeaderProps extends ComponentProps<"div"> {}
+interface DialogHeaderProps extends ComponentProps<"div"> {
+  border?: boolean;
+}
+
+const dialog_header_cva = cva(
+  "flex w-full flex-col text-left px-6 pt-6 pb-4.5",
+  {
+    variants: {
+      border: {
+        true: "border-otl-gray-200 border-b",
+        false: "",
+      },
+    },
+    defaultVariants: {
+      border: false,
+    },
+  },
+);
 
 const DialogHeader: ForwardRefExoticComponent<DialogHeaderProps> = forwardRef(
-  ({ className, ...props }, ref) => {
+  ({ className, border, ...props }, ref) => {
     return (
       <div
         ref={ref}
-        className={clx("flex w-full flex-col p-6 text-left", className)}
+        className={clx(dialog_header_cva({ border }), className)}
         {...props}
       />
+    );
+  },
+);
+/*========================================================================================================================*/
+
+interface DialogContentProps extends ComponentProps<"div"> {}
+
+const DialogContent: ForwardRefExoticComponent<DialogContentProps> = forwardRef(
+  ({ className, ...props }, ref) => {
+    return (
+      <div ref={ref} className={clx("w-full p-6", className)} {...props} />
     );
   },
 );
@@ -99,23 +137,56 @@ const DialogHeader: ForwardRefExoticComponent<DialogHeaderProps> = forwardRef(
 
 interface DialogFooterProps extends ComponentProps<"div"> {
   border?: boolean;
-  fillWidth?: boolean;
+  align?: "start" | "full" | "end";
+  action?: ReactNode;
 }
 
+const dialog_footer_cva = cva(
+  ["flex w-full justify-between items-end p-6 gap-3"],
+  {
+    variants: {
+      align: {
+        start: "flex-row-reverse",
+        full: "",
+        end: "",
+      },
+      border: {
+        true: "border-otl-gray-200 border-t",
+        false: "",
+      },
+    },
+    defaultVariants: {
+      align: "end",
+      border: false,
+    },
+  },
+);
+const dialog_action_cva = cva(["flex flex-row gap-3 grow"], {
+  variants: {
+    align: {
+      start: "justify-end flex-row-reverse",
+      full: "justify-center grow [&>*]:flex-1 [&>*]:place-content-center",
+      end: "justify-end",
+    },
+  },
+  defaultVariants: {
+    align: "end",
+  },
+});
+
 const DialogFooter: ForwardRefExoticComponent<DialogFooterProps> = forwardRef(
-  ({ border, fillWidth, className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={clx(
-        "flex flex-row justify-end gap-3",
-        "w-full self-end p-6",
-        border ? "border-otl-gray-200 border-t" : "pt-0",
-        fillWidth && "[&>*]:flex-1 [&>*]:place-content-center",
-        className,
-      )}
-      {...props}
-    />
-  ),
+  ({ action, border, className, align = "end", ...props }, ref) => {
+    return (
+      <div className={clx(dialog_footer_cva({ border, align }), className)}>
+        {action}
+        <div
+          ref={ref}
+          className={clx(dialog_action_cva({ align }), className)}
+          {...props}
+        />
+      </div>
+    );
+  },
 );
 
 /*========================================================================================================================*/
@@ -161,7 +232,7 @@ const DialogDescription: ForwardRefExoticComponent<DialogDescriptionProps> =
  * @returns {ReactElement} The cloned child element with the forwarded ref and applied class name.
  */
 
-const dialog_icon_cva = cva("block stroke-[1.5px] size-[30px] mb-4 shrink-0", {
+const dialog_icon_cva = cva("block stroke-[1.5px] size-[30px] shrink-0", {
   variants: {
     variant: {
       default: "",
@@ -193,7 +264,7 @@ const DialogIcon: ForwardRefExoticComponent<DialogIconProps> = forwardRef(
 
 /*========================================================================================================================*/
 
-DialogContent.displayName = DialogPrimitive.Content.displayName;
+DialogBody.displayName = DialogPrimitive.Content.displayName;
 DialogHeader.displayName = "DialogHeader";
 DialogFooter.displayName = "DialogFooter";
 DialogTitle.displayName = DialogPrimitive.Title.displayName;
@@ -206,6 +277,7 @@ export {
   Dialog,
   DialogIcon,
   DialogClose,
+  DialogBody,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -214,6 +286,10 @@ export {
   DialogTrigger,
 };
 export type {
+  DialogProps,
+  DialogTriggerProps,
+  DialogCloseProps,
+  DialogBodyProps,
   DialogContentProps,
   DialogHeaderProps,
   DialogFooterProps,

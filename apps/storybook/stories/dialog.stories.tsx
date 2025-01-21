@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@govtechmy/myds-react/button";
 import {
   Dialog,
@@ -8,27 +8,20 @@ import {
   DialogFooter,
   DialogHeader,
   DialogIcon,
+  DialogBody,
   DialogTitle,
   DialogTrigger,
+  DialogProps,
+  DialogBodyProps,
+  DialogFooterProps,
+  DialogHeaderProps,
 } from "@govtechmy/myds-react/dialog";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
-import { WarningCircleIcon } from "@govtechmy/myds-react/icon";
 
 /**
  * ### Overview
  * A window placed on top of the primary window or another dialog.
- *
- * Compose your dialog like so:
- * ```
- * <Dialog />
- *   <DialogTrigger />
- *   <DialogContent />
- *     <DialogHeader />
- *       <DialogTitle />
- *       <DialogDescription />
- *     <DialogFooter />
- * ```
  *
  * ### Usage
  * ```tsx
@@ -42,122 +35,202 @@ import { WarningCircleIcon } from "@govtechmy/myds-react/icon";
  *   DialogTrigger,
  * } from "@govtechmy/myds-react/dialog";
  *
- * <Dialog>
- *   <DialogTrigger>
- *     <Button variant="danger-fill" size="medium">
- *       Padam data
- *     </Button>
- *   </DialogTrigger>
- *   <DialogContent withCloseButton={true}>
- *     <DialogHeader>
- *       <DialogTitle>Adakah anda pasti?</DialogTitle>
- *       <DialogDescription>
- *         Tindakan ini tidak boleh dibatalkan. Ini akan menghapuskan data anda
- *         dari pelayar anda.
- *       </DialogDescription>
- *     </DialogHeader>
- *     <DialogFooter
- *       withBorderTop={false}
- *       fillWidth={false}
- *     >
- *       <DialogClose asChild>
- *         <Button variant="default-outline" size="medium">
- *           Batal
- *         </Button>
- *       </DialogClose>
- *       <DialogClose asChild>
+ *    <Dialog>
+ *       <DialogTrigger>
  *         <Button variant="danger-fill" size="medium">
- *           Ya, teruskan
+ *           Padam data
  *         </Button>
- *       </DialogClose>
- *     </DialogFooter>
- *   </DialogContent>
- * </Dialog>
+ *       </DialogTrigger>
+ *       <DialogBody>
+ *         <DialogHeader>
+ *           <DialogTitle>Adakah anda pasti?</DialogTitle>
+ *         </DialogHeader>
+ *
+ *         <DialogContent>
+ *           <DialogDescription>
+ *             Tindakan ini tidak boleh dibatalkan. Ini akan menghapuskan data
+ *             anda dari pelayar anda.
+ *           </DialogDescription>
+ *         </DialogContent>
+ *
+ *         <DialogFooter
+ *           action={
+ *             <DialogClose asChild>
+ *               <Button variant="danger-ghost" size="small">
+ *                 Lapor kejadian
+ *               </Button>
+ *             </DialogClose>
+ *           }
+ *         >
+ *           <DialogClose asChild>
+ *             <Button variant="default-outline" size="medium">
+ *               Batal
+ *             </Button>
+ *           </DialogClose>
+ *           <DialogClose asChild>
+ *             <Button variant="danger-fill" size="medium">
+ *               Ya, teruskan
+ *             </Button>
+ *           </DialogClose>
+ *         </DialogFooter>
+ *       </DialogBody>
+ *     </Dialog>
  * ```
  */
+// @ts-expect-error
 const meta: Meta = {
   title: "@govtechmy/myds-react/Dialog",
-  component: ({
-    withCloseButton,
-    withFooterTopBorder,
-    withFooterFillWidth,
-    theme,
-  }) => (
-    <Dialog>
-      <DialogTrigger className={theme}>
-        <Button variant="danger-fill" size="medium">
-          Padam data
-        </Button>
-      </DialogTrigger>
-      <DialogContent withCloseButton={withCloseButton} className={theme}>
-        <DialogHeader>
-          <DialogIcon variant="danger">
-            <WarningCircleIcon />
-          </DialogIcon>
-          <DialogTitle>Adakah anda pasti?</DialogTitle>
-          <DialogDescription>
-            Tindakan ini tidak boleh dibatalkan. Ini akan menghapuskan data anda
-            dari pelayar anda.
-          </DialogDescription>
-        </DialogHeader>
-        <DialogFooter
-          border={withFooterTopBorder}
-          fillWidth={withFooterFillWidth}
-        >
-          <DialogClose asChild>
-            <Button variant="default-outline" size="medium">
-              Batal
-            </Button>
-          </DialogClose>
-          <DialogClose asChild>
-            <Button variant="danger-fill" size="medium">
-              Ya, teruskan
-            </Button>
-          </DialogClose>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  ),
+  component: ({ dismissible, border, align, border_header }) => {
+    return (
+      <Dialog>
+        <DialogTrigger>
+          <Button variant="danger-fill" size="medium">
+            Padam data
+          </Button>
+        </DialogTrigger>
+        <DialogBody dismissible={dismissible}>
+          <DialogHeader border={border_header}>
+            <DialogTitle>Adakah anda pasti?</DialogTitle>
+          </DialogHeader>
+
+          <DialogContent>
+            <DialogDescription>
+              Tindakan ini tidak boleh dibatalkan. Ini akan menghapuskan data
+              anda dari pelayar anda.
+            </DialogDescription>
+          </DialogContent>
+
+          <DialogFooter
+            border={border}
+            align={align}
+            action={
+              <DialogClose asChild>
+                <Button variant="danger-ghost" size="small">
+                  Lapor kejadian
+                </Button>
+              </DialogClose>
+            }
+          >
+            <DialogClose asChild>
+              <Button variant="default-outline" size="medium">
+                Batal
+              </Button>
+            </DialogClose>
+            <DialogClose asChild>
+              <Button variant="danger-fill" size="medium">
+                Ya, teruskan
+              </Button>
+            </DialogClose>
+          </DialogFooter>
+        </DialogBody>
+      </Dialog>
+    );
+  },
   parameters: {
     layout: "centered",
   },
   args: {
-    withCloseButton: true,
-    withFooterTopBorder: false,
-    withFooterFillWidth: false,
+    open: false,
+    dismissible: true,
+    border: false,
+    border_header: true,
+    align: "end",
+    defaultOpen: false,
+    onDismiss: () => {},
+    action: "",
   },
   argTypes: {
-    withCloseButton: {
-      name: "Close button",
+    open: {
+      description: "Controls the visibility of the dialog (controlled)",
+      control: {
+        type: "boolean",
+      },
+      table: {
+        category: "Dialog",
+      },
+    },
+    onOpenChange: {
+      description:
+        "Event listener for when the dialog is opened or closed (controlled)",
+      action: "onOpenChange",
+      control: undefined,
+      table: {
+        category: "Dialog",
+      },
+    },
+    defaultOpen: {
+      description: "Initial state of the dialog (uncontrolled)",
+      control: {
+        type: "boolean",
+      },
+      table: {
+        category: "Dialog",
+      },
+    },
+    dismissible: {
       description: "The dialog should have a close button",
       defaultValue: true,
       control: {
         type: "boolean",
       },
+      table: {
+        category: "DialogBody",
+      },
     },
-    withFooterTopBorder: {
-      name: "Top border (footer)",
+    onDismiss: {
+      description: "Event listener for when the dialog is dismissed",
+      action: "onDismiss",
+      control: undefined,
+      table: {
+        category: "DialogBody",
+      },
+    },
+    border_header: {
+      name: "border",
+      description: "The header should have a bottom border",
+      defaultValue: false,
+      control: {
+        type: "boolean",
+      },
+      table: {
+        category: "DialogHeader",
+      },
+    },
+    border: {
       description: "The footer should have a top border",
       defaultValue: false,
       control: {
         type: "boolean",
       },
+      table: {
+        category: "DialogFooter",
+      },
     },
-    withFooterFillWidth: {
-      name: "Fill Width (footer)",
+
+    action: {
+      description:
+        "The footer action space. Opposite to action buttons (children)",
+      action: "action",
+      // @ts-expect-error
+      type: "ReactNode",
+      table: {
+        category: "DialogFooter",
+      },
+    },
+    align: {
       description: "The footer children should fill up the available width",
-      defaultValue: false,
-      control: {
-        type: "boolean",
+      control: "inline-radio",
+      options: ["start", "full", "end"],
+      table: {
+        category: "DialogFooter",
       },
     },
   },
-} satisfies Meta<{
-  withCloseButton?: boolean;
-  withFooterTopBorder?: boolean;
-  withFooterFillWidth?: boolean;
-  theme?: "light" | "dark";
-}>;
+} satisfies Meta<
+  DialogProps &
+    DialogBodyProps &
+    DialogFooterProps & { border_header: DialogHeaderProps["border"] }
+>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -166,12 +239,12 @@ type Story = StoryObj<typeof meta>;
  * This story represents the dialog component with default variant.
  */
 export const DefaultLight: Story = createStory({
-  withCloseButton: true,
+  dismissible: true,
 });
 
 export const DefaultDark: Story = createStory(
   {
-    withCloseButton: true,
+    dismissible: true,
     theme: "dark",
   },
   "dark",
