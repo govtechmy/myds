@@ -56,9 +56,9 @@ interface AlertDialogActionProps extends ComponentProps<typeof DialogFooter> {}
 const AlertDialogAction: ForwardRefExoticComponent<AlertDialogActionProps> =
   forwardRef(({ children, className, ...props }) => {
     return (
-      <AlertDialogAction className={clx("p-0 pt-4", className)} {...props}>
+      <DialogFooter className={clx("p-0 pt-6", className)} {...props}>
         {children}
-      </AlertDialogAction>
+      </DialogFooter>
     );
   });
 

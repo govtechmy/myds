@@ -67,6 +67,7 @@ const DialogContent: ForwardRefExoticComponent<DialogContentProps> = forwardRef(
                 "text-txt-black-900",
                 "disabled:pointer-events-none",
               )}
+              onClick={onDismiss}
             >
               <CrossIcon className="size-5 stroke-current" />
               <span className="sr-only">Close</span>
@@ -87,12 +88,7 @@ const DialogHeader: ForwardRefExoticComponent<DialogHeaderProps> = forwardRef(
     return (
       <div
         ref={ref}
-        className={clx(
-          "flex w-full flex-col space-y-1.5",
-          "p-[1.5rem]",
-          "text-left",
-          className,
-        )}
+        className={clx("flex w-full flex-col p-6 text-left", className)}
         {...props}
       />
     );
@@ -111,10 +107,8 @@ const DialogFooter: ForwardRefExoticComponent<DialogFooterProps> = forwardRef(
     <div
       ref={ref}
       className={clx(
-        "self-end",
-        "w-full",
-        "flex flex-row justify-end gap-[.75rem]",
-        "p-[1.5rem]",
+        "flex flex-row justify-end gap-3",
+        "w-full self-end p-6",
         border ? "border-otl-gray-200 border-t" : "pt-0",
         fillWidth && "[&>*]:flex-1 [&>*]:place-content-center",
         className,
