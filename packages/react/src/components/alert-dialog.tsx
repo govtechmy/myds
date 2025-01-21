@@ -1,5 +1,6 @@
 import {
   Dialog,
+  DialogBody,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -56,14 +57,14 @@ interface AlertDialogActionProps extends ComponentProps<typeof DialogFooter> {}
 const AlertDialogAction: ForwardRefExoticComponent<AlertDialogActionProps> =
   forwardRef(({ children, className, ...props }) => {
     return (
-      <DialogFooter className={clx("p-0 pt-6", className)} {...props}>
+      <DialogFooter className={clx("px-0 pb-0", className)} {...props}>
         {children}
       </DialogFooter>
     );
   });
 
 const AlertDialogContent: ForwardRefExoticComponent<
-  ComponentProps<typeof DialogContent>
+  ComponentProps<typeof DialogBody>
 > = forwardRef(({ children, ...props }, ref) => {
   const { variant } = useContext(AlertDialogContext);
 
@@ -91,14 +92,14 @@ const AlertDialogContent: ForwardRefExoticComponent<
   } as const;
 
   return (
-    <DialogContent ref={ref} {...props}>
-      <DialogHeader>
-        <DialogIcon variant={map[variant].variant}>
+    <DialogBody ref={ref} {...props}>
+      <DialogContent>
+        <DialogIcon variant={map[variant].variant} className="mb-4">
           {map[variant].icon}
         </DialogIcon>
-        {children}
-      </DialogHeader>
-    </DialogContent>
+        <div className="space-y-2">{children}</div>
+      </DialogContent>
+    </DialogBody>
   );
 });
 
