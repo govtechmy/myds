@@ -3,9 +3,9 @@ name: "publish"
 on:
   workflow_dispatch:
 
-  push:
-    branches:
-      - "feat/publish"
+  # push:
+  #   branches:
+  #     - "feat/publish"
   # paths:
   #   - "packages/react/**"
 
@@ -36,8 +36,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-      # - name: Build @govtechmy/myds-react
-      #   run: pnpm build --filter=@govtechmy/myds-react
+
+      - name: Build @govtechmy/myds-react
+        run: pnpm build --filter=@govtechmy/myds-react
 
       - name: Create PR to Publish stable package
         id: changeset

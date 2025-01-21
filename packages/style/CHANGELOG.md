@@ -1,5 +1,11 @@
 # @govtechmy/myds-style
 
+## 0.0.3
+
+### Patch Changes
+
+- 97ed561: export tailwind config
+
 ## 0.0.2
 
 ### Patch Changes

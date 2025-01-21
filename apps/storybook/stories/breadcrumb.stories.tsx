@@ -22,7 +22,6 @@ import React from "react";
  * ```ts
  * import {
  *    Breadcrumb,
- *    BreadcrumbList,
  *    BreadcrumbItem,
  *    BreadcrumbLink,
  *    BreadcrumbPage,
@@ -31,7 +30,6 @@ import React from "react";
  *  } from "@govtechmy/myds-react/breadcrumb";
  *
  * <Breadcrumb>
- *  <BreadcrumbList>
  *    <BreadcrumbItem>
  *      <BreadcrumbLink href={routes.home}>
  *          Home
@@ -43,7 +41,6 @@ import React from "react";
  *        Your Page
  *       </BreadcrumbPage>
  *     </BreadcrumbItem>
- *  </BreadcrumbList>
  * </Breadcrumb>
  * ```
  */

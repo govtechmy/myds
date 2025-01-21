@@ -1,15 +1,175 @@
 ---
-title: Checkbox
-description: Checkbox
+title: Kotak Semak
+description: Membolehkan pengguna membuat pilihan binari, seperti memilih atau tidak memilih pilihan. Ia biasanya digunakan dalam borang, tetapan, dan penapis untuk menangkap input dan keutamaan pengguna.
 ---
 
-import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import { Checkbox, Label } from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
-<Callout
-  type="info"
-  title="Note"
-  className="bg-bg-primary-50 text-txt-primary border-transparent"
-  icon={<InfoIcon className="size-5" />}
->
-  Dalam pembinaan
-</Callout>
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose flex justify-center">
+    <Checkbox defaultChecked />
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Checkbox defaultChecked />
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-checkbox--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/checkbox.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import { Checkbox } from "@govtechmy/myds-react/checkbox";
+```
+
+```tsx copy
+export default () => <Checkbox />;
+```
+
+## Contoh
+
+### Saiz
+
+Gunakan prop `size` untuk menukar saiz kotak semak!
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col items-center gap-3">
+      <Checkbox defaultChecked size="small" />
+      <Checkbox defaultChecked size="medium" />
+      <Checkbox defaultChecked size="large" />
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Checkbox defaultChecked size="small" />
+    <Checkbox defaultChecked size="medium" />
+    <Checkbox defaultChecked size="large" />
+    ```
+  </Tab>
+</Tabs>
+
+### Keadaan Tidak Terkawal vs Terkawal
+
+Prop `checked` membolehkan anda mengawal keadaan kotak semak. Jika anda tidak menyediakan prop `checked`, kotak semak akan tidak terkawal.
+
+Untuk menguruskan keadaan kotak semak terkawal, anda perlu menyediakan prop `checked` dan mengendalikannya melalui pendengar acara `onCheckedChange`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col items-center">
+      <Label className="flex items-center gap-2">
+        <Checkbox defaultChecked />
+        <span>Keadaan tidak terkawal</span>
+      </Label>
+      <Label className="flex items-center gap-2">
+        <Checkbox checked={true} />
+        <span>Keadaan terkawal</span>
+      </Label>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    // Keadaan tidak terkawal
+    <Label>
+      <Checkbox defaultChecked />
+      <span>Keadaan tidak terkawal</span>
+    </Label>
+
+    // Keadaan terkawal
+    <Label>
+      <Checkbox checked={true} />
+      <span>Keadaan terkawal</span>
+    </Label>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Dilumpuhkan
+
+Kotak semak boleh dilumpuhkan dengan menetapkan prop `disabled` kepada `true`. Apabila dilumpuhkan, kotak semak tidak akan interaktif.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center">
+      <Label className="flex items-center gap-2">
+        <Checkbox defaultChecked disabled />
+        <span>Keadaan dilumpuhkan</span>
+      </Label>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Label>
+      <Checkbox defaultChecked disabled />
+      <span>Keadaan dilumpuhkan</span>
+    </Label>
+    ```
+  </Tab>
+</Tabs>
+
+### Tidak Menentu
+
+Keadaan tidak menentu digunakan apabila kotak semak adalah sebahagian daripada kumpulan kotak semak dan beberapa kotak semak dipilih manakala yang lain tidak. Ia biasanya digunakan dalam kotak semak induk untuk menunjukkan bahawa beberapa kotak semak anaknya dipilih.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center">
+      <Label className="flex items-center gap-2">
+        <Checkbox defaultChecked="indeterminate" />
+        <span>Keadaan tidak menentu</span>
+      </Label>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Label>
+      <Checkbox defaultChecked="indeterminate" />
+      <span>Keadaan tidak menentu</span>
+    </Label>
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### Checkbox
+
+<TypeTable
+  type={{
+    size: {
+      description: "Saiz kotak semak",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    defaultChecked: {
+      description: "Keadaan dipilih awal kotak semak (tidak terkawal)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    checked: {
+      description: "Keadaan kotak semak (terkawal)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    onCheckedChange: {
+      description: "Pembolehubah keadaan kotak semak (terkawal)",
+      type: "(checked: boolean | indeterminate) => void",
+      default: "false",
+    },
+  }}
+/>

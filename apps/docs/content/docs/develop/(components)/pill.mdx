@@ -1,0 +1,125 @@
+---
+title: Pill
+description: Represent tags or categories in a textfield. Pills can contain text and may include an "x" button to allow for easy removal.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import { Pill, PillWithTrailingXButton } from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center gap-1">
+    <Pill>New</Pill>
+    <Pill>Trending</Pill>
+    <Pill>Popular</Pill>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Pill>New</Pill>
+    <Pill>Trending</Pill>
+    <Pill>Popular</Pill>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-pill--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/pill.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import { Pill } from "@govtechmy/myds-react/pill";
+```
+
+```tsx copy
+export default () => <Pill>Trending</Pill>;
+```
+
+## Examples
+
+### Size
+
+Use the `size` prop to change the pill size.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center items-end gap-1">
+      <Pill size="small">small</Pill>
+      <Pill size="medium">medium</Pill>
+      <Pill size="large">large</Pill>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { Pill } from "@govtechmy/myds-react/pill";
+
+    <Pill size="small">small</Pill>;
+    <Pill size="medium">medium</Pill>;
+    <Pill size="large">large</Pill>;
+    ```
+  </Tab>
+</Tabs>
+
+### With Trailing "x" Button
+
+Pass a callback function to the `onDismiss` prop to show a trailing "x" button.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center items-end gap-1">
+      <PillWithTrailingXButton>With trailing "x" button</PillWithTrailingXButton>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { Pill } from "@govtechmy/myds-react/pill";
+
+    <Pill onDismiss={...}>With trailing "x" button</Pill>
+    ```
+  </Tab>
+</Tabs>
+
+## Disabled
+
+Pill can be disabled by setting the `disabled` prop to `true`. When disabled, the pill will not be interactive. If the `onDismiss` prop is set, the "x" button will be hidden.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center items-end gap-1">
+      <PillWithTrailingXButton>Enabled</PillWithTrailingXButton>
+      <PillWithTrailingXButton disabled>Disabled</PillWithTrailingXButton>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { Pill } from "@govtechmy/myds-react/pill";
+
+    <Pill onDismiss={...}>Enabled</Pill>
+    <Pill disabled onDismiss={...}>Disabled</Pill>
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### Pill
+
+<TypeTable
+  type={{
+    size: {
+      description: "Sizes of the pill",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    disabled: {
+      type: "boolean",
+      default: "false",
+    },
+    onDismiss: {
+      description: 'A callback function that is called when the trailing "x" button is clicked',
+      type: "function",
+    },
+  }}
+/>

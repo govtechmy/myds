@@ -1,5 +1,5 @@
 import { Slot } from "@radix-ui/react-slot";
-import React, { ComponentProps, ForwardRefExoticComponent } from "react";
+import { ComponentProps, ForwardRefExoticComponent, forwardRef } from "react";
 import { clx } from "../utils";
 import { cva, VariantProps } from "class-variance-authority";
 import { ChevronRightIcon } from "../icons/chevron-right";
@@ -25,30 +25,28 @@ interface BreadcrumbProps
   extends ComponentProps<"nav">,
     VariantProps<typeof breadcrumb_cva> {}
 
-const Breadcrumb: ForwardRefExoticComponent<BreadcrumbProps> = React.forwardRef(
+const Breadcrumb: ForwardRefExoticComponent<BreadcrumbProps> = forwardRef(
   ({ variant = "default", className, children, ...props }, ref) => (
     <nav ref={ref} aria-label="breadcrumb" {...props}>
-      <ol className={clx(breadcrumb_cva({ variant, className }))}>
-        {children}
-      </ol>
+      <ol className={breadcrumb_cva({ variant, className })}>{children}</ol>
     </nav>
   ),
 );
 Breadcrumb.displayName = "Breadcrumb";
 
 const BreadcrumbItem: ForwardRefExoticComponent<ComponentProps<"li">> =
-  React.forwardRef(({ className, ...props }, ref) => (
+  forwardRef(({ className, ...props }, ref) => (
     <li
       ref={ref}
-      className={clx("line-clamp-1 max-w-[200px]", className)}
       {...props}
+      className={clx("line-clamp-1 max-w-[200px]", className)}
     />
   ));
 BreadcrumbItem.displayName = "BreadcrumbItem";
 
 const BreadcrumbLink: ForwardRefExoticComponent<
   ComponentProps<"a"> & { asChild?: boolean }
-> = React.forwardRef(({ asChild, className, ...props }, ref) => {
+> = forwardRef(({ asChild, className, ...props }, ref) => {
   const Comp = asChild ? Slot : "a";
 
   return (
@@ -59,15 +57,21 @@ const BreadcrumbLink: ForwardRefExoticComponent<
         className,
       )}
       {...props}
+      title={
+        props.title || typeof props.children === "string"
+          ? (props.children as string)
+          : undefined
+      }
     />
   );
 });
 BreadcrumbLink.displayName = "BreadcrumbLink";
 
 const BreadcrumbPage: ForwardRefExoticComponent<ComponentProps<"span">> =
-  React.forwardRef(({ className, ...props }, ref) => (
+  forwardRef(({ className, ...props }, ref) => (
     <span
       ref={ref}
+      {...props}
       role="link"
       aria-disabled="true"
       aria-current="page"
@@ -75,7 +79,11 @@ const BreadcrumbPage: ForwardRefExoticComponent<ComponentProps<"span">> =
         "text-txt-black-900 line-clamp-1 max-w-[200px]",
         className,
       )}
-      {...props}
+      title={
+        props.title || typeof props.children === "string"
+          ? (props.children as string)
+          : undefined
+      }
     />
   ));
 BreadcrumbPage.displayName = "BreadcrumbPage";
@@ -84,7 +92,7 @@ const BreadcrumbSeparator = ({
   children,
   className,
   ...props
-}: React.ComponentProps<"li">) => (
+}: ComponentProps<"li">) => (
   <li
     role="presentation"
     aria-hidden="true"

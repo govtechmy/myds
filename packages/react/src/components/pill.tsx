@@ -30,12 +30,12 @@ interface PillProps
     VariantProps<typeof pill_cva> {
   asChild?: boolean;
   disabled?: boolean;
-  onDelete?: ComponentProps<typeof Button>["onClick"];
+  onDismiss?: ComponentProps<typeof Button>["onClick"];
 }
 
 export const Pill: ForwardRefExoticComponent<PillProps> = React.forwardRef(
   (
-    { asChild, children, disabled, size, className, onDelete, ...props },
+    { asChild, children, disabled, size, className, onDismiss, ...props },
     ref,
   ) => {
     const Comp = asChild ? Slot : "div";
@@ -46,12 +46,12 @@ export const Pill: ForwardRefExoticComponent<PillProps> = React.forwardRef(
         {...props}
       >
         <Slottable>{children}</Slottable>
-        {onDelete && !disabled && (
+        {onDismiss && !disabled && (
           <Button
             variant="default-ghost"
             size="small"
             className="p-0"
-            onClick={onDelete}
+            onClick={onDismiss}
           >
             <ButtonIcon>
               <CrossIcon className="text-txt-black-500 size-4" />
