@@ -1,15 +1,307 @@
 ---
-title: Date Picker
-description: Date Picker
+title: Pemilih Tarikh
+description: Membolehkan pengguna memilih tarikh dari kalendar interaktif.
 ---
 
-import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import { DatePicker, CustomDisableDatePicker } from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
-<Callout
-  type="info"
-  title="Note"
-  className="bg-bg-primary-50 text-txt-primary border-transparent"
-  icon={<InfoIcon className="size-5" />}
->
-  Dalam pembinaan
-</Callout>
+export const NOW = new Date();
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose flex justify-center">
+    <DatePicker />
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DatePicker />
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-date-picker--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/date-picker.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import { DatePicker } from "@govtechmy/myds-react/date-picker";
+```
+
+```tsx copy
+export default () => <DatePicker />;
+```
+
+## Contoh
+
+### Saiz
+
+Gunakan prop `size` untuk menukar saiz pemilih tarikh!
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col items-center gap-3">
+      <DatePicker size="small" />
+      <DatePicker size="medium" />
+      <DatePicker size="large" />
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DatePicker size="small" />
+    <DatePicker size="medium" />
+    <DatePicker size="large" />
+    ```
+  </Tab>
+</Tabs>
+
+### Keadaan Tidak Terkawal vs Terkawal
+
+Untuk menggunakan pemilih tarikh dalam keadaan tidak terkawal, tetapkan prop `defaultValue` kepada nilai awal pemilih tarikh.
+
+Untuk menggunakan pemilih tarikh dalam keadaan terkawal, tetapkan prop `value` kepada nilai semasa pemilih tarikh dan sediakan pendengar acara `onValueChange` untuk mengendalikan perubahan.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+        <div>
+            Tidak Terkawal
+            <DatePicker defaultValue={NOW} />
+        </div>
+        <div>
+            Terkawal
+            <DatePicker value={NOW} />
+        </div>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    // Keadaan tidak terkawal
+    <DatePicker defaultValue={new Date().toISOString().split("T")[0]} />
+
+    // Keadaan terkawal
+    <DatePicker value={new Date().toISOString().split("T")[0]} />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Dilumpuhkan
+
+Terdapat banyak cara untuk berinteraksi dengan keadaan `disabled` Pemilih Tarikh. Pemilih tarikh boleh dilumpuhkan sepenuhnya dengan menetapkan prop `disabled` kepada `true`.
+
+Untuk kawalan yang lebih halus pada tarikh yang hendak dilumpuhkan, anda boleh menghantar `Matcher | Matcher[]` yang mentakrifkan peraturan untuk melumpuhkan tarikh.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose space-y-2">
+      <div className="flex items-center gap-3">
+        Lumpuhkan semua tarikh
+        <DatePicker defaultValue={NOW} disabled />
+      </div>
+      <div className="flex items-center gap-3">
+        Lumpuhkan tarikh sebelum hari ini
+        <DatePicker defaultValue={NOW} disabled={{ before: new Date() }} />
+      </div>
+      <div className="flex items-center gap-3">
+        Lumpuhkan tarikh selepas hari ini
+        <DatePicker defaultValue={NOW} disabled={{ after: new Date() }} />
+      </div>
+      <div className="flex items-center gap-3">
+        Lumpuhkan tarikh di luar julat
+        <DatePicker
+          defaultValue={NOW}
+          disabled={{
+            before: new Date().setDate(new Date().getDate() - 1),
+            after: new Date().setDate(new Date().getDate() + 1),
+          }}
+        />
+      </div>
+      <div className="flex items-center gap-3">
+        Lumpuhkan tarikh mengikut hari dalam minggu (cth. Sabtu dan Ahad)
+        <DatePicker
+          defaultValue={NOW}
+          disabled={{
+            dayOfWeek: [0, 6],
+          }}
+        />
+      </div>
+      <div className="flex items-center gap-3">
+        Lumpuhkan tarikh mengikut fungsi panggilan balik (cth. lumpuhkan setiap 13hb bulan)
+        <CustomDisableDatePicker />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    // Lumpuhkan semua tarikh
+    <DatePicker defaultValue={new Date()} disabled />
+    
+    // Lumpuhkan tarikh sebelum hari ini
+    <DatePicker defaultValue={new Date()} disabled={{ before: new Date() }} />
+
+    // Lumpuhkan tarikh selepas hari ini
+    <DatePicker defaultValue={new Date()} disabled={{ after: new Date() }} />
+
+    // Lumpuhkan tarikh di luar julat
+    <DatePicker
+      defaultValue={new Date()}
+      disabled={{
+        before: new Date().setDate(new Date().getDate() - 1),
+        after: new Date().setDate(new Date().getDate() + 1),
+      }}
+    />
+
+    // Lumpuhkan tarikh mengikut hari dalam minggu (cth. Sabtu dan Ahad)
+    <DatePicker
+      defaultValue={new Date()}
+      disabled={{
+        dayOfWeek: [0, 6],
+      }}
+    />
+
+    // Lumpuhkan tarikh mengikut fungsi panggilan balik (cth. lumpuhkan setiap 13hb bulan)
+    <DatePicker
+      defaultValue={new Date()}
+      disabled={(date) => date.getDate() === 13}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Tahun Maksimum dan Minimum
+
+Anda boleh menetapkan tahun maksimum dan minimum untuk pemilih tarikh dengan menghantar prop `minYear` dan `maxYear`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center">
+      <DatePicker defaultValue={NOW} maxYear={2030} minYear={2020} />
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DatePicker defaultValue={new Date()} maxYear={2030} minYear={2020} />
+    ```
+  </Tab>
+</Tabs>
+
+### Susunan Tahun
+
+Anda boleh menetapkan susunan pengisihan tahun dalam dropdown tahun dengan menghantar prop `yearOrder`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        Menaik
+        <DatePicker defaultValue={NOW} yearOrder="asc" />
+      </div>
+      <div>
+        Menurun
+        <DatePicker defaultValue={NOW} yearOrder="desc" />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+```tsx
+<DatePicker defaultValue={new Date()} yearOrder="asc" />
+
+<DatePicker defaultValue={new Date()} yearOrder="desc" />
+```
+  </Tab>
+</Tabs>
+
+### Bahasa
+
+Komponen ini menyokong dwibahasa, anda boleh menghantar prop `locale` untuk menetapkan bahasa digunakan.
+
+Nilai lalai adalah `en` untuk English. Untuk menukar kepada Bahasa Melayu, tetapkan `ms`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        English
+        <DatePicker defaultValue={NOW} locale="en" />
+      </div>
+      <div>
+        Bahasa Melayu
+        <DatePicker defaultValue={NOW} locale="ms" />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+```tsx
+<DatePicker defaultValue={new Date()} locale="en" />
+
+<DatePicker defaultValue={new Date()} locale="ms" />
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+### DatePicker
+
+<TypeTable
+  type={{
+    size: {
+      description: "Saiz pemilih tarikh",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    defaultValue: {
+      description: "Keadaan awal pemilih tarikh (tidak terkawal)",
+      type: "Date",
+    },
+    value: {
+      description: "Keadaan pemilih tarikh (terkawal)",
+      type: "Date",
+    },
+    onValueChange: {
+      description: "Pendengar acara perubahan (terkawal)",
+      type: "(date: Date ) => void",
+    },
+    placeholder: {
+      description: "Teks pemegang tempat untuk pemilih tarikh",
+      type: "string",
+      default: "dd / mm / yyyy",
+    },
+    disabled: {
+      description: "Keadaan dilumpuhkan untuk pemilih tarikh",
+      type: "boolean | Matcher | Matcher[]",
+      default: "false",
+    },
+    maxYear: {
+      description: "Tahun maksimum untuk pemilih tarikh",
+      type: "number",
+      default: "2099",
+    },
+    minYear: {
+      description: "Tahun minimum untuk pemilih tarikh",
+      type: "number",
+      default: "1900",
+    },
+    yearOrder: {
+      description: "Susunan pengisihan untuk pemilihan tahun",
+      type: "asc | desc",
+      default: "asc",
+    },
+    locale: {
+      description: "Bahasa untuk pemilih tarikh",
+      type: "en | ms",
+      default: "en",
+    },
+  }}
+/>

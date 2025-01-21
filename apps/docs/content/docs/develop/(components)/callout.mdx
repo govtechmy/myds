@@ -1,15 +1,331 @@
 ---
 title: Callout
-description: Callout
+description: Notifies users about important information related to their actions inside a Forms. Callouts can indicate success, warnings, errors, or provide additional information depending on the context inside a form.
 ---
 
-import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  Button,
+  Callout,
+  CalloutAction,
+  CalloutContent,
+  CalloutTitle,
+  DismissibleCalloutExample,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
-<Callout
-  type="info"
-  title="Note"
-  className="bg-bg-primary-50 text-txt-primary border-transparent"
-  icon={<InfoIcon className="size-5" />}
->
-  Work in progress
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+  <Callout>
+      <CalloutTitle>Title</CalloutTitle>
+      <CalloutContent>
+        <span>A description to explain the success, warning, info or error event</span>
+      </CalloutContent>
+      <CalloutAction>
+        <Button variant="default-outline">Primary Button</Button>
+      </CalloutAction>
+  </Callout>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+import { Callout, CalloutAction, CalloutTitle, CalloutContent } from "@govtechmy/myds-react/callout";
+
+<Callout>
+    <CalloutTitle>Title</CalloutTitle>
+    <CalloutContent>
+      A description to explain the success, warning, info or error event
+    </CalloutContent>
+    <CalloutAction>
+      <Button variant="default-outline">Call to Action</Button>
+    </CalloutAction>
 </Callout>
+```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-callout--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/callout.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import {
+  Callout,
+  CalloutAction,
+  CalloutTitle,
+  CalloutContent,
+} from "@govtechmy/myds-react/callout";
+```
+
+```tsx copy
+export default () => (
+  <Callout>
+    <CalloutTitle />
+    <CalloutContent />
+    <CalloutAction />
+  </Callout>
+);
+```
+
+## Examples
+
+### Variant
+
+Use the `variant` prop to change the callout style!
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="space-y-2 not-prose">
+  <Callout>
+      <CalloutTitle>Title</CalloutTitle>
+      <CalloutContent>
+        <span>A description to explain the success, warning, info or error event</span>
+      </CalloutContent>
+      <CalloutAction>
+        <Button variant="default-outline">Call to Action</Button>
+      </CalloutAction>
+  </Callout>
+  <Callout variant="success">
+    <CalloutTitle>Title</CalloutTitle>
+    <CalloutContent>
+      <span>A description to explain the success, warning, info or error event</span>
+    </CalloutContent>
+    <CalloutAction>
+      <Button variant="default-outline">Call to Action</Button>
+    </CalloutAction>
+  </Callout>
+  <Callout variant="warning">
+    <CalloutTitle>Title</CalloutTitle>
+    <CalloutContent>
+      <span>A description to explain the success, warning, info or error event</span>
+    </CalloutContent>
+    <CalloutAction>
+      <Button variant="default-outline">Call to Action</Button>
+    </CalloutAction>
+  </Callout>
+  <Callout variant="danger">
+    <CalloutTitle>Title</CalloutTitle>
+    <CalloutContent>
+      <span>A description to explain the success, warning, info or error event</span>
+    </CalloutContent>
+    <CalloutAction>
+      <Button variant="default-outline">Call to Action</Button>
+    </CalloutAction>
+  </Callout>
+  </div>
+  </Tab>
+  <Tab value="Code">
+```tsx 
+/** Variant: Info **/
+
+<Callout variant="info">
+  <CalloutTitle>Title</CalloutTitle>
+  <CalloutContent>
+    A description to explain the success, warning, info or error event
+  </CalloutContent>
+  <CalloutAction>
+    <Button variant="default-outline">Call to Action</Button>
+  </CalloutAction>
+</Callout>
+
+/** Variant: Success **/
+
+<Callout variant="success">
+  <CalloutTitle>Title</CalloutTitle>
+  <CalloutContent>
+    A description to explain the success, warning, info or error event
+  </CalloutContent>
+  <CalloutAction>
+    <Button variant="default-outline">Call to Action</Button>
+  </CalloutAction>
+</Callout>
+
+/** Variant: Warning **/
+
+<Callout variant="warning">
+  <CalloutTitle>Title</CalloutTitle>
+  <CalloutContent>
+    A description to explain the success, warning, info or error event
+  </CalloutContent>
+  <CalloutAction>
+    <Button variant="default-outline">Call to Action</Button>
+  </CalloutAction>
+</Callout>
+
+/** Variant: Danger **/
+
+<Callout variant="danger">
+  <CalloutTitle>Title</CalloutTitle>
+  <CalloutContent>
+    A description to explain the success, warning, info or error event
+  </CalloutContent>
+  <CalloutAction>
+    <Button variant="default-outline">Call to Action</Button>
+  </CalloutAction>
+</Callout>
+```
+  </Tab>
+</Tabs>
+
+### Layout
+
+A basic callout consisting of **title** and **action** will be displayed an **inline** manner,
+while callouts with all three elements (**title**, **content** & **action**) will be displayed in a **stacked** manner.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="space-y-2 not-prose">
+  <Callout>
+      <CalloutTitle>Title</CalloutTitle>
+      <CalloutAction>
+        <Button variant="default-outline">Call to Action</Button>
+      </CalloutAction>
+  </Callout>
+  <Callout>
+    <CalloutTitle>Title</CalloutTitle>
+    <CalloutContent>
+      <span>A description to explain the success, warning, info or error event</span>
+    </CalloutContent>
+    <CalloutAction>
+      <Button variant="default-outline">Call to Action</Button>
+    </CalloutAction>
+  </Callout>
+  </div>
+  </Tab>
+  <Tab value="Code">
+```tsx 
+/** Layout: Inline **/
+
+<Callout variant="info">
+  <CalloutTitle>Title</CalloutTitle>
+  <CalloutAction>
+    <Button variant="default-outline">Call to Action</Button>
+  </CalloutAction>
+</Callout>
+
+/** Layout: Stacked **/
+
+<Callout variant="success">
+  <CalloutTitle>Title</CalloutTitle>
+  <CalloutContent>
+    A description to explain the success, warning, info or error event
+  </CalloutContent>
+  <CalloutAction>
+    <Button variant="default-outline">Call to Action</Button>
+  </CalloutAction>
+</Callout>
+```
+  </Tab>
+</Tabs>
+
+### Dismissible
+
+If the callout is dismissible, you can display a **close button** on the top right corner by declaring the `dismissible` prop.
+To capture the dismiss event, you may use the `onDismiss` prop.
+
+To dismiss the callout programmatically via event listeners inside `CalloutAction`'s children, you may use the `dismiss` function passed as an argument to the render prop.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose space-y-2">
+      <DismissibleCalloutExample
+        type="basic"
+        title="Basic - Uncontrolled Dismiss State"
+        description="You may capture the dismiss event using the onDismiss prop. Check the console for the dismiss event."
+      />
+      <DismissibleCalloutExample
+        type="action"
+        title="Action - Dismiss Callout via CalloutAction Render Prop"
+        description="You can invoke the dismiss event programmatically via event listeners inside CalloutAction's children"
+      />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    // Basic - Uncontrolled Dismiss State
+    <Callout
+      dismissible
+      onDismiss={() => {
+        console.log("MYDS: Dismissed event captured!");
+      }}
+    >
+      <CalloutTitle>Title</CalloutTitle>
+      <CalloutContent>
+        <span>
+          A description to explain the success, warning, info or error event
+        </span>
+      </CalloutContent>
+      <CalloutAction>
+        <Button variant="default-outline">Call to Action</Button>
+      </CalloutAction>
+    </Callout>
+
+    // Action - Dismiss Callout via CalloutAction Render Prop
+    <Callout
+      dismissible
+      onDismiss={() => {
+        console.log("MYDS: Dismissed event captured!");
+      }}
+    >
+      <CalloutTitle>Title</CalloutTitle>
+      <CalloutContent>
+        <span>
+          A description to explain the success, warning, info or error event
+        </span>
+      </CalloutContent>
+      <CalloutAction>
+        {(dismiss) =>
+          (<Button
+            variant="default-outline"
+            onClick={() => {
+              alert("Action taken before callout gets dismissed");
+              dismiss();
+            }}>
+          Call to Action
+        </Button>)}
+      </CalloutAction>
+    </Callout>
+    ```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### Callout
+
+<TypeTable
+  type={{
+    variant: {
+      description: "Style variant of the callout",
+      type: "enum",
+      typeDescription: "info | success | warning | danger",
+      default: "info",
+    },
+    dismissible: {
+      description: "Whether to display the dismiss button [X] on the top-right",
+      type: "boolean",
+    },
+    onDismiss: {
+      description: "To capture the dismiss event",
+      type: "function",
+    },
+  }}
+/>
+
+### CalloutAction
+
+<TypeTable
+  type={{
+    children: {
+      type: "ReactNode | ((dimiss) => ReactNode)",
+    },
+  }}
+/>

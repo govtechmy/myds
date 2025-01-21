@@ -1,8 +1,6 @@
-import React, { ComponentProps, FunctionComponent } from "react";
+import { ComponentProps, FunctionComponent } from "react";
 import { CalendarIcon } from "../icons/calendar";
 import { cva, VariantProps } from "class-variance-authority";
-
-const DEFAULT_SIZE = "medium";
 
 const datefield_container_cva = cva(
   [
@@ -26,7 +24,7 @@ const datefield_container_cva = cva(
       },
     },
     defaultVariants: {
-      size: DEFAULT_SIZE,
+      size: "small",
       disabled: false,
     },
   },
@@ -47,7 +45,7 @@ const icon_cva = cva([], {
   variants: {
     size: {
       small: "size-4",
-      medium: "size-[18px]",
+      medium: "size-4.5",
       large: "size-5",
     },
     disabled: {
@@ -56,7 +54,7 @@ const icon_cva = cva([], {
     },
   },
   defaultVariants: {
-    size: DEFAULT_SIZE,
+    size: "small",
     disabled: false,
   },
 });

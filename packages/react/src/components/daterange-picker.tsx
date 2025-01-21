@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { DateAfter, DateBefore, DateRange, Matcher } from "react-day-picker";
 import { enGB, ms } from "date-fns/locale";
 import { format } from "date-fns";
@@ -10,7 +10,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { VariantProps } from "class-variance-authority";
 
 export type DateRangePickerProps = {
-  defaultDateRange?: DateRange;
+  defaultValue?: DateRange;
   disabled?: Matcher | Matcher[];
   excludeDisabled?: boolean;
   formatStr?: string;
@@ -31,13 +31,13 @@ export type DateRangePickerProps = {
  * @see {@link https://design.digital.gov.my/?path=/docs/myds-react-daterangepicker--docs}
  */
 const DateRangePicker: FC<DateRangePickerProps> = ({
-  defaultDateRange,
+  defaultValue,
   disabled,
   formatStr = "dd MMM yyy",
   fromLabel,
   locale = "en",
   onValueChange,
-  placeholder,
+  placeholder = "dd / mm / yyyy",
   value,
   size,
   toLabel,
@@ -46,7 +46,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
   const [selectedDateRange, setSelectedDateRange] = useControllableState({
     prop: value,
     onChange: onValueChange,
-    defaultProp: defaultDateRange,
+    defaultProp: defaultValue,
   });
 
   const isMS = locale === "ms";
