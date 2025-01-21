@@ -122,14 +122,18 @@ interface BrandLogoProps extends VariantProps<typeof headerVariant> {
   imageSrc: string;
   alt?: string;
   href?: string;
+  // brandText?: string;
 }
 const BrandLogo: FunctionComponent<BrandLogoProps> = ({
-  children,
+  // brandText,
   imageSrc,
   alt,
-  type = "shortname",
   href = "/",
+  children,
 }) => {
+  const isStringChild = typeof children === "string";
+  const isLongName = isStringChild && children.length > 19;
+
   return (
     <Link
       href={href}
@@ -146,8 +150,17 @@ const BrandLogo: FunctionComponent<BrandLogoProps> = ({
         className="h-8 w-fit select-none"
         alt={alt}
       />
-
-      <span className={clx(headerVariant({ type }))}>{children}</span>
+      {isStringChild ? (
+        <span
+          className={clx(
+            headerVariant({ type: isLongName ? "longname" : "shortname" }),
+          )}
+        >
+          {children}
+        </span>
+      ) : (
+        children
+      )}
     </Link>
   );
 };
@@ -181,7 +194,7 @@ const NavigationMenuCombo: FunctionComponent<NavigationMenuProps> = ({
 
         <SheetContent
           side="top"
-          className="bg-bg-white absolute top-full -z-10 flex flex-col gap-1 rounded-b-xl p-3 xl:hidden"
+          className="bg-bg-white absolute top-full z-10 flex h-[90vh] flex-col gap-1 overflow-scroll rounded-b-xl p-3 xl:hidden"
         >
           {childrenMobile}
         </SheetContent>
@@ -294,7 +307,7 @@ const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
               variant: "default-ghost",
               size: "medium",
             }),
-            "bg-bg-white justify-start text-base hover:bg-none hover:no-underline focus:ring-0",
+            "bg-bg-white justify-start text-left text-base hover:bg-none hover:no-underline focus:ring-0",
           )}
         >
           {menu}

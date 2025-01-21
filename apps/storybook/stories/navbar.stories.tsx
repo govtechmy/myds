@@ -35,91 +35,128 @@ import { Button } from "@govtechmy/myds-react/button";
  *
  * ### Usage
  * ```tsx
-      <Navbar showMenu={showMenu} className="px-2">
-        <NavbarContainer>
-          <BrandLogo
-            type="shortname"
-            imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
-          >
-            MYDS
-          </BrandLogo>
-          <NavigationMenuCombo
-            showMenu={showMenu}
-            setMenu={setMenu}
-            childrenDesktop={
-              <>
-                <NavItemsMenu href="/menu1" active={false}>
-                  Menu 1
-                </NavItemsMenu>
-                <NavItemsMenu href="/menu2" active={false}>
-                  Menu 2
-                </NavItemsMenu>
-
-                <NavItemsDropdown menu="Menu Dropdown">
-                  <NavItemsDropdownItems href="/submenu1">
-                    Submenu 1
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu2">
-                    Submenu 2
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu3">
-                    Submenu 3
-                  </NavItemsDropdownItems>
-                </NavItemsDropdown>
-
-                <NavItemsMenu href="/menu3" active={false}>
-                  Menu 3
-                </NavItemsMenu>
-              </>
-            }
-            childrenMobile={
-              <>
-                <NavItemsMenuMobile href="/menu1" active={false}>
-                  Menu 1
-                </NavItemsMenuMobile>
-                <NavItemsMenuMobile href="/menu2" active={false}>
-                  Menu 2
-                </NavItemsMenuMobile>
-
-                <NavItemsDropdownMobile menu="Menu Dropdown">
-                  <NavItemsDropdownItemsMobile href="/submenu1">
-                    Submenu 1
-                  </NavItemsDropdownItemsMobile>
-                  <NavItemsDropdownItemsMobile href="/submenu2">
-                    Submenu 2
-                  </NavItemsDropdownItemsMobile>
-                  <NavItemsDropdownItemsMobile href="/submenu3">
-                    Submenu 3
-                  </NavItemsDropdownItemsMobile>
-                </NavItemsDropdownMobile>
-
-                <NavItemsMenuMobile href="/menu3" active={false}>
-                  Menu 3
-                </NavItemsMenuMobile>
-              </>
-            }
-          ></NavigationMenuCombo>
-        </NavbarContainer>
-        <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
-          <Select
-            value={value}
-            onValueChange={setValue}
-            defaultValue="EN"
-            multiple={false}
-            variant="outline"
-            size="medium"
-          >
-            <SelectTrigger>
-              <GlobeIcon className="h-4 w-4"></GlobeIcon>
-              <SelectValue>{(value) => value || "EN"}</SelectValue>
-            </SelectTrigger>
-            <SelectContent className="font-body rounded-[4px] py-1">
-              <SelectItem value="EN">EN</SelectItem>
-              <SelectItem value="BM">BM</SelectItem>
-            </SelectContent>
-          </Select>
-        </NavbarActionGroup>
-      </Navbar>
+ *    <Navbar showMenu={showMenu} className="px-2">
+ *        <NavbarContainer>
+ *            <BrandLogo
+ *                type="shortname"
+ *                imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+ *            >
+ *                MYDS
+ *            </BrandLogo>
+ *
+ *            <NavigationMenuCombo
+ *                showMenu={showMenu}
+ *                setMenu={setMenu}
+ *                childrenDesktop={
+ *                    <>
+ *                        <NavItemsMenu href="/menu1" active={false}>
+ *                            Menu 1
+ *                        </NavItemsMenu>
+ *                        <NavItemsMenu href="/menu2" active={false}>
+ *                            Menu 2
+ *                        </NavItemsMenu>
+ *
+ *                        <NavItemsDropdown menu="Menu Dropdown">
+ *                            <NavItemsDropdownItems href="/submenu1">
+ *                                Submenu 1
+ *                            </NavItemsDropdownItems>
+ *                            <NavItemsDropdownItems href="/submenu2">
+ *                                Submenu 2
+ *                            </NavItemsDropdownItems>
+ *                            <NavItemsDropdownItems href="/submenu3">
+ *                                Submenu 3
+ *                            </NavItemsDropdownItems>
+ *                            <NavItemsDropdownItems href="/submenu1">
+ *                                Submenu 4
+ *                            </NavItemsDropdownItems>
+ *                            <NavItemsDropdownItems href="/submenu2">
+ *                                Submenu 5
+ *                            </NavItemsDropdownItems>
+ *                            <NavItemsDropdownItems href="/submenu3">
+ *                                Submenu 6
+ *                            </NavItemsDropdownItems>
+ *                            <NavItemsDropdownItems href="/submenu3">
+ *                                Submenu 7
+ *                            </NavItemsDropdownItems>
+ *                        </NavItemsDropdown>
+ *
+ *                        <NavItemsMenu href="/menu3" active={false}>
+ *                            Menu 3
+ *                        </NavItemsMenu>
+ *                    </>
+ *                }
+ *                childrenMobile={
+ *                    <>
+ *                        <NavItemsMenu href="/menu1" active={false}>
+ *                            <div>Menu 1</div>
+ *                        </NavItemsMenu>
+ *                        <NavItemsMenu href="/menu2" active={false}>
+ *                            Menu 2
+ *                        </NavItemsMenu>
+ *                        <NavItemsDropdown menu="Menu Dropdown">
+ *                            <NavItemsDropdownItems href="/submenu1">
+ *                                Submenu 1
+ *                            </NavItemsDropdownItems>
+ *                            <NavItemsDropdownItems href="/submenu2">
+ *                                Submenu 2
+ *                            </NavItemsDropdownItems>
+ *                            <NavItemsDropdownItems href="/submenu3">
+ *                                Submenu 3
+ *                            </NavItemsDropdownItems>
+ *                            <NavItemsDropdownItems href="/submenu1">
+ *                                Submenu 4
+ *                            </NavItemsDropdownItems>
+ *                            <NavItemsDropdownItems href="/submenu2">
+ *                                Submenu 5
+ *                            </NavItemsDropdownItems>
+ *                            <NavItemsDropdownItems href="/submenu3">
+ *                                Submenu 6
+ *                            </NavItemsDropdownItems>
+ *                            <NavItemsDropdownItems href="/submenu3">
+ *                                Submenu 7
+ *                            </NavItemsDropdownItems>
+ *                        </NavItemsDropdown>
+ *                        <NavItemsMenu href="/menu3" active={false}>
+ *                            Menu 3
+ *                        </NavItemsMenu>
+ *                    </>
+ *                }
+ *            ></NavigationMenuCombo>
+ *        </NavbarContainer>
+ *
+ *        <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
+ *
+ *            <Button variant="default-ghost" className="p-2">
+ *                <SearchIcon></SearchIcon>
+ *            </Button>
+ *
+ *            <Button
+ *                variant="default-ghost"
+ *                className="p-2"
+ *                onClick={handleToggle}
+ *            >
+ *                {isDarkMode ? <SunIcon /> : <MoonIcon />}
+ *            </Button>
+ *
+ *            <Select
+ *                value={value}
+ *                onValueChange={setValue}
+ *                defaultValue="EN"
+ *                multiple={false}
+ *                variant="outline"
+ *                size="medium"
+ *            >
+ *                <SelectTrigger>
+ *                    <GlobeIcon className="h-4 w-4"></GlobeIcon>
+ *                    <SelectValue>{(value) => value || "EN"}</SelectValue>
+ *                </SelectTrigger>
+ *                <SelectContent className="font-body rounded-[4px] py-1">
+ *                    <SelectItem value="EN">EN</SelectItem>
+ *                    <SelectItem value="BM">BM</SelectItem>
+ *                </SelectContent>
+ *            </Select>
+ *        </NavbarActionGroup>
+ *    </Navbar>
  * ```
  */
 
@@ -302,7 +339,7 @@ const KementerianDigitalNavbar = () => {
             type="shortname"
             imageSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
           >
-            Ministry of Digital
+            Ministry Of Digital
           </BrandLogo>
 
           <NavigationMenuCombo
