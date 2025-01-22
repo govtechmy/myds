@@ -19,6 +19,7 @@ export * from "@govtechmy/myds-react/date-field";
 export * from "@govtechmy/myds-react/date-picker";
 export * from "@govtechmy/myds-react/daterange-picker";
 export * from "@govtechmy/myds-react/dialog";
+export * from "@govtechmy/myds-react/dropdown";
 export * from "@govtechmy/myds-react/pill";
 import {
   Callout,

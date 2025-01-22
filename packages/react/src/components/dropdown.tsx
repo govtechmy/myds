@@ -22,19 +22,10 @@ import { Button } from "./button";
 const Dropdown = DropdownPrimitive.Root;
 
 const DropdownTrigger: ForwardRefExoticComponent<
-  ComponentProps<typeof DropdownPrimitive.Trigger> &
-    ComponentPropsWithoutRef<typeof Button>
-> = forwardRef(
-  ({ className, asChild, variant = "default-outline", ...props }, ref) => {
-    const Comp = asChild ? Slot : Button;
-
-    return (
-      <DropdownPrimitive.Trigger asChild ref={ref}>
-        <Comp variant={variant} className={className} {...props} />
-      </DropdownPrimitive.Trigger>
-    );
-  },
-);
+  ComponentProps<typeof DropdownPrimitive.Trigger>
+> = forwardRef((props, ref) => {
+  return <DropdownPrimitive.Trigger {...props} asChild ref={ref} />;
+});
 
 // const DropdownGroup = DropdownPrimitive.Group;
 
