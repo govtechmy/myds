@@ -12,6 +12,7 @@ import { clx } from "../utils";
 import { CheckCircleIcon } from "../icons/check-circle";
 import { CrossIcon, InfoIcon, WarningCircleIcon, WarningIcon } from "../icons";
 import { Button, ButtonIcon } from "./button";
+import { Slot } from "@radix-ui/react-slot";
 
 type CalloutVariant = "success" | "warning" | "info" | "danger";
 
@@ -140,13 +141,10 @@ const CalloutContent: ForwardRefExoticComponent<ComponentProps<"p">> =
   });
 CalloutContent.displayName = "CalloutContent";
 
-interface CalloutActionProps extends Omit<ComponentProps<"div">, "children"> {
-  children: ReactNode | ((dismiss: () => void) => ReactNode);
-}
+interface CalloutActionProps extends ComponentProps<"div"> {}
 
 const CalloutAction: ForwardRefExoticComponent<CalloutActionProps> = forwardRef(
-  ({ className, children, ...props }, ref) => {
-    const { handleDismiss } = useContext(CalloutContext);
+  ({ className, ...props }, ref) => {
     return (
       <div
         ref={ref}
@@ -156,12 +154,20 @@ const CalloutAction: ForwardRefExoticComponent<CalloutActionProps> = forwardRef(
           className,
         )}
         {...props}
-      >
-        {typeof children === "function" ? children(handleDismiss) : children}
-      </div>
+      />
     );
   },
 );
 CalloutAction.displayName = "CalloutAction";
 
-export { Callout, CalloutTitle, CalloutContent, CalloutAction };
+const CalloutClose: ForwardRefExoticComponent<ComponentProps<typeof Slot>> =
+  forwardRef((props, ref) => {
+    const { handleDismiss } = useContext(CalloutContext);
+
+    if (!handleDismiss)
+      throw new Error("CalloutClose must be used within a Callout component");
+    return <Slot ref={ref} onClick={handleDismiss} {...props} />;
+  });
+CalloutClose.displayName = "CalloutClose";
+
+export { Callout, CalloutTitle, CalloutContent, CalloutAction, CalloutClose };

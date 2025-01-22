@@ -19,12 +19,14 @@ export * from "@govtechmy/myds-react/date-field";
 export * from "@govtechmy/myds-react/date-picker";
 export * from "@govtechmy/myds-react/daterange-picker";
 export * from "@govtechmy/myds-react/dialog";
+export * from "@govtechmy/myds-react/dropdown";
 export * from "@govtechmy/myds-react/pill";
 import {
   Callout,
   CalloutTitle,
   CalloutContent,
   CalloutAction,
+  CalloutClose,
 } from "@govtechmy/myds-react/callout";
 import { useToast } from "@govtechmy/myds-react/hooks";
 import { DatePicker } from "@govtechmy/myds-react/date-picker";
@@ -93,14 +95,12 @@ export const DismissibleCalloutExample: FunctionComponent<
   DismissibleCalloutExampleProps
 > = ({ type, title, description }) => {
   const [show, setShow] = useState(true);
-  const handleDismiss = (dismiss: () => void) => {
-    alert("Action taken before callout gets dismissed");
-    dismiss();
-  };
+
   return show ? (
     <Callout
       dismissible
       onDismiss={() => {
+        alert("Action taken before callout gets dismissed");
         setShow(false);
         console.log("MYDS: Dismissed event captured!");
       }}
@@ -108,16 +108,9 @@ export const DismissibleCalloutExample: FunctionComponent<
       <CalloutTitle>{title}</CalloutTitle>
       <CalloutContent>{description}</CalloutContent>
       <CalloutAction>
-        {(dismiss) =>
-          type === "action" && (
-            <Button
-              variant="default-outline"
-              onClick={() => handleDismiss(dismiss)}
-            >
-              Call to Action
-            </Button>
-          )
-        }
+        <CalloutClose>
+          <Button variant="default-outline">Call to Action</Button>
+        </CalloutClose>
       </CalloutAction>
     </Callout>
   ) : (

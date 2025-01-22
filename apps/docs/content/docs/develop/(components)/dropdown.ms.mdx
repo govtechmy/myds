@@ -1,0 +1,641 @@
+---
+title: Dropdown
+description: Dropdown adalah overlay kontekstual yang boleh diguna untuk memaparkan senarai pautan dan banyak lagi.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  DropdownItemIcon,
+  DropdownTrigger,
+  Button,
+} from "@/components/myds";
+import {
+  CopyIcon,
+  EditIcon,
+  LogoutIcon,
+  OptionsIcon,
+  SettingIcon,
+} from "@govtechmy/myds-react/icon";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose flex justify-center">
+    <Dropdown>
+      <DropdownTrigger>
+        <Button variant="default-outline">Menu Dropdown</Button>
+      </DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem>Profil</DropdownItem>
+        <DropdownItem>Bil</DropdownItem>
+        <DropdownItem>Pasukan</DropdownItem>
+        <DropdownItem>Langganan</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Dropdown>
+      <DropdownTrigger>
+        <Button variant="default-outline">Menu Dropdown</Button>
+      </DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem>Profil</DropdownItem>
+        <DropdownItem>Pengebilan</DropdownItem>
+        <DropdownItem>Pasukan</DropdownItem>
+        <DropdownItem>Langganan</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-dropdown--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/dropdown.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import {
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  DropdownItemIcon,
+  DropdownTrigger,
+} from "@govtechmy/myds-react/dropdown";
+```
+
+```tsx copy
+export default () => (
+  <Dropdown>
+    <DropdownTrigger />
+    <DropdownContent>
+      <DropdownItem>
+        <DropdownItemIcon />
+      </DropdownItem>
+    </DropdownContent>
+  </Dropdown>
+);
+```
+
+## Contoh
+
+### Pencetus
+
+Gunakan `DropdownTrigger` untuk membungkus elemen pencetus yang membuka menu dropdown.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col items-center gap-3">
+    <Dropdown>
+      <DropdownTrigger>
+        <Button variant="primary-fill">Menu Dropdown</Button>
+      </DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem>Profil</DropdownItem>
+        <DropdownItem>Pengebilan</DropdownItem>
+        <DropdownItem>Pasukan</DropdownItem>
+        <DropdownItem>Langganan</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+     <Dropdown>
+      <DropdownTrigger>
+        <Button variant="primary-fill">Menu Dropdown</Button>
+      </DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem>Profil</DropdownItem>
+        <DropdownItem>Pengebilan</DropdownItem>
+        <DropdownItem>Pasukan</DropdownItem>
+        <DropdownItem>Langganan</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Keadaan Tidak Terkawal vs Terkawal
+
+Untuk menggunakan menu dropdown dalam keadaan tidak terkawal, tetapkan prop `defaultOpen` kepada keadaan awal menu dropdown.
+
+Untuk menggunakan menu dropdown dalam keadaan terkawal, gunakan prop `open` dan `onOpenChange` untuk mengendalikan keadaan secara programatik.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+        <div>
+            Tidak Terkawal
+             <Dropdown defaultOpen={false}>
+                <DropdownTrigger>
+                    <Button variant="primary-fill">Menu Dropdown</Button>
+                </DropdownTrigger>
+                <DropdownContent>
+                    <DropdownItem>Profil</DropdownItem>
+                    <DropdownItem>Pengebilan</DropdownItem>
+                    <DropdownItem>Pasukan</DropdownItem>
+                    <DropdownItem>Langganan</DropdownItem>
+                </DropdownContent>
+            </Dropdown>
+        </div>
+        <div>
+            Terkawal
+            <Dropdown open={false}>
+                <DropdownTrigger>
+                    <Button variant="primary-fill">Menu Dropdown</Button>
+                </DropdownTrigger>
+                <DropdownContent>
+                    <DropdownItem>Profil</DropdownItem>
+                    <DropdownItem>Pengebilan</DropdownItem>
+                    <DropdownItem>Pasukan</DropdownItem>
+                    <DropdownItem>Langganan</DropdownItem>
+                </DropdownContent>
+            </Dropdown>
+        </div>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    // Keadaan tidak terkawal
+    <Dropdown defaultOpen={false}>
+        <DropdownTrigger>
+            <Button variant="primary-fill">Menu Dropdown</Button>
+        </DropdownTrigger>
+        <DropdownContent>
+            <DropdownItem>Profil</DropdownItem>
+            <DropdownItem>Pengebilan</DropdownItem>
+            <DropdownItem>Pasukan</DropdownItem>
+            <DropdownItem>Langganan</DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+
+    // Keadaan terkawal
+    <Dropdown open={false}>
+        <DropdownTrigger>
+            <Button variant="primary-fill">Menu Dropdown</Button>
+        </DropdownTrigger>
+        <DropdownContent>
+            <DropdownItem>Profil</DropdownItem>
+            <DropdownItem>Pengebilan</DropdownItem>
+            <DropdownItem>Pasukan</DropdownItem>
+            <DropdownItem>Langganan</DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Dengan Ikon
+
+Anda boleh menambah ikon pada `DropdownItem` untuk memberikan petunjuk visual kepada pengguna dengan menggunakan komponen `DropdownItemIcon`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose space-y-2 flex flex-col items-center">
+        <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Menu Dropdown + Ikon</Button>
+            </DropdownTrigger>
+            <DropdownContent side="bottom" align="end">
+                <DropdownItem>
+                <DropdownItemIcon>
+                    <EditIcon />
+                </DropdownItemIcon>
+                Edit
+                </DropdownItem>
+                <DropdownItem>
+                <DropdownItemIcon>
+                    <CopyIcon />
+                </DropdownItemIcon>
+                Salin pautan
+                </DropdownItem>
+                <DropdownItem>
+                <DropdownItemIcon>
+                    <SettingIcon />
+                </DropdownItemIcon>
+                Tetapan
+                </DropdownItem>
+                <DropdownItem variant="danger">
+                <DropdownItemIcon>
+                    <LogoutIcon />
+                </DropdownItemIcon>
+                <span className="text-inherit">Log keluar</span>
+                </DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Dropdown>
+        <DropdownTrigger>
+            <Button variant="primary-fill">Menu Dropdown + Ikon</Button>
+        </DropdownTrigger>
+        <DropdownContent side="bottom" align="end">
+            <DropdownItem>
+                <DropdownItemIcon>
+                    <EditIcon />
+                </DropdownItemIcon>
+                Edit
+            </DropdownItem>
+            <DropdownItem>
+                <DropdownItemIcon>
+                    <CopyIcon />
+                </DropdownItemIcon>
+                Salin pautan
+            </DropdownItem>
+            <DropdownItem>
+                <DropdownItemIcon>
+                    <SettingIcon />
+                </DropdownItemIcon>
+                Tetapan
+            </DropdownItem>
+            <DropdownItem variant="danger">
+                <DropdownItemIcon>
+                    <LogoutIcon />
+                </DropdownItemIcon>
+                Log keluar
+            </DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Varian
+
+Anda boleh menetapkan prop `variant` kepada `danger` pada `DropdownItem` untuk menunjukkan bahawa tindakan tersebut adalah merosakkan.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center">
+      <Dropdown>
+        <DropdownTrigger>
+            <Button variant="primary-fill">Dengan Varian: Bahaya </Button>
+        </DropdownTrigger>
+        <DropdownContent side="bottom" align="end">
+            <DropdownItem variant="danger">
+                <DropdownItemIcon>
+                    <LogoutIcon />
+                </DropdownItemIcon>
+                <span className="text-inherit">Log keluar</span>
+            </DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Dropdown>
+        <DropdownTrigger>
+            <Button variant="primary-fill">Dengan Varian: Bahaya </Button>
+        </DropdownTrigger>
+        <DropdownContent side="bottom" align="end">
+            <DropdownItem variant="danger">
+                <DropdownItemIcon>
+                    <LogoutIcon />
+                </DropdownItemIcon>
+                Log keluar
+            </DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Dinonaktifkan
+
+`DropdownItem` boleh dinonaktifkan dengan menetapkan prop `disabled` kepada `true`. Apabila dinonaktifkan, item dropdown tidak akan interaktif.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center">
+    <Dropdown>
+        <DropdownTrigger>
+            <Button variant="primary-fill">Dengan Item Dinonaktifkan </Button>
+        </DropdownTrigger>
+        <DropdownContent>
+            <DropdownItem disabled>
+                <DropdownItemIcon>
+                    <LogoutIcon />
+                </DropdownItemIcon>
+                <span className="text-inherit">Log keluar</span>
+            </DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Dropdown>
+        <DropdownTrigger>
+            <Button variant="primary-fill">Dengan Item Dinonaktifkan </Button>
+        </DropdownTrigger>
+        <DropdownContent>
+            <DropdownItem disabled>
+                <DropdownItemIcon>
+                    <LogoutIcon />
+                </DropdownItemIcon>
+                <span className="text-inherit">Log keluar</span>
+            </DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Penjajaran
+
+Anda boleh menetapkan `align` pada `DialogContent` untuk menjajarkan di mana paparan kandungan harus bermula berkenaan dengan **elemen pencetus**. Secara lalai, penjajaran ditetapkan kepada `end`. Anda juga boleh menetapkan penjajaran kepada `start` atau `center`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        Mula
+        <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Penjajaran: Mula </Button>
+            </DropdownTrigger>
+            <DropdownContent align="start">
+                <DropdownItem>Pilihan 1</DropdownItem>
+                <DropdownItem>Pilihan 2</DropdownItem>
+                <DropdownItem>Pilihan 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+      <div>
+        Tengah
+       <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Penjajaran: Tengah </Button>
+            </DropdownTrigger>
+            <DropdownContent align="center">
+                <DropdownItem>Pilihan 1</DropdownItem>
+                <DropdownItem>Pilihan 2</DropdownItem>
+                <DropdownItem>Pilihan 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+      <div>
+        Akhir
+       <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Penjajaran: Akhir </Button>
+            </DropdownTrigger>
+            <DropdownContent align="end">
+                <DropdownItem>Pilihan 1</DropdownItem>
+                <DropdownItem>Pilihan 2</DropdownItem>
+                <DropdownItem>Pilihan 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+```tsx
+// Mula
+<Dropdown>
+    <DropdownTrigger>
+        <Button variant="primary-fill">Penjajaran: Mula </Button>
+    </DropdownTrigger>
+    <DropdownContent align="start">
+        <DropdownItem>Pilihan 1</DropdownItem>
+        <DropdownItem>Pilihan 2</DropdownItem>
+        <DropdownItem>Pilihan 3</DropdownItem>
+    </DropdownContent>
+</Dropdown>
+
+// Tengah
+
+<Dropdown>
+  <DropdownTrigger>
+    <Button variant="primary-fill">Penjajaran: Tengah </Button>
+  </DropdownTrigger>
+  <DropdownContent align="center">
+    <DropdownItem>Pilihan 1</DropdownItem>
+    <DropdownItem>Pilihan 2</DropdownItem>
+    <DropdownItem>Pilihan 3</DropdownItem>
+  </DropdownContent>
+</Dropdown>
+
+// Akhir
+
+<Dropdown>
+  <DropdownTrigger>
+    <Button variant="primary-fill">Penjajaran: Akhir </Button>
+  </DropdownTrigger>
+  <DropdownContent align="end">
+    <DropdownItem>Pilihan 1</DropdownItem>
+    <DropdownItem>Pilihan 2</DropdownItem>
+    <DropdownItem>Pilihan 3</DropdownItem>
+  </DropdownContent>
+</Dropdown>
+```
+
+  </Tab>
+</Tabs>
+
+### Sisi
+
+Anda boleh menetapkan `side` pada `DialogContent` untuk meletakkan di mana paparan kandungan harus dipaparkan berkenaan dengan **elemen pencetus**. Secara lalai, sisi ditetapkan kepada `bottom`. Anda juga boleh menetapkan sisi kepada `left`, `right` & `top`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        Bawah
+        <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Sisi: Bawah </Button>
+            </DropdownTrigger>
+            <DropdownContent side="bottom">
+                <DropdownItem>Pilihan 1</DropdownItem>
+                <DropdownItem>Pilihan 2</DropdownItem>
+                <DropdownItem>Pilihan 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+      <div>
+        Atas
+       <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Sisi: Atas </Button>
+            </DropdownTrigger>
+            <DropdownContent side="top">
+                <DropdownItem>Pilihan 1</DropdownItem>
+                <DropdownItem>Pilihan 2</DropdownItem>
+                <DropdownItem>Pilihan 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+      <div>
+        Kiri
+       <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Sisi: Kiri </Button>
+            </DropdownTrigger>
+            <DropdownContent side="left">
+                <DropdownItem>Pilihan 1</DropdownItem>
+                <DropdownItem>Pilihan 2</DropdownItem>
+                <DropdownItem>Pilihan 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+      <div>
+        Kanan
+       <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Sisi: Kanan </Button>
+            </DropdownTrigger>
+            <DropdownContent side="right">
+                <DropdownItem>Pilihan 1</DropdownItem>
+                <DropdownItem>Pilihan 2</DropdownItem>
+                <DropdownItem>Pilihan 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+```tsx
+// Bawah
+ <Dropdown>
+    <DropdownTrigger>
+        <Button variant="primary-fill">Sisi: Bawah </Button>
+    </DropdownTrigger>
+    <DropdownContent side="bottom">
+        <DropdownItem>Pilihan 1</DropdownItem>
+        <DropdownItem>Pilihan 2</DropdownItem>
+        <DropdownItem>Pilihan 3</DropdownItem>
+    </DropdownContent>
+</Dropdown>
+
+// Atas
+
+<Dropdown>
+  <DropdownTrigger>
+    <Button variant="primary-fill">Sisi: Atas </Button>
+  </DropdownTrigger>
+  <DropdownContent side="top">
+    <DropdownItem>Pilihan 1</DropdownItem>
+    <DropdownItem>Pilihan 2</DropdownItem>
+    <DropdownItem>Pilihan 3</DropdownItem>
+  </DropdownContent>
+</Dropdown>
+
+// Kiri
+
+<Dropdown>
+  <DropdownTrigger>
+    <Button variant="primary-fill">Sisi: Kiri </Button>
+  </DropdownTrigger>
+  <DropdownContent side="left">
+    <DropdownItem>Pilihan 1</DropdownItem>
+    <DropdownItem>Pilihan 2</DropdownItem>
+    <DropdownItem>Pilihan 3</DropdownItem>
+  </DropdownContent>
+</Dropdown>
+
+// Kanan
+
+<Dropdown>
+  <DropdownTrigger>
+    <Button variant="primary-fill">Sisi: Kanan </Button>
+  </DropdownTrigger>
+  <DropdownContent side="right">
+    <DropdownItem>Pilihan 1</DropdownItem>
+    <DropdownItem>Pilihan 2</DropdownItem>
+    <DropdownItem>Pilihan 3</DropdownItem>
+  </DropdownContent>
+</Dropdown>
+```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### Dropdown
+
+<TypeTable
+  type={{
+    open: {
+      description: "Keadaan dropdown (terkawal)",
+      type: "boolean",
+      default: "false",
+    },
+    defaultOpen: {
+      description: "Keadaan awal dropdown (tidak terkawal)",
+      type: "boolean",
+      default: "false",
+    },
+    onOpenChange: {
+      description: "Pendengar acara perubahan (terkawal)",
+      type: "(open: boolean) => void",
+    },
+  }}
+/>
+
+### DropdownContent
+
+<TypeTable
+  type={{
+    align: {
+      description: "Penjajaran dropdown berkenaan dengan pencetus",
+      type: "enum",
+      typeDescription: "start | end | center",
+      default: "end",
+    },
+    side: {
+      description: "Kedudukan dropdown berkenaan dengan pencetus",
+      type: "enum",
+      typeDescription: "top | bottom | left | right",
+      default: "bottom",
+    },
+  }}
+/>
+
+### DropdownItem
+
+<TypeTable
+  type={{
+    disabled: {
+      description: "Sama ada item dropdown dinonaktifkan",
+      type: "boolean",
+      default: "false",
+    },
+    variant: {
+      description: "Varian item dropdown",
+      type: "default | danger",
+      default: "default",
+    },
+    onSelect: {
+      description: "Pendengar acara apabila item dropdown dipilih",
+      type: "(event: Event) => void",
+    },
+  }}
+/>
