@@ -1,5 +1,1045 @@
 ---
-title: footer
-description: footer
+title: Footer
+description: Komponen Footer adalah pangkalan yang telah distandardkan untuk laman web kerajaan Malaysia.
 ---
 
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TikTokIcon,
+  XIcon,
+} from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { Button } from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+import {
+  Address,
+  Footer,
+  FooterBottomSection,
+  FooterCopyright,
+  FooterContent,
+  FooterMainInfo,
+  FooterTimestamp,
+  FooterTopSection,
+  ImageWithTitle,
+  SocialMedia,
+  FooterCopyrightDate,
+  FooterCopyrightLinkWrapper,
+  FooterContentColumn,
+  SocialMediaItem,
+} from "@govtechmy/myds-react/footer";
+import { Link } from "@govtechmy/myds-react/link";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose"> 
+  <Tab value="Preview">
+  <div className="overflow-scroll px-2 h-[250px]">
+    <div className="scale-[0.6] origin-top-left">
+        <Footer className="w-[1180px] xl:px-10">
+            <FooterTopSection>
+                <FooterMainInfo>
+                  <ImageWithTitle
+                    imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+                    imgAlt="JataNegara"
+                  >
+                    <span>Judul Organisasi</span>
+                  </ImageWithTitle>
+                  <Address>
+                    Sampel Alamat Baris 1,
+                    Sampel Nama Jalan, Sampel Kawasan,
+                    Sampel Daerah, Sampel Bandar,
+                    12345 Sampel Poskod,
+                    Sampel Negara
+                  </Address>
+                  <SocialMedia title="Ikuti Kami">
+                    <SocialMediaItem
+                      icon={<FacebookIcon />}
+                      href={"www.google.com"}
+                      name={"Facebook"}
+                    />
+                    <SocialMediaItem
+                      icon={<TikTokIcon />}
+                      href={"www.google.com"}
+                      name={"TikTok"}
+                    />
+                  </SocialMedia>
+                </FooterMainInfo>
+                <FooterContent>
+                  <FooterContentColumn title={"Tajuk 1"}>
+                    <Link
+                      asChild
+                      href="www.google.com"
+                      underline="hover"
+                      className="hover:text-txt-black-900"
+                    >
+                      Pautan 1
+                    </Link>
+                    <Link
+                      asChild
+                      href="www.google.com"
+                      underline="hover"
+                      className="hover:text-txt-black-900"
+                    >
+                      Pautan 2
+                    </Link>
+                    <Link
+                      asChild
+                      href="www.google.com"
+                      underline="hover"
+                      className="hover:text-txt-black-900"
+                    >
+                      Pautan 3
+                    </Link>
+                    <Link
+                      asChild
+                      href="www.google.com"
+                      underline="hover"
+                      className="hover:text-txt-black-900"
+                    >
+                      Pautan 4
+                    </Link>
+                  </FooterContentColumn>
+                  <FooterContentColumn title={"Tajuk 2"}>
+                    <Link
+                      asChild
+                      href="www.google.com"
+                      underline="hover"
+                      className="hover:text-txt-black-900"
+                    >
+                      Pautan 1
+                    </Link>
+                    <Link
+                      asChild
+                      href="www.google.com"
+                      underline="hover"
+                      className="hover:text-txt-black-900"
+                    >
+                      Pautan 2
+                    </Link>
+                    <Link
+                      asChild
+                      href="www.google.com"
+                      underline="hover"
+                      className="hover:text-txt-black-900"
+                    >
+                      Pautan 3
+                    </Link>
+                    <Link
+                      asChild
+                      href="www.google.com"
+                      underline="hover"
+                      className="hover:text-txt-black-900"
+                    >
+                      Pautan 4
+                    </Link>
+                  </FooterContentColumn>
+                  <FooterContentColumn title={"Sumber Terbuka"}>
+                    <Link
+                      asChild
+                      href="www.google.com"
+                      underline="hover"
+                      className="hover:text-txt-black-900"
+                    >
+                      Repo Github
+                    </Link>
+                    <Link
+                      asChild
+                      href="www.google.com"
+                      underline="hover"
+                      className="hover:text-txt-black-900"
+                    >
+                     Figma
+                    </Link>
+                  </FooterContentColumn>
+                </FooterContent>
+              </FooterTopSection>
+              <FooterBottomSection>
+                <FooterCopyright>
+                  <FooterCopyrightDate>Hak Cipta Terpelihara</FooterCopyrightDate>
+                  <FooterCopyrightLinkWrapper>
+                    <Link
+                    asChild
+                    href="www.google.com"
+                    underline="hover"
+                    className="hover:text-txt-black-900"
+                    >
+                      Penafian
+                    </Link>
+                    <Link
+                    asChild
+                    href="www.google.com"
+                    underline="hover"
+                    className="hover:text-txt-black-900"
+                    >
+                      Dasar Privasi
+                    </Link>
+                  </FooterCopyrightLinkWrapper>
+                </FooterCopyright>
+                <FooterTimestamp time="2024-12-05T10:00:00Z" className="flex items-center justify-center">
+                  <span className="pr-1">Kemaskini Terakhir: </span>
+                </FooterTimestamp>
+            </FooterBottomSection>
+        </Footer>
+
+
+    </div>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+
+import {
+  Address,
+  Footer,
+  FooterBottomSection,
+  FooterCopyright,
+  FooterContent,
+  FooterMainInfo,
+  FooterTimestamp,
+  FooterTopSection,
+  ImageWithTitle,
+  SocialMedia,
+  FooterCopyrightDate,
+  FooterCopyrightLinkWrapper,
+  FooterContentColumn,
+  SocialMediaItem,
+} from "@govtechmy/myds-react/footer";
+
+<Footer>
+  <FooterTopSection>
+    <FooterMainInfo>
+      <ImageWithTitle
+        imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+        imgAlt="JataNegara"
+      >
+        Judul Organisasi
+      </ImageWithTitle>
+      <Address>
+        Sampel Alamat Baris 1,{"\n"}
+        Sampel Nama Jalan, Sampel Kawasan,{"\n"}
+        Sampel Daerah, Sampel Bandar,{"\n"}
+        12345 Sampel Kod Pos,{"\n"}
+        Sampel Negara
+      </Address>
+      <SocialMedia title="Ikuti Kami">
+        <SocialMediaItem
+          icon={<FacebookIcon />}
+          href={"www.google.com"}
+          name={"Facebook"}
+        />
+        <SocialMediaItem
+          icon={<TikTokIcon />}
+          href={"www.google.com"}
+          name={"TikTok"}
+        />
+      </SocialMedia>
+    </FooterMainInfo>
+    <FooterContent>
+      <FooterContentColumn title={"Tajuk 1"}>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 1
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 2
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 3
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 4
+        </Link>
+      </FooterContentColumn>
+      <FooterContentColumn title={"Tajuk 2"}>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 1
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 2
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 3
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 4
+        </Link>
+      </FooterContentColumn>
+      <FooterContentColumn title={"Sumber Terbuka"}>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Repo Github
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Figma
+        </Link>
+      </FooterContentColumn>
+    </FooterContent>
+  </FooterTopSection>
+  <FooterBottomSection>
+    <FooterCopyright>
+      <FooterCopyrightDate>Hak Cipta Terpelihara</FooterCopyrightDate>
+      <FooterCopyrightLinkWrapper>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Penafian
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Polisi Privasi
+        </Link>
+      </FooterCopyrightLinkWrapper>
+    </FooterCopyright>
+    <FooterTimestamp time="2024-12-05T10:00:00Z">Kemas Kini Terakhir:</FooterTimestamp>
+  </FooterBottomSection>
+</Footer>
+
+
+```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-footer--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/footer.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import {
+  Address,
+  Footer,
+  FooterBottomSection,
+  FooterCopyright,
+  FooterContent,
+  FooterMainInfo,
+  FooterTimestamp,
+  FooterTopSection,
+  ImageWithTitle,
+  SocialMedia,
+  FooterCopyrightDate,
+  FooterCopyrightLinkWrapper,
+  FooterContentColumn,
+  SocialMediaItem,
+} from "@govtechmy/myds-react/footer";
+import { Link } from "@govtechmy/myds-react/link";
+import {
+    FacebookIcon,
+    TikTokIcon
+} from "@govtechmy/myds-react/icon";
+```
+
+```tsx copy
+export default () => (
+<Footer>
+  <FooterTopSection>
+    <FooterMainInfo>
+      <ImageWithTitle
+        imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+        imgAlt="JataNegara"
+      >
+        Tajuk Organisasi
+      </ImageWithTitle>
+      <Address>
+        Sample Alamat Baris 1,{"\n"}
+        Sample Nama Jalan, Sample Kawasan,{"\n"}
+        Sample Daerah, Sample Bandar,{"\n"}
+        12345 Sample Kod Pos,{"\n"}
+        Sample Negara
+      </Address>
+      <SocialMedia title="Ikuti Kami">
+        <SocialMediaItem
+          icon={<FacebookIcon />}
+          href={"www.google.com"}
+          name={"Facebook"}
+        />
+        <SocialMediaItem
+          icon={<TikTokIcon />}
+          href={"www.google.com"}
+          name={"TikTok"}
+        />
+      </SocialMedia>
+    </FooterMainInfo>
+    <FooterContent>
+      <FooterContentColumn title={"Tajuk 1"}>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 1
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 2
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 3
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 4
+        </Link>
+      </FooterContentColumn>
+      <FooterContentColumn title={"Tajuk 2"}>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 1
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 2
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 3
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Pautan 4
+        </Link>
+      </FooterContentColumn>
+      <FooterContentColumn title={"Sumber Terbuka"}>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Repo Github
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Figma
+        </Link>
+      </FooterContentColumn>
+    </FooterContent>
+  </FooterTopSection>
+  <FooterBottomSection>
+    <FooterCopyright>
+      <FooterCopyrightDate>Hak Cipta Terpelihara</FooterCopyrightDate>
+      <FooterCopyrightLinkWrapper>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Penafian
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Polisi Privasi
+        </Link>
+      </FooterCopyrightLinkWrapper>
+    </FooterCopyright>
+    <FooterTimestamp time="2024-12-05T10:00:00Z">Kemas Kini Terakhir:</FooterTimestamp>
+  </FooterBottomSection>
+</Footer>
+
+);
+```
+---
+
+### Pembungkus Utama: `Footer`
+
+`Footer` berfungsi sebagai pembungkus utama untuk kandungan footer. Semua subkomponen disusun dalam pembungkus ini. Ia dibahagikan kepada dua bahagian utama:
+
+1. `FooterTopSection`
+2. `FooterBottomSection`
+
+---
+
+## 1. FooterTopSection
+
+`FooterTopSection` adalah bahagian atas footer yang mengandungi dua kawasan utama:
+
+1.1 **FooterMainInfo**  
+1.2 **FooterContent**
+
+### 1.1 FooterMainInfo
+
+Kawasan `FooterMainInfo` memaparkan butiran organisasi utama. Ia termasuk komponen berikut:
+
+#### 1.1.1 ImageWithTitle
+
+Memaparkan gambar (contohnya logo) bersama dengan tajuk.
+
+**Contoh**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit gap-1">
+   <ImageWithTitle
+     imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+     imgAlt="JataNegara"
+   >
+    Judul Organisasi 
+   </ImageWithTitle>
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+<ImageWithTitle
+     imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+     imgAlt="JataNegara"
+>
+  Judul Organisasi
+</ImageWithTitle>
+```
+  </Tab>
+</Tabs>
+
+#### 1.1.2 Address
+
+Memaparkan alamat fizikal organisasi.  
+Kandungan: Ditambah sebagai teks biasa di dalam komponen.
+
+**Contoh**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit">
+    <Address>
+        Sample Alamat Baris 1,
+        Sample Nama Jalan, Sample Kawasan,
+        Sample Daerah, Sample Bandar,
+        12345 Sample Kod Pos,
+        Sample Negara
+    </Address>
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+<Address>
+  Sample Alamat Baris 1,
+  Sample Nama Jalan, Sample Kawasan,
+  Sample Daerah, Sample Bandar,
+  12345 Sample Kod Pos,
+  Sample Negara  
+</Address>
+```
+  </Tab>
+</Tabs>
+
+#### 1.1.3 SocialMedia
+
+Pembungkus untuk pautan media sosial, dengan ikon yang diimport.
+
+**Contoh**:
+
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit pb-4">
+<SocialMedia title="Ikuti Kami">
+  <SocialMediaItem
+    icon={<FacebookIcon />}
+    href="https://www.facebook.com"
+    name="Facebook"
+  />
+  <SocialMediaItem
+    icon={<TikTokIcon />}
+    href="https://www.tiktok.com"
+    name="TikTok"
+  />
+    <SocialMediaItem
+    icon={<InstagramIcon />}
+    href="https://www.instagram.com"
+    name="Instagram"
+  />
+    <SocialMediaItem
+    icon={<XIcon />}
+    href="https://www.twitter.com"
+    name="X"
+  />
+</SocialMedia>
+
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TikTokIcon,
+  XIcon,
+} from "@govtechmy/myds-react/icon";
+
+<SocialMedia title="Ikuti Kami">
+  <SocialMediaItem
+    icon={<FacebookIcon />}
+    href="https://www.facebook.com"
+    name="Facebook"
+  />
+  <SocialMediaItem
+    icon={<TikTokIcon />}
+    href="https://www.tiktok.com"
+    name="TikTok"
+  />
+  <SocialMediaItem
+    icon={<InstagramIcon />}
+    href="https://www.instagram.com"
+    name="Instagram"
+  />
+  <SocialMediaItem icon={<XIcon />} href="https://www.twitter.com" name="X" />
+</SocialMedia>
+
+```
+  </Tab>
+</Tabs>
+
+
+
+### 1.2 FooterContent
+
+Komponen `FooterContent` direka untuk mengumpulkan pautan yang berkaitan dalam susun atur yang tersusun, biasanya diatur dalam lajur. Setiap lajur diwakili oleh `FooterContentColumn`, yang merangkumi tajuk dan pautan yang berkaitan.
+
+**Contoh**:
+
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit gap-1">
+  <FooterContent>
+<FooterContentColumn title="Tajuk 1">
+  <Link asChild href="https://www.example.com" underline="hover">
+    Patutan 1
+  </Link>
+  <Link asChild href="https://www.example.com" underline="hover">
+    Patutan 2
+  </Link>
+</FooterContentColumn>
+<FooterContentColumn title="Tajuk 2">
+  <Link asChild href="https://www.example.com" underline="hover">
+    Patutan 1
+  </Link>
+  <Link asChild href="https://www.example.com" underline="hover">
+    Patutan 2
+  </Link>
+</FooterContentColumn>
+</FooterContent>
+
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+<FooterContent>
+  <FooterContentColumn title="Tajuk 1">
+    <Link href="https://www.example.com" underline="hover">
+      Patutan 1
+    </Link>
+    <Link href="https://www.example.com" underline="hover">
+      Patutan 2
+    </Link>
+  </FooterContentColumn>
+  <FooterContentColumn title="Tajuk 2">
+    <Link href="https://www.example.com" underline="hover">
+      Patutan 1
+    </Link>
+    <Link href="https://www.example.com" underline="hover">
+      Patutan 2
+    </Link>
+  </FooterContentColumn>
+</FooterContent>
+```
+
+  </Tab>
+</Tabs>
+
+## 2. FooterBottomSection
+
+`FooterBottomSection` adalah bahagian bawah footer. Ia mengandungi yang berikut:
+
+1.1 **FooterCopyright**  
+1.2 **FooterTimestamp**
+
+### 2.1 FooterCopyright
+
+Kawasan `FooterCopyright` memaparkan maklumat hak cipta dan pautan berkaitan tambahan. Ia termasuk komponen berikut:
+
+#### 2.1.1 FooterCopyrightDate
+
+Memaparkan kenyataan hak cipta dengan tahun.
+
+**Contoh**:
+
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit gap-1">
+  <FooterCopyrightDate>Hak Cipta Terpelihara</FooterCopyrightDate>
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+<FooterCopyrightDate>Hak Cipta Terpelihara</FooterCopyrightDate>
+```
+  </Tab>
+</Tabs>
+
+#### 2.1.2 FooterCopyrightLinkWrapper
+
+Pembungkus untuk pautan tambahan, seperti penafian atau polisi.
+
+**Contoh**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit">
+    <FooterCopyrightLinkWrapper>
+      <Link asChild href="https://www.example.com" underline="hover">
+        Penafian
+      </Link>
+      <Link asChild href="https://www.example.com" underline="hover">
+        Dasar Privasi
+      </Link>
+    </FooterCopyrightLinkWrapper>
+
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+<FooterCopyrightLinkWrapper>
+  <Link href="https://www.example.com" underline="hover">
+    Penafian
+  </Link>
+  <Link href="https://www.example.com" underline="hover">
+    Dasar Privasi
+  </Link>
+</FooterCopyrightLinkWrapper>
+```
+  </Tab>
+</Tabs>
+
+### 2.2 FooterTimestamp
+
+Memaparkan tarikh dan masa kemas kini terakhir.
+
+**Contoh**:
+
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
+  <Tab value="Preview">
+    <div className="flex h-fit items-center justify-center">
+      <FooterTimestamp time="2024-12-05T10:00:00Z">
+        <span> Kemaskini Terakhir: </span>
+      </FooterTimestamp>
+    </div>
+  </Tab>
+
+  <Tab value="Code">
+  ```tsx
+    <FooterTimestamp time="2024-12-05T10:00:00Z">Kemaskini Terakhir:</FooterTimestamp>
+  ```
+  </Tab>
+</Tabs>
+
+
+## Props
+
+### Footer
+
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk footer",
+      type: "string",
+    },
+    children: {
+      description: "Kandungan footer",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterTopSection
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk bahagian atas",
+      type: "string",
+    },
+    children: {
+      description: "Kandungan untuk bahagian atas",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterMainInfo
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk bahagian maklumat utama",
+      type: "string",
+    },
+    children: {
+      description: "Kandungan maklumat utama",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### ImageWithTitle
+<TypeTable
+  type={{
+    imgSrc: {
+      description: "Sumber imej",
+      type: "string",
+    },
+    imgAlt: {
+      description: "Teks alternatif untuk imej",
+      type: "string",
+    },
+    className: {
+      description: "Gaya tambahan untuk pembungkus",
+      type: "string",
+    },
+    children: {
+      description: "Tajuk atau kandungan yang dipaparkan sebelah imej",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### Address
+
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk alamat",
+      type: "string",
+    },
+    children: {
+      description: "Teks alamat",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SocialMedia
+
+<TypeTable
+  type={{
+    title: {
+      description: "Tajuk pilihan untuk bahagian ini",
+      type: "string",
+    },
+    className: {
+      description: "Gaya tambahan untuk bahagian ini",
+      type: "string",
+    },
+    children: {
+      description: "Item media sosial",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SocialMediaItem
+
+<TypeTable
+  type={{
+    icon: {
+      description: "Ikon untuk media sosial",
+      type: "ReactNode",
+    },
+    href: {
+      description: "URL untuk pautan media sosial",
+      type: "string",
+    },
+    name: {
+      description: "Nama media sosial",
+      type: "string",
+    },
+    className: {
+      description: "Gaya tambahan untuk bahagian ini",
+      type: "string",
+    },
+  }}
+/>
+
+### FooterContent
+<TypeTable
+  type={{
+    children: {
+      description: "Kandungan untuk footer",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterContentColumn
+<TypeTable
+  type={{
+    title: {
+      description: "Tajuk lajur",
+      type: "string",
+    },
+    children: {
+      description: "Kandungan lajur",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterBottomSection
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk bahagian bawah",
+      type: "string",
+    },
+    children: {
+      description: "Kandungan untuk bahagian bawah",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterCopyright
+
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk pembungkus hak cipta",
+      type: "string",
+    },
+    children: {
+      description: "Kandungan hak cipta",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterCopyrightDate
+
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk tarikh hak cipta",
+      type: "string",
+    },
+    children: {
+      description: "Teks untuk dipaparkan sebelum tahun",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterCopyrightLinkWrapper
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk pembungkus pautan",
+      type: "string",
+    },
+    children: {
+      description: "Pautan untuk maklumat hak cipta",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterTimestamp
+<TypeTable
+  type={{
+    time: {
+      description: "Timestamp dalam format string, nombor, atau Date, yang mewakili tarikh ISO 8601 yang sah atau mana-mana format yang disokong oleh pembina Tarikh JavaScript.",
+      type: "string | number | Date",
+    },
+    className: {
+      description: "Gaya tambahan untuk timestamp",
+      type: "string",
+    },
+    children: {
+      description: "Teks untuk dipaparkan sebelum timestamp",
+      type: "ReactNode",
+    },
+  }}
+/>

@@ -659,9 +659,7 @@ import {
     href="https://www.instagram.com"
     name="Instagram"
   />
-  <SocialMediaItem icon={<XIcon />}
-   href="https://www.twitter.com" 
-   name="X" />
+  <SocialMediaItem icon={<XIcon />} href="https://www.twitter.com" name="X" />
 </SocialMedia>
 
 ```
@@ -722,7 +720,7 @@ The `FooterContent` component is designed for grouping related links in a struct
     </Link>
   </FooterContentColumn>
 </FooterContent>
-````
+```
 
   </Tab>
 </Tabs>
@@ -801,17 +799,246 @@ Displays the last updated date and time.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
   <Tab value="Preview">
-    <div className="flex justify-center items-center h-fit">
+    <div className="flex h-fit items-center justify-center">
       <FooterTimestamp time="2024-12-05T10:00:00Z">
-      <span> Last Updated: </span>
+        <span> Last Updated: </span>
       </FooterTimestamp>
     </div>
   </Tab>
-  
+
   <Tab value="Code">
-    <FooterTimestamp time="2024-12-05T10:00:00Z">
-      Last Updated:
-    </FooterTimestamp>
+  ```tsx
+    <FooterTimestamp time="2024-12-05T10:00:00Z">Last Updated:</FooterTimestamp>
+  ```
   </Tab>
 </Tabs>
+
+## Props
+
+### Footer
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the footer",
+      type: "string",
+    },
+    children: {
+      description: "Footer content",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterTopSection
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the top section",
+      type: "string",
+    },
+    children: {
+      description: "Content for the top section",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterMainInfo
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the main info section",
+      type: "string",
+    },
+    children: {
+      description: "Main info content",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+
+### ImageWithTitle
+<TypeTable
+  type={{
+    imgSrc: {
+      description: "Source of the image",
+      type: "string",
+    },
+    imgAlt: {
+      description: "Alternative text for the image",
+      type: "string",
+    },
+    className: {
+      description: "Additional styles for the container",
+      type: "string",
+    },
+    children: {
+      description: "Title or content displayed next to the image",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### Address
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the address",
+      type: "string",
+    },
+    children: {
+      description: "Address text",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SocialMedia
+
+<TypeTable
+  type={{
+    title: {
+      description: "Optional title for the section",
+      type: "string",
+    },
+    className: {
+      description: "Additional styles for the section",
+      type: "string",
+    },
+    children: {
+      description: "Social media items",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SocialMediaItem
+
+<TypeTable
+  type={{
+    icon: {
+      description: "Icon for the social media",
+      type: "ReactNode",
+    },
+    href: {
+      description: "URL for the social media link",
+      type: "string",
+    },
+    name: {
+      description: "Name of the social media",
+      type: "string",
+    },
+    className: {
+      description: "Additional styles for the section",
+      type: "string",
+    },
+  }}
+/>
+
+
+### FooterContent
+<TypeTable
+  type={{
+    children: {
+      description: "Content for the footer",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterContentColumn
+<TypeTable
+  type={{
+    title: {
+      description: "Title of the column",
+      type: "string",
+    },
+    children: {
+      description: "Column content",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+
+### FooterBottomSection
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the bottom section",
+      type: "string",
+    },
+    children: {
+      description: "Content for the bottom section",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+
+### FooterCopyright
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the copyright container",
+      type: "string",
+    },
+    children: {
+      description: "Copyright content",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterCopyrightDate
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the copyright date",
+      type: "string",
+    },
+    children: {
+      description: "Text to display before the year",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterCopyrightLinkWrapper
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the link wrapper",
+      type: "string",
+    },
+    children: {
+      description: "Links for copyright information",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterTimestamp
+<TypeTable
+  type={{
+    time: {
+      description: "Timestamp in string, number, or Date format, representing a valid ISO 8601 date or any format supported by the JavaScript Date constructor.",
+      type: "string | number | Date",
+    },
+    className: {
+      description: "Additional styles for the timestamp",
+      type: "string",
+    },
+    children: {
+      description: "Text to display before the timestamp",
+      type: "ReactNode",
+    },
+  }}
+/>
+
 

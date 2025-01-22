@@ -151,12 +151,15 @@ interface SocialMediaItemProps {
   icon: ReactNode;
   href: string;
   name: string;
+  className?:string;
 }
 
 const SocialMediaItem: FunctionComponent<SocialMediaItemProps> = ({
   icon,
   href,
   name,
+  className,
+  ...props
 }) => (
   <Link
     href={href}
@@ -164,7 +167,8 @@ const SocialMediaItem: FunctionComponent<SocialMediaItemProps> = ({
     rel="noopener noreferrer"
     aria-label={name}
     underline="none"
-    className="hover:text-txt-black-900"
+    className={clx("hover:text-txt-black-900",className)}
+    {...props}
   >
     {icon}
   </Link>
