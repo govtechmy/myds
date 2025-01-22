@@ -4,19 +4,69 @@ description: A modal pop-up designed to capture user attention for important act
 ---
 
 import { Quicklinks } from "@/components/quicklinks";
-import { DatePicker, CustomDisableDatePicker } from "@/components/myds";
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+  Button,
+  DismissibleDialog,
+} from "@/components/myds";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
-export const NOW = new Date();
-
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex justify-center">
-    <DatePicker />
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="primary-fill">Open Dialog</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
   </Tab>
   <Tab value="Code">
     ```tsx
-    <DatePicker />
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="primary-fill">Open Dialog</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
     ```
   </Tab>
 </Tabs>
@@ -24,286 +74,627 @@ export const NOW = new Date();
 <Quicklinks
   links={{
     storybook:
-      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-date-picker--docs",
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-dialog--docs",
     source:
-      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/date-picker.tsx",
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/dialog.tsx",
   }}
 />
 
 ## Usage
 
 ```tsx copy
-import { DatePicker } from "@govtechmy/myds-react/date-picker";
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@govtechmy/myds-react/dialog";
 ```
 
 ```tsx copy
-export default () => <DatePicker />;
+export default () => (
+  <Dialog>
+    <DialogTrigger />
+    <DialogBody>
+      <DialogHeader>
+        <DialogTitle />
+      </DialogHeader>
+      <DialogContent>
+        <DialogDescription />
+      </DialogContent>
+      <DialogFooter>
+        <DialogClose />
+      </DialogFooter>
+    </DialogBody>
+  </Dialog>
+);
 ```
 
 ## Examples
 
-### Size
+### Trigger
 
-Use the `size` prop to change the checkbox size!
+Use the `DialogTrigger` to wrap the trigger element that opens the dialog. The example below shows three different (3) buttons opening the same dialog.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
     <div className="not-prose flex flex-col items-center gap-3">
-      <DatePicker size="small" />
-      <DatePicker size="medium" />
-      <DatePicker size="large" />
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="primary-fill">Open Dialog 1</Button>
+        </DialogTrigger>
+        <DialogTrigger asChild>
+          <Button variant="primary-outline">Open Dialog 2</Button>
+        </DialogTrigger>
+        <DialogTrigger asChild>
+          <Button variant="primary-ghost">Open Dialog 3</Button>
+        </DialogTrigger>
+
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
     </div>
+
   </Tab>
   <Tab value="Code">
     ```tsx
-    <DatePicker size="small" />
-    <DatePicker size="medium" />
-    <DatePicker size="large" />
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="primary-fill">Open Dialog 1</Button>
+      </DialogTrigger>
+      <DialogTrigger asChild>
+        <Button variant="primary-outline">Open Dialog 2</Button>
+      </DialogTrigger>
+      <DialogTrigger asChild>
+        <Button variant="primary-ghost">Open Dialog 3</Button>
+      </DialogTrigger>
+
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
     ```
+
   </Tab>
 </Tabs>
 
 ### Uncontrolled vs Controlled State
 
-To use the date picker in the uncontrolled state, set the `defaultValue` prop to the initial value of the date picker.
+To use the dialog in an uncontrolled state, set the `defaultOpen` prop to the initial state of the dialog.
 
-To use the date picker in the controlled state, set the `value` prop to the current value of the date picker and provide an `onValueChange` event listener to handle the change.
+To use the dialog in the controlled state, utilize the `open` and `onOpenChange` prop to handle the state programmatically.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
     <div className="not-prose flex flex-col gap-3 items-center">
         <div>
             Uncontrolled
-            <DatePicker defaultValue={NOW} />
+            <Dialog defaultOpen={false}>
+              <DialogTrigger asChild>
+                <Button variant="primary-fill">Open Dialog (Uncontrolled)</Button>
+              </DialogTrigger>
+      
+            <DialogBody>
+              <DialogHeader>
+                <DialogTitle>Dialog Title</DialogTitle>
+              </DialogHeader>
+              <DialogContent>
+                <DialogDescription>Dialog content goes here.</DialogDescription>
+              </DialogContent>
+              <DialogFooter>
+                <DialogClose>
+                  <Button variant="default-outline">Secondary Action</Button>
+                </DialogClose>
+                <DialogClose>
+                  <Button variant="primary-fill">Primary Action</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogBody>
+          </Dialog>
         </div>
         <div>
             Controlled
-            <DatePicker value={NOW} />
+            <Dialog open={false}>
+              <DialogTrigger asChild>
+                <Button variant="primary-fill">Open Dialog (Controlled)</Button>
+              </DialogTrigger>
+      
+            <DialogBody>
+              <DialogHeader>
+                <DialogTitle>Dialog Title</DialogTitle>
+              </DialogHeader>
+              <DialogContent>
+                <DialogDescription>Dialog content goes here.</DialogDescription>
+              </DialogContent>
+              <DialogFooter>
+                <DialogClose>
+                  <Button variant="default-outline">Secondary Action</Button>
+                </DialogClose>
+                <DialogClose>
+                  <Button variant="primary-fill">Primary Action</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogBody>
+          </Dialog>
         </div>
     </div>
+
   </Tab>
   <Tab value="Code">
     ```tsx
     // Uncontrolled state
-    <DatePicker defaultValue={new Date().toISOString().split("T")[0]} />
+    <Dialog defaultOpen={false}>
+      <DialogTrigger asChild>
+        <Button variant="primary-fill">Open Dialog (Uncontrolled)</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
 
     // Controlled state
-    <DatePicker value={new Date().toISOString().split("T")[0]} />
+    <Dialog open={false}>
+      <DialogTrigger asChild>
+        <Button variant="primary-fill">Open Dialog (Controlled)</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
     ```
 
   </Tab>
 </Tabs>
 
-### Disabled
+### Dismissible
 
-There are many ways to interact with DatePicker `disabled` state. Date picker can be disabled entirely by setting the `disabled` prop to `true`.
+To prevent users from dismissing the dialog, set the `dismissible` prop to `false` at `DialogBody`. By default, the dialog is dismissible.
 
-For a finer control on which dates to disable, you can pass a `Matcher | Matcher[]` that defines the rules for disabling dates.
+You can attach a callback function to the `onDismiss` prop to handle the dismiss event.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
-    <div className="not-prose space-y-2">
-      <div className="flex items-center gap-3">
-        Disable all dates
-        <DatePicker defaultValue={NOW} disabled />
-      </div>
-      <div className="flex items-center gap-3">
-        Disable dates before today
-        <DatePicker defaultValue={NOW} disabled={{ before: new Date() }} />
-      </div>
-      <div className="flex items-center gap-3">
-        Disable dates after today
-        <DatePicker defaultValue={NOW} disabled={{ after: new Date() }} />
-      </div>
-      <div className="flex items-center gap-3">
-        Disable dates outside of range
-        <DatePicker
-          defaultValue={NOW}
-          disabled={{
-            before: new Date().setDate(new Date().getDate() - 1),
-            after: new Date().setDate(new Date().getDate() + 1),
-          }}
-        />
-      </div>
-      <div className="flex items-center gap-3">
-        Disable dates by days of week (eg. Saturday and Sunday)
-        <DatePicker
-          defaultValue={NOW}
-          disabled={{
-            dayOfWeek: [0, 6],
-          }}
-        />
-      </div>
-      <div className="flex items-center gap-3">
-        Disable dates by callback function (eg. disable every 13th of the month)
-        <CustomDisableDatePicker />
-      </div>
+    <div className="not-prose space-y-2 flex flex-col items-center">
+      <DismissibleDialog />
+
     </div>
+
   </Tab>
   <Tab value="Code">
     ```tsx
-    // Disable all dates
-    <DatePicker defaultValue={new Date()} disabled />
-    
-    // Disable dates before today
-    <DatePicker defaultValue={new Date()} disabled={{ before: new Date() }} />
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="primary-fill">Open Dialog (Uncontrolled)</Button>
+      </DialogTrigger>
 
-    // Disable dates after today
-    <DatePicker defaultValue={new Date()} disabled={{ after: new Date() }} />
-
-    // Disable dates outside of range
-    <DatePicker
-      defaultValue={new Date()}
-      disabled={{
-        before: new Date().setDate(new Date().getDate() - 1),
-        after: new Date().setDate(new Date().getDate() + 1),
-      }}
-    />
-
-    // Disable dates by days of week (eg. Saturday and Sunday)
-    <DatePicker
-      defaultValue={new Date()}
-      disabled={{
-        dayOfWeek: [0, 6],
-      }}
-    />
-
-    // Disable dates by callback function (eg. disable every 13th of the month)
-    <DatePicker
-      defaultValue={new Date()}
-      disabled={(date) => date.getDate() === 13}
-    />
+      <DialogBody
+        dismissible={true}
+        onDismiss={() => alert("Dialog dismissed...")}
+      >
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
     ```
 
   </Tab>
 </Tabs>
 
-### Maximum and Minimum Year
+### Border
 
-You can set the maximum and minimum year for the date picker by passing the `minYear` and `maxYear` props.
+Border can be added to the `DialogHeader` and `DialogFooter` by setting the `border` prop to `true`.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
     <div className="not-prose flex justify-center">
-      <DatePicker defaultValue={NOW} maxYear={2030} minYear={2020} />
+     <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="primary-fill">Open Bordered Dialog</Button>
+      </DialogTrigger>
+
+      <DialogBody>
+        <DialogHeader border>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter border>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
     </div>
+
   </Tab>
   <Tab value="Code">
     ```tsx
-    <DatePicker defaultValue={new Date()} maxYear={2030} minYear={2020} />
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="primary-fill">Open Bordered Dialog</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader border>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter border>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
     ```
+
   </Tab>
 </Tabs>
 
-### Year Sort Order
+### Alignment
 
-You can set the sorting order of the years in the year dropdown by passing the `yearOrder` prop.
+You can set `align` to `DialogFooter` to align the children to the `start`, `end`, or `full` width of the dialog. By default, the alignment is set to `end`.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
     <div className="not-prose flex justify-center gap-3">
       <div>
-        Ascending
-        <DatePicker defaultValue={NOW} yearOrder="asc" />
+        Start
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="primary-fill">Align Dialog (start)</Button>
+          </DialogTrigger>
+          <DialogBody>
+            <DialogHeader border>
+              <DialogTitle>Dialog Title</DialogTitle>
+            </DialogHeader>
+            <DialogContent>
+              <DialogDescription>Dialog content goes here.</DialogDescription>
+            </DialogContent>
+            <DialogFooter border align="start">
+              <DialogClose>
+                <Button variant="default-outline">Secondary Action</Button>
+              </DialogClose>
+              <DialogClose>
+                <Button variant="primary-fill">Primary Action</Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogBody>
+        </Dialog>
       </div>
       <div>
-        Descending
-        <DatePicker defaultValue={NOW} yearOrder="desc" />
+        Full
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="primary-fill">Align Dialog (full)</Button>
+          </DialogTrigger>
+          <DialogBody>
+            <DialogHeader border>
+              <DialogTitle>Dialog Title</DialogTitle>
+            </DialogHeader>
+            <DialogContent>
+              <DialogDescription>Dialog content goes here.</DialogDescription>
+            </DialogContent>
+            <DialogFooter border align="full">
+              <DialogClose asChild>
+                <Button variant="default-outline">Secondary Action</Button>
+              </DialogClose>
+              <DialogClose asChild>
+                <Button variant="primary-fill">Primary Action</Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogBody>
+        </Dialog>
+      </div>
+      <div>
+        End
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant="primary-fill">Align Dialog (end)</Button>
+          </DialogTrigger>
+          <DialogBody>
+            <DialogHeader border>
+              <DialogTitle>Dialog Title</DialogTitle>
+            </DialogHeader>
+            <DialogContent>
+              <DialogDescription>Dialog content goes here.</DialogDescription>
+            </DialogContent>
+            <DialogFooter border align="end">
+              <DialogClose asChild>
+                <Button variant="default-outline">Secondary Action</Button>
+              </DialogClose>
+              <DialogClose asChild>
+                <Button variant="primary-fill">Primary Action</Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogBody>
+        </Dialog>
       </div>
     </div>
+
   </Tab>
   <Tab value="Code">
 ```tsx
-<DatePicker defaultValue={new Date()} yearOrder="asc" />
+// Start
+<Dialog>
+  <DialogTrigger asChild>
+    <Button variant="primary-fill">Align Dialog (start)</Button>
+  </DialogTrigger>
+  <DialogBody>
+    <DialogHeader border>
+      <DialogTitle>Dialog Title</DialogTitle>
+    </DialogHeader>
+    <DialogContent>
+      <DialogDescription>Dialog content goes here.</DialogDescription>
+    </DialogContent>
+    <DialogFooter border align="start">
+      <DialogClose>
+        <Button variant="default-outline">Secondary Action</Button>
+      </DialogClose>
+      <DialogClose>
+        <Button variant="primary-fill">Primary Action</Button>
+      </DialogClose>
+    </DialogFooter>
+  </DialogBody>
+</Dialog>
 
-<DatePicker defaultValue={new Date()} yearOrder="desc" />
+// Full
+
+<Dialog>
+  <DialogTrigger asChild>
+    <Button variant="primary-fill">Align Dialog (full)</Button>
+  </DialogTrigger>
+  <DialogBody>
+    <DialogHeader border>
+      <DialogTitle>Dialog Title</DialogTitle>
+    </DialogHeader>
+    <DialogContent>
+      <DialogDescription>Dialog content goes here.</DialogDescription>
+    </DialogContent>
+    <DialogFooter border align="full">
+      <DialogClose>
+        <Button variant="default-outline">Secondary Action</Button>
+      </DialogClose>
+      <DialogClose>
+        <Button variant="primary-fill">Primary Action</Button>
+      </DialogClose>
+    </DialogFooter>
+  </DialogBody>
+</Dialog>
+
+// End
+
+<Dialog>
+  <DialogTrigger asChild>
+    <Button variant="primary-fill">Align Dialog (end)</Button>
+  </DialogTrigger>
+  <DialogBody>
+    <DialogHeader border>
+      <DialogTitle>Dialog Title</DialogTitle>
+    </DialogHeader>
+    <DialogContent>
+      <DialogDescription>Dialog content goes here.</DialogDescription>
+    </DialogContent>
+    <DialogFooter border align="end">
+      <DialogClose>
+        <Button variant="default-outline">Secondary Action</Button>
+      </DialogClose>
+      <DialogClose>
+        <Button variant="primary-fill">Primary Action</Button>
+      </DialogClose>
+    </DialogFooter>
+  </DialogBody>
+</Dialog>
 ```
+
   </Tab>
 </Tabs>
 
-### Locale
+### Action
 
-To support common locales, you can pass the `locale` prop to the date picker.
-
-Default value is English `en`. To switch to Bahasa Melayu, pass `ms`.
+You can add special actions to the dialog by utilising the `action` prop on the `DialogFooter`.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
     <div className="not-prose flex justify-center gap-3">
-      <div>
-        English
-        <DatePicker defaultValue={NOW} locale="en" />
-      </div>
-      <div>
-        Bahasa Melayu
-        <DatePicker defaultValue={NOW} locale="ms" />
-      </div>
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="primary-fill">Additional Action Dialog</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader border>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter action={<Button variant="primary-ghost">Tertiary</Button>}>
+          <DialogClose asChild>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose asChild>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
     </div>
+
   </Tab>
   <Tab value="Code">
 ```tsx
-<DatePicker defaultValue={new Date()} locale="en" />
-
-<DatePicker defaultValue={new Date()} locale="ms" />
+  <Dialog>
+    <DialogTrigger asChild>
+      <Button variant="primary-fill">Additional Action Dialog</Button>
+    </DialogTrigger>
+    <DialogBody>
+      <DialogHeader border>
+        <DialogTitle>Dialog Title</DialogTitle>
+      </DialogHeader>
+      <DialogContent>
+        <DialogDescription>Dialog content goes here.</DialogDescription>
+      </DialogContent>
+      <DialogFooter action={<Button variant="primary-ghost">Tertiary</Button>}>
+        <DialogClose asChild>
+          <Button variant="default-outline">Secondary Action</Button>
+        </DialogClose>
+        <DialogClose asChild>
+          <Button variant="primary-fill">Primary Action</Button>
+        </DialogClose>
+      </DialogFooter>
+    </DialogBody>
+  </Dialog>
 ```
   </Tab>
 </Tabs>
 
 ## Props
 
-### DatePicker
+### Dialog
 
 <TypeTable
   type={{
-    size: {
-      description: "Size of the date picker",
-      type: "enum",
-      typeDescription: "small | medium | large",
-      default: "small",
-    },
-    defaultValue: {
-      description: "Initial state of the date picker (uncontrolled)",
-      type: "boolean | indeterminate",
+    open: {
+      description: "State of the dialog (controlled)",
+      type: "boolean",
       default: "false",
     },
-    value: {
-      description: "State of the date picker (controlled)",
-      type: "boolean | indeterminate",
+    defaultOpen: {
+      description: "Initial state of the dialog (uncontrolled)",
+      type: "boolean",
       default: "false",
     },
-    onValueChange: {
+    onOpenChange: {
       description: "Change event listener (controlled)",
-      type: "(date: Date ) => void",
+      type: "(open: boolean) => void",
     },
-    placeholder: {
-      description: "Placeholder text for the date picker",
-      type: "string",
-      default: "dd / mm / yyyy",
+  }}
+/>
+
+### DialogBody
+
+<TypeTable
+  type={{
+    dismissible: {
+      description: "Whether the dialog can be dismissed",
+      type: "boolean",
+      default: "true",
     },
-    disabled: {
-      description: "Disabled state for date picker",
-      type: "boolean | Matcher | Matcher[]",
+    onDismiss: {
+      description: "Change event listener for dismiss event",
+      type: "() => void",
+    },
+  }}
+/>
+
+### DialogHeader
+
+<TypeTable
+  type={{
+    border: {
+      description: "Whether the dialog header has border",
+      type: "boolean",
       default: "false",
     },
-    maxYear: {
-      description: "Maximum year for the date picker",
-      type: "number",
-      default: "2099",
+  }}
+/>
+
+### DialogFooter
+
+<TypeTable
+  type={{
+    border: {
+      description: "Whether the dialog footer has border",
+      type: "boolean",
+      default: "false",
     },
-    minYear: {
-      description: "Minimum year for the date picker",
-      type: "number",
-      default: "1900",
+    align: {
+      description: "Aligns the layout of the content",
+      type: "start | end | full",
+      default: "end",
     },
-    yearOrder: {
-      description: "Sorting order for the year selection",
-      type: "asc | desc",
-      default: "asc",
-    },
-    locale: {
-      description: "Locale for the date picker",
-      type: "en | ms",
-      default: "en",
+    action: {
+      description: "Additional action to be added to the footer",
+      type: "ReactNode",
     },
   }}
 />

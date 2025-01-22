@@ -7,10 +7,12 @@ import {
   JSXElementConstructor,
   cloneElement,
   ReactNode,
+  createContext,
+  useContext,
 } from "react";
 import { CrossIcon } from "../icons/cross";
 import { clx } from "../utils";
-import { button_cva } from "./button";
+import { Button } from "./button";
 import { cva } from "class-variance-authority";
 
 const Dialog = DialogPrimitive.Root;
@@ -18,21 +20,47 @@ type DialogProps = ComponentProps<typeof Dialog>;
 
 /*========================================================================================================================*/
 
-const DialogTrigger = DialogPrimitive.Trigger;
+const DialogTrigger: ForwardRefExoticComponent<
+  ComponentProps<typeof DialogPrimitive.Trigger>
+> = forwardRef((props, ref) => {
+  return <DialogPrimitive.Trigger ref={ref} {...props} asChild />;
+});
+
 type DialogTriggerProps = ComponentProps<typeof DialogTrigger>;
 
 /*========================================================================================================================*/
 
-const DialogClose = DialogPrimitive.Close;
+const DialogClose: ForwardRefExoticComponent<
+  ComponentProps<typeof DialogPrimitive.Close>
+> = forwardRef((props, ref) => {
+  const { onDismiss } = useContext(DialogBodyContext);
+
+  return (
+    <DialogPrimitive.Close
+      ref={ref}
+      {...props}
+      asChild
+      onClick={onDismiss && onDismiss}
+    />
+  );
+});
+
 type DialogCloseProps = ComponentProps<typeof DialogClose>;
 
 /*========================================================================================================================*/
 
-interface DialogBodyProps
-  extends ComponentProps<typeof DialogPrimitive.Content> {
+interface DialogBodyContextProps {
   dismissible?: boolean;
   onDismiss?: () => void;
 }
+interface DialogBodyProps
+  extends ComponentProps<typeof DialogPrimitive.Content>,
+    DialogBodyContextProps {}
+
+const DialogBodyContext = createContext<DialogBodyContextProps>({
+  dismissible: true,
+  onDismiss: () => {},
+});
 
 const DialogBody: ForwardRefExoticComponent<DialogBodyProps> = forwardRef(
   ({ className, children, dismissible = true, onDismiss, ...props }, ref) => {
@@ -62,27 +90,30 @@ const DialogBody: ForwardRefExoticComponent<DialogBodyProps> = forwardRef(
             className,
           )}
           onInteractOutside={
-            !dismissible ? (e) => e.preventDefault() : undefined
+            !dismissible
+              ? (e) => e.preventDefault()
+              : () => onDismiss && onDismiss()
           }
           {...props}
         >
-          {children}
-          {dismissible && (
-            <DialogPrimitive.Close
-              className={clx(
-                button_cva({ variant: "default-outline", size: "small" }),
-                "absolute right-4 top-4",
-                "size-[2rem]",
-                "grid place-content-center",
-                "text-txt-black-900",
-                "disabled:pointer-events-none",
-              )}
-              onClick={onDismiss}
-            >
-              <CrossIcon className="size-5 stroke-current" />
-              <span className="sr-only">Close</span>
-            </DialogPrimitive.Close>
-          )}
+          <DialogBodyContext.Provider value={{ dismissible, onDismiss }}>
+            {children}
+            {dismissible && (
+              <DialogClose
+                className={clx(
+                  "absolute right-4 top-4",
+                  "grid place-content-center",
+                  "text-txt-black-900",
+                  "disabled:pointer-events-none",
+                )}
+              >
+                <Button variant="default-outline" size={"small"} iconOnly>
+                  <CrossIcon className="size-5 stroke-current" />
+                  <span className="sr-only">Close</span>
+                </Button>
+              </DialogClose>
+            )}
+          </DialogBodyContext.Provider>
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     );

@@ -52,7 +52,8 @@ const AlertDialog: ForwardRefExoticComponent<AlertDialogProps> = forwardRef(
   },
 );
 
-interface AlertDialogActionProps extends ComponentProps<typeof DialogFooter> {}
+interface AlertDialogActionProps
+  extends Omit<ComponentProps<typeof DialogFooter>, "border"> {}
 
 const AlertDialogAction: ForwardRefExoticComponent<AlertDialogActionProps> =
   forwardRef(({ children, className, ...props }) => {

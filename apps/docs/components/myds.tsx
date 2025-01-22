@@ -8,6 +8,7 @@ export * from "@govtechmy/myds-react/button";
 export * from "@govtechmy/myds-react/link";
 export * from "@govtechmy/myds-react/skiplink";
 export * from "@govtechmy/myds-react/accordion";
+export * from "@govtechmy/myds-react/alert-dialog";
 export * from "@govtechmy/myds-react/announce-bar";
 export * from "@govtechmy/myds-react/toast";
 export * from "@govtechmy/myds-react/callout";
@@ -17,6 +18,7 @@ export * from "@govtechmy/myds-react/label";
 export * from "@govtechmy/myds-react/date-field";
 export * from "@govtechmy/myds-react/date-picker";
 export * from "@govtechmy/myds-react/daterange-picker";
+export * from "@govtechmy/myds-react/dialog";
 export * from "@govtechmy/myds-react/pill";
 import {
   Callout,
@@ -28,6 +30,26 @@ import { useToast } from "@govtechmy/myds-react/hooks";
 import { DatePicker } from "@govtechmy/myds-react/date-picker";
 import { DateRangePicker } from "@govtechmy/myds-react/daterange-picker";
 import { Pill } from "@govtechmy/myds-react/pill";
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@govtechmy/myds-react/dialog";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  AlertDialogAction,
+  AlertDialogClose,
+} from "@govtechmy/myds-react/alert-dialog";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
@@ -149,9 +171,68 @@ export const CustomDisableDateRangePicker: FunctionComponent = () => {
 };
 
 export { NOW, YESTERDAY, TOMORROW };
-interface PillWithTrailingXButtonProps extends ComponentProps<typeof Pill> {}
+
 export const PillWithTrailingXButton: FunctionComponent<
-  PillWithTrailingXButtonProps
+  ComponentProps<typeof Pill>
 > = (props) => {
-  return <Pill onDismiss={() => {}} {...props} />;
+  return <Pill onDismiss={() => alert("Dismissing pill...")} {...props} />;
+};
+
+export const DismissibleDialog: FunctionComponent = () => {
+  return (
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Dismissible + onDismiss Dialog</Button>
+      </DialogTrigger>
+      <DialogBody
+        dismissible={true}
+        onDismiss={() => alert("Dialog dismissed...")}
+      >
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+  );
+};
+
+export const DismissibleAlertDialog: FunctionComponent = () => {
+  return (
+    <AlertDialog variant="warning">
+      <AlertDialogTrigger>
+        <Button variant="primary-fill">
+          Dismissible + onDismiss AlertDialog
+        </Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent
+        dismissible={true}
+        onDismiss={() => alert("AlertDialog dismissed...")}
+      >
+        <AlertDialogTitle>AlertDialog Title</AlertDialogTitle>
+        <AlertDialogDescription>
+          AlertDialog content goes here.
+        </AlertDialogDescription>
+
+        <AlertDialogAction>
+          <AlertDialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </AlertDialogClose>
+          <AlertDialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </AlertDialogClose>
+        </AlertDialogAction>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
 };
