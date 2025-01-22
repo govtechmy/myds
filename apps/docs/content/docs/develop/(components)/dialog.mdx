@@ -23,7 +23,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex justify-center">
     <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <Button variant="primary-fill">Open Dialog</Button>
       </DialogTrigger>
       <DialogBody>
@@ -47,7 +47,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
   <Tab value="Code">
     ```tsx
     <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <Button variant="primary-fill">Open Dialog</Button>
       </DialogTrigger>
       <DialogBody>
@@ -125,13 +125,13 @@ Use the `DialogTrigger` to wrap the trigger element that opens the dialog. The e
   <Tab value="Preview">
     <div className="not-prose flex flex-col items-center gap-3">
       <Dialog>
-        <DialogTrigger asChild>
+        <DialogTrigger>
           <Button variant="primary-fill">Open Dialog 1</Button>
         </DialogTrigger>
-        <DialogTrigger asChild>
+        <DialogTrigger>
           <Button variant="primary-outline">Open Dialog 2</Button>
         </DialogTrigger>
-        <DialogTrigger asChild>
+        <DialogTrigger>
           <Button variant="primary-ghost">Open Dialog 3</Button>
         </DialogTrigger>
 
@@ -158,13 +158,13 @@ Use the `DialogTrigger` to wrap the trigger element that opens the dialog. The e
   <Tab value="Code">
     ```tsx
     <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <Button variant="primary-fill">Open Dialog 1</Button>
       </DialogTrigger>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <Button variant="primary-outline">Open Dialog 2</Button>
       </DialogTrigger>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <Button variant="primary-ghost">Open Dialog 3</Button>
       </DialogTrigger>
 
@@ -202,7 +202,7 @@ To use the dialog in the controlled state, utilize the `open` and `onOpenChange`
         <div>
             Uncontrolled
             <Dialog defaultOpen={false}>
-              <DialogTrigger asChild>
+              <DialogTrigger>
                 <Button variant="primary-fill">Open Dialog (Uncontrolled)</Button>
               </DialogTrigger>
       
@@ -227,7 +227,7 @@ To use the dialog in the controlled state, utilize the `open` and `onOpenChange`
         <div>
             Controlled
             <Dialog open={false}>
-              <DialogTrigger asChild>
+              <DialogTrigger>
                 <Button variant="primary-fill">Open Dialog (Controlled)</Button>
               </DialogTrigger>
       
@@ -256,7 +256,7 @@ To use the dialog in the controlled state, utilize the `open` and `onOpenChange`
     ```tsx
     // Uncontrolled state
     <Dialog defaultOpen={false}>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <Button variant="primary-fill">Open Dialog (Uncontrolled)</Button>
       </DialogTrigger>
       <DialogBody>
@@ -279,7 +279,7 @@ To use the dialog in the controlled state, utilize the `open` and `onOpenChange`
 
     // Controlled state
     <Dialog open={false}>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <Button variant="primary-fill">Open Dialog (Controlled)</Button>
       </DialogTrigger>
       <DialogBody>
@@ -321,7 +321,7 @@ You can attach a callback function to the `onDismiss` prop to handle the dismiss
   <Tab value="Code">
     ```tsx
     <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <Button variant="primary-fill">Open Dialog (Uncontrolled)</Button>
       </DialogTrigger>
 
@@ -358,7 +358,7 @@ Border can be added to the `DialogHeader` and `DialogFooter` by setting the `bor
   <Tab value="Preview">
     <div className="not-prose flex justify-center">
      <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <Button variant="primary-fill">Open Bordered Dialog</Button>
       </DialogTrigger>
 
@@ -385,7 +385,7 @@ Border can be added to the `DialogHeader` and `DialogFooter` by setting the `bor
   <Tab value="Code">
     ```tsx
     <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <Button variant="primary-fill">Open Bordered Dialog</Button>
       </DialogTrigger>
       <DialogBody>
@@ -420,7 +420,7 @@ You can set `align` to `DialogFooter` to align the children to the `start`, `end
       <div>
         Start
         <Dialog>
-          <DialogTrigger asChild>
+          <DialogTrigger>
             <Button variant="primary-fill">Align Dialog (start)</Button>
           </DialogTrigger>
           <DialogBody>
@@ -444,7 +444,7 @@ You can set `align` to `DialogFooter` to align the children to the `start`, `end
       <div>
         Full
         <Dialog>
-          <DialogTrigger asChild>
+          <DialogTrigger>
             <Button variant="primary-fill">Align Dialog (full)</Button>
           </DialogTrigger>
           <DialogBody>
@@ -455,10 +455,10 @@ You can set `align` to `DialogFooter` to align the children to the `start`, `end
               <DialogDescription>Dialog content goes here.</DialogDescription>
             </DialogContent>
             <DialogFooter border align="full">
-              <DialogClose asChild>
+              <DialogClose>
                 <Button variant="default-outline">Secondary Action</Button>
               </DialogClose>
-              <DialogClose asChild>
+              <DialogClose>
                 <Button variant="primary-fill">Primary Action</Button>
               </DialogClose>
             </DialogFooter>
@@ -468,7 +468,7 @@ You can set `align` to `DialogFooter` to align the children to the `start`, `end
       <div>
         End
         <Dialog>
-          <DialogTrigger asChild>
+          <DialogTrigger>
             <Button variant="primary-fill">Align Dialog (end)</Button>
           </DialogTrigger>
           <DialogBody>
@@ -479,10 +479,10 @@ You can set `align` to `DialogFooter` to align the children to the `start`, `end
               <DialogDescription>Dialog content goes here.</DialogDescription>
             </DialogContent>
             <DialogFooter border align="end">
-              <DialogClose asChild>
+              <DialogClose>
                 <Button variant="default-outline">Secondary Action</Button>
               </DialogClose>
-              <DialogClose asChild>
+              <DialogClose>
                 <Button variant="primary-fill">Primary Action</Button>
               </DialogClose>
             </DialogFooter>
@@ -496,7 +496,7 @@ You can set `align` to `DialogFooter` to align the children to the `start`, `end
 ```tsx
 // Start
 <Dialog>
-  <DialogTrigger asChild>
+  <DialogTrigger>
     <Button variant="primary-fill">Align Dialog (start)</Button>
   </DialogTrigger>
   <DialogBody>
@@ -520,7 +520,7 @@ You can set `align` to `DialogFooter` to align the children to the `start`, `end
 // Full
 
 <Dialog>
-  <DialogTrigger asChild>
+  <DialogTrigger>
     <Button variant="primary-fill">Align Dialog (full)</Button>
   </DialogTrigger>
   <DialogBody>
@@ -544,7 +544,7 @@ You can set `align` to `DialogFooter` to align the children to the `start`, `end
 // End
 
 <Dialog>
-  <DialogTrigger asChild>
+  <DialogTrigger>
     <Button variant="primary-fill">Align Dialog (end)</Button>
   </DialogTrigger>
   <DialogBody>
@@ -577,7 +577,7 @@ You can add special actions to the dialog by utilising the `action` prop on the 
   <Tab value="Preview">
     <div className="not-prose flex justify-center gap-3">
     <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <Button variant="primary-fill">Additional Action Dialog</Button>
       </DialogTrigger>
       <DialogBody>
@@ -588,10 +588,10 @@ You can add special actions to the dialog by utilising the `action` prop on the 
           <DialogDescription>Dialog content goes here.</DialogDescription>
         </DialogContent>
         <DialogFooter action={<Button variant="primary-ghost">Tertiary</Button>}>
-          <DialogClose asChild>
+          <DialogClose>
             <Button variant="default-outline">Secondary Action</Button>
           </DialogClose>
-          <DialogClose asChild>
+          <DialogClose>
             <Button variant="primary-fill">Primary Action</Button>
           </DialogClose>
         </DialogFooter>
@@ -603,7 +603,7 @@ You can add special actions to the dialog by utilising the `action` prop on the 
   <Tab value="Code">
 ```tsx
   <Dialog>
-    <DialogTrigger asChild>
+    <DialogTrigger>
       <Button variant="primary-fill">Additional Action Dialog</Button>
     </DialogTrigger>
     <DialogBody>
@@ -614,10 +614,10 @@ You can add special actions to the dialog by utilising the `action` prop on the 
         <DialogDescription>Dialog content goes here.</DialogDescription>
       </DialogContent>
       <DialogFooter action={<Button variant="primary-ghost">Tertiary</Button>}>
-        <DialogClose asChild>
+        <DialogClose>
           <Button variant="default-outline">Secondary Action</Button>
         </DialogClose>
-        <DialogClose asChild>
+        <DialogClose>
           <Button variant="primary-fill">Primary Action</Button>
         </DialogClose>
       </DialogFooter>
