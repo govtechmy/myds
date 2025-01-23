@@ -1,6 +1,6 @@
 ---
-title: Link
-description: Komponen ini digunakan untuk membuat pautan URL berdasarkan elemen HTML <a>.
+title: Pautan
+description: Komponen ini digunakan untuk memaparkan pautan URL dan dibina berdasarkan elemen HTML <a>.
 ---
 
 import { Quicklinks } from "@/components/quicklinks";
@@ -8,11 +8,12 @@ import Preview from "@/components/preview";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Link } from "@/components/myds";
+import NextLink from "next/link";
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
   <Tab value="Pratonton">
     <div className="justify-center relative not-prose">
-      <Link href="https://design.digital.gov.my" primary newTab underline="always">
+      <Link href="/" primary underline="always">
         {/* Text-inherit for span to overwrite Fumadocs text color */}
         <span className="text-inherit">Sistem Reka Bentuk Rasmi Malaysia</span>
       </Link>
@@ -22,12 +23,10 @@ import { Link } from "@/components/myds";
     ```tsx 
     import { Link } from "@govtechmy/myds-react/link";
 
-    <Link href="https://design.digital.gov.my" primary newTab underline="always">
-      {/* Destinasi pautan harus dinyatakan di sini. */}
+    <Link href="/" primary underline="always">
       Sistem Reka Bentuk Rasmi Malaysia
     </Link>
     ```
-
   </Tab>
 </Tabs>
 
@@ -40,7 +39,7 @@ import { Link } from "@/components/myds";
   }}
 />
 
-## Usage
+## Cara Penggunaan
 
 ```tsx copy
 import { Link } from "@govtechmy/myds-react/link";
@@ -48,23 +47,131 @@ import { Link } from "@govtechmy/myds-react/link";
 
 ```tsx copy
 export default () => (
-  <Link href="https://design.digital.gov.my" primary newTab underline="always">
+  <Link href="/" primary>
     {/* Destinasi pautan harus dinyatakan di sini. */}
     Sistem Reka Bentuk Rasmi Malaysia
   </Link>
 );
 ```
 
-## Props
+## Contoh
+
+### Prop asChild
+
+Sekiranya anda perlu menggunakan komponen `Link` daripada pakej yang lain, anda boleh 
+menggunakan prop `asChild` seperti berikut (Next.js sebagai contoh):
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
+  <Tab value="Pratonton">
+    <Link asChild>
+      <NextLink href="#using-aschild-for-custom-links">
+        Custom Link
+      </NextLink>
+    </Link>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx 
+    import { Link } from "@govtechmy/myds-react/link";
+    import NextLink from "next/link";
+
+    <Link asChild>
+      <NextLink href="#">Custom Link</NextLink>
+    </Link>
+    ```
+  </Tab>
+</Tabs>
+
+Anda juga boleh membina komponen sendiri dan import mengikut keperluan:
+
+```tsx
+import { Link as LinkPrimitive } from "@govtechmy/myds-react/link";
+import NextLink from "next/link";
+
+export const Link = (props) => (
+  <LinkPrimitive asChild>
+    <NextLink {...props} />
+  </LinkPrimitive>
+);
+```
+
+### Prop newTab
+
+Prop ini digunakan untuk menetapkan sama ada pautan dibuka dalam tab baharu.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
+  <Tab value="Pratonton">
+    <Link href="https://digital.gov.my" newTab>Ministry of Digital</Link>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx 
+    import { Link } from "@govtechmy/myds-react/link";
+
+    <Link href="https://digital.gov.my" newTab>Ministry of Digital</Link>
+    ```
+  </Tab>
+</Tabs>
+
+### Primary
+
+Prop ini digunakan untuk menetapkan warna teks pautan.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
+  <Tab value="Pratonton">
+    <div className="space-y-2">
+      <div className="flex justify-center items-center gap-2">
+        <Link href="#primary" primary>Primary</Link>
+        <Link href="#primary">Inherit from parent (default)</Link>
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx 
+    import { Link } from "@govtechmy/myds-react/link";
+
+    <Link href="#" primary>Primary</Link>
+    <Link href="#">Inherit from parent</Link>
+    ```
+  </Tab>
+</Tabs>
+
+### Underline
+
+Prop ini digunakan untuk menetapkan waktu pautan digaris bawah.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
+  <Tab value="Pratonton">
+    <div className="space-y-2">
+      <div className="flex justify-center items-center h-fit gap-2 not-prose">
+        <Link href="#underline" underline="always" >Always</Link>
+        <Link href="#underline" underline="hover" >Hover</Link>
+        <Link href="#underline" underline="none" >None</Link>
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx 
+    import { Link } from "@govtechmy/myds-react/link";
+
+    <Link href="#underline" underline="always">Always</Link>
+    <Link href="#underline" underline="hover">Hover</Link>
+    <Link href="#underline" underline="none">None</Link>
+    ```
+  </Tab>
+</Tabs>
+
+## Prop
 
 ### Link
 
 <TypeTable
   type={{
+    asChild: {
+      description: 'Digunakan untuk "merender" elemen anak (child element) berbanding elemen lalai (default element).',
+      type: "ReactNode",
+    },
     href: {
       description: "URL yang akan dilayari oleh pautan",
       type: "string",
-      default: "-",
     },
     newTab: {
       description: "Tetapan sama ada pautan akan dibuka dalam tab baharu atau tidak.",

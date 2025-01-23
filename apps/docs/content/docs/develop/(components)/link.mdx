@@ -8,11 +8,12 @@ import Preview from "@/components/preview";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Link } from "@/components/myds";
+import NextLink from "next/link";
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
     <div className="justify-center relative not-prose">
-      <Link href="https://design.digital.gov.my" primary newTab underline="always">
+      <Link href="/" primary underline="always">
         {/* Text-inherit for span to overwrite Fumadocs text color */}
         <span className="text-inherit">Malaysia's Official Design System</span>
       </Link>
@@ -22,7 +23,7 @@ import { Link } from "@/components/myds";
     ```tsx 
     import { Link } from "@govtechmy/myds-react/link";
 
-    <Link href="https://design.digital.gov.my" primary newTab underline="always">
+    <Link href="/" primary underline="always">
       {/* The link's destination should be indicated here. */}
       Malaysia's Official Design System
     </Link>
@@ -48,12 +49,117 @@ import { Link } from "@govtechmy/myds-react/link";
 
 ```tsx copy
 export default () => (
-  <Link href="https://design.digital.gov.my" primary newTab underline="always">
+  <Link href="/" primary>
     {/* The link's destination should be indicated here. */}
     Malaysia's Official Design System
   </Link>
 );
 ```
+
+## Examples
+
+### Using asChild for Custom Links
+
+If you need to use the `Link` component provided by a different package, you can use the 
+`asChild` prop and wrap the component. Here's an example using Next.js:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <Link asChild>
+      <NextLink href="#using-aschild-for-custom-links">
+        Custom Link
+      </NextLink>
+    </Link>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { Link } from "@govtechmy/myds-react/link";
+    import NextLink from "next/link";
+
+    <Link asChild>
+      <NextLink href="#">Custom Link</NextLink>
+    </Link>
+    ```
+  </Tab>
+</Tabs>
+
+You can also create a custom component and import it as needed:
+
+```tsx
+import { Link as LinkPrimitive } from "@govtechmy/myds-react/link";
+import NextLink from "next/link";
+
+export const Link = (props) => (
+  <LinkPrimitive asChild>
+    <NextLink {...props} />
+  </LinkPrimitive>
+);
+```
+
+### Open in a New Tab
+
+Used to open the link in a new tab.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <Link href="https://digital.gov.my" newTab>Ministry of Digital</Link>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { Link } from "@govtechmy/myds-react/link";
+
+    <Link href="https://digital.gov.my" newTab>Ministry of Digital</Link>
+    ```
+  </Tab>
+</Tabs>
+
+### Primary
+
+Used to toggle the link text colour.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="space-y-2">
+      <div className="flex justify-center items-center gap-2">
+        <Link href="#primary" primary>Primary</Link>
+        <Link href="#primary">Inherit from parent (default)</Link>
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { Link } from "@govtechmy/myds-react/link";
+
+    <Link href="#" primary>Primary</Link>
+    <Link href="#">Inherit from parent</Link>
+    ```
+  </Tab>
+</Tabs>
+
+### Underline
+
+Controls when the link should have an underline.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="space-y-2">
+      <div className="flex justify-center items-center h-fit gap-2 not-prose">
+        <Link href="#underline" underline="always" >Always</Link>
+        <Link href="#underline" underline="hover" >Hover</Link>
+        <Link href="#underline" underline="none" >None</Link>
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { Link } from "@govtechmy/myds-react/link";
+
+    <Link href="#underline" underline="always">Always</Link>
+    <Link href="#underline" underline="hover">Hover</Link>
+    <Link href="#underline" underline="none">None</Link>
+    ```
+  </Tab>
+</Tabs>
 
 ## Props
 
@@ -61,10 +167,14 @@ export default () => (
 
 <TypeTable
   type={{
+    asChild: {
+      description:
+        "Renders the child element instead of the default element, while preserving the component's props and functionality.",
+      type: "ReactNode",
+    },
     href: {
       description: "The URL that the hyperlink points to.",
       type: "string",
-      default: "-",
     },
     newTab: {
       description: "Controls whether the link opens in a new tab.",
