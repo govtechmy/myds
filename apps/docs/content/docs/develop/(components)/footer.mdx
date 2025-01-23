@@ -1,0 +1,1044 @@
+---
+title: Footer
+description: The Footer component is a standardized footer for Malaysian government websites.
+---
+
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TikTokIcon,
+  XIcon,
+} from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { Button } from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+import {
+  Address,
+  Footer,
+  FooterBottomSection,
+  FooterCopyright,
+  FooterContent,
+  FooterMainInfo,
+  FooterTimestamp,
+  FooterTopSection,
+  ImageWithTitle,
+  SocialMedia,
+  FooterCopyrightDate,
+  FooterCopyrightLinkWrapper,
+  FooterContentColumn,
+  SocialMediaItem,
+} from "@govtechmy/myds-react/footer";
+import { Link } from "@govtechmy/myds-react/link";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose"> 
+  <Tab value="Preview">
+  <div className="overflow-scroll px-2 h-[250px]">
+  <div className="scale-[0.6] origin-top-left">
+        <Footer className="w-[1180px] xl:px-10">
+          <FooterTopSection>
+            <FooterMainInfo>
+              <ImageWithTitle
+                imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+                imgAlt="JataNegara"
+              >
+                <span>Organization Title</span>
+              </ImageWithTitle>
+              <Address> 
+               Sample Address Line 1,
+               Sample Street Name, Sample Area,
+               Sample District, Sample City,
+               12345 Sample Postal Code,
+               Sample Country                
+              </Address>
+              <SocialMedia title="Follow Us">
+                <SocialMediaItem
+                  icon={<FacebookIcon />}
+                  href={"www.google.com"}
+                  name={"Facebook"}
+                />
+                <SocialMediaItem
+                  icon={<TikTokIcon />}
+                  href={"www.google.com"}
+                  name={"TikTok"}
+                />
+              </SocialMedia>
+            </FooterMainInfo>
+            <FooterContent>
+              <FooterContentColumn title={"Title 1"}>
+                <Link
+                  asChild
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Link 1
+                </Link>
+                <Link
+                  asChild
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Link 2
+                </Link>
+                <Link
+                  asChild
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Link 3
+                </Link>
+                <Link
+                  asChild
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Link 4
+                </Link>
+              </FooterContentColumn>
+              <FooterContentColumn title={"Title 2"}>
+                <Link
+                  asChild
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Link 1
+                </Link>
+                <Link
+                  asChild
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Link 2
+                </Link>
+                <Link
+                  asChild
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Link 3
+                </Link>
+                <Link
+                  asChild
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Link 4
+                </Link>
+              </FooterContentColumn>
+              <FooterContentColumn title={"Open Source"}>
+                <Link
+                  asChild
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Github Repo
+                </Link>
+                <Link
+                  asChild
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Figma
+                </Link>
+              </FooterContentColumn>
+            </FooterContent>
+          </FooterTopSection>
+          <FooterBottomSection>
+            <FooterCopyright>
+              <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
+              <FooterCopyrightLinkWrapper>
+                <Link
+                  asChild
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Disclaimer
+                </Link>
+                <Link
+                 asChild
+                  href="www.google.com"
+                  underline="hover"
+                  className="hover:text-txt-black-900"
+                >
+                  Privacy Policy
+                </Link>
+              </FooterCopyrightLinkWrapper>
+            </FooterCopyright>
+            <FooterTimestamp time="2024-12-05T10:00:00Z" className="flex items-center justify-center">
+             <span className="pr-1">Last Updated: </span>
+            </FooterTimestamp>
+          </FooterBottomSection>
+        </Footer>
+
+    </div>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+
+import {
+  Address,
+  Footer,
+  FooterBottomSection,
+  FooterCopyright,
+  FooterContent,
+  FooterMainInfo,
+  FooterTimestamp,
+  FooterTopSection,
+  ImageWithTitle,
+  SocialMedia,
+  FooterCopyrightDate,
+  FooterCopyrightLinkWrapper,
+  FooterContentColumn,
+  SocialMediaItem,
+} from "@govtechmy/myds-react/footer";
+
+<Footer>
+  <FooterTopSection>
+    <FooterMainInfo>
+      <ImageWithTitle
+        imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+        imgAlt="JataNegara"
+      >
+        Organization Title
+      </ImageWithTitle>
+      <Address>
+        Sample Address Line 1,{"\n"}
+        Sample Street Name, Sample Area,{"\n"}
+        Sample District, Sample City,{"\n"}
+        12345 Sample Postal Code,{"\n"}
+        Sample Country
+      </Address>
+      <SocialMedia title="Follow Us">
+        <SocialMediaItem
+          icon={<FacebookIcon />}
+          href={"www.google.com"}
+          name={"Facebook"}
+        />
+        <SocialMediaItem
+          icon={<TikTokIcon />}
+          href={"www.google.com"}
+          name={"TikTok"}
+        />
+      </SocialMedia>
+    </FooterMainInfo>
+    <FooterContent>
+      <FooterContentColumn title={"Title 1"}>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Link 1
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Link 2
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Link 3
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Link 4
+        </Link>
+      </FooterContentColumn>
+      <FooterContentColumn title={"Title 2"}>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Link 1
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Link 2
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Link 3
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Link 4
+        </Link>
+      </FooterContentColumn>
+      <FooterContentColumn title={"Open Source"}>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Github Repo
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Figma
+        </Link>
+      </FooterContentColumn>
+    </FooterContent>
+  </FooterTopSection>
+  <FooterBottomSection>
+    <FooterCopyright>
+      <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
+      <FooterCopyrightLinkWrapper>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Disclaimer
+        </Link>
+        <Link
+          href="www.google.com"
+          underline="hover"
+          className="hover:text-txt-black-900"
+        >
+          Privacy Policy
+        </Link>
+      </FooterCopyrightLinkWrapper>
+    </FooterCopyright>
+    <FooterTimestamp time="2024-12-05T10:00:00Z">Last Updated:</FooterTimestamp>
+  </FooterBottomSection>
+</Footer>
+
+```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-footer--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/footer.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import {
+  Address,
+  Footer,
+  FooterBottomSection,
+  FooterCopyright,
+  FooterContent,
+  FooterMainInfo,
+  FooterTimestamp,
+  FooterTopSection,
+  ImageWithTitle,
+  SocialMedia,
+  FooterCopyrightDate,
+  FooterCopyrightLinkWrapper,
+  FooterContentColumn,
+  SocialMediaItem,
+} from "@govtechmy/myds-react/footer";
+import { Link } from "@govtechmy/myds-react/link";
+import {
+    FacebookIcon,
+    TikTokIcon
+} from "@govtechmy/myds-react/icon";
+```
+
+```tsx copy
+export default () => (
+  <Footer>
+    <FooterTopSection>
+      <FooterMainInfo>
+        <ImageWithTitle
+          imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+          imgAlt="JataNegara"
+        >
+          Organization Title
+        </ImageWithTitle>
+        <Address>
+          Sample Address Line 1, Sample Street Name, Sample Area, Sample
+          District, Sample City, 12345 Sample Postal Code, Sample Country
+        </Address>
+        <SocialMedia title="Follow Us">
+          <SocialMediaItem
+            icon={<FacebookIcon />}
+            href={"www.google.com"}
+            name={"Facebook"}
+          />
+          <SocialMediaItem
+            icon={<TikTokIcon />}
+            href={"www.google.com"}
+            name={"TikTok"}
+          />
+        </SocialMedia>
+      </FooterMainInfo>
+      <FooterContent>
+        <FooterContentColumn title={"Title 1"}>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Link 1
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Link 2
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Link 3
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Link 4
+          </Link>
+        </FooterContentColumn>
+        <FooterContentColumn title={"Title 2"}>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Link 1
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Link 2
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Link 3
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Link 4
+          </Link>
+        </FooterContentColumn>
+        <FooterContentColumn title={"Open Source"}>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Github Repo
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Figma
+          </Link>
+        </FooterContentColumn>
+      </FooterContent>
+    </FooterTopSection>
+    <FooterBottomSection>
+      <FooterCopyright>
+        <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
+        <FooterCopyrightLinkWrapper>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Disclaimer
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Privacy Policy
+          </Link>
+        </FooterCopyrightLinkWrapper>
+      </FooterCopyright>
+      <FooterTimestamp time="2024-12-05T10:00:00Z">
+        Last Updated:
+      </FooterTimestamp>
+    </FooterBottomSection>
+  </Footer>
+);
+```
+
+---
+
+### Main Wrapper: `Footer`
+
+The `Footer` serves as the primary container for the footer content. All subcomponents are nested within this wrapper. It is divided into two main sections:
+
+1. `FooterTopSection`
+2. `FooterBottomSection`
+
+---
+
+## 1.FooterTopSection
+
+The `FooterTopSection` is the upper part of the footer and contains two main areas:
+
+1.1 **FooterMainInfo**  
+1.2 **FooterContent**
+
+### 1.1 FooterMainInfo
+
+The `FooterMainInfo` area displays key organizational details. It includes the following components:
+
+#### 1.1.1 ImageWithTitle
+
+Displays an image (e.g., logo) alongside a title.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit gap-1">
+   <ImageWithTitle
+     imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+     imgAlt="JataNegara"
+   >
+     Organization Title
+   </ImageWithTitle>
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+<ImageWithTitle
+     imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+     imgAlt="JataNegara"
+>
+  Organization Title
+</ImageWithTitle>
+```
+  </Tab>
+</Tabs>
+
+#### 1.1.2 Address
+
+Displays the physical address of the organization.
+Content: Added as plain text inside the component.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit">
+    <Address>
+      Sample Address Line 1,
+      Sample Street Name, Sample Area,
+      Sample District, Sample City,
+      12345 Sample Postal Code,
+      Sample Country  
+    </Address>
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+<Address>
+  Sample Address Line 1,  
+  Sample Street Name, Sample Area,  
+  Sample District, Sample City,  
+  12345 Sample Postal Code,  
+  Sample Country  
+</Address>
+```
+  </Tab>
+</Tabs>
+
+#### 1.1.3 SocialMedia
+
+A container for social media links, with icons imported.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit pb-4">
+<SocialMedia title="Follow Us">
+  <SocialMediaItem
+    icon={<FacebookIcon />}
+    href="https://www.facebook.com"
+    name="Facebook"
+  />
+  <SocialMediaItem
+    icon={<TikTokIcon />}
+    href="https://www.tiktok.com"
+    name="TikTok"
+  />
+    <SocialMediaItem
+    icon={<InstagramIcon />}
+    href="https://www.instagram.com"
+    name="Instagram"
+  />
+    <SocialMediaItem
+    icon={<XIcon />}
+    href="https://www.twitter.com"
+    name="X"
+  />
+</SocialMedia>
+
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TikTokIcon,
+  XIcon,
+} from "@govtechmy/myds-react/icon";
+
+<SocialMedia title="Follow Us">
+  <SocialMediaItem
+    icon={<FacebookIcon />}
+    href="https://www.facebook.com"
+    name="Facebook"
+  />
+  <SocialMediaItem
+    icon={<TikTokIcon />}
+    href="https://www.tiktok.com"
+    name="TikTok"
+  />
+  <SocialMediaItem
+    icon={<InstagramIcon />}
+    href="https://www.instagram.com"
+    name="Instagram"
+  />
+  <SocialMediaItem icon={<XIcon />} href="https://www.twitter.com" name="X" />
+</SocialMedia>
+
+```
+  </Tab>
+</Tabs>
+
+
+
+### 1.2 FooterContent
+
+
+The `FooterContent` component is designed for grouping related links in a structured layout, typically organized into columns. Each column is represented by a `FooterContentColumn`, which includes a title and associated links.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit gap-1">
+  <FooterContent>
+<FooterContentColumn title="Title 1">
+  <Link asChild href="https://www.example.com" underline="hover">
+    Link 1
+  </Link>
+  <Link asChild href="https://www.example.com" underline="hover">
+    Link 2
+  </Link>
+</FooterContentColumn>
+<FooterContentColumn title="Title 2">
+  <Link asChild href="https://www.example.com" underline="hover">
+    Link 1
+  </Link>
+  <Link asChild href="https://www.example.com" underline="hover">
+    Link 2
+  </Link>
+</FooterContentColumn>
+</FooterContent>
+
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+<FooterContent>
+  <FooterContentColumn title="Title 1">
+    <Link href="https://www.example.com" underline="hover">
+      Link 1
+    </Link>
+    <Link href="https://www.example.com" underline="hover">
+      Link 2
+    </Link>
+  </FooterContentColumn>
+  <FooterContentColumn title="Title 2">
+    <Link href="https://www.example.com" underline="hover">
+      Link 1
+    </Link>
+    <Link href="https://www.example.com" underline="hover">
+      Link 2
+    </Link>
+  </FooterContentColumn>
+</FooterContent>
+```
+
+  </Tab>
+</Tabs>
+
+## 2.FooterBottomSection
+
+The `FooterBottomSection` is the lower part of the footer. It contains the following:
+
+1.1 **FooterCopyright**  
+1.2 **FooterTimestamp**
+
+### 2.1 FooterCopyright
+
+The `FooterCopyright` area displays copyright information and additional related links. It includes the following components:
+
+#### 2.1.1 FooterCopyrightDate
+
+Displays a copyright statement with year
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit gap-1">
+  <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+<FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
+```
+  </Tab>
+</Tabs>
+
+#### 2.1.2 FooterCopyrightLinkWrapper
+
+A container for additional links, such as disclaimers or policies.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit">
+    <FooterCopyrightLinkWrapper>
+      <Link asChild href="https://www.example.com" underline="hover">
+        Disclaimer
+      </Link>
+      <Link asChild href="https://www.example.com" underline="hover">
+        Privacy Policy
+      </Link>
+    </FooterCopyrightLinkWrapper>
+
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+<FooterCopyrightLinkWrapper>
+  <Link href="https://www.example.com" underline="hover">
+    Disclaimer
+  </Link>
+  <Link href="https://www.example.com" underline="hover">
+    Privacy Policy
+  </Link>
+</FooterCopyrightLinkWrapper>
+```
+  </Tab>
+</Tabs>
+
+### 2.2 FooterTimestamp
+
+Displays the last updated date and time.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
+  <Tab value="Preview">
+    <div className="flex h-fit items-center justify-center">
+      <FooterTimestamp time="2024-12-05T10:00:00Z">
+        <span> Last Updated: </span>
+      </FooterTimestamp>
+    </div>
+  </Tab>
+
+  <Tab value="Code">
+  ```tsx
+    <FooterTimestamp time="2024-12-05T10:00:00Z">Last Updated:</FooterTimestamp>
+  ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### Footer
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the footer",
+      type: "string",
+    },
+    children: {
+      description: "Footer content",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterTopSection
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the top section",
+      type: "string",
+    },
+    children: {
+      description: "Content for the top section",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterMainInfo
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the main info section",
+      type: "string",
+    },
+    children: {
+      description: "Main info content",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+
+### ImageWithTitle
+<TypeTable
+  type={{
+    imgSrc: {
+      description: "Source of the image",
+      type: "string",
+    },
+    imgAlt: {
+      description: "Alternative text for the image",
+      type: "string",
+    },
+    className: {
+      description: "Additional styles for the container",
+      type: "string",
+    },
+    children: {
+      description: "Title or content displayed next to the image",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### Address
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the address",
+      type: "string",
+    },
+    children: {
+      description: "Address text",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SocialMedia
+
+<TypeTable
+  type={{
+    title: {
+      description: "Optional title for the section",
+      type: "string",
+    },
+    className: {
+      description: "Additional styles for the section",
+      type: "string",
+    },
+    children: {
+      description: "Social media items",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SocialMediaItem
+
+<TypeTable
+  type={{
+    icon: {
+      description: "Icon for the social media",
+      type: "ReactNode",
+    },
+    href: {
+      description: "URL for the social media link",
+      type: "string",
+    },
+    name: {
+      description: "Name of the social media",
+      type: "string",
+    },
+    className: {
+      description: "Additional styles for the section",
+      type: "string",
+    },
+  }}
+/>
+
+
+### FooterContent
+<TypeTable
+  type={{
+    children: {
+      description: "Content for the footer",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterContentColumn
+<TypeTable
+  type={{
+    title: {
+      description: "Title of the column",
+      type: "string",
+    },
+    children: {
+      description: "Column content",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+
+### FooterBottomSection
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the bottom section",
+      type: "string",
+    },
+    children: {
+      description: "Content for the bottom section",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+
+### FooterCopyright
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the copyright container",
+      type: "string",
+    },
+    children: {
+      description: "Copyright content",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterCopyrightDate
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the copyright date",
+      type: "string",
+    },
+    children: {
+      description: "Text to display before the year",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterCopyrightLinkWrapper
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the link wrapper",
+      type: "string",
+    },
+    children: {
+      description: "Links for copyright information",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### FooterTimestamp
+<TypeTable
+  type={{
+    time: {
+      description: "Timestamp in string, number, or Date format, representing a valid ISO 8601 date or any format supported by the JavaScript Date constructor.",
+      type: "string | number | Date",
+    },
+    className: {
+      description: "Additional styles for the timestamp",
+      type: "string",
+    },
+    children: {
+      description: "Text to display before the timestamp",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+

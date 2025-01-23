@@ -10,7 +10,7 @@ import { fn } from "@storybook/test";
  * ### Usage
  * ```ts
  * import * as React from "react"
- * import DatePicker from "@govtechmy/myds-react/datepicker";
+ * import DatePicker from "@govtechmy/myds-react/date-picker";
  *
  * export function DatePickerDemo() {
  *    const [date, setDate] = React.useState<Date>();
