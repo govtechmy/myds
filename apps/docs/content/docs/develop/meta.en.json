@@ -23,6 +23,7 @@
     "(components)/daterange-picker",
     "(components)/dialog",
     "(components)/dropdown",
+    "(components)/footer",
     "(components)/pagination",
     "(components)/pill",
     "(components)/radio",
