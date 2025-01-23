@@ -1,6 +1,7 @@
 import React, {
   createContext,
   forwardRef,
+  ForwardRefExoticComponent,
   useContext,
   useEffect,
   useState,
@@ -8,10 +9,12 @@ import React, {
 import { Button } from "./button";
 import {
   Dialog,
+  dialog_footer_cva,
   DialogBody,
   DialogContent,
   DialogDescription,
   DialogFooter,
+  DialogFooterProps,
   DialogHeader,
   DialogTitle,
 } from "./dialog";
@@ -197,7 +200,22 @@ const CookieBannerClose = ({
     </Button>
   );
 };
-const CookieBannerFooter = DialogFooter;
+type CookieBannerFooterProps = Omit<DialogFooterProps, "border" | "align">;
+
+const CookieBannerFooter: ForwardRefExoticComponent<CookieBannerFooterProps> =
+  forwardRef(({ className, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={clx(
+          dialog_footer_cva({ border: false, align: "start" }),
+          "w-full flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row",
+          className,
+        )}
+        {...props}
+      />
+    );
+  });
 const CookieBannerDescription = DialogDescription;
 
 const CookieBannerPreferences = forwardRef<
