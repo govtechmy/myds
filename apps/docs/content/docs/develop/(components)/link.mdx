@@ -9,6 +9,7 @@ import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Link } from "@/components/myds";
 import NextLink from "next/link";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
@@ -98,7 +99,7 @@ export const Link = (props) => (
 
 ### Open in a New Tab
 
-Used to open the link in a new tab.
+Opens the link in a new tab by setting `target="_blank"`.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
@@ -112,6 +113,16 @@ Used to open the link in a new tab.
     ```
   </Tab>
 </Tabs>
+
+<Callout
+  type="info"
+  title="Note"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+All current versions of major browsers now automatically use the behaviour of `rel="noopener"` 
+for any links with `target="_blank"`
+</Callout>
 
 ### Primary
 
@@ -170,7 +181,7 @@ Controls when the link should have an underline.
     asChild: {
       description:
         "Renders the child element instead of the default element, while preserving the component's props and functionality.",
-      type: "ReactNode",
+      type: "boolean",
     },
     href: {
       description: "The URL that the hyperlink points to.",
