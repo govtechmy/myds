@@ -237,7 +237,7 @@ const CookieBannerPreferences = forwardRef<
   return (
     <DialogContent
       ref={ref}
-      className={clx("flex flex-col gap-2 py-3", className)}
+      className={clx("flex flex-col gap-2 px-0 py-3", className)}
       {...props}
     >
       {children}
