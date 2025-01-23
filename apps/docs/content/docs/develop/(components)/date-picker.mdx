@@ -44,7 +44,7 @@ export default () => <DatePicker />;
 
 ### Size
 
-Use the `size` prop to change the checkbox size!
+Use the `size` prop to change the date picker size!
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
@@ -221,6 +221,34 @@ You can set the sorting order of the years in the year dropdown by passing the `
   </Tab>
 </Tabs>
 
+### Locale
+
+To support common locales, you can pass the `locale` prop to the date picker.
+
+Default value is English `en`. To switch to Bahasa Melayu, pass `ms`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        English
+        <DatePicker defaultValue={NOW} locale="en" />
+      </div>
+      <div>
+        Bahasa Melayu
+        <DatePicker defaultValue={NOW} locale="ms" />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+```tsx
+<DatePicker defaultValue={new Date()} locale="en" />
+
+<DatePicker defaultValue={new Date()} locale="ms" />
+```
+  </Tab>
+</Tabs>
+
 ## Props
 
 ### DatePicker
@@ -271,6 +299,11 @@ You can set the sorting order of the years in the year dropdown by passing the `
       description: "Sorting order for the year selection",
       type: "asc | desc",
       default: "asc",
+    },
+    locale: {
+      description: "Locale for the date picker",
+      type: "en | ms",
+      default: "en",
     },
   }}
 />

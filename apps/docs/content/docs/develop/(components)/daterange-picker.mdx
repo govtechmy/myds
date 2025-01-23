@@ -1,0 +1,327 @@
+---
+title: Date Range Picker
+description: Allows users to select a date range from an interactive calendar.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  DatePicker,
+  DateRangePicker,
+  CustomDisableDateRangePicker,
+  NOW,
+  YESTERDAY,
+  TOMORROW,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+export const DEFAULT_DATERANGE = { from: YESTERDAY, to: TOMORROW };
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <DateRangePicker />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DateRangePicker />
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-daterangepicker--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/daterange-picker.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import { DateRangePicker } from "@govtechmy/myds-react/date-picker";
+```
+
+```tsx copy
+export default () => <DateRangePicker />;
+```
+
+## Examples
+
+### Size
+
+Use the `size` prop to change the checkbox size!
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col items-center gap-3">
+      <DateRangePicker size="small" />
+      <DateRangePicker size="medium" />
+      <DateRangePicker size="large" />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DateRangePicker size="small" />
+    <DateRangePicker size="medium" />
+    <DateRangePicker size="large" />
+    ```
+  </Tab>
+</Tabs>
+
+### Uncontrolled vs Controlled State
+
+To use the daterange picker in the uncontrolled state, set the `defaultValue` prop to the initial value of the daterange picker.
+
+To use the daterange picker in the controlled state, set the `value` prop to the current value of the daterange picker and provide an `onValueChange` event listener to handle the change.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+        <div>
+            Uncontrolled
+            <DateRangePicker defaultValue={{ from: YESTERDAY, to: TOMORROW }} />
+        </div>
+        <div>
+            Controlled
+            <DateRangePicker value={{ from: YESTERDAY, to: TOMORROW }} />
+        </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    // Uncontrolled state
+    <DatePicker defaultValue={{ from: new Date(/* yesterday */), to: new Date(/* tomorrow */) }} />
+
+    // Controlled state
+    <DatePicker value={{ from: new Date(/* yesterday */), to: new Date(/* tomorrow */) }} />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Disabled
+
+There are many ways to interact with DateRangePicker `disabled` state. Daterange picker can be disabled entirely by setting the `disabled` prop to `true`.
+
+For a finer control on which dates to disable, you can pass a `Matcher | Matcher[]` that defines the rules for disabling dates.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose space-y-2">
+      <div className="flex items-center gap-3">
+        Disable all dates
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} disabled />
+      </div>
+      <div className="flex items-center gap-3">
+        Disable dates before yesterday
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} disabled={{ before: YESTERDAY }} />
+      </div>
+      <div className="flex items-center gap-3">
+        Disable dates after tomorrow
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} disabled={{ after: TOMORROW }} />
+      </div>
+      <div className="flex items-center gap-3">
+        Disable dates outside of range
+        <DateRangePicker
+          defaultValue={DEFAULT_DATERANGE}
+          disabled={{
+            before: new Date().setDate(new Date().getDate() - 1),
+            after: new Date().setDate(new Date().getDate() + 1),
+          }}
+        />
+      </div>
+      <div className="flex items-center flex-wrap gap-3">
+        Disable dates by days of week (eg. Saturday and Sunday)
+        <DateRangePicker
+          defaultValue={DEFAULT_DATERANGE}
+          disabled={{
+            dayOfWeek: [0, 6],
+          }}
+        />
+      </div>
+      <div className="flex items-center gap-3">
+        Disable dates by callback function (eg. disable every 13th of the month)
+        <CustomDisableDateRangePicker />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    // Disable all dates
+    <DateRangePicker defaultValue={{ from: new Date(/* yesterday */), to: new Date(/* tomorrow */) }} disabled />
+    
+    // Disable dates before yesterday
+    <DateRangePicker defaultValue={{ from: new Date(/* yesterday */), to: new Date(/* tomorrow */) }} disabled={{ before: new Date(/* yesterday */) }} />
+
+    // Disable dates after tomorrow
+    <DateRangePicker defaultValue={{ from: new Date(/* yesterday */), to: new Date(/* tomorrow */) }} disabled={{ after: new Date(/* tomorrow */) }} />
+
+    // Disable dates outside of range
+    <DateRangePicker
+      defaultValue={{ from: new Date(/* yesterday */), to: new Date(/* tomorrow */) }}
+      disabled={{
+        before: new Date().setDate(new Date().getDate() - 1),
+        after: new Date().setDate(new Date().getDate() + 1),
+      }}
+    />
+
+    // Disable dates by days of week (eg. Saturday and Sunday)
+    <DateRangePicker
+      defaultValue={{ from: new Date(/* yesterday */), to: new Date(/* tomorrow */) }}
+      disabled={{
+        dayOfWeek: [0, 6],
+      }}
+    />
+
+    // Disable dates by callback function (eg. disable every 13th of the month)
+    <DateRangePicker
+      defaultValue={{ from: new Date(/* yesterday */), to: new Date(/* tomorrow */) }}
+      disabled={(date) => date.getDate() === 13}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Maximum and Minimum Year
+
+You can set the maximum and minimum year for the daterange picker by passing the `minYear` and `maxYear` props.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center">
+      <DateRangePicker
+        defaultValue={DEFAULT_DATERANGE}
+        maxYear={2030}
+        minYear={2020}
+      />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DateRangePicker
+      defaultValue={{
+        from: new Date(/* yesterday */),
+        to: new Date(/* tomorrow */),
+      }}
+      maxYear={2030}
+      minYear={2020}
+    />
+    ```
+  </Tab>
+</Tabs>
+
+### Year Sort Order
+
+You can set the sorting order of the years in the year dropdown by passing the `yearOrder` prop.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        Ascending
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} yearOrder="asc" />
+      </div>
+      <div>
+        Descending
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} yearOrder="desc" />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+```tsx
+<DatePicker defaultValue={{ from: new Date(/* yesterday */), to: new Date(/* tomorrow */) }} yearOrder="asc" />
+
+<DatePicker defaultValue={{ from: new Date(/* yesterday */), to: new Date(/* tomorrow */) }} yearOrder="desc" />
+```
+  </Tab>
+</Tabs>
+
+### Locale
+
+To support different locales, you can pass the `locale` prop to the daterange picker.
+
+Default value is `en`. To switch to Bahasa Melayu, pass `ms`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        English
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} locale="en" />
+      </div>
+      <div>
+        Bahasa Melayu
+        <DateRangePicker defaultValue={DEFAULT_DATERANGE} locale="ms" />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+```tsx
+<DatePicker defaultValue={{ from: new Date(/* yesterday */), to: new Date(/* tomorrow */) }} locale="en" />
+
+<DatePicker defaultValue={{ from: new Date(/* yesterday */), to: new Date(/* tomorrow */) }} locale="ms" />
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+### DateRangePicker
+
+<TypeTable
+  type={{
+    size: {
+      description: "Size of the daterange picker",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    defaultValue: {
+      description: "Initial state of the daterange picker (uncontrolled)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    value: {
+      description: "State of the daterange picker (controlled)",
+      type: "boolean | indeterminate",
+      default: "false",
+    },
+    onValueChange: {
+      description: "Change event listener (controlled)",
+      type: "(date: Date ) => void",
+    },
+    placeholder: {
+      description: "Placeholder text for the daterange picker",
+      type: "string",
+      default: "dd / mm / yyyy",
+    },
+    disabled: {
+      description: "Disabled state for daterange picker",
+      type: "boolean | Matcher | Matcher[]",
+      default: "false",
+    },
+    maxYear: {
+      description: "Maximum year for the daterange picker",
+      type: "number",
+      default: "2099",
+    },
+    minYear: {
+      description: "Minimum year for the daterange picker",
+      type: "number",
+      default: "1900",
+    },
+    yearOrder: {
+      description: "Sorting order for the year selection",
+      type: "asc | desc",
+      default: "asc",
+    },
+    locale: {
+      description: "Locale for the daterange picker",
+      type: "en | ms",
+      default: "en",
+    },
+  }}
+/>

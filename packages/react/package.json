@@ -1,6 +1,6 @@
 {
   "name": "@govtechmy/myds-react",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
@@ -15,6 +15,11 @@
       "type": "./dist/utils/index.d.ts",
       "import": "./dist/utils/index.mjs",
       "require": "./dist/utils/index.js"
+    },
+    "./navbar": {
+      "type": "./dist/components/navbar.d.ts",
+      "import": "./dist/components/navbar.mjs",
+      "require": "./dist/components/navbar.js"
     },
     "./textarea": {
       "type": "./dist/components/textarea.d.ts",
@@ -32,8 +37,9 @@
       "require": "./dist/components/data-table.js"
     },
     "./summary-list": {
-      "type": "./src/components/summary-list.tsx",
-      "default": "./src/components/summary-list.tsx"
+      "type": "./dist/components/summary-list.d.ts",
+      "import": "./dist/components/summary-list.mjs",
+      "require": "./dist/components/summary-list.js"
     },
     "./callout": {
       "type": "./dist/components/callout.d.ts",

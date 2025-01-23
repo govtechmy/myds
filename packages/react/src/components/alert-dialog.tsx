@@ -1,6 +1,6 @@
 import {
   Dialog,
-  DialogClose,
+  DialogBody,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -8,51 +8,108 @@ import {
   DialogIcon,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from "./dialog";
 import {
   CheckCircleIcon,
+  InfoIcon,
   WarningCircleIcon,
   WarningDiamondIcon,
 } from "../icons";
-import React from "react";
+import {
+  ComponentProps,
+  createContext,
+  forwardRef,
+  ForwardRefExoticComponent,
+  useContext,
+} from "react";
+import { clx } from "../utils";
 
-const AlertDialog = Dialog;
 const AlertDialogTrigger = DialogTrigger;
-const AlertDialogContent = DialogContent;
-const AlertDialogHeader = DialogHeader;
 const AlertDialogTitle = DialogTitle;
 const AlertDialogDescription = DialogDescription;
-const AlertDialogFooter = DialogFooter;
+const AlertDialogClose = DialogClose;
 
-type AlertDialogVariant = "success" | "warning" | "danger";
+interface AlertDialogContextProps {
+  variant: "default" | "success" | "info" | "warning" | "danger";
+}
 
-function AlertDialogIcon({ variant }: { variant: AlertDialogVariant }) {
+const AlertDialogContext = createContext<AlertDialogContextProps>({
+  variant: "default",
+});
+
+interface AlertDialogProps
+  extends ComponentProps<typeof Dialog>,
+    AlertDialogContextProps {}
+
+const AlertDialog: ForwardRefExoticComponent<AlertDialogProps> = forwardRef(
+  ({ variant, ...props }) => {
+    return (
+      <AlertDialogContext.Provider value={{ variant }}>
+        <Dialog {...props} />
+      </AlertDialogContext.Provider>
+    );
+  },
+);
+
+interface AlertDialogActionProps
+  extends Omit<ComponentProps<typeof DialogFooter>, "border"> {}
+
+const AlertDialogAction: ForwardRefExoticComponent<AlertDialogActionProps> =
+  forwardRef(({ children, className, ...props }) => {
+    return (
+      <DialogFooter className={clx("px-0 pb-0", className)} {...props}>
+        {children}
+      </DialogFooter>
+    );
+  });
+
+const AlertDialogContent: ForwardRefExoticComponent<
+  ComponentProps<typeof DialogBody>
+> = forwardRef(({ children, ...props }, ref) => {
+  const { variant } = useContext(AlertDialogContext);
+
+  const map = {
+    default: {
+      variant: "default",
+      icon: <></>,
+    },
+    success: {
+      variant: "success",
+      icon: <CheckCircleIcon />,
+    },
+    info: {
+      variant: "primary",
+      icon: <InfoIcon />,
+    },
+    warning: {
+      variant: "warning",
+      icon: <WarningCircleIcon />,
+    },
+    danger: {
+      variant: "danger",
+      icon: <WarningDiamondIcon />,
+    },
+  } as const;
+
   return (
-    <DialogIcon variant={variant}>
-      {variant === "success" ? (
-        <CheckCircleIcon />
-      ) : variant === "warning" ? (
-        <WarningCircleIcon />
-      ) : (
-        <WarningDiamondIcon />
-      )}
-    </DialogIcon>
+    <DialogBody ref={ref} {...props}>
+      <DialogContent>
+        <DialogIcon variant={map[variant].variant} className="mb-4">
+          {map[variant].icon}
+        </DialogIcon>
+        <div className="space-y-2">{children}</div>
+      </DialogContent>
+    </DialogBody>
   );
-}
-
-function AlertDialogClose({ children }: { children: React.ReactNode }) {
-  return <DialogClose asChild>{children}</DialogClose>;
-}
+});
 
 export {
   AlertDialog,
-  AlertDialogClose,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogIcon,
+  AlertDialogAction,
+  AlertDialogClose,
   AlertDialogTitle,
   AlertDialogTrigger,
-  type AlertDialogVariant,
 };

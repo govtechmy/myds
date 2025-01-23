@@ -11,7 +11,7 @@ import { Pill } from "@govtechmy/myds-react/pill";
  * ```tsx
  * import Pill from "@govtechmy/myds-react/pill";
  *
- * <Pill size="large" disabled={false} onDelete={() => {}}/>
+ * <Pill size="large" disabled={false} onDismiss={() => {}}/>
  * ```
  */
 const meta = {
@@ -41,7 +41,7 @@ const meta = {
       },
       control: "boolean",
     },
-    onDelete: {
+    onDismiss: {
       type: "function",
     },
     asChild: {
@@ -64,11 +64,11 @@ export const Default: Story = createStory({
 });
 
 /**
- * Pass a callback to the `onDelete` prop to show a remove button.
+ * Pass a callback to the `onDismiss` prop to show a remove button.
  */
 export const WithDelete: Story = createStory({
   children: "Label",
-  onDelete: fn(),
+  onDismiss: fn(),
 });
 
 export const Disabled: Story = createStory({
@@ -85,13 +85,13 @@ export const Dark: Story = createStory(
 );
 
 /**
- * Pass a callback to the `onDelete` prop to show a remove button.
+ * Pass a callback to the `onDismiss` prop to show a remove button.
  */
 export const WithDeleteDark: Story = createStory(
   {
     className: "dark",
     children: "Label",
-    onDelete: fn(),
+    onDismiss: fn(),
   },
   "dark",
 );

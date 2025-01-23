@@ -1,162 +1,255 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import * as React from "react";
+import {
+  ForwardRefExoticComponent,
+  ComponentProps,
+  forwardRef,
+  ReactElement,
+  JSXElementConstructor,
+  cloneElement,
+  ReactNode,
+  createContext,
+  useContext,
+} from "react";
 import { CrossIcon } from "../icons/cross";
 import { clx } from "../utils";
-import { button_cva } from "./button";
+import { Button } from "./button";
 import { cva } from "class-variance-authority";
 
 const Dialog = DialogPrimitive.Root;
+type DialogProps = ComponentProps<typeof Dialog>;
 
 /*========================================================================================================================*/
 
-const DialogTrigger = DialogPrimitive.Trigger;
+const DialogTrigger: ForwardRefExoticComponent<
+  ComponentProps<typeof DialogPrimitive.Trigger>
+> = forwardRef((props, ref) => {
+  return <DialogPrimitive.Trigger ref={ref} {...props} asChild />;
+});
 
-/*========================================================================================================================*/
-const DialogPortal = DialogPrimitive.Portal;
-
-/*========================================================================================================================*/
-
-const DialogClose = DialogPrimitive.Close;
-
-/*========================================================================================================================*/
-
-const DialogOverlay = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
->(({ className, ...props }, ref) => (
-  <DialogPrimitive.Overlay
-    ref={ref}
-    className={clx(
-      "fixed inset-0 z-[900]",
-      "h-full w-full",
-      "bg-gray-700/60",
-      "data-[state=open]:animate-in data-[state=open]:fade-in-0",
-      "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
-      className,
-    )}
-    {...props}
-  />
-));
+type DialogTriggerProps = ComponentProps<typeof DialogTrigger>;
 
 /*========================================================================================================================*/
 
-const DialogContent = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
-    withCloseButton?: boolean;
-  }
->(({ className, children, withCloseButton, ...props }, ref) => {
+const DialogClose: ForwardRefExoticComponent<
+  ComponentProps<typeof DialogPrimitive.Close>
+> = forwardRef((props, ref) => {
+  const { onDismiss } = useContext(DialogBodyContext);
+
   return (
-    <DialogPortal>
-      <DialogOverlay />
-      <DialogPrimitive.Content
-        ref={ref}
-        className={clx(
-          "fixed left-[50%] top-[50%] z-[1000] translate-x-[-50%] translate-y-[-50%]",
-          "w-full min-w-[300px] max-w-[calc(100dvw-36px)] sm:max-w-lg",
-          "flex flex-col items-start",
-          "rounded-lg shadow-lg",
-          "border-otl-gray-200 border",
-          "bg-bg-white",
-          "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
-          "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]",
-          "duration-200",
-          className,
-        )}
-        {...props}
-      >
-        {children}
-        {withCloseButton && (
-          <DialogPrimitive.Close
-            className={clx(
-              button_cva({ variant: "default-outline", size: "small" }),
-              "absolute right-4 top-4",
-              "size-[2rem]",
-              "grid place-content-center",
-              "text-txt-black-900",
-              "disabled:pointer-events-none",
-            )}
-          >
-            <CrossIcon className="size-[20px] stroke-current" />
-            <span className="sr-only">Close</span>
-          </DialogPrimitive.Close>
-        )}
-      </DialogPrimitive.Content>
-    </DialogPortal>
+    <DialogPrimitive.Close
+      ref={ref}
+      {...props}
+      asChild
+      onClick={onDismiss && onDismiss}
+    />
   );
 });
 
+type DialogCloseProps = ComponentProps<typeof DialogClose>;
+
 /*========================================================================================================================*/
 
-const DialogHeader = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={clx(
-      "flex flex-col space-y-1.5",
-      "p-[1.5rem]",
-      "text-left",
-      className,
-    )}
-    {...props}
-  />
+interface DialogBodyContextProps {
+  dismissible?: boolean;
+  onDismiss?: () => void;
+}
+interface DialogBodyProps
+  extends ComponentProps<typeof DialogPrimitive.Content>,
+    DialogBodyContextProps {}
+
+const DialogBodyContext = createContext<DialogBodyContextProps>({
+  dismissible: true,
+  onDismiss: () => {},
+});
+
+const DialogBody: ForwardRefExoticComponent<DialogBodyProps> = forwardRef(
+  ({ className, children, dismissible = true, onDismiss, ...props }, ref) => {
+    return (
+      <DialogPrimitive.Portal>
+        <DialogPrimitive.Overlay
+          className={clx(
+            "fixed inset-0 z-[900]",
+            "h-full w-full",
+            "bg-gray-700/60",
+            "data-[state=open]:animate-in data-[state=open]:fade-in-0",
+            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+          )}
+        />
+        <DialogPrimitive.Content
+          ref={ref}
+          className={clx(
+            "fixed left-[50%] top-[50%] z-[1000] box-border translate-x-[-50%] translate-y-[-50%]",
+            "w-full min-w-[300px] max-w-[calc(100dvw-36px)] sm:max-w-lg",
+            "flex flex-col items-start",
+            "rounded-lg shadow-lg",
+            "border-otl-gray-200 border",
+            "bg-bg-white",
+            "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
+            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]",
+            "duration-200",
+            className,
+          )}
+          onInteractOutside={
+            !dismissible
+              ? (e) => e.preventDefault()
+              : () => onDismiss && onDismiss()
+          }
+          {...props}
+        >
+          <DialogBodyContext.Provider value={{ dismissible, onDismiss }}>
+            {children}
+            {dismissible && (
+              <DialogClose
+                className={clx(
+                  "absolute right-4 top-4",
+                  "grid place-content-center",
+                  "text-txt-black-900",
+                  "disabled:pointer-events-none",
+                )}
+              >
+                <Button variant="default-outline" size={"small"} iconOnly>
+                  <CrossIcon className="size-5 stroke-current" />
+                  <span className="sr-only">Close</span>
+                </Button>
+              </DialogClose>
+            )}
+          </DialogBodyContext.Provider>
+        </DialogPrimitive.Content>
+      </DialogPrimitive.Portal>
+    );
+  },
 );
 
 /*========================================================================================================================*/
 
-const DialogFooter = ({
-  className,
-  border,
-  fillWidth,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement> & {
+interface DialogHeaderProps extends ComponentProps<"div"> {
   border?: boolean;
-  fillWidth?: boolean;
-}) => (
-  <div
-    className={clx(
-      "self-end",
-      "w-full",
-      "flex flex-row justify-end gap-[.75rem]",
-      "p-[1.5rem]",
-      border ? "border-otl-gray-200 border-t" : "pt-0",
-      fillWidth && "[&>*]:flex-1 [&>*]:place-content-center",
-      className,
-    )}
-    {...props}
-  />
+}
+
+const dialog_header_cva = cva(
+  "flex w-full flex-col text-left px-6 pt-6 pb-4.5",
+  {
+    variants: {
+      border: {
+        true: "border-otl-gray-200 border-b",
+        false: "",
+      },
+    },
+    defaultVariants: {
+      border: false,
+    },
+  },
+);
+
+const DialogHeader: ForwardRefExoticComponent<DialogHeaderProps> = forwardRef(
+  ({ className, border, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={clx(dialog_header_cva({ border }), className)}
+        {...props}
+      />
+    );
+  },
+);
+/*========================================================================================================================*/
+
+interface DialogContentProps extends ComponentProps<"div"> {}
+
+const DialogContent: ForwardRefExoticComponent<DialogContentProps> = forwardRef(
+  ({ className, ...props }, ref) => {
+    return (
+      <div ref={ref} className={clx("w-full p-6", className)} {...props} />
+    );
+  },
 );
 
 /*========================================================================================================================*/
 
-const DialogTitle = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Title>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
->(({ className, ...props }, ref) => (
-  <DialogPrimitive.Title
-    ref={ref}
-    className={clx(
-      "text-body-lg text-txt-black-900",
-      "font-semibold",
-      className,
-    )}
-    {...props}
-  />
-));
+interface DialogFooterProps extends ComponentProps<"div"> {
+  border?: boolean;
+  align?: "start" | "full" | "end";
+  action?: ReactNode;
+}
+
+const dialog_footer_cva = cva(
+  ["flex w-full justify-between items-end p-6 gap-3"],
+  {
+    variants: {
+      align: {
+        start: "flex-row-reverse",
+        full: "",
+        end: "",
+      },
+      border: {
+        true: "border-otl-gray-200 border-t",
+        false: "",
+      },
+    },
+    defaultVariants: {
+      align: "end",
+      border: false,
+    },
+  },
+);
+const dialog_action_cva = cva(["flex flex-row gap-3 grow"], {
+  variants: {
+    align: {
+      start: "justify-end flex-row-reverse",
+      full: "justify-center grow [&>*]:flex-1 [&>*]:place-content-center",
+      end: "justify-end",
+    },
+  },
+  defaultVariants: {
+    align: "end",
+  },
+});
+
+const DialogFooter: ForwardRefExoticComponent<DialogFooterProps> = forwardRef(
+  ({ action, border, className, align = "end", ...props }, ref) => {
+    return (
+      <div className={clx(dialog_footer_cva({ border, align }), className)}>
+        {action}
+        <div
+          ref={ref}
+          className={clx(dialog_action_cva({ align }), className)}
+          {...props}
+        />
+      </div>
+    );
+  },
+);
 
 /*========================================================================================================================*/
 
-const DialogDescription = React.forwardRef<
-  React.ElementRef<typeof DialogPrimitive.Description>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
->(({ className, ...props }, ref) => (
-  <DialogPrimitive.Description
-    ref={ref}
-    className={`${clx(`text-txt-black-700 text-body-sm font-normal ${className}`)}`}
-    {...props}
-  />
-));
+interface DialogTitleProps
+  extends ComponentProps<typeof DialogPrimitive.Title> {}
+
+const DialogTitle: ForwardRefExoticComponent<DialogTitleProps> = forwardRef(
+  ({ className, ...props }, ref) => (
+    <DialogPrimitive.Title
+      ref={ref}
+      className={clx(
+        "text-body-lg text-txt-black-900 font-semibold",
+        className,
+      )}
+      {...props}
+    />
+  ),
+);
+
+/*========================================================================================================================*/
+interface DialogDescriptionProps
+  extends ComponentProps<typeof DialogPrimitive.Description> {}
+
+const DialogDescription: ForwardRefExoticComponent<DialogDescriptionProps> =
+  forwardRef(({ className, ...props }, ref) => (
+    <DialogPrimitive.Description
+      ref={ref}
+      className={clx("text-txt-black-700 text-body-sm font-normal", className)}
+      {...props}
+    />
+  ));
 
 /*========================================================================================================================*/
 
@@ -165,14 +258,15 @@ const DialogDescription = React.forwardRef<
  *
  * @component
  * @param {DialogIconProps} props - The properties for the DialogIcon component.
- * @param {React.ReactNode} props.children - The child element to which the ref will be forwarded.
- * @param {React.Ref} ref - The ref to be forwarded to the child element.
- * @returns {React.ReactElement} The cloned child element with the forwarded ref and applied class name.
+ * @param {ReactNode} props.children - The child element to which the ref will be forwarded.
+ * @param {Ref} ref - The ref to be forwarded to the child element.
+ * @returns {ReactElement} The cloned child element with the forwarded ref and applied class name.
  */
 
-const dialog_icon_cva = cva("block stroke-[1.5px] size-[30px] mb-4 shrink-0", {
+const dialog_icon_cva = cva("block stroke-[1.5px] size-[30px] shrink-0", {
   variants: {
     variant: {
+      default: "",
       primary: "text-txt-primary stroke-txt-primary",
       success: "text-txt-success stroke-txt-success",
       warning: "text-txt-warning stroke-txt-warning",
@@ -185,28 +279,28 @@ const dialog_icon_cva = cva("block stroke-[1.5px] size-[30px] mb-4 shrink-0", {
 });
 
 interface DialogIconProps {
-  variant: "primary" | "success" | "warning" | "danger";
-  children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
+  variant: "default" | "primary" | "success" | "warning" | "danger";
+  children: ReactElement<any, string | JSXElementConstructor<any>>;
+  className?: string;
 }
 
-const DialogIcon: React.ForwardRefExoticComponent<DialogIconProps> =
-  React.forwardRef(({ variant, children }, ref) => {
-    return React.cloneElement(children, {
+const DialogIcon: ForwardRefExoticComponent<DialogIconProps> = forwardRef(
+  ({ variant, children, className }, ref) => {
+    return cloneElement(children, {
       ref,
-      className: clx(dialog_icon_cva({ variant })),
+      className: clx(dialog_icon_cva({ variant, className })),
     });
-  });
-
-DialogIcon.displayName = "DialogIcon";
+  },
+);
 
 /*========================================================================================================================*/
 
-DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
-DialogContent.displayName = DialogPrimitive.Content.displayName;
+DialogBody.displayName = DialogPrimitive.Content.displayName;
 DialogHeader.displayName = "DialogHeader";
 DialogFooter.displayName = "DialogFooter";
 DialogTitle.displayName = DialogPrimitive.Title.displayName;
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
+DialogIcon.displayName = "DialogIcon";
 
 /*========================================================================================================================*/
 
@@ -214,12 +308,23 @@ export {
   Dialog,
   DialogIcon,
   DialogClose,
+  DialogBody,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogOverlay,
-  DialogPortal,
   DialogTitle,
   DialogTrigger,
+};
+export type {
+  DialogProps,
+  DialogTriggerProps,
+  DialogCloseProps,
+  DialogBodyProps,
+  DialogContentProps,
+  DialogHeaderProps,
+  DialogFooterProps,
+  DialogTitleProps,
+  DialogDescriptionProps,
+  DialogIconProps,
 };

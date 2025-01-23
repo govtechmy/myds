@@ -10,6 +10,7 @@ import {
   CalloutAction,
   CalloutContent,
   CalloutTitle,
+  CalloutClose,
   DismissibleCalloutExample,
 } from "@/components/myds";
 import { TypeTable } from "fumadocs-ui/components/type-table";
@@ -69,7 +70,9 @@ export default () => (
   <Callout>
     <CalloutTitle />
     <CalloutContent />
-    <CalloutAction />
+    <CalloutAction>
+      <CalloutClose />
+    </CalloutAction>
   </Callout>
 );
 ```
@@ -230,7 +233,7 @@ while callouts with all three elements (**title**, **content** & **action**) wil
 If the callout is dismissible, you can display a **close button** on the top right corner by declaring the `dismissible` prop.
 To capture the dismiss event, you may use the `onDismiss` prop.
 
-To dismiss the callout programmatically via event listeners inside `CalloutAction`'s children, you may use the `dismiss` function passed as an argument to the render prop.
+To dismiss the callout via event listener, simply wrap the target element with `CalloutClose`. `CalloutClose` will also trigger the onDismiss event, if defined.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
@@ -242,8 +245,8 @@ To dismiss the callout programmatically via event listeners inside `CalloutActio
       />
       <DismissibleCalloutExample
         type="action"
-        title="Action - Dismiss Callout via CalloutAction Render Prop"
-        description="You can invoke the dismiss event programmatically via event listeners inside CalloutAction's children"
+        title="Action - Dismiss Callout via CalloutClose"
+        description="You can attach closing functionality of the Callout by wrapping the target element"
       />
     </div>
   </Tab>
@@ -258,9 +261,7 @@ To dismiss the callout programmatically via event listeners inside `CalloutActio
     >
       <CalloutTitle>Title</CalloutTitle>
       <CalloutContent>
-        <span>
-          A description to explain the success, warning, info or error event
-        </span>
+        A description to explain the success, warning, info or error event
       </CalloutContent>
       <CalloutAction>
         <Button variant="default-outline">Call to Action</Button>
@@ -271,25 +272,18 @@ To dismiss the callout programmatically via event listeners inside `CalloutActio
     <Callout
       dismissible
       onDismiss={() => {
+        alert("Action taken before callout gets dismissed");
         console.log("MYDS: Dismissed event captured!");
       }}
     >
       <CalloutTitle>Title</CalloutTitle>
       <CalloutContent>
-        <span>
-          A description to explain the success, warning, info or error event
-        </span>
+        A description to explain the success, warning, info or error event
       </CalloutContent>
       <CalloutAction>
-        {(dismiss) =>
-          (<Button
-            variant="default-outline"
-            onClick={() => {
-              alert("Action taken before callout gets dismissed");
-              dismiss();
-            }}>
-          Call to Action
-        </Button>)}
+        <CalloutClose>
+          <Button variant="default-outline">Call to Action</Button>
+        </CalloutClose>
       </CalloutAction>
     </Callout>
     ```
@@ -315,17 +309,7 @@ To dismiss the callout programmatically via event listeners inside `CalloutActio
     },
     onDismiss: {
       description: "To capture the dismiss event",
-      type: "function",
-    },
-  }}
-/>
-
-### CalloutAction
-
-<TypeTable
-  type={{
-    children: {
-      type: "ReactNode | ((dimiss) => ReactNode)",
+      type: "() => void",
     },
   }}
 />

@@ -1,13 +1,11 @@
 import {
   AlertDialog,
-  AlertDialogClose,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogIcon,
+  AlertDialogAction,
   AlertDialogTitle,
   AlertDialogTrigger,
+  AlertDialogClose,
 } from "@govtechmy/myds-react/alert-dialog";
 import { Button } from "@govtechmy/myds-react/button";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -21,49 +19,52 @@ import { createStory } from "../utils";
  * ```tsx
  * import { AlertDialog, AlertDialogTrigger } from "@govtechmy/myds-react/alert-dialog";
  *
- * <AlertDialog>
- *   <AlertDialogTrigger>
- *     <Button variant="primary-fill" size="medium">
- *       Tunjuk Dialog
- *     </Button>
- *   </AlertDialogTrigger>
- *   <AlertDialogContent>
- *     <AlertDialogHeader>
- *       <AlertDialogIcon variant="success" />
- *       <AlertDialogTitle>Berjaya</AlertDialogTitle>
- *       <AlertDialogDescription>Dialog sedang ditunjukkan tanpa sebarang masalah.</AlertDialogDescription>
- *     </AlertDialogHeader>
- *     <AlertDialogFooter>
- *       <AlertDialogClose>
- *         <Button variant="default-outline" size="medium">
- *           Batal
+ *  <AlertDialog variant={variant}>
+ *       <AlertDialogTrigger>
+ *         <Button variant="primary-fill" size="medium">
+ *           Lihat Dialog
  *         </Button>
- *       </AlertDialogClose>
- *       <AlertDialogClose>
- *         <Button
- *           variant="primary-fill"
- *           size="medium"
- *         >
- *           Teruskan
- *         </Button>
- *       </AlertDialogClose>
- *     </AlertDialogFooter>
- *   </AlertDialogContent>
- * </AlertDialog>
+ *       </AlertDialogTrigger>
+ *       <AlertDialogContent>
+ *         <AlertDialogTitle>
+ *          Berjaya
+ *         </AlertDialogTitle>
+ *
+ *         <AlertDialogDescription>
+ *           Tindakan anda berjaya dilaksanakan.
+ *         </AlertDialogDescription>
+ *
+ *         <AlertDialogAction>
+ *           <AlertDialogClose>
+ *             <Button variant="default-outline" size="medium">
+ *               Batal
+ *             </Button>
+ *           </AlertDialogClose>
+ *           <AlertDialogClose>
+ *             <Button
+ *               variant="primary-fill"
+ *               size="medium"
+ *             >
+ *               Teruskan
+ *             </Button>
+ *           </AlertDialogClose>
+ *         </AlertDialogAction>
+ *       </AlertDialogContent>
+ *     </AlertDialog>
  * ```
  */
+// @ts-expect-error
 const meta: Meta = {
   title: "@govtechmy/myds-react/AlertDialog",
-  component: ({ triggerButtonVariant, variant, theme }) => (
-    <AlertDialog>
-      <AlertDialogTrigger className={theme}>
-        <Button variant={triggerButtonVariant} size="medium">
-          Tunjuk Dialog
-        </Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent className={theme}>
-        <AlertDialogHeader>
-          <AlertDialogIcon variant={variant} />
+  component: ({ dismissible, border, align, variant }) => {
+    return (
+      <AlertDialog variant={variant}>
+        <AlertDialogTrigger>
+          <Button variant="primary-fill" size="medium">
+            Lihat Dialog
+          </Button>
+        </AlertDialogTrigger>
+        <AlertDialogContent dismissible={dismissible}>
           <AlertDialogTitle>
             {variant === "success"
               ? "Berjaya"
@@ -73,6 +74,7 @@ const meta: Meta = {
                   ? "Bahaya"
                   : null}
           </AlertDialogTitle>
+
           <AlertDialogDescription>
             {variant === "success"
               ? "Dialog sedang ditunjukkan tanpa sebarang masalah."
@@ -82,50 +84,131 @@ const meta: Meta = {
                   ? "Tindakan ini akan memadamkan data secara kekal dan tidak dapat dikembalikan. Adakah anda mahu meneruskan?"
                   : null}
           </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter className={theme}>
-          <AlertDialogClose>
-            <Button variant="default-outline" size="medium">
-              {variant === "warning" ? "Kembali" : "Batal"}
-            </Button>
-          </AlertDialogClose>
-          <AlertDialogClose>
-            <Button
-              variant={variant === "danger" ? "danger-fill" : "primary-fill"}
-              size="medium"
-            >
-              {variant === "success" ? "Teruskan" : "Ya, teruskan"}
-            </Button>
-          </AlertDialogClose>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  ),
+
+          <AlertDialogAction border={border} align={align}>
+            <AlertDialogClose>
+              <Button variant="default-outline" size="medium">
+                {variant === "warning" ? "Kembali" : "Batal"}
+              </Button>
+            </AlertDialogClose>
+            <AlertDialogClose>
+              <Button
+                variant={variant === "danger" ? "danger-fill" : "primary-fill"}
+                size="medium"
+              >
+                {variant === "success" ? "Teruskan" : "Ya, teruskan"}
+              </Button>
+            </AlertDialogClose>
+          </AlertDialogAction>
+        </AlertDialogContent>
+      </AlertDialog>
+    );
+  },
   parameters: {
     layout: "centered",
   },
   args: {
     variant: "success",
-    triggerButtonVariant: "primary-fill",
+    open: false,
+    dismissible: true,
+    border: false,
+    align: "end",
+    defaultOpen: false,
+    onDismiss: () => {},
+    action: "",
   },
+
   argTypes: {
     variant: {
-      name: "Variant",
       description: "The variant of the alert dialog",
       control: "inline-radio",
       options: ["success", "warning", "danger"],
     },
-    triggerButtonVariant: {
-      name: "Trigger Button Variant",
-      description: "The variant of the alert dialog trigger",
+    open: {
+      description: "Controls the visibility of the dialog (controlled)",
+      control: {
+        type: "boolean",
+      },
+      table: {
+        category: "AlertDialog",
+      },
+    },
+    onOpenChange: {
+      description:
+        "Event listener for when the dialog is opened or closed (controlled)",
+      action: "onOpenChange",
+      control: undefined,
+      table: {
+        category: "AlertDialog",
+      },
+    },
+    defaultOpen: {
+      description: "Initial state of the dialog (uncontrolled)",
+      control: {
+        type: "boolean",
+      },
+      table: {
+        category: "AlertDialog",
+      },
+    },
+    dismissible: {
+      description: "The dialog should have a close button",
+      defaultValue: true,
+      control: {
+        type: "boolean",
+      },
+      table: {
+        category: "AlertDialogContent",
+      },
+    },
+    onDismiss: {
+      description: "Event listener for when the dialog is dismissed",
+      action: "onDismiss",
+      control: undefined,
+      table: {
+        category: "AlertDialogContent",
+      },
+    },
+    border: {
+      description: "The footer should have a top border",
+      defaultValue: false,
+      control: {
+        type: "boolean",
+      },
+      table: {
+        category: "AlertDialogAction",
+      },
+    },
+    action: {
+      description:
+        "The footer action space. Opposite to action buttons (children)",
+      action: "action",
+      // @ts-expect-error
+      type: "ReactNode",
+      table: {
+        category: "AlertDialogAction",
+      },
+    },
+    align: {
+      description: "The footer children should fill up the available width",
       control: "inline-radio",
-      options: ["primary-fill", "danger-fill"],
+      options: ["start", "full", "end"],
+      table: {
+        category: "AlertDialogAction",
+      },
     },
   },
 } satisfies Meta<{
-  triggerButtonVariant?: "primary-fill" | "danger-fill";
   variant: "success" | "warning" | "danger";
-  theme?: "light" | "dark";
+  triggerButtonVariant: "primary-fill" | "danger-fill";
+  open: boolean;
+  onOpenChange: () => void;
+  defaultOpen: boolean;
+  dismissible: boolean;
+  onDismiss: () => void;
+  border: boolean;
+  action: React.ReactNode;
+  align: "start" | "full" | "end";
 }>;
 
 export default meta;

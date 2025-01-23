@@ -1,0 +1,641 @@
+---
+title: Dropdown
+description: Dropdowns are toggleable, contextual overlays for displaying lists of links and more.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  DropdownItemIcon,
+  DropdownTrigger,
+  Button,
+} from "@/components/myds";
+import {
+  CopyIcon,
+  EditIcon,
+  LogoutIcon,
+  OptionsIcon,
+  SettingIcon,
+} from "@govtechmy/myds-react/icon";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <Dropdown>
+      <DropdownTrigger>
+        <Button variant="default-outline">Dropdown Menu</Button>
+      </DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem>Profile</DropdownItem>
+        <DropdownItem>Billing</DropdownItem>
+        <DropdownItem>Team</DropdownItem>
+        <DropdownItem>Subscription</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Dropdown>
+      <DropdownTrigger>
+        <Button variant="default-outline">Dropdown Menu</Button>
+      </DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem>Profile</DropdownItem>
+        <DropdownItem>Billing</DropdownItem>
+        <DropdownItem>Team</DropdownItem>
+        <DropdownItem>Subscription</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-dropdown--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/dropdown.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import {
+  Dropdown,
+  DropdownContent,
+  DropdownItem,
+  DropdownItemIcon,
+  DropdownTrigger,
+} from "@govtechmy/myds-react/dropdown";
+```
+
+```tsx copy
+export default () => (
+  <Dropdown>
+    <DropdownTrigger />
+    <DropdownContent>
+      <DropdownItem>
+        <DropdownItemIcon />
+      </DropdownItem>
+    </DropdownContent>
+  </Dropdown>
+);
+```
+
+## Examples
+
+### Trigger
+
+Use the `DropdownTrigger` to wrap the trigger element that opens the dropdown menu.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col items-center gap-3">
+    <Dropdown>
+      <DropdownTrigger>
+        <Button variant="primary-fill">Dropdown Menu</Button>
+      </DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem>Profile</DropdownItem>
+        <DropdownItem>Billing</DropdownItem>
+        <DropdownItem>Team</DropdownItem>
+        <DropdownItem>Subscription</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+     <Dropdown>
+      <DropdownTrigger>
+        <Button variant="primary-fill">Dropdown Menu</Button>
+      </DropdownTrigger>
+      <DropdownContent>
+        <DropdownItem>Profile</DropdownItem>
+        <DropdownItem>Billing</DropdownItem>
+        <DropdownItem>Team</DropdownItem>
+        <DropdownItem>Subscription</DropdownItem>
+      </DropdownContent>
+    </Dropdown>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Uncontrolled vs Controlled State
+
+To use the dropdown menu in an uncontrolled state, set the `defaultOpen` prop to the initial state of the dropdown menu.
+
+To use the dropdown menu in the controlled state, utilize the `open` and `onOpenChange` prop to handle the state programmatically.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+        <div>
+            Uncontrolled
+             <Dropdown defaultOpen={false}>
+                <DropdownTrigger>
+                    <Button variant="primary-fill">Dropdown Menu</Button>
+                </DropdownTrigger>
+                <DropdownContent>
+                    <DropdownItem>Profile</DropdownItem>
+                    <DropdownItem>Billing</DropdownItem>
+                    <DropdownItem>Team</DropdownItem>
+                    <DropdownItem>Subscription</DropdownItem>
+                </DropdownContent>
+            </Dropdown>
+        </div>
+        <div>
+            Controlled
+            <Dropdown open={false}>
+                <DropdownTrigger>
+                    <Button variant="primary-fill">Dropdown Menu</Button>
+                </DropdownTrigger>
+                <DropdownContent>
+                    <DropdownItem>Profile</DropdownItem>
+                    <DropdownItem>Billing</DropdownItem>
+                    <DropdownItem>Team</DropdownItem>
+                    <DropdownItem>Subscription</DropdownItem>
+                </DropdownContent>
+            </Dropdown>
+        </div>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    // Uncontrolled state
+    <Dropdown defaultOpen={false}>
+        <DropdownTrigger>
+            <Button variant="primary-fill">Dropdown Menu</Button>
+        </DropdownTrigger>
+        <DropdownContent>
+            <DropdownItem>Profile</DropdownItem>
+            <DropdownItem>Billing</DropdownItem>
+            <DropdownItem>Team</DropdownItem>
+            <DropdownItem>Subscription</DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+
+    // Controlled state
+    <Dropdown open={false}>
+        <DropdownTrigger>
+            <Button variant="primary-fill">Dropdown Menu</Button>
+        </DropdownTrigger>
+        <DropdownContent>
+            <DropdownItem>Profile</DropdownItem>
+            <DropdownItem>Billing</DropdownItem>
+            <DropdownItem>Team</DropdownItem>
+            <DropdownItem>Subscription</DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+    ```
+
+  </Tab>
+</Tabs>
+
+### With Icon
+
+You can add an icon to `DropdownItem` to provide visual cues for the user by using the `DropdownItemIcon` component.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose space-y-2 flex flex-col items-center">
+        <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Dropdown Menu + Icon</Button>
+            </DropdownTrigger>
+            <DropdownContent side="bottom" align="end">
+                <DropdownItem>
+                <DropdownItemIcon>
+                    <EditIcon />
+                </DropdownItemIcon>
+                Edit
+                </DropdownItem>
+                <DropdownItem>
+                <DropdownItemIcon>
+                    <CopyIcon />
+                </DropdownItemIcon>
+                Copy link
+                </DropdownItem>
+                <DropdownItem>
+                <DropdownItemIcon>
+                    <SettingIcon />
+                </DropdownItemIcon>
+                Settings
+                </DropdownItem>
+                <DropdownItem variant="danger">
+                <DropdownItemIcon>
+                    <LogoutIcon />
+                </DropdownItemIcon>
+                <span className="text-inherit">Logout</span>
+                </DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Dropdown>
+        <DropdownTrigger>
+            <Button variant="primary-fill">Dropdown Menu + Icon</Button>
+        </DropdownTrigger>
+        <DropdownContent side="bottom" align="end">
+            <DropdownItem>
+                <DropdownItemIcon>
+                    <EditIcon />
+                </DropdownItemIcon>
+                Edit
+            </DropdownItem>
+            <DropdownItem>
+                <DropdownItemIcon>
+                    <CopyIcon />
+                </DropdownItemIcon>
+                Copy link
+            </DropdownItem>
+            <DropdownItem>
+                <DropdownItemIcon>
+                    <SettingIcon />
+                </DropdownItemIcon>
+                Settings
+            </DropdownItem>
+            <DropdownItem variant="danger">
+                <DropdownItemIcon>
+                    <LogoutIcon />
+                </DropdownItemIcon>
+                Logout
+            </DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Variant
+
+You can set the `variant` prop to `danger` on `DropdownItem` to indicate that the action is destructive.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center">
+      <Dropdown>
+        <DropdownTrigger>
+            <Button variant="primary-fill">With Variant: Danger </Button>
+        </DropdownTrigger>
+        <DropdownContent side="bottom" align="end">
+            <DropdownItem variant="danger">
+                <DropdownItemIcon>
+                    <LogoutIcon />
+                </DropdownItemIcon>
+                <span className="text-inherit">Logout</span>
+            </DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Dropdown>
+        <DropdownTrigger>
+            <Button variant="primary-fill">With Variant: Danger </Button>
+        </DropdownTrigger>
+        <DropdownContent side="bottom" align="end">
+            <DropdownItem variant="danger">
+                <DropdownItemIcon>
+                    <LogoutIcon />
+                </DropdownItemIcon>
+                Logout
+            </DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Disabled
+
+`DropdownItem` can be disabled by setting the `disabled` prop to `true`. When disabled, the dropdown item will not be interactive.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center">
+    <Dropdown>
+        <DropdownTrigger>
+            <Button variant="primary-fill">With Disabled Item </Button>
+        </DropdownTrigger>
+        <DropdownContent>
+            <DropdownItem disabled>
+                <DropdownItemIcon>
+                    <LogoutIcon />
+                </DropdownItemIcon>
+                <span className="text-inherit">Logout</span>
+            </DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Dropdown>
+        <DropdownTrigger>
+            <Button variant="primary-fill">With Disabled Item </Button>
+        </DropdownTrigger>
+        <DropdownContent>
+            <DropdownItem disabled>
+                <DropdownItemIcon>
+                    <LogoutIcon />
+                </DropdownItemIcon>
+                <span className="text-inherit">Logout</span>
+            </DropdownItem>
+        </DropdownContent>
+    </Dropdown>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Alignment
+
+You can set `align` on `DialogContent` to align where the content viewport should begin with respect to the **trigger element**. By default, the alignment is set to `end`. You can also set the alignment to `start` or `center`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        Start
+        <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Align: Start </Button>
+            </DropdownTrigger>
+            <DropdownContent align="start">
+                <DropdownItem>Option 1</DropdownItem>
+                <DropdownItem>Option 2</DropdownItem>
+                <DropdownItem>Option 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+      <div>
+        Center
+       <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Align: Center </Button>
+            </DropdownTrigger>
+            <DropdownContent align="center">
+                <DropdownItem>Option 1</DropdownItem>
+                <DropdownItem>Option 2</DropdownItem>
+                <DropdownItem>Option 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+      <div>
+        End
+       <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Align: End </Button>
+            </DropdownTrigger>
+            <DropdownContent align="end">
+                <DropdownItem>Option 1</DropdownItem>
+                <DropdownItem>Option 2</DropdownItem>
+                <DropdownItem>Option 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+// Start
+<Dropdown>
+    <DropdownTrigger>
+        <Button variant="primary-fill">Align: Start </Button>
+    </DropdownTrigger>
+    <DropdownContent align="start">
+        <DropdownItem>Option 1</DropdownItem>
+        <DropdownItem>Option 2</DropdownItem>
+        <DropdownItem>Option 3</DropdownItem>
+    </DropdownContent>
+</Dropdown>
+
+// Center
+
+<Dropdown>
+  <DropdownTrigger>
+    <Button variant="primary-fill">Align: Center </Button>
+  </DropdownTrigger>
+  <DropdownContent align="center">
+    <DropdownItem>Option 1</DropdownItem>
+    <DropdownItem>Option 2</DropdownItem>
+    <DropdownItem>Option 3</DropdownItem>
+  </DropdownContent>
+</Dropdown>
+
+// End
+
+<Dropdown>
+  <DropdownTrigger>
+    <Button variant="primary-fill">Align: End </Button>
+  </DropdownTrigger>
+  <DropdownContent align="end">
+    <DropdownItem>Option 1</DropdownItem>
+    <DropdownItem>Option 2</DropdownItem>
+    <DropdownItem>Option 3</DropdownItem>
+  </DropdownContent>
+</Dropdown>
+```
+
+  </Tab>
+</Tabs>
+
+### Side
+
+You can set `side` on `DialogContent` to position where the content viewport should display with respect to the **trigger element**. By default, the side is set to `bottom`. You can also set the side to `left`, `right` & `top`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        Bottom
+        <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Side: Bottom </Button>
+            </DropdownTrigger>
+            <DropdownContent side="bottom">
+                <DropdownItem>Option 1</DropdownItem>
+                <DropdownItem>Option 2</DropdownItem>
+                <DropdownItem>Option 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+      <div>
+        Top
+       <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Side: Top </Button>
+            </DropdownTrigger>
+            <DropdownContent side="top">
+                <DropdownItem>Option 1</DropdownItem>
+                <DropdownItem>Option 2</DropdownItem>
+                <DropdownItem>Option 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+      <div>
+        Left
+       <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Side: Left </Button>
+            </DropdownTrigger>
+            <DropdownContent side="left">
+                <DropdownItem>Option 1</DropdownItem>
+                <DropdownItem>Option 2</DropdownItem>
+                <DropdownItem>Option 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+      <div>
+        Right
+       <Dropdown>
+            <DropdownTrigger>
+                <Button variant="primary-fill">Side: Right </Button>
+            </DropdownTrigger>
+            <DropdownContent side="right">
+                <DropdownItem>Option 1</DropdownItem>
+                <DropdownItem>Option 2</DropdownItem>
+                <DropdownItem>Option 3</DropdownItem>
+            </DropdownContent>
+        </Dropdown>
+      </div>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+// Bottom
+ <Dropdown>
+    <DropdownTrigger>
+        <Button variant="primary-fill">Side: Bottom </Button>
+    </DropdownTrigger>
+    <DropdownContent side="bottom">
+        <DropdownItem>Option 1</DropdownItem>
+        <DropdownItem>Option 2</DropdownItem>
+        <DropdownItem>Option 3</DropdownItem>
+    </DropdownContent>
+</Dropdown>
+
+// Top
+
+<Dropdown>
+  <DropdownTrigger>
+    <Button variant="primary-fill">Side: Top </Button>
+  </DropdownTrigger>
+  <DropdownContent side="top">
+    <DropdownItem>Option 1</DropdownItem>
+    <DropdownItem>Option 2</DropdownItem>
+    <DropdownItem>Option 3</DropdownItem>
+  </DropdownContent>
+</Dropdown>
+
+// Left
+
+<Dropdown>
+  <DropdownTrigger>
+    <Button variant="primary-fill">Side: Left </Button>
+  </DropdownTrigger>
+  <DropdownContent side="left">
+    <DropdownItem>Option 1</DropdownItem>
+    <DropdownItem>Option 2</DropdownItem>
+    <DropdownItem>Option 3</DropdownItem>
+  </DropdownContent>
+</Dropdown>
+
+// Right
+
+<Dropdown>
+  <DropdownTrigger>
+    <Button variant="primary-fill">Side: Right </Button>
+  </DropdownTrigger>
+  <DropdownContent side="right">
+    <DropdownItem>Option 1</DropdownItem>
+    <DropdownItem>Option 2</DropdownItem>
+    <DropdownItem>Option 3</DropdownItem>
+  </DropdownContent>
+</Dropdown>
+```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### Dropdown
+
+<TypeTable
+  type={{
+    open: {
+      description: "State of the dropdown (controlled)",
+      type: "boolean",
+      default: "false",
+    },
+    defaultOpen: {
+      description: "Initial state of the dropdown (uncontrolled)",
+      type: "boolean",
+      default: "false",
+    },
+    onOpenChange: {
+      description: "Change event listener (controlled)",
+      type: "(open: boolean) => void",
+    },
+  }}
+/>
+
+### DropdownContent
+
+<TypeTable
+  type={{
+    align: {
+      description: "Alignment of the dropdown wrt to the trigger",
+      type: "enum",
+      typeDescription: "start | end | center",
+      default: "end",
+    },
+    side: {
+      description: "Position of the dropdown wrt to the trigger",
+      type: "enum",
+      typeDescription: "top | bottom | left | right",
+      default: "bottom",
+    },
+  }}
+/>
+
+### DropdownItem
+
+<TypeTable
+  type={{
+    disabled: {
+      description: "Whether the dropdown item is disabled",
+      type: "boolean",
+      default: "false",
+    },
+    variant: {
+      description: "Variant of the dropdown item",
+      type: "default | danger",
+      default: "default",
+    },
+    onSelect: {
+      description: "Event listener when dropdown item is selected",
+      type: "(event: Event) => void",
+    },
+  }}
+/>

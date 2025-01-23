@@ -138,7 +138,7 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
         <Comp
           ref={ref}
           type={type}
-          className={button_cva({ variant, size, className, iconOnly })}
+          className={clx(button_cva({ variant, size, className, iconOnly }))}
           {...props}
         >
           {children}

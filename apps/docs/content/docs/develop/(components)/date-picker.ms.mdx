@@ -24,7 +24,7 @@ export const NOW = new Date();
 <Quicklinks
   links={{
     storybook:
-      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-date-picker--docs",
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-datepicker--docs",
     source:
       "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/date-picker.tsx",
   }}
@@ -221,6 +221,34 @@ Anda boleh menetapkan susunan pengisihan tahun dalam dropdown tahun dengan mengh
   </Tab>
 </Tabs>
 
+### Bahasa
+
+Komponen ini menyokong dwibahasa, anda boleh menghantar prop `locale` untuk menetapkan bahasa digunakan.
+
+Nilai lalai adalah `en` untuk English. Untuk menukar kepada Bahasa Melayu, tetapkan `ms`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        English
+        <DatePicker defaultValue={NOW} locale="en" />
+      </div>
+      <div>
+        Bahasa Melayu
+        <DatePicker defaultValue={NOW} locale="ms" />
+      </div>
+    </div>
+  </Tab>
+  <Tab value="Code">
+```tsx
+<DatePicker defaultValue={new Date()} locale="en" />
+
+<DatePicker defaultValue={new Date()} locale="ms" />
+```
+  </Tab>
+</Tabs>
+
 ## Props
 
 ### DatePicker
@@ -270,6 +298,10 @@ Anda boleh menetapkan susunan pengisihan tahun dalam dropdown tahun dengan mengh
       type: "asc | desc",
       default: "asc",
     },
-
-}}
+    locale: {
+      description: "Bahasa untuk pemilih tarikh",
+      type: "en | ms",
+      default: "en",
+    },
+  }}
 />
