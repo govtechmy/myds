@@ -24,6 +24,7 @@
     "(components)/dialog",
     "(components)/dropdown",
     "(components)/footer",
+    "(components)/navbar",
     "(components)/pagination",
     "(components)/pill",
     "(components)/radio",
