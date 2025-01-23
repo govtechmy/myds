@@ -280,10 +280,7 @@ const meta = {
               </div>
             </div>
           </CookieBannerPreferences>
-          <CookieBannerFooter
-            fillWidth={false}
-            className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row"
-          >
+          <CookieBannerFooter className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row">
             <Button
               variant="primary-fill"
               size="medium"
