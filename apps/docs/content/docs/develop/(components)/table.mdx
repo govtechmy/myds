@@ -1,0 +1,630 @@
+---
+title: Table
+description: Organizes information into rows and columns for easy readability. It accommodates various data types, including text, numbers, codes, call-to-action and links, enabling efficient presentation and comparison.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableEmpty,
+  TableSkeleton,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <Table>
+      <TableCaption>Audit log</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Timestamp</TableHead>
+          <TableHead>Activity</TableHead>
+          <TableHead className="text-center">Action Taken</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell> 2021-09-01 12:00:00 </TableCell>
+          <TableCell> Login attempt successful </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:01:32 </TableCell>
+          <TableCell> Page visited: /company-a/inventory </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:02:03 </TableCell>
+          <TableCell> New inventory item added: MacBook Pro </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:03:45 </TableCell>
+          <TableCell>
+            Inventory: MacBook Pro stock count updated: 100 units{" "}
+          </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Table>
+      <TableCaption>Audit log</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Timestamp</TableHead>
+          <TableHead>Activity</TableHead>
+          <TableHead className="text-center">Action Taken</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell> 2021-09-01 12:00:00 </TableCell>
+          <TableCell> Login attempt successful </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:01:32 </TableCell>
+          <TableCell> Page visited: /company-a/inventory </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:02:03 </TableCell>
+          <TableCell> New inventory item added: MacBook Pro </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:03:45 </TableCell>
+          <TableCell>
+            Inventory: MacBook Pro stock count updated: 100 units
+          </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-table--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/table.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@govtechmy/myds-react/table";
+```
+
+```tsx copy
+export default () => (
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead />
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell />
+      </TableRow>
+    </TableBody>
+    <TableCaption />
+  </Table>
+);
+```
+
+## Examples
+
+### Basic Table
+
+You can use the `Table` component to create a basic table with headers, rows, and cells. Conventional `table`, `th`, `td` applies, so you can define `colSpan`, `rowSpan`, `scope` and [other native attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th).
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col items-center gap-3">
+     <Table>
+      <TableCaption>Audit log</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Timestamp</TableHead>
+          <TableHead>Activity</TableHead>
+          <TableHead className="text-center">Action Taken</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell> 2021-09-01 12:00:00 </TableCell>
+          <TableCell> Login attempt successful </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:01:32 </TableCell>
+          <TableCell> Page visited: /company-a/inventory </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:02:03 </TableCell>
+          <TableCell> New inventory item added: MacBook Pro </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:03:45 </TableCell>
+          <TableCell>
+            Inventory: MacBook Pro stock count updated: 100 units
+          </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Table>
+      <TableCaption>Audit log</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Timestamp</TableHead>
+          <TableHead>Activity</TableHead>
+          <TableHead className="text-center">Action Taken</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell> 2021-09-01 12:00:00 </TableCell>
+          <TableCell> Login attempt successful </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:01:32 </TableCell>
+          <TableCell> Page visited: /company-a/inventory </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:02:03 </TableCell>
+          <TableCell> New inventory item added: MacBook Pro </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:03:45 </TableCell>
+          <TableCell>
+            Inventory: MacBook Pro stock count updated: 100 units
+          </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Row Span and Col Span
+
+You can use the `rowSpan` and `colSpan` attributes to merge cells in a row or column.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <Table>
+        <TableCaption>Tax Assessment Year 2023</TableCaption>
+        <TableHeader>
+            <TableRow>
+            <TableHead>Category</TableHead>
+            <TableHead>Chargeable Income</TableHead>
+            <TableHead>Calculation (RM)</TableHead>
+            <TableHead className="text-center">Rate</TableHead>
+            <TableHead className="text-end">Tax</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+            <TableCell>A</TableCell>
+            <TableCell>0 - 5,000</TableCell>
+            <TableCell>On the First 5,000</TableCell>
+            <TableCell className="text-center">0</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>B</TableCell>
+            <TableCell rowSpan={2}>5,000 - 20,000</TableCell>
+            <TableCell>On the First 5,000</TableCell>
+            <TableCell className="text-center" rowSpan={2}>1%</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>Next 15,000</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>C</TableCell>
+            <TableCell rowSpan={2}>20,001 - 35,000</TableCell>
+            <TableCell>On the First 20,000</TableCell>
+            <TableCell className="text-center" rowSpan={2}>3%</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>Next 15,000</TableCell>
+            <TableCell className="text-end">RM 450</TableCell>
+            </TableRow>
+        </TableBody>
+    </Table>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+   <Table>
+        <TableCaption>Tax Assessment Year 2023</TableCaption>
+        <TableHeader>
+            <TableRow>
+            <TableHead>Category</TableHead>
+            <TableHead>Chargeable Income</TableHead>
+            <TableHead>Calculation (RM)</TableHead>
+            <TableHead className="text-center">Rate</TableHead>
+            <TableHead className="text-end">Tax</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+            <TableCell>A</TableCell>
+            <TableCell>0 - 5,000</TableCell>
+            <TableCell>On the First 5,000</TableCell>
+            <TableCell className="text-center">0</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>B</TableCell>
+            <TableCell rowSpan={2}>5,000 - 20,000</TableCell>
+            <TableCell>On the First 5,000</TableCell>
+            <TableCell className="text-center" rowSpan={2}>1%</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>Next 15,000</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>C</TableCell>
+            <TableCell rowSpan={2}>20,001 - 35,000</TableCell>
+            <TableCell>On the First 20,000</TableCell>
+            <TableCell className="text-center" rowSpan={2}>3%</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>Next 15,000</TableCell>
+            <TableCell className="text-end">RM 450</TableCell>
+            </TableRow>
+        </TableBody>
+    </Table>
+    ```
+
+  </Tab>
+</Tabs>
+
+### With Footer
+
+You can add a footer to the table using the `TableFooter` component.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose space-y-2 flex flex-col items-center">
+      <Table>
+        <TableCaption>Tax Assessment Year 2023</TableCaption>
+        <TableHeader>
+            <TableRow>
+            <TableHead>Category</TableHead>
+            <TableHead>Chargeable Income</TableHead>
+            <TableHead>Calculation (RM)</TableHead>
+            <TableHead className="text-center">Rate</TableHead>
+            <TableHead className="text-end">Tax</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+            <TableCell>A</TableCell>
+            <TableCell>0 - 5,000</TableCell>
+            <TableCell>On the First 5,000</TableCell>
+            <TableCell className="text-center">0</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>B</TableCell>
+            <TableCell rowSpan={2}>5,000 - 20,000</TableCell>
+            <TableCell>On the First 5,000</TableCell>
+            <TableCell className="text-center" rowSpan={2}>1%</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>Next 15,000</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>C</TableCell>
+            <TableCell rowSpan={2}>20,001 - 35,000</TableCell>
+            <TableCell>On the First 20,000</TableCell>
+            <TableCell className="text-center" rowSpan={2}>3%</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>Next 15,000</TableCell>
+            <TableCell className="text-end">RM 450</TableCell>
+            </TableRow>
+        </TableBody>
+        <TableFooter>
+            <TableRow>
+                <TableCell className="text-end font-medium" colSpan={4}>Total Tax</TableCell>
+                <TableCell className="text-end font-medium">RM 600</TableCell>
+            </TableRow>
+        </TableFooter>
+    </Table>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Table>
+        <TableCaption>Tax Assessment Year 2023</TableCaption>
+        <TableHeader>
+            <TableRow>
+            <TableHead>Category</TableHead>
+            <TableHead>Chargeable Income</TableHead>
+            <TableHead>Calculation (RM)</TableHead>
+            <TableHead className="text-center">Rate</TableHead>
+            <TableHead className="text-end">Tax</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+            <TableCell>A</TableCell>
+            <TableCell>0 - 5,000</TableCell>
+            <TableCell>On the First 5,000</TableCell>
+            <TableCell className="text-center">0</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>B</TableCell>
+            <TableCell rowSpan={2}>5,000 - 20,000</TableCell>
+            <TableCell>On the First 5,000</TableCell>
+            <TableCell className="text-center" rowSpan={2}>1%</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>Next 15,000</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>C</TableCell>
+            <TableCell rowSpan={2}>20,001 - 35,000</TableCell>
+            <TableCell>On the First 20,000</TableCell>
+            <TableCell className="text-center" rowSpan={2}>3%</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>Next 15,000</TableCell>
+            <TableCell className="text-end">RM 450</TableCell>
+            </TableRow>
+        </TableBody>
+        <TableFooter>
+            <TableRow>
+                <TableCell className="text-end font-medium" colSpan={4}>Total Tax</TableCell>
+                <TableCell className="text-end font-medium">RM 600</TableCell>
+            </TableRow>
+        </TableFooter>
+    </Table>
+    ```
+  </Tab>
+</Tabs>
+
+### Skeleton Loading
+
+You can use the `TableSkeleton` component to create a skeleton loading state for the table.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose space-y-2 flex flex-col items-center">
+      <Table>
+      <TableCaption>Audit log</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Timestamp</TableHead>
+          <TableHead>Activity</TableHead>
+          <TableHead>Action Taken</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell> <TableSkeleton /> </TableCell>
+          <TableCell>  <TableSkeleton /> </TableCell>
+          <TableCell className="text-center py-3"> <TableSkeleton /> </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> <TableSkeleton /> </TableCell>
+          <TableCell>  <TableSkeleton /> </TableCell>
+          <TableCell className="text-center py-3"> <TableSkeleton /> </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> <TableSkeleton /> </TableCell>
+          <TableCell>  <TableSkeleton /> </TableCell>
+          <TableCell className="text-center py-3"> <TableSkeleton /> </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> <TableSkeleton /> </TableCell>
+          <TableCell>  <TableSkeleton /> </TableCell>
+          <TableCell className="text-center py-3"> <TableSkeleton /> </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Table>
+        <TableCaption>Tax Assessment Year 2023</TableCaption>
+        <TableHeader>
+            <TableRow>
+            <TableHead>Category</TableHead>
+            <TableHead>Chargeable Income</TableHead>
+            <TableHead>Calculation (RM)</TableHead>
+            <TableHead className="text-center">Rate</TableHead>
+            <TableHead className="text-end">Tax</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+            <TableCell>A</TableCell>
+            <TableCell>0 - 5,000</TableCell>
+            <TableCell>On the First 5,000</TableCell>
+            <TableCell className="text-center">0</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>B</TableCell>
+            <TableCell rowSpan={2}>5,000 - 20,000</TableCell>
+            <TableCell>On the First 5,000</TableCell>
+            <TableCell className="text-center" rowSpan={2}>1%</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>Next 15,000</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>C</TableCell>
+            <TableCell rowSpan={2}>20,001 - 35,000</TableCell>
+            <TableCell>On the First 20,000</TableCell>
+            <TableCell className="text-center" rowSpan={2}>3%</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>Next 15,000</TableCell>
+            <TableCell className="text-end">RM 450</TableCell>
+            </TableRow>
+        </TableBody>
+        <TableFooter>
+            <TableRow>
+                <TableCell className="text-end font-medium" colSpan={4}>Total Tax</TableCell>
+                <TableCell className="text-end font-medium">RM 600</TableCell>
+            </TableRow>
+        </TableFooter>
+    </Table>
+    ```
+  </Tab>
+</Tabs>
+
+### Empty Table
+
+Use the `TableEmpty` component to show the empty state.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose space-y-2 flex flex-col items-center">
+      <Table>
+      <TableCaption>Audit log</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Timestamp</TableHead>
+          <TableHead>Activity</TableHead>
+          <TableHead>Action Taken</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableEmpty />
+        </TableRow>
+        </TableBody>
+    </Table>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Table>
+      <TableCaption>Audit log</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Timestamp</TableHead>
+          <TableHead>Activity</TableHead>
+          <TableHead>Action Taken</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableEmpty />
+        </TableRow>
+        </TableBody>
+    </Table>
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### TableHead
+
+<TypeTable
+  type={{
+    rowSpan: {
+      description: "Number of rows that the cell is to span",
+      type: "boolean",
+      default: "false",
+    },
+    colSpan: {
+      description: "Number of columns that the cell is to span",
+      type: "boolean",
+      default: "false",
+    },
+    scope: {
+      description: "Specifies the type of data in the cell",
+      type: "col | row | colgroup | rowgroup",
+    },
+  }}
+/>
+
+### TableCell
+
+<TypeTable
+  type={{
+    rowSpan: {
+      description: "Number of rows that the cell is to span",
+      type: "boolean",
+      default: "false",
+    },
+    colSpan: {
+      description: "Number of columns that the cell is to span",
+      type: "boolean",
+      default: "false",
+    },
+    scope: {
+      description: "Specifies the type of data in the cell",
+      type: "col | row | colgroup | rowgroup",
+    },
+  }}
+/>

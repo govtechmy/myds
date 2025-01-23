@@ -23,6 +23,7 @@ export * from "@govtechmy/myds-react/dropdown";
 export * from "@govtechmy/myds-react/pill";
 export * from "@govtechmy/myds-react/select";
 export * from "@govtechmy/myds-react/input";
+export * from "@govtechmy/myds-react/table";
 import {
   Callout,
   CalloutTitle,

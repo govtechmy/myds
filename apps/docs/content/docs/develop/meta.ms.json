@@ -31,6 +31,7 @@
     "(components)/select",
     "(components)/skiplink",
     "(components)/spinner",
+    "(components)/table",
     "(components)/tag",
     "(components)/text-area",
     "(components)/toast",
