@@ -285,12 +285,12 @@ const DemoNavbar = () => {
         </NavbarContainer>
 
         <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
-          {/* Button Search */}
+          {/* Button Search  : mobile hide if needed  */}
           <Button variant="default-ghost" className="p-2">
             <SearchIcon></SearchIcon>
           </Button>
 
-          {/* Button Light Mode Toggle */}
+          {/* Button Light Mode Toggle  : mobile hide if needed  */}
           <Button
             variant="default-ghost"
             className="p-2"
@@ -299,24 +299,26 @@ const DemoNavbar = () => {
             {isDarkMode ? <SunIcon /> : <MoonIcon />}
           </Button>
 
-          {/* Select Language Toggle */}
-          <Select
-            value={value}
-            onValueChange={setValue}
-            defaultValue="EN"
-            multiple={false}
-            variant="outline"
-            size="medium"
-          >
-            <SelectTrigger>
-              <GlobeIcon className="h-4 w-4"></GlobeIcon>
-              <SelectValue>{(value) => value || "EN"}</SelectValue>
-            </SelectTrigger>
-            <SelectContent className="font-body rounded-[4px] py-1">
-              <SelectItem value="EN">EN</SelectItem>
-              <SelectItem value="BM">BM</SelectItem>
-            </SelectContent>
-          </Select>
+          {/* Select Language Toggle  : mobile hide if needed  */}
+          <div className="hidden sm:block">
+            <Select
+              value={value}
+              onValueChange={setValue}
+              defaultValue="EN"
+              multiple={false}
+              variant="outline"
+              size="medium"
+            >
+              <SelectTrigger>
+                <GlobeIcon className="h-4 w-4"></GlobeIcon>
+                <SelectValue>{(value) => value || "EN"}</SelectValue>
+              </SelectTrigger>
+              <SelectContent className="font-body rounded-[4px] py-1">
+                <SelectItem value="EN">EN</SelectItem>
+                <SelectItem value="BM">BM</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </NavbarActionGroup>
       </Navbar>
     </div>
@@ -441,12 +443,12 @@ const KementerianDigitalNavbar = () => {
         </NavbarContainer>
 
         <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
-          {/* Button Search */}
+          {/* Button Search  : mobile hide if needed  */}
           <Button variant="default-ghost" className="p-2">
             <SearchIcon></SearchIcon>
           </Button>
 
-          {/* Button Light Mode Toggle */}
+          {/* Button Light Mode Toggle : mobile hide if needed  */}
           <Button
             variant="default-ghost"
             className="p-2"
@@ -455,24 +457,26 @@ const KementerianDigitalNavbar = () => {
             {isDarkMode ? <SunIcon /> : <MoonIcon />}
           </Button>
 
-          {/* Select Language Toggle */}
-          <Select
-            value={value}
-            onValueChange={setValue}
-            defaultValue="EN"
-            multiple={false}
-            variant="outline"
-            size="medium"
-          >
-            <SelectTrigger>
-              <GlobeIcon className="h-4 w-4"></GlobeIcon>
-              <SelectValue>{(value) => value || "EN"}</SelectValue>
-            </SelectTrigger>
-            <SelectContent className="font-body rounded-[4px] py-1">
-              <SelectItem value="EN">EN</SelectItem>
-              <SelectItem value="BM">BM</SelectItem>
-            </SelectContent>
-          </Select>
+          {/* Select Language Toggle : mobile hide if needed */}
+          <div className="hidden sm:block">
+            <Select
+              value={value}
+              onValueChange={setValue}
+              defaultValue="EN"
+              multiple={false}
+              variant="outline"
+              size="medium"
+            >
+              <SelectTrigger>
+                <GlobeIcon className="h-4 w-4"></GlobeIcon>
+                <SelectValue>{(value) => value || "EN"}</SelectValue>
+              </SelectTrigger>
+              <SelectContent className="font-body rounded-[4px] py-1">
+                <SelectItem value="EN">EN</SelectItem>
+                <SelectItem value="BM">BM</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </NavbarActionGroup>
       </Navbar>
     </div>
