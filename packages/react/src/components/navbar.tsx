@@ -359,7 +359,7 @@ const NavItemsDropdownItems: FunctionComponent<NavItemsDropdownItemsProps> = ({
             size: "medium",
           }),
           window.location.pathname.includes(href) && "bg-bg-washed-active",
-          "data-[state=open]:bg-bg-washed justify-starttext-sm w-full",
+          "data-[state=open]:bg-bg-washed justify-start text-sm text-left w-full",
           "h-10 pl-6",
         )}
       >
