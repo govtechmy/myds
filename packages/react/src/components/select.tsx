@@ -5,7 +5,6 @@ import { cva } from "class-variance-authority";
 import { ChevronDownFillIcon } from "../icons/chevron-down-fill";
 import { CheckCircleFillIcon } from "../icons/check-circle-fill";
 import { Checkbox } from "./checkbox";
-import { de } from "date-fns/locale";
 
 type SelectBase = Omit<
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>,
@@ -51,7 +50,7 @@ const SelectContext = React.createContext<SelectProps & SelectInternalProps>({
 });
 
 const Select: React.ForwardRefExoticComponent<SelectProps> = React.forwardRef(
-  (props) => {
+  (props, ref) => {
     const [_value, _setValue] = React.useState(
       isMultiple(props)
         ? props.value || props.defaultValue || []
@@ -86,6 +85,7 @@ const Select: React.ForwardRefExoticComponent<SelectProps> = React.forwardRef(
         props.onValueChange?.(temp);
       } else {
         _setValue(value);
+        props.onValueChange?.(value);
       }
     };
 
@@ -100,6 +100,7 @@ const Select: React.ForwardRefExoticComponent<SelectProps> = React.forwardRef(
         value={{ ...props, _value, _handleClose: _setOpen }}
       >
         <SelectPrimitive.Root
+          ref={ref}
           {...props}
           /* @ts-expect-error */
           value={_value}
@@ -473,6 +474,7 @@ const SelectHeader: React.ForwardRefExoticComponent<
 > = React.forwardRef(({ className, ...props }, ref) => {
   return (
     <SelectXPad
+      ref={ref}
       className={clx("bg-bg-dialog sticky top-0 z-50 pb-1", className)}
       {...props}
     />
@@ -487,6 +489,7 @@ const SelectFooter: React.ForwardRefExoticComponent<
 > = React.forwardRef(({ className, ...props }, ref) => {
   return (
     <SelectXPad
+      ref={ref}
       className={clx(
         "bg-bg-dialog border-otl-gray-200 sticky bottom-0 z-50 border-t py-1",
         className,
