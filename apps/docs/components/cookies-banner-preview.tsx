@@ -55,7 +55,7 @@ const CookiesBannerPreview = () => {
         <div className="mb-1 flex w-full flex-row justify-between">
           <CookieBannerHeader className="space-y-0 p-0 pb-1">
             <CookieBannerTitle className="text-body-md pb-1">
-              Customise Cookie Preferences aba
+              Customise Cookie Preferences
             </CookieBannerTitle>
             <CookieBannerDescription>
               This website uses cookies to improve user experience. We need your
@@ -136,7 +136,7 @@ const CookiesBannerPreview = () => {
           </div>
         </CookieBannerPreferences>
         <CookieBannerFooter
-          className="gap-[0.5rem] p-0 pt-3 sm:flex-row"
+          className="w-full flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row"
           align="start"
         >
           <Button
