@@ -11,6 +11,8 @@ import {
   Dialog,
   dialog_footer_cva,
   DialogBody,
+  DialogClose,
+  DialogCloseProps,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -200,7 +202,11 @@ const CookieBannerClose = ({
     </Button>
   );
 };
-type CookieBannerFooterProps = Omit<DialogFooterProps, "border" | "align">;
+
+type CookieBannerFooterProps = Omit<
+  DialogFooterProps,
+  "border" | "align" | "action"
+>;
 
 const CookieBannerFooter: ForwardRefExoticComponent<CookieBannerFooterProps> =
   forwardRef(({ className, ...props }, ref) => {
