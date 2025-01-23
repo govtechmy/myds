@@ -20,6 +20,7 @@
     "(components)/date-field",
     "(components)/date-picker",
     "(components)/daterange-picker",
+    "(components)/navbar",
     "(components)/pagination",
     "(components)/pill",
     "(components)/radio",
