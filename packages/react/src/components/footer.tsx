@@ -105,7 +105,7 @@ const ImageWithTitle: FunctionComponent<ImageWithTitleProps> = ({
       className="select-none"
     />
     <div>
-      <p className="font-poppins whitespace-nowrap font-semibold">{children}</p>
+      <div className="font-poppins whitespace-nowrap font-semibold">{children}</div>
     </div>
   </div>
 );
@@ -116,12 +116,12 @@ const Address: FunctionComponent<ComponentProps<"p">> = ({
   className,
   ...props
 }) => (
-  <p
+  <div
     className={clx("text-txt-black-700 whitespace-pre text-sm", className)}
     {...props}
   >
     {children}
-  </p>
+  </div>
 );
 
 // Social Media
@@ -151,12 +151,15 @@ interface SocialMediaItemProps {
   icon: ReactNode;
   href: string;
   name: string;
+  className?:string;
 }
 
 const SocialMediaItem: FunctionComponent<SocialMediaItemProps> = ({
   icon,
   href,
   name,
+  className,
+  ...props
 }) => (
   <Link
     href={href}
@@ -164,7 +167,8 @@ const SocialMediaItem: FunctionComponent<SocialMediaItemProps> = ({
     rel="noopener noreferrer"
     aria-label={name}
     underline="none"
-    className="hover:text-txt-black-900"
+    className={clx("hover:text-txt-black-900",className)}
+    {...props}
   >
     {icon}
   </Link>
@@ -213,9 +217,9 @@ const FooterCopyrightDate: FunctionComponent<ComponentProps<"div">> = ({
   ...props
 }) => (
   <>
-    <p className={clx("text-txt-black-500 text-sm", className)} {...props}>
+    <div className={clx("text-txt-black-500 text-sm", className)} {...props}>
       {children} © {new Date().getFullYear()}
-    </p>
+    </div>
     <span className="bg-otl-gray-300 hidden h-3 w-px lg:block"></span>
   </>
 );
