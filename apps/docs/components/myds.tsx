@@ -21,6 +21,8 @@ export * from "@govtechmy/myds-react/daterange-picker";
 export * from "@govtechmy/myds-react/dialog";
 export * from "@govtechmy/myds-react/dropdown";
 export * from "@govtechmy/myds-react/pill";
+export * from "@govtechmy/myds-react/select";
+export * from "@govtechmy/myds-react/input";
 import {
   Callout,
   CalloutTitle,
@@ -52,6 +54,13 @@ import {
   AlertDialogAction,
   AlertDialogClose,
 } from "@govtechmy/myds-react/alert-dialog";
+import {
+  Select,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+} from "@govtechmy/myds-react/select";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
@@ -227,5 +236,30 @@ export const DismissibleAlertDialog: FunctionComponent = () => {
         </AlertDialogAction>
       </AlertDialogContent>
     </AlertDialog>
+  );
+};
+
+export const CustomValueSelect: FunctionComponent = () => {
+  return (
+    <Select multiple size="small" variant="outline">
+      <SelectTrigger>
+        <SelectValue label="Fruit">
+          {(value) => (
+            <div className="flex gap-1">
+              {Array.isArray(value)
+                ? value.map((v) => <Pill>{v}</Pill>)
+                : value}
+            </div>
+          )}
+        </SelectValue>
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Apple</SelectItem>
+        <SelectItem value="banana">Banana</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Grapes</SelectItem>
+        <SelectItem value="pineapple">Pineapple</SelectItem>
+      </SelectContent>
+    </Select>
   );
 };

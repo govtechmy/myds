@@ -1,0 +1,667 @@
+---
+title: Pilih
+description: Membenarkan pengguna memilih dari senarai pilihan. Komponen ini sering muncul sebagai menu pop timbul di mana pengguna mengklik butang pilih, untuk membuat senarai pilihan muncul.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  Select,
+  SelectGroup,
+  SelectGroupTitle,
+  SelectValue,
+  SelectTrigger,
+  SelectLabel,
+  SelectContent,
+  SelectHeader,
+  SelectFooter,
+  SelectItem,
+  SelectSeparator,
+  CustomValueSelect,
+  Button,
+  Input,
+  InputIcon,
+  Pill,
+} from "@/components/myds";
+import { SearchIcon } from "@govtechmy/myds-react/icon";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose flex justify-center">
+    <Select size="small" variant="outline">
+      <SelectTrigger>
+        <SelectValue label="Buah" placeholder="Pilih" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple1">Nanas1</SelectItem>
+      </SelectContent>
+    </Select>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Select size="small" variant="outline">
+      <SelectTrigger>
+        <SelectValue label="Buah" placeholder="Pilih" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple1">Nanas1</SelectItem>
+      </SelectContent>
+    </Select>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-select--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/select.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import {
+  Select,
+  SelectGroup,
+  SelectGroupTitle,
+  SelectValue,
+  SelectTrigger,
+  SelectLabel,
+  SelectContent,
+  SelectHeader,
+  SelectFooter,
+  SelectItem,
+  SelectSeparator,
+} from "@govtechmy/myds-react/select";
+```
+
+```tsx copy
+export default () => (
+  <Select>
+    <SelectTrigger>
+      <SelectValue />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectHeader />
+      <SelectGroup>
+        <SelectGroupTitle />
+        <SelectItem />
+      </SelectGroup>
+      <SelectSeparator />
+      <SelectFooter />
+    </SelectContent>
+  </Select>
+);
+```
+
+## Contoh
+
+### Saiz
+
+Gunakan prop `size` untuk menukar saiz pilihan! Saiz yang tersedia adalah `small`, `medium`, dan `large`. Secara lalai, saiz adalah `small`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col items-center gap-3">
+    <Select size="small" variant="outline">
+      <SelectTrigger>
+        <SelectValue label="Buah" placeholder="Pilih" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple">Nanas</SelectItem>
+      </SelectContent>
+    </Select>
+
+     <Select size="medium" variant="outline">
+      <SelectTrigger>
+        <SelectValue label="Buah" placeholder="Pilih" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple">Nanas</SelectItem>
+      </SelectContent>
+    </Select>
+
+     <Select size="large" variant="outline">
+      <SelectTrigger>
+        <SelectValue label="Buah" placeholder="Pilih" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple">Nanas</SelectItem>
+      </SelectContent>
+    </Select>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    // Kecil
+    <Select size="small" variant="outline">
+      <SelectTrigger>
+        <SelectValue label="Buah" placeholder="Pilih" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple">Nanas</SelectItem>
+      </SelectContent>
+    </Select>
+
+    // Sederhana
+    <Select size="medium" variant="outline">
+      <SelectTrigger>
+        <SelectValue label="Buah" placeholder="Pilih" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple">Nanas</SelectItem>
+      </SelectContent>
+    </Select>
+
+
+    // Besar
+    <Select size="large" variant="outline">
+      <SelectTrigger>
+        <SelectValue label="Buah" placeholder="Pilih" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple">Nanas</SelectItem>
+      </SelectContent>
+    </Select>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Varian
+
+Gunakan prop `variant` untuk menukar varian pilihan! Varian yang tersedia adalah `outline` dan `ghost`. Secara lalai, varian adalah `outline`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col items-center gap-3">
+    <Select size="small" variant="outline">
+      <SelectTrigger>
+        <SelectValue label="Buah" placeholder="Pilih" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple">Nanas</SelectItem>
+      </SelectContent>
+    </Select>
+
+     <Select size="small" variant="ghost">
+      <SelectTrigger>
+        <SelectValue label="Buah" placeholder="Pilih" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple">Nanas</SelectItem>
+      </SelectContent>
+    </Select>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Select size="small" variant="outline">
+      <SelectTrigger>
+        <SelectValue label="Buah" placeholder="Pilih" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple">Nanas</SelectItem>
+      </SelectContent>
+    </Select>
+
+    <Select size="small" variant="ghost">
+      <SelectTrigger>
+        <SelectValue label="Buah" placeholder="Pilih" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple">Nanas</SelectItem>
+      </SelectContent>
+    </Select>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Dinonaktifkan
+
+Terdapat banyak cara untuk berinteraksi dengan keadaan `disabled` Pilih. `Select` boleh dinonaktifkan sepenuhnya dengan menetapkan prop `disabled` kepada `true`.
+
+Untuk kawalan yang lebih halus pada pilihan mana yang hendak dinonaktifkan, anda boleh menetapkan `disabled` pada `SelectItem` individu!
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose space-y-2">
+      <div className="flex items-center gap-3">
+        Nonaktifkan keseluruhan pilihan
+        <Select size="small" variant="outline" disabled>
+            <SelectTrigger>
+                <SelectValue label="Buah" placeholder="Pilih" />
+            </SelectTrigger>
+            <SelectContent>
+                <SelectItem value="apple">Epal</SelectItem>
+                <SelectItem value="banana">Pisang</SelectItem>
+                <SelectItem value="blueberry">Blueberry</SelectItem>
+                <SelectItem value="grapes">Anggur</SelectItem>
+                <SelectItem value="pineapple">Nanas</SelectItem>
+            </SelectContent>
+        </Select>
+      </div>
+      <div className="flex items-center gap-3">
+        Nonaktifkan pilihan individu
+        <Select size="small" variant="outline">
+            <SelectTrigger>
+                <SelectValue label="Buah" placeholder="Pilih" />
+            </SelectTrigger>
+            <SelectContent >
+                <SelectItem value="apple" disabled>Epal</SelectItem>
+                <SelectItem value="banana">Pisang</SelectItem>
+                <SelectItem value="blueberry" disabled>Blueberry</SelectItem>
+                <SelectItem value="grapes">Anggur</SelectItem>
+                <SelectItem value="pineapple">Nanas</SelectItem>
+            </SelectContent>
+        </Select>
+      </div>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    // Nonaktifkan keseluruhan pilihan
+    <Select size="small" variant="outline" disabled>
+        <SelectTrigger>
+            <SelectValue label="Buah" placeholder="Pilih" />
+        </SelectTrigger>
+        <SelectContent>
+            <SelectItem value="apple">Epal</SelectItem>
+            <SelectItem value="banana">Pisang</SelectItem>
+            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectItem value="grapes">Anggur</SelectItem>
+            <SelectItem value="pineapple">Nanas</SelectItem>
+        </SelectContent>
+    </Select>
+
+    //  Nonaktifkan pilihan individu
+    <Select size="small" variant="outline">
+        <SelectTrigger>
+            <SelectValue label="Buah" placeholder="Pilih" />
+        </SelectTrigger>
+        <SelectContent>
+            <SelectItem value="apple" disabled>Epal</SelectItem>
+            <SelectItem value="banana">Pisang</SelectItem>
+            <SelectItem value="blueberry" disabled>Blueberry</SelectItem>
+            <SelectItem value="grapes">Anggur</SelectItem>
+            <SelectItem value="pineapple">Nanas</SelectItem>
+        </SelectContent>
+    </Select>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Pilihan Berkumpulan
+
+Pilihan berkumpulan boleh dibuat dengan menggunakan komponen `SelectGroup` dan `SelectGroupTitle`. Ia membolehkan anda mengumpulkan pilihan yang berkaitan bersama-sama, mewujudkan pilihan yang lebih teratur dan berstruktur.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center">
+      <Select size="small" variant="outline">
+        <SelectTrigger>
+          <SelectValue placeholder="Pilih Pilihan Berkumpulan" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectGroupTitle>Buah-buahan</SelectGroupTitle>
+            <SelectItem value="apple">Epal</SelectItem>
+            <SelectItem value="banana">Pisang</SelectItem>
+            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectItem value="grapes">Anggur</SelectItem>
+            <SelectItem value="pineapple">Nanas</SelectItem>
+          </SelectGroup>
+          <SelectGroup>
+            <SelectGroupTitle>Daging</SelectGroupTitle>
+            <SelectItem value="chicken">Ayam</SelectItem>
+            <SelectItem value="beef">Daging Lembu</SelectItem>
+            <SelectItem value="lamb">Daging Kambing</SelectItem>
+            <SelectItem value="fish">Ikan</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Select size="small" variant="outline">
+      <SelectTrigger>
+        <SelectValue placeholder="Pilih Pilihan Berkumpulan" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectGroupTitle>Buah-buahan</SelectGroupTitle>
+          <SelectItem value="apple">Epal</SelectItem>
+          <SelectItem value="banana">Pisang</SelectItem>
+          <SelectItem value="blueberry">Blueberry</SelectItem>
+          <SelectItem value="grapes">Anggur</SelectItem>
+          <SelectItem value="pineapple">Nanas</SelectItem>
+        </SelectGroup>
+        <SelectGroup>
+          <SelectGroupTitle>Daging</SelectGroupTitle>
+          <SelectItem value="chicken">Ayam</SelectItem>
+          <SelectItem value="beef">Daging Lembu</SelectItem>
+          <SelectItem value="lamb">Daging Kambing</SelectItem>
+          <SelectItem value="fish">Ikan</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+    ```
+  </Tab>
+</Tabs>
+
+### Dengan Header
+
+Anda boleh menambah header pada pilihan dengan menggunakan komponen `SelectHeader`. Ia membolehkan anda menambah header pada pilihan, memberikan konteks tambahan, fungsi atau maklumat kepada pengguna.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center gap-3">
+      <Select size="small" variant="outline">
+        <SelectTrigger>
+          <SelectValue placeholder="Dengan Header" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectHeader>
+            <Input size="small">
+              <InputIcon position="right">
+                <SearchIcon className="text-otl-gray-300" />
+              </InputIcon>
+            </Input>
+          </SelectHeader>
+          <SelectItem value="apple">Epal</SelectItem>
+          <SelectItem value="banana">Pisang</SelectItem>
+          <SelectItem value="blueberry">Blueberry</SelectItem>
+          <SelectItem value="grapes">Anggur</SelectItem>
+          <SelectItem value="pineapple">Nanas</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Select size="small" variant="outline">
+      <SelectTrigger>
+        <SelectValue placeholder="Dengan Header" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectHeader>
+          <Input size="small">
+            <InputIcon position="right">
+              <SearchIcon className="text-otl-gray-300" />
+            </InputIcon>
+          </Input>
+        </SelectHeader>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple">Nanas</SelectItem>
+      </SelectContent>
+    </Select>
+    ```
+  </Tab>
+</Tabs>
+
+### Dengan Footer
+
+Anda boleh menambah footer pada pilihan dengan menggunakan komponen `SelectFooter`. Ia membolehkan anda menambah footer pada pilihan, memberikan konteks tambahan, fungsi atau maklumat kepada pengguna.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center gap-3">
+      <Select size="small" variant="outline">
+        <SelectTrigger>
+          <SelectValue placeholder="Dengan Footer" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="apple">Epal</SelectItem>
+          <SelectItem value="banana">Pisang</SelectItem>
+          <SelectItem value="blueberry">Blueberry</SelectItem>
+          <SelectItem value="grapes">Anggur</SelectItem>
+          <SelectItem value="pineapple">Nanas</SelectItem>
+          <SelectFooter>
+            <Button variant={"default-ghost"} size={"small"}>
+              Reset
+            </Button>
+          </SelectFooter>
+        </SelectContent>
+      </Select>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Select size="small" variant="outline">
+      <SelectTrigger>
+        <SelectValue placeholder="Dengan Header" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple">Nanas</SelectItem>
+        <SelectFooter>
+          <Button variant={"default-ghost"} size={"small"}>
+            Reset
+          </Button>
+        </SelectFooter>
+      </SelectContent>
+    </Select>
+    ```
+  </Tab>
+</Tabs>
+
+### Pelbagai
+
+Pilih juga menyokong pemilihan berbilang. Untuk membolehkan pemilihan berbilang, tetapkan prop `multiple` kepada `true` pada `Select`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center gap-3">
+        <Select multiple size="small" variant="outline">
+            <SelectTrigger>
+                <SelectValue label="Buah" placeholder="Pelbagai" />
+            </SelectTrigger>
+            <SelectContent>
+                <SelectItem value="apple">Epal</SelectItem>
+                <SelectItem value="banana">Pisang</SelectItem>
+                <SelectItem value="blueberry">Blueberry</SelectItem>
+                <SelectItem value="grapes">Anggur</SelectItem>
+                <SelectItem value="pineapple">Nanas</SelectItem>
+            </SelectContent>
+        </Select>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Select multiple size="small" variant="outline">
+        <SelectTrigger>
+            <SelectValue label="Buah" />
+        </SelectTrigger>
+        <SelectContent>
+            <SelectItem value="apple">Epal</SelectItem>
+            <SelectItem value="banana">Pisang</SelectItem>
+            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectItem value="grapes">Anggur</SelectItem>
+            <SelectItem value="pineapple">Nanas</SelectItem>
+        </SelectContent>
+    </Select>
+    ```
+  </Tab>
+</Tabs>
+
+### Paparan Nilai Tersuai
+
+Anda boleh menyesuaikan paparan nilai dengan menggunakan komponen `SelectValue`. Ia membolehkan anda menyesuaikan paparan nilai pilihan.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center gap-3">
+        <CustomValueSelect />
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Select multiple size="small" variant="outline">
+      <SelectTrigger>
+        <SelectValue label="Buah">
+          {(value) => (
+            <div className="flex gap-1">
+              {Array.isArray(value)
+                ? value.map((v) => <Pill>{v}</Pill>)
+                : value}
+            </div>
+          )}
+        </SelectValue>
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="apple">Epal</SelectItem>
+        <SelectItem value="banana">Pisang</SelectItem>
+        <SelectItem value="blueberry">Blueberry</SelectItem>
+        <SelectItem value="grapes">Anggur</SelectItem>
+        <SelectItem value="pineapple">Nanas</SelectItem>
+      </SelectContent>
+    </Select>
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### Pilih
+
+<TypeTable
+  type={{
+    multiple: {
+      description: "Sama ada pilihan membenarkan pemilihan berbilang",
+      type: "boolean",
+      default: "false",
+    },
+    size: {
+      description: "Saiz pilihan",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    variant: {
+      description: "Varian paparan nilai pilihan",
+      type: "enum",
+      typeDescription: "default | ghost",
+      default: "default",
+    },
+    defaultValue: {
+      description: "Keadaan awal pilihan (tidak terkawal)",
+      type: "string | string[]",
+      default: "false",
+    },
+    value: {
+      description: "Keadaan pilihan (terkawal)",
+      type: "string | string[]",
+      default: "false",
+    },
+    onValueChange: {
+      description: "Pendengar acara perubahan (terkawal)",
+      type: "(string | string[]) => void",
+    },
+    disabled: {
+      description: "Keadaan dinonaktifkan untuk pencetus pilihan",
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
+
+### SelectValue
+
+<TypeTable
+  type={{
+    label: {
+      description: "Label nilai pilihan",
+      type: "string",
+    },
+    children: {
+      description: "(Pilihan) Paparan nilai tersuai",
+      type: "(value: string | string[]) => ReactNode",
+    },
+    placeholder: {
+      description: "Kandungan pemegang tempat",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SelectItem
+
+<TypeTable
+  type={{
+    value: {
+      description: "Nilai pilihan. Dikembalikan apabila dipilih",
+      type: "string",
+      default: "string",
+    },
+    disabled: {
+      description: "Sama ada pilihan dinonaktifkan",
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
