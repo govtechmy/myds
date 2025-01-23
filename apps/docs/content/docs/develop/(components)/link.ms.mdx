@@ -9,6 +9,7 @@ import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Link } from "@/components/myds";
 import NextLink from "next/link";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
   <Tab value="Pratonton">
@@ -96,7 +97,7 @@ export const Link = (props) => (
 
 ### Prop newTab
 
-Prop ini digunakan untuk menetapkan sama ada pautan dibuka dalam tab baharu.
+Prop ini menetapkan sama ada pautan dibuka dalam tab baharu dengan menggunakan `target="_blank"`.
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
   <Tab value="Pratonton">
@@ -110,6 +111,16 @@ Prop ini digunakan untuk menetapkan sama ada pautan dibuka dalam tab baharu.
     ```
   </Tab>
 </Tabs>
+
+<Callout
+  type="info"
+  title="Note"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+Semua versi semasa pelayar web terkini secara automatik menggunakan `rel="noopener"`
+bagi semua pautan mempunyai `target="_blank"`
+</Callout>
 
 ### Primary
 
@@ -167,7 +178,7 @@ Prop ini digunakan untuk menetapkan waktu pautan digaris bawah.
   type={{
     asChild: {
       description: 'Digunakan untuk "merender" elemen anak (child element) berbanding elemen lalai (default element).',
-      type: "ReactNode",
+      type: "boolean",
     },
     href: {
       description: "URL yang akan dilayari oleh pautan",
