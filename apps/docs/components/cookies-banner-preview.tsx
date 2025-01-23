@@ -51,11 +51,11 @@ const CookiesBannerPreview = () => {
         Open Cookie Settings
       </Button>
 
-      <CookieBanner open={open}>
+      <CookieBanner open={open} dismissible={false}>
         <div className="mb-1 flex w-full flex-row justify-between">
           <CookieBannerHeader className="space-y-0 p-0 pb-1">
             <CookieBannerTitle className="text-body-md pb-1">
-              Customise Cookie Preferences
+              Customise Cookie Preferences aba
             </CookieBannerTitle>
             <CookieBannerDescription>
               This website uses cookies to improve user experience. We need your
@@ -136,8 +136,8 @@ const CookiesBannerPreview = () => {
           </div>
         </CookieBannerPreferences>
         <CookieBannerFooter
-          fillWidth={false}
-          className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row"
+          className="gap-[0.5rem] p-0 pt-3 sm:flex-row"
+          align="start"
         >
           <Button
             variant="primary-fill"

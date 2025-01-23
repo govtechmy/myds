@@ -8,6 +8,7 @@ import React, {
 import { Button } from "./button";
 import {
   Dialog,
+  DialogBody,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -22,6 +23,7 @@ interface CookieBannerProps {
   open?: boolean;
   className?: string;
   children?: React.ReactNode;
+  dismissible?: boolean;
 }
 type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
 
@@ -132,7 +134,10 @@ type CookieBannerCustomiserProps = {
 };
 
 const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
-  ({ open = false, className, children, ...props }, ref) => {
+  (
+    { open = false, dismissible = true, className, children, ...props },
+    ref,
+  ) => {
     const [showPreferences, setShowPreferences] = useState(false);
     // Reset showPreferences when dialog closes
     useEffect(() => {
@@ -146,16 +151,17 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
         value={{ showPreferences, setShowPreferences }}
       >
         <Dialog open={open}>
-          <DialogContent
+          <DialogBody
             className={clx(
               "bg-bg-white bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:max-w-[502px] sm:translate-x-0 sm:p-6",
               className,
             )}
             ref={ref}
+            dismissible={dismissible}
             {...props}
           >
             {children}
-          </DialogContent>
+          </DialogBody>
         </Dialog>
       </CookieBannerContext.Provider>
     );
@@ -205,13 +211,13 @@ const CookieBannerPreferences = forwardRef<
   if (!context.showPreferences) return null;
 
   return (
-    <div
+    <DialogContent
       ref={ref}
       className={clx("flex flex-col gap-2 py-3", className)}
       {...props}
     >
       {children}
-    </div>
+    </DialogContent>
   );
 });
 
