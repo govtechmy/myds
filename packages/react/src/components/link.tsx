@@ -1,9 +1,5 @@
 import { Slot } from "@radix-ui/react-slot";
-import React, {
-  ComponentProps,
-  forwardRef,
-  ForwardRefExoticComponent,
-} from "react";
+import { ComponentProps, forwardRef, ForwardRefExoticComponent } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
 interface LinkProps extends ComponentProps<"a">, VariantProps<typeof link_cva> {
@@ -11,16 +7,16 @@ interface LinkProps extends ComponentProps<"a">, VariantProps<typeof link_cva> {
   newTab?: boolean;
 }
 
-const link_cva = cva(["text-inherit transition-colors outline-none"], {
+const link_cva = cva("transition-colors", {
   variants: {
     underline: {
       always: "underline",
-      hover: "hover:underline",
-      none: "",
+      hover: "no-underline hover:underline",
+      none: "no-underline",
     },
     primary: {
       true: "text-txt-primary",
-      false: "text-inherit",
+      false: "text-inherit decoration-inherit",
     },
   },
 });
@@ -45,20 +41,6 @@ const Link: ForwardRefExoticComponent<LinkProps> = forwardRef(
     },
     ref,
   ) => {
-    if (newTab)
-      return (
-        <a
-          ref={ref}
-          href={href}
-          className={link_cva({ primary, underline, className })}
-          target="_blank"
-          {...props}
-        >
-          {children}
-          <span className="sr-only"> (opens in a new tab)</span>
-        </a>
-      );
-
     const Comp = asChild ? Slot : "a";
 
     return (
@@ -66,6 +48,7 @@ const Link: ForwardRefExoticComponent<LinkProps> = forwardRef(
         ref={ref}
         href={href}
         className={link_cva({ primary, underline, className })}
+        target={newTab ? "_blank" : "_self"}
         {...props}
       >
         {children}
