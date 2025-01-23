@@ -5,6 +5,7 @@ import { cva } from "class-variance-authority";
 import { ChevronDownFillIcon } from "../icons/chevron-down-fill";
 import { CheckCircleFillIcon } from "../icons/check-circle-fill";
 import { Checkbox } from "./checkbox";
+import { de } from "date-fns/locale";
 
 type SelectBase = Omit<
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>,
@@ -16,16 +17,16 @@ type SelectBase = Omit<
 
 type SelectSingle = SelectBase & {
   multiple: false;
-  value: string;
-  defaultValue: string;
-  onValueChange: (value: string) => void;
+  value?: string;
+  defaultValue?: string;
+  onValueChange?: (value: string) => void;
 };
 
 type SelectMultiple = SelectBase & {
   multiple: true;
-  value: string[];
-  defaultValue: string[];
-  onValueChange: (value: string[]) => void;
+  value?: string[];
+  defaultValue?: string[];
+  onValueChange?: (value: string[]) => void;
 };
 
 const isMultiple = (props: SelectProps): props is SelectMultiple =>
@@ -142,7 +143,11 @@ const SelectValue: React.ForwardRefExoticComponent<SelectValueProps> =
     if (!isMultiple(rootProps))
       return [
         typeof label === "string" ? <SelectLabel>{label}</SelectLabel> : label,
-        <SelectPrimitive.Value ref={ref} {...props}>
+        <SelectPrimitive.Value
+          ref={ref}
+          {...props}
+          className={clx("text-inherit", props.className)}
+        >
           {children && children(rootProps._value)}
         </SelectPrimitive.Value>,
         <SelectPrimitive.Icon asChild>
@@ -152,7 +157,11 @@ const SelectValue: React.ForwardRefExoticComponent<SelectValueProps> =
 
     return [
       typeof label === "string" ? <SelectLabel>{label}</SelectLabel> : label,
-      <SelectPrimitive.Value ref={ref} {...props}>
+      <SelectPrimitive.Value
+        ref={ref}
+        {...props}
+        className={clx("text-inherit", props.className)}
+      >
         {children && children(rootProps._value)}
       </SelectPrimitive.Value>,
       !children && <SelectCounter>{rootProps._value?.length}</SelectCounter>,
@@ -287,8 +296,8 @@ SelectLabel.displayName = "SelectLabel";
 
 const select_content_cva = cva(
   [
-    "bg-bg-dialog relative z-50 max-h-64 min-w-[8rem] overflow-hidden ",
-    "rounded-xl border border-otl-gray-200 shadow-context-menu",
+    "bg-bg-dialog relative z-50 py-1 max-h-64 min-w-[8rem] overflow-hidden ",
+    "rounded-md border border-otl-gray-200 shadow-context-menu",
     "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
   ],
   {
@@ -374,24 +383,32 @@ const select_item_cva = cva(
         false: "pl-2.5 pr-[38px]",
         true: "px-2.5",
       },
+      disabled: {
+        false: "",
+        true: "bg-bg-white-disabled text-txt-black-disabled border-transparent cursor-not-allowed hover:bg-none",
+      },
     },
+    defaultVariants: { size: "small", multiple: false, disabled: false },
   },
 );
 
 const SelectItem: React.ForwardRefExoticComponent<
   React.ComponentProps<typeof SelectPrimitive.Item>
-> = React.forwardRef(({ className, children, ...props }, ref) => {
+> = React.forwardRef(({ className, children, disabled, ...props }, ref) => {
   const rootProps = React.useContext(SelectContext);
   if (!isMultiple(rootProps))
     return (
       <SelectXPad>
         <SelectPrimitive.Item
           ref={ref}
-          className={select_item_cva({
-            size: rootProps.size,
-            multiple: false,
+          className={clx(
+            select_item_cva({
+              size: rootProps.size,
+              multiple: false,
+              disabled,
+            }),
             className,
-          })}
+          )}
           {...props}
         >
           <span className="absolute right-4 flex h-3.5 w-3.5 items-center justify-center">
@@ -402,7 +419,10 @@ const SelectItem: React.ForwardRefExoticComponent<
               />
             </SelectPrimitive.ItemIndicator>
           </span>
-          <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+          {children}
+          <SelectPrimitive.ItemText asChild>
+            {children}
+          </SelectPrimitive.ItemText>
         </SelectPrimitive.Item>
       </SelectXPad>
     );
@@ -413,11 +433,15 @@ const SelectItem: React.ForwardRefExoticComponent<
     <SelectXPad>
       <SelectPrimitive.Item
         ref={ref}
-        className={select_item_cva({
-          size: rootProps.size,
-          multiple: true,
+        className={clx(
+          select_item_cva({
+            size: rootProps.size,
+            multiple: true,
+            disabled,
+            className,
+          }),
           className,
-        })}
+        )}
         {...props}
         data-state={checked ? "checked" : "unchecked"}
       >
@@ -449,7 +473,7 @@ const SelectHeader: React.ForwardRefExoticComponent<
 > = React.forwardRef(({ className, ...props }, ref) => {
   return (
     <SelectXPad
-      className={clx("bg-bg-dialog sticky top-0 z-50 pt-1", className)}
+      className={clx("bg-bg-dialog sticky top-0 z-50 pb-1", className)}
       {...props}
     />
   );

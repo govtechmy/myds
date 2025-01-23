@@ -26,6 +26,7 @@
     "(components)/pagination",
     "(components)/pill",
     "(components)/radio",
+    "(components)/select",
     "(components)/skiplink",
     "(components)/spinner",
     "(components)/tag",
