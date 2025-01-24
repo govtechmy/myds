@@ -37,6 +37,142 @@ import {
   UserIcon,
 } from "@govtechmy/myds-react/icon";
 
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose h-[420px]">
+    <SearchBarControlledStateExample />
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+    import {
+      SearchBar,
+      SearchBarInput,
+      SearchBarInputContainer,
+      SearchBarSearchButton,
+      SearchBarResults,
+      SearchBarResultsList,
+      SearchBarResultsItem,
+      SearchBarClearButton,
+      SearchBarHint,
+    } from "@govtechmy/myds-react/search-bar";
+    import { Pill } from "@govtechmy/myds-react/pill";
+    import {
+      ChevronRightIcon,
+      MoneyIcon,
+      StarIcon,
+      TrophyIcon,
+      UserIcon,
+    } from "@govtechmy/myds-react/icon";
+
+    const [hasFocus, setHasFocus] = useState(false);
+    const [query, setQuery] = useState("");
+    const hasQuery = query.length > 0;
+
+    const results = notableMalaysians.filter((person) =>
+      person.name.toLowerCase().includes(query.toLocaleLowerCase()),
+    );
+
+    <SearchBar
+      size="large"
+      onBlur={(e) => {
+        const blurredByChild = e.currentTarget.contains(e.relatedTarget);
+        if (blurredByChild) return;
+        setHasFocus(false);
+      }}
+    >
+      <SearchBarInputContainer>
+        <SearchBarInput
+          placeholder="Search by name"
+          value={query}
+          onValueChange={setQuery}
+          onFocus={() => setHasFocus(true)}
+          onBlur={() => setHasFocus(false)}
+        />
+        {query && <SearchBarClearButton onClick={() => setQuery("")} />}
+        <SearchBarSearchButton />
+        {!hasFocus && (
+          <SearchBarHint className="hidden lg:flex">
+            Press <Pill size="small">/</Pill> to search
+          </SearchBarHint>
+        )}
+      </SearchBarInputContainer>
+      <SearchBarResults open={hasQuery && hasFocus}>
+        {hasQuery && !results.length && (
+          <p className="text-txt-black-900 text-center">No results found</p>
+        )}
+        {hasQuery && results.length > 0 && (
+          <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
+            {results.map((item) => (
+              <SearchBarResultsItem key={item.name} value={item.name}>
+                <span className="bg-primary-50 text-txt-primary rounded-full p-px">
+                  <UserIcon className="size-4" />
+                </span>
+                <p className="line-clamp-1 flex-1">
+                  {item.name}{" "}
+                  <span className="text-txt-black-500 text-xs">
+                    {item.note}
+                  </span>
+                </p>
+                <ChevronRightIcon />
+              </SearchBarResultsItem>
+            ))}
+          </SearchBarResultsList>
+        )}
+      </SearchBarResults>
+    </SearchBar>
+  ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-searchbar--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/search-bar.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import {
+  SearchBar,
+  SearchBarInput,
+  SearchBarInputContainer,
+  SearchBarSearchButton,
+  SearchBarResults,
+  SearchBarResultsList,
+  SearchBarResultsItem,
+  SearchBarClearButton,
+  SearchBarHint,
+} from "@govtechmy/myds-react/search-bar";
+```
+
+```tsx copy
+export default () => (
+  <SearchBar size="large">
+    <SearchBarInputContainer>
+      <SearchBarInput value={query} onValueChange={setQuery} />
+      <SearchBarHint>
+        Press <Pill size="small">/</Pill> to search
+      </SearchBarHint>
+      <SearchBarClearButton />
+      <SearchBarSearchButton />
+    </SearchBarInputContainer>
+    <SearchBarResults open={true}>
+      <SearchBarResultsList>
+        <SearchBarResultsItem value="foo" onSelect={...} >
+          Foo
+        </SearchBarResultsItem>
+        <SearchBarResultsItem value="bar" onSelect={...} >
+          Bar
+        </SearchBarResultsItem>
+      </SearchBarResultsList>
+    </SearchBarResults>
+  </SearchBar>
+);
+```
+
 ## Contoh
 
 ### Saiz
