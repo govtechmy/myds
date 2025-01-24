@@ -17,6 +17,7 @@
     "(components)/callout",
     "(components)/checkbox",
     "(components)/cookies-banner",
+    "(components)/data-table",
     "(components)/date-field",
     "(components)/date-picker",
     "(components)/daterange-picker",

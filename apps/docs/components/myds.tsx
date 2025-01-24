@@ -24,6 +24,7 @@ export * from "@govtechmy/myds-react/pill";
 export * from "@govtechmy/myds-react/select";
 export * from "@govtechmy/myds-react/input";
 export * from "@govtechmy/myds-react/table";
+export * from "@govtechmy/myds-react/data-table";
 import {
   Callout,
   CalloutTitle,
@@ -62,6 +63,8 @@ import {
   SelectContent,
   SelectItem,
 } from "@govtechmy/myds-react/select";
+import { Tag } from "@govtechmy/myds-react/tag";
+import { Cell } from "@govtechmy/myds-react/data-table";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
@@ -263,4 +266,370 @@ export const CustomValueSelect: FunctionComponent = () => {
       </SelectContent>
     </Select>
   );
+};
+
+export const DataTableData = [
+  {
+    age: 25,
+    id: 1,
+    name: "John Doe",
+    position: "Software Engineer",
+  },
+  {
+    age: 30,
+    id: 2,
+    name: "Jane Doe",
+    position: "Product Manager",
+  },
+  {
+    age: 22,
+    id: 3,
+    name: "Alice",
+    position: "Designer",
+  },
+  {
+    age: 35,
+    id: 4,
+    name: "Bob 'With A Very Long Middle Name' Smith",
+    position: "Software Engineer",
+  },
+  {
+    age: 28,
+    id: 5,
+    name: "Charlie",
+    position: "Data Scientist",
+  },
+];
+
+export const DataTableNestedData = [
+  {
+    id: 1,
+    name: "John Doe",
+    age: 25,
+    position: "Software Engineer",
+    children: [
+      {
+        id: 11,
+        name: "John Doe Jr.",
+        age: 5,
+        position: "Software Engineer",
+        children: [
+          {
+            id: 111,
+            name: "John Doe-raemon",
+            age: 5,
+            position: "Software Engineer",
+          },
+          {
+            id: 112,
+            name: "John 'Penat' Doe",
+            age: 5,
+            position: "Software Engineer",
+          },
+        ],
+      },
+      {
+        id: 12,
+        name: "John Doe Jr.",
+        age: 5,
+        position: "Software Engineer",
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Jane Doe",
+    age: 30,
+    position: "Product Manager",
+    children: [
+      {
+        id: 21,
+        name: "Jane Doe Jr. 1",
+        age: 5,
+        position: "Software Engineer",
+      },
+      {
+        id: 22,
+        name: "Jane Doe Jr. 2",
+        age: 5,
+        position: "Software Engineer",
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "Alice",
+    age: 22,
+    position: "Designer",
+    children: [
+      {
+        id: 31,
+        name: "Alice Jr. 1",
+        age: 5,
+        position: "Software Engineer",
+      },
+      {
+        id: 32,
+        name: "Alice Jr. 2",
+        age: 5,
+        position: "Software Engineer",
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: "Bob",
+    age: 35,
+    position: "Software Engineer",
+    children: [
+      {
+        id: 41,
+        name: "Bob Jr. 1",
+        age: 5,
+        position: "Software Engineer",
+      },
+      {
+        id: 42,
+        name: "Bob Jr. 2",
+        age: 5,
+        position: "Software Engineer",
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: "Charlie",
+    age: 28,
+    position: "Data Scientist",
+    children: [
+      {
+        id: 51,
+        name: "Charlie Jr. 1",
+        age: 5,
+        position: "Software Engineer",
+      },
+      {
+        id: 52,
+        name: "Charlie Jr. 2",
+        age: 5,
+        position: "Software Engineer",
+      },
+    ],
+  },
+];
+
+export const DataTableColumns = [
+  {
+    accessorKey: "name",
+    header: "Name",
+    id: "name",
+    meta: {
+      expandable: true,
+    },
+  },
+  {
+    accessorKey: "age",
+    header: "Age",
+    id: "age",
+    meta: {
+      expandable: false,
+      tooltip: "Age of the employee",
+    },
+  },
+  {
+    accessorKey: "position",
+    header: "Position",
+    id: "position",
+    meta: {
+      expandable: true,
+      sortable: true,
+      tooltip: "Position of the employee",
+    },
+  },
+  {
+    cell: () => {
+      return (
+        <Tag variant="success" size={"small"} mode="pill">
+          Success
+        </Tag>
+      );
+    },
+    header: "Status",
+    id: "status",
+  },
+  {
+    cell: () => {
+      return <Button variant="default-outline">Edit</Button>;
+    },
+    header: "Action",
+    id: "action",
+  },
+];
+
+export const DataTableFooterColumns = [
+  {
+    accessorKey: "name",
+    header: "Name",
+    id: "name",
+    meta: {
+      expandable: true,
+    },
+    footer: ({ table }: any) => `No. of Employees: ${table.getRowCount()}`,
+  },
+  {
+    accessorKey: "age",
+    header: "Age",
+    id: "age",
+    meta: {
+      expandable: false,
+      tooltip: "Age of the employee",
+    },
+  },
+  {
+    accessorKey: "position",
+    header: "Position",
+    id: "position",
+    meta: {
+      expandable: true,
+      sortable: true,
+      tooltip: "Position of the employee",
+    },
+  },
+  {
+    cell: () => {
+      return (
+        <Tag variant="success" size={"small"} mode="pill">
+          Success
+        </Tag>
+      );
+    },
+    header: "Status",
+    id: "status",
+  },
+  {
+    cell: () => {
+      return <Button variant="default-outline">Edit</Button>;
+    },
+    header: "Action",
+    id: "action",
+  },
+];
+export const DataTableNestedColumns = [
+  {
+    id: "name",
+    header: "Name",
+    accessorKey: "name",
+    size: 180,
+    meta: {
+      expandable: true,
+    },
+    cell: Cell.Expand,
+  },
+  {
+    id: "age",
+    header: "Age",
+    accessorKey: "age",
+    meta: {
+      expandable: false,
+    },
+  },
+  {
+    id: "position",
+    header: "Position",
+    accessorKey: "position",
+    meta: {
+      expandable: true,
+    },
+  },
+  {
+    id: "status",
+    header: "Status",
+    cell: () => {
+      return (
+        <Tag variant="success" size={"small"} mode="pill">
+          Success
+        </Tag>
+      );
+    },
+  },
+  {
+    id: "action",
+    header: "Action",
+    cell: () => {
+      return <Button variant="default-outline">Edit</Button>;
+    },
+  },
+];
+export const DataTableGroupedColumns = [
+  {
+    id: "employee",
+    header: "Employee",
+    columns: [
+      {
+        id: "name",
+        header: "Name",
+        accessorKey: "name",
+        size: 180,
+        meta: {
+          expandable: true,
+        },
+      },
+      {
+        id: "age",
+        header: "Age",
+        accessorKey: "age",
+
+        meta: {
+          expandable: false,
+        },
+      },
+      {
+        id: "position",
+        header: "Position",
+        accessorKey: "position",
+        meta: {
+          expandable: true,
+        },
+      },
+    ],
+  },
+  {
+    id: "status",
+    header: "Application",
+    columns: [
+      {
+        id: "status",
+        header: "Status",
+        cell: () => {
+          return (
+            <Tag variant="success" size={"small"} mode="pill">
+              Success
+            </Tag>
+          );
+        },
+      },
+      {
+        id: "action",
+        header: "Action",
+        cell: () => {
+          return <Button variant="default-outline">Edit</Button>;
+        },
+      },
+    ],
+  },
+];
+
+export const DataTableCheckbox = {
+  mode: "checkbox",
+  onSelectionChange: (id: string) => {
+    console.log("Selected Rows: ", id);
+  },
+  rowId: "id",
+};
+export const DataTableRadio = {
+  mode: "radio",
+  onSelectionChange: (id: string) => {
+    console.log("Selected Rows: ", id);
+  },
+  rowId: "id",
 };
