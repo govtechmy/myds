@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { createRender, createStory } from "../utils";
+import { createRender } from "../utils";
 import {
   Navbar,
   BrandLogo,
@@ -197,10 +197,7 @@ const DemoNavbar = () => {
     <div className={clx(isDarkMode ? "light" : "dark")}>
       <Navbar showMenu={showMenu} className="px-2">
         <NavbarContainer>
-          <BrandLogo
-            type="shortname"
-            imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
-          >
+          <BrandLogo imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg">
             MYDS
           </BrandLogo>
 
@@ -337,10 +334,7 @@ const KementerianDigitalNavbar = () => {
     <div className={clx(isDarkMode ? "light" : "dark")}>
       <Navbar showMenu={showMenu} className="px-2">
         <NavbarContainer>
-          <BrandLogo
-            type="shortname"
-            imageSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-          >
+          <BrandLogo imageSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png">
             Ministry Of Digital
           </BrandLogo>
 

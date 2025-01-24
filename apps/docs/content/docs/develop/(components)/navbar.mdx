@@ -1,5 +1,520 @@
 ---
 title: Navbar
-description: Navbar
+description: The Footer component is a standardized footer for Malaysian government websites.
 ---
 
+import { clx } from "@govtechmy/myds-react/utils";
+import {
+  GlobeIcon,
+  MoonIcon,
+  SearchIcon,
+  SunIcon,
+} from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import {
+  Button,
+  PreviewNavbar,
+  PreviewBrandLogo,
+  PreviewNavItemsMenu,
+  PreviewActionGroup,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
+  <Tab value="Preview">
+    <div className="h-[250px] w-max overflow-scroll px-2">
+      <div className="origin-top-left scale-[0.9]">
+        <PreviewNavbar />
+      </div>
+    </div>
+  </Tab>
+
+  <Tab value="Code">
+  ```tsx
+<Navbar showMenu={showMenu} className="px-2">
+    <NavbarContainer>
+        <BrandLogo
+            type="shortname"
+            imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+        >
+            MYDS
+        </BrandLogo>
+
+        <NavigationMenuCombo
+            showMenu={showMenu}
+            setMenu={setMenu}
+            childrenDesktop={
+                <>
+                    <NavItemsMenu href="/menu1" active={false}>
+                        Menu 1
+                    </NavItemsMenu>
+                    <NavItemsMenu href="/menu2" active={false}>
+                        Menu 2
+                    </NavItemsMenu>
+
+                    <NavItemsDropdown menu="Menu Dropdown">
+                        <NavItemsDropdownItems href="/submenu1">
+                            Submenu 1
+                        </NavItemsDropdownItems>
+                        <NavItemsDropdownItems href="/submenu2">
+                            Submenu 2
+                        </NavItemsDropdownItems>
+                        <NavItemsDropdownItems href="/submenu3">
+                            Submenu 3
+                        </NavItemsDropdownItems>
+                        <NavItemsDropdownItems href="/submenu1">
+                            Submenu 4
+                        </NavItemsDropdownItems>
+                        <NavItemsDropdownItems href="/submenu2">
+                            Submenu 5
+                        </NavItemsDropdownItems>
+                        <NavItemsDropdownItems href="/submenu3">
+                            Submenu 6
+                        </NavItemsDropdownItems>
+                        <NavItemsDropdownItems href="/submenu3">
+                            Submenu 7
+                        </NavItemsDropdownItems>
+                    </NavItemsDropdown>
+
+                    <NavItemsMenu href="/menu3" active={false}>
+                        Menu 3
+                    </NavItemsMenu>
+                </>
+            }
+            childrenMobile={
+                <>
+                    <NavItemsMenu href="/menu1" active={false}>
+                        <div>Menu 1</div>
+                    </NavItemsMenu>
+                    <NavItemsMenu href="/menu2" active={false}>
+                        Menu 2
+                    </NavItemsMenu>
+                    <NavItemsDropdown menu="Menu Dropdown">
+                        <NavItemsDropdownItems href="/submenu1">
+                            Submenu 1
+                        </NavItemsDropdownItems>
+                        <NavItemsDropdownItems href="/submenu2">
+                            Submenu 2
+                        </NavItemsDropdownItems>
+                        <NavItemsDropdownItems href="/submenu3">
+                            Submenu 3
+                        </NavItemsDropdownItems>
+                        <NavItemsDropdownItems href="/submenu1">
+                            Submenu 4
+                        </NavItemsDropdownItems>
+                        <NavItemsDropdownItems href="/submenu2">
+                            Submenu 5
+                        </NavItemsDropdownItems>
+                        <NavItemsDropdownItems href="/submenu3">
+                            Submenu 6
+                        </NavItemsDropdownItems>
+                        <NavItemsDropdownItems href="/submenu3">
+                            Submenu 7
+                        </NavItemsDropdownItems>
+                    </NavItemsDropdown>
+                    <NavItemsMenu href="/menu3" active={false}>
+                        Menu 3
+                    </NavItemsMenu>
+                </>
+            }
+        ></NavigationMenuCombo>
+    </NavbarContainer>
+
+    <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
+        <Button variant="default-ghost" className="p-2">
+            <SearchIcon></SearchIcon>
+        </Button>
+
+        <Button
+            variant="default-ghost"
+            className="p-2"
+            onClick={handleToggle}
+        >
+            {isDarkMode ? <SunIcon /> : <MoonIcon />}
+        </Button>
+
+        <Select
+            value={value}
+            onValueChange={setValue}
+            defaultValue="EN"
+            multiple={false}
+            variant="outline"
+            size="medium"
+        >
+            <SelectTrigger>
+                <GlobeIcon className="h-4 w-4"></GlobeIcon>
+                <SelectValue>{(value) => value || "EN"}</SelectValue>
+            </SelectTrigger>
+            <SelectContent className="font-body rounded-[4px] py-1">
+                <SelectItem value="EN">EN</SelectItem>
+                <SelectItem value="BM">BM</SelectItem>
+            </SelectContent>
+        </Select>
+    </NavbarActionGroup>
+
+</Navbar>
+
+```
+</Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-navbar--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/navbar.tsx",
+  }}
+/>
+
+
+## Usage
+```tsx copy
+import {
+  Navbar,
+  BrandLogo,
+  NavbarContainer,
+  NavbarActionGroup,
+  NavItemsDropdown,
+  NavItemsDropdownItems,
+  NavItemsMenu,
+  NavigationMenuCombo,
+} from "@govtechmy/myds-react/navbar";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@govtechmy/myds-react/select";
+import React, { useState } from "react";
+import { clx } from "@govtechmy/myds-react/utils";
+import {
+  GlobeIcon,
+  MoonIcon,
+  SearchIcon,
+  SunIcon,
+} from "@govtechmy/myds-react/icon";
+import { Button } from "@govtechmy/myds-react/button";
+
+```
+
+```tsx copy
+export default () => (
+  <Navbar showMenu={showMenu} className="px-2">
+    <NavbarContainer>
+      <BrandLogo
+        type="shortname"
+        imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+      >
+        MYDS
+      </BrandLogo>
+
+      <NavigationMenuCombo
+        showMenu={showMenu}
+        setMenu={setMenu}
+        childrenDesktop={
+          <>
+            <NavItemsMenu href="/menu1" active={false}>
+              Menu 1
+            </NavItemsMenu>
+            <NavItemsMenu href="/menu2" active={false}>
+              Menu 2
+            </NavItemsMenu>
+
+            <NavItemsDropdown menu="Menu Dropdown">
+              <NavItemsDropdownItems href="/submenu1">
+                Submenu 1
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu2">
+                Submenu 2
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu3">
+                Submenu 3
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu1">
+                Submenu 4
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu2">
+                Submenu 5
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu3">
+                Submenu 6
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu3">
+                Submenu 7
+              </NavItemsDropdownItems>
+            </NavItemsDropdown>
+
+            <NavItemsMenu href="/menu3" active={false}>
+              Menu 3
+            </NavItemsMenu>
+          </>
+        }
+        childrenMobile={
+          <>
+            <NavItemsMenu href="/menu1" active={false}>
+              <div>Menu 1</div>
+            </NavItemsMenu>
+            <NavItemsMenu href="/menu2" active={false}>
+              Menu 2
+            </NavItemsMenu>
+            <NavItemsDropdown menu="Menu Dropdown">
+              <NavItemsDropdownItems href="/submenu1">
+                Submenu 1
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu2">
+                Submenu 2
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu3">
+                Submenu 3
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu1">
+                Submenu 4
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu2">
+                Submenu 5
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu3">
+                Submenu 6
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu3">
+                Submenu 7
+              </NavItemsDropdownItems>
+            </NavItemsDropdown>
+            <NavItemsMenu href="/menu3" active={false}>
+              Menu 3
+            </NavItemsMenu>
+          </>
+        }
+      ></NavigationMenuCombo>
+    </NavbarContainer>
+
+    <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
+      <Button variant="default-ghost" className="p-2">
+        <SearchIcon></SearchIcon>
+      </Button>
+
+      <Button variant="default-ghost" className="p-2" onClick={handleToggle}>
+        {isDarkMode ? <SunIcon /> : <MoonIcon />}
+      </Button>
+
+      <Select
+        value={value}
+        onValueChange={setValue}
+        defaultValue="EN"
+        multiple={false}
+        variant="outline"
+        size="medium"
+      >
+        <SelectTrigger>
+          <GlobeIcon className="h-4 w-4"></GlobeIcon>
+          <SelectValue>{(value) => value || "EN"}</SelectValue>
+        </SelectTrigger>
+        <SelectContent className="font-body rounded-[4px] py-1">
+          <SelectItem value="EN">EN</SelectItem>
+          <SelectItem value="BM">BM</SelectItem>
+        </SelectContent>
+      </Select>
+    </NavbarActionGroup>
+  </Navbar>
+);
+```
+
+---
+
+### Main Wrapper: `Navbar`
+
+The `Navbar` serves as the primary container for the navigation bar content. It supports customization through props, including the ability to show or hide menus, add child elements, and apply additional class names. All subcomponents are nested within this wrapper. It is divided into two main sections:
+
+1. `NavbarContainer`
+2. `NavbarActionGroup`
+
+---
+
+## 1.NavbarContainer
+
+The `NavbarContainer` is the left part of the navigation bar and contains two main areas:
+
+1.1 **BrandLogo**
+1.2 **NavigationMenuCombo**
+
+### 1.1 BrandLogo
+
+The `BrandLogo` component displays a logo image along with Organization name. It is clickable and redirects to the specified href.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+
+<Tab value="Preview" className="not-prose">
+  <div className="flex h-fit items-center justify-center gap-1">
+    <PreviewBrandLogo />
+  </div>
+</Tab>
+
+  <Tab value="Code">
+
+```tsx
+<BrandLogo
+  imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+  href="/"
+>
+  MYDS
+</BrandLogo>
+```
+
+  </Tab>
+</Tabs>
+
+### 1.2 NavigationMenuCombo
+
+The `NavigationMenuCombo` is a responsive navigation component designed to adapt seamlessly to both desktop and mobile layouts. It acts as a container for various navigation elements, ensuring consistent functionality and appearance across devices. The component supports standard navigation links and dropdown menus.
+
+#### 1.2.1 NavItemsMenu
+
+The `NavItemsMenu` component represents an individual navigation item that can be used in both desktop and mobile menus. It provides a straightforward way to link to different pages or sections of the application while maintaining a cohesive design. For below example, look for Menu 1 , Menu 2 or Menu 3 for their implementation.
+
+#### 1.2.2 NavItemsDropdown
+
+The `NavItemsDropdown` component is a flexible dropdown menu designed for use in both desktop and mobile layouts. It allows users to access additional navigation options within a structured, expandable menu.For below example, look for Menu Dropdown for their implementation.
+
+#### 1.2.2.1 NavItemsDropdownItems
+
+The `NavItemsDropdownItems` component is used to define individual items within a dropdown menu. These items can include links to pages or sections and are styled consistently with the overall navigation design to ensure a polished user experience. For below example, look for submenu 1 , submenu 2 or submenu 3 for their implementation.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+
+<Tab value="Preview" className="not-prose">
+  <div className="h-[200px] w-max overflow-scroll px-2">
+    <div className="origin-top-left scale-[0.9]">
+      <PreviewNavItemsMenu />
+    </div>
+  </div>
+</Tab>
+
+  <Tab value="Code">
+
+```tsx
+<NavbarContainer>
+  <NavigationMenuCombo
+    showMenu={showMenu}
+    setMenu={setMenu}
+    childrenDesktop={
+      <>
+        <NavItemsMenu href="/menu1" active={false}>
+          Menu 1
+        </NavItemsMenu>
+        <NavItemsMenu href="/menu2" active={false}>
+          Menu 2
+        </NavItemsMenu>
+        <NavItemsDropdown menu="Menu Dropdown">
+          <NavItemsDropdownItems href="/submenu1">
+            Submenu 1
+          </NavItemsDropdownItems>
+          <NavItemsDropdownItems href="/submenu2">
+            Submenu 2
+          </NavItemsDropdownItems>
+          <NavItemsDropdownItems href="/submenu3">
+            Submenu 3
+          </NavItemsDropdownItems>
+        </NavItemsDropdown>
+        <NavItemsMenu href="/menu3" active={false}>
+          Menu 3
+        </NavItemsMenu>
+      </>
+    }
+    childrenMobile={
+      <>
+        <NavItemsMenu href="/menu1" active={false}>
+          <div>Menu 1</div>
+        </NavItemsMenu>
+        <NavItemsMenu href="/menu2" active={false}>
+          Menu 2
+        </NavItemsMenu>
+        <NavItemsDropdown menu="Menu Dropdown">
+          <NavItemsDropdownItems href="/submenu1">
+            Submenu 1
+          </NavItemsDropdownItems>
+          <NavItemsDropdownItems href="/submenu2">
+            Submenu 2
+          </NavItemsDropdownItems>
+          <NavItemsDropdownItems href="/submenu3">
+            Submenu 3
+          </NavItemsDropdownItems>
+        </NavItemsDropdown>
+        <NavItemsMenu href="/menu3" active={false}>
+          Menu 3
+        </NavItemsMenu>
+      </>
+    }
+  ></NavigationMenuCombo>
+</NavbarContainer>
+```
+
+  </Tab>
+</Tabs>
+
+## 2.NavbarActionGroup
+
+The `NavbarActionGroup` component represents the right-hand section of the navigation bar. This section is designed to provide developers with the flexibility to include any action elements they deem necessary. Supports mobile by having default hamburger toggle for `NavigationMenuCombo`.
+
+#### Common Use Cases:
+
+- **Action Buttons**: Add buttons such as menu toggles or light mode toggles.
+- **User Interaction Elements**: Incorporate features like language switchers or user profile menus.
+- **Search Functionality**: Include a search button for quick access.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+
+<Tab value="Preview">
+  <div className="flex h-fit items-center justify-center gap-1">
+    <PreviewActionGroup />
+  </div>
+</Tab>
+
+  <Tab value="Code">
+
+```tsx
+<NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
+  {/* Button Search  : mobile hide if needed  */}
+  <Button variant="default-ghost" className="p-2">
+    <SearchIcon></SearchIcon>
+  </Button>
+
+  {/* Button Light Mode Toggle  : mobile hide if needed  */}
+  <Button variant="default-ghost" className="p-2" onClick={handleToggle}>
+    {isDarkMode ? <SunIcon /> : <MoonIcon />}
+  </Button>
+
+  {/* Select Language Toggle  : mobile hide if needed  */}
+  <div className="hidden sm:block">
+    <Select
+      value={value}
+      onValueChange={setValue}
+      defaultValue="EN"
+      multiple={false}
+      variant="outline"
+      size="medium"
+    >
+      <SelectTrigger>
+        <GlobeIcon className="h-4 w-4"></GlobeIcon>
+        <SelectValue>{(value) => value || "EN"}</SelectValue>
+      </SelectTrigger>
+      <SelectContent className="font-body rounded-[4px] py-1">
+        <SelectItem value="EN">EN</SelectItem>
+        <SelectItem value="BM">BM</SelectItem>
+      </SelectContent>
+    </Select>
+  </div>
+</NavbarActionGroup>
+```
+
+  </Tab>
+</Tabs>

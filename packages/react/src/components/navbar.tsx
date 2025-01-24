@@ -5,15 +5,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./accordion";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetOverlay,
-  SheetPortal,
-} from "./sheet";
+import { Sheet, SheetClose, SheetContent } from "./sheet";
 import { Button, button_cva } from "./button";
-import { ChevronDownIcon, MoonIcon, SearchIcon, SunIcon } from "../icons";
+import { ChevronDownIcon } from "../icons";
 import { CrossIcon, HamburgerMenuIcon, GlobeIcon } from "../icons";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { FunctionComponent } from "react";
@@ -122,10 +116,8 @@ interface BrandLogoProps extends VariantProps<typeof headerVariant> {
   imageSrc: string;
   alt?: string;
   href?: string;
-  // brandText?: string;
 }
 const BrandLogo: FunctionComponent<BrandLogoProps> = ({
-  // brandText,
   imageSrc,
   alt,
   href = "/",
@@ -198,9 +190,6 @@ const NavigationMenuCombo: FunctionComponent<NavigationMenuProps> = ({
         >
           {childrenMobile}
         </SheetContent>
-        <SheetPortal>
-          <SheetOverlay className="z-40" />
-        </SheetPortal>
       </Sheet>
     </NavigationMenu.Root>,
   ];
@@ -210,9 +199,11 @@ interface NavItemsMenuProps {
   children: React.ReactNode;
   href: string;
   active: boolean;
+  className?: string;
 }
 
 const NavItemsMenu: FunctionComponent<NavItemsMenuProps> = ({
+  className,
   children,
   href,
   active = false,
@@ -229,6 +220,7 @@ const NavItemsMenu: FunctionComponent<NavItemsMenuProps> = ({
           "data-[state=open]:bg-bg-washed w-max bg-transparent transition-colors",
           "hidden lg:block",
           window.location.pathname.includes(href) && "bg-bg-washed-active",
+          className,
         )}
       >
         {children}
@@ -248,6 +240,7 @@ const NavItemsMenu: FunctionComponent<NavItemsMenuProps> = ({
           "data-[state=open]:bg-bg-washed flex w-full justify-start text-left text-base",
           "block lg:hidden",
           window.location.pathname.includes(href) && "bg-bg-washed-active",
+          className,
         )}
       >
         {children}
@@ -259,11 +252,13 @@ const NavItemsMenu: FunctionComponent<NavItemsMenuProps> = ({
 interface NavItemsDropdownProps {
   children: React.ReactNode;
   menu: string;
+  className?: string;
 }
 
 const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
   children,
   menu,
+  className,
 }) => {
   return [
     //Desktop
@@ -287,6 +282,7 @@ const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
           "data-[motion=from-end]:slide-in-from-right-52",
           "data-[motion=from-start]:slide-in-from-left-52",
           "data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52",
+          className,
         )}
       >
         <ul className="bg-bg-white shadow-card list-none rounded-lg border p-3">
@@ -308,6 +304,7 @@ const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
               size: "medium",
             }),
             "bg-bg-white justify-start text-left text-base hover:bg-none hover:no-underline focus:ring-0",
+            className,
           )}
         >
           {menu}
@@ -321,11 +318,13 @@ const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
 interface NavItemsDropdownItemsProps {
   href: string;
   children: React.ReactNode;
+  className?: string;
 }
 
 const NavItemsDropdownItems: FunctionComponent<NavItemsDropdownItemsProps> = ({
   children,
   href,
+  className,
 }) => {
   return [
     //Desktop
@@ -340,6 +339,7 @@ const NavItemsDropdownItems: FunctionComponent<NavItemsDropdownItemsProps> = ({
           "data-[state=open]:bg-bg-washed block w-full justify-start bg-transparent transition-colors",
           "text-left",
           window.location.pathname.includes(href) && "bg-bg-washed-active",
+          className,
         )}
       >
         {children}
@@ -359,8 +359,9 @@ const NavItemsDropdownItems: FunctionComponent<NavItemsDropdownItemsProps> = ({
             size: "medium",
           }),
           window.location.pathname.includes(href) && "bg-bg-washed-active",
-          "data-[state=open]:bg-bg-washed justify-start text-sm text-left w-full",
+          "data-[state=open]:bg-bg-washed w-full justify-start text-left text-sm",
           "h-10 pl-6",
+          className,
         )}
       >
         {children}
