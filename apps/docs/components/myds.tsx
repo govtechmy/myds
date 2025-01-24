@@ -26,6 +26,7 @@ export * from "@govtechmy/myds-react/input";
 export * from "@govtechmy/myds-react/table";
 export * from "@govtechmy/myds-react/data-table";
 export * from "@govtechmy/myds-react/search-bar";
+export * from "@govtechmy/myds-react/radio";
 import {
   Callout,
   CalloutTitle,
