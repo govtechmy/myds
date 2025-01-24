@@ -193,10 +193,7 @@ export const PreviewNavbar: FunctionComponent<PreviewNavbarProps> = (props) => {
   return (
     <Navbar showMenu={showMenu} className="px-2">
       <NavbarContainer>
-        <BrandLogo
-          type="shortname"
-          imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
-        >
+        <BrandLogo imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg">
           MYDS
         </BrandLogo>
 

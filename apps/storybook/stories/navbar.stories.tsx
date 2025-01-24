@@ -38,7 +38,6 @@ import { Button } from "@govtechmy/myds-react/button";
  *    <Navbar showMenu={showMenu} className="px-2">
  *        <NavbarContainer>
  *            <BrandLogo
- *                type="shortname"
  *                imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
  *            >
  *                MYDS
