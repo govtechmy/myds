@@ -35,7 +35,7 @@ const SearchBar: FunctionComponent<SearchBarProps> = forwardRef(
       <SearchBarContext.Provider value={{ size }}>
         <Command
           ref={ref}
-          className={clx("relative", className)}
+          className={clx("relative z-0", className)}
           shouldFilter={false}
           {...props}
         >
