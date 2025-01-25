@@ -300,7 +300,10 @@ const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
 }) => {
   return [
     //Desktop
-    <NavigationMenu.Item className="relative hidden xl:block">
+    <NavigationMenu.Item
+      key="desktop-dropdown"
+      className="relative hidden xl:block"
+    >
       <NavigationMenu.Trigger
         className={clx(
           button_cva({ variant: "default-ghost" }),
@@ -333,6 +336,7 @@ const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
       className="bg-bg-white block xl:hidden"
       type="single"
       collapsible
+      key="mobile-dropdown"
     >
       <AccordionItem className="border-0" value="item-1">
         <AccordionTrigger
@@ -400,7 +404,7 @@ const NavItemsDropdownItems: FunctionComponent<NavItemsDropdownItemsProps> = ({
 
       {/* Mobile */}
       <SheetClose asChild className="lg:hidden">
-        <li key={href}>
+        <li key={href} className="list-none">
           <Link
             href={href}
             target="_blank"
