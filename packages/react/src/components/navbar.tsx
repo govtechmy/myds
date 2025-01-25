@@ -14,6 +14,7 @@ import { FunctionComponent } from "react";
 import React from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { Link } from "./link";
+import { useEffect, useState } from "react";
 
 const headerVariant = cva(
   ["font-semibold max-w-[223px] font-heading text-txt-black-900"],
@@ -215,51 +216,75 @@ interface NavItemsMenuProps {
   className?: string;
 }
 
+interface NavItemsMenuProps {
+  children: React.ReactNode;
+  href: string;
+  active: boolean;
+  className?: string;
+}
+
 const NavItemsMenu: FunctionComponent<NavItemsMenuProps> = ({
   className,
   children,
   href,
   active = false,
 }) => {
-  return [
-    // Desktop
-    <NavigationMenu.Item className="list-none">
-      <Link
-        href={href}
-        data-state={active ? "open" : "close"}
-        underline="none"
-        className={clx(
-          button_cva({ variant: "default-ghost" }),
-          "data-[state=open]:bg-bg-washed w-max bg-transparent transition-colors",
-          "hidden lg:block",
-          window.location.pathname.includes(href) && "bg-bg-washed-active",
-          className,
-        )}
-      >
-        {children}
-      </Link>
-    </NavigationMenu.Item>,
-    // Mobile
-    <SheetClose asChild>
-      <Link
-        href={href}
-        data-state={active ? "open" : "close"}
-        underline="none"
-        className={clx(
-          button_cva({
-            variant: "default-ghost",
-            size: "medium",
-          }),
-          "data-[state=open]:bg-bg-washed flex w-full justify-start text-left text-base",
-          "block lg:hidden",
-          window.location.pathname.includes(href) && "bg-bg-washed-active",
-          className,
-        )}
-      >
-        {children}
-      </Link>
-    </SheetClose>,
-  ];
+  const [isClient, setIsClient] = useState(false);
+  const [clientWindow, setClientWindow] = useState(false);
+
+  // Effect to detect client-side rendering
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient && window) {
+      setClientWindow(window.location.pathname.includes(href));
+    }
+  }, [isClient, href]);
+
+  return (
+    <>
+      {/* Desktop */}
+      <NavigationMenu.Item className="list-none">
+        <Link
+          href={href}
+          data-state={active ? "open" : "close"}
+          underline="none"
+          className={clx(
+            button_cva({ variant: "default-ghost" }),
+            "data-[state=open]:bg-bg-washed w-max bg-transparent transition-colors",
+            "hidden lg:block",
+            clientWindow && "bg-bg-washed-active",
+            className,
+          )}
+        >
+          {children}
+        </Link>
+      </NavigationMenu.Item>
+
+      {/* Mobile */}
+      <SheetClose asChild>
+        <Link
+          href={href}
+          data-state={active ? "open" : "close"}
+          underline="none"
+          className={clx(
+            button_cva({
+              variant: "default-ghost",
+              size: "medium",
+            }),
+            "data-[state=open]:bg-bg-washed flex w-full justify-start text-left text-base",
+            "block lg:hidden",
+            clientWindow && "bg-bg-washed-active",
+            className,
+          )}
+        >
+          {children}
+        </Link>
+      </SheetClose>
+    </>
+  );
 };
 
 interface NavItemsDropdownProps {
@@ -339,48 +364,60 @@ const NavItemsDropdownItems: FunctionComponent<NavItemsDropdownItemsProps> = ({
   href,
   className,
 }) => {
-  return [
-    //Desktop
-    <li className="hidden list-none lg:block">
-      <Link
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        underline="none"
-        className={clx(
-          button_cva({ variant: "default-ghost" }),
-          "data-[state=open]:bg-bg-washed block w-full justify-start bg-transparent transition-colors",
-          "text-left",
-          window.location.pathname.includes(href) && "bg-bg-washed-active",
-          className,
-        )}
-      >
-        {children}
-      </Link>
-    </li>,
+  const [isClient, setIsClient] = useState(false);
+  const [clientWindow, setClientWindow] = useState(false);
 
-    //Mobile
-    <SheetClose asChild className="lg:hidden">
-      <Link
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        underline="none"
-        className={clx(
-          button_cva({
-            variant: "default-ghost",
-            size: "medium",
-          }),
-          window.location.pathname.includes(href) && "bg-bg-washed-active",
-          "data-[state=open]:bg-bg-washed w-full justify-start text-left text-sm",
-          "h-10 pl-6",
-          className,
-        )}
-      >
-        {children}
-      </Link>
-    </SheetClose>,
-  ];
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient && window) {
+      setClientWindow(window.location.pathname.includes(href));
+    }
+  }, [isClient, href]);
+
+  return (
+    <>
+      {/* Desktop */}
+      <li className="hidden list-none lg:block">
+        <Link
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          underline="none"
+          className={clx(
+            button_cva({ variant: "default-ghost" }),
+            "data-[state=open]:bg-bg-washed block w-full justify-start bg-transparent transition-colors",
+            "text-left",
+            clientWindow && "bg-bg-washed-active",
+            className,
+          )}
+        >
+          {children}
+        </Link>
+      </li>
+
+      {/* Mobile */}
+      <SheetClose asChild className="lg:hidden">
+        <Link
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          underline="none"
+          className={clx(
+            button_cva({ variant: "default-ghost", size: "medium" }),
+            clientWindow && "bg-bg-washed-active",
+            "data-[state=open]:bg-bg-washed w-full justify-start text-left text-sm",
+            "h-10 pl-6",
+            className,
+          )}
+        >
+          {children}
+        </Link>
+      </SheetClose>
+    </>
+  );
 };
 
 export {
