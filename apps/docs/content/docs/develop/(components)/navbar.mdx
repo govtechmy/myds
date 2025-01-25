@@ -1,6 +1,6 @@
 ---
 title: Navbar
-description: The Footer component is a standardized footer for Malaysian government websites.
+description: The Navbar component is a standardized navbar for Malaysian government websites.
 ---
 
 import { clx } from "@govtechmy/myds-react/utils";
@@ -197,128 +197,137 @@ import {
   SunIcon,
 } from "@govtechmy/myds-react/icon";
 import { Button } from "@govtechmy/myds-react/button";
+import React, { useState } from "react";
 
 ```
 
 ```tsx copy
-export default () => (
-  <Navbar showMenu={showMenu} className="px-2">
-    <NavbarContainer>
-      <BrandLogo
-        imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
-      >
-        MYDS
-      </BrandLogo>
+export default () => {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  const [value, setValue] = useState<string>("EN");
+  const [showMenu, setMenu] = useState<boolean>(false);
 
-      <NavigationMenuCombo
-        showMenu={showMenu}
-        setMenu={setMenu}
-        childrenDesktop={
-          <>
-            <NavItemsMenu href="/menu1" active={false}>
-              Menu 1
-            </NavItemsMenu>
-            <NavItemsMenu href="/menu2" active={false}>
-              Menu 2
-            </NavItemsMenu>
+  const handleToggle = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
-            <NavItemsDropdown menu="Menu Dropdown">
-              <NavItemsDropdownItems href="/submenu1">
-                Submenu 1
-              </NavItemsDropdownItems>
-              <NavItemsDropdownItems href="/submenu2">
-                Submenu 2
-              </NavItemsDropdownItems>
-              <NavItemsDropdownItems href="/submenu3">
-                Submenu 3
-              </NavItemsDropdownItems>
-              <NavItemsDropdownItems href="/submenu1">
-                Submenu 4
-              </NavItemsDropdownItems>
-              <NavItemsDropdownItems href="/submenu2">
-                Submenu 5
-              </NavItemsDropdownItems>
-              <NavItemsDropdownItems href="/submenu3">
-                Submenu 6
-              </NavItemsDropdownItems>
-              <NavItemsDropdownItems href="/submenu3">
-                Submenu 7
-              </NavItemsDropdownItems>
-            </NavItemsDropdown>
+  return (
+    <Navbar showMenu={showMenu} className="px-2">
+      <NavbarContainer>
+        <BrandLogo imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg">
+          MYDS
+        </BrandLogo>
 
-            <NavItemsMenu href="/menu3" active={false}>
-              Menu 3
-            </NavItemsMenu>
-          </>
-        }
-        childrenMobile={
-          <>
-            <NavItemsMenu href="/menu1" active={false}>
-              <div>Menu 1</div>
-            </NavItemsMenu>
-            <NavItemsMenu href="/menu2" active={false}>
-              Menu 2
-            </NavItemsMenu>
-            <NavItemsDropdown menu="Menu Dropdown">
-              <NavItemsDropdownItems href="/submenu1">
-                Submenu 1
-              </NavItemsDropdownItems>
-              <NavItemsDropdownItems href="/submenu2">
-                Submenu 2
-              </NavItemsDropdownItems>
-              <NavItemsDropdownItems href="/submenu3">
-                Submenu 3
-              </NavItemsDropdownItems>
-              <NavItemsDropdownItems href="/submenu1">
-                Submenu 4
-              </NavItemsDropdownItems>
-              <NavItemsDropdownItems href="/submenu2">
-                Submenu 5
-              </NavItemsDropdownItems>
-              <NavItemsDropdownItems href="/submenu3">
-                Submenu 6
-              </NavItemsDropdownItems>
-              <NavItemsDropdownItems href="/submenu3">
-                Submenu 7
-              </NavItemsDropdownItems>
-            </NavItemsDropdown>
-            <NavItemsMenu href="/menu3" active={false}>
-              Menu 3
-            </NavItemsMenu>
-          </>
-        }
-      ></NavigationMenuCombo>
-    </NavbarContainer>
+        <NavigationMenuCombo
+          showMenu={showMenu}
+          setMenu={setMenu}
+          childrenDesktop={
+            <>
+              <NavItemsMenu href="/menu1" active={false}>
+                Menu 1
+              </NavItemsMenu>
+              <NavItemsMenu href="/menu2" active={false}>
+                Menu 2
+              </NavItemsMenu>
 
-    <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
-      <Button variant="default-ghost" className="p-2">
-        <SearchIcon></SearchIcon>
-      </Button>
+              <NavItemsDropdown menu="Menu Dropdown">
+                <NavItemsDropdownItems href="/submenu1">
+                  Submenu 1
+                </NavItemsDropdownItems>
+                <NavItemsDropdownItems href="/submenu2">
+                  Submenu 2
+                </NavItemsDropdownItems>
+                <NavItemsDropdownItems href="/submenu3">
+                  Submenu 3
+                </NavItemsDropdownItems>
+                <NavItemsDropdownItems href="/submenu1">
+                  Submenu 4
+                </NavItemsDropdownItems>
+                <NavItemsDropdownItems href="/submenu2">
+                  Submenu 5
+                </NavItemsDropdownItems>
+                <NavItemsDropdownItems href="/submenu3">
+                  Submenu 6
+                </NavItemsDropdownItems>
+                <NavItemsDropdownItems href="/submenu3">
+                  Submenu 7
+                </NavItemsDropdownItems>
+              </NavItemsDropdown>
 
-      <Button variant="default-ghost" className="p-2" onClick={handleToggle}>
-        {isDarkMode ? <SunIcon /> : <MoonIcon />}
-      </Button>
+              <NavItemsMenu href="/menu3" active={false}>
+                Menu 3
+              </NavItemsMenu>
+            </>
+          }
+          childrenMobile={
+            <>
+              <NavItemsMenu href="/menu1" active={false}>
+                <div>Menu 1</div>
+              </NavItemsMenu>
+              <NavItemsMenu href="/menu2" active={false}>
+                Menu 2
+              </NavItemsMenu>
+              <NavItemsDropdown menu="Menu Dropdown">
+                <NavItemsDropdownItems href="/submenu1">
+                  Submenu 1
+                </NavItemsDropdownItems>
+                <NavItemsDropdownItems href="/submenu2">
+                  Submenu 2
+                </NavItemsDropdownItems>
+                <NavItemsDropdownItems href="/submenu3">
+                  Submenu 3
+                </NavItemsDropdownItems>
+                <NavItemsDropdownItems href="/submenu1">
+                  Submenu 4
+                </NavItemsDropdownItems>
+                <NavItemsDropdownItems href="/submenu2">
+                  Submenu 5
+                </NavItemsDropdownItems>
+                <NavItemsDropdownItems href="/submenu3">
+                  Submenu 6
+                </NavItemsDropdownItems>
+                <NavItemsDropdownItems href="/submenu3">
+                  Submenu 7
+                </NavItemsDropdownItems>
+              </NavItemsDropdown>
+              <NavItemsMenu href="/menu3" active={false}>
+                Menu 3
+              </NavItemsMenu>
+            </>
+          }
+        ></NavigationMenuCombo>
+      </NavbarContainer>
 
-      <Select
-        value={value}
-        onValueChange={setValue}
-        defaultValue="EN"
-        multiple={false}
-        variant="outline"
-        size="medium"
-      >
-        <SelectTrigger>
-          <GlobeIcon className="h-4 w-4"></GlobeIcon>
-          <SelectValue>{(value) => value || "EN"}</SelectValue>
-        </SelectTrigger>
-        <SelectContent className="font-body rounded-[4px] py-1">
-          <SelectItem value="EN">EN</SelectItem>
-          <SelectItem value="BM">BM</SelectItem>
-        </SelectContent>
-      </Select>
-    </NavbarActionGroup>
-  </Navbar>
-);
+      <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
+        <Button variant="default-ghost" className="p-2">
+          <SearchIcon></SearchIcon>
+        </Button>
+
+        <Button variant="default-ghost" className="p-2" onClick={handleToggle}>
+          {isDarkMode ? <SunIcon /> : <MoonIcon />}
+        </Button>
+
+        <Select
+          value={value}
+          onValueChange={setValue}
+          defaultValue="EN"
+          multiple={false}
+          variant="outline"
+          size="medium"
+        >
+          <SelectTrigger>
+            <GlobeIcon className="h-4 w-4"></GlobeIcon>
+            <SelectValue>{(value) => value || "EN"}</SelectValue>
+          </SelectTrigger>
+          <SelectContent className="font-body rounded-[4px] py-1">
+            <SelectItem value="EN">EN</SelectItem>
+            <SelectItem value="BM">BM</SelectItem>
+          </SelectContent>
+        </Select>
+      </NavbarActionGroup>
+    </Navbar>
+  );
+};
 ```
 
 ---
@@ -336,7 +345,7 @@ The `Navbar` serves as the primary container for the navigation bar content. It 
 
 The `NavbarContainer` is the left part of the navigation bar and contains two main areas:
 
-1.1 **BrandLogo**
+1.1 **BrandLogo**  
 1.2 **NavigationMenuCombo**
 
 ### 1.1 BrandLogo
@@ -461,7 +470,7 @@ The `NavItemsDropdownItems` component is used to define individual items within 
 
 The `NavbarActionGroup` component represents the right-hand section of the navigation bar. This section is designed to provide developers with the flexibility to include any action elements they deem necessary. Supports mobile by having default hamburger toggle for `NavigationMenuCombo`.
 
-#### Common Use Cases:
+#### Common Use Cases
 
 - **Action Buttons**: Add buttons such as menu toggles or light mode toggles.
 - **User Interaction Elements**: Incorporate features like language switchers or user profile menus.
@@ -516,3 +525,172 @@ The `NavbarActionGroup` component represents the right-hand section of the navig
 
   </Tab>
 </Tabs>
+
+## Props
+
+### Navbar
+
+<TypeTable
+  type={{
+    showMenu: {
+      description: "Controls whether the menu is shown or hidden.",
+      type: "boolean",
+    },
+    children: {
+      description: "Content to be rendered inside the Navbar.",
+      type: "ReactNode",
+    },
+    className: {
+      description: "Additional styles for the Navbar.",
+      type: "string",
+    },
+  }}
+/>
+
+### NavbarContainer
+
+<TypeTable
+  type={{
+    children: {
+      description: "Content to be rendered inside the NavbarContainer.",
+      type: "ReactNode",
+    },
+    className: {
+      description: "Additional styles for the NavbarContainer.",
+      type: "string",
+    },
+  }}
+/>
+
+### BrandLogo
+
+<TypeTable
+  type={{
+    imageSrc: {
+      description: "The source URL for the logo image.",
+      type: "string",
+    },
+    alt: {
+      description: "Alternative text for the logo image.",
+      type: "string",
+    },
+    href: {
+      description: "The URL to navigate to when the logo is clicked.",
+      type: "string",
+      defaultValue: "/",
+    },
+    children: {
+      description: "Optional text or content displayed next to the logo.",
+      type: "ReactNode",
+    }
+  }}
+/>
+
+### NavigationMenuCombo
+
+<TypeTable
+  type={{
+    showMenu: {
+      description: "Indicates if the mobile menu is currently shown.",
+      type: "boolean",
+      defaultValue: "false",
+    },
+    setMenu: {
+      description: "Function to toggle the mobile menu visibility.",
+      type: "(value: boolean) => void",
+    },
+    childrenDesktop: {
+      description: "Content to be rendered in the desktop navigation menu.",
+      type: "ReactNode",
+    },
+    childrenMobile: {
+      description: "Content to be rendered in the mobile navigation menu.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### NavItemsMenu
+
+<TypeTable
+  type={{
+    children: {
+      description: "Menu item content.",
+      type: "ReactNode",
+    },
+    href: {
+      description: "URL for the navigation item.",
+      type: "string",
+    },
+    active: {
+      description: "Indicates if the item is active.",
+      type: "boolean",
+      defaultValue: "false",
+    },
+    className: {
+      description: "Additional styles for the navigation item.",
+      type: "string",
+    },
+  }}
+/>
+
+### NavItemsDropdown
+
+<TypeTable
+  type={{
+    children: {
+      description: "Dropdown menu content.",
+      type: "ReactNode",
+    },
+    menu: {
+      description: "Text for the dropdown trigger.",
+      type: "string",
+    },
+    className: {
+      description: "Additional styles for the dropdown.",
+      type: "string",
+    },
+  }}
+/>
+
+### NavItemsDropdownItems
+
+<TypeTable
+  type={{
+    href: {
+      description: "URL for the dropdown item.",
+      type: "string",
+    },
+    children: {
+      description: "Dropdown item content.",
+      type: "ReactNode",
+    },
+    className: {
+      description: "Additional styles for the dropdown item.",
+      type: "string",
+    },
+  }}
+/>
+
+### NavbarActionGroup
+
+<TypeTable
+  type={{
+    children: {
+      description: "Content to be rendered inside the NavbarActionGroup.",
+      type: "ReactNode",
+    },
+    showMenu: {
+      description: "Indicates if the menu is currently shown.",
+      type: "boolean",
+    },
+    setMenu: {
+      description: "Function to toggle the menu visibility.",
+      type: "(value: boolean) => void",
+    },
+    className: {
+      description: "Additional styles for the NavbarActionGroup.",
+      type: "string",
+    },
+  }}
+/>

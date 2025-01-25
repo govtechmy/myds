@@ -69,12 +69,19 @@ const Navbar: FunctionComponent<NavbarProps> = ({
 //==========================================================================
 interface NavbarContainerProps {
   children?: React.ReactNode;
+  className?: string;
 }
 const NavbarContainer: FunctionComponent<NavbarContainerProps> = ({
   children,
+  className,
 }) => {
   return (
-    <div className="text-bg-black-900 flex items-center justify-between gap-3 lg:gap-4">
+    <div
+      className={clx(
+        "text-bg-black-900 flex items-center justify-between gap-3 lg:gap-4",
+        className,
+      )}
+    >
       {children}
     </div>
   );
@@ -87,18 +94,24 @@ interface NavbarActionGroupProps {
   children?: React.ReactNode;
   showMenu: boolean;
   setMenu: (value: boolean) => void;
+  className?: string;
 }
 const NavbarActionGroup: FunctionComponent<NavbarActionGroupProps> = ({
   children,
   showMenu,
   setMenu,
+  className,
 }) => {
   return (
     <div className="flex items-center gap-2">
       {children}
       <Button
         variant="default-outline"
-        className={clx("block p-2.5 xl:hidden", showMenu && "bg-bg-washed")}
+        className={clx(
+          "block p-2.5 xl:hidden",
+          showMenu && "bg-bg-washed",
+          className,
+        )}
         onClick={() => setMenu(!showMenu)}
       >
         {showMenu ? <CrossIcon /> : <HamburgerMenuIcon />}
@@ -130,7 +143,7 @@ const BrandLogo: FunctionComponent<BrandLogoProps> = ({
     <Link
       href={href}
       underline="none"
-      className="flex h-full w-full items-center gap-2.5"
+      className={clx("flex h-full w-full items-center gap-2.5")}
     >
       <img
         src={imageSrc}
