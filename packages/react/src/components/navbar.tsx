@@ -380,7 +380,7 @@ const NavItemsDropdownItems: FunctionComponent<NavItemsDropdownItemsProps> = ({
   return (
     <>
       {/* Desktop */}
-      <li className="hidden list-none lg:block">
+      <li key={href} className="hidden list-none lg:block">
         <Link
           href={href}
           target="_blank"
@@ -400,21 +400,23 @@ const NavItemsDropdownItems: FunctionComponent<NavItemsDropdownItemsProps> = ({
 
       {/* Mobile */}
       <SheetClose asChild className="lg:hidden">
-        <Link
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          underline="none"
-          className={clx(
-            button_cva({ variant: "default-ghost", size: "medium" }),
-            clientWindow && "bg-bg-washed-active",
-            "data-[state=open]:bg-bg-washed w-full justify-start text-left text-sm",
-            "h-10 pl-6",
-            className,
-          )}
-        >
-          {children}
-        </Link>
+        <li key={href}>
+          <Link
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            underline="none"
+            className={clx(
+              button_cva({ variant: "default-ghost", size: "medium" }),
+              clientWindow && "bg-bg-washed-active",
+              "data-[state=open]:bg-bg-washed w-full justify-start text-left text-sm",
+              "h-10 pl-6",
+              className,
+            )}
+          >
+            {children}
+          </Link>
+        </li>
       </SheetClose>
     </>
   );
