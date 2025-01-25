@@ -49,10 +49,10 @@ const MastheadToggle: FunctionComponent<MastheadToggleProps> = ({
   children = "Here's how you know",
 }) => (
   <div
-    className="max-sm:bg-bg-washed text-primary-600 focus:ring-fr-primary flex items-center gap-0.5 rounded-sm p-1 pl-1.5 focus:outline-none focus:ring-[3px] focus:ring-inset max-sm:rounded-md max-sm:px-1"
+    className="max-sm:bg-bg-washed text-txt-primary focus:ring-fr-primary flex items-center gap-0.5 rounded-sm p-1 pl-1.5 focus:outline-none focus:ring-[3px] focus:ring-inset max-sm:rounded-md max-sm:px-1"
     tabIndex={0}
   >
-    <span className="hidden select-none tracking-[-0.01em] sm:block">
+    <span className="text-txt-primary hidden select-none tracking-[-0.01em] sm:block">
       {children}
     </span>
     <ChevronDownIcon className="size-4 transition group-open:rotate-180" />
@@ -66,7 +66,7 @@ const MastheadContent: FunctionComponent<PropsWithChildren> = ({
     <div className="group-open:animate-in group-open:slide-in-from-top-2 group-closed:animate-out group-closed:slide-out-to-top-1 overflow-hidden transition-all duration-300 ease-in-out">
       <div className="container mx-auto max-w-[1280px]">
         <div className="gap-4.5 pt-4.5 grid grid-cols-1 pb-6 pl-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
-          <span className="text-primary-600 static text-sm sm:hidden">
+          <span className="text-txt-primary static text-sm sm:hidden">
             Here's how you know
           </span>
           {children}

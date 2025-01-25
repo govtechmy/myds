@@ -26,6 +26,7 @@ export * from "@govtechmy/myds-react/input";
 export * from "@govtechmy/myds-react/table";
 export * from "@govtechmy/myds-react/data-table";
 export * from "@govtechmy/myds-react/search-bar";
+export * from "@govtechmy/myds-react/masthead";
 import {
   Callout,
   CalloutTitle,
@@ -66,6 +67,17 @@ import {
 } from "@govtechmy/myds-react/select";
 import { Tag } from "@govtechmy/myds-react/tag";
 import { Cell } from "@govtechmy/myds-react/data-table";
+import {
+  Masthead,
+  MastheadHeader,
+  MastheadContent,
+  MastheadOfficialIndicator,
+  MastheadToggle,
+  MastheadSection,
+  MastheadSectionTitle,
+  MastheadSectionBody,
+} from "@govtechmy/myds-react/masthead";
+import { GovMyIcon, Lock2Icon, LockFillIcon } from "@govtechmy/myds-react/icon";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
@@ -633,4 +645,93 @@ export const DataTableRadio = {
     console.log("Selected Rows: ", id);
   },
   rowId: "id",
+};
+
+interface PreviewMastheadProps extends ComponentProps<typeof Masthead> {}
+
+export const PreviewMasthead: FunctionComponent<PreviewMastheadProps> = (
+  props,
+) => {
+  return (
+    <div className="not-prose">
+      <Masthead>
+        <MastheadHeader>
+          <MastheadOfficialIndicator>
+            Official Malaysia Government Website
+          </MastheadOfficialIndicator>
+          <MastheadToggle>Here's how you know</MastheadToggle>
+        </MastheadHeader>
+        <MastheadContent>
+          <MastheadSection icon={<GovMyIcon />}>
+            <MastheadSectionTitle>
+              Official government websites end with .gov.my
+            </MastheadSectionTitle>
+            <MastheadSectionBody>
+              If the link does not end with
+              <span className="font-semibold"> .gov.my</span>, exit the website
+              immediately even if it looks similar.
+            </MastheadSectionBody>
+          </MastheadSection>
+          <MastheadSection icon={<Lock2Icon height={24} width={24} />}>
+            <MastheadSectionTitle>
+              Secure websites use HTTPS
+            </MastheadSectionTitle>
+            <MastheadSectionBody>
+              Look for a lock (
+              <LockFillIcon className="mb-0.5 inline size-3.5" />) atau
+              <span className="font-semibold"> https:// </span>
+              as an added precaution. If not present, do not share any sensitive
+              information.
+            </MastheadSectionBody>
+          </MastheadSection>
+        </MastheadContent>
+      </Masthead>
+    </div>
+  );
+};
+
+export const PreviewMastheadContent: FunctionComponent<PreviewMastheadProps> = (
+  props,
+) => {
+  return (
+    <div className="not-prose">
+      <MastheadContent>
+        <MastheadSection icon={<GovMyIcon />}>
+          <MastheadSectionTitle>
+            Official government websites end with .gov.my
+          </MastheadSectionTitle>
+          <MastheadSectionBody>
+            If the link does not end with
+            <span className="font-semibold"> .gov.my</span>, exit the website
+            immediately even if it looks similar.
+          </MastheadSectionBody>
+        </MastheadSection>
+        <MastheadSection icon={<Lock2Icon height={24} width={24} />}>
+          <MastheadSectionTitle>Secure websites use HTTPS</MastheadSectionTitle>
+          <MastheadSectionBody>
+            Look for a lock (
+            <LockFillIcon className="mb-0.5 inline size-3.5" />) atau
+            <span className="font-semibold"> https:// </span>
+            as an added precaution. If not present, do not share any sensitive
+            information.
+          </MastheadSectionBody>
+        </MastheadSection>
+      </MastheadContent>
+    </div>
+  );
+};
+
+export const PreviewMastheadHeader: FunctionComponent<PreviewMastheadProps> = (
+  props,
+) => {
+  return (
+    <div className="not-prose">
+      <MastheadHeader>
+        <MastheadOfficialIndicator>
+          Official Malaysia Government Website
+        </MastheadOfficialIndicator>
+        <MastheadToggle>Here's how you know</MastheadToggle>
+      </MastheadHeader>
+    </div>
+  );
 };

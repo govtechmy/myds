@@ -25,6 +25,7 @@
     "(components)/dropdown",
     "(components)/footer",
     "(components)/link",
+    "(components)/masthead",
     "(components)/navbar",
     "(components)/pagination",
     "(components)/pill",
