@@ -26,6 +26,7 @@
     "(components)/footer",
     "(components)/input-otp",
     "(components)/link",
+    "(components)/masthead",
     "(components)/navbar",
     "(components)/pagination",
     "(components)/pill",
