@@ -1,0 +1,221 @@
+---
+title: Input OTP
+description: Komponen Input OTP (One-Time Password) membenarkan pengguna memasukkan kod yang dihantar ke e-mel atau telefon mereka untuk mengesahkan identiti mereka. Komponen ini biasanya digunakan dalam pengesahan dua faktor (2FA) dan proses pemulihan akaun.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { InputOTP, InputOTPSlot } from "@/components/myds"
+import { InputOTPControlledExample } from "./input-otp.client"
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <InputOTP maxLength={4}>
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import { InputOTP, InputOTPSlot } from "@/components/myds"
+
+    <InputOTP maxLength={4}>
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-inputotp--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/input-otp.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import { InputOTP, InputOTPSlot } from "@/components/myds"
+```
+
+```tsx copy
+<InputOTP maxLength={4}>
+  <InputOTPSlot index={0} />
+  <InputOTPSlot index={1} />
+  <InputOTPSlot index={2} />
+  <InputOTPSlot index={3} />
+</InputOTP>
+```
+
+## Contoh
+
+### Invalid
+
+Tetapkan prop `invalid` kepada true untuk menandakan input sebagai tidak sah.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <InputOTP maxLength={4} invalid>
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import { InputOTP, InputOTPSlot } from "@/components/myds"
+
+    <InputOTP maxLength={4} invalid>
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+    ```
+  </Tab>
+</Tabs>
+
+### Disabled
+
+Nyahaktifkan input dengan menetapkan prop `disabled` kepada true.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <InputOTP maxLength={4} disabled defaultValue="AB12">
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import { InputOTP, InputOTPSlot } from "@/components/myds"
+
+    <InputOTP maxLength={4} disabled defaultValue="AB12">
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+    ```
+  </Tab>
+</Tabs>
+
+### Komponen Terkawal
+
+Input boleh dikawal dengan menetapkan props `value` dan `onChange`. Dalam contoh di bawah, kami mengawal `InputOTP` dengan _state_ dan menukar nilai kepada huruf besar pada perubahan.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <InputOTPControlledExample />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import { InputOTP, InputOTPSlot } from "@/components/myds"
+
+    const [value, setValue] = useState("");
+
+    <InputOTP
+      maxLength={4}
+      value={value}
+      onChange={(value) => {
+        setValue(value.toUpperCase());
+      }}
+    >
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+    ```
+  </Tab>
+</Tabs>
+
+### Menggunakan Prop `pattern`
+
+Hantar regex kepada prop `pattern` untuk hanya menerima nilai corak tertentu. Sebagai contoh, kita boleh menggunakan regex untuk hanya menerima nombor:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <InputOTP maxLength={4} pattern="^[0-9]{0,4}$">
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import { InputOTP, InputOTPSlot } from "@/components/myds"
+
+    <InputOTP maxLength={4} pattern="^[0-9]{0,4}$">
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### InputOTP
+
+`InputOTP` menggunakan `OTInput` input-otp. Sila rujuk rujukan API dalam [dokumentasi ini](https://github.com/guilhermerodz/input-otp?tab=readme-ov-file#otpinput).
+
+<TypeTable
+  type={{
+    maxLength: {
+      description: "Panjang maksimum OTP - ia harus sepadan dengan bilangan slot",
+      type: "number",
+    },
+    defaultValue: {
+      description: "Nilai default input",
+      type: "string",
+    },
+    value: {
+      description: "Nilai input (terkawal)",
+      type: "string",
+    },
+    onChange: {
+      description: "Callback function apabila nilai input berubah (terkawal)",
+      type: "function",
+      typeDescription: "(value: string) => void"
+    },
+    disabled: {
+      type: "boolean",
+      default: "false",
+    },
+    invalid: {
+      type: "boolean",
+      default: "false",
+    },
+    pattern: {
+      description: "Regex untuk hanya menerima nilai dalam corak tertentu",
+      type: "string",
+    },
+  }}
+/>
+
+### InputOTPSlot
+
+<TypeTable
+  type={{
+    index: {
+      description: "Indeks slot",
+      type: "number",
+    },
+  }}
+/>
