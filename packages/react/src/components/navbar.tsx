@@ -178,21 +178,19 @@ const BrandLogo: FunctionComponent<BrandLogoProps> = ({
 interface NavigationMenuProps {
   showMenu?: boolean;
   setMenu?: (value: boolean) => void;
-  childrenDesktop: React.ReactNode;
-  childrenMobile: React.ReactNode;
+  children: React.ReactNode;
 }
 
 const NavigationMenuCombo: FunctionComponent<NavigationMenuProps> = ({
   showMenu = false,
   setMenu = () => {},
-  childrenDesktop,
-  childrenMobile,
+  children,
 }) => {
   return [
     <NavigationMenu.Root key="desktop">
       <Sheet key="mobile" open={showMenu} onOpenChange={setMenu}>
         <NavigationMenu.List className="group hidden list-none justify-center space-x-1 xl:flex">
-          {childrenDesktop}
+          {children}
         </NavigationMenu.List>
         <div className="relative right-0 top-full">
           <NavigationMenu.Viewport className="shadow-card data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 medium:w-[var(--radix-navigation-menu-viewport-width)] absolute mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-lg" />
@@ -202,7 +200,7 @@ const NavigationMenuCombo: FunctionComponent<NavigationMenuProps> = ({
           side="top"
           className="bg-bg-white absolute top-full z-10 flex h-[90vh] flex-col gap-1 overflow-scroll rounded-b-xl p-3 xl:hidden"
         >
-          {childrenMobile}
+          {children}
         </SheetContent>
       </Sheet>
     </NavigationMenu.Root>,

@@ -197,84 +197,42 @@ export const PreviewNavbar: FunctionComponent<PreviewNavbarProps> = (props) => {
           MYDS
         </BrandLogo>
 
-        <NavigationMenuCombo
-          showMenu={showMenu}
-          setMenu={setMenu}
-          childrenDesktop={
-            <>
-              <NavItemsMenu href="/menu1" active={false}>
-                Menu 1
-              </NavItemsMenu>
-              <NavItemsMenu href="/menu2" active={false}>
-                Menu 2
-              </NavItemsMenu>
+        <NavigationMenuCombo showMenu={showMenu} setMenu={setMenu}>
+          <NavItemsMenu href="/menu1" active={false}>
+            Menu 1
+          </NavItemsMenu>
+          <NavItemsMenu href="/menu2" active={false}>
+            Menu 2
+          </NavItemsMenu>
 
-              <NavItemsDropdown menu="Menu Dropdown">
-                <NavItemsDropdownItems href="/submenu1">
-                  Submenu 1
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu2">
-                  Submenu 2
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu3">
-                  Submenu 3
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu1">
-                  Submenu 4
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu2">
-                  Submenu 5
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu3">
-                  Submenu 6
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu3">
-                  Submenu 7
-                </NavItemsDropdownItems>
-              </NavItemsDropdown>
+          <NavItemsDropdown menu="Menu Dropdown">
+            <NavItemsDropdownItems href="/submenu1">
+              Submenu 1
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu2">
+              Submenu 2
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu3">
+              Submenu 3
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu1">
+              Submenu 4
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu2">
+              Submenu 5
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu3">
+              Submenu 6
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu3">
+              Submenu 7
+            </NavItemsDropdownItems>
+          </NavItemsDropdown>
 
-              <NavItemsMenu href="/menu3" active={false}>
-                Menu 3
-              </NavItemsMenu>
-            </>
-          }
-          childrenMobile={
-            <>
-              <NavItemsMenu href="/menu1" active={false}>
-                <div>Menu 1</div>
-              </NavItemsMenu>
-              <NavItemsMenu href="/menu2" active={false}>
-                Menu 2
-              </NavItemsMenu>
-              <NavItemsDropdown menu="Menu Dropdown">
-                <NavItemsDropdownItems href="/submenu1">
-                  Submenu 1
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu2">
-                  Submenu 2
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu3">
-                  Submenu 3
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu1">
-                  Submenu 4
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu2">
-                  Submenu 5
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu3">
-                  Submenu 6
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu3">
-                  Submenu 7
-                </NavItemsDropdownItems>
-              </NavItemsDropdown>
-              <NavItemsMenu href="/menu3" active={false}>
-                Menu 3
-              </NavItemsMenu>
-            </>
-          }
-        ></NavigationMenuCombo>
+          <NavItemsMenu href="/menu3" active={false}>
+            Menu 3
+          </NavItemsMenu>
+        </NavigationMenuCombo>
       </NavbarContainer>
 
       <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
@@ -341,60 +299,30 @@ export const PreviewNavItemsMenu: FunctionComponent<PreviewNavbarProps> = (
   return (
     <Navbar showMenu={showMenu} className="px-2">
       <NavbarContainer>
-        <NavigationMenuCombo
-          showMenu={showMenu}
-          setMenu={setMenu}
-          childrenDesktop={
-            <>
-              <NavItemsMenu href="/menu1" active={false}>
-                Menu 1
-              </NavItemsMenu>
-              <NavItemsMenu href="/menu2" active={false}>
-                Menu 2
-              </NavItemsMenu>
+        <NavigationMenuCombo showMenu={showMenu} setMenu={setMenu}>
+          <NavItemsMenu href="/menu1" active={false}>
+            Menu 1
+          </NavItemsMenu>
+          <NavItemsMenu href="/menu2" active={false}>
+            Menu 2
+          </NavItemsMenu>
 
-              <NavItemsDropdown menu="Menu Dropdown">
-                <NavItemsDropdownItems href="/submenu1">
-                  Submenu 1
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu2">
-                  Submenu 2
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu3">
-                  Submenu 3
-                </NavItemsDropdownItems>
-              </NavItemsDropdown>
+          <NavItemsDropdown menu="Menu Dropdown">
+            <NavItemsDropdownItems href="/submenu1">
+              Submenu 1
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu2">
+              Submenu 2
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu3">
+              Submenu 3
+            </NavItemsDropdownItems>
+          </NavItemsDropdown>
 
-              <NavItemsMenu href="/menu3" active={false}>
-                Menu 3
-              </NavItemsMenu>
-            </>
-          }
-          childrenMobile={
-            <>
-              <NavItemsMenu href="/menu1" active={false}>
-                Menu 1
-              </NavItemsMenu>
-              <NavItemsMenu href="/menu2" active={false}>
-                Menu 2
-              </NavItemsMenu>
-              <NavItemsDropdown menu="Menu Dropdown">
-                <NavItemsDropdownItems href="/submenu1">
-                  Submenu 1
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu2">
-                  Submenu 2
-                </NavItemsDropdownItems>
-                <NavItemsDropdownItems href="/submenu3">
-                  Submenu 3
-                </NavItemsDropdownItems>
-              </NavItemsDropdown>
-              <NavItemsMenu href="/menu3" active={false}>
-                Menu 3
-              </NavItemsMenu>
-            </>
-          }
-        ></NavigationMenuCombo>
+          <NavItemsMenu href="/menu3" active={false}>
+            Menu 3
+          </NavItemsMenu>
+        </NavigationMenuCombo>
       </NavbarContainer>
 
       <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
