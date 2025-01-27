@@ -68,12 +68,13 @@ const AccordionContent = React.forwardRef<
       "text-txt-black-700 font-body text-body-sm relative overflow-hidden font-normal transition-all duration-300",
       "data-[state=open]:animate-slide-down data-[state=closed]:animate-slide-up",
       "data-[state=closed]:opacity-0 data-[state=open]:opacity-100",
+      "overflow-hidden pb-4 pr-9",
       className,
     )}
     {...props}
     ref={forwardedRef}
   >
-    <div className="overflow-hidden pb-4 pr-9">{children}</div>
+    {children}
   </AccordionBase.Content>
 ));
 
