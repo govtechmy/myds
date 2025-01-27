@@ -193,7 +193,11 @@ const meta = {
           Open Cookie Settings
         </Button>
 
-        <CookieBanner open={open} className={args.className}>
+        <CookieBanner
+          open={open}
+          className={args.className}
+          dismissible={false}
+        >
           <div className="mb-1 flex w-full flex-row justify-between">
             <CookieBannerHeader className="space-y-0 p-0 pb-1">
               <CookieBannerTitle className="text-body-md pb-1">
@@ -278,7 +282,7 @@ const meta = {
               </div>
             </div>
           </CookieBannerPreferences>
-          <CookieBannerFooter className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row">
+          <CookieBannerFooter>
             <Button
               variant="primary-fill"
               size="medium"
