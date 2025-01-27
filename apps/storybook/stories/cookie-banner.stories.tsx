@@ -283,23 +283,47 @@ const meta = {
             </div>
           </CookieBannerPreferences>
           <CookieBannerFooter>
-            <Button
-              variant="primary-fill"
-              size="medium"
-              onClick={handleAcceptAll}
-              className="w-full justify-center sm:w-auto"
-            >
-              Accept All
-            </Button>
-            <Button
-              variant="primary-fill"
-              size="medium"
-              onClick={handleRejectAll}
-              className="w-full justify-center sm:w-auto"
-            >
-              Reject All
-            </Button>
+            <CookieBannerCustomiser asChild>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={handleAcceptAll}
+                className="w-full justify-center sm:w-auto"
+              >
+                Accept All
+              </Button>
+            </CookieBannerCustomiser>
+            <CookieBannerCustomiser asChild>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={handleRejectAll}
+                className="w-full justify-center sm:w-auto"
+              >
+                Reject All
+              </Button>
+            </CookieBannerCustomiser>
             <CookieBannerCustomiser>Customise</CookieBannerCustomiser>
+            <CookieBannerCustomiser asChild showWhen="preferences-shown">
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={handleAcceptAll}
+                className="w-full justify-center sm:w-auto"
+              >
+                Save preferences
+              </Button>
+            </CookieBannerCustomiser>
+            <CookieBannerCustomiser asChild showWhen="preferences-shown">
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={handleAcceptAll}
+                className="w-full justify-center sm:w-auto"
+              >
+                Accept necessary cookies
+              </Button>
+            </CookieBannerCustomiser>
           </CookieBannerFooter>
         </CookieBanner>
       </div>

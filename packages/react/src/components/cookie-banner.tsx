@@ -12,7 +12,6 @@ import {
   dialog_footer_cva,
   DialogBody,
   DialogClose,
-  DialogCloseProps,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -20,7 +19,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "./dialog";
-import { CrossIcon } from "../icons";
 import { clx } from "../utils";
 import { Slot } from "@radix-ui/react-slot";
 
@@ -136,6 +134,7 @@ type CookieBannerCustomiserProps = {
   children: React.ReactNode;
   className?: string;
   asChild?: boolean;
+  showWhen?: "preferences-hidden" | "preferences-shown";
 };
 
 const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
@@ -175,33 +174,33 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
 
 const CookieBannerHeader = DialogHeader;
 const CookieBannerTitle = DialogTitle;
-const CookieBannerClose = ({
-  className,
-  onClick,
-  ...props
-}: {
-  className?: string;
-  onClick: () => void;
-}) => {
-  return (
-    <Button
-      onClick={onClick}
-      variant={"default-ghost"}
-      size={"small"}
-      className={clx(
-        "size-[1.25rem]",
-        "grid place-content-center",
-        "text-txt-black-900",
-        "disabled:pointer-events-none",
-        "flex-shrink-0",
-        className,
-      )}
-      {...props}
-    >
-      <CrossIcon className="stroke-current" />
-    </Button>
-  );
-};
+// const CookieBannerClose = ({
+//   className,
+//   onClick,
+//   ...props
+// }: {
+//   className?: string;
+//   onClick: () => void;
+// }) => {
+//   return (
+//     <Button
+//       onClick={onClick}
+//       variant={"default-ghost"}
+//       size={"small"}
+//       className={clx(
+//         "size-[1.25rem]",
+//         "grid place-content-center",
+//         "text-txt-black-900",
+//         "disabled:pointer-events-none",
+//         "flex-shrink-0",
+//         className,
+//       )}
+//       {...props}
+//     >
+//       <CrossIcon className="stroke-current" />
+//     </Button>
+//   );
+// };
 
 type CookieBannerFooterProps = Omit<
   DialogFooterProps,
@@ -223,6 +222,7 @@ const CookieBannerFooter: ForwardRefExoticComponent<CookieBannerFooterProps> =
     );
   });
 const CookieBannerDescription = DialogDescription;
+const CookieBannerClose = DialogClose;
 
 const CookieBannerPreferences = forwardRef<
   HTMLDivElement,
@@ -248,34 +248,50 @@ const CookieBannerPreferences = forwardRef<
 const CookieBannerCustomiser = forwardRef<
   HTMLElement,
   CookieBannerCustomiserProps
->(({ children, className, asChild = false, ...props }, ref) => {
-  const context = useContext(CookieBannerContext);
-  if (!context) {
-    throw new Error("Must be used within CookieBanner");
-  }
+>(
+  (
+    {
+      children,
+      className,
+      asChild = false,
+      showWhen = "preferences-hidden",
+      ...props
+    },
+    ref,
+  ) => {
+    const context = useContext(CookieBannerContext);
+    if (!context) {
+      throw new Error("Must be used within CookieBanner");
+    }
 
-  const togglePreferences = () => {
-    context.setShowPreferences(!context.showPreferences);
-  };
+    const togglePreferences = () => {
+      context.setShowPreferences(!context.showPreferences);
+    };
 
-  if (context.showPreferences) {
-    // To hide the cutomizer buttons once clicked to reveal cookie preferences
-    return null;
-  }
+    const shouldShow =
+      showWhen === "preferences-hidden"
+        ? !context.showPreferences
+        : context.showPreferences;
 
-  const Comp = asChild ? Slot : Button;
-  return (
-    <Comp
-      variant="primary-outline"
-      size="medium"
-      className={clx("w-full justify-center sm:w-auto", className)}
-      onClick={togglePreferences}
-      {...props}
-    >
-      {children}
-    </Comp>
-  );
-});
+    if (!shouldShow) {
+      // To hide the cutomizer buttons once clicked to reveal cookie preferences
+      return null;
+    }
+
+    const Comp = asChild ? Slot : Button;
+    return (
+      <Comp
+        variant="primary-outline"
+        size="medium"
+        className={clx("w-full justify-center sm:w-auto", className)}
+        onClick={togglePreferences}
+        {...props}
+      >
+        {children}
+      </Comp>
+    );
+  },
+);
 
 CookieBanner.displayName = "CookieBanner";
 CookieBannerCustomiser.displayName = "CookieBannerCustomiser";
