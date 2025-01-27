@@ -26,6 +26,7 @@ export * from "@govtechmy/myds-react/input";
 export * from "@govtechmy/myds-react/table";
 export * from "@govtechmy/myds-react/data-table";
 export * from "@govtechmy/myds-react/search-bar";
+export * from "@govtechmy/myds-react/summary-list";
 import {
   Callout,
   CalloutTitle,
@@ -66,6 +67,16 @@ import {
 } from "@govtechmy/myds-react/select";
 import { Tag } from "@govtechmy/myds-react/tag";
 import { Cell } from "@govtechmy/myds-react/data-table";
+import {
+  SummaryList,
+  SummaryListAction,
+  SummaryListBody,
+  SummaryListDetail,
+  SummaryListHeader,
+  SummaryListRow,
+  SummaryListTerm,
+} from "@govtechmy/myds-react/summary-list";
+import { SwapIcon } from "@govtechmy/myds-react/icon";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
@@ -633,4 +644,92 @@ export const DataTableRadio = {
     console.log("Selected Rows: ", id);
   },
   rowId: "id",
+};
+
+interface PreviewSummaryList extends ComponentProps<typeof SummaryList> {}
+
+export const PreviewSummaryList: FunctionComponent<PreviewSummaryList> = (
+  props,
+) => {
+  return (
+    <SummaryList>
+      <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
+
+      <SummaryListBody>
+        <SummaryListRow>
+          <SummaryListTerm>Application ID</SummaryListTerm>
+          <SummaryListDetail>SUB12345</SummaryListDetail>
+          <SummaryListAction></SummaryListAction>
+        </SummaryListRow>
+
+        <SummaryListRow>
+          <SummaryListTerm>Applicant Name</SummaryListTerm>
+          <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
+          <SummaryListAction></SummaryListAction>
+        </SummaryListRow>
+
+        <SummaryListRow>
+          <SummaryListTerm>Submission Date</SummaryListTerm>
+          <SummaryListDetail>15/10/2024 17:35:00</SummaryListDetail>
+          <SummaryListAction></SummaryListAction>
+        </SummaryListRow>
+
+        <SummaryListRow>
+          <SummaryListTerm>Subsidy Type</SummaryListTerm>
+          <SummaryListDetail>Petrol Subsidy</SummaryListDetail>
+          <SummaryListAction></SummaryListAction>
+        </SummaryListRow>
+
+        <SummaryListRow>
+          <SummaryListTerm>Status</SummaryListTerm>
+          <SummaryListDetail className="py-2">
+            <Tag
+              variant="warning"
+              size={"medium"}
+              className="h-fit"
+              mode={"default"}
+            >
+              Pending
+            </Tag>
+          </SummaryListDetail>
+          <SummaryListAction>
+            <Button variant="primary-ghost" className="h-8">
+              <SwapIcon /> Refresh
+            </Button>
+          </SummaryListAction>
+        </SummaryListRow>
+
+        <SummaryListRow>
+          <SummaryListTerm>Document Submitted</SummaryListTerm>
+          <SummaryListDetail>
+            <div>Proof Of Income</div>
+            <div>ID Copy</div>
+          </SummaryListDetail>
+          <SummaryListAction>
+            <Button variant="primary-ghost" className="h-8">
+              Add More
+            </Button>
+          </SummaryListAction>
+        </SummaryListRow>
+
+        <SummaryListRow>
+          <SummaryListTerm>Expected Response Date</SummaryListTerm>
+          <SummaryListDetail>23/03/2023 17:35:00</SummaryListDetail>
+          <SummaryListAction></SummaryListAction>
+        </SummaryListRow>
+      </SummaryListBody>
+    </SummaryList>
+  );
+};
+
+export const PreviewSummaryListAction: FunctionComponent<PreviewSummaryList> = (
+  props,
+) => {
+  return (
+    <div className="not-prose w-[660px]">
+      <Button variant="primary-ghost" className="h-8">
+        <SwapIcon /> Refresh
+      </Button>
+    </div>
+  );
 };
