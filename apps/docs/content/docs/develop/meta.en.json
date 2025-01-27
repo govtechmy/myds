@@ -33,6 +33,7 @@
     "(components)/select",
     "(components)/skiplink",
     "(components)/spinner",
+    "(components)/summarylist",
     "(components)/table",
     "(components)/tag",
     "(components)/text-area",
