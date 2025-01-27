@@ -1,5 +1,7 @@
 import React, {
+  ComponentProps,
   createContext,
+  ElementRef,
   forwardRef,
   ForwardRefExoticComponent,
   useContext,
@@ -11,6 +13,7 @@ import {
   Dialog,
   dialog_footer_cva,
   DialogBody,
+  DialogBodyProps,
   DialogClose,
   DialogContent,
   DialogDescription,
@@ -22,12 +25,12 @@ import {
 import { clx } from "../utils";
 import { Slot } from "@radix-ui/react-slot";
 
-interface CookieBannerProps {
-  open?: boolean;
-  className?: string;
-  children?: React.ReactNode;
-  dismissible?: boolean;
-}
+// interface CookieBannerProps {
+//   open?: boolean;
+//   className?: string;
+//   children?: React.ReactNode;
+//   dismissible?: boolean;
+// }
 type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
 
 /**
@@ -137,70 +140,44 @@ type CookieBannerCustomiserProps = {
   showWhen?: "preferences-hidden" | "preferences-shown";
 };
 
-const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
-  (
-    { open = false, dismissible = true, className, children, ...props },
-    ref,
-  ) => {
-    const [showPreferences, setShowPreferences] = useState(false);
-    // Reset showPreferences when dialog closes
-    useEffect(() => {
-      if (!open) {
-        setShowPreferences(false);
-      }
-    }, [open]);
+type CookieBannerProps = ComponentProps<typeof Dialog> & {
+  className?: string;
+};
 
-    return (
+const CookieBanner = forwardRef<
+  React.ElementRef<typeof DialogBody>,
+  CookieBannerProps
+>(({ open, onOpenChange, className, ...props }, ref) => {
+  const [showPreferences, setShowPreferences] = useState(false);
+
+  // Reset showPreferences when dialog closes
+  useEffect(() => {
+    if (!open) {
+      setShowPreferences(false);
+    }
+  }, [open]);
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <CookieBannerContext.Provider
         value={{ showPreferences, setShowPreferences }}
       >
-        <Dialog open={open}>
-          <DialogBody
-            className={clx(
-              "bg-bg-white bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:max-w-[502px] sm:translate-x-0 sm:p-6",
-              className,
-            )}
-            ref={ref}
-            dismissible={dismissible}
-            {...props}
-          >
-            {children}
-          </DialogBody>
-        </Dialog>
+        <DialogBody
+          ref={ref}
+          dismissible={true}
+          className={clx(
+            "bg-bg-white bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:max-w-[502px] sm:translate-x-0 sm:p-6",
+            className,
+          )}
+          {...props}
+        />
       </CookieBannerContext.Provider>
-    );
-  },
-);
+    </Dialog>
+  );
+});
 
 const CookieBannerHeader = DialogHeader;
 const CookieBannerTitle = DialogTitle;
-// const CookieBannerClose = ({
-//   className,
-//   onClick,
-//   ...props
-// }: {
-//   className?: string;
-//   onClick: () => void;
-// }) => {
-//   return (
-//     <Button
-//       onClick={onClick}
-//       variant={"default-ghost"}
-//       size={"small"}
-//       className={clx(
-//         "size-[1.25rem]",
-//         "grid place-content-center",
-//         "text-txt-black-900",
-//         "disabled:pointer-events-none",
-//         "flex-shrink-0",
-//         className,
-//       )}
-//       {...props}
-//     >
-//       <CrossIcon className="stroke-current" />
-//     </Button>
-//   );
-// };
 
 type CookieBannerFooterProps = Omit<
   DialogFooterProps,
@@ -225,7 +202,7 @@ const CookieBannerDescription = DialogDescription;
 const CookieBannerClose = DialogClose;
 
 const CookieBannerPreferences = forwardRef<
-  HTMLDivElement,
+  ElementRef<typeof DialogDescription>,
   CookieBannerPreferencesProps
 >(({ children, className, ...props }, ref) => {
   const context = useContext(CookieBannerContext);
@@ -235,13 +212,13 @@ const CookieBannerPreferences = forwardRef<
   if (!context.showPreferences) return null;
 
   return (
-    <DialogContent
+    <DialogDescription
       ref={ref}
       className={clx("flex flex-col gap-2 px-0 py-3", className)}
       {...props}
     >
       {children}
-    </DialogContent>
+    </DialogDescription>
   );
 });
 
@@ -311,4 +288,5 @@ export {
   CookieBannerPreferences,
   CookieBannerCustomiser,
   CookieBannerFooter,
+  // CookieBannerBody,
 };

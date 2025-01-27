@@ -192,11 +192,10 @@ const meta = {
         <Button variant="primary-fill" onClick={() => setOpen(true)}>
           Open Cookie Settings
         </Button>
-
         <CookieBanner
           open={open}
           className={args.className}
-          dismissible={false}
+          onOpenChange={setOpen}
         >
           <div className="mb-1 flex w-full flex-row justify-between">
             <CookieBannerHeader className="space-y-0 p-0 pb-1">
