@@ -162,20 +162,6 @@ const meta = {
       analytics: true,
       performance: true,
     });
-    const handleAcceptAll = () => {
-      setOpen(!open);
-      // define further action of handleAcceptAll
-    };
-
-    const handleRejectAll = () => {
-      const preferences = {
-        necessary: true,
-        analytics: false,
-        performance: false,
-      };
-      setOpen(!open);
-      // define further action of handleRejectAll
-    };
 
     // Reset preferences back to default when dialog closes
     useEffect(() => {
@@ -283,45 +269,53 @@ const meta = {
           </CookieBannerPreferences>
           <CookieBannerFooter>
             <CookieBannerCustomiser asChild>
-              <Button
-                variant="primary-fill"
-                size="medium"
-                onClick={handleAcceptAll}
-                className="w-full justify-center sm:w-auto"
-              >
-                Accept All
-              </Button>
+              <CookieBannerClose>
+                <Button
+                  variant="primary-fill"
+                  size="medium"
+                  onClick={() => alert("Accept all cookies.")}
+                  className="w-full justify-center sm:w-auto"
+                >
+                  Accept All
+                </Button>
+              </CookieBannerClose>
             </CookieBannerCustomiser>
             <CookieBannerCustomiser asChild>
-              <Button
-                variant="primary-fill"
-                size="medium"
-                onClick={handleRejectAll}
-                className="w-full justify-center sm:w-auto"
-              >
-                Reject All
-              </Button>
+              <CookieBannerClose>
+                <Button
+                  variant="primary-fill"
+                  size="medium"
+                  onClick={() => alert("Reject all cookies.")}
+                  className="w-full justify-center sm:w-auto"
+                >
+                  Reject All
+                </Button>
+              </CookieBannerClose>
             </CookieBannerCustomiser>
             <CookieBannerCustomiser>Customise</CookieBannerCustomiser>
             <CookieBannerCustomiser asChild showWhen="preferences-shown">
-              <Button
-                variant="primary-fill"
-                size="medium"
-                onClick={handleAcceptAll}
-                className="w-full justify-center sm:w-auto"
-              >
-                Save preferences
-              </Button>
+              <CookieBannerClose>
+                <Button
+                  variant="primary-fill"
+                  size="medium"
+                  onClick={() => alert("Accept saved preferences.")}
+                  className="w-full justify-center sm:w-auto"
+                >
+                  Save preferences
+                </Button>
+              </CookieBannerClose>
             </CookieBannerCustomiser>
             <CookieBannerCustomiser asChild showWhen="preferences-shown">
-              <Button
-                variant="primary-fill"
-                size="medium"
-                onClick={handleAcceptAll}
-                className="w-full justify-center sm:w-auto"
-              >
-                Accept necessary cookies
-              </Button>
+              <CookieBannerClose>
+                <Button
+                  variant="primary-fill"
+                  size="medium"
+                  onClick={() => alert("Necessary cookies accepted.")}
+                  className="w-full justify-center sm:w-auto"
+                >
+                  Accept necessary cookies
+                </Button>
+              </CookieBannerClose>
             </CookieBannerCustomiser>
           </CookieBannerFooter>
         </CookieBanner>
