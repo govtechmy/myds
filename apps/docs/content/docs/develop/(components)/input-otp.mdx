@@ -1,0 +1,221 @@
+---
+title: Input OTP
+description: The Input OTP (One-Time Password) component allows users to enter a code sent to their email or phone to verify their identity. This component is commonly used in two-factor authentication (2FA) and account recovery processes.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { InputOTP, InputOTPSlot } from "@/components/myds"
+import { InputOTPControlledExample } from "./input-otp.client"
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <InputOTP maxLength={4}>
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import { InputOTP, InputOTPSlot } from "@/components/myds"
+
+    <InputOTP maxLength={4}>
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-inputotp--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/input-otp.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import { InputOTP, InputOTPSlot } from "@/components/myds"
+```
+
+```tsx copy
+<InputOTP maxLength={4}>
+  <InputOTPSlot index={0} />
+  <InputOTPSlot index={1} />
+  <InputOTPSlot index={2} />
+  <InputOTPSlot index={3} />
+</InputOTP>
+```
+
+## Examples
+
+### Invalid
+
+Set the `invalid` prop to true to mark the input as invalid.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <InputOTP maxLength={4} invalid>
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import { InputOTP, InputOTPSlot } from "@/components/myds"
+
+    <InputOTP maxLength={4} invalid>
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+    ```
+  </Tab>
+</Tabs>
+
+### Disabled
+
+Disable the input by setting the `disabled` prop to true.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <InputOTP maxLength={4} disabled defaultValue="AB12">
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import { InputOTP, InputOTPSlot } from "@/components/myds"
+
+    <InputOTP maxLength={4} disabled defaultValue="AB12">
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+    ```
+  </Tab>
+</Tabs>
+
+### Controlled Component
+
+The input can be controlled by setting the `value` and `onChange` props. In the example below, we control `InputOTP` with a state and convert the values to uppercase on change.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <InputOTPControlledExample />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import { InputOTP, InputOTPSlot } from "@/components/myds"
+
+    const [value, setValue] = useState("");
+
+    <InputOTP
+      maxLength={4}
+      value={value}
+      onChange={(value) => {
+        setValue(value.toUpperCase());
+      }}
+    >
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+    ```
+  </Tab>
+</Tabs>
+
+### Using the `pattern` Prop
+
+Pass a regex to the `pattern` prop to only accept values of a certain pattern. For example, we can use a regex to only accept numbers: 
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <InputOTP maxLength={4} pattern="^[0-9]{0,4}$">
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import { InputOTP, InputOTPSlot } from "@/components/myds"
+
+    <InputOTP maxLength={4} pattern="^[0-9]{0,4}$">
+      <InputOTPSlot index={0} />
+      <InputOTPSlot index={1} />
+      <InputOTPSlot index={2} />
+      <InputOTPSlot index={3} />
+    </InputOTP>
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### InputOTP
+
+`InputOTP` is abstracted from input-otp's `OTPInput`. Please refer to the API references in [this documentation](https://github.com/guilhermerodz/input-otp?tab=readme-ov-file#otpinput).
+
+<TypeTable
+  type={{
+    maxLength: {
+      description: "The max length of the OTP - it should correspond to the number of slots",
+      type: "number",
+    },
+    defaultValue: {
+      description: "The default value of the input",
+      type: "string",
+    },
+    value: {
+      description: "The value of the input (controlled)",
+      type: "string",
+    },
+    onChange: {
+      description: "Callback function when the value of the input changes (controlled)",
+      type: "function",
+      typeDescription: "(value: string) => void"
+    },
+    disabled: {
+      type: "boolean",
+      default: "false",
+    },
+    invalid: {
+      type: "boolean",
+      default: "false",
+    },
+    pattern: {
+      description: "A regex to only accept values of a certain pattern",
+      type: "string",
+    },
+  }}
+/>
+
+### InputOTPSlot
+
+<TypeTable
+  type={{
+    index: {
+      description: "The index of the slot",
+      type: "number",
+    },
+  }}
+/>
