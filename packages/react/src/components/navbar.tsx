@@ -56,7 +56,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({
     >
       <div
         className={clx(
-          "border-otl-gray-200 bg-bg-white container flex h-16 items-center justify-between gap-3 py-3 max-xl:pr-3 max-lg:border-b lg:gap-4",
+          "border-otl-gray-200 bg-bg-white container mx-auto flex h-16 items-center justify-between gap-3 py-3 max-xl:pr-3 max-lg:border-b lg:gap-4",
           showMenu ? "" : "xl:bg-transparent",
           className,
         )}
