@@ -25,14 +25,6 @@ import {
 import { clx } from "../utils";
 import { Slot } from "@radix-ui/react-slot";
 
-// interface CookieBannerProps {
-//   open?: boolean;
-//   className?: string;
-//   children?: React.ReactNode;
-//   dismissible?: boolean;
-// }
-type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
-
 /**
  * Root component for the Cookie Banner compound component.
  * Provides context and base layout for all cookie banner subcomponents.
@@ -140,14 +132,17 @@ type CookieBannerCustomiserProps = {
   showWhen?: "preferences-hidden" | "preferences-shown";
 };
 
-type CookieBannerProps = ComponentProps<typeof Dialog> & {
+type CookieBannerProps = Omit<ComponentProps<typeof Dialog>, "defaultOpen"> & {
   className?: string;
+  dismissible?: boolean;
+  open: boolean;
+  onDismiss?: () => void;
 };
 
 const CookieBanner = forwardRef<
   React.ElementRef<typeof DialogBody>,
   CookieBannerProps
->(({ open, onOpenChange, className, ...props }, ref) => {
+>(({ open, onOpenChange, dismissible = true, className, ...props }, ref) => {
   const [showPreferences, setShowPreferences] = useState(false);
 
   // Reset showPreferences when dialog closes
@@ -163,8 +158,8 @@ const CookieBanner = forwardRef<
         value={{ showPreferences, setShowPreferences }}
       >
         <DialogBody
+          dismissible={dismissible}
           ref={ref}
-          dismissible={true}
           className={clx(
             "bg-bg-white bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:max-w-[502px] sm:translate-x-0 sm:p-6",
             className,
@@ -176,15 +171,7 @@ const CookieBanner = forwardRef<
   );
 });
 
-const CookieBannerHeader = DialogHeader;
-const CookieBannerTitle = DialogTitle;
-
-type CookieBannerFooterProps = Omit<
-  DialogFooterProps,
-  "border" | "align" | "action"
->;
-
-const CookieBannerFooter: ForwardRefExoticComponent<CookieBannerFooterProps> =
+const CookieBannerFooter: ForwardRefExoticComponent<ComponentProps<"div">> =
   forwardRef(({ className, ...props }, ref) => {
     return (
       <div
@@ -198,8 +185,6 @@ const CookieBannerFooter: ForwardRefExoticComponent<CookieBannerFooterProps> =
       />
     );
   });
-const CookieBannerDescription = DialogDescription;
-const CookieBannerClose = DialogClose;
 
 const CookieBannerPreferences = forwardRef<
   ElementRef<typeof DialogDescription>,
@@ -270,6 +255,11 @@ const CookieBannerCustomiser = forwardRef<
   },
 );
 
+const CookieBannerDescription = DialogDescription;
+const CookieBannerClose = DialogClose;
+const CookieBannerHeader = DialogHeader;
+const CookieBannerTitle = DialogTitle;
+
 CookieBanner.displayName = "CookieBanner";
 CookieBannerCustomiser.displayName = "CookieBannerCustomiser";
 CookieBannerFooter.displayName = "CookieBannerFooter";
@@ -288,5 +278,4 @@ export {
   CookieBannerPreferences,
   CookieBannerCustomiser,
   CookieBannerFooter,
-  // CookieBannerBody,
 };
