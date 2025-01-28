@@ -1,0 +1,512 @@
+---
+title: Summary List
+description: The summary list component displays information in a structured key-value format, making it ideal for presenting form summaries, application details, or any data that needs to be reviewed. It supports headers, action buttons, and custom styling.
+---
+
+import {
+  SummaryList,
+  SummaryListAction,
+  SummaryListBody,
+  SummaryListHeader,
+  SummaryListTerm,
+  SummaryListDetail,
+  SummaryListRow,
+  SummaryListAddition,
+} from "@govtechmy/myds-react/summary-list";
+import { Tag } from "@govtechmy/myds-react/tag";
+import { SwapIcon } from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import {
+  PreviewSummaryList,
+  PreviewSummaryListAction,
+} from "@/components/myds";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit">
+    <PreviewSummaryList/>
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+
+```tsx
+import {
+  SummaryList,
+  SummaryListAction,
+  SummaryListBody,
+  SummaryListHeader,
+  SummaryListTerm,
+  SummaryListDetail,
+  SummaryListRow,
+} from "@govtechmy/myds-react/summary-list";
+import { Tag } from "@govtechmy/myds-react/tag";
+import { Button } from "@govtechmy/myds-react/button";
+import { SwapIcon } from "@govtechmy/myds-react/icon";
+
+<SummaryList>
+  <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
+
+  <SummaryListBody>
+    <SummaryListRow>
+      <SummaryListTerm>Application ID</SummaryListTerm>
+      <SummaryListDetail>SUB12345</SummaryListDetail>
+      <SummaryListAction></SummaryListAction>
+    </SummaryListRow>
+
+    <SummaryListRow>
+      <SummaryListTerm>Applicant Name</SummaryListTerm>
+      <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
+      <SummaryListAction></SummaryListAction>
+    </SummaryListRow>
+
+    <SummaryListRow>
+      <SummaryListTerm>Submission Date</SummaryListTerm>
+      <SummaryListDetail>15/10/2024 17:35:00</SummaryListDetail>
+      <SummaryListAction></SummaryListAction>
+    </SummaryListRow>
+
+    <SummaryListRow>
+      <SummaryListTerm>Subsidy Type</SummaryListTerm>
+      <SummaryListDetail>Petrol Subsidy</SummaryListDetail>
+      <SummaryListAction></SummaryListAction>
+    </SummaryListRow>
+
+    <SummaryListRow>
+      <SummaryListTerm>Status</SummaryListTerm>
+      <SummaryListDetail className="py-2">
+        <Tag variant="warning" size="medium" className="h-fit" mode="default">
+          Pending
+        </Tag>
+      </SummaryListDetail>
+      <SummaryListAction>
+        <Button variant="primary-ghost" className="h-8">
+          <SwapIcon /> Refresh
+        </Button>
+      </SummaryListAction>
+    </SummaryListRow>
+
+    <SummaryListRow>
+      <SummaryListTerm>Document Submitted</SummaryListTerm>
+      <SummaryListDetail>
+        <div>Proof Of Income</div>
+        <div>ID Copy</div>
+      </SummaryListDetail>
+      <SummaryListAction>
+        <Button variant="primary-ghost" className="h-8">
+          Add More
+        </Button>
+      </SummaryListAction>
+    </SummaryListRow>
+
+    <SummaryListRow>
+      <SummaryListTerm>Expected Response Date</SummaryListTerm>
+      <SummaryListDetail>23/03/2023 17:35:00</SummaryListDetail>
+      <SummaryListAction></SummaryListAction>
+    </SummaryListRow>
+  </SummaryListBody>
+</SummaryList>;
+```
+
+  </Tab>
+</Tabs>
+
+## Usage
+
+```tsx Copy
+import {
+  SummaryList,
+  SummaryListAction,
+  SummaryListBody,
+  SummaryListHeader,
+  SummaryListTerm,
+  SummaryListDetail,
+  SummaryListRow,
+} from "@govtechmy/myds-react/summary-list";
+import { Tag } from "@govtechmy/myds-react/tag";
+import { Button } from "@govtechmy/myds-react/button";
+import { SwapIcon } from "@govtechmy/myds-react/icon";
+```
+
+```tsx copy
+export default () => (
+  <SummaryList>
+    <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
+
+    <SummaryListBody>
+      <SummaryListRow>
+        <SummaryListTerm>Application ID</SummaryListTerm>
+        <SummaryListDetail>SUB12345</SummaryListDetail>
+        <SummaryListAction></SummaryListAction>
+      </SummaryListRow>
+
+      <SummaryListRow>
+        <SummaryListTerm>Applicant Name</SummaryListTerm>
+        <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
+        <SummaryListAction></SummaryListAction>
+      </SummaryListRow>
+
+      <SummaryListRow>
+        <SummaryListTerm>Submission Date</SummaryListTerm>
+        <SummaryListDetail>15/10/2024 17:35:00</SummaryListDetail>
+        <SummaryListAction></SummaryListAction>
+      </SummaryListRow>
+
+      <SummaryListRow>
+        <SummaryListTerm>Subsidy Type</SummaryListTerm>
+        <SummaryListDetail>Petrol Subsidy</SummaryListDetail>
+        <SummaryListAction></SummaryListAction>
+      </SummaryListRow>
+
+      <SummaryListRow>
+        <SummaryListTerm>Status</SummaryListTerm>
+        <SummaryListDetail className="py-2">
+          <Tag variant="warning" size="medium" className="h-fit" mode="default">
+            Pending
+          </Tag>
+        </SummaryListDetail>
+        <SummaryListAction>
+          <Button variant="primary-ghost" className="h-8">
+            <SwapIcon /> Refresh
+          </Button>
+        </SummaryListAction>
+      </SummaryListRow>
+
+      <SummaryListRow>
+        <SummaryListTerm>Document Submitted</SummaryListTerm>
+        <SummaryListDetail>
+          <div>Proof Of Income</div>
+          <div>ID Copy</div>
+        </SummaryListDetail>
+        <SummaryListAction>
+          <Button variant="primary-ghost" className="h-8">
+            Add More
+          </Button>
+        </SummaryListAction>
+      </SummaryListRow>
+
+      <SummaryListRow>
+        <SummaryListTerm>Expected Response Date</SummaryListTerm>
+        <SummaryListDetail>23/03/2023 17:35:00</SummaryListDetail>
+        <SummaryListAction></SummaryListAction>
+      </SummaryListRow>
+    </SummaryListBody>
+  </SummaryList>
+);
+```
+
+---
+
+### Main Wrapper: `SummaryList`
+
+The `SummaryList` is the primary container for presenting a summary of items in a structured and visually consistent format. It serves as the parent component, wrapping all subcomponents.
+
+1. `SummaryListHeader`
+2. `SummaryListBody`
+
+---
+
+## 1. SummaryListHeader
+
+The `SummaryListHeader` is used to display the title of the summary list.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
+  </Tab>
+
+  <Tab value="Code">
+    ```tsx
+    <SummaryListHeader>Summary Title</SummaryListHeader>
+    ```
+  </Tab>
+</Tabs>
+
+## 2. SummaryListBody
+
+The SummaryListBody is a wrapper for the tabular data within the SummaryList. Main wrapper for multiple or single SummaryListRow.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
+  <Tab value="Preview">
+    <SummaryListBody>
+        <SummaryListRow>
+            <SummaryListTerm>Application ID</SummaryListTerm>
+            <SummaryListDetail>SUB12345</SummaryListDetail>
+        </SummaryListRow>
+        <SummaryListRow>
+            <SummaryListTerm>Applicant Name</SummaryListTerm>
+            <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
+        </SummaryListRow>
+    </SummaryListBody>
+  </Tab>
+
+  <Tab value="Code">
+    
+```tsx
+<SummaryListBody>
+    <SummaryListRow>
+        <SummaryListTerm>Application ID</SummaryListTerm>
+        <SummaryListDetail>SUB12345</SummaryListDetail>
+    </SummaryListRow>
+    <SummaryListRow>
+        <SummaryListTerm>Applicant Name</SummaryListTerm>
+        <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
+    </SummaryListRow>
+</SummaryListBody>
+```
+  </Tab>
+</Tabs>
+
+### 2.1 SummaryListRow
+
+The SummaryListRow defines individual rows within the table.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <SummaryListBody>
+      <SummaryListRow>
+        <SummaryListTerm>Application ID</SummaryListTerm>
+        <SummaryListDetail>SUB12345</SummaryListDetail>
+      </SummaryListRow>
+    </SummaryListBody>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <SummaryListRow>
+      <SummaryListTerm>Application ID</SummaryListTerm>
+      <SummaryListDetail>SUB12345</SummaryListDetail>
+    </SummaryListRow>
+    ```
+  </Tab>
+</Tabs>
+
+### 2.1.1 SummaryListTerm
+
+The SummaryListTerm is used to represent the term or label in the row.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <SummaryListBody>
+      <SummaryListRow>
+        <SummaryListTerm>Application ID</SummaryListTerm>
+        <SummaryListDetail></SummaryListDetail>
+      </SummaryListRow>
+    </SummaryListBody>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <SummaryListTerm>Application ID</SummaryListTerm>
+    ```
+  </Tab>
+</Tabs>
+
+### 2.1.2 SummaryListDetail
+
+The SummaryListDetail displays the detailed information corresponding to the term.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <SummaryListBody>
+      <SummaryListRow>
+        <SummaryListDetail>SUB12345</SummaryListDetail>
+      </SummaryListRow>
+    </SummaryListBody>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <SummaryListDetail>SUB12345</SummaryListDetail>
+    ```
+  </Tab>
+</Tabs>
+
+### 2.1.3 SummaryListAction
+
+The SummaryListAction is for adding actions (e.g., buttons or links) associated with a row.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <PreviewSummaryListAction />
+  </Tab>
+  <Tab value="Code">
+    
+```tsx
+<SummaryListAction>
+    <Button variant="primary-ghost" className="h-8">
+        <SwapIcon /> Refresh
+    </Button>
+<SummaryListAction>
+```
+  </Tab>
+</Tabs>
+
+### 2.1.4 SummaryListAddition
+
+The SummaryListAddition provides extra information or actions in the row.
+
+**Example**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <SummaryListBody>
+      <SummaryListRow>
+        <SummaryListTerm>Application ID</SummaryListTerm>
+        <SummaryListDetail>SUB12345</SummaryListDetail>
+        <SummaryListAction></SummaryListAction>
+        <SummaryListAddition>Additional Info</SummaryListAddition>
+      </SummaryListRow>
+    </SummaryListBody>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <SummaryListRow>
+      <SummaryListTerm>Application ID</SummaryListTerm>
+      <SummaryListDetail>SUB12345</SummaryListDetail>
+      <SummaryListAction></SummaryListAction>
+      <SummaryListAddition>Additional Info</SummaryListAddition>
+    </SummaryListRow>
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### SummaryList
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the main wrapper.",
+      type: "string",
+    },
+    children: {
+      description: "Content inside the summary list.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListHeader
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the header.",
+      type: "string",
+    },
+    children: {
+      description: "Header content, typically a title. ",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListBody
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the body container.",
+      type: "string",
+    },
+    children: {
+      description:
+        "Tabular data to be rendered inside the body. Inherits all table attributes.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListRow
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the row.",
+      type: "string",
+    },
+    children: {
+      description:
+        "Row content, typically includes term and detail components. Inherits all tr attributes.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListTerm
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the term cell.",
+      type: "string",
+    },
+    children: {
+      description:
+        "Term content, such as labels or titles. Inherits all td attributes.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListDetail
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the detail cell. ",
+      type: "string",
+    },
+    children: {
+      description:
+        "Detail content, typically descriptions or data. Inherits all td attributes.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListAction
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the action cell. ",
+      type: "string",
+    },
+    children: {
+      description:
+        "Actions related to the row, such as buttons or links. Inherits all td attributes.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListAddition
+
+<TypeTable
+  type={{
+    className: {
+      description: "Additional styles for the addition cell.",
+      type: "string",
+    },
+    children: {
+      description:
+        "Auxiliary or extra content in the row. Inherits all td attributes.",
+      type: "ReactNode",
+    },
+  }}
+/>

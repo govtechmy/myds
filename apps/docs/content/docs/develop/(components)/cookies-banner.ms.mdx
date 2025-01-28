@@ -5,12 +5,7 @@ description: Memaklumkan pengguna bahawa laman web ini menggunakan kuki untuk pe
 
 import { InfoIcon } from "@govtechmy/myds-react/icon";
 import Preview from "@/components/preview";
-import {
-  Button,
-  ButtonIcon,
-  ButtonCounter,
-  Link,
-} from "@/components/myds";
+import { Button, ButtonIcon, ButtonCounter, Link } from "@/components/myds";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Quicklinks } from "@/components/quicklinks";
@@ -120,7 +115,6 @@ import { CookiesBannerPreview } from "@/components/cookies-banner-preview";
         </div>
       </CookieBannerPreferences>
       <CookieBannerFooter
-        fillWidth={false}
         className="flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row"
       >
         <Button
@@ -158,7 +152,7 @@ import { CookiesBannerPreview } from "@/components/cookies-banner-preview";
 
 ## Usage
 
-```tsx 
+```tsx
 import {
   CookieBanner,
   CookieBannerClose,
@@ -171,7 +165,7 @@ import {
 } from "@govtechmy/myds-react/cookie-banner";
 ```
 
-```tsx 
+```tsx
 export default () => (
   <CookieBanner>
     <CookieBannerHeader>
@@ -186,88 +180,103 @@ export default () => (
   </CookieBanner>
 );
 ```
+
 ## Props
 
 ### CookieBanner
+
 Menempatkan semua komponen konstituen untuk sepanduk kuki. Komponen ini adalah komponen terkawal. Ia dibina menggunakan `Dialog` dan `DialogContent`.
+
 <TypeTable
   type={{
     open: {
       description: "'State' untuk mengawal sepanduk kuki dibuka atau ditutup",
       type: "boolean",
-      typeDescription:
-        "true | false",
-        default: 'false'
-    }
+      typeDescription: "true | false",
+      default: "false",
+    },
   }}
 />
 
 ### CookieBannerHeader
+
 Mengandungi komponen `CookieBannerTitle` dan `CookieBannerClose`. Ia dibina menggunakan `DialogHeader`.
- 
+
 ### CookieBannerTitle
+
 Digunakan untuk mengubah tajuk sepanduk kuki. Ia dibina menggunakan `DialogTitle`.
+
 <TypeTable
   type={{
     asChild: {
-      description: 'Digunakan untuk "merender" elemen anak (child element) berbanding elemen lalai (default element).',
+      description:
+        'Digunakan untuk "merender" elemen anak (child element) berbanding elemen lalai (default element).',
       type: "boolean",
-      typeDescription:
-        "true | false",
-        default: 'false'
-    }
+      typeDescription: "true | false",
+      default: "false",
+    },
   }}
 />
 
 ### CookieBannerClose
+
 Untuk menukar 'state' `open` pada Sepanduk Kuki.
+
 <TypeTable
   type={{
     onClick: {
-      description: "Fungsi (function) yang dipanggil apabila butang tutup diklik untuk mengawal keterlihatan (visibility) sepanduk.",
-      type: "function", 
+      description:
+        "Fungsi (function) yang dipanggil apabila butang tutup diklik untuk mengawal keterlihatan (visibility) sepanduk.",
+      type: "function",
       typeDescription: "() => void",
-    }
+    },
   }}
 />
 
 ### CookieBannerPreferences
+
 Komponen yang merangkumi pilihan kuki, biasanya mengandungi kotak semak (checkboxes) dan penerangan untuk kategori kuki yang berbeza.
+
 <TypeTable
   type={{
     asChild: {
-      description: 'Digunakan untuk "merender" elemen anak (child element) berbanding elemen lalai (default element).',
+      description:
+        'Digunakan untuk "merender" elemen anak (child element) berbanding elemen lalai (default element).',
       type: "boolean",
-      typeDescription:
-        "true | false",
-        default: 'false'
-    }
+      typeDescription: "true | false",
+      default: "false",
+    },
   }}
 />
 
 ### CookieBannerFooter
+
 Mengandungi komponen seperti butang dan `CookieBannerCustomiser` untuk mengubah pilihan kuki. Dibina di atas `DialogFooter`.
+
 <TypeTable
   type={{
     fillWidth: {
-      description: "Apabila `true`, menjadikan semua elemen anak mengambil lebar yang sama dan memusatkan (center) kandungan mereka.",
+      description:
+        "Apabila `true`, menjadikan semua elemen anak mengambil lebar yang sama dan memusatkan (center) kandungan mereka.",
       type: "boolean",
       typeDescription: "true | false",
-      default: "false"
-    }
+      default: "false",
+    },
   }}
 />
 
 ### CookieBannerCustomiser
+
 Komponen butang yang mengawal keterlihatan (visibility) pilihan keutamaan kuki. Secara lalai, dirender sebagai komponen Button tetapi boleh diubah menggunakan props `asChild`.
 
 <TypeTable
   type={{
     asChild: {
-      description: 'Digunakan untuk "merender" elemen anak (child element) berbanding elemen lalai (default element).',
+      description:
+        'Digunakan untuk "merender" elemen anak (child element) berbanding elemen lalai (default element).',
       type: "boolean",
       typeDescription: "true | false",
-      default: "false"
-    }
+      default: "false",
+    },
   }}
 />

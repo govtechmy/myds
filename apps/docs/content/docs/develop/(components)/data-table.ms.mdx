@@ -1,0 +1,1628 @@
+---
+title: Jadual Data
+description: Menyusun maklumat ke dalam baris dan lajur untuk kemudahan bacaan. Ia menampung pelbagai jenis data, termasuk teks, nombor, kod, panggilan untuk tindakan dan pautan, membolehkan penyampaian dan perbandingan yang cekap.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  DataTable,
+  DataTableData,
+  DataTableNestedData,
+  DataTableColumns,
+  DataTableNestedColumns,
+  DataTableFooterColumns,
+  DataTableCheckbox,
+  DataTableRadio,
+  DataTableGroupedColumns,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose flex justify-center">
+    <DataTable data={DataTableData} columns={DataTableColumns} />
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Pengurus Produk",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Pereka",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'Dengan Nama Tengah Yang Sangat Panjang' Smith",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Saintis Data",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Nama",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Umur",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Umur pekerja",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Jawatan",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Jawatan pekerja",
+          },
+        },
+        {
+          cell: () => {
+            return (
+              <Tag variant="success" size={"small"} mode="pill">
+                Berjaya
+              </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Tindakan",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-datatable--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/data-table.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import { DataTable } from "@govtechmy/myds-react/data-table";
+```
+
+```tsx copy
+export default () => <DataTable />;
+```
+
+## Contoh
+
+### Data & Lajur
+
+Komponen `DataTable` terutamanya ditakrifkan oleh 2 prop penting: `data` dan `columns`.
+
+- `data` menerima array objek, di mana setiap objek mewakili baris dalam jadual.
+- `columns` menerima array `ColumnDef`, di mana setiap objek mewakili lajur dalam jadual.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col items-center gap-3 overflow-auto">
+    <DataTable data={DataTableData} columns={DataTableColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Pengurus Produk",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Pereka",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'Dengan Nama Tengah Yang Sangat Panjang' Smith",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Saintis Data",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Nama",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Umur",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Umur pekerja",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Jawatan",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Jawatan pekerja",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Berjaya
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Tindakan",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+<Callout
+  type="info"
+  title="Nota"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  `DataTable` menggunakan [TanStack/table](https://github.com/TanStack/table),
+  sebuah komponen jadual yang berkemampuan, di balik tabir. Untuk mengetahui
+  lebih lanjut mengenai **ColumnDef** dan API yang tersedia, sila rujuk kepada
+  [dokumentasi](https://tanstack.com/table/latest/docs/guide/column-defs) di
+  sini.
+</Callout>
+
+### Mengembangkan Lajur
+
+Anda boleh mengembangkan saiz sel dalam lajur dengan menetapkan sifat `expandable` kepada `true` dalam objek `meta` definisi lajur.
+
+Untuk menunjukkan ini, kami telah menetapkan sifat `expandable` kepada `true` untuk lajur `Nama` dan `Jawatan`. Anda boleh mengklik ikon pengembangan untuk melihat kandungan penuh sel.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={DataTableData} columns={DataTableColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Pengurus Produk",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Pereka",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'Dengan Nama Tengah Yang Sangat Panjang' Smith",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Saintis Data",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Nama",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Umur",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Umur pekerja",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Jawatan",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Jawatan pekerja",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Berjaya
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Tindakan",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Tooltip pada Tajuk Lajur
+
+Anda boleh menambah tooltip pada tajuk lajur dengan menetapkan sifat `tooltip` dalam objek `meta` definisi lajur.
+
+Untuk menunjukkan ini, kami telah menetapkan sifat `tooltip` kepada lajur `Umur` dan `Jawatan`. Arahkan kursor ke tajuk lajur untuk melihat tooltip.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+ <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={DataTableData} columns={DataTableColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Pengurus Produk",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Pereka",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'Dengan Nama Tengah Yang Sangat Panjang' Smith",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Saintis Data",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Nama",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Umur",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Umur pekerja",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Jawatan",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Jawatan pekerja",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Berjaya
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Tindakan",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Pengisihan
+
+Anda boleh mengisih data dalam jadual dengan menetapkan sifat `sortable` kepada `true` dalam objek `meta` definisi lajur.
+
+Untuk menunjukkan ini, kami telah menetapkan sifat `sortable` kepada lajur `Jawatan`. Klik ikon pengisihan untuk menukar pengisihan yang tersedia.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+ <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={DataTableData} columns={DataTableColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Pengurus Produk",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Pereka",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'Dengan Nama Tengah Yang Sangat Panjang' Smith",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Saintis Data",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Nama",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Umur",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Umur pekerja",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Jawatan",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Jawatan pekerja",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Berjaya
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Tindakan",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Skeleton Loading
+
+Anda boleh mengaktifkan prop `loading` untuk mencetuskan keadaan pemuatan rangka untuk jadual.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+ <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable loading data={DataTableData} columns={DataTableColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DataTable
+      loading
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Pengurus Produk",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Pereka",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'Dengan Nama Tengah Yang Sangat Panjang' Smith",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Saintis Data",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Nama",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Umur",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Umur pekerja",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Jawatan",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Jawatan pekerja",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Berjaya
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Tindakan",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Jadual Kosong
+
+Menghantar array kosong kepada prop `data` akan memaparkan keadaan kosong untuk jadual.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={[]} columns={DataTableColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DataTable
+      data={[]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Nama",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Umur",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Umur pekerja",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Jawatan",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Jawatan pekerja",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Berjaya
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Tindakan",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Pemilihan Baris
+
+Aktifkan mod pemilihan dengan menghantar prop `selection` kepada komponen `DataTable`. Prop `selection` menerima objek dengan sifat berikut:
+
+- `mode`: Jenis pemilihan. Boleh sama ada `checkbox` atau `radio`.
+- `onSelectionChange`: Fungsi panggilan balik yang dicetuskan apabila pemilihan berubah.
+- `rowId`: Pengenal unik untuk setiap baris dalam jadual.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+      <div className="w-full">
+        Checkbox
+        <DataTable data={DataTableData} columns={DataTableColumns} selection={DataTableCheckbox} />
+      </div>
+      <div className="w-full">
+        Radio
+        <DataTable data={DataTableData} columns={DataTableColumns} selection={DataTableRadio} />
+      </div>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    // Pemilihan Checkbox
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Pengurus Produk",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Pereka",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'Dengan Nama Tengah Yang Sangat Panjang' Smith",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Saintis Data",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Nama",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Umur",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Umur pekerja",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Jawatan",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Jawatan pekerja",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Berjaya
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Tindakan",
+          id: "action",
+        },
+      ]}
+      selection={
+        {
+          mode: "checkbox",
+          onSelectionChange: (id: string) => {
+            console.log("Baris Terpilih: ", id);
+          },
+          rowId: "id",
+        }
+      }
+    />
+
+    // Pemilihan Radio
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Pengurus Produk",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Pereka",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'Dengan Nama Tengah Yang Sangat Panjang' Smith",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Saintis Data",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Nama",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Umur",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Umur pekerja",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Jawatan",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Jawatan pekerja",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Berjaya
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Tindakan",
+          id: "action",
+        },
+      ]}
+      selection={
+        {
+          mode: "radio",
+          onSelectionChange: (id: string) => {
+            console.log("Baris Terpilih: ", id);
+          },
+          rowId: "id",
+        }
+      }
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Tajuk Berkumpulan
+
+Anda boleh mengumpulkan lajur bersama dengan menetapkan sifat `columns` kepada array objek `ColumnGroupDef`. Setiap objek `ColumnGroupDef` mewakili kumpulan lajur dalam jadual.
+
+Berikut adalah contoh jadual dengan lajur berkumpulan:
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+ <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={DataTableData} columns={DataTableGroupedColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Pengurus Produk",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Pereka",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'Dengan Nama Tengah Yang Sangat Panjang' Smith",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Saintis Data",
+        },
+      ]}
+      columns={[
+        {
+          id: "employee",
+          header: "Pekerja",
+          columns: [
+            {
+              id: "name",
+              header: "Nama",
+              accessorKey: "name",
+              size: 180,
+              meta: {
+                expandable: true,
+              },
+            },
+            {
+              id: "age",
+              header: "Umur",
+              accessorKey: "age",
+
+              meta: {
+                expandable: false,
+              },
+            },
+            {
+              id: "position",
+              header: "Jawatan",
+              accessorKey: "position",
+              meta: {
+                expandable: true,
+              },
+            },
+          ],
+        },
+        {
+          id: "status",
+          header: "Permohonan",
+          columns: [
+            {
+              id: "status",
+              header: "Status",
+              cell: () => {
+                return (
+                  <Tag variant="success" size={"small"} mode="pill">
+                    Berjaya
+                  </Tag>
+                );
+              },
+            },
+            {
+              id: "action",
+              header: "Tindakan",
+              cell: () => {
+                return <Button variant="default-outline">Edit</Button>;
+              },
+            },
+          ],
+        }
+      ]
+      }
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Tajuk Melekat
+
+Secara lalai, tajuk jadual adalah melekat, tetapi ia tidak pernah terwujud kerana jadual dalam contoh sebelumnya tidak mempunyai ketinggian tetap.
+
+Untuk menunjukkan tajuk melekat, mari tetapkan ketinggian tetap untuk jadual. Hanya hantar prop `className` kepada komponen `DataTable` dengan kelas `max-h-[300px]`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+ <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable className="max-h-[300px]" data={DataTableData} columns={DataTableGroupedColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DataTable
+      className="max-h-[300px]"
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Pengurus Produk",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Pereka",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'Dengan Nama Tengah Yang Sangat Panjang' Smith",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Saintis Data",
+        },
+      ]}
+      columns={[
+        {
+          id: "employee",
+          header: "Pekerja",
+          columns: [
+            {
+              id: "name",
+              header: "Nama",
+              accessorKey: "name",
+              size: 180,
+              meta: {
+                expandable: true,
+              },
+            },
+            {
+              id: "age",
+              header: "Umur",
+              accessorKey: "age",
+
+              meta: {
+                expandable: false,
+              },
+            },
+            {
+              id: "position",
+              header: "Jawatan",
+              accessorKey: "position",
+              meta: {
+                expandable: true,
+              },
+            },
+          ],
+        },
+        {
+          id: "status",
+          header: "Permohonan",
+          columns: [
+            {
+              id: "status",
+              header: "Status",
+              cell: () => {
+                return (
+                  <Tag variant="success" size={"small"} mode="pill">
+                    Berjaya
+                  </Tag>
+                );
+              },
+            },
+            {
+              id: "action",
+              header: "Tindakan",
+              cell: () => {
+                return <Button variant="default-outline">Edit</Button>;
+              },
+            },
+          ],
+        }
+      ]
+      }
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Baris Bersarang
+
+`DataTable` juga mampu menyarangkan baris. Untuk mengaktifkan ciri ini, keperluan berikut mesti dipenuhi:
+
+1. `data`: Mengandungi objek array bersarang dengan kunci yang sepadan dengan sifat `id_by` dalam objek `nest`. (cth. `children`)
+2. `columns`: Lajur yang bertanggungjawab untuk mengembangkan & meruntuhkan harus menghantar `Cell.Expand` dalam sifat `cell`.
+3. `nest`: Prop objek yang mengandungi sifat berikut:
+   - `id_by`: Kunci yang sepadan dengan objek array bersarang dalam sifat `data`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+ <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable className="max-h-[300px]" 
+      data={DataTableNestedData} 
+      columns={DataTableNestedColumns} 
+      nest={{ id_by: "children" }}
+    />
+   
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          id: 1,
+          name: "John Doe",
+          age: 25,
+          position: "Jurutera Perisian",
+          children: [
+            {
+              id: 11,
+              name: "John Doe Jr.",
+              age: 5,
+              position: "Jurutera Perisian",
+              children: [
+                {
+                  id: 111,
+                  name: "John Doe-raemon",
+                  age: 5,
+                  position: "Jurutera Perisian",
+                },
+                {
+                  id: 112,
+                  name: "John 'Penat' Doe",
+                  age: 5,
+                  position: "Jurutera Perisian",
+                },
+              ],
+            },
+            {
+              id: 12,
+              name: "John Doe Jr.",
+              age: 5,
+              position: "Jurutera Perisian",
+            },
+          ],
+        },
+        {
+          id: 2,
+          name: "Jane Doe",
+          age: 30,
+          position: "Pengurus Produk",
+          children: [
+            {
+              id: 21,
+              name: "Jane Doe Jr. 1",
+              age: 5,
+              position: "Jurutera Perisian",
+            },
+            {
+              id: 22,
+              name: "Jane Doe Jr. 2",
+              age: 5,
+              position: "Jurutera Perisian",
+            },
+          ],
+        },
+        {
+          id: 3,
+          name: "Alice",
+          age: 22,
+          position: "Pereka",
+          children: [
+            {
+              id: 31,
+              name: "Alice Jr. 1",
+              age: 5,
+              position: "Jurutera Perisian",
+            },
+            {
+              id: 32,
+              name: "Alice Jr. 2",
+              age: 5,
+              position: "Jurutera Perisian",
+            },
+          ],
+        },
+        {
+          id: 4,
+          name: "Bob",
+          age: 35,
+          position: "Jurutera Perisian",
+          children: [
+            {
+              id: 41,
+              name: "Bob Jr. 1",
+              age: 5,
+              position: "Jurutera Perisian",
+            },
+            {
+              id: 42,
+              name: "Bob Jr. 2",
+              age: 5,
+              position: "Jurutera Perisian",
+            },
+          ],
+        },
+        {
+          id: 5,
+          name: "Charlie",
+          age: 28,
+          position: "Saintis Data",
+          children: [
+            {
+              id: 51,
+              name: "Charlie Jr. 1",
+              age: 5,
+              position: "Jurutera Perisian",
+            },
+            {
+              id: 52,
+              name: "Charlie Jr. 2",
+              age: 5,
+              position: "Jurutera Perisian",
+            },
+          ],
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Nama",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+          cell: Cell.Expand
+        },
+        {
+          accessorKey: "age",
+          header: "Umur",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Umur pekerja",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Jawatan",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Jawatan pekerja",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Berjaya
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Tindakan",
+          id: "action",
+        }
+      ]}
+      nest={{ id_by: "children" }}
+    />
+    ```
+  </Tab>
+</Tabs>
+
+### Lajur Tersangkut
+
+Anda boleh menyangkut lajur ke kiri atau kanan jadual dengan menetapkan sifat `pin`. Sifat `pin` menerima objek dengan sifat berikut:
+
+- `left`: Array ID lajur untuk disangkut ke kiri.
+- `right`: Array ID lajur untuk disangkut ke kanan.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+ <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={DataTableData} columns={DataTableColumns} pin={{ left: ["name"], right: ["action"]}} />
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Pengurus Produk",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Pereka",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'Dengan Nama Tengah Yang Sangat Panjang' Smith",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Saintis Data",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Nama",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Umur",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Umur pekerja",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Jawatan",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Jawatan pekerja",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Berjaya
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Tindakan",
+          id: "action",
+        },
+      ]}
+      pin={{ left: ["name"], right: ["action"]}}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Kaki Jadual
+
+Anda boleh menambah kaki per lajur dengan menetapkan `footer` dalam objek **ColumnDef** definisi lajur. Berikut adalah contoh jadual dengan kaki:
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+ <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={DataTableData} columns={DataTableFooterColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Pengurus Produk",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Pereka",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'Dengan Nama Tengah Yang Sangat Panjang' Smith",
+          position: "Jurutera Perisian",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Saintis Data",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Nama",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Umur",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Umur pekerja",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Jawatan",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Jawatan pekerja",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Berjaya
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Tindakan",
+          id: "action",
+        },
+      ]}
+      pin={{ left: ["name"], right: ["action"]}}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### DataTable
+
+<TypeTable
+  type={{
+    columns: {
+      description: "Definisi Lajur (Rujuk kepada dokumentasi TanStack/table)",
+      type: "ColumnDef",
+    },
+    data: {
+      description: "Data untuk dipaparkan dalam jadual",
+      type: "Array<T = {}>",
+    },
+    nest: {
+      description:
+        "Menentukan kunci dalam objek data yang mengandungi data bersarang",
+      type: "{ id_by: string }",
+    },
+    pin: {
+      description:
+        "Menentukan lajur yang hendak disangkut. ID lajur harus dihantar sebagai array",
+      type: "{ left: Array<string>, right: Array<string> }",
+    },
+  }}
+/>
+
+### DataTable `ColumnDef`
+
+<TypeTable
+  type={{
+    id: {
+      description: "Pengenal unik untuk lajur",
+      type: "string",
+    },
+    accessorKey: {
+      description: "Kunci objek untuk mengakses data",
+      type: "string",
+    },
+    accessorFn: {
+      description: "Fungsi panggilan balik untuk mengakses data",
+      type: "(row) => any",
+    },
+    header: {
+      description: "Tajuk lajur",
+      type: "string | (context) => ReactNode",
+    },
+    footer: {
+      description: "Tajuk lajur",
+      type: "string | (context) => ReactNode",
+    },
+    size: {
+      description: "Lebar lajur khusus",
+      type: "number",
+    },
+    cell: {
+      description: "Renderer sel khusus",
+      type: "(context) => ReactNode",
+    },
+    "meta.expandable": {
+      description: "Lajur boleh dikembangkan",
+      type: "boolean",
+    },
+    "meta.sortable": {
+      description: "Lajur boleh diisih",
+      type: "boolean",
+    },
+    "meta.tooltip": {
+      description: "Tooltip untuk tajuk lajur",
+      type: "ReactNode",
+    },
+  }}
+/>

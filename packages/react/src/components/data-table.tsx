@@ -132,7 +132,7 @@ const th_cva = cva(
 
 const cell_cva = cva([
   "md:whitespace-nowrap whitespace-normal break-words",
-  "data-[expanded=true]:truncate max-w-[230px]",
+  "data-[expanded=false]:truncate data-[expanded=false]:max-w-[230px]",
 ]);
 
 interface DataTableContextProps<TData extends Record<string, any>> {
@@ -164,6 +164,7 @@ const DataTableProvider = <TData extends Record<string, any>>({
   );
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [expandedSelection, setExpandedSelection] = useState<ExpandedState>({});
+
   const toggleColumnWidth = (columnId: string) => {
     setExpandableColumns((prev) => ({
       ...prev,
@@ -265,7 +266,7 @@ const DataTableHeader: FunctionComponent = () => {
                   style={{ ...getCommonPinningStyles(header.column) }}
                 >
                   {header.isPlaceholder ? null : (
-                    <div className="flex items-center justify-between gap-2 whitespace-nowrap">
+                    <div className="flex w-full items-center justify-between gap-2 whitespace-nowrap">
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext(),
@@ -543,7 +544,7 @@ const getCommonPinningStyles = <TData extends Record<string, any>>(
   return {
     left: isPinned === "left" ? `${column.getStart("left")}px` : undefined,
     right: isPinned === "right" ? `${column.getAfter("right")}px` : undefined,
-    width: column.getSize(),
+    width: isPinned ? column.getSize() : undefined,
   };
 };
 

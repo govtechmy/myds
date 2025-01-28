@@ -5,12 +5,7 @@ description: Notifies users that the website uses cookies to improve their exper
 
 import { InfoIcon } from "@govtechmy/myds-react/icon";
 import Preview from "@/components/preview";
-import {
-  Button,
-  ButtonIcon,
-  ButtonCounter,
-  Link,
-} from "@/components/myds";
+import { Button, ButtonIcon, ButtonCounter, Link } from "@/components/myds";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Quicklinks } from "@/components/quicklinks";
@@ -211,7 +206,7 @@ import { CookiesBannerPreview } from "@/components/cookies-banner-preview";
 
 ## Usage
 
-```tsx 
+```tsx
 import {
   CookieBanner,
   CookieBannerClose,
@@ -225,7 +220,7 @@ import {
 } from "@govtechmy/myds-react/cookie-banner";
 ```
 
-```tsx 
+```tsx
 export default () => (
   <CookieBanner>
     <CookieBannerHeader>
@@ -243,6 +238,7 @@ export default () => (
   </CookieBanner>
 );
 ```
+
 ## Props
 
 ### CookieBanner
@@ -273,15 +269,18 @@ Houses all the constituent components of the cookie banners. The component is a 
 />
 
 ### CookieBannerHeader
+
 Contains the `CookieBannerTitle` and `CookieBannerClose` components. It is being built on `DialogHeader`.
 
 ### CookieBannerTitle
+
 To customise the title of the cookie banner. It is being built on `DialogTitle`.
 
 ### CookieBannerClose
 To change the `open` state of the Cookie Banner. It is being built on `DialogClose`.
 
 ### CookieBannerPreferences
+
 A container component that wraps cookie preference options, typically containing checkboxes and descriptions for different cookie categories.
 
 ### CookieBannerFooter

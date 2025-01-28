@@ -2,4 +2,4 @@
 "@govtechmy/myds-react": patch
 ---
 
-add DialogBody, repurpose DialogContent
+Fix SearchBar's z-index

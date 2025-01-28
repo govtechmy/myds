@@ -143,7 +143,6 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
           value={query}
           onValueChange={setQuery}
           onFocus={() => setHasFocus(true)}
-          onBlur={() => setHasFocus(false)}
         />
         {query ? (
           <SearchBarClearButton onClick={() => setQuery("")} />
@@ -157,7 +156,7 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
         )}
         <SearchBarSearchButton />
       </SearchBarInputContainer>
-      <SearchBarResults open={!!query}>
+      <SearchBarResults open={!!query && hasFocus}>
         {hasQuery && !results.length && (
           <p className="text-txt-black-900 text-center">No results found</p>
         )}
@@ -219,7 +218,6 @@ const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
           value={query}
           onValueChange={setQuery}
           onFocus={() => setHasFocus(true)}
-          onBlur={() => setHasFocus(false)}
         />
         {query ? (
           <SearchBarClearButton onClick={() => setQuery("")} />
@@ -233,7 +231,7 @@ const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
         )}
         <SearchBarSearchButton />
       </SearchBarInputContainer>
-      <SearchBarResults open={!!query}>
+      <SearchBarResults open={!!query && hasFocus}>
         {hasQuery && !results.length && (
           <p className="text-txt-black-900 text-center">No results found</p>
         )}

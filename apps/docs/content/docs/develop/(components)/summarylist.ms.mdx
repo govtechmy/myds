@@ -1,0 +1,512 @@
+---
+title: Senarai Ringkasan
+description: Komponen senarai ringkasan memaparkan maklumat dalam format kunci-nilai yang tersusun, menjadikannya sesuai untuk memaparkan ringkasan borang, butiran aplikasi, atau sebarang data yang perlu disemak. Ia menyokong tajuk, butang tindakan, dan gaya khusus.
+---
+
+import {
+  SummaryList,
+  SummaryListAction,
+  SummaryListBody,
+  SummaryListHeader,
+  SummaryListTerm,
+  SummaryListDetail,
+  SummaryListRow,
+  SummaryListAddition,
+} from "@govtechmy/myds-react/summary-list";
+import { Tag } from "@govtechmy/myds-react/tag";
+import { SwapIcon } from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import {
+  PreviewSummaryList,
+  PreviewSummaryListAction,
+} from "@/components/myds";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center items-center h-fit">
+    <PreviewSummaryList/>
+  </div>
+
+  </Tab>
+  <Tab value="Code">
+
+```tsx
+import {
+  SummaryList,
+  SummaryListAction,
+  SummaryListBody,
+  SummaryListHeader,
+  SummaryListTerm,
+  SummaryListDetail,
+  SummaryListRow,
+} from "@govtechmy/myds-react/summary-list";
+import { Tag } from "@govtechmy/myds-react/tag";
+import { Button } from "@govtechmy/myds-react/button";
+import { SwapIcon } from "@govtechmy/myds-react/icon";
+
+<SummaryList>
+  <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
+
+  <SummaryListBody>
+    <SummaryListRow>
+      <SummaryListTerm>Application ID</SummaryListTerm>
+      <SummaryListDetail>SUB12345</SummaryListDetail>
+      <SummaryListAction></SummaryListAction>
+    </SummaryListRow>
+
+    <SummaryListRow>
+      <SummaryListTerm>Applicant Name</SummaryListTerm>
+      <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
+      <SummaryListAction></SummaryListAction>
+    </SummaryListRow>
+
+    <SummaryListRow>
+      <SummaryListTerm>Submission Date</SummaryListTerm>
+      <SummaryListDetail>15/10/2024 17:35:00</SummaryListDetail>
+      <SummaryListAction></SummaryListAction>
+    </SummaryListRow>
+
+    <SummaryListRow>
+      <SummaryListTerm>Subsidy Type</SummaryListTerm>
+      <SummaryListDetail>Petrol Subsidy</SummaryListDetail>
+      <SummaryListAction></SummaryListAction>
+    </SummaryListRow>
+
+    <SummaryListRow>
+      <SummaryListTerm>Status</SummaryListTerm>
+      <SummaryListDetail className="py-2">
+        <Tag variant="warning" size="medium" className="h-fit" mode="default">
+          Pending
+        </Tag>
+      </SummaryListDetail>
+      <SummaryListAction>
+        <Button variant="primary-ghost" className="h-8">
+          <SwapIcon /> Refresh
+        </Button>
+      </SummaryListAction>
+    </SummaryListRow>
+
+    <SummaryListRow>
+      <SummaryListTerm>Document Submitted</SummaryListTerm>
+      <SummaryListDetail>
+        <div>Proof Of Income</div>
+        <div>ID Copy</div>
+      </SummaryListDetail>
+      <SummaryListAction>
+        <Button variant="primary-ghost" className="h-8">
+          Add More
+        </Button>
+      </SummaryListAction>
+    </SummaryListRow>
+
+    <SummaryListRow>
+      <SummaryListTerm>Expected Response Date</SummaryListTerm>
+      <SummaryListDetail>23/03/2023 17:35:00</SummaryListDetail>
+      <SummaryListAction></SummaryListAction>
+    </SummaryListRow>
+  </SummaryListBody>
+</SummaryList>;
+```
+
+  </Tab>
+</Tabs>
+
+## Penggunaan
+
+```tsx Copy
+import {
+  SummaryList,
+  SummaryListAction,
+  SummaryListBody,
+  SummaryListHeader,
+  SummaryListTerm,
+  SummaryListDetail,
+  SummaryListRow,
+} from "@govtechmy/myds-react/summary-list";
+import { Tag } from "@govtechmy/myds-react/tag";
+import { Button } from "@govtechmy/myds-react/button";
+import { SwapIcon } from "@govtechmy/myds-react/icon";
+```
+
+```tsx copy
+export default () => (
+  <SummaryList>
+    <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
+
+    <SummaryListBody>
+      <SummaryListRow>
+        <SummaryListTerm>Application ID</SummaryListTerm>
+        <SummaryListDetail>SUB12345</SummaryListDetail>
+        <SummaryListAction></SummaryListAction>
+      </SummaryListRow>
+
+      <SummaryListRow>
+        <SummaryListTerm>Applicant Name</SummaryListTerm>
+        <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
+        <SummaryListAction></SummaryListAction>
+      </SummaryListRow>
+
+      <SummaryListRow>
+        <SummaryListTerm>Submission Date</SummaryListTerm>
+        <SummaryListDetail>15/10/2024 17:35:00</SummaryListDetail>
+        <SummaryListAction></SummaryListAction>
+      </SummaryListRow>
+
+      <SummaryListRow>
+        <SummaryListTerm>Subsidy Type</SummaryListTerm>
+        <SummaryListDetail>Petrol Subsidy</SummaryListDetail>
+        <SummaryListAction></SummaryListAction>
+      </SummaryListRow>
+
+      <SummaryListRow>
+        <SummaryListTerm>Status</SummaryListTerm>
+        <SummaryListDetail className="py-2">
+          <Tag variant="warning" size="medium" className="h-fit" mode="default">
+            Pending
+          </Tag>
+        </SummaryListDetail>
+        <SummaryListAction>
+          <Button variant="primary-ghost" className="h-8">
+            <SwapIcon /> Refresh
+          </Button>
+        </SummaryListAction>
+      </SummaryListRow>
+
+      <SummaryListRow>
+        <SummaryListTerm>Document Submitted</SummaryListTerm>
+        <SummaryListDetail>
+          <div>Proof Of Income</div>
+          <div>ID Copy</div>
+        </SummaryListDetail>
+        <SummaryListAction>
+          <Button variant="primary-ghost" className="h-8">
+            Add More
+          </Button>
+        </SummaryListAction>
+      </SummaryListRow>
+
+      <SummaryListRow>
+        <SummaryListTerm>Expected Response Date</SummaryListTerm>
+        <SummaryListDetail>23/03/2023 17:35:00</SummaryListDetail>
+        <SummaryListAction></SummaryListAction>
+      </SummaryListRow>
+    </SummaryListBody>
+  </SummaryList>
+);
+```
+
+---
+
+### Pembungkus Utama: `SummaryList`
+
+`SummaryList` adalah komponen utama untuk mempersembahkan ringkasan item dalam format yang tersusun dan konsisten secara visual. Ia berfungsi sebagai komponen induk yang membungkus semua subkomponen.
+
+1. `SummaryListHeader`
+2. `SummaryListBody`
+
+---
+
+## 1. SummaryListHeader
+
+`SummaryListHeader` digunakan untuk memaparkan tajuk senarai ringkasan.
+
+**Contoh**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
+  </Tab>
+
+  <Tab value="Code">
+    ```tsx
+    <SummaryListHeader>Summary Title</SummaryListHeader>
+    ```
+  </Tab>
+</Tabs>
+
+## 2. SummaryListBody
+
+`SummaryListBody` adalah pembungkus untuk data berbentuk jadual dalam `SummaryList`. Ia berfungsi sebagai pembungkus utama untuk satu atau beberapa `SummaryListRow`.
+
+**Contoh**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
+  <Tab value="Preview">
+    <SummaryListBody>
+        <SummaryListRow>
+            <SummaryListTerm>Application ID</SummaryListTerm>
+            <SummaryListDetail>SUB12345</SummaryListDetail>
+        </SummaryListRow>
+        <SummaryListRow>
+            <SummaryListTerm>Applicant Name</SummaryListTerm>
+            <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
+        </SummaryListRow>
+    </SummaryListBody>
+  </Tab>
+
+  <Tab value="Code">
+    
+```tsx
+<SummaryListBody>
+    <SummaryListRow>
+        <SummaryListTerm>Application ID</SummaryListTerm>
+        <SummaryListDetail>SUB12345</SummaryListDetail>
+    </SummaryListRow>
+    <SummaryListRow>
+        <SummaryListTerm>Applicant Name</SummaryListTerm>
+        <SummaryListDetail>Lee Ming Wei</SummaryListDetail>
+    </SummaryListRow>
+</SummaryListBody>
+```
+  </Tab>
+</Tabs>
+
+### 2.1 SummaryListRow
+
+`SummaryListRow` mentakrifkan baris individu dalam jadual.
+
+**Contoh**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <SummaryListBody>
+      <SummaryListRow>
+        <SummaryListTerm>Application ID</SummaryListTerm>
+        <SummaryListDetail>SUB12345</SummaryListDetail>
+      </SummaryListRow>
+    </SummaryListBody>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <SummaryListRow>
+      <SummaryListTerm>Application ID</SummaryListTerm>
+      <SummaryListDetail>SUB12345</SummaryListDetail>
+    </SummaryListRow>
+    ```
+  </Tab>
+</Tabs>
+
+### 2.1.1 SummaryListTerm
+
+`SummaryListTerm` digunakan untuk mewakili istilah atau label dalam baris.
+
+**Contoh**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <SummaryListBody>
+      <SummaryListRow>
+        <SummaryListTerm>Application ID</SummaryListTerm>
+        <SummaryListDetail></SummaryListDetail>
+      </SummaryListRow>
+    </SummaryListBody>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <SummaryListTerm>Application ID</SummaryListTerm>
+    ```
+  </Tab>
+</Tabs>
+
+### 2.1.2 SummaryListDetail
+
+`SummaryListDetail` memaparkan maklumat terperinci yang sepadan dengan istilah.
+
+**Contoh**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <SummaryListBody>
+      <SummaryListRow>
+        <SummaryListDetail>SUB12345</SummaryListDetail>
+      </SummaryListRow>
+    </SummaryListBody>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <SummaryListDetail>SUB12345</SummaryListDetail>
+    ```
+  </Tab>
+</Tabs>
+
+### 2.1.3 SummaryListAction
+
+`SummaryListAction` digunakan untuk menambah tindakan (contohnya, butang atau pautan) yang berkaitan dengan baris.
+
+**Contoh**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <PreviewSummaryListAction />
+  </Tab>
+  <Tab value="Code">
+    
+```tsx
+<SummaryListAction>
+    <Button variant="primary-ghost" className="h-8">
+        <SwapIcon /> Refresh
+    </Button>
+<SummaryListAction>
+```
+  </Tab>
+</Tabs>
+
+### 2.1.4 SummaryListAddition
+
+`SummaryListAddition` memberikan maklumat tambahan atau tindakan dalam baris.
+
+**Contoh**:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <SummaryListBody>
+      <SummaryListRow>
+        <SummaryListTerm>Application ID</SummaryListTerm>
+        <SummaryListDetail>SUB12345</SummaryListDetail>
+        <SummaryListAction></SummaryListAction>
+        <SummaryListAddition>Additional Info</SummaryListAddition>
+      </SummaryListRow>
+    </SummaryListBody>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <SummaryListRow>
+      <SummaryListTerm>Application ID</SummaryListTerm>
+      <SummaryListDetail>SUB12345</SummaryListDetail>
+      <SummaryListAction></SummaryListAction>
+      <SummaryListAddition>Additional Info</SummaryListAddition>
+    </SummaryListRow>
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### SummaryList
+
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk pembungkus utama.",
+      type: "string",
+    },
+    children: {
+      description: "Kandungan dalam senarai ringkasan.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListHeader
+
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk header.",
+      type: "string",
+    },
+    children: {
+      description: "Kandungan header, biasanya tajuk.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListBody
+
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk kontena badan.",
+      type: "string",
+    },
+    children: {
+      description:
+        "Data tabular yang akan dipaparkan dalam badan. Mewarisi semua atribut jadual.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListRow
+
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk baris.",
+      type: "string",
+    },
+    children: {
+      description:
+        "Kandungan baris, biasanya merangkumi komponen istilah dan butiran. Mewarisi semua atribut tr.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListTerm
+
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk sel istilah.",
+      type: "string",
+    },
+    children: {
+      description:
+        "Kandungan istilah, seperti label atau tajuk. Mewarisi semua atribut td.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListDetail
+
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk sel butiran.",
+      type: "string",
+    },
+    children: {
+      description:
+        "Kandungan butiran, biasanya penerangan atau data. Mewarisi semua atribut td.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListAction
+
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk sel tindakan.",
+      type: "string",
+    },
+    children: {
+      description:
+        "Tindakan yang berkaitan dengan baris, seperti butang atau pautan. Mewarisi semua atribut td.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### SummaryListAddition
+
+<TypeTable
+  type={{
+    className: {
+      description: "Gaya tambahan untuk sel tambahan.",
+      type: "string",
+    },
+    children: {
+      description:
+        "Kandungan tambahan atau sokongan dalam baris. Mewarisi semua atribut td.",
+      type: "ReactNode",
+    },
+  }}
+/>

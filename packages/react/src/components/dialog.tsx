@@ -173,13 +173,17 @@ interface DialogFooterProps extends ComponentProps<"div"> {
 }
 
 const dialog_footer_cva = cva(
-  ["flex w-full justify-between items-end p-6 gap-3"],
+  [
+    "flex w-full justify-between items-end p-6 gap-3",
+    "[&>*]:w-full sm:[&>*]:w-auto",
+    "[&>button]:place-content-center",
+  ],
   {
     variants: {
       align: {
-        start: "flex-row-reverse",
-        full: "",
-        end: "",
+        start: "sm:flex-row-reverse flex-col-reverse",
+        full: "sm:flex-row flex-col",
+        end: "sm:flex-row flex-col",
       },
       border: {
         true: "border-otl-gray-200 border-t",
@@ -192,18 +196,25 @@ const dialog_footer_cva = cva(
     },
   },
 );
-const dialog_action_cva = cva(["flex flex-row gap-3 grow"], {
-  variants: {
-    align: {
-      start: "justify-end flex-row-reverse",
-      full: "justify-center grow [&>*]:flex-1 [&>*]:place-content-center",
-      end: "justify-end",
+const dialog_action_cva = cva(
+  [
+    "flex gap-3 grow",
+    "[&>*]:w-full sm:[&>*]:w-auto",
+    "[&>*]:place-content-center",
+  ],
+  {
+    variants: {
+      align: {
+        start: "justify-end sm:flex-row-reverse flex-col-reverse",
+        full: "justify-center grow [&>*]:flex-1 [&>*]:place-content-center sm:flex-row flex-col",
+        end: "justify-end sm:flex-row flex-col",
+      },
+    },
+    defaultVariants: {
+      align: "end",
     },
   },
-  defaultVariants: {
-    align: "end",
-  },
-});
+);
 
 const DialogFooter: ForwardRefExoticComponent<DialogFooterProps> = forwardRef(
   ({ action, border, className, align = "end", ...props }, ref) => {

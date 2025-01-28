@@ -1,15 +1,419 @@
 ---
 title: Radio
-description: Radio
+description: Radio buttons allow users to select exactly one choice from a group
 ---
 
-import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import {
+  Radio,
+  RadioButton,
+  RadioHintText,
+  RadioItem,
+  RadioLabel,
+  RadioProps,
+} from "@/components/myds";
+import {
+  RadioExample,
+  RadioSimpleExample,
+  RadioControlledExample,
+} from "./radio.client"
 
-<Callout
-  type="info"
-  title="Note"
-  className="bg-bg-primary-50 text-txt-primary border-transparent"
-  icon={<InfoIcon className="size-5" />}
->
-  Work in progress
-</Callout>
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+    <RadioExample />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import {
+      Radio,
+      RadioButton,
+      RadioHintText,
+      RadioItem,
+      RadioLabel,
+    } from "@govtechmy/myds-react/radio";
+
+    <Radio>
+      <RadioItem>
+        <RadioButton value="email" id="email" />
+        <div className="grid">
+          <RadioLabel htmlFor="email">Email</RadioLabel>
+          <RadioHintText htmlFor="email">
+            We will send notifications to your registered email address.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem>
+        <RadioButton value="phone_call" id="phone_call" />
+        <div className="grid">
+          <RadioLabel htmlFor="phone_call">Phone Call</RadioLabel>
+          <RadioHintText htmlFor="phone_call">
+            Our representative will call you on your provided phone number.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem>
+        <RadioButton value="text_message" id="text_message" />
+        <div className="grid">
+          <RadioLabel htmlFor="text_message">Text Message</RadioLabel>
+          <RadioHintText htmlFor="text_message">
+            You will receive SMS updates on your mobile phone.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem disabled>
+        <RadioButton value="postal_mail" id="postal_mail" />
+        <div className="grid">
+          <RadioLabel htmlFor="postal_mail">Postal Mail</RadioLabel>
+          <RadioHintText htmlFor="postal_mail">
+            Not available at the moment.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem>
+        <RadioButton
+          value="disable_notifications"
+          id="disable_notifications"
+        />
+        <RadioLabel htmlFor="disable_notifications">
+          Disable Notifications
+        </RadioLabel>
+      </RadioItem>
+    </Radio>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-radio--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/radio.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx
+import {
+  Radio,
+  RadioButton,
+  RadioHintText,
+  RadioItem,
+  RadioLabel,
+} from "@govtechmy/myds-react/radio";
+```
+
+```tsx
+<Radio>
+  <RadioItem>
+    <RadioButton value="apple" id="apple" />
+    <RadioLabel htmlFor="apple">Apple</RadioLabel>
+  </RadioItem>
+  <RadioItem>
+    <RadioButton value="banana" id="banana" />
+    <div>
+      <RadioLabel htmlFor="banana">Banana</RadioLabel>
+      <RadioHintText htmlFor="banana">Comes pre-packaged.</RadioHintText>
+    </div>
+  </RadioItem>
+</Radio>
+```
+
+## Examples
+
+### Size
+
+Use the `size` prop to change the radio size.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex flex-col gap-8">
+    <RadioSimpleExample size="small"/>
+    <hr />
+    <RadioSimpleExample size="medium"/>
+    <hr />
+    <RadioSimpleExample size="large"/>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import {
+      Radio,
+      RadioButton,
+      RadioHintText,
+      RadioItem,
+      RadioLabel,
+    } from "@govtechmy/myds-react/radio";
+
+    <Radio size="small">
+      <RadioItem>
+        <RadioButton value="email" id="email" />
+        <div className="grid">
+          <RadioLabel htmlFor="email">Email</RadioLabel>
+          <RadioHintText htmlFor="email">
+            We will send notifications to your registered email address.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem>
+        <RadioButton value="phone_call" id="phone_call" />
+        <div className="grid">
+          <RadioLabel htmlFor="phone_call">Phone Call</RadioLabel>
+          <RadioHintText htmlFor="phone_call">
+            Our representative will call you on your provided phone number.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+    </Radio>
+
+    <Radio size="medium">
+      <RadioItem>
+        <RadioButton value="email" id="email" />
+        <div className="grid">
+          <RadioLabel htmlFor="email">Email</RadioLabel>
+          <RadioHintText htmlFor="email">
+            We will send notifications to your registered email address.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem>
+        <RadioButton value="phone_call" id="phone_call" />
+        <div className="grid">
+          <RadioLabel htmlFor="phone_call">Phone Call</RadioLabel>
+          <RadioHintText htmlFor="phone_call">
+            Our representative will call you on your provided phone number.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+    </Radio>
+
+    <Radio size="large">
+      <RadioItem>
+        <RadioButton value="email" id="email" />
+        <div className="grid">
+          <RadioLabel htmlFor="email">Email</RadioLabel>
+          <RadioHintText htmlFor="email">
+            We will send notifications to your registered email address.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem>
+        <RadioButton value="phone_call" id="phone_call" />
+        <div className="grid">
+          <RadioLabel htmlFor="phone_call">Phone Call</RadioLabel>
+          <RadioHintText htmlFor="phone_call">
+            Our representative will call you on your provided phone number.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+    </Radio>
+    ```
+  </Tab>
+</Tabs>
+
+### Disabled
+
+Disable all radio items by setting the `disabled` prop to true on the `Radio` component.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+    <RadioExample disabled />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import {
+      Radio,
+      RadioButton,
+      RadioHintText,
+      RadioItem,
+      RadioLabel,
+    } from "@govtechmy/myds-react/radio";
+
+    <Radio disabled>
+      <RadioItem>
+        <RadioButton value="email" id="email" />
+        <div className="grid">
+          <RadioLabel htmlFor="email">Email</RadioLabel>
+          <RadioHintText htmlFor="email">
+            We will send notifications to your registered email address.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem>
+        <RadioButton value="phone_call" id="phone_call" />
+        <div className="grid">
+          <RadioLabel htmlFor="phone_call">Phone Call</RadioLabel>
+          <RadioHintText htmlFor="phone_call">
+            Our representative will call you on your provided phone number.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem>
+        <RadioButton value="text_message" id="text_message" />
+        <div className="grid">
+          <RadioLabel htmlFor="text_message">Text Message</RadioLabel>
+          <RadioHintText htmlFor="text_message">
+            You will receive SMS updates on your mobile phone.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem>
+        <RadioButton value="postal_mail" id="postal_mail" />
+        <div className="grid">
+          <RadioLabel htmlFor="postal_mail">Postal Mail</RadioLabel>
+          <RadioHintText htmlFor="postal_mail">
+            Not available at the moment.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem>
+        <RadioButton
+          value="disable_notifications"
+          id="disable_notifications"
+        />
+        <RadioLabel htmlFor="disable_notifications">
+          Disable Notifications
+        </RadioLabel>
+      </RadioItem>
+    </Radio>
+    ```
+  </Tab>
+</Tabs>
+
+Disable individual radio items by setting the `disabled` prop to true on the `RadioItem` component:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+    <RadioExample />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import {
+      Radio,
+      RadioButton,
+      RadioHintText,
+      RadioItem,
+      RadioLabel,
+    } from "@govtechmy/myds-react/radio";
+
+    <Radio>
+      <RadioItem>
+        <RadioButton value="email" id="email" />
+        <div className="grid">
+          <RadioLabel htmlFor="email">Email</RadioLabel>
+          <RadioHintText htmlFor="email">
+            We will send notifications to your registered email address.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem>
+        <RadioButton value="phone_call" id="phone_call" />
+        <div className="grid">
+          <RadioLabel htmlFor="phone_call">Phone Call</RadioLabel>
+          <RadioHintText htmlFor="phone_call">
+            Our representative will call you on your provided phone number.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem>
+        <RadioButton value="text_message" id="text_message" />
+        <div className="grid">
+          <RadioLabel htmlFor="text_message">Text Message</RadioLabel>
+          <RadioHintText htmlFor="text_message">
+            You will receive SMS updates on your mobile phone.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem disabled>
+        <RadioButton value="postal_mail" id="postal_mail" />
+        <div className="grid">
+          <RadioLabel htmlFor="postal_mail">Postal Mail</RadioLabel>
+          <RadioHintText htmlFor="postal_mail">
+            Not available at the moment.
+          </RadioHintText>
+        </div>
+      </RadioItem>
+      <RadioItem>
+        <RadioButton
+          value="disable_notifications"
+          id="disable_notifications"
+        />
+        <RadioLabel htmlFor="disable_notifications">
+          Disable Notifications
+        </RadioLabel>
+      </RadioItem>
+    </Radio>
+    ```
+  </Tab>
+</Tabs>
+
+### Controlled Component
+
+To use `Radio` as a controlled component, set the `value` and `onValueChange` props.
+
+```tsx
+const [value, setValue] = useState("")
+
+<Radio value={value} onValueChange={setValue}>
+  {/* ... */}
+</Radio>
+```
+
+
+## Props
+
+### Radio
+
+`Radio` is abstracted from Radix UI's `RadioGroup.Root`. Please refer to the API references in [this documentation](https://www.radix-ui.com/primitives/docs/components/radio-group#root).
+
+<TypeTable
+  type={{
+    value: {
+      description: "The controlled value of the radio item to check. Should be used in conjunction with `onValueChange`.",
+      type: "string",
+    },
+    onValueChange: {
+      description: "Event handler called when the value changes",
+      type: "function",
+      typeDescription: "(value: string) => void"
+    },
+    size: {
+      description: "Sizes of the radio",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "medium",
+    },
+    disabled: {
+      description: "Disables ALL radio items if set to true",
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
+
+### RadioButton
+
+`RadioButton` is abstracted from Radix UI's `RadioGroup.Item`. Please refer to the API references in [this documentation](https://www.radix-ui.com/primitives/docs/components/radio-group#item).
+
+### RadioItem
+
+`RadioHintText` uses the same props as a regular `div` element.
+
+<TypeTable
+  type={{
+    disabled: {
+      description: "Disables the radio item if set to true",
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
+
+### RadioHintText
+
+`RadioHintText` uses the same props as a regular `label` element.
+
+### RadioLabel
+
+`RadioLabel` uses the same props as a regular `label` element.
