@@ -6,7 +6,7 @@ import { Link } from "./link";
 //====================================================================================================
 
 interface FooterProps extends ComponentProps<"div"> {
-  background: string;
+  background?: string;
 }
 
 const Footer: FunctionComponent<FooterProps> = ({
