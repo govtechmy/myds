@@ -38,24 +38,27 @@ interface NavbarProps {
   showMenu: Boolean;
   children?: React.ReactNode;
   className?: string;
+  background?: string;
 }
 
 const Navbar: FunctionComponent<NavbarProps> = ({
   showMenu,
   children,
   className,
+  background,
 }) => {
   return (
     <header
       className={clx(
         "bg-bg-white sticky top-0 z-50 lg:border-b lg:backdrop-blur-[30px] print:hidden",
-        className,
+        background,
       )}
     >
       <div
         className={clx(
           "border-otl-gray-200 bg-bg-white container flex h-16 items-center justify-between gap-3 py-3 max-xl:pr-3 max-lg:border-b lg:gap-4",
           showMenu ? "" : "xl:bg-transparent",
+          className,
         )}
         data-nosnippet
       >
