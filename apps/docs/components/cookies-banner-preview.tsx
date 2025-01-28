@@ -3,12 +3,13 @@ import { FunctionComponent, useEffect, useState } from "react";
 import {
   CookieBanner,
   CookieBannerClose,
-  CookieBannerCustomiser,
   CookieBannerDescription,
   CookieBannerFooter,
   CookieBannerHeader,
   CookieBannerPreferences,
   CookieBannerTitle,
+  CookieBannerPreferencesDisplay,
+  CookieBannerPreferencesToggle,
 } from "@govtechmy/myds-react/cookie-banner";
 import { Button } from "@govtechmy/myds-react/button";
 import { Checkbox } from "@govtechmy/myds-react/checkbox";
@@ -20,20 +21,6 @@ const CookiesBannerPreview = () => {
     analytics: true,
     performance: true,
   });
-  const handleAcceptAll = () => {
-    setOpen(!open);
-    // define further action of handleAcceptAll
-  };
-
-  const handleRejectAll = () => {
-    const preferences = {
-      necessary: true,
-      analytics: false,
-      performance: false,
-    };
-    setOpen(!open);
-    // define further action of handleRejectAll
-  };
 
   // Reset preferences back to default when dialog closes
   useEffect(() => {
@@ -45,25 +32,27 @@ const CookiesBannerPreview = () => {
       });
     }
   }, [open]);
+
   return (
     <div className="flex flex-col items-start gap-4">
       <Button variant="primary-fill" onClick={() => setOpen(true)}>
         Open Cookie Settings
       </Button>
-
-      <CookieBanner open={open} dismissible={false}>
-        <div className="mb-1 flex w-full flex-row justify-between">
-          <CookieBannerHeader className="space-y-0 p-0 pb-1">
-            <CookieBannerTitle className="text-body-md font-body pb-1">
-              Customise Cookie Preferences
-            </CookieBannerTitle>
-            <CookieBannerDescription>
-              This website uses cookies to improve user experience. We need your
-              consent to use some of the cookies.
-            </CookieBannerDescription>
-          </CookieBannerHeader>
-          <CookieBannerClose onClick={() => setOpen(!open)} />
-        </div>
+      <CookieBanner
+        open={open}
+        onOpenChange={setOpen}
+        onDismiss={() => alert("Cookie banner has been dismissed.")}
+        dismissible={true}
+      >
+        <CookieBannerHeader className="space-y-0 p-0 pb-1" border={false}>
+          <CookieBannerTitle className="text-body-md pb-1">
+            Customise Preferences
+          </CookieBannerTitle>
+          <CookieBannerDescription>
+            This website uses cookies to improve user experience. We need your
+            consent to use some of the cookies.
+          </CookieBannerDescription>
+        </CookieBannerHeader>
         <CookieBannerPreferences className="flex flex-col gap-2 py-3">
           <div className="flex flex-row gap-2.5">
             <Checkbox
@@ -136,23 +125,59 @@ const CookiesBannerPreview = () => {
           </div>
         </CookieBannerPreferences>
         <CookieBannerFooter>
-          <Button
-            variant="primary-fill"
-            size="medium"
-            onClick={handleAcceptAll}
-            className="w-full justify-center sm:w-auto"
-          >
-            Accept All
-          </Button>
-          <Button
-            variant="primary-fill"
-            size="medium"
-            onClick={handleRejectAll}
-            className="w-full justify-center sm:w-auto"
-          >
-            Reject All
-          </Button>
-          <CookieBannerCustomiser>Customise</CookieBannerCustomiser>
+          <CookieBannerPreferencesDisplay asChild>
+            <CookieBannerClose>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={() => alert("Accept all cookies.")}
+                className="w-full justify-center sm:w-auto"
+              >
+                Accept All
+              </Button>
+            </CookieBannerClose>
+          </CookieBannerPreferencesDisplay>
+          <CookieBannerPreferencesDisplay asChild>
+            <CookieBannerClose>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={() => alert("Reject all cookies.")}
+                className="w-full justify-center sm:w-auto"
+              >
+                Reject All
+              </Button>
+            </CookieBannerClose>
+          </CookieBannerPreferencesDisplay>
+          <CookieBannerPreferencesDisplay>
+            <CookieBannerPreferencesToggle>
+              Customise
+            </CookieBannerPreferencesToggle>
+          </CookieBannerPreferencesDisplay>
+          <CookieBannerPreferencesDisplay asChild showWhen="preferences-shown">
+            <CookieBannerClose>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={() => alert("Accept saved preferences.")}
+                className="w-full justify-center sm:w-auto"
+              >
+                Save preferences
+              </Button>
+            </CookieBannerClose>
+          </CookieBannerPreferencesDisplay>
+          <CookieBannerPreferencesDisplay asChild showWhen="preferences-shown">
+            <CookieBannerClose>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={() => alert("Necessary cookies accepted.")}
+                className="w-full justify-center sm:w-auto"
+              >
+                Accept necessary cookies
+              </Button>
+            </CookieBannerClose>
+          </CookieBannerPreferencesDisplay>
         </CookieBannerFooter>
       </CookieBanner>
     </div>

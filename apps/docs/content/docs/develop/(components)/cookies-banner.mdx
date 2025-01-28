@@ -25,29 +25,49 @@ import { CookiesBannerPreview } from "@/components/cookies-banner-preview";
   <Tab value="Code">
     ```tsx
     import {
-      CookieBanner,
-      CookieBannerClose,
-      CookieBannerCustomiser,
-      CookieBannerDescription,
-      CookieBannerFooter,
-      CookieBannerHeader,
-      CookieBannerPreferences,
-      CookieBannerTitle,
-    } from "@govtechmy/myds-react/cookie-banner";
-
-    <CookieBanner open={open} dismissible={false}>
-        <div className="mb-1 flex w-full flex-row justify-between">
-          <CookieBannerHeader className="space-y-0 p-0 pb-1">
-            <CookieBannerTitle className="text-body-md font-body pb-1">
-              Customise Cookie Preferences
-            </CookieBannerTitle>
-            <CookieBannerDescription>
-              This website uses cookies to improve user experience. We need your
-              consent to use some of the cookies.
-            </CookieBannerDescription>
-          </CookieBannerHeader>
-          <CookieBannerClose onClick={() => setOpen(!open)} />
-        </div>
+    CookieBanner,
+    CookieBannerClose,
+    CookieBannerPreferencesToggle,
+    CookieBannerPreferencesDisplay,
+    CookieBannerDescription,
+    CookieBannerFooter,
+    CookieBannerHeader,
+    CookieBannerPreferences,
+    CookieBannerTitle,
+  }
+  const [open, setOpen] = useState(false);
+  const [preferences, setPreferences] = useState({
+    necessary: true,
+    analytics: true,
+    performance: true,
+  });
+  
+  // Reset preferences back to default when dialog closes
+  useEffect(() => {
+    if (!open) {
+      setPreferences({
+        necessary: true,
+        analytics: true,
+        performance: true,
+      });
+    }
+  }, [open]);
+  
+      <CookieBanner
+        open={open}
+        onOpenChange={setOpen}
+        onDismiss={() => alert("Cookie banner has been dismissed.")}
+        dismissible={true}
+      >
+        <CookieBannerHeader className="space-y-0 p-0 pb-1" border={false}>
+          <CookieBannerTitle className="text-body-md pb-1">
+            Customise Preferences
+          </CookieBannerTitle>
+          <CookieBannerDescription>
+            This website uses cookies to improve user experience. We need your
+            consent to use some of the cookies.
+          </CookieBannerDescription>
+        </CookieBannerHeader>
         <CookieBannerPreferences className="flex flex-col gap-2 py-3">
           <div className="flex flex-row gap-2.5">
             <Checkbox
@@ -120,23 +140,59 @@ import { CookiesBannerPreview } from "@/components/cookies-banner-preview";
           </div>
         </CookieBannerPreferences>
         <CookieBannerFooter>
-          <Button
-            variant="primary-fill"
-            size="medium"
-            onClick={handleAcceptAll}
-            className="w-full justify-center sm:w-auto"
-          >
-            Accept All
-          </Button>
-          <Button
-            variant="primary-fill"
-            size="medium"
-            onClick={handleRejectAll}
-            className="w-full justify-center sm:w-auto"
-          >
-            Reject All
-          </Button>
-          <CookieBannerCustomiser>Customise</CookieBannerCustomiser>
+          <CookieBannerPreferencesDisplay asChild>
+            <CookieBannerClose>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={() => alert("Accept all cookies.")}
+                className="w-full justify-center sm:w-auto"
+              >
+                Accept All
+              </Button>
+            </CookieBannerClose>
+          </CookieBannerPreferencesDisplay>
+          <CookieBannerPreferencesDisplay asChild>
+            <CookieBannerClose>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={() => alert("Reject all cookies.")}
+                className="w-full justify-center sm:w-auto"
+              >
+                Reject All
+              </Button>
+            </CookieBannerClose>
+          </CookieBannerPreferencesDisplay>
+          <CookieBannerPreferencesDisplay>
+            <CookieBannerPreferencesToggle>
+              Customise
+            </CookieBannerPreferencesToggle>
+          </CookieBannerPreferencesDisplay>
+          <CookieBannerPreferencesDisplay asChild showWhen="preferences-shown">
+            <CookieBannerClose>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={() => alert("Accept saved preferences.")}
+                className="w-full justify-center sm:w-auto"
+              >
+                Save preferences
+              </Button>
+            </CookieBannerClose>
+          </CookieBannerPreferencesDisplay>
+          <CookieBannerPreferencesDisplay asChild showWhen="preferences-shown">
+            <CookieBannerClose>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={() => alert("Necessary cookies accepted.")}
+                className="w-full justify-center sm:w-auto"
+              >
+                Accept necessary cookies
+              </Button>
+            </CookieBannerClose>
+          </CookieBannerPreferencesDisplay>
         </CookieBannerFooter>
       </CookieBanner>
     ```
@@ -159,7 +215,8 @@ import { CookiesBannerPreview } from "@/components/cookies-banner-preview";
 import {
   CookieBanner,
   CookieBannerClose,
-  CookieBannerCustomiser,
+  CookieBannerPreferencesToggle,
+  CookieBannerPreferencesDisplay,
   CookieBannerDescription,
   CookieBannerFooter,
   CookieBannerHeader,
@@ -173,12 +230,15 @@ export default () => (
   <CookieBanner>
     <CookieBannerHeader>
       <CookieBannerTitle />
-      <CookieBannerClose />
+      <CookieBannerDescription />
     </CookieBannerHeader>
-    <CookieBannerDescription />
     <CookieBannerPreferences />
     <CookieBannerFooter>
-      <CookieBannerCustomiser />
+      <CookieBannerPreferencesToggle>
+       <CookieBannerPreferencesDisplay>
+         <CookieBannerClose />
+       </CookieBannerPreferencesDisplay>
+      </CookieBannerPreferencesToggle>
     </CookieBannerFooter>
   </CookieBanner>
 );
@@ -186,7 +246,7 @@ export default () => (
 ## Props
 
 ### CookieBanner
-Houses all the constituent components of the cookie banners. The component is a controlled component. It is being built on `Dialog` and `DialogContent`.
+Houses all the constituent components of the cookie banners. The component is a *controlled* component. It is being built on `Dialog.Root` and `DialogBody`.
 <TypeTable
   type={{
     open: {
@@ -195,7 +255,20 @@ Houses all the constituent components of the cookie banners. The component is a 
       typeDescription:
         "true | false",
         default: 'false'
-    }
+    },
+    dismissible: {
+      description: "To control whether the cookie banner should have a close button",
+      type: "boolean",
+      default: "true",
+    },
+    onDismiss: {
+      description: "Event listener for when the cookie banner is dismissed",
+      type: "() => void",
+    },
+    onOpenChange: {
+      description: "Event listener for when the cookie banner is opened or closed (controlled)",
+      type: "(open: boolean) => void",
+    },
   }}
 />
 
@@ -204,57 +277,32 @@ Contains the `CookieBannerTitle` and `CookieBannerClose` components. It is being
 
 ### CookieBannerTitle
 To customise the title of the cookie banner. It is being built on `DialogTitle`.
-<TypeTable
-  type={{
-    asChild: {
-      description: "Renders the child element instead of the default element, while preserving the component's props and functionality.",
-      type: "boolean",
-      typeDescription:
-        "true | false",
-        default: 'false'
-    }
-  }}
-/>
 
 ### CookieBannerClose
-To change the `open` state of the Cookie Banner.
-<TypeTable
-  type={{
-    onClick: {
-      description: "Handler called when the close button is clicked to control the banner's visibility.",
-      type: "function", 
-      typeDescription: "() => void",
-    }
-  }}
-/>
+To change the `open` state of the Cookie Banner. It is being built on `DialogClose`.
 
 ### CookieBannerPreferences
 A container component that wraps cookie preference options, typically containing checkboxes and descriptions for different cookie categories.
-<TypeTable
-  type={{
-    asChild: {
-      description: "Renders the child element instead of the default element, while preserving the component's props and functionality.",
-      type: "boolean",
-      typeDescription:
-        "true | false",
-        default: 'false'
-    }
-  }}
-/>
 
 ### CookieBannerFooter
 Contains action elements like buttons and the customiser for cookie preferences. 
 
-### CookieBannerCustomiser
+### CookieBannerPreferencesToggle
 A button component that toggles the visibility of cookie preference options. By default, renders as a Button component but can be customized using `asChild` props.
+
+### CookieBannerPreferencesDisplay
+A wrapper that shows or hide depends on the value of the `showPreferences` state of the `CookiesBanner`. If the `showWhen` props is `preferences-hidden`, the wrapper will not be shown when `showPreferences` props is falsy. By default, renders as a `div` component but can be customized using `asChild` props.
 
 <TypeTable
   type={{
-    asChild: {
-      description: "Renders the child element instead of the default button element, while preserving the component's props and functionality.",
-      type: "boolean",
-      typeDescription: "true | false",
-      default: "false"
+    showWhen: {
+      description: "The visibility of the component depends on the value of 'showPreferences' props.",
+      type: "enum",
+      typeDescription: "preferences-hidden | preferences-shown",
+      default: "preferences-hidden"
     }
   }}
 />
+
+### CookieBannerDescription
+Contains the description of the cookies banner. It is being build on `DialogDescription`. 

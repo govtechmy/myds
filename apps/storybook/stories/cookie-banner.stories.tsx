@@ -3,7 +3,8 @@ import { createStory } from "../utils";
 import {
   CookieBanner,
   CookieBannerClose,
-  CookieBannerCustomiser,
+  CookieBannerPreferencesToggle,
+  CookieBannerPreferencesDisplay,
   CookieBannerDescription,
   CookieBannerFooter,
   CookieBannerHeader,
@@ -34,9 +35,11 @@ import { Checkbox } from "@govtechmy/myds-react/checkbox";
  *   </CookieBannerHeader>
  *   <CookieBannerPreferences />
  *   <CookieBannerFooter>
- *     <CookieBannerCustomiser>
- *       <CookieBannerClose />
- *     </CookieBannerCustomiser>
+ *     <CookieBannerPreferencesToggle>
+ *      <CookieBannerPreferencesDisplay>
+ *        <CookieBannerClose />
+ *      </CookieBannerPreferencesDisplay>
+ *     </CookieBannerPreferencesToggle>
  *   </CookieBannerFooter>
  * </CookieBanner>
  * ```
@@ -44,14 +47,15 @@ import { Checkbox } from "@govtechmy/myds-react/checkbox";
  * ### Usage
  ```tsx
  * import {
- *   CookieBanner,
- *   CookieBannerClose,
- *   CookieBannerCustomiser,
- *   CookieBannerDescription,
- *   CookieBannerFooter,
- *   CookieBannerHeader,
- *   CookieBannerPreferences,
- *   CookieBannerTitle,
+ * CookieBanner,
+ * CookieBannerClose,
+ * CookieBannerPreferencesToggle,
+ * CookieBannerPreferencesDisplay,
+ * CookieBannerDescription,
+ * CookieBannerFooter,
+ * CookieBannerHeader,
+ * CookieBannerPreferences,
+ * CookieBannerTitle,
  * }
  * const [open, setOpen] = useState(false);
  * const [preferences, setPreferences] = useState({
@@ -71,148 +75,148 @@ import { Checkbox } from "@govtechmy/myds-react/checkbox";
  *   }
  * }, [open]);
  * 
- * <CookieBanner open={open} className={args.className} onOpenChange={setOpen}>
- *     <CookieBannerHeader className="space-y-0 p-0 pb-1">
- *       <CookieBannerTitle className="text-body-md pb-1">
- *         Customise Cookie Preferences
- *       </CookieBannerTitle>
- *       <CookieBannerDescription>
- *         This website uses cookies to improve user experience. We need
- *         your consent to use some of the cookies.
- *       </CookieBannerDescription>
- *     </CookieBannerHeader>
- * 
- *   <CookieBannerPreferences className="flex flex-col gap-2 py-3">
- *     <div className="flex flex-row gap-2.5">
- *       <Checkbox
- *         id="necessary"
- *         checked={true}
- *         className="mt-0.5 flex-shrink-0"
- *         disabled
- *       />
- *       <div className="flex flex-col justify-start gap-1">
- *         <label
- *           htmlFor="necessary"
- *           className="text-txt-black-900 text-body-sm font-semibold"
- *         >
- *           Necessary
- *         </label>
- *         <p className="text-txt-black-500 text-body-sm">
- *           Enable essential site features like secure log-ins and cookies
- *           consent settings. We do not store personal data.
- *         </p>
- *       </div>
- *     </div>
- * 
- *     <div className="flex flex-row space-x-2.5">
- *       <Checkbox
- *         id="analytics"
- *         checked={preferences.analytics}
- *         onCheckedChange={(checked: boolean) => {
- *           setPreferences((prev) => ({
- *             ...prev,
- *             analytics: checked,
- *           }));
- *         }}
- *         className="mt-0.5 flex-shrink-0"
- *       />
- *       <div className="flex flex-col space-y-1">
- *         <label
- *           htmlFor="analytics"
- *           className="text-txt-black-900 text-body-sm font-semibold"
- *         >
- *           Analytics
- *         </label>
- *         <p className="text-txt-black-500 text-body-sm">
- *           Track metrics like visitor count, bounce rate, and traffic
- *           sources.
- *         </p>
- *       </div>
- *     </div>
- * 
- *     <div className="flex flex-row space-x-2.5">
- *       <Checkbox
- *         id="performance"
- *         checked={preferences.performance}
- *         onCheckedChange={(checked: boolean) => {
- *           setPreferences((prev) => ({
- *             ...prev,
- *             performance: checked,
- *           }));
- *         }}
- *         className="mt-0.5 flex-shrink-0"
- *       />
- *       <div className="flex flex-col space-y-1">
- *         <label
- *           htmlFor="performance"
- *           className="text-txt-black-900 text-body-sm font-semibold"
- *         >
- *           Performance
- *         </label>
- *         <p className="text-txt-black-500 text-body-sm">
- *           Help analyze key website metrics, improving the user
- *           experience.
- *         </p>
- *       </div>
- *     </div>
- *   </CookieBannerPreferences>
- * 
- *   <CookieBannerFooter>
- *     <CookieBannerCustomiser asChild>
- *       <CookieBannerClose>
- *         <Button
- *           variant="primary-fill"
- *           size="medium"
- *           onClick={() => alert("Accept all cookies.")}
- *           className="w-full justify-center sm:w-auto"
- *         >
- *           Accept All
- *         </Button>
- *       </CookieBannerClose>
- *     </CookieBannerCustomiser>
- * 
- *     <CookieBannerCustomiser asChild>
- *       <CookieBannerClose>
- *         <Button
- *           variant="primary-fill"
- *           size="medium"
- *           onClick={() => alert("Reject all cookies.")}
- *           className="w-full justify-center sm:w-auto"
- *         >
- *           Reject All
- *         </Button>
- *       </CookieBannerClose>
- *     </CookieBannerCustomiser>
- * 
- *     <CookieBannerCustomiser>Customise</CookieBannerCustomiser>
- * 
- *     <CookieBannerCustomiser asChild showWhen="preferences-shown">
- *       <CookieBannerClose>
- *         <Button
- *           variant="primary-fill"
- *           size="medium"
- *           onClick={() => alert("Accept saved preferences.")}
- *           className="w-full justify-center sm:w-auto"
- *         >
- *           Save preferences
- *         </Button>
- *       </CookieBannerClose>
- *     </CookieBannerCustomiser>
- * 
- *     <CookieBannerCustomiser asChild showWhen="preferences-shown">
- *       <CookieBannerClose>
- *         <Button
- *           variant="primary-fill"
- *           size="medium"
- *           onClick={() => alert("Necessary cookies accepted.")}
- *           className="w-full justify-center sm:w-auto"
- *         >
- *           Accept necessary cookies
- *         </Button>
- *       </CookieBannerClose>
- *     </CookieBannerCustomiser>
- *   </CookieBannerFooter>
- * </CookieBanner>
+ *     <CookieBanner
+ *       open={open}
+ *       onOpenChange={setOpen}
+ *       onDismiss={() => alert("Cookie banner has been dismissed.")}
+ *       dismissible={true}
+ *     >
+ *       <CookieBannerHeader className="space-y-0 p-0 pb-1" border={false}>
+ *         <CookieBannerTitle className="text-body-md pb-1">
+ *           Customise Preferences
+ *         </CookieBannerTitle>
+ *         <CookieBannerDescription>
+ *           This website uses cookies to improve user experience. We need your
+ *           consent to use some of the cookies.
+ *         </CookieBannerDescription>
+ *       </CookieBannerHeader>
+ *       <CookieBannerPreferences className="flex flex-col gap-2 py-3">
+ *         <div className="flex flex-row gap-2.5">
+ *           <Checkbox
+ *             id="necessary"
+ *             checked={true}
+ *             className="mt-0.5 flex-shrink-0"
+ *             disabled
+ *           />
+ *           <div className="flex flex-col justify-start gap-1">
+ *             <label
+ *               htmlFor="necessary"
+ *               className="text-txt-black-900 text-body-sm font-semibold"
+ *             >
+ *               Necessary
+ *             </label>
+ *             <p className="text-txt-black-500 text-body-sm">
+ *               Enable essential site features like secure log-ins and cookies
+ *               consent settings. We do not store personal data.
+ *             </p>
+ *           </div>
+ *         </div>
+ *         <div className="flex flex-row space-x-2.5">
+ *           <Checkbox
+ *             id="analytics"
+ *             checked={preferences.analytics}
+ *             onCheckedChange={(checked: boolean) => {
+ *               setPreferences((prev) => ({
+ *                 ...prev,
+ *                 analytics: checked,
+ *               }));
+ *             }}
+ *             className="mt-0.5 flex-shrink-0"
+ *           />
+ *           <div className="flex flex-col space-y-1">
+ *             <label
+ *               htmlFor="analytics"
+ *               className="text-txt-black-900 text-body-sm font-semibold"
+ *             >
+ *               Analytics
+ *             </label>
+ *             <p className="text-txt-black-500 text-body-sm">
+ *               Track metrics like visitor count, bounce rate, and traffic
+ *               sources.
+ *             </p>
+ *           </div>
+ *         </div>
+ *         <div className="flex flex-row space-x-2.5">
+ *           <Checkbox
+ *             id="performance"
+ *             checked={preferences.performance}
+ *             onCheckedChange={(checked: boolean) => {
+ *               setPreferences((prev) => ({
+ *                 ...prev,
+ *                 performance: checked,
+ *               }));
+ *             }}
+ *             className="mt-0.5 flex-shrink-0"
+ *           />
+ *           <div className="flex flex-col space-y-1">
+ *             <label
+ *               htmlFor="performance"
+ *               className="text-txt-black-900 text-body-sm font-semibold"
+ *             >
+ *               Performance
+ *             </label>
+ *             <p className="text-txt-black-500 text-body-sm">
+ *               Help analyze key website metrics, improving the user experience.
+ *             </p>
+ *           </div>
+ *         </div>
+ *       </CookieBannerPreferences>
+ *       <CookieBannerFooter>
+ *         <CookieBannerPreferencesDisplay asChild>
+ *           <CookieBannerClose>
+ *             <Button
+ *               variant="primary-fill"
+ *               size="medium"
+ *               onClick={() => alert("Accept all cookies.")}
+ *               className="w-full justify-center sm:w-auto"
+ *             >
+ *               Accept All
+ *             </Button>
+ *           </CookieBannerClose>
+ *         </CookieBannerPreferencesDisplay>
+ *         <CookieBannerPreferencesDisplay asChild>
+ *           <CookieBannerClose>
+ *             <Button
+ *               variant="primary-fill"
+ *               size="medium"
+ *               onClick={() => alert("Reject all cookies.")}
+ *               className="w-full justify-center sm:w-auto"
+ *             >
+ *               Reject All
+ *             </Button>
+ *           </CookieBannerClose>
+ *         </CookieBannerPreferencesDisplay>
+ *         <CookieBannerPreferencesDisplay>
+ *           <CookieBannerPreferencesToggle>
+ *             Customise
+ *           </CookieBannerPreferencesToggle>
+ *         </CookieBannerPreferencesDisplay>
+ *         <CookieBannerPreferencesDisplay asChild showWhen="preferences-shown">
+ *           <CookieBannerClose>
+ *             <Button
+ *               variant="primary-fill"
+ *               size="medium"
+ *               onClick={() => alert("Accept saved preferences.")}
+ *               className="w-full justify-center sm:w-auto"
+ *             >
+ *               Save preferences
+ *             </Button>
+ *           </CookieBannerClose>
+ *         </CookieBannerPreferencesDisplay>
+ *         <CookieBannerPreferencesDisplay asChild showWhen="preferences-shown">
+ *           <CookieBannerClose>
+ *             <Button
+ *               variant="primary-fill"
+ *               size="medium"
+ *               onClick={() => alert("Necessary cookies accepted.")}
+ *               className="w-full justify-center sm:w-auto"
+ *             >
+ *               Accept necessary cookies
+ *             </Button>
+ *           </CookieBannerClose>
+ *         </CookieBannerPreferencesDisplay>
+ *       </CookieBannerFooter>
+ *     </CookieBanner>
  * ```
  * 
  
@@ -241,6 +245,7 @@ const meta = {
 
     // @ts-expect-error
     const showWhen = args.showWhen;
+    console.log(showWhen);
 
     return (
       <div className="flex flex-col items-start gap-4">
@@ -249,7 +254,6 @@ const meta = {
         </Button>
         <CookieBanner
           open={open}
-          className={args.className}
           onOpenChange={setOpen}
           onDismiss={() => alert("Cookie banner has been dismissed.")}
           dismissible={args.dismissible}
@@ -340,7 +344,7 @@ const meta = {
             </div>
           </CookieBannerPreferences>
           <CookieBannerFooter>
-            <CookieBannerCustomiser asChild>
+            <CookieBannerPreferencesDisplay asChild>
               <CookieBannerClose>
                 <Button
                   variant="primary-fill"
@@ -351,8 +355,8 @@ const meta = {
                   Accept All
                 </Button>
               </CookieBannerClose>
-            </CookieBannerCustomiser>
-            <CookieBannerCustomiser asChild>
+            </CookieBannerPreferencesDisplay>
+            <CookieBannerPreferencesDisplay asChild>
               <CookieBannerClose>
                 <Button
                   variant="primary-fill"
@@ -363,11 +367,22 @@ const meta = {
                   Reject All
                 </Button>
               </CookieBannerClose>
-            </CookieBannerCustomiser>
-            <CookieBannerCustomiser showWhen={showWhen}>
-              Customise
-            </CookieBannerCustomiser>
-            <CookieBannerCustomiser asChild showWhen="preferences-shown">
+            </CookieBannerPreferencesDisplay>
+            <CookieBannerPreferencesDisplay asChild showWhen={showWhen}>
+              <CookieBannerPreferencesToggle asChild>
+                <Button
+                  variant="primary-outline"
+                  size="medium"
+                  className="w-full justify-center sm:w-auto"
+                >
+                  Customise
+                </Button>
+              </CookieBannerPreferencesToggle>
+            </CookieBannerPreferencesDisplay>
+            <CookieBannerPreferencesDisplay
+              asChild
+              showWhen="preferences-shown"
+            >
               <CookieBannerClose>
                 <Button
                   variant="primary-fill"
@@ -378,8 +393,11 @@ const meta = {
                   Save preferences
                 </Button>
               </CookieBannerClose>
-            </CookieBannerCustomiser>
-            <CookieBannerCustomiser asChild showWhen="preferences-shown">
+            </CookieBannerPreferencesDisplay>
+            <CookieBannerPreferencesDisplay
+              asChild
+              showWhen="preferences-shown"
+            >
               <CookieBannerClose>
                 <Button
                   variant="primary-fill"
@@ -390,7 +408,7 @@ const meta = {
                   Accept necessary cookies
                 </Button>
               </CookieBannerClose>
-            </CookieBannerCustomiser>
+            </CookieBannerPreferencesDisplay>
           </CookieBannerFooter>
         </CookieBanner>
       </div>
@@ -464,7 +482,7 @@ const meta = {
       control: "select",
       options: ["preferences-hidden", "preferences-shown"],
       table: {
-        category: "CookieBannerCustomiser",
+        category: "CookieBannerPreferencesDisplay",
       },
     },
   },

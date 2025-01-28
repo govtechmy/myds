@@ -129,7 +129,6 @@ type CookieBannerCustomiserProps = {
   children: React.ReactNode;
   className?: string;
   asChild?: boolean;
-  showWhen?: "preferences-hidden" | "preferences-shown";
 };
 
 type CookieBannerProps = Omit<ComponentProps<typeof Dialog>, "defaultOpen"> & {
@@ -142,34 +141,39 @@ type CookieBannerProps = Omit<ComponentProps<typeof Dialog>, "defaultOpen"> & {
 const CookieBanner = forwardRef<
   React.ElementRef<typeof DialogBody>,
   CookieBannerProps
->(({ open, onOpenChange, dismissible = true, className, ...props }, ref) => {
-  const [showPreferences, setShowPreferences] = useState(false);
+>(
+  (
+    { open = false, onOpenChange, dismissible = true, className, ...props },
+    ref,
+  ) => {
+    const [showPreferences, setShowPreferences] = useState(false);
 
-  // Reset showPreferences when dialog closes
-  useEffect(() => {
-    if (!open) {
-      setShowPreferences(false);
-    }
-  }, [open]);
+    // Reset showPreferences when dialog closes
+    useEffect(() => {
+      if (!open) {
+        setShowPreferences(false);
+      }
+    }, [open]);
 
-  return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <CookieBannerContext.Provider
-        value={{ showPreferences, setShowPreferences }}
-      >
-        <DialogBody
-          dismissible={dismissible}
-          ref={ref}
-          className={clx(
-            "bg-bg-white bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:max-w-[502px] sm:translate-x-0 sm:p-6",
-            className,
-          )}
-          {...props}
-        />
-      </CookieBannerContext.Provider>
-    </Dialog>
-  );
-});
+    return (
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <CookieBannerContext.Provider
+          value={{ showPreferences, setShowPreferences }}
+        >
+          <DialogBody
+            dismissible={dismissible}
+            ref={ref}
+            className={clx(
+              "bg-bg-white bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:max-w-[502px] sm:translate-x-0 sm:p-6",
+              className,
+            )}
+            {...props}
+          />
+        </CookieBannerContext.Provider>
+      </Dialog>
+    );
+  },
+);
 
 const CookieBannerFooter: ForwardRefExoticComponent<ComponentProps<"div">> =
   forwardRef(({ className, ...props }, ref) => {
@@ -207,9 +211,39 @@ const CookieBannerPreferences = forwardRef<
   );
 });
 
-const CookieBannerCustomiser = forwardRef<
-  HTMLElement,
+const CookieBannerPreferencesToggle = forwardRef<
+  HTMLButtonElement,
   CookieBannerCustomiserProps
+>(({ children, className, asChild = false, ...props }, ref) => {
+  const context = useContext(CookieBannerContext);
+  if (!context) {
+    throw new Error("Must be used within CookieBanner");
+  }
+
+  const togglePreferences = () => {
+    context.setShowPreferences(!context.showPreferences);
+  };
+
+  const Comp = asChild ? Slot : Button;
+  return (
+    <Comp
+      variant="primary-outline"
+      size="medium"
+      className={clx("w-full justify-center sm:w-auto", className)}
+      onClick={togglePreferences}
+      {...props}
+      ref={ref}
+    >
+      {children}
+    </Comp>
+  );
+});
+
+const CookieBannerPreferencesDisplay = forwardRef<
+  HTMLElement,
+  CookieBannerCustomiserProps & {
+    showWhen?: "preferences-hidden" | "preferences-shown";
+  }
 >(
   (
     {
@@ -226,10 +260,6 @@ const CookieBannerCustomiser = forwardRef<
       throw new Error("Must be used within CookieBanner");
     }
 
-    const togglePreferences = () => {
-      context.setShowPreferences(!context.showPreferences);
-    };
-
     const shouldShow =
       showWhen === "preferences-hidden"
         ? !context.showPreferences
@@ -240,18 +270,8 @@ const CookieBannerCustomiser = forwardRef<
       return null;
     }
 
-    const Comp = asChild ? Slot : Button;
-    return (
-      <Comp
-        variant="primary-outline"
-        size="medium"
-        className={clx("w-full justify-center sm:w-auto", className)}
-        onClick={togglePreferences}
-        {...props}
-      >
-        {children}
-      </Comp>
-    );
+    const Comp = asChild ? Slot : "div";
+    return <Comp {...props}>{children}</Comp>;
   },
 );
 
@@ -261,13 +281,14 @@ const CookieBannerHeader = DialogHeader;
 const CookieBannerTitle = DialogTitle;
 
 CookieBanner.displayName = "CookieBanner";
-CookieBannerCustomiser.displayName = "CookieBannerCustomiser";
 CookieBannerFooter.displayName = "CookieBannerFooter";
 CookieBannerDescription.displayName = "CookieBannerDescription";
 CookieBannerClose.displayName = "CookieBannerClose";
 CookieBannerPreferences.displayName = "CookieBannerPreferences";
 CookieBannerTitle.displayName = "CookieBannerTitle";
 CookieBannerHeader.displayName = "CookieBannerHeader";
+CookieBannerPreferencesDisplay.displayName = "CookieBannerPreferencesDisplay";
+CookieBannerPreferencesToggle.displayName = "CookieBannerPreferencesToggle";
 
 export {
   CookieBanner,
@@ -276,6 +297,7 @@ export {
   CookieBannerDescription,
   CookieBannerClose,
   CookieBannerPreferences,
-  CookieBannerCustomiser,
   CookieBannerFooter,
+  CookieBannerPreferencesToggle,
+  CookieBannerPreferencesDisplay,
 };
