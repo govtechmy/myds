@@ -4,23 +4,35 @@ import { Link } from "./link";
 
 // Main Footer
 //====================================================================================================
-const Footer: FunctionComponent<ComponentProps<"div">> = ({
+
+interface FooterProps extends ComponentProps<"div"> {
+  background: string;
+}
+
+const Footer: FunctionComponent<FooterProps> = ({
   children,
   className,
+  background,
   ...props
 }) => (
   <div
     className={clx(
       "border-otl-gray-200 bg-bg-gray-50 border-t print:hidden",
-      className,
+      background,
     )}
     {...props}
   >
-    <div className="divide-otl-gray-200 bg-bg-gray-50 container mx-auto divide-y px-6 py-8 max-sm:px-0 lg:px-[60px] lg:py-16">
+    <div
+      className={clx(
+        "divide-otl-gray-200 bg-bg-gray-50 container mx-auto divide-y px-6 py-8 max-sm:px-0 lg:py-16",
+        className,
+      )}
+    >
       {children}
     </div>
   </div>
 );
+
 //====================================================================================================
 
 //Footer Top Section
@@ -105,7 +117,9 @@ const ImageWithTitle: FunctionComponent<ImageWithTitleProps> = ({
       className="select-none"
     />
     <div>
-      <div className="font-poppins whitespace-nowrap font-semibold">{children}</div>
+      <div className="font-poppins whitespace-nowrap font-semibold">
+        {children}
+      </div>
     </div>
   </div>
 );
@@ -151,7 +165,7 @@ interface SocialMediaItemProps {
   icon: ReactNode;
   href: string;
   name: string;
-  className?:string;
+  className?: string;
 }
 
 const SocialMediaItem: FunctionComponent<SocialMediaItemProps> = ({
@@ -167,7 +181,7 @@ const SocialMediaItem: FunctionComponent<SocialMediaItemProps> = ({
     rel="noopener noreferrer"
     aria-label={name}
     underline="none"
-    className={clx("hover:text-txt-black-900",className)}
+    className={clx("hover:text-txt-black-900", className)}
     {...props}
   >
     {icon}
