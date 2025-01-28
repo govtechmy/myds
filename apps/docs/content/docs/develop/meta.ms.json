@@ -36,6 +36,7 @@
     "(components)/skiplink",
     "(components)/spinner",
     "(components)/summarylist",
+    "(components)/label",
     "(components)/table",
     "(components)/tag",
     "(components)/text-area",
