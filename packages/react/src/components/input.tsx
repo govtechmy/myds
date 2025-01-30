@@ -19,7 +19,7 @@ type InputContextProps = {
 };
 
 const InputContext = createContext<InputContextProps>({
-  size: "medium",
+  size: "small",
 });
 
 interface InputProps
@@ -33,7 +33,7 @@ interface InputProps
 const input_cva = cva(
   [
     "bg-bg-white border border-transparent outline-none box-border rounded-md",
-    "placeholder:text-txt-black-500 text-txt-black-700 transition-colors",
+    "placeholder:text-txt-black-500 text-txt-black-700 transition-colors w-full",
     "focus:ring focus:ring-fr-primary focus:border-otl-primary-300",
     "disabled:bg-bg-washed disabled:cursor-not-allowed disabled:text-txt-black-disabled",
     "data-[has-prepend=true]:rounded-l-none data-[has-append=true]:rounded-r-none",
@@ -47,14 +47,14 @@ const input_cva = cva(
         large: "py-2.5 px-3.5 text-body-lg",
       },
     },
+    defaultVariants: {
+      size: "small",
+    },
   },
 );
 
 const Input: ForwardRefExoticComponent<InputProps> = forwardRef(
-  (
-    { className, prepend, append, children, size = "medium", ...props },
-    ref,
-  ) => {
+  ({ className, prepend, append, children, size = "small", ...props }, ref) => {
     const has_icon = useMemo(() => {
       if (!children) return { left: false, right: false };
       const _children = Children.toArray(children);
@@ -62,15 +62,11 @@ const Input: ForwardRefExoticComponent<InputProps> = forwardRef(
         left: _children.some(
           (child) =>
             isValidElement<ComponentPropsWithRef<typeof InputIcon>>(child) &&
-            /* @ts-expect-error */
-            child.type.displayName == InputIcon.displayName &&
             child.props.position === "left",
         ),
         right: _children.some(
           (child) =>
             isValidElement<ComponentPropsWithRef<typeof InputIcon>>(child) &&
-            /* @ts-expect-error */
-            child.type.displayName === InputIcon.displayName &&
             child.props.position === "right",
         ),
       };
@@ -83,16 +79,13 @@ const Input: ForwardRefExoticComponent<InputProps> = forwardRef(
           className,
         )}
       >
-        <div className="flex flex-row">
+        <div className="flex w-full flex-row">
           <InputContext.Provider value={{ size }}>
             {prepend}
-            <div className="relative">
+            <div className="relative w-full">
               <input
                 ref={ref}
-                className={input_cva({
-                  size,
-                  className,
-                })}
+                className={input_cva({ size })}
                 data-has-prepend={!!prepend}
                 data-has-append={!!append}
                 data-has-left-icon={has_icon.left}
