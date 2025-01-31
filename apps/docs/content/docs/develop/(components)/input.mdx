@@ -99,49 +99,66 @@ To use the input in the controlled state, utilize the `value` and `onChange` pro
   </Tab>
 </Tabs>
 
-### Prefix Icon
+### Input Icon
+
+You can add an icon to the input field by using the `InputIcon` component. The icon can be positioned on the `left` or `right` side of the input field. Both left and right icons can be used together.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview" className="not-prose flex justify-center">
-    <Input placeholder="Type something here">
+  <Tab value="Preview" className="not-prose flex flex-col justify-center gap-2">
+    <Input placeholder="Input + Left Icon">
       <InputIcon position="left">
         <ArrowBackIcon />
       </InputIcon>
     </Input>
-  </Tab>
-  <Tab value="Code">
-    ```tsx
-    <Input placeholder="Type something here">
+    <Input placeholder="Input + Right Icon">
+      <InputIcon position="right">
+        <ArrowForwardIcon />
+      </InputIcon>
+    </Input>
+    <Input placeholder="Input + Left & Right Icon">
       <InputIcon position="left">
         <ArrowBackIcon />
       </InputIcon>
-    </Input>
-    ```
-  </Tab>
-</Tabs>
-
-### Suffix Icon
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview" className="not-prose flex justify-center">
-    <Input placeholder="Type something here">
       <InputIcon position="right">
         <ArrowForwardIcon />
       </InputIcon>
     </Input>
   </Tab>
   <Tab value="Code">
-    ```tsx
-    <Input placeholder="Type something here">
-      <InputIcon position="right">
-        <ArrowForwardIcon />
-      </InputIcon>
-    </Input>
-    ```
+```tsx
+// Left Icon
+
+<Input placeholder="Input + Left Icon">
+  <InputIcon position="left">
+    <ArrowBackIcon />
+  </InputIcon>
+</Input>
+
+// Right Icon
+
+<Input placeholder="Input + Right Icon">
+  <InputIcon position="right">
+    <ArrowForwardIcon />
+  </InputIcon>
+</Input>
+
+// Left & Right Icon
+
+<Input placeholder="Input + Left & Right Icon">
+  <InputIcon position="left">
+    <ArrowBackIcon />
+  </InputIcon>
+  <InputIcon position="right">
+    <ArrowForwardIcon />
+  </InputIcon>
+</Input>
+```
   </Tab>
 </Tabs>
 
 ### Input Addons
+
+You can add an addon to the input field by using the `InputAddon` component. The addon can be appended or prepended to the input field. This is useful for attaching **submit buttons**, **currency symbols** or any other control to the input field.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex flex-col gap-2">

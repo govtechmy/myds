@@ -99,49 +99,66 @@ Untuk menggunakan input dalam keadaan terkawal, gunakan prop `value` dan `onChan
   </Tab>
 </Tabs>
 
-### Ikon Prefix
+### Ikon Input
+
+Anda boleh menambah ikon pada medan input dengan menggunakan komponen `InputIcon`. Ikon boleh diletakkan di sebelah `kiri` atau `kanan` medan input. Kedua-dua ikon kiri dan kanan boleh digunakan bersama.
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
-  <Tab value="Pratonton" className="not-prose flex justify-center">
-    <Input placeholder="Taip sesuatu di sini">
+  <Tab value="Pratonton" className="not-prose flex flex-col justify-center gap-2">
+    <Input placeholder="Input + Ikon Kiri">
       <InputIcon position="left">
         <ArrowBackIcon />
       </InputIcon>
     </Input>
-  </Tab>
-  <Tab value="Kod">
-    ```tsx
-    <Input placeholder="Taip sesuatu di sini">
+    <Input placeholder="Input + Ikon Kanan">
+      <InputIcon position="right">
+        <ArrowForwardIcon />
+      </InputIcon>
+    </Input>
+    <Input placeholder="Input + Ikon Kiri & Kanan">
       <InputIcon position="left">
         <ArrowBackIcon />
       </InputIcon>
-    </Input>
-    ```
-  </Tab>
-</Tabs>
-
-### Ikon Suffix
-
-<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
-  <Tab value="Pratonton" className="not-prose flex justify-center">
-    <Input placeholder="Taip sesuatu di sini">
       <InputIcon position="right">
         <ArrowForwardIcon />
       </InputIcon>
     </Input>
   </Tab>
   <Tab value="Kod">
-    ```tsx
-    <Input placeholder="Taip sesuatu di sini">
-      <InputIcon position="right">
-        <ArrowForwardIcon />
-      </InputIcon>
-    </Input>
-    ```
+```tsx
+// Ikon Kiri
+
+<Input placeholder="Input + Ikon Kiri">
+  <InputIcon position="left">
+    <ArrowBackIcon />
+  </InputIcon>
+</Input>
+
+// Ikon Kanan
+
+<Input placeholder="Input + Ikon Kanan">
+  <InputIcon position="right">
+    <ArrowForwardIcon />
+  </InputIcon>
+</Input>
+
+// Ikon Kiri & Kanan
+
+<Input placeholder="Input + Ikon Kiri & Kanan">
+  <InputIcon position="left">
+    <ArrowBackIcon />
+  </InputIcon>
+  <InputIcon position="right">
+    <ArrowForwardIcon />
+  </InputIcon>
+</Input>
+```
   </Tab>
 </Tabs>
 
 ### Tambahan Input
+
+Anda boleh menambah tambahan pada medan input dengan menggunakan komponen `InputAddon`. Tambahan boleh ditambah atau disisipkan pada medan input. Ini berguna untuk melampirkan **butang hantar**, **simbol mata wang** atau sebarang kawalan lain pada medan input.
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
   <Tab value="Pratonton" className="not-prose flex flex-col gap-2">
@@ -160,13 +177,13 @@ Untuk menggunakan input dalam keadaan terkawal, gunakan prop `value` dan `onChan
   </Tab>
   <Tab value="Kod">
     ```tsx
-    // Prepend
+    // Tambah
     <Input
       placeholder="Taip sesuatu di sini"
       prepend={<InputAddon>RM</InputAddon>}
     />
 
-    // Append
+    // Sisip
     <Input
       placeholder="Taip sesuatu di sini"
       append={
@@ -193,7 +210,7 @@ Untuk menggunakan input dalam keadaan terkawal, gunakan prop `value` dan `onChan
       default: "small",
     },
     placeholder: {
-      description: "Teks pemegang tempat",
+      description: "Teks placeholder",
       type: "string",
     },
     defaultValue: {
@@ -226,7 +243,7 @@ Untuk menggunakan input dalam keadaan terkawal, gunakan prop `value` dan `onChan
       type: "left | right",
     },
     children: {
-      description: "Hantar komponen ikon. Mesti digunakan dalam Input",
+      description: "Pasangkan komponen ikon. Mesti digunakan dalam Input",
       type: "ReactNode",
     },
   }}
