@@ -1,0 +1,261 @@
+---
+title: Input
+description: The input component is a text input field that allows users to input text.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { ArrowBackIcon, ArrowForwardIcon } from "@govtechmy/myds-react/icon";
+import { Input, InputIcon, InputAddon } from "@/components/myds";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <Input placeholder="Enter your name" />
+  </Tab>
+  <Tab value="Code">
+```tsx
+<Input placeholder="Enter your name" />
+```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-input--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/input.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import { Input } from "@govtechmy/myds-react/input";
+```
+
+```tsx copy
+<Input />
+```
+
+## Examples
+
+### Size
+
+Use the `size` prop to change the size of the input. The default size is `small`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose block space-y-1">
+  
+    <Input size="small" placeholder="Small" />
+    <Input size="medium" placeholder="Medium" />
+    <Input size="large" placeholder="Large" />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Input size="small" placeholder="Small" />
+    <Input size="medium" placeholder="Medium" />
+    <Input size="large" placeholder="Large" />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Disabled
+
+Disable the input by setting the `disabled` prop to true.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <Input disabled placeholder="Disabled" />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Input disabled placeholder="Disabled" />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Uncontrolled vs Controlled State
+
+To use the input in an uncontrolled state, set the `defaultValue` prop to the initial state of the input.
+
+To use the input in the controlled state, utilize the `value` and `onChange` prop to handle the state programmatically.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose block space-y-2">
+    <Input defaultValue="Uncontrolled" />
+    <Input value="Controlled" />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Input defaultValue="Uncontrolled" />
+    <Input value="Controlled" />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Input Icon
+
+You can add an icon to the input field by using the `InputIcon` component. The icon can be positioned on the `left` or `right` side of the input field. Both left and right icons can be used together.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex flex-col justify-center gap-2">
+    <Input placeholder="Input + Left Icon">
+      <InputIcon position="left">
+        <ArrowBackIcon />
+      </InputIcon>
+    </Input>
+    <Input placeholder="Input + Right Icon">
+      <InputIcon position="right">
+        <ArrowForwardIcon />
+      </InputIcon>
+    </Input>
+    <Input placeholder="Input + Left & Right Icon">
+      <InputIcon position="left">
+        <ArrowBackIcon />
+      </InputIcon>
+      <InputIcon position="right">
+        <ArrowForwardIcon />
+      </InputIcon>
+    </Input>
+  </Tab>
+  <Tab value="Code">
+```tsx
+// Left Icon
+
+<Input placeholder="Input + Left Icon">
+  <InputIcon position="left">
+    <ArrowBackIcon />
+  </InputIcon>
+</Input>
+
+// Right Icon
+
+<Input placeholder="Input + Right Icon">
+  <InputIcon position="right">
+    <ArrowForwardIcon />
+  </InputIcon>
+</Input>
+
+// Left & Right Icon
+
+<Input placeholder="Input + Left & Right Icon">
+  <InputIcon position="left">
+    <ArrowBackIcon />
+  </InputIcon>
+  <InputIcon position="right">
+    <ArrowForwardIcon />
+  </InputIcon>
+</Input>
+```
+  </Tab>
+</Tabs>
+
+### Input Addons
+
+You can add an addon to the input field by using the `InputAddon` component. The addon can be appended or prepended to the input field. This is useful for attaching **submit buttons**, **currency symbols** or any other control to the input field.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex flex-col gap-2">
+    <Input
+      placeholder="Type something here"
+      prepend={<InputAddon>RM</InputAddon>}
+    />
+    <Input
+      placeholder="Type something here"
+      append={
+        <InputAddon>
+          <button>Submit</button>
+        </InputAddon>
+      }
+    />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    // Prepend
+    <Input
+      placeholder="Type something here"
+      prepend={<InputAddon>RM</InputAddon>}
+    />
+
+    // Append
+    <Input
+      placeholder="Type something here"
+      append={
+        <InputAddon>
+          <button>Submit</button>
+        </InputAddon>
+      }
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### Input
+
+<TypeTable
+  type={{
+    size: {
+      description: "Size of the input field",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    placeholder: {
+      description: "Placeholder text",
+      type: "string",
+    },
+    defaultValue: {
+      description: "The default value of the input (uncontrolled)",
+      type: "string",
+    },
+    value: {
+      description: "The value of the input (controlled)",
+      type: "string",
+    },
+    onChange: {
+      description:
+        "Callback function when the value of the input changes (controlled)",
+      type: "function",
+      typeDescription: "(value: string) => void",
+    },
+    disabled: {
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
+
+### InputIcon
+
+<TypeTable
+  type={{
+    position: {
+      description: "Position of the input icon",
+      type: "left | right",
+    },
+    children: {
+      description: "Pass an icon component. Must be used within Input",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### InputAddon
+
+<TypeTable
+  type={{
+    children: {
+      description: "Must be used within Input.append or Input.prepend",
+      type: "ReactNode",
+    },
+  }}
+/>
