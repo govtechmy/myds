@@ -245,7 +245,6 @@ const meta = {
 
     // @ts-expect-error
     const showWhen = args.showWhen;
-    console.log(showWhen);
 
     return (
       <div className="flex flex-col items-start gap-4">
