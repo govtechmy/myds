@@ -37,7 +37,7 @@ import { Link } from "@govtechmy/myds-react/link";
   <Tab value="Preview">
   <div className="overflow-scroll px-2 h-[250px]">
   <div className="scale-[0.6] origin-top-left">
-        <Footer className="w-[1180px] xl:px-10">
+        <Footer background="w-[1180px] xl:px-10">
           <FooterTopSection>
             <FooterMainInfo>
               <ImageWithTitle
@@ -823,6 +823,10 @@ Displays the last updated date and time.
       description: "Additional styles for the footer",
       type: "string",
     },
+    background: {
+      description: "Additional styles for the background of footer",
+      type: "string",
+    },
     children: {
       description: "Footer content",
       type: "ReactNode",
@@ -831,6 +835,7 @@ Displays the last updated date and time.
 />
 
 ### FooterTopSection
+
 <TypeTable
   type={{
     className: {
@@ -845,6 +850,7 @@ Displays the last updated date and time.
 />
 
 ### FooterMainInfo
+
 <TypeTable
   type={{
     className: {
@@ -858,8 +864,8 @@ Displays the last updated date and time.
   }}
 />
 
-
 ### ImageWithTitle
+
 <TypeTable
   type={{
     imgSrc: {
@@ -938,8 +944,8 @@ Displays the last updated date and time.
   }}
 />
 
-
 ### FooterContent
+
 <TypeTable
   type={{
     children: {
@@ -950,6 +956,7 @@ Displays the last updated date and time.
 />
 
 ### FooterContentColumn
+
 <TypeTable
   type={{
     title: {
@@ -963,8 +970,8 @@ Displays the last updated date and time.
   }}
 />
 
-
 ### FooterBottomSection
+
 <TypeTable
   type={{
     className: {
@@ -977,7 +984,6 @@ Displays the last updated date and time.
     },
   }}
 />
-
 
 ### FooterCopyright
 
@@ -1010,6 +1016,7 @@ Displays the last updated date and time.
 />
 
 ### FooterCopyrightLinkWrapper
+
 <TypeTable
   type={{
     className: {
@@ -1024,10 +1031,12 @@ Displays the last updated date and time.
 />
 
 ### FooterTimestamp
+
 <TypeTable
   type={{
     time: {
-      description: "Timestamp in string, number, or Date format, representing a valid ISO 8601 date or any format supported by the JavaScript Date constructor.",
+      description:
+        "Timestamp in string, number, or Date format, representing a valid ISO 8601 date or any format supported by the JavaScript Date constructor.",
       type: "string | number | Date",
     },
     className: {
@@ -1040,5 +1049,3 @@ Displays the last updated date and time.
     },
   }}
 />
-
-

@@ -24,6 +24,7 @@
     "(components)/dialog",
     "(components)/dropdown",
     "(components)/footer",
+    "(components)/input",
     "(components)/input-otp",
     "(components)/label",
     "(components)/link",
