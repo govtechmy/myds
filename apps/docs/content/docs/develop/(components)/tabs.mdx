@@ -88,6 +88,25 @@ import { Tab, Tabs as FumaTabs } from "fumadocs-ui/components/tabs";
    </Tab>
 </FumaTabs>
 
+## Usage
+```tsx
+import {
+  Tabs,
+  TabsContent,
+  TabsCounter,
+} from "@/components/myds";
+```
+
+```tsx
+export default () => (
+  <Tabs>
+    <TabsList>
+      <TabsTrigger />
+    </TabsList>
+    <TabsContent />
+  </Tabs>
+);
+```
 ## Examples
 
 ### Variant
@@ -784,3 +803,56 @@ Counters appear as numerical indicators after tab labels, providing at-a-glance 
     </Tab>
 </FumaTabs>
 
+## Props
+
+### Tabs
+The primary container that composes all tab components together, managing state and interactions between triggers and their content panels. It is being built on top of `TabsPrimitive.Root`.
+<TypeTable
+type={{
+    variant: {
+      description: "Style variant of the tab",
+      type: "enum",
+      typeDescription:
+        "pill | enclosed | line",
+      default: "line"
+    },
+    size: {
+      description: "Sizes of the tab",
+      type: "enum",
+      typeDescription: "small | medium",
+      default: "small",
+    },
+  }}
+/>
+
+### TabsList
+A container that houses and aligns all tab triggers, providing a consistent layout for navigation elements. It is being built on top of `TabsPrimitive.List`.
+<TypeTable
+type={{
+    width: {
+      description: "Width of the TabList",
+      type: "enum",
+      typeDescription:
+        "full | fit",
+      default: "fit"
+    }
+  }}
+/>
+
+### TabsTrigger
+Interactive element that toggles visibility of its corresponding tab panel when selected. It is being built on top of `TabsPrimitive.Trigger`.
+
+### TabsContent
+The panel that displays content when its corresponding trigger is selected, hiding when another tab is activated. It is being built on top of `TabsPrimitive.Content`.
+
+### TabsIcon
+The `TabsIcon` is a wrapper component that applies consistent styling and sizing to icons within `TabsTrigger`, using context-based size variants (`small` or `medium`). 
+
+### TabsCounter
+The `TabsCounter` is a component that displays numerical indicators or badges within `TabTrigger`,  adjusting its text size based on the parent tabs' context (`small` or `medium`).
+
+
+<small>
+  For more in-depth customization, you can refer to API references in this
+  [documentation](https://www.radix-ui.com/primitives/docs/components/tabs#api-reference)
+</small>
