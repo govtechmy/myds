@@ -104,29 +104,32 @@ Gunakan prop `size` untuk menukar saiz label!
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
-  <div className="flex justify-between  items-center">
-    <Label size="small">
+  <div className="flex items-center">
+    <Label size="small" className="items-center flex justify-between w-full">
       Dayakan keselamatan 2FA (Pengesahan Dua Faktor)?
+      <Toggle size="small">
+        <ToggleThumb />
+      </Toggle>
     </Label>
-    <Toggle size="small">
-      <ToggleThumb />
-    </Toggle>
+
   </div>
-  <div className="flex justify-between  items-center">
-    <Label size="medium">
-      Dayakan keselamatan 2FA (Pengesahan Dua Faktor)?
+  <div className="flex items-center">
+    <Label size="medium" className="items-center flex justify-between w-full">
+     Dayakan keselamatan 2FA (Pengesahan Dua Faktor)?
+      <Toggle size="medium">
+        <ToggleThumb />
+      </Toggle>
     </Label>
-    <Toggle size="medium">
-      <ToggleThumb />
-    </Toggle>
+
   </div>
-  <div className="flex justify-between  items-center">
-    <Label size="large">
-      Dayakan keselamatan 2FA (Pengesahan Dua Faktor)?
+  <div className="flex items-center">
+    <Label size="large" className="items-center flex justify-between w-full">
+        Dayakan keselamatan 2FA (Pengesahan Dua Faktor)?
+      <Toggle size="large">
+        <ToggleThumb />
+      </Toggle>
     </Label>
-    <Toggle size="large">
-      <ToggleThumb />
-    </Toggle>
+
   </div>
   </Tab>
   <Tab value="Code">
@@ -138,29 +141,32 @@ import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 /** Saiz **/
 
 <>
-  <div className="flex items-center justify-between">
-    <Label size="small">
+   <div className="flex items-center">
+    <Label size="small" className="items-center flex justify-between w-full">
       Dayakan keselamatan 2FA (Pengesahan Dua Faktor)?
+      <Toggle size="small">
+        <ToggleThumb />
+      </Toggle>
     </Label>
-    <Toggle size="small">
-      <ToggleThumb />
-    </Toggle>
+
   </div>
-  <div className="flex items-center justify-between">
-    <Label size="medium">
-      Dayakan keselamatan 2FA (Pengesahan Dua Faktor)?
+  <div className="flex items-center">
+    <Label size="medium" className="items-center flex justify-between w-full">
+     Dayakan keselamatan 2FA (Pengesahan Dua Faktor)?
+      <Toggle size="medium">
+        <ToggleThumb />
+      </Toggle>
     </Label>
-    <Toggle size="medium">
-      <ToggleThumb />
-    </Toggle>
+
   </div>
-  <div className="flex items-center justify-between">
-    <Label size="large">
-      Dayakan keselamatan 2FA (Pengesahan Dua Faktor)?
+  <div className="flex items-center">
+    <Label size="large" className="items-center flex justify-between w-full">
+        Dayakan keselamatan 2FA (Pengesahan Dua Faktor)?
+      <Toggle size="large">
+        <ToggleThumb />
+      </Toggle>
     </Label>
-    <Toggle size="large">
-      <ToggleThumb />
-    </Toggle>
+
   </div>
 </>
 

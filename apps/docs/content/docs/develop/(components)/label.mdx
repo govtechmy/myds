@@ -96,29 +96,32 @@ Use the `size` prop to change the label size!
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
-  <div className="flex justify-between  items-center">
-    <Label size="small">
+  <div className="flex items-center">
+    <Label size="small" className="items-center flex justify-between w-full">
       Enable 2FA security?
+      <Toggle size="small">
+        <ToggleThumb />
+      </Toggle>
     </Label>
-    <Toggle size="small">
-      <ToggleThumb />
-    </Toggle>
+
   </div>
-  <div className="flex justify-between  items-center">
-    <Label size="medium">
+  <div className="flex items-center">
+    <Label size="medium" className="items-center flex justify-between w-full">
       Enable 2FA security?
+      <Toggle size="medium">
+        <ToggleThumb />
+      </Toggle>
     </Label>
-    <Toggle size="medium">
-      <ToggleThumb />
-    </Toggle>
+
   </div>
-  <div className="flex justify-between  items-center">
-    <Label size="large">
+  <div className="flex items-center">
+    <Label size="large" className="items-center flex justify-between w-full">
       Enable 2FA security?
+      <Toggle size="large">
+        <ToggleThumb />
+      </Toggle>
     </Label>
-    <Toggle size="large">
-      <ToggleThumb />
-    </Toggle>
+
   </div>
   </Tab>
   <Tab value="Code">
@@ -130,30 +133,35 @@ import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 /** Size **/
 
 <>
-  <div className="flex items-center justify-between">
-    <Label size="small">
+  <Tab value="Preview">
+  <div className="flex items-center">
+    <Label size="small" className="items-center flex justify-between w-full">
       Enable 2FA security?
+      <Toggle size="small">
+        <ToggleThumb />
+      </Toggle>
     </Label>
-    <Toggle size="small">
-      <ToggleThumb />
-    </Toggle>
+
   </div>
-  <div className="flex items-center justify-between">
-    <Label size="medium">
+  <div className="flex items-center">
+    <Label size="medium" className="items-center flex justify-between w-full">
       Enable 2FA security?
+      <Toggle size="medium">
+        <ToggleThumb />
+      </Toggle>
     </Label>
-    <Toggle size="medium">
-      <ToggleThumb />
-    </Toggle>
+
   </div>
-  <div className="flex items-center justify-between">
-    <Label size="large">
+  <div className="flex items-center">
+    <Label size="large" className="items-center flex justify-between w-full">
       Enable 2FA security?
+      <Toggle size="large">
+        <ToggleThumb />
+      </Toggle>
     </Label>
-    <Toggle size="large">
-      <ToggleThumb />
-    </Toggle>
+
   </div>
+  </Tab>
 </>
 
 ```
