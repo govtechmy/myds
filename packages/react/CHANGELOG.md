@@ -1,5 +1,14 @@
 # @govtechmy/myds-react
 
+## 0.0.5
+
+### Patch Changes
+
+- 475d3c6: Remove extra div in AccordionContent
+- 2c925c1: Fixed input styling to fill width of parent by default
+- 2efcf8e: Fix SearchBar's z-index
+- 3535a3d: Implement stacked layout for Dialogue mobile view
+
 ## 0.0.4
 
 ### Patch Changes
