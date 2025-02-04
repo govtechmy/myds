@@ -1,15 +1,28 @@
 ---
 title: Pagination
-description: Pagination
+description: Allows users to navigate through a large set of content divided into discrete pages.
 ---
 
-import { InfoIcon } from "@govtechmy/myds-react/icon";
+import {ClientPagination as Pagination} from "@/components/myds";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
-<Callout
-  type="info"
-  title="Note"
-  className="bg-bg-primary-50 text-txt-primary border-transparent"
-  icon={<InfoIcon className="size-5" />}
->
-  Work in progress
-</Callout>
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+   <Tab value="Preview" className="not-prose">
+           <Pagination
+            page={1}
+            limit={10}
+            count={199}
+            type="default"
+            maxDisplay={4}
+           />
+   </Tab>
+   <Tab value="Code">
+       ```tsx 
+
+       
+       ```
+   </Tab>
+</Tabs>

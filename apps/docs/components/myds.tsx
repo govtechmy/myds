@@ -1,6 +1,11 @@
 "use client";
 
-import React, { useState, ComponentProps, FunctionComponent } from "react";
+import React, {
+  useState,
+  ComponentProps,
+  FunctionComponent,
+  forwardRef,
+} from "react";
 import { Button } from "@govtechmy/myds-react/button";
 import { Toggle, ToggleThumb } from "./myds";
 export * from "@govtechmy/myds-react/toggle";
@@ -30,7 +35,6 @@ export * from "@govtechmy/myds-react/masthead";
 export * from "@govtechmy/myds-react/radio";
 export * from "@govtechmy/myds-react/input-otp";
 export * from "@govtechmy/myds-react/tabs";
-
 export * from "@govtechmy/myds-react/summary-list";
 import {
   Callout,
@@ -838,3 +842,18 @@ export const PreviewSummaryListAction: FunctionComponent<PreviewSummaryList> = (
     </div>
   );
 };
+import { Pagination, PaginationProps } from "@govtechmy/myds-react/pagination";
+
+export const ClientPagination = forwardRef<HTMLElement, PaginationProps>(
+  (props, ref) => {
+    return (
+      <Pagination
+        {...props}
+        ref={ref}
+        onPageChange={(page) => console.log(page)}
+      />
+    );
+  },
+);
+
+ClientPagination.displayName = "ClientPagination";

@@ -333,3 +333,5 @@ export {
   PaginationPrevious,
   Pagination,
 };
+
+export type { PaginationProps };
