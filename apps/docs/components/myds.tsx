@@ -29,6 +29,7 @@ export * from "@govtechmy/myds-react/search-bar";
 export * from "@govtechmy/myds-react/masthead";
 export * from "@govtechmy/myds-react/radio";
 export * from "@govtechmy/myds-react/input-otp";
+export * from "@govtechmy/myds-react/tabs";
 
 export * from "@govtechmy/myds-react/summary-list";
 import {

@@ -38,6 +38,7 @@
     "(components)/spinner",
     "(components)/summarylist",
     "(components)/table",
+    "(components)/tabs",
     "(components)/tag",
     "(components)/text-area",
     "(components)/toast",
