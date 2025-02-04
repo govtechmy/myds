@@ -19,8 +19,8 @@ const Quicklinks: FunctionComponent<QuicklinksProps> = ({ links }) => {
   return (
     <div className="flex justify-end">
       {links.source && (
-        <Link href={links.source} underline="none" newTab>
-          <Button variant="unset" size="small">
+        <Button variant="unset" size="small" asChild>
+          <Link href={links.source} underline="none" newTab>
             <ButtonIcon>
               <Github />
             </ButtonIcon>
@@ -28,13 +28,13 @@ const Quicklinks: FunctionComponent<QuicklinksProps> = ({ links }) => {
             <ButtonIcon>
               <ArrowOutgoing />
             </ButtonIcon>
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       )}
 
       {links.storybook && (
-        <Link href={links.storybook} underline="none" newTab>
-          <Button variant="unset" size="small">
+        <Button variant="unset" size="small" asChild>
+          <Link href={links.storybook} underline="none" newTab>
             <ButtonIcon>
               <Storybook />
             </ButtonIcon>
@@ -42,8 +42,8 @@ const Quicklinks: FunctionComponent<QuicklinksProps> = ({ links }) => {
             <ButtonIcon>
               <ArrowOutgoing />
             </ButtonIcon>
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       )}
     </div>
   );

@@ -1,0 +1,261 @@
+---
+title: Input
+description: Komponen input adalah medan input teks yang membolehkan pengguna memasukkan teks.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { ArrowBackIcon, ArrowForwardIcon } from "@govtechmy/myds-react/icon";
+import { Input, InputIcon, InputAddon } from "@/components/myds";
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose flex justify-center">
+    <Input placeholder="Masukkan nama anda" />
+  </Tab>
+  <Tab value="Kod">
+```tsx
+<Input placeholder="Masukkan nama anda" />
+```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-input--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/input.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import { Input } from "@govtechmy/myds-react/input";
+```
+
+```tsx copy
+<Input />
+```
+
+## Contoh
+
+### Saiz
+
+Gunakan prop `size` untuk menukar saiz input. Saiz lalai adalah `small`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose block space-y-1">
+  
+    <Input size="small" placeholder="Kecil" />
+    <Input size="medium" placeholder="Sederhana" />
+    <Input size="large" placeholder="Besar" />
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Input size="small" placeholder="Kecil" />
+    <Input size="medium" placeholder="Sederhana" />
+    <Input size="large" placeholder="Besar" />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Dinonaktifkan
+
+Nonaktifkan input dengan menetapkan prop `disabled` kepada true.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose flex justify-center">
+    <Input disabled placeholder="Dinonaktifkan" />
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Input disabled placeholder="Dinonaktifkan" />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Keadaan Tidak Terkawal vs Terkawal
+
+Untuk menggunakan input dalam keadaan tidak terkawal, tetapkan prop `defaultValue` kepada keadaan awal input.
+
+Untuk menggunakan input dalam keadaan terkawal, gunakan prop `value` dan `onChange` untuk mengendalikan keadaan secara programatik.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose block space-y-2">
+    <Input defaultValue="Tidak Terkawal" />
+    <Input value="Terkawal" />
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Input defaultValue="Tidak Terkawal" />
+    <Input value="Terkawal" />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Ikon Input
+
+Anda boleh menambah ikon pada medan input dengan menggunakan komponen `InputIcon`. Ikon boleh diletakkan di sebelah `kiri` atau `kanan` medan input. Kedua-dua ikon kiri dan kanan boleh digunakan bersama.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose flex flex-col justify-center gap-2">
+    <Input placeholder="Input + Ikon Kiri">
+      <InputIcon position="left">
+        <ArrowBackIcon />
+      </InputIcon>
+    </Input>
+    <Input placeholder="Input + Ikon Kanan">
+      <InputIcon position="right">
+        <ArrowForwardIcon />
+      </InputIcon>
+    </Input>
+    <Input placeholder="Input + Ikon Kiri & Kanan">
+      <InputIcon position="left">
+        <ArrowBackIcon />
+      </InputIcon>
+      <InputIcon position="right">
+        <ArrowForwardIcon />
+      </InputIcon>
+    </Input>
+  </Tab>
+  <Tab value="Kod">
+```tsx
+// Ikon Kiri
+
+<Input placeholder="Input + Ikon Kiri">
+  <InputIcon position="left">
+    <ArrowBackIcon />
+  </InputIcon>
+</Input>
+
+// Ikon Kanan
+
+<Input placeholder="Input + Ikon Kanan">
+  <InputIcon position="right">
+    <ArrowForwardIcon />
+  </InputIcon>
+</Input>
+
+// Ikon Kiri & Kanan
+
+<Input placeholder="Input + Ikon Kiri & Kanan">
+  <InputIcon position="left">
+    <ArrowBackIcon />
+  </InputIcon>
+  <InputIcon position="right">
+    <ArrowForwardIcon />
+  </InputIcon>
+</Input>
+```
+  </Tab>
+</Tabs>
+
+### Tambahan Input
+
+Anda boleh menambah tambahan pada medan input dengan menggunakan komponen `InputAddon`. Tambahan boleh ditambah atau disisipkan pada medan input. Ini berguna untuk melampirkan **butang hantar**, **simbol mata wang** atau sebarang kawalan lain pada medan input.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose flex flex-col gap-2">
+    <Input
+      placeholder="Taip sesuatu di sini"
+      prepend={<InputAddon>RM</InputAddon>}
+    />
+    <Input
+      placeholder="Taip sesuatu di sini"
+      append={
+        <InputAddon>
+          <button>Hantar</button>
+        </InputAddon>
+      }
+    />
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    // Tambah
+    <Input
+      placeholder="Taip sesuatu di sini"
+      prepend={<InputAddon>RM</InputAddon>}
+    />
+
+    // Sisip
+    <Input
+      placeholder="Taip sesuatu di sini"
+      append={
+        <InputAddon>
+          <button>Hantar</button>
+        </InputAddon>
+      }
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### Input
+
+<TypeTable
+  type={{
+    size: {
+      description: "Saiz medan input",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "small",
+    },
+    placeholder: {
+      description: "Teks placeholder",
+      type: "string",
+    },
+    defaultValue: {
+      description: "Nilai lalai input (tidak terkawal)",
+      type: "string",
+    },
+    value: {
+      description: "Nilai input (terkawal)",
+      type: "string",
+    },
+    onChange: {
+      description:
+        "Fungsi panggilan balik apabila nilai input berubah (terkawal)",
+      type: "function",
+      typeDescription: "(value: string) => void",
+    },
+    disabled: {
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
+
+### InputIcon
+
+<TypeTable
+  type={{
+    position: {
+      description: "Kedudukan ikon input",
+      type: "left | right",
+    },
+    children: {
+      description: "Pasangkan komponen ikon. Mesti digunakan dalam Input",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### InputAddon
+
+<TypeTable
+  type={{
+    children: {
+      description: "Mesti digunakan dalam Input.append atau Input.prepend",
+      type: "ReactNode",
+    },
+  }}
+/>

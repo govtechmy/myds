@@ -1,0 +1,1628 @@
+---
+title: Data Table
+description: Organizes information into rows and columns for easy readability. It accommodates various data types, including text, numbers, codes, call-to-action and links, enabling efficient presentation and comparison.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  DataTable,
+  DataTableData,
+  DataTableNestedData,
+  DataTableColumns,
+  DataTableNestedColumns,
+  DataTableFooterColumns,
+  DataTableCheckbox,
+  DataTableRadio,
+  DataTableGroupedColumns,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <DataTable data={DataTableData} columns={DataTableColumns} />
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Software Engineer",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Product Manager",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Designer",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'With A Very Long Middle Name' Smith",
+          position: "Software Engineer",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Data Scientist",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Name",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Age of the employee",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Position",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Position of the employee",
+          },
+        },
+        {
+          cell: () => {
+            return (
+              <Tag variant="success" size={"small"} mode="pill">
+                Success
+              </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Action",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-datatable--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/data-table.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import { DataTable } from "@govtechmy/myds-react/data-table";
+```
+
+```tsx copy
+export default () => <DataTable />;
+```
+
+## Examples
+
+### Data & Columns
+
+`DataTable` component is primarily defined by 2 important props: `data` and `columns`.
+
+- `data` accepts array of objects, where each object represents a row in the table.
+- `columns` accepts array of `ColumnDef`, where each object represents a column in the table.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col items-center gap-3 overflow-auto">
+    <DataTable data={DataTableData} columns={DataTableColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Software Engineer",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Product Manager",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Designer",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'With A Very Long Middle Name' Smith",
+          position: "Software Engineer",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Data Scientist",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Name",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Age of the employee",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Position",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Position of the employee",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Success
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Action",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+<Callout
+  type="info"
+  title="Note"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  `DataTable` uses [TanStack/table](https://github.com/TanStack/table), a very
+  capable headless table library, under the hood. To find out more about the
+  **ColumnDef** and the APIs available, please refer to the
+  [documentation](https://tanstack.com/table/latest/docs/guide/column-defs)
+  here.
+</Callout>
+
+### Expanding Columns
+
+You can expand the size of the cells in a column by setting the `expandable` property to `true` in the `meta` object of the column definition.
+
+To demonstrate this, we have set the `expandable` property to `true` for the `Name` and `Position` columns. You can click on the expand icon to view the full content of the cell.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={DataTableData} columns={DataTableColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Software Engineer",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Product Manager",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Designer",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'With A Very Long Middle Name' Smith",
+          position: "Software Engineer",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Data Scientist",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Name",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Age of the employee",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Position",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Position of the employee",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Success
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Action",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Tooltip on Column Headers
+
+You can add a tooltip to the column headers by setting the `tooltip` property in the `meta` object of the column definition.
+
+To demonstrate this, we have set the `tooltip` property to `Age` and `Position` column. Hover over the column header to view the tooltip.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+ <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={DataTableData} columns={DataTableColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Software Engineer",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Product Manager",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Designer",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'With A Very Long Middle Name' Smith",
+          position: "Software Engineer",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Data Scientist",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Name",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Age of the employee",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Position",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Position of the employee",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Success
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Action",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Sorting
+
+You can sort the data in the table by setting the `sortable` property to `true` in the `meta` object of the column definition.
+
+To demonstrate this, we have set the `sortable` property to the `Position` column. Click the sort icon to toggle the sorts available.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+ <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={DataTableData} columns={DataTableColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Software Engineer",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Product Manager",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Designer",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'With A Very Long Middle Name' Smith",
+          position: "Software Engineer",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Data Scientist",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Name",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Age of the employee",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Position",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Position of the employee",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Success
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Action",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Skeleton Loading
+
+You can enable `loading` prop to trigger skeleton loading state for the table.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+ <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable loading data={DataTableData} columns={DataTableColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DataTable
+      loading
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Software Engineer",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Product Manager",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Designer",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'With A Very Long Middle Name' Smith",
+          position: "Software Engineer",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Data Scientist",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Name",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Age of the employee",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Position",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Position of the employee",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Success
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Action",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Empty Table
+
+Passing an empty array to the `data` prop will render an empty state for the table.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={[]} columns={DataTableColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DataTable
+      data={[]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Name",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Age of the employee",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Position",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Position of the employee",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Success
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Action",
+          id: "action",
+        },
+      ]}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Row Selection
+
+Enable selection mode by passing a `selection` prop to the `DataTable` component. The `selection` prop accepts an object with the following properties:
+
+- `mode`: The type of selection. Can be either `checkbox` or `radio`.
+- `onSelectionChange`: A callback function that is triggered when the selection changes.
+- `rowId`: The unique identifier for each row in the table.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+      <div className="w-full">
+        Checkbox
+        <DataTable data={DataTableData} columns={DataTableColumns} selection={DataTableCheckbox} />
+      </div>
+      <div className="w-full">
+        Radio
+        <DataTable data={DataTableData} columns={DataTableColumns} selection={DataTableRadio} />
+      </div>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    // Checkbox Selection
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Software Engineer",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Product Manager",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Designer",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'With A Very Long Middle Name' Smith",
+          position: "Software Engineer",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Data Scientist",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Name",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Age of the employee",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Position",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Position of the employee",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Success
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Action",
+          id: "action",
+        },
+      ]}
+      selection={
+        {
+          mode: "checkbox",
+          onSelectionChange: (id: string) => {
+            console.log("Selected Rows: ", id);
+          },
+          rowId: "id",
+        }
+      }
+    />
+
+    // Radio Selection
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Software Engineer",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Product Manager",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Designer",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'With A Very Long Middle Name' Smith",
+          position: "Software Engineer",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Data Scientist",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Name",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Age of the employee",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Position",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Position of the employee",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Success
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Action",
+          id: "action",
+        },
+      ]}
+      selection={
+        {
+          mode: "radio",
+          onSelectionChange: (id: string) => {
+            console.log("Selected Rows: ", id);
+          },
+          rowId: "id",
+        }
+      }
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Grouped Header
+
+You can group columns together by setting the `columns` property to an array of `ColumnGroupDef` objects. Each `ColumnGroupDef` object represents a group of columns in the table.
+
+Here is an example of a table with grouped columns:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+ <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={DataTableData} columns={DataTableGroupedColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Software Engineer",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Product Manager",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Designer",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'With A Very Long Middle Name' Smith",
+          position: "Software Engineer",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Data Scientist",
+        },
+      ]}
+      columns={[
+        {
+          id: "employee",
+          header: "Employee",
+          columns: [
+            {
+              id: "name",
+              header: "Name",
+              accessorKey: "name",
+              size: 180,
+              meta: {
+                expandable: true,
+              },
+            },
+            {
+              id: "age",
+              header: "Age",
+              accessorKey: "age",
+
+              meta: {
+                expandable: false,
+              },
+            },
+            {
+              id: "position",
+              header: "Position",
+              accessorKey: "position",
+              meta: {
+                expandable: true,
+              },
+            },
+          ],
+        },
+        {
+          id: "status",
+          header: "Application",
+          columns: [
+            {
+              id: "status",
+              header: "Status",
+              cell: () => {
+                return (
+                  <Tag variant="success" size={"small"} mode="pill">
+                    Success
+                  </Tag>
+                );
+              },
+            },
+            {
+              id: "action",
+              header: "Action",
+              cell: () => {
+                return <Button variant="default-outline">Edit</Button>;
+              },
+            },
+          ],
+        }
+      ]
+      }
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Fixed/Sticky Header
+
+By default, the header of the table is sticky, but it never materialised as the tables in previous examples do not have a fixed height.
+
+To demonstrate the sticky header, lets set a fixed height for the table. Simply pass the `className` prop to the `DataTable` component with a `max-h-[300px]` class.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+ <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable className="max-h-[300px]" data={DataTableData} columns={DataTableGroupedColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DataTable
+      className="max-h-[300px]"
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Software Engineer",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Product Manager",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Designer",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'With A Very Long Middle Name' Smith",
+          position: "Software Engineer",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Data Scientist",
+        },
+      ]}
+      columns={[
+        {
+          id: "employee",
+          header: "Employee",
+          columns: [
+            {
+              id: "name",
+              header: "Name",
+              accessorKey: "name",
+              size: 180,
+              meta: {
+                expandable: true,
+              },
+            },
+            {
+              id: "age",
+              header: "Age",
+              accessorKey: "age",
+
+              meta: {
+                expandable: false,
+              },
+            },
+            {
+              id: "position",
+              header: "Position",
+              accessorKey: "position",
+              meta: {
+                expandable: true,
+              },
+            },
+          ],
+        },
+        {
+          id: "status",
+          header: "Application",
+          columns: [
+            {
+              id: "status",
+              header: "Status",
+              cell: () => {
+                return (
+                  <Tag variant="success" size={"small"} mode="pill">
+                    Success
+                  </Tag>
+                );
+              },
+            },
+            {
+              id: "action",
+              header: "Action",
+              cell: () => {
+                return <Button variant="default-outline">Edit</Button>;
+              },
+            },
+          ],
+        }
+      ]
+      }
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Nested Rows
+
+`DataTable` is also capable of nesting rows. To enable this feature, the following requirements must be met:
+
+1. `data`: Contain a nested array object with a key that matches the `id_by` property in the `nest` object. (eg. `children`)
+2. `columns`: Column responsible for expanding & collapsing should pass `Cell.Expand` in the `cell` property.
+3. `nest`: An object prop that contains the following properties:
+   - `id_by`: The key that matches the nested array object in the `data` property.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+ <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable className="max-h-[300px]" 
+      data={DataTableNestedData} 
+      columns={DataTableNestedColumns} 
+      nest={{ id_by: "children" }}
+    />
+   
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          id: 1,
+          name: "John Doe",
+          age: 25,
+          position: "Software Engineer",
+          children: [
+            {
+              id: 11,
+              name: "John Doe Jr.",
+              age: 5,
+              position: "Software Engineer",
+              children: [
+                {
+                  id: 111,
+                  name: "John Doe-raemon",
+                  age: 5,
+                  position: "Software Engineer",
+                },
+                {
+                  id: 112,
+                  name: "John 'Penat' Doe",
+                  age: 5,
+                  position: "Software Engineer",
+                },
+              ],
+            },
+            {
+              id: 12,
+              name: "John Doe Jr.",
+              age: 5,
+              position: "Software Engineer",
+            },
+          ],
+        },
+        {
+          id: 2,
+          name: "Jane Doe",
+          age: 30,
+          position: "Product Manager",
+          children: [
+            {
+              id: 21,
+              name: "Jane Doe Jr. 1",
+              age: 5,
+              position: "Software Engineer",
+            },
+            {
+              id: 22,
+              name: "Jane Doe Jr. 2",
+              age: 5,
+              position: "Software Engineer",
+            },
+          ],
+        },
+        {
+          id: 3,
+          name: "Alice",
+          age: 22,
+          position: "Designer",
+          children: [
+            {
+              id: 31,
+              name: "Alice Jr. 1",
+              age: 5,
+              position: "Software Engineer",
+            },
+            {
+              id: 32,
+              name: "Alice Jr. 2",
+              age: 5,
+              position: "Software Engineer",
+            },
+          ],
+        },
+        {
+          id: 4,
+          name: "Bob",
+          age: 35,
+          position: "Software Engineer",
+          children: [
+            {
+              id: 41,
+              name: "Bob Jr. 1",
+              age: 5,
+              position: "Software Engineer",
+            },
+            {
+              id: 42,
+              name: "Bob Jr. 2",
+              age: 5,
+              position: "Software Engineer",
+            },
+          ],
+        },
+        {
+          id: 5,
+          name: "Charlie",
+          age: 28,
+          position: "Data Scientist",
+          children: [
+            {
+              id: 51,
+              name: "Charlie Jr. 1",
+              age: 5,
+              position: "Software Engineer",
+            },
+            {
+              id: 52,
+              name: "Charlie Jr. 2",
+              age: 5,
+              position: "Software Engineer",
+            },
+          ],
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Name",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+          cell: Cell.Expand
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Age of the employee",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Position",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Position of the employee",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Success
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Action",
+          id: "action",
+        }
+      ]}
+      nest={{ id_by: "children" }}
+    />
+    ```
+  </Tab>
+</Tabs>
+
+### Pinned Columns
+
+You can pin columns to the left or right of the table by setting the `pin` property. The `pin` property accepts an object with the following properties:
+
+- `left`: An array of column IDs to pin to the left.
+- `right`: An array of column IDs to pin to the right.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+ <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={DataTableData} columns={DataTableColumns} pin={{ left: ["name"], right: ["action"]}} />
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Software Engineer",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Product Manager",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Designer",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'With A Very Long Middle Name' Smith",
+          position: "Software Engineer",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Data Scientist",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Name",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Age of the employee",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Position",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Position of the employee",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Success
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Action",
+          id: "action",
+        },
+      ]}
+      pin={{ left: ["name"], right: ["action"]}}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+### Table Footer
+
+You can add footer per column by setting the `footer` in **ColumnDef** object of the column definition. Here is an example of a table with footer:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+ <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <DataTable data={DataTableData} columns={DataTableFooterColumns} />
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <DataTable
+      data={[
+        {
+          age: 25,
+          id: 1,
+          name: "John Doe",
+          position: "Software Engineer",
+        },
+        {
+          age: 30,
+          id: 2,
+          name: "Jane Doe",
+          position: "Product Manager",
+        },
+        {
+          age: 22,
+          id: 3,
+          name: "Alice",
+          position: "Designer",
+        },
+        {
+          age: 35,
+          id: 4,
+          name: "Bob 'With A Very Long Middle Name' Smith",
+          position: "Software Engineer",
+        },
+        {
+          age: 28,
+          id: 5,
+          name: "Charlie",
+          position: "Data Scientist",
+        },
+      ]}
+      columns={[
+        {
+          accessorKey: "name",
+          header: "Name",
+          id: "name",
+          meta: {
+            expandable: true,
+          },
+        },
+        {
+          accessorKey: "age",
+          header: "Age",
+          id: "age",
+          meta: {
+            expandable: false,
+            tooltip: "Age of the employee",
+          },
+        },
+        {
+          accessorKey: "position",
+          header: "Position",
+          id: "position",
+          meta: {
+            expandable: true,
+            sortable: true,
+            tooltip: "Position of the employee",
+          },
+        },
+        {
+          cell: () => {
+            return (
+                <Tag variant="success" size={"small"} mode="pill">
+                Success
+                </Tag>
+            );
+          },
+          header: "Status",
+          id: "status",
+        },
+        {
+          cell: () => {
+            return <Button variant="default-outline">Edit</Button>;
+          },
+          header: "Action",
+          id: "action",
+        },
+      ]}
+      pin={{ left: ["name"], right: ["action"]}}
+    />
+    ```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### DataTable
+
+<TypeTable
+  type={{
+    columns: {
+      description: "Column Definition (Refer to TanStack/table documentation)",
+      type: "ColumnDef",
+    },
+    data: {
+      description: "Data to be displayed in the table",
+      type: "Array<T = {}>",
+    },
+    nest: {
+      description:
+        "Specifies which key in the data object contains the nested data",
+      type: "{ id_by: string }",
+    },
+    pin: {
+      description:
+        "Specifies which columns to pin. Column IDs should be passed as an array",
+      type: "{ left: Array<string>, right: Array<string> }",
+    },
+  }}
+/>
+
+### DataTable `ColumnDef`
+
+<TypeTable
+  type={{
+    id: {
+      description: "Unique identifier for the column",
+      type: "string",
+    },
+    accessorKey: {
+      description: "Object key to access the data",
+      type: "string",
+    },
+    accessorFn: {
+      description: "Callback function to access the data",
+      type: "(row) => any",
+    },
+    header: {
+      description: "Header of the column",
+      type: "string | (context) => ReactNode",
+    },
+    footer: {
+      description: "Header of the column",
+      type: "string | (context) => ReactNode",
+    },
+    size: {
+      description: "Custom width of the column",
+      type: "number",
+    },
+    cell: {
+      description: "Custom cell renderer",
+      type: "(context) => ReactNode",
+    },
+    "meta.expandable": {
+      description: "Expandable column",
+      type: "boolean",
+    },
+    "meta.sortable": {
+      description: "Sortable column",
+      type: "boolean",
+    },
+    "meta.tooltip": {
+      description: "Tooltip for the column header",
+      type: "ReactNode",
+    },
+  }}
+/>

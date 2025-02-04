@@ -180,7 +180,7 @@ Gunakan prop `variant` untuk menukar gaya callout!
 Jika panggilan keluar boleh dihapuskan, anda boleh memaparkan **butang tutup** di sudut kanan atas panggilan keluar dengan mengisytiharkan prop `dismissible`.
 Untuk menangkap peristiwa hapus, anda boleh menggunakan prop `onDismiss`.
 
-Untuk menghapuskan panggilan keluar secara programatik melalui mana-mana pendengar peristiwa di dalam anak `CalloutAction`, anda boleh menggunakan fungsi `dismiss` yang dihantar sebagai argumen kepada prop render.
+Untuk menghapuskan callout melalui pendengar acara, balut elemen sasaran dengan `CalloutClose`. `CalloutClose` juga akan mencetuskan acara onDismiss, jika ditakrifkan.
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
   <Tab value="Pratonton">
@@ -213,7 +213,9 @@ Untuk menghapuskan panggilan keluar secara programatik melalui mana-mana pendeng
         </span>
       </CalloutContent>
       <CalloutAction>
+        <CalloutClose>
         <Button variant="default-outline">Panggilan untuk Bertindak</Button>
+        </CalloutClose>
       </CalloutAction>
     </Callout>
 
@@ -231,15 +233,9 @@ Untuk menghapuskan panggilan keluar secara programatik melalui mana-mana pendeng
         </span>
       </CalloutContent>
       <CalloutAction>
-        {(dismiss) =>
-          (<Button
-            variant="default-outline"
-            onClick={() => {
-              alert("Tindakan diambil sebelum panggilan keluar dihapuskan");
-              dismiss();
-            }}>
-          Panggilan untuk Bertindak
-        </Button>)}
+        <CalloutClose>
+          <Button variant="default-outline">Panggilan untuk Bertindak</Button>
+        </CalloutClose>
       </CalloutAction>
     </Callout>
     ```
@@ -266,17 +262,7 @@ Untuk menghapuskan panggilan keluar secara programatik melalui mana-mana pendeng
     },
     onDismiss: {
       description: "Untuk menangkap peristiwa hapus",
-      type: "function",
-    },
-  }}
-/>
-
-### CalloutAction
-
-<TypeTable
-  type={{
-    children: {
-      type: "ReactNode | ((dismiss) => ReactNode)",
+      type: "() => void",
     },
   }}
 />

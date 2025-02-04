@@ -1,0 +1,690 @@
+---
+title: Dialog
+description: Pop-up modal yang direka untuk menarik perhatian pengguna untuk tindakan atau mesej penting. Ia terdiri daripada tiga komponen utama, iaitu Header, Content, dan Footer.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+  Button,
+  DismissibleDialog,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose flex justify-center">
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Buka Dialog</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Tajuk Dialog</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Tindakan Sekunder</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Tindakan Utama</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Buka Dialog</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Tajuk Dialog</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Tindakan Sekunder</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Tindakan Utama</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-dialog--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/dialog.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import { Dialog } from "@govtechmy/myds-react/dialog";
+```
+
+```tsx copy
+export default () => (
+  <Dialog>
+    <DialogTrigger />
+    <DialogBody>
+      <DialogHeader>
+        <DialogTitle />
+      </DialogHeader>
+      <DialogContent>
+        <DialogDescription />
+      </DialogContent>
+      <DialogFooter>
+        <DialogClose />
+      </DialogFooter>
+    </DialogBody>
+  </Dialog>
+);
+```
+
+## Contoh
+
+### Pencetus
+
+Gunakan `DialogTrigger` untuk membungkus elemen pencetus yang membuka dialog. Contoh di bawah menunjukkan tiga butang yang berbeza membuka dialog yang sama.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col items-center gap-3">
+      <Dialog>
+        <DialogTrigger>
+          <Button variant="primary-fill">Buka Dialog 1</Button>
+        </DialogTrigger>
+        <DialogTrigger>
+          <Button variant="primary-outline">Buka Dialog 2</Button>
+        </DialogTrigger>
+        <DialogTrigger>
+          <Button variant="primary-ghost">Buka Dialog 3</Button>
+        </DialogTrigger>
+
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Tajuk Dialog</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Tindakan Sekunder</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Tindakan Utama</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Buka Dialog 1</Button>
+      </DialogTrigger>
+      <DialogTrigger>
+        <Button variant="primary-outline">Buka Dialog 2</Button>
+      </DialogTrigger>
+      <DialogTrigger>
+        <Button variant="primary-ghost">Buka Dialog 3</Button>
+      </DialogTrigger>
+
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Tajuk Dialog</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Tindakan Sekunder</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Tindakan Utama</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Keadaan Tidak Terkawal vs Terkawal
+
+Untuk menggunakan dialog dalam keadaan tidak terkawal, tetapkan prop `defaultOpen` kepada keadaan awal dialog.
+
+Untuk menggunakan dialog dalam keadaan terkawal, gunakan prop `open` dan `onOpenChange` untuk mengendalikan keadaan secara programatik.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+        <div>
+            Tidak Terkawal
+            <Dialog defaultOpen={false}>
+              <DialogTrigger>
+                <Button variant="primary-fill">Buka Dialog (Tidak Terkawal)</Button>
+              </DialogTrigger>
+      
+            <DialogBody>
+              <DialogHeader>
+                <DialogTitle>Tajuk Dialog</DialogTitle>
+              </DialogHeader>
+              <DialogContent>
+                <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+              </DialogContent>
+              <DialogFooter>
+                <DialogClose>
+                  <Button variant="default-outline">Tindakan Sekunder</Button>
+                </DialogClose>
+                <DialogClose>
+                  <Button variant="primary-fill">Tindakan Utama</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogBody>
+          </Dialog>
+        </div>
+        <div>
+            Terkawal
+            <Dialog open={false}>
+              <DialogTrigger>
+                <Button variant="primary-fill">Buka Dialog (Terkawal)</Button>
+              </DialogTrigger>
+      
+            <DialogBody>
+              <DialogHeader>
+                <DialogTitle>Tajuk Dialog</DialogTitle>
+              </DialogHeader>
+              <DialogContent>
+                <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+              </DialogContent>
+              <DialogFooter>
+                <DialogClose>
+                  <Button variant="default-outline">Tindakan Sekunder</Button>
+                </DialogClose>
+                <DialogClose>
+                  <Button variant="primary-fill">Tindakan Utama</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogBody>
+          </Dialog>
+        </div>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    // Keadaan tidak terkawal
+    <Dialog defaultOpen={false}>
+      <DialogTrigger>
+        <Button variant="primary-fill">Buka Dialog (Tidak Terkawal)</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Tajuk Dialog</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Tindakan Sekunder</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Tindakan Utama</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+
+    // Keadaan terkawal
+    <Dialog open={false}>
+      <DialogTrigger>
+        <Button variant="primary-fill">Buka Dialog (Terkawal)</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Tajuk Dialog</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Tindakan Sekunder</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Tindakan Utama</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Boleh Ditutup
+
+Untuk menghalang pengguna daripada menutup dialog, tetapkan prop `dismissible` kepada `false` pada `DialogBody`. Secara lalai, dialog boleh ditutup.
+
+Anda boleh melampirkan fungsi panggilan balik kepada prop `onDismiss` untuk mengendalikan acara penutupan.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose space-y-2 flex flex-col items-center">
+      <DismissibleDialog />
+
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Buka Dialog (Tidak Terkawal)</Button>
+      </DialogTrigger>
+
+      <DialogBody
+        dismissible={true}
+        onDismiss={() => alert("Dialog ditutup...")}
+      >
+        <DialogHeader>
+          <DialogTitle>Tajuk Dialog</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Tindakan Sekunder</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Tindakan Utama</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Sempadan
+
+Sempadan boleh ditambah pada `DialogHeader` dan `DialogFooter` dengan menetapkan prop `border` kepada `true`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center">
+     <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Buka Dialog Bersempadan</Button>
+      </DialogTrigger>
+
+      <DialogBody>
+        <DialogHeader border>
+          <DialogTitle>Tajuk Dialog</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+        </DialogContent>
+        <DialogFooter border>
+          <DialogClose>
+            <Button variant="default-outline">Tindakan Sekunder</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Tindakan Utama</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Buka Dialog Bersempadan</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader border>
+          <DialogTitle>Tajuk Dialog</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+        </DialogContent>
+        <DialogFooter border>
+          <DialogClose>
+            <Button variant="default-outline">Tindakan Sekunder</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Tindakan Utama</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Penjajaran
+
+Anda boleh menetapkan `align` pada `DialogFooter` untuk menjajarkan anak kepada `start`, `end`, atau `full` lebar dialog. Secara lalai, penjajaran ditetapkan kepada `end`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        Mula
+        <Dialog>
+          <DialogTrigger>
+            <Button variant="primary-fill">Jajarkan Dialog (mula)</Button>
+          </DialogTrigger>
+          <DialogBody>
+            <DialogHeader border>
+              <DialogTitle>Tajuk Dialog</DialogTitle>
+            </DialogHeader>
+            <DialogContent>
+              <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+            </DialogContent>
+            <DialogFooter border align="start">
+              <DialogClose>
+                <Button variant="default-outline">Tindakan Sekunder</Button>
+              </DialogClose>
+              <DialogClose>
+                <Button variant="primary-fill">Tindakan Utama</Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogBody>
+        </Dialog>
+      </div>
+      <div>
+        Penuh
+        <Dialog>
+          <DialogTrigger>
+            <Button variant="primary-fill">Jajarkan Dialog (penuh)</Button>
+          </DialogTrigger>
+          <DialogBody>
+            <DialogHeader border>
+              <DialogTitle>Tajuk Dialog</DialogTitle>
+            </DialogHeader>
+            <DialogContent>
+              <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+            </DialogContent>
+            <DialogFooter border align="full">
+              <DialogClose>
+                <Button variant="default-outline">Tindakan Sekunder</Button>
+              </DialogClose>
+              <DialogClose>
+                <Button variant="primary-fill">Tindakan Utama</Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogBody>
+        </Dialog>
+      </div>
+      <div>
+        Akhir
+        <Dialog>
+          <DialogTrigger>
+            <Button variant="primary-fill">Jajarkan Dialog (akhir)</Button>
+          </DialogTrigger>
+          <DialogBody>
+            <DialogHeader border>
+              <DialogTitle>Tajuk Dialog</DialogTitle>
+            </DialogHeader>
+            <DialogContent>
+              <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+            </DialogContent>
+            <DialogFooter border align="end">
+              <DialogClose>
+                <Button variant="default-outline">Tindakan Sekunder</Button>
+              </DialogClose>
+              <DialogClose>
+                <Button variant="primary-fill">Tindakan Utama</Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogBody>
+        </Dialog>
+      </div>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+```tsx
+// Mula
+<Dialog>
+  <DialogTrigger>
+    <Button variant="primary-fill">Jajarkan Dialog (mula)</Button>
+  </DialogTrigger>
+  <DialogBody>
+    <DialogHeader border>
+      <DialogTitle>Tajuk Dialog</DialogTitle>
+    </DialogHeader>
+    <DialogContent>
+      <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+    </DialogContent>
+    <DialogFooter border align="start">
+      <DialogClose>
+        <Button variant="default-outline">Tindakan Sekunder</Button>
+      </DialogClose>
+      <DialogClose>
+        <Button variant="primary-fill">Tindakan Utama</Button>
+      </DialogClose>
+    </DialogFooter>
+  </DialogBody>
+</Dialog>
+
+// Penuh
+
+<Dialog>
+  <DialogTrigger>
+    <Button variant="primary-fill">Jajarkan Dialog (penuh)</Button>
+  </DialogTrigger>
+  <DialogBody>
+    <DialogHeader border>
+      <DialogTitle>Tajuk Dialog</DialogTitle>
+    </DialogHeader>
+    <DialogContent>
+      <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+    </DialogContent>
+    <DialogFooter border align="full">
+      <DialogClose>
+        <Button variant="default-outline">Tindakan Sekunder</Button>
+      </DialogClose>
+      <DialogClose>
+        <Button variant="primary-fill">Tindakan Utama</Button>
+      </DialogClose>
+    </DialogFooter>
+  </DialogBody>
+</Dialog>
+
+// Akhir
+
+<Dialog>
+  <DialogTrigger>
+    <Button variant="primary-fill">Jajarkan Dialog (akhir)</Button>
+  </DialogTrigger>
+  <DialogBody>
+    <DialogHeader border>
+      <DialogTitle>Tajuk Dialog</DialogTitle>
+    </DialogHeader>
+    <DialogContent>
+      <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+    </DialogContent>
+    <DialogFooter border align="end">
+      <DialogClose>
+        <Button variant="default-outline">Tindakan Sekunder</Button>
+      </DialogClose>
+      <DialogClose>
+        <Button variant="primary-fill">Tindakan Utama</Button>
+      </DialogClose>
+    </DialogFooter>
+  </DialogBody>
+</Dialog>
+```
+
+  </Tab>
+</Tabs>
+
+### Tindakan
+
+Anda boleh menambah tindakan khas pada dialog dengan menggunakan prop `action` pada `DialogFooter`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex justify-center gap-3">
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Dialog Tindakan Tambahan</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader border>
+          <DialogTitle>Tajuk Dialog</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+        </DialogContent>
+        <DialogFooter action={<Button variant="primary-ghost">Tertiary</Button>}>
+          <DialogClose>
+            <Button variant="default-outline">Tindakan Sekunder</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Tindakan Utama</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+```tsx
+  <Dialog>
+    <DialogTrigger>
+      <Button variant="primary-fill">Dialog Tindakan Tambahan</Button>
+    </DialogTrigger>
+    <DialogBody>
+      <DialogHeader border>
+        <DialogTitle>Tajuk Dialog</DialogTitle>
+      </DialogHeader>
+      <DialogContent>
+        <DialogDescription>Kandungan dialog di sini.</DialogDescription>
+      </DialogContent>
+      <DialogFooter action={<Button variant="primary-ghost">Tertiary</Button>}>
+        <DialogClose>
+          <Button variant="default-outline">Tindakan Sekunder</Button>
+        </DialogClose>
+        <DialogClose>
+          <Button variant="primary-fill">Tindakan Utama</Button>
+        </DialogClose>
+      </DialogFooter>
+    </DialogBody>
+  </Dialog>
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+### Dialog
+
+<TypeTable
+  type={{
+    open: {
+      description: "Keadaan dialog (terkawal)",
+      type: "boolean",
+      default: "false",
+    },
+    defaultOpen: {
+      description: "Keadaan awal dialog (tidak terkawal)",
+      type: "boolean",
+      default: "false",
+    },
+    onOpenChange: {
+      description: "Pendengar acara perubahan (terkawal)",
+      type: "(open: boolean) => void",
+    },
+  }}
+/>
+
+### DialogBody
+
+<TypeTable
+  type={{
+    dismissible: {
+      description: "Sama ada dialog boleh ditutup",
+      type: "boolean",
+      default: "true",
+    },
+    onDismiss: {
+      description: "Pendengar acara perubahan untuk acara penutupan",
+      type: "() => void",
+    },
+  }}
+/>
+
+### DialogHeader
+
+<TypeTable
+  type={{
+    border: {
+      description: "Sama ada header dialog mempunyai sempadan",
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
+
+### DialogFooter
+
+<TypeTable
+  type={{
+    border: {
+      description: "Sama ada footer dialog mempunyai sempadan",
+      type: "boolean",
+      default: "false",
+    },
+    align: {
+      description: "Menjajarkan susun atur kandungan",
+      type: "start | end | full",
+      default: "end",
+    },
+    action: {
+      description: "Tindakan tambahan yang ditambah pada footer",
+      type: "ReactNode",
+    },
+  }}
+/>

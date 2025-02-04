@@ -1,0 +1,630 @@
+---
+title: Jadual
+description: Menyusun maklumat ke dalam baris dan lajur untuk kemudahan bacaan. Ia menampung pelbagai jenis data, termasuk teks, nombor, kod, panggilan untuk tindakan dan pautan, membolehkan penyampaian dan perbandingan yang cekap.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+  TableEmpty,
+  TableSkeleton,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton" className="not-prose flex justify-center">
+    <Table>
+      <TableCaption>Log audit</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Cap masa</TableHead>
+          <TableHead>Aktiviti</TableHead>
+          <TableHead className="text-center">Tindakan Diambil</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell> 2021-09-01 12:00:00 </TableCell>
+          <TableCell> Percubaan log masuk berjaya </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:01:32 </TableCell>
+          <TableCell> Halaman dilawati: /company-a/inventory </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:02:03 </TableCell>
+          <TableCell> Item inventori baru ditambah: MacBook Pro </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:03:45 </TableCell>
+          <TableCell>
+            Inventori: Kiraan stok MacBook Pro dikemas kini: 100 unit{" "}
+          </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Table>
+      <TableCaption>Log audit</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Cap masa</TableHead>
+          <TableHead>Aktiviti</TableHead>
+          <TableHead className="text-center">Tindakan Diambil</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell> 2021-09-01 12:00:00 </TableCell>
+          <TableCell> Percubaan log masuk berjaya </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:01:32 </TableCell>
+          <TableCell> Halaman dilawati: /company-a/inventory </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:02:03 </TableCell>
+          <TableCell> Item inventori baru ditambah: MacBook Pro </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:03:45 </TableCell>
+          <TableCell>
+            Inventori: Kiraan stok MacBook Pro dikemas kini: 100 unit
+          </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-table--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/table.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```tsx copy
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@govtechmy/myds-react/table";
+```
+
+```tsx copy
+export default () => (
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead />
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell />
+      </TableRow>
+    </TableBody>
+    <TableCaption />
+  </Table>
+);
+```
+
+## Contoh
+
+### Jadual Asas
+
+Anda boleh menggunakan komponen `Table` untuk membuat jadual asas dengan tajuk, baris, dan sel. Konvensional `table`, `th`, `td` terpakai, jadi anda boleh menentukan `colSpan`, `rowSpan`, `scope` dan [atribut asli lain](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th).
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col items-center gap-3">
+     <Table>
+      <TableCaption>Log audit</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Cap masa</TableHead>
+          <TableHead>Aktiviti</TableHead>
+          <TableHead className="text-center">Tindakan Diambil</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell> 2021-09-01 12:00:00 </TableCell>
+          <TableCell> Percubaan log masuk berjaya </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:01:32 </TableCell>
+          <TableCell> Halaman dilawati: /company-a/inventory </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:02:03 </TableCell>
+          <TableCell> Item inventori baru ditambah: MacBook Pro </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:03:45 </TableCell>
+          <TableCell>
+            Inventori: Kiraan stok MacBook Pro dikemas kini: 100 unit
+          </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Table>
+      <TableCaption>Log audit</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Cap masa</TableHead>
+          <TableHead>Aktiviti</TableHead>
+          <TableHead className="text-center">Tindakan Diambil</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell> 2021-09-01 12:00:00 </TableCell>
+          <TableCell> Percubaan log masuk berjaya </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:01:32 </TableCell>
+          <TableCell> Halaman dilawati: /company-a/inventory </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:02:03 </TableCell>
+          <TableCell> Item inventori baru ditambah: MacBook Pro </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> 2021-09-01 12:03:45 </TableCell>
+          <TableCell>
+            Inventori: Kiraan stok MacBook Pro dikemas kini: 100 unit
+          </TableCell>
+          <TableCell className="text-center"> Ali </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Row Span dan Col Span
+
+Anda boleh menggunakan atribut `rowSpan` dan `colSpan` untuk menggabungkan sel dalam baris atau lajur.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose flex flex-col gap-3 items-center">
+    <Table>
+        <TableCaption>Penilaian Cukai Tahun 2023</TableCaption>
+        <TableHeader>
+            <TableRow>
+            <TableHead>Kategori</TableHead>
+            <TableHead>Pendapatan Bercukai</TableHead>
+            <TableHead>Pengiraan (RM)</TableHead>
+            <TableHead className="text-center">Kadar</TableHead>
+            <TableHead className="text-end">Cukai</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+            <TableCell>A</TableCell>
+            <TableCell>0 - 5,000</TableCell>
+            <TableCell>Untuk 5,000 Pertama</TableCell>
+            <TableCell className="text-center">0</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>B</TableCell>
+            <TableCell rowSpan={2}>5,000 - 20,000</TableCell>
+            <TableCell>Untuk 5,000 Pertama</TableCell>
+            <TableCell className="text-center" rowSpan={2}>1%</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>15,000 Seterusnya</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>C</TableCell>
+            <TableCell rowSpan={2}>20,001 - 35,000</TableCell>
+            <TableCell>Untuk 20,000 Pertama</TableCell>
+            <TableCell className="text-center" rowSpan={2}>3%</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>15,000 Seterusnya</TableCell>
+            <TableCell className="text-end">RM 450</TableCell>
+            </TableRow>
+        </TableBody>
+    </Table>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+   <Table>
+        <TableCaption>Penilaian Cukai Tahun 2023</TableCaption>
+        <TableHeader>
+            <TableRow>
+            <TableHead>Kategori</TableHead>
+            <TableHead>Pendapatan Bercukai</TableHead>
+            <TableHead>Pengiraan (RM)</TableHead>
+            <TableHead className="text-center">Kadar</TableHead>
+            <TableHead className="text-end">Cukai</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+            <TableCell>A</TableCell>
+            <TableCell>0 - 5,000</TableCell>
+            <TableCell>Untuk 5,000 Pertama</TableCell>
+            <TableCell className="text-center">0</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>B</TableCell>
+            <TableCell rowSpan={2}>5,000 - 20,000</TableCell>
+            <TableCell>Untuk 5,000 Pertama</TableCell>
+            <TableCell className="text-center" rowSpan={2}>1%</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>15,000 Seterusnya</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>C</TableCell>
+            <TableCell rowSpan={2}>20,001 - 35,000</TableCell>
+            <TableCell>Untuk 20,000 Pertama</TableCell>
+            <TableCell className="text-center" rowSpan={2}>3%</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>15,000 Seterusnya</TableCell>
+            <TableCell className="text-end">RM 450</TableCell>
+            </TableRow>
+        </TableBody>
+    </Table>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Dengan Footer
+
+Anda boleh menambah footer pada jadual menggunakan komponen `TableFooter`.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose space-y-2 flex flex-col items-center">
+      <Table>
+        <TableCaption>Penilaian Cukai Tahun 2023</TableCaption>
+        <TableHeader>
+            <TableRow>
+            <TableHead>Kategori</TableHead>
+            <TableHead>Pendapatan Bercukai</TableHead>
+            <TableHead>Pengiraan (RM)</TableHead>
+            <TableHead className="text-center">Kadar</TableHead>
+            <TableHead className="text-end">Cukai</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+            <TableCell>A</TableCell>
+            <TableCell>0 - 5,000</TableCell>
+            <TableCell>Untuk 5,000 Pertama</TableCell>
+            <TableCell className="text-center">0</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>B</TableCell>
+            <TableCell rowSpan={2}>5,000 - 20,000</TableCell>
+            <TableCell>Untuk 5,000 Pertama</TableCell>
+            <TableCell className="text-center" rowSpan={2}>1%</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>15,000 Seterusnya</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>C</TableCell>
+            <TableCell rowSpan={2}>20,001 - 35,000</TableCell>
+            <TableCell>Untuk 20,000 Pertama</TableCell>
+            <TableCell className="text-center" rowSpan={2}>3%</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>15,000 Seterusnya</TableCell>
+            <TableCell className="text-end">RM 450</TableCell>
+            </TableRow>
+        </TableBody>
+        <TableFooter>
+            <TableRow>
+                <TableCell className="text-end font-medium" colSpan={4}>Jumlah Cukai</TableCell>
+                <TableCell className="text-end font-medium">RM 600</TableCell>
+            </TableRow>
+        </TableFooter>
+    </Table>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Table>
+        <TableCaption>Penilaian Cukai Tahun 2023</TableCaption>
+        <TableHeader>
+            <TableRow>
+            <TableHead>Kategori</TableHead>
+            <TableHead>Pendapatan Bercukai</TableHead>
+            <TableHead>Pengiraan (RM)</TableHead>
+            <TableHead className="text-center">Kadar</TableHead>
+            <TableHead className="text-end">Cukai</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+            <TableCell>A</TableCell>
+            <TableCell>0 - 5,000</TableCell>
+            <TableCell>Untuk 5,000 Pertama</TableCell>
+            <TableCell className="text-center">0</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>B</TableCell>
+            <TableCell rowSpan={2}>5,000 - 20,000</TableCell>
+            <TableCell>Untuk 5,000 Pertama</TableCell>
+            <TableCell className="text-center" rowSpan={2}>1%</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>15,000 Seterusnya</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>C</TableCell>
+            <TableCell rowSpan={2}>20,001 - 35,000</TableCell>
+            <TableCell>Untuk 20,000 Pertama</TableCell>
+            <TableCell className="text-center" rowSpan={2}>3%</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>15,000 Seterusnya</TableCell>
+            <TableCell className="text-end">RM 450</TableCell>
+            </TableRow>
+        </TableBody>
+        <TableFooter>
+            <TableRow>
+                <TableCell className="text-end font-medium" colSpan={4}>Jumlah Cukai</TableCell>
+                <TableCell className="text-end font-medium">RM 600</TableCell>
+            </TableRow>
+        </TableFooter>
+    </Table>
+    ```
+  </Tab>
+</Tabs>
+
+### Skeleton Loading
+
+Anda boleh menggunakan komponen `TableSkeleton` untuk membuat keadaan pemuatan rangka untuk jadual.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose space-y-2 flex flex-col items-center">
+      <Table>
+      <TableCaption>Log audit</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Cap masa</TableHead>
+          <TableHead>Aktiviti</TableHead>
+          <TableHead>Tindakan Diambil</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell> <TableSkeleton /> </TableCell>
+          <TableCell>  <TableSkeleton /> </TableCell>
+          <TableCell className="text-center py-3"> <TableSkeleton /> </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> <TableSkeleton /> </TableCell>
+          <TableCell>  <TableSkeleton /> </TableCell>
+          <TableCell className="text-center py-3"> <TableSkeleton /> </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> <TableSkeleton /> </TableCell>
+          <TableCell>  <TableSkeleton /> </TableCell>
+          <TableCell className="text-center py-3"> <TableSkeleton /> </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell> <TableSkeleton /> </TableCell>
+          <TableCell>  <TableSkeleton /> </TableCell>
+          <TableCell className="text-center py-3"> <TableSkeleton /> </TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Table>
+        <TableCaption>Penilaian Cukai Tahun 2023</TableCaption>
+        <TableHeader>
+            <TableRow>
+            <TableHead>Kategori</TableHead>
+            <TableHead>Pendapatan Bercukai</TableHead>
+            <TableHead>Pengiraan (RM)</TableHead>
+            <TableHead className="text-center">Kadar</TableHead>
+            <TableHead className="text-end">Cukai</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+            <TableCell>A</TableCell>
+            <TableCell>0 - 5,000</TableCell>
+            <TableCell>Untuk 5,000 Pertama</TableCell>
+            <TableCell className="text-center">0</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>B</TableCell>
+            <TableCell rowSpan={2}>5,000 - 20,000</TableCell>
+            <TableCell>Untuk 5,000 Pertama</TableCell>
+            <TableCell className="text-center" rowSpan={2}>1%</TableCell>
+            <TableCell className="text-end">RM 0</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>15,000 Seterusnya</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell rowSpan={2}>C</TableCell>
+            <TableCell rowSpan={2}>20,001 - 35,000</TableCell>
+            <TableCell>Untuk 20,000 Pertama</TableCell>
+            <TableCell className="text-center" rowSpan={2}>3%</TableCell>
+            <TableCell className="text-end">RM 150</TableCell>
+            </TableRow>
+            <TableRow>
+            <TableCell>15,000 Seterusnya</TableCell>
+            <TableCell className="text-end">RM 450</TableCell>
+            </TableRow>
+        </TableBody>
+        <TableFooter>
+            <TableRow>
+                <TableCell className="text-end font-medium" colSpan={4}>Jumlah Cukai</TableCell>
+                <TableCell className="text-end font-medium">RM 600</TableCell>
+            </TableRow>
+        </TableFooter>
+    </Table>
+    ```
+  </Tab>
+</Tabs>
+
+### Jadual Kosong
+
+Gunakan komponen `TableEmpty` untuk menunjukkan keadaan kosong.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="not-prose space-y-2 flex flex-col items-center">
+      <Table>
+      <TableCaption>Log audit</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Cap masa</TableHead>
+          <TableHead>Aktiviti</TableHead>
+          <TableHead>Tindakan Diambil</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableEmpty />
+        </TableRow>
+        </TableBody>
+    </Table>
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    <Table>
+      <TableCaption>Log audit</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Cap masa</TableHead>
+          <TableHead>Aktiviti</TableHead>
+          <TableHead>Tindakan Diambil</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableEmpty />
+        </TableRow>
+        </TableBody>
+    </Table>
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### TableHead
+
+<TypeTable
+  type={{
+    rowSpan: {
+      description: "Bilangan baris yang sel akan merangkumi",
+      type: "boolean",
+      default: "false",
+    },
+    colSpan: {
+      description: "Bilangan lajur yang sel akan merangkumi",
+      type: "boolean",
+      default: "false",
+    },
+    scope: {
+      description: "Menentukan jenis data dalam sel",
+      type: "col | row | colgroup | rowgroup",
+    },
+  }}
+/>
+
+### TableCell
+
+<TypeTable
+  type={{
+    rowSpan: {
+      description: "Bilangan baris yang sel akan merangkumi",
+      type: "boolean",
+      default: "false",
+    },
+    colSpan: {
+      description: "Bilangan lajur yang sel akan merangkumi",
+      type: "boolean",
+      default: "false",
+    },
+    scope: {
+      description: "Menentukan jenis data dalam sel",
+      type: "col | row | colgroup | rowgroup",
+    },
+  }}
+/>

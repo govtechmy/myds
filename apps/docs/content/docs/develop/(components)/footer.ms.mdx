@@ -37,7 +37,7 @@ import { Link } from "@govtechmy/myds-react/link";
   <Tab value="Preview">
   <div className="overflow-scroll px-2 h-[250px]">
     <div className="scale-[0.6] origin-top-left">
-        <Footer className="w-[1180px] xl:px-10">
+        <Footer background="w-[1180px] xl:px-10">
             <FooterTopSection>
                 <FooterMainInfo>
                   <ImageWithTitle
@@ -182,7 +182,6 @@ import { Link } from "@govtechmy/myds-react/link";
                 </FooterTimestamp>
             </FooterBottomSection>
         </Footer>
-
 
     </div>
     </div>
@@ -336,10 +335,11 @@ import {
         </Link>
       </FooterCopyrightLinkWrapper>
     </FooterCopyright>
-    <FooterTimestamp time="2024-12-05T10:00:00Z">Kemas Kini Terakhir:</FooterTimestamp>
+    <FooterTimestamp time="2024-12-05T10:00:00Z">
+      Kemas Kini Terakhir:
+    </FooterTimestamp>
   </FooterBottomSection>
 </Footer>
-
 
 ```
   </Tab>
@@ -382,140 +382,142 @@ import {
 
 ```tsx copy
 export default () => (
-<Footer>
-  <FooterTopSection>
-    <FooterMainInfo>
-      <ImageWithTitle
-        imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-        imgAlt="JataNegara"
-      >
-        Tajuk Organisasi
-      </ImageWithTitle>
-      <Address>
-        Sample Alamat Baris 1,{"\n"}
-        Sample Nama Jalan, Sample Kawasan,{"\n"}
-        Sample Daerah, Sample Bandar,{"\n"}
-        12345 Sample Kod Pos,{"\n"}
-        Sample Negara
-      </Address>
-      <SocialMedia title="Ikuti Kami">
-        <SocialMediaItem
-          icon={<FacebookIcon />}
-          href={"www.google.com"}
-          name={"Facebook"}
-        />
-        <SocialMediaItem
-          icon={<TikTokIcon />}
-          href={"www.google.com"}
-          name={"TikTok"}
-        />
-      </SocialMedia>
-    </FooterMainInfo>
-    <FooterContent>
-      <FooterContentColumn title={"Tajuk 1"}>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
+  <Footer>
+    <FooterTopSection>
+      <FooterMainInfo>
+        <ImageWithTitle
+          imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+          imgAlt="JataNegara"
         >
-          Pautan 1
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 2
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 3
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 4
-        </Link>
-      </FooterContentColumn>
-      <FooterContentColumn title={"Tajuk 2"}>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 1
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 2
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 3
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 4
-        </Link>
-      </FooterContentColumn>
-      <FooterContentColumn title={"Sumber Terbuka"}>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Repo Github
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Figma
-        </Link>
-      </FooterContentColumn>
-    </FooterContent>
-  </FooterTopSection>
-  <FooterBottomSection>
-    <FooterCopyright>
-      <FooterCopyrightDate>Hak Cipta Terpelihara</FooterCopyrightDate>
-      <FooterCopyrightLinkWrapper>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Penafian
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Polisi Privasi
-        </Link>
-      </FooterCopyrightLinkWrapper>
-    </FooterCopyright>
-    <FooterTimestamp time="2024-12-05T10:00:00Z">Kemas Kini Terakhir:</FooterTimestamp>
-  </FooterBottomSection>
-</Footer>
-
+          Tajuk Organisasi
+        </ImageWithTitle>
+        <Address>
+          Sample Alamat Baris 1,{"\n"}
+          Sample Nama Jalan, Sample Kawasan,{"\n"}
+          Sample Daerah, Sample Bandar,{"\n"}
+          12345 Sample Kod Pos,{"\n"}
+          Sample Negara
+        </Address>
+        <SocialMedia title="Ikuti Kami">
+          <SocialMediaItem
+            icon={<FacebookIcon />}
+            href={"www.google.com"}
+            name={"Facebook"}
+          />
+          <SocialMediaItem
+            icon={<TikTokIcon />}
+            href={"www.google.com"}
+            name={"TikTok"}
+          />
+        </SocialMedia>
+      </FooterMainInfo>
+      <FooterContent>
+        <FooterContentColumn title={"Tajuk 1"}>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Pautan 1
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Pautan 2
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Pautan 3
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Pautan 4
+          </Link>
+        </FooterContentColumn>
+        <FooterContentColumn title={"Tajuk 2"}>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Pautan 1
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Pautan 2
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Pautan 3
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Pautan 4
+          </Link>
+        </FooterContentColumn>
+        <FooterContentColumn title={"Sumber Terbuka"}>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Repo Github
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Figma
+          </Link>
+        </FooterContentColumn>
+      </FooterContent>
+    </FooterTopSection>
+    <FooterBottomSection>
+      <FooterCopyright>
+        <FooterCopyrightDate>Hak Cipta Terpelihara</FooterCopyrightDate>
+        <FooterCopyrightLinkWrapper>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Penafian
+          </Link>
+          <Link
+            href="www.google.com"
+            underline="hover"
+            className="hover:text-txt-black-900"
+          >
+            Polisi Privasi
+          </Link>
+        </FooterCopyrightLinkWrapper>
+      </FooterCopyright>
+      <FooterTimestamp time="2024-12-05T10:00:00Z">
+        Kemas Kini Terakhir:
+      </FooterTimestamp>
+    </FooterBottomSection>
+  </Footer>
 );
 ```
+
 ---
 
 ### Pembungkus Utama: `Footer`
@@ -606,7 +608,6 @@ Kandungan: Ditambah sebagai teks biasa di dalam komponen.
 Pembungkus untuk pautan media sosial, dengan ikon yang diimport.
 
 **Contoh**:
-
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
@@ -746,7 +747,6 @@ Memaparkan kenyataan hak cipta dengan tahun.
 
 **Contoh**:
 
-
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
   <div className="flex justify-center items-center h-fit gap-1">
@@ -802,7 +802,6 @@ Memaparkan tarikh dan masa kemas kini terakhir.
 
 **Contoh**:
 
-
 <Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
   <Tab value="Preview">
     <div className="flex h-fit items-center justify-center">
@@ -819,7 +818,6 @@ Memaparkan tarikh dan masa kemas kini terakhir.
   </Tab>
 </Tabs>
 
-
 ## Props
 
 ### Footer
@@ -830,6 +828,10 @@ Memaparkan tarikh dan masa kemas kini terakhir.
       description: "Gaya tambahan untuk footer",
       type: "string",
     },
+    background: {
+      description: "Gaya tambahan untuk latar belakang footer",
+      type: "string",
+    },
     children: {
       description: "Kandungan footer",
       type: "ReactNode",
@@ -838,6 +840,7 @@ Memaparkan tarikh dan masa kemas kini terakhir.
 />
 
 ### FooterTopSection
+
 <TypeTable
   type={{
     className: {
@@ -852,6 +855,7 @@ Memaparkan tarikh dan masa kemas kini terakhir.
 />
 
 ### FooterMainInfo
+
 <TypeTable
   type={{
     className: {
@@ -866,6 +870,7 @@ Memaparkan tarikh dan masa kemas kini terakhir.
 />
 
 ### ImageWithTitle
+
 <TypeTable
   type={{
     imgSrc: {
@@ -945,6 +950,7 @@ Memaparkan tarikh dan masa kemas kini terakhir.
 />
 
 ### FooterContent
+
 <TypeTable
   type={{
     children: {
@@ -955,6 +961,7 @@ Memaparkan tarikh dan masa kemas kini terakhir.
 />
 
 ### FooterContentColumn
+
 <TypeTable
   type={{
     title: {
@@ -969,6 +976,7 @@ Memaparkan tarikh dan masa kemas kini terakhir.
 />
 
 ### FooterBottomSection
+
 <TypeTable
   type={{
     className: {
@@ -1013,6 +1021,7 @@ Memaparkan tarikh dan masa kemas kini terakhir.
 />
 
 ### FooterCopyrightLinkWrapper
+
 <TypeTable
   type={{
     className: {
@@ -1027,10 +1036,12 @@ Memaparkan tarikh dan masa kemas kini terakhir.
 />
 
 ### FooterTimestamp
+
 <TypeTable
   type={{
     time: {
-      description: "Timestamp dalam format string, nombor, atau Date, yang mewakili tarikh ISO 8601 yang sah atau mana-mana format yang disokong oleh pembina Tarikh JavaScript.",
+      description:
+        "Timestamp dalam format string, nombor, atau Date, yang mewakili tarikh ISO 8601 yang sah atau mana-mana format yang disokong oleh pembina Tarikh JavaScript.",
       type: "string | number | Date",
     },
     className: {

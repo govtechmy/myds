@@ -1,0 +1,700 @@
+---
+title: Dialog
+description: A modal pop-up designed to capture user attention for important actions or messages. It consists of three main components, which are Header, Content, and Footer.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+  Button,
+  DismissibleDialog,
+} from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Open Dialog</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Open Dialog</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-dialog--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/dialog.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@govtechmy/myds-react/dialog";
+```
+
+```tsx copy
+export default () => (
+  <Dialog>
+    <DialogTrigger />
+    <DialogBody>
+      <DialogHeader>
+        <DialogTitle />
+      </DialogHeader>
+      <DialogContent>
+        <DialogDescription />
+      </DialogContent>
+      <DialogFooter>
+        <DialogClose />
+      </DialogFooter>
+    </DialogBody>
+  </Dialog>
+);
+```
+
+## Examples
+
+### Trigger
+
+Use the `DialogTrigger` to wrap the trigger element that opens the dialog. The example below shows three different (3) buttons opening the same dialog.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col items-center gap-3">
+      <Dialog>
+        <DialogTrigger>
+          <Button variant="primary-fill">Open Dialog 1</Button>
+        </DialogTrigger>
+        <DialogTrigger>
+          <Button variant="primary-outline">Open Dialog 2</Button>
+        </DialogTrigger>
+        <DialogTrigger>
+          <Button variant="primary-ghost">Open Dialog 3</Button>
+        </DialogTrigger>
+
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Open Dialog 1</Button>
+      </DialogTrigger>
+      <DialogTrigger>
+        <Button variant="primary-outline">Open Dialog 2</Button>
+      </DialogTrigger>
+      <DialogTrigger>
+        <Button variant="primary-ghost">Open Dialog 3</Button>
+      </DialogTrigger>
+
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Uncontrolled vs Controlled State
+
+To use the dialog in an uncontrolled state, set the `defaultOpen` prop to the initial state of the dialog.
+
+To use the dialog in the controlled state, utilize the `open` and `onOpenChange` prop to handle the state programmatically.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex flex-col gap-3 items-center">
+        <div>
+            Uncontrolled
+            <Dialog defaultOpen={false}>
+              <DialogTrigger>
+                <Button variant="primary-fill">Open Dialog (Uncontrolled)</Button>
+              </DialogTrigger>
+      
+            <DialogBody>
+              <DialogHeader>
+                <DialogTitle>Dialog Title</DialogTitle>
+              </DialogHeader>
+              <DialogContent>
+                <DialogDescription>Dialog content goes here.</DialogDescription>
+              </DialogContent>
+              <DialogFooter>
+                <DialogClose>
+                  <Button variant="default-outline">Secondary Action</Button>
+                </DialogClose>
+                <DialogClose>
+                  <Button variant="primary-fill">Primary Action</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogBody>
+          </Dialog>
+        </div>
+        <div>
+            Controlled
+            <Dialog open={false}>
+              <DialogTrigger>
+                <Button variant="primary-fill">Open Dialog (Controlled)</Button>
+              </DialogTrigger>
+      
+            <DialogBody>
+              <DialogHeader>
+                <DialogTitle>Dialog Title</DialogTitle>
+              </DialogHeader>
+              <DialogContent>
+                <DialogDescription>Dialog content goes here.</DialogDescription>
+              </DialogContent>
+              <DialogFooter>
+                <DialogClose>
+                  <Button variant="default-outline">Secondary Action</Button>
+                </DialogClose>
+                <DialogClose>
+                  <Button variant="primary-fill">Primary Action</Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogBody>
+          </Dialog>
+        </div>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    // Uncontrolled state
+    <Dialog defaultOpen={false}>
+      <DialogTrigger>
+        <Button variant="primary-fill">Open Dialog (Uncontrolled)</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+
+    // Controlled state
+    <Dialog open={false}>
+      <DialogTrigger>
+        <Button variant="primary-fill">Open Dialog (Controlled)</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Dismissible
+
+To prevent users from dismissing the dialog, set the `dismissible` prop to `false` at `DialogBody`. By default, the dialog is dismissible.
+
+You can attach a callback function to the `onDismiss` prop to handle the dismiss event.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose space-y-2 flex flex-col items-center">
+      <DismissibleDialog />
+
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Open Dialog (Uncontrolled)</Button>
+      </DialogTrigger>
+
+      <DialogBody
+        dismissible={true}
+        onDismiss={() => alert("Dialog dismissed...")}
+      >
+        <DialogHeader>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Border
+
+Border can be added to the `DialogHeader` and `DialogFooter` by setting the `border` prop to `true`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center">
+     <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Open Bordered Dialog</Button>
+      </DialogTrigger>
+
+      <DialogBody>
+        <DialogHeader border>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter border>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Open Bordered Dialog</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader border>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter border>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    ```
+
+  </Tab>
+</Tabs>
+
+### Alignment
+
+You can set `align` to `DialogFooter` to align the children to the `start`, `end`, or `full` width of the dialog. By default, the alignment is set to `end`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center gap-3">
+      <div>
+        Start
+        <Dialog>
+          <DialogTrigger>
+            <Button variant="primary-fill">Align Dialog (start)</Button>
+          </DialogTrigger>
+          <DialogBody>
+            <DialogHeader border>
+              <DialogTitle>Dialog Title</DialogTitle>
+            </DialogHeader>
+            <DialogContent>
+              <DialogDescription>Dialog content goes here.</DialogDescription>
+            </DialogContent>
+            <DialogFooter border align="start">
+              <DialogClose>
+                <Button variant="default-outline">Secondary Action</Button>
+              </DialogClose>
+              <DialogClose>
+                <Button variant="primary-fill">Primary Action</Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogBody>
+        </Dialog>
+      </div>
+      <div>
+        Full
+        <Dialog>
+          <DialogTrigger>
+            <Button variant="primary-fill">Align Dialog (full)</Button>
+          </DialogTrigger>
+          <DialogBody>
+            <DialogHeader border>
+              <DialogTitle>Dialog Title</DialogTitle>
+            </DialogHeader>
+            <DialogContent>
+              <DialogDescription>Dialog content goes here.</DialogDescription>
+            </DialogContent>
+            <DialogFooter border align="full">
+              <DialogClose>
+                <Button variant="default-outline">Secondary Action</Button>
+              </DialogClose>
+              <DialogClose>
+                <Button variant="primary-fill">Primary Action</Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogBody>
+        </Dialog>
+      </div>
+      <div>
+        End
+        <Dialog>
+          <DialogTrigger>
+            <Button variant="primary-fill">Align Dialog (end)</Button>
+          </DialogTrigger>
+          <DialogBody>
+            <DialogHeader border>
+              <DialogTitle>Dialog Title</DialogTitle>
+            </DialogHeader>
+            <DialogContent>
+              <DialogDescription>Dialog content goes here.</DialogDescription>
+            </DialogContent>
+            <DialogFooter border align="end">
+              <DialogClose>
+                <Button variant="default-outline">Secondary Action</Button>
+              </DialogClose>
+              <DialogClose>
+                <Button variant="primary-fill">Primary Action</Button>
+              </DialogClose>
+            </DialogFooter>
+          </DialogBody>
+        </Dialog>
+      </div>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+// Start
+<Dialog>
+  <DialogTrigger>
+    <Button variant="primary-fill">Align Dialog (start)</Button>
+  </DialogTrigger>
+  <DialogBody>
+    <DialogHeader border>
+      <DialogTitle>Dialog Title</DialogTitle>
+    </DialogHeader>
+    <DialogContent>
+      <DialogDescription>Dialog content goes here.</DialogDescription>
+    </DialogContent>
+    <DialogFooter border align="start">
+      <DialogClose>
+        <Button variant="default-outline">Secondary Action</Button>
+      </DialogClose>
+      <DialogClose>
+        <Button variant="primary-fill">Primary Action</Button>
+      </DialogClose>
+    </DialogFooter>
+  </DialogBody>
+</Dialog>
+
+// Full
+
+<Dialog>
+  <DialogTrigger>
+    <Button variant="primary-fill">Align Dialog (full)</Button>
+  </DialogTrigger>
+  <DialogBody>
+    <DialogHeader border>
+      <DialogTitle>Dialog Title</DialogTitle>
+    </DialogHeader>
+    <DialogContent>
+      <DialogDescription>Dialog content goes here.</DialogDescription>
+    </DialogContent>
+    <DialogFooter border align="full">
+      <DialogClose>
+        <Button variant="default-outline">Secondary Action</Button>
+      </DialogClose>
+      <DialogClose>
+        <Button variant="primary-fill">Primary Action</Button>
+      </DialogClose>
+    </DialogFooter>
+  </DialogBody>
+</Dialog>
+
+// End
+
+<Dialog>
+  <DialogTrigger>
+    <Button variant="primary-fill">Align Dialog (end)</Button>
+  </DialogTrigger>
+  <DialogBody>
+    <DialogHeader border>
+      <DialogTitle>Dialog Title</DialogTitle>
+    </DialogHeader>
+    <DialogContent>
+      <DialogDescription>Dialog content goes here.</DialogDescription>
+    </DialogContent>
+    <DialogFooter border align="end">
+      <DialogClose>
+        <Button variant="default-outline">Secondary Action</Button>
+      </DialogClose>
+      <DialogClose>
+        <Button variant="primary-fill">Primary Action</Button>
+      </DialogClose>
+    </DialogFooter>
+  </DialogBody>
+</Dialog>
+```
+
+  </Tab>
+</Tabs>
+
+### Action
+
+You can add special actions to the dialog by utilising the `action` prop on the `DialogFooter`.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="not-prose flex justify-center gap-3">
+    <Dialog>
+      <DialogTrigger>
+        <Button variant="primary-fill">Additional Action Dialog</Button>
+      </DialogTrigger>
+      <DialogBody>
+        <DialogHeader border>
+          <DialogTitle>Dialog Title</DialogTitle>
+        </DialogHeader>
+        <DialogContent>
+          <DialogDescription>Dialog content goes here.</DialogDescription>
+        </DialogContent>
+        <DialogFooter action={<Button variant="primary-ghost">Tertiary</Button>}>
+          <DialogClose>
+            <Button variant="default-outline">Secondary Action</Button>
+          </DialogClose>
+          <DialogClose>
+            <Button variant="primary-fill">Primary Action</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogBody>
+    </Dialog>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+  <Dialog>
+    <DialogTrigger>
+      <Button variant="primary-fill">Additional Action Dialog</Button>
+    </DialogTrigger>
+    <DialogBody>
+      <DialogHeader border>
+        <DialogTitle>Dialog Title</DialogTitle>
+      </DialogHeader>
+      <DialogContent>
+        <DialogDescription>Dialog content goes here.</DialogDescription>
+      </DialogContent>
+      <DialogFooter action={<Button variant="primary-ghost">Tertiary</Button>}>
+        <DialogClose>
+          <Button variant="default-outline">Secondary Action</Button>
+        </DialogClose>
+        <DialogClose>
+          <Button variant="primary-fill">Primary Action</Button>
+        </DialogClose>
+      </DialogFooter>
+    </DialogBody>
+  </Dialog>
+```
+  </Tab>
+</Tabs>
+
+## Props
+
+### Dialog
+
+<TypeTable
+  type={{
+    open: {
+      description: "State of the dialog (controlled)",
+      type: "boolean",
+      default: "false",
+    },
+    defaultOpen: {
+      description: "Initial state of the dialog (uncontrolled)",
+      type: "boolean",
+      default: "false",
+    },
+    onOpenChange: {
+      description: "Change event listener (controlled)",
+      type: "(open: boolean) => void",
+    },
+  }}
+/>
+
+### DialogBody
+
+<TypeTable
+  type={{
+    dismissible: {
+      description: "Whether the dialog can be dismissed",
+      type: "boolean",
+      default: "true",
+    },
+    onDismiss: {
+      description: "Change event listener for dismiss event",
+      type: "() => void",
+    },
+  }}
+/>
+
+### DialogHeader
+
+<TypeTable
+  type={{
+    border: {
+      description: "Whether the dialog header has border",
+      type: "boolean",
+      default: "false",
+    },
+  }}
+/>
+
+### DialogFooter
+
+<TypeTable
+  type={{
+    border: {
+      description: "Whether the dialog footer has border",
+      type: "boolean",
+      default: "false",
+    },
+    align: {
+      description: "Aligns the layout of the content",
+      type: "start | end | full",
+      default: "end",
+    },
+    action: {
+      description: "Additional action to be added to the footer",
+      type: "ReactNode",
+    },
+  }}
+/>

@@ -185,7 +185,7 @@ const meta: Meta<typeof DataTable> = {
       },
       {
         id: 4,
-        name: "Bob",
+        name: "Bob 'Very Long Middle Namesdsdsdsd' dasdsadsad  asdsadsad  Smith",
         age: 35,
         position: "Software Engineer",
       },
