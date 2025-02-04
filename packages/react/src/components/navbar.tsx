@@ -189,7 +189,7 @@ const NavigationMenuCombo: FunctionComponent<NavigationMenuProps> = ({
   setMenu = () => {},
   children,
 }) => {
-  return [
+  return (
     <NavigationMenu.Root key="desktop">
       <Sheet key="mobile" open={showMenu} onOpenChange={setMenu}>
         <NavigationMenu.List className="group hidden list-none justify-center space-x-1 xl:flex">
@@ -206,8 +206,8 @@ const NavigationMenuCombo: FunctionComponent<NavigationMenuProps> = ({
           {children}
         </SheetContent>
       </Sheet>
-    </NavigationMenu.Root>,
-  ];
+    </NavigationMenu.Root>
+  );
 };
 
 interface NavItemsMenuProps {
