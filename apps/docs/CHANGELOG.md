@@ -1,5 +1,19 @@
 # @govtechmy/myds-docs
 
+## 0.0.6
+
+### Patch Changes
+
+- 6308c64: Add docs for `Radio` component
+- d7d6d2c: Added documentation for Tabs component for both langugages.
+- 066de70: Add docs for SearchBar
+- 41d207f: Add docs for `InputOTP` component
+- Updated dependencies [475d3c6]
+- Updated dependencies [2c925c1]
+- Updated dependencies [2efcf8e]
+- Updated dependencies [3535a3d]
+  - @govtechmy/myds-react@0.0.5
+
 ## 0.0.5
 
 ### Patch Changes
