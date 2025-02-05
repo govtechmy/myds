@@ -137,39 +137,49 @@ interface SelectValueProps
   children?: (value: string | string[]) => React.ReactNode | React.ReactNode;
 }
 const SelectValue: React.ForwardRefExoticComponent<SelectValueProps> =
-  React.forwardRef(({ label, icon, children, ...props }, ref) => {
+  React.forwardRef(({ label, icon, children, className, ...props }, ref) => {
     const rootProps = React.useContext(SelectContext);
     const Icon = icon || ChevronDownFillIcon;
 
     if (!isMultiple(rootProps))
-      return [
-        typeof label === "string" ? <SelectLabel>{label}</SelectLabel> : label,
+      return (
+        <>
+          {typeof label === "string" ? (
+            <SelectLabel>{label}</SelectLabel>
+          ) : (
+            label
+          )}
+          <SelectPrimitive.Value
+            ref={ref}
+            {...props}
+            className={clx("text-inherit", className)}
+          >
+            {children && children(rootProps._value)}
+          </SelectPrimitive.Value>
+          <SelectPrimitive.Icon asChild>
+            <Icon className={select_icon_cva({ size: rootProps.size })} />
+          </SelectPrimitive.Icon>
+        </>
+      );
+
+    return (
+      <>
+        {typeof label === "string" ? <SelectLabel>{label}</SelectLabel> : label}
         <SelectPrimitive.Value
           ref={ref}
           {...props}
-          className={clx("text-inherit", props.className)}
+          className={clx("text-inherit", className)}
         >
           {children && children(rootProps._value)}
-        </SelectPrimitive.Value>,
+        </SelectPrimitive.Value>
+
+        {!children && <SelectCounter>{rootProps._value?.length}</SelectCounter>}
+
         <SelectPrimitive.Icon asChild>
           <Icon className={select_icon_cva({ size: rootProps.size })} />
-        </SelectPrimitive.Icon>,
-      ];
-
-    return [
-      typeof label === "string" ? <SelectLabel>{label}</SelectLabel> : label,
-      <SelectPrimitive.Value
-        ref={ref}
-        {...props}
-        className={clx("text-inherit", props.className)}
-      >
-        {children && children(rootProps._value)}
-      </SelectPrimitive.Value>,
-      !children && <SelectCounter>{rootProps._value?.length}</SelectCounter>,
-      <SelectPrimitive.Icon asChild>
-        <Icon className={select_icon_cva({ size: rootProps.size })} />
-      </SelectPrimitive.Icon>,
-    ];
+        </SelectPrimitive.Icon>
+      </>
+    );
   });
 
 /*========================================================================================================================*/
