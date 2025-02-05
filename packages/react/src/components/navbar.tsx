@@ -5,21 +5,16 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./accordion";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetOverlay,
-  SheetPortal,
-} from "./sheet";
+import { Sheet, SheetClose, SheetContent } from "./sheet";
 import { Button, button_cva } from "./button";
-import { ChevronDownIcon, MoonIcon, SearchIcon, SunIcon } from "../icons";
+import { ChevronDownIcon } from "../icons";
 import { CrossIcon, HamburgerMenuIcon, GlobeIcon } from "../icons";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { FunctionComponent } from "react";
 import React from "react";
 import { VariantProps, cva } from "class-variance-authority";
 import { Link } from "./link";
+import { useEffect, useState } from "react";
 
 const headerVariant = cva(
   ["font-semibold max-w-[223px] font-heading text-txt-black-900"],
@@ -43,24 +38,27 @@ interface NavbarProps {
   showMenu: Boolean;
   children?: React.ReactNode;
   className?: string;
+  background?: string;
 }
 
 const Navbar: FunctionComponent<NavbarProps> = ({
   showMenu,
   children,
   className,
+  background,
 }) => {
   return (
     <header
       className={clx(
         "bg-bg-white sticky top-0 z-50 lg:border-b lg:backdrop-blur-[30px] print:hidden",
-        className,
+        background,
       )}
     >
       <div
         className={clx(
-          "border-otl-gray-200 bg-bg-white container flex h-16 items-center justify-between gap-3 py-3 max-xl:pr-3 max-lg:border-b lg:gap-4",
+          "border-otl-gray-200 bg-bg-white container mx-auto flex h-16 items-center justify-between gap-3 py-3 max-xl:pr-3 max-lg:border-b lg:gap-4",
           showMenu ? "" : "xl:bg-transparent",
+          className,
         )}
         data-nosnippet
       >
@@ -75,12 +73,19 @@ const Navbar: FunctionComponent<NavbarProps> = ({
 //==========================================================================
 interface NavbarContainerProps {
   children?: React.ReactNode;
+  className?: string;
 }
 const NavbarContainer: FunctionComponent<NavbarContainerProps> = ({
   children,
+  className,
 }) => {
   return (
-    <div className="text-bg-black-900 flex items-center justify-between gap-3 lg:gap-4">
+    <div
+      className={clx(
+        "text-bg-black-900 flex items-center justify-between gap-3 lg:gap-4",
+        className,
+      )}
+    >
       {children}
     </div>
   );
@@ -93,18 +98,24 @@ interface NavbarActionGroupProps {
   children?: React.ReactNode;
   showMenu: boolean;
   setMenu: (value: boolean) => void;
+  className?: string;
 }
 const NavbarActionGroup: FunctionComponent<NavbarActionGroupProps> = ({
   children,
   showMenu,
   setMenu,
+  className,
 }) => {
   return (
     <div className="flex items-center gap-2">
       {children}
       <Button
         variant="default-outline"
-        className={clx("block p-2.5 xl:hidden", showMenu && "bg-bg-washed")}
+        className={clx(
+          "block p-2.5 xl:hidden",
+          showMenu && "bg-bg-washed",
+          className,
+        )}
         onClick={() => setMenu(!showMenu)}
       >
         {showMenu ? <CrossIcon /> : <HamburgerMenuIcon />}
@@ -122,10 +133,8 @@ interface BrandLogoProps extends VariantProps<typeof headerVariant> {
   imageSrc: string;
   alt?: string;
   href?: string;
-  // brandText?: string;
 }
 const BrandLogo: FunctionComponent<BrandLogoProps> = ({
-  // brandText,
   imageSrc,
   alt,
   href = "/",
@@ -138,7 +147,7 @@ const BrandLogo: FunctionComponent<BrandLogoProps> = ({
     <Link
       href={href}
       underline="none"
-      className="flex h-full w-full items-center gap-2.5"
+      className={clx("flex h-full w-full items-center gap-2.5")}
     >
       <img
         src={imageSrc}
@@ -172,21 +181,19 @@ const BrandLogo: FunctionComponent<BrandLogoProps> = ({
 interface NavigationMenuProps {
   showMenu?: boolean;
   setMenu?: (value: boolean) => void;
-  childrenDesktop: React.ReactNode;
-  childrenMobile: React.ReactNode;
+  children: React.ReactNode;
 }
 
 const NavigationMenuCombo: FunctionComponent<NavigationMenuProps> = ({
   showMenu = false,
   setMenu = () => {},
-  childrenDesktop,
-  childrenMobile,
+  children,
 }) => {
-  return [
+  return (
     <NavigationMenu.Root key="desktop">
       <Sheet key="mobile" open={showMenu} onOpenChange={setMenu}>
         <NavigationMenu.List className="group hidden list-none justify-center space-x-1 xl:flex">
-          {childrenDesktop}
+          {children}
         </NavigationMenu.List>
         <div className="relative right-0 top-full">
           <NavigationMenu.Viewport className="shadow-card data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 medium:w-[var(--radix-navigation-menu-viewport-width)] absolute mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-lg" />
@@ -196,78 +203,108 @@ const NavigationMenuCombo: FunctionComponent<NavigationMenuProps> = ({
           side="top"
           className="bg-bg-white absolute top-full z-10 flex h-[90vh] flex-col gap-1 overflow-scroll rounded-b-xl p-3 xl:hidden"
         >
-          {childrenMobile}
+          {children}
         </SheetContent>
-        <SheetPortal>
-          <SheetOverlay className="z-40" />
-        </SheetPortal>
       </Sheet>
-    </NavigationMenu.Root>,
-  ];
+    </NavigationMenu.Root>
+  );
 };
 
 interface NavItemsMenuProps {
   children: React.ReactNode;
   href: string;
   active: boolean;
+  className?: string;
+}
+
+interface NavItemsMenuProps {
+  children: React.ReactNode;
+  href: string;
+  active: boolean;
+  className?: string;
 }
 
 const NavItemsMenu: FunctionComponent<NavItemsMenuProps> = ({
+  className,
   children,
   href,
   active = false,
 }) => {
-  return [
-    // Desktop
-    <NavigationMenu.Item className="list-none">
-      <Link
-        href={href}
-        data-state={active ? "open" : "close"}
-        underline="none"
-        className={clx(
-          button_cva({ variant: "default-ghost" }),
-          "data-[state=open]:bg-bg-washed w-max bg-transparent transition-colors",
-          "hidden lg:block",
-          window.location.pathname.includes(href) && "bg-bg-washed-active",
-        )}
-      >
-        {children}
-      </Link>
-    </NavigationMenu.Item>,
-    // Mobile
-    <SheetClose asChild>
-      <Link
-        href={href}
-        data-state={active ? "open" : "close"}
-        underline="none"
-        className={clx(
-          button_cva({
-            variant: "default-ghost",
-            size: "medium",
-          }),
-          "data-[state=open]:bg-bg-washed flex w-full justify-start text-left text-base",
-          "block lg:hidden",
-          window.location.pathname.includes(href) && "bg-bg-washed-active",
-        )}
-      >
-        {children}
-      </Link>
-    </SheetClose>,
-  ];
+  const [isClient, setIsClient] = useState(false);
+  const [clientWindow, setClientWindow] = useState(false);
+
+  // Effect to detect client-side rendering
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient && window) {
+      setClientWindow(window.location.pathname.includes(href));
+    }
+  }, [isClient, href]);
+
+  return (
+    <>
+      {/* Desktop */}
+      <NavigationMenu.Item className="list-none">
+        <Link
+          href={href}
+          data-state={active ? "open" : "close"}
+          underline="none"
+          className={clx(
+            button_cva({ variant: "default-ghost" }),
+            "data-[state=open]:bg-bg-washed w-max bg-transparent transition-colors",
+            "hidden lg:block",
+            clientWindow && "bg-bg-washed-active",
+            className,
+          )}
+        >
+          {children}
+        </Link>
+      </NavigationMenu.Item>
+
+      {/* Mobile */}
+      <SheetClose asChild>
+        <Link
+          href={href}
+          data-state={active ? "open" : "close"}
+          underline="none"
+          className={clx(
+            button_cva({
+              variant: "default-ghost",
+              size: "medium",
+            }),
+            "data-[state=open]:bg-bg-washed flex w-full justify-start text-left text-base",
+            "block lg:hidden",
+            clientWindow && "bg-bg-washed-active",
+            className,
+          )}
+        >
+          {children}
+        </Link>
+      </SheetClose>
+    </>
+  );
 };
 
 interface NavItemsDropdownProps {
   children: React.ReactNode;
   menu: string;
+  className?: string;
 }
 
 const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
   children,
   menu,
+  className,
 }) => {
   return [
     //Desktop
-    <NavigationMenu.Item className="relative hidden xl:block">
+    <NavigationMenu.Item
+      key="desktop-dropdown"
+      className="relative hidden xl:block"
+    >
       <NavigationMenu.Trigger
         className={clx(
           button_cva({ variant: "default-ghost" }),
@@ -287,6 +324,7 @@ const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
           "data-[motion=from-end]:slide-in-from-right-52",
           "data-[motion=from-start]:slide-in-from-left-52",
           "data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52",
+          className,
         )}
       >
         <ul className="bg-bg-white shadow-card list-none rounded-lg border p-3">
@@ -299,6 +337,7 @@ const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
       className="bg-bg-white block xl:hidden"
       type="single"
       collapsible
+      key="mobile-dropdown"
     >
       <AccordionItem className="border-0" value="item-1">
         <AccordionTrigger
@@ -308,6 +347,7 @@ const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
               size: "medium",
             }),
             "bg-bg-white justify-start text-left text-base hover:bg-none hover:no-underline focus:ring-0",
+            className,
           )}
         >
           {menu}
@@ -321,52 +361,70 @@ const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
 interface NavItemsDropdownItemsProps {
   href: string;
   children: React.ReactNode;
+  className?: string;
 }
 
 const NavItemsDropdownItems: FunctionComponent<NavItemsDropdownItemsProps> = ({
   children,
   href,
+  className,
 }) => {
-  return [
-    //Desktop
-    <li className="hidden list-none lg:block">
-      <Link
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        underline="none"
-        className={clx(
-          button_cva({ variant: "default-ghost" }),
-          "data-[state=open]:bg-bg-washed block w-full justify-start bg-transparent transition-colors",
-          "text-left",
-          window.location.pathname.includes(href) && "bg-bg-washed-active",
-        )}
-      >
-        {children}
-      </Link>
-    </li>,
+  const [isClient, setIsClient] = useState(false);
+  const [clientWindow, setClientWindow] = useState(false);
 
-    //Mobile
-    <SheetClose asChild className="lg:hidden">
-      <Link
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        underline="none"
-        className={clx(
-          button_cva({
-            variant: "default-ghost",
-            size: "medium",
-          }),
-          window.location.pathname.includes(href) && "bg-bg-washed-active",
-          "data-[state=open]:bg-bg-washed justify-start text-sm text-left w-full",
-          "h-10 pl-6",
-        )}
-      >
-        {children}
-      </Link>
-    </SheetClose>,
-  ];
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient && window) {
+      setClientWindow(window.location.pathname.includes(href));
+    }
+  }, [isClient, href]);
+
+  return (
+    <>
+      {/* Desktop */}
+      <li key={href} className="hidden list-none lg:block">
+        <Link
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          underline="none"
+          className={clx(
+            button_cva({ variant: "default-ghost" }),
+            "data-[state=open]:bg-bg-washed block w-full justify-start bg-transparent transition-colors",
+            "text-left",
+            clientWindow && "bg-bg-washed-active",
+            className,
+          )}
+        >
+          {children}
+        </Link>
+      </li>
+
+      {/* Mobile */}
+      <SheetClose asChild className="lg:hidden">
+        <li key={href} className="list-none">
+          <Link
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            underline="none"
+            className={clx(
+              button_cva({ variant: "default-ghost", size: "medium" }),
+              clientWindow && "bg-bg-washed-active",
+              "data-[state=open]:bg-bg-washed w-full justify-start text-left text-sm",
+              "h-10 pl-6",
+              className,
+            )}
+          >
+            {children}
+          </Link>
+        </li>
+      </SheetClose>
+    </>
+  );
 };
 
 export {

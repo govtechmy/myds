@@ -35,6 +35,7 @@ export * from "@govtechmy/myds-react/masthead";
 export * from "@govtechmy/myds-react/radio";
 export * from "@govtechmy/myds-react/input-otp";
 export * from "@govtechmy/myds-react/tabs";
+export * from "@govtechmy/myds-react/navbar";
 export * from "@govtechmy/myds-react/summary-list";
 import {
   Callout,
@@ -97,6 +98,22 @@ import {
   SummaryListTerm,
 } from "@govtechmy/myds-react/summary-list";
 import { SwapIcon } from "@govtechmy/myds-react/icon";
+import {
+  BrandLogo,
+  Navbar,
+  NavbarActionGroup,
+  NavbarContainer,
+  NavigationMenuCombo,
+  NavItemsDropdown,
+  NavItemsDropdownItems,
+  NavItemsMenu,
+} from "@govtechmy/myds-react/navbar";
+import {
+  GlobeIcon,
+  MoonIcon,
+  SearchIcon,
+  SunIcon,
+} from "@govtechmy/myds-react/icon";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
@@ -857,3 +874,205 @@ export const ClientPagination = forwardRef<HTMLElement, PaginationProps>(
 );
 
 ClientPagination.displayName = "ClientPagination";
+
+interface PreviewNavbarProps extends ComponentProps<typeof Navbar> {}
+
+export const PreviewNavbar: FunctionComponent<PreviewNavbarProps> = (props) => {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  const [value, setValue] = React.useState("EN");
+  const [showMenu, setMenu] = useState<boolean>(false);
+  const handleToggle = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  return (
+    <Navbar showMenu={showMenu} className="px-2">
+      <NavbarContainer>
+        <BrandLogo imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg">
+          MYDS
+        </BrandLogo>
+
+        <NavigationMenuCombo showMenu={showMenu} setMenu={setMenu}>
+          <NavItemsMenu href="/menu1" active={false}>
+            Menu 1
+          </NavItemsMenu>
+          <NavItemsMenu href="/menu2" active={false}>
+            Menu 2
+          </NavItemsMenu>
+
+          <NavItemsDropdown menu="Menu Dropdown">
+            <NavItemsDropdownItems href="/submenu1">
+              Submenu 1
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu2">
+              Submenu 2
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu3">
+              Submenu 3
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu1">
+              Submenu 4
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu2">
+              Submenu 5
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu3">
+              Submenu 6
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu3">
+              Submenu 7
+            </NavItemsDropdownItems>
+          </NavItemsDropdown>
+
+          <NavItemsMenu href="/menu3" active={false}>
+            Menu 3
+          </NavItemsMenu>
+        </NavigationMenuCombo>
+      </NavbarContainer>
+
+      <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
+        {/* Button Search  : mobile hide if needed  */}
+        <Button variant="default-ghost" className="p-2">
+          <SearchIcon></SearchIcon>
+        </Button>
+
+        {/* Button Light Mode Toggle  : mobile hide if needed  */}
+        <Button variant="default-ghost" className="p-2" onClick={handleToggle}>
+          {isDarkMode ? <SunIcon /> : <MoonIcon />}
+        </Button>
+
+        {/* Select Language Toggle  : mobile hide if needed  */}
+        <div className="hidden sm:block">
+          <Select
+            value={value}
+            onValueChange={setValue}
+            defaultValue="EN"
+            multiple={false}
+            variant="outline"
+            size="medium"
+          >
+            <SelectTrigger>
+              <GlobeIcon className="h-4 w-4"></GlobeIcon>
+              <SelectValue>{(value) => value || "EN"}</SelectValue>
+            </SelectTrigger>
+            <SelectContent className="font-body rounded-[4px] py-1">
+              <SelectItem value="EN">EN</SelectItem>
+              <SelectItem value="BM">BM</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </NavbarActionGroup>
+    </Navbar>
+  );
+};
+
+interface PreviewBrandLogoProps extends ComponentProps<typeof BrandLogo> {}
+
+export const PreviewBrandLogo: FunctionComponent<PreviewBrandLogoProps> = (
+  props,
+) => {
+  return (
+    <BrandLogo
+      imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+      href="/"
+    >
+      MYDS
+    </BrandLogo>
+  );
+};
+
+export const PreviewNavItemsMenu: FunctionComponent<PreviewNavbarProps> = (
+  props,
+) => {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  const [value, setValue] = React.useState("EN");
+  const [showMenu, setMenu] = useState<boolean>(false);
+  const handleToggle = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  return (
+    <Navbar showMenu={showMenu} className="px-2">
+      <NavbarContainer>
+        <NavigationMenuCombo showMenu={showMenu} setMenu={setMenu}>
+          <NavItemsMenu href="/menu1" active={false}>
+            Menu 1
+          </NavItemsMenu>
+          <NavItemsMenu href="/menu2" active={false}>
+            Menu 2
+          </NavItemsMenu>
+
+          <NavItemsDropdown menu="Menu Dropdown">
+            <NavItemsDropdownItems href="/submenu1">
+              Submenu 1
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu2">
+              Submenu 2
+            </NavItemsDropdownItems>
+            <NavItemsDropdownItems href="/submenu3">
+              Submenu 3
+            </NavItemsDropdownItems>
+          </NavItemsDropdown>
+
+          <NavItemsMenu href="/menu3" active={false}>
+            Menu 3
+          </NavItemsMenu>
+        </NavigationMenuCombo>
+      </NavbarContainer>
+
+      <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
+        <div className="block h-10 w-[200px] lg:hidden"></div>
+      </NavbarActionGroup>
+    </Navbar>
+  );
+};
+
+export const PreviewActionGroup: FunctionComponent<PreviewNavbarProps> = (
+  props,
+) => {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  const [value, setValue] = React.useState("EN");
+  const [showMenu, setMenu] = useState<boolean>(false);
+  const handleToggle = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  return (
+    <Navbar showMenu={showMenu} className="px-2">
+      <NavbarContainer></NavbarContainer>
+
+      <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
+        {/* Button Search  : mobile hide if needed  */}
+        <Button variant="default-ghost" className="p-2">
+          <SearchIcon></SearchIcon>
+        </Button>
+
+        {/* Button Light Mode Toggle  : mobile hide if needed  */}
+        <Button variant="default-ghost" className="p-2" onClick={handleToggle}>
+          {isDarkMode ? <SunIcon /> : <MoonIcon />}
+        </Button>
+
+        {/* Select Language Toggle  : mobile hide if needed  */}
+        <div className="hidden sm:block">
+          <Select
+            value={value}
+            onValueChange={setValue}
+            defaultValue="EN"
+            multiple={false}
+            variant="outline"
+            size="medium"
+          >
+            <SelectTrigger>
+              <GlobeIcon className="h-4 w-4"></GlobeIcon>
+              <SelectValue>{(value) => value || "EN"}</SelectValue>
+            </SelectTrigger>
+            <SelectContent className="font-body rounded-[4px] py-1">
+              <SelectItem value="EN">EN</SelectItem>
+              <SelectItem value="BM">BM</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </NavbarActionGroup>
+    </Navbar>
+  );
+};

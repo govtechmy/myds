@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { createRender, createStory } from "../utils";
+import { createRender } from "../utils";
 import {
   Navbar,
   BrandLogo,
@@ -35,128 +35,91 @@ import { Button } from "@govtechmy/myds-react/button";
  *
  * ### Usage
  * ```tsx
- *    <Navbar showMenu={showMenu} className="px-2">
- *        <NavbarContainer>
- *            <BrandLogo
- *                type="shortname"
- *                imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
- *            >
- *                MYDS
- *            </BrandLogo>
+ * <Navbar showMenu={showMenu} className="px-2">
+ *     <NavbarContainer>
+ *         <BrandLogo
+ *             imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+ *         >
+ *             MYDS
+ *         </BrandLogo>
+ *         <NavigationMenuCombo showMenu={showMenu} setMenu={setMenu}>
+ *             <NavItemsMenu href="/menu1" active={false}>
+ *                 MinistryProfile
+ *             </NavItemsMenu>
+ *             <NavItemsMenu href="/menu2" active={false}>
+ *                 Policy
+ *             </NavItemsMenu>
+ *             <NavItemsMenu href="/menu3" active={false}>
+ *                 Achievements
+ *             </NavItemsMenu>
+ *             <NavItemsMenu href="/menu4" active={false}>
+ *                 Media
+ *             </NavItemsMenu>
+ *             <NavItemsMenu href="/menu5" active={false}>
+ *                 Directory
+ *             </NavItemsMenu>
+ *             <NavItemsMenu href="/menu6" active={false}>
+ *                 Contact Us
+ *             </NavItemsMenu>
  *
- *            <NavigationMenuCombo
- *                showMenu={showMenu}
- *                setMenu={setMenu}
- *                childrenDesktop={
- *                    <>
- *                        <NavItemsMenu href="/menu1" active={false}>
- *                            Menu 1
- *                        </NavItemsMenu>
- *                        <NavItemsMenu href="/menu2" active={false}>
- *                            Menu 2
- *                        </NavItemsMenu>
+ *             <NavItemsDropdown menu="Departments & Agencies">
+ *                 <NavItemsDropdownItems href="/submenu1">
+ *                     National Digital Department
+ *                 </NavItemsDropdownItems>
+ *                 <NavItemsDropdownItems href="/submenu2">
+ *                     Personal Data Protection Department
+ *                 </NavItemsDropdownItems>
+ *                 <NavItemsDropdownItems href="/submenu3">
+ *                     Cybersecurity Malaysia
+ *                 </NavItemsDropdownItems>
+ *                 <NavItemsDropdownItems href="/submenu4">
+ *                     Digital Nasional Berhad
+ *                 </NavItemsDropdownItems>
+ *                 <NavItemsDropdownItems href="/submenu5">
+ *                     Malaysia Digital Economy Corporation (MDEC)
+ *                 </NavItemsDropdownItems>
+ *                 <NavItemsDropdownItems href="/submenu6">
+ *                     MyDIGITAL Corporation
+ *                 </NavItemsDropdownItems>
+ *                 <NavItemsDropdownItems href="/submenu6">
+ *                     MYNIC Berhad
+ *                 </NavItemsDropdownItems>
+ *             </NavItemsDropdown>
+ *         </NavigationMenuCombo>
+ *     </NavbarContainer>
  *
- *                        <NavItemsDropdown menu="Menu Dropdown">
- *                            <NavItemsDropdownItems href="/submenu1">
- *                                Submenu 1
- *                            </NavItemsDropdownItems>
- *                            <NavItemsDropdownItems href="/submenu2">
- *                                Submenu 2
- *                            </NavItemsDropdownItems>
- *                            <NavItemsDropdownItems href="/submenu3">
- *                                Submenu 3
- *                            </NavItemsDropdownItems>
- *                            <NavItemsDropdownItems href="/submenu1">
- *                                Submenu 4
- *                            </NavItemsDropdownItems>
- *                            <NavItemsDropdownItems href="/submenu2">
- *                                Submenu 5
- *                            </NavItemsDropdownItems>
- *                            <NavItemsDropdownItems href="/submenu3">
- *                                Submenu 6
- *                            </NavItemsDropdownItems>
- *                            <NavItemsDropdownItems href="/submenu3">
- *                                Submenu 7
- *                            </NavItemsDropdownItems>
- *                        </NavItemsDropdown>
+ *     <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
+ *         <Button variant="default-ghost" className="p-2">
+ *             <SearchIcon></SearchIcon>
+ *         </Button>
  *
- *                        <NavItemsMenu href="/menu3" active={false}>
- *                            Menu 3
- *                        </NavItemsMenu>
- *                    </>
- *                }
- *                childrenMobile={
- *                    <>
- *                        <NavItemsMenu href="/menu1" active={false}>
- *                            <div>Menu 1</div>
- *                        </NavItemsMenu>
- *                        <NavItemsMenu href="/menu2" active={false}>
- *                            Menu 2
- *                        </NavItemsMenu>
- *                        <NavItemsDropdown menu="Menu Dropdown">
- *                            <NavItemsDropdownItems href="/submenu1">
- *                                Submenu 1
- *                            </NavItemsDropdownItems>
- *                            <NavItemsDropdownItems href="/submenu2">
- *                                Submenu 2
- *                            </NavItemsDropdownItems>
- *                            <NavItemsDropdownItems href="/submenu3">
- *                                Submenu 3
- *                            </NavItemsDropdownItems>
- *                            <NavItemsDropdownItems href="/submenu1">
- *                                Submenu 4
- *                            </NavItemsDropdownItems>
- *                            <NavItemsDropdownItems href="/submenu2">
- *                                Submenu 5
- *                            </NavItemsDropdownItems>
- *                            <NavItemsDropdownItems href="/submenu3">
- *                                Submenu 6
- *                            </NavItemsDropdownItems>
- *                            <NavItemsDropdownItems href="/submenu3">
- *                                Submenu 7
- *                            </NavItemsDropdownItems>
- *                        </NavItemsDropdown>
- *                        <NavItemsMenu href="/menu3" active={false}>
- *                            Menu 3
- *                        </NavItemsMenu>
- *                    </>
- *                }
- *            ></NavigationMenuCombo>
- *        </NavbarContainer>
+ *         <Button
+ *             variant="default-ghost"
+ *             className="p-2"
+ *             onClick={handleToggle}
+ *         >
+ *             {isDarkMode ? <SunIcon /> : <MoonIcon />}
+ *         </Button>
  *
- *        <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
- *
- *            <Button variant="default-ghost" className="p-2">
- *                <SearchIcon></SearchIcon>
- *            </Button>
- *
- *            <Button
- *                variant="default-ghost"
- *                className="p-2"
- *                onClick={handleToggle}
- *            >
- *                {isDarkMode ? <SunIcon /> : <MoonIcon />}
- *            </Button>
- *
- *            <Select
- *                value={value}
- *                onValueChange={setValue}
- *                defaultValue="EN"
- *                multiple={false}
- *                variant="outline"
- *                size="medium"
- *            >
- *                <SelectTrigger>
- *                    <GlobeIcon className="h-4 w-4"></GlobeIcon>
- *                    <SelectValue>{(value) => value || "EN"}</SelectValue>
- *                </SelectTrigger>
- *                <SelectContent className="font-body rounded-[4px] py-1">
- *                    <SelectItem value="EN">EN</SelectItem>
- *                    <SelectItem value="BM">BM</SelectItem>
- *                </SelectContent>
- *            </Select>
- *        </NavbarActionGroup>
- *    </Navbar>
+ *         <Select
+ *             value={value}
+ *             onValueChange={setValue}
+ *             defaultValue="EN"
+ *             multiple={false}
+ *             variant="outline"
+ *             size="medium"
+ *         >
+ *             <SelectTrigger>
+ *                 <GlobeIcon className="h-4 w-4"></GlobeIcon>
+ *                 <SelectValue>{(value) => value || "EN"}</SelectValue>
+ *             </SelectTrigger>
+ *             <SelectContent className="font-body rounded-[4px] py-1">
+ *                 <SelectItem value="EN">EN</SelectItem>
+ *                 <SelectItem value="BM">BM</SelectItem>
+ *             </SelectContent>
+ *         </Select>
+ *     </NavbarActionGroup>
+ * </Navbar>
  * ```
  */
 
@@ -197,91 +160,46 @@ const DemoNavbar = () => {
     <div className={clx(isDarkMode ? "light" : "dark")}>
       <Navbar showMenu={showMenu} className="px-2">
         <NavbarContainer>
-          <BrandLogo
-            type="shortname"
-            imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
-          >
+          <BrandLogo imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg">
             MYDS
           </BrandLogo>
 
-          <NavigationMenuCombo
-            showMenu={showMenu}
-            setMenu={setMenu}
-            childrenDesktop={
-              <>
-                <NavItemsMenu href="/menu1" active={false}>
-                  Menu 1
-                </NavItemsMenu>
-                <NavItemsMenu href="/menu2" active={false}>
-                  Menu 2
-                </NavItemsMenu>
+          <NavigationMenuCombo showMenu={showMenu} setMenu={setMenu}>
+            <NavItemsMenu href="/menu1" active={false}>
+              Menu 1
+            </NavItemsMenu>
+            <NavItemsMenu href="/menu2" active={false}>
+              Menu 2
+            </NavItemsMenu>
 
-                <NavItemsDropdown menu="Menu Dropdown">
-                  <NavItemsDropdownItems href="/submenu1">
-                    Submenu 1
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu2">
-                    Submenu 2
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu3">
-                    Submenu 3
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu1">
-                    Submenu 4
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu2">
-                    Submenu 5
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu3">
-                    Submenu 6
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu3">
-                    Submenu 7
-                  </NavItemsDropdownItems>
-                </NavItemsDropdown>
+            <NavItemsDropdown menu="Menu Dropdown">
+              <NavItemsDropdownItems href="/submenu1">
+                Submenu 1
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu2">
+                Submenu 2
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu3">
+                Submenu 3
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu1">
+                Submenu 4
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu2">
+                Submenu 5
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu3">
+                Submenu 6
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu3">
+                Submenu 7
+              </NavItemsDropdownItems>
+            </NavItemsDropdown>
 
-                <NavItemsMenu href="/menu3" active={false}>
-                  Menu 3
-                </NavItemsMenu>
-              </>
-            }
-            childrenMobile={
-              <>
-                <NavItemsMenu href="/menu1" active={false}>
-                  <div>Menu 1</div>
-                </NavItemsMenu>
-                <NavItemsMenu href="/menu2" active={false}>
-                  Menu 2
-                </NavItemsMenu>
-                <NavItemsDropdown menu="Menu Dropdown">
-                  <NavItemsDropdownItems href="/submenu1">
-                    Submenu 1
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu2">
-                    Submenu 2
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu3">
-                    Submenu 3
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu1">
-                    Submenu 4
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu2">
-                    Submenu 5
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu3">
-                    Submenu 6
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu3">
-                    Submenu 7
-                  </NavItemsDropdownItems>
-                </NavItemsDropdown>
-                <NavItemsMenu href="/menu3" active={false}>
-                  Menu 3
-                </NavItemsMenu>
-              </>
-            }
-          ></NavigationMenuCombo>
+            <NavItemsMenu href="/menu3" active={false}>
+              Menu 3
+            </NavItemsMenu>
+          </NavigationMenuCombo>
         </NavbarContainer>
 
         <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
@@ -337,109 +255,54 @@ const KementerianDigitalNavbar = () => {
     <div className={clx(isDarkMode ? "light" : "dark")}>
       <Navbar showMenu={showMenu} className="px-2">
         <NavbarContainer>
-          <BrandLogo
-            type="shortname"
-            imageSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-          >
+          <BrandLogo imageSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png">
             Ministry Of Digital
           </BrandLogo>
 
-          <NavigationMenuCombo
-            showMenu={showMenu}
-            setMenu={setMenu}
-            childrenDesktop={
-              <>
-                <NavItemsMenu href="/menu1" active={false}>
-                  MinistryProfile
-                </NavItemsMenu>
-                <NavItemsMenu href="/menu2" active={false}>
-                  Policy
-                </NavItemsMenu>
-                <NavItemsMenu href="/menu3" active={false}>
-                  Achievements
-                </NavItemsMenu>
-                <NavItemsMenu href="/menu4" active={false}>
-                  Media
-                </NavItemsMenu>
-                <NavItemsMenu href="/menu5" active={false}>
-                  Directory
-                </NavItemsMenu>
-                <NavItemsMenu href="/menu6" active={false}>
-                  Contact Us
-                </NavItemsMenu>
+          <NavigationMenuCombo showMenu={showMenu} setMenu={setMenu}>
+            <NavItemsMenu href="/menu1" active={false}>
+              MinistryProfile
+            </NavItemsMenu>
+            <NavItemsMenu href="/menu2" active={false}>
+              Policy
+            </NavItemsMenu>
+            <NavItemsMenu href="/menu3" active={false}>
+              Achievements
+            </NavItemsMenu>
+            <NavItemsMenu href="/menu4" active={false}>
+              Media
+            </NavItemsMenu>
+            <NavItemsMenu href="/menu5" active={false}>
+              Directory
+            </NavItemsMenu>
+            <NavItemsMenu href="/menu6" active={false}>
+              Contact Us
+            </NavItemsMenu>
 
-                <NavItemsDropdown menu="Departments & Agencies">
-                  <NavItemsDropdownItems href="/submenu1">
-                    National Digital Department
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu2">
-                    Personal Data Protection Department
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu3">
-                    Cybersecurity Malaysia
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu4">
-                    Digital Nasional Berhad
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu5">
-                    Malaysia Digital Economy Coroporation (MDEC)
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu6">
-                    MyDIGITAL Corporation
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu6">
-                    MYNIC Berhad
-                  </NavItemsDropdownItems>
-                </NavItemsDropdown>
-              </>
-            }
-            childrenMobile={
-              <>
-                <NavItemsMenu href="/menu1" active={false}>
-                  MinistryProfile
-                </NavItemsMenu>
-                <NavItemsMenu href="/menu2" active={false}>
-                  Policy
-                </NavItemsMenu>
-                <NavItemsMenu href="/menu3" active={false}>
-                  Achievements
-                </NavItemsMenu>
-                <NavItemsMenu href="/menu4" active={false}>
-                  Media
-                </NavItemsMenu>
-                <NavItemsMenu href="/menu5" active={false}>
-                  Directory
-                </NavItemsMenu>
-                <NavItemsMenu href="/menu6" active={false}>
-                  Contact Us
-                </NavItemsMenu>
-
-                <NavItemsDropdown menu="Departments & Agencies">
-                  <NavItemsDropdownItems href="/submenu1">
-                    National Digital Department
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu2">
-                    Personal Data Protection Department
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu3">
-                    Cybersecurity Malaysia
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu4">
-                    Digital Nasional Berhad
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu5">
-                    Malaysia Digital Economy Coroporation (MDEC)
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu6">
-                    MyDIGITAL Corporation
-                  </NavItemsDropdownItems>
-                  <NavItemsDropdownItems href="/submenu6">
-                    MYNIC Berhad
-                  </NavItemsDropdownItems>
-                </NavItemsDropdown>
-              </>
-            }
-          ></NavigationMenuCombo>
+            <NavItemsDropdown menu="Departments & Agencies">
+              <NavItemsDropdownItems href="/submenu1">
+                National Digital Department
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu2">
+                Personal Data Protection Department
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu3">
+                Cybersecurity Malaysia
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu4">
+                Digital Nasional Berhad
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu5">
+                Malaysia Digital Economy Coroporation (MDEC)
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu6">
+                MyDIGITAL Corporation
+              </NavItemsDropdownItems>
+              <NavItemsDropdownItems href="/submenu6">
+                MYNIC Berhad
+              </NavItemsDropdownItems>
+            </NavItemsDropdown>
+          </NavigationMenuCombo>
         </NavbarContainer>
 
         <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>

@@ -1,0 +1,224 @@
+---
+title: Label
+description: The Label component is a standardized form element used to associate descriptive text with controls such as checkboxes and toggles. This component ensures accessibility and consistent styling for Malaysian government websites.
+---
+
+import { Label } from "@govtechmy/myds-react/label";
+import { Checkbox } from "@govtechmy/myds-react/checkbox";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Toggle, ToggleThumb, label } from "@/components/myds";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
+  <Tab value="Preview">
+      <div className="min-w-[360px] space-y-3">
+        <div className="flex justify-between items-center">
+          <Label htmlFor="checkbox">
+            Auto-delete notifications
+          </Label>
+          <Checkbox id="checkbox"></Checkbox>
+        </div>
+        <div className="flex justify-between items-center">
+          <Label htmlFor="toggle" >
+            Enable 2FA security?
+          </Label>
+          <Toggle id="toggle" >
+            <ToggleThumb />
+          </Toggle>
+        </div>
+      </div>
+  </Tab>
+  <Tab value="Code">
+
+```tsx
+import { Label } from "@govtechmy/myds-react/label";
+import { Checkbox } from "@govtechmy/myds-react/checkbox";
+import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+
+<>
+  <div className="flex items-center justify-between">
+    <Label htmlFor="checkbox">Auto-delete notifications</Label>
+    <Checkbox id="checkbox"></Checkbox>
+  </div>
+  <div className="flex items-center justify-between">
+    <Label htmlFor="toggle">Enable 2FA security?</Label>
+    <Toggle id="toggle">
+      <ToggleThumb />
+    </Toggle>
+  </div>
+</>;
+```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-label--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/label.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import { Label } from "@govtechmy/myds-react/label";
+import { Checkbox } from "@govtechmy/myds-react/checkbox";
+import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+```
+
+```tsx copy
+export default () => (
+  <>
+    <div className="flex items-center justify-between">
+      <Label htmlFor="checkbox">Auto-delete notifications</Label>
+      <Checkbox id="checkbox"></Checkbox>
+    </div>
+    <div className="flex items-center justify-between">
+      <Label htmlFor="toggle">Enable 2FA security?</Label>
+      <Toggle id="toggle">
+        <ToggleThumb />
+      </Toggle>
+    </div>
+  </>
+);
+```
+
+## Examples
+
+### Size
+
+Use the `size` prop to change the label size!
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex items-center">
+    <Label size="small" className="items-center flex justify-between w-full">
+      Enable 2FA security?
+      <Toggle size="small">
+        <ToggleThumb />
+      </Toggle>
+    </Label>
+
+  </div>
+  <div className="flex items-center">
+    <Label size="medium" className="items-center flex justify-between w-full">
+      Enable 2FA security?
+      <Toggle size="medium">
+        <ToggleThumb />
+      </Toggle>
+    </Label>
+
+  </div>
+  <div className="flex items-center">
+    <Label size="large" className="items-center flex justify-between w-full">
+      Enable 2FA security?
+      <Toggle size="large">
+        <ToggleThumb />
+      </Toggle>
+    </Label>
+
+  </div>
+  </Tab>
+  <Tab value="Code">
+```tsx
+import { Label } from "@govtechmy/myds-react/label";
+import { Checkbox } from "@govtechmy/myds-react/checkbox";
+import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+
+/** Size **/
+
+<>
+  <Tab value="Preview">
+  <div className="flex items-center">
+    <Label size="small" className="items-center flex justify-between w-full">
+      Enable 2FA security?
+      <Toggle size="small">
+        <ToggleThumb />
+      </Toggle>
+    </Label>
+
+  </div>
+  <div className="flex items-center">
+    <Label size="medium" className="items-center flex justify-between w-full">
+      Enable 2FA security?
+      <Toggle size="medium">
+        <ToggleThumb />
+      </Toggle>
+    </Label>
+
+  </div>
+  <div className="flex items-center">
+    <Label size="large" className="items-center flex justify-between w-full">
+      Enable 2FA security?
+      <Toggle size="large">
+        <ToggleThumb />
+      </Toggle>
+    </Label>
+
+  </div>
+  </Tab>
+</>
+
+```
+    </Tab>
+</Tabs>
+
+
+### Using as Slot
+
+Use the `asChild` prop to render the label using the `Slot` component!
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <Label asChild>
+        <span>Custom Rendered Label</span>
+    </Label>
+  </Tab>
+  <Tab value="Code">
+
+```tsx
+import { Label } from "@govtechmy/myds-react/label";
+
+/** Use as Slot **/
+
+<Label asChild>
+    <span>Custom Rendered Label</span>
+</Label>
+
+```
+
+    </Tab>
+
+</Tabs>
+
+## Props
+
+### LabelProps
+
+<TypeTable
+  type={{
+    asChild: {
+      description:
+        "If `true`, renders the label using the `Slot` component instead of a `label` element.",
+      type: "boolean",
+      default: "false",
+    },
+    size: {
+      description:
+        "Determines the size of the label text. Inherits from `label_cva`.",
+      type: "enum",
+      typeDescription: "small | medium | large",
+      default: "medium",
+    },
+    className: {
+      description:
+        "Additional CSS classes to override or extend default styles.",
+      type: "string",
+    },
+  }}
+/>
