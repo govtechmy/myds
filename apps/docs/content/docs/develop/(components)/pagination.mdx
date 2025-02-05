@@ -91,9 +91,8 @@ The `Pagination` component is intended for simple usage, however for more advanc
 
 ## Examples
 
-
 ### Type  
-Use the `type` props to change the type of the `pagination` component. The props is accepted by the `Pagination` component. Examples of use cases for each types are outlined below:
+Use the `type` props to change the type of the `Pagination` component. The props is accepted by the `Pagination` component. Examples of use cases for each types are outlined below:
 1. **default**: Ideal for contexts where users might want to jump to a specific page within a large number of pages.
 2. **simple**: Suitable for simpler navigation where users primarily move forward or backward.
 3. **full**: Similar to the `simple` type, this type displays the current page and total pages on the left and navigation buttons on far right.
@@ -175,13 +174,6 @@ Use the `page` props to change the current page number. The props is accepted by
         page={2}
         limit={10}
         count={200}
-        type="simple"
-        maxDisplay={4}
-      />
-      <Pagination
-        page={2}
-        limit={10}
-        count={200}
         type="full"
         maxDisplay={4}
       />
@@ -197,15 +189,6 @@ Use the `page` props to change the current page number. The props is accepted by
       limit={10}
       count={200}
       type="default"
-      maxDisplay={4}
-    />
-    
-    // simple type
-    <Pagination
-      page={2}
-      limit={10}
-      count={200}
-      type="simple"
       maxDisplay={4}
     />
     
@@ -396,9 +379,20 @@ type={{
       type: "function",
       typeDescription: "(page: number) => void"
     },
+    fullText: {
+      description: "The long description of the pagination information.",
+      type: "string"
+    }, 
+    next: {
+      description: "Optional ReactNode to replace the default PaginationNext button.",
+      type: "ReactNode"
+    },
+    previous: {
+      description: "Optional ReactNode to replace the default PaginationPrevious button.",
+      type: "ReactNode"
+    }
   }}
 />
-     {/* TODO: fulltext, previous and next */}
 
 ### PaginationRoot
 A container component that provides pagination context and navigation structure through a `nav` element. It manages the core pagination state (current page, total pages, etc.). 
@@ -427,18 +421,6 @@ type={{
       description: "A callback function that is invoked when the page changes.",
       type: "function",
       typeDescription: "(page: number) => void"
-    },
-    fullText: {
-      description: "The long description of the pagination information.",
-      type: "string"
-    }, 
-    next: {
-      description: "Optional ReactNode to replace the default PaginationNext button.",
-      type: "ReactNode"
-    },
-    previous: {
-      description: "Optional ReactNode to replace the default PaginationPrevious button.",
-      type: "ReactNode"
     }
   }}
 />
