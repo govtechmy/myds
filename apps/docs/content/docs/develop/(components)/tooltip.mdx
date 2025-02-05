@@ -1,0 +1,45 @@
+---
+title: Tooltip
+description: This component offers brief, contextual info when users hover or focus on an element, enhancing clarity without cluttering the interface. Typically used to explain icons, buttons, or any interactive elements where the meaning might not be immediately clear.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Tooltip, TooltipTrigger, TooltipContent } from "@govtechmy/myds-react/tooltip";
+import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center gap-1">
+    <Tooltip>
+        <TooltipTrigger>
+            <QuestionCircleIcon />
+        </TooltipTrigger>
+        <TooltipContent>What does the fox says?</TooltipContent>,
+    </Tooltip>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import { Tooltip, TooltipTrigger, TooltipContent } from "@govtechmy/myds-react/tooltip";
+    import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
+
+    <Tooltip>
+        <TooltipTrigger>
+            <QuestionCircleIcon />
+        </TooltipTrigger>
+        <TooltipContent>What does the fox says?</TooltipContent>,
+    </Tooltip>
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-tooltip--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/tooltip.tsx",
+  }}
+/>
+

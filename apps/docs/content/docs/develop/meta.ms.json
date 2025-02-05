@@ -43,7 +43,8 @@
     "(components)/tag",
     "(components)/text-area",
     "(components)/toast",
-    "(components)/toggle"
+    "(components)/toggle",
+    "(components)/tooltip"
   ],
   "root": true
 }
