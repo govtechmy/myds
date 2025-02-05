@@ -55,7 +55,9 @@ import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
 ```
 ## Examples
 ### Controlled Component 
-The `open` props can be used to manually control the `open` state of the tooltip.
+The `open` and `onOpenChange` can be used to manually to handle the state programmatically.
+
+The `defaulOpen` props can be used to treat the component as an uncontrolled component.
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex justify-center">
     <Tooltip open={true}>
@@ -88,36 +90,54 @@ The `side` props can be used to manually adjust the placement of the `TooltipCon
           <QuestionCircleIcon />
       </TooltipTrigger>
       <TooltipContent side={"left"}>This helpful description is placed on the left.</TooltipContent>
-  </Tooltip>
-  <Tooltip>
-    <TooltipTrigger>
-        <QuestionCircleIcon />
-    </TooltipTrigger>
-    <TooltipContent side={"right"}>This helpful description is placed on the right.</TooltipContent>
-  </Tooltip>
-  <Tooltip>
-    <TooltipTrigger>
-        <QuestionCircleIcon />
-    </TooltipTrigger>
-    <TooltipContent side={"top"}>This helpful description is placed on the top.</TooltipContent>
-  </Tooltip>
-  <Tooltip>
-    <TooltipTrigger>
-        <QuestionCircleIcon />
-    </TooltipTrigger>
-    <TooltipContent side={"bottom"}>This helpful description is placed on the bottom.</TooltipContent>
-  </Tooltip>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger>
+          <QuestionCircleIcon />
+      </TooltipTrigger>
+      <TooltipContent side={"right"}>This helpful description is placed on the right.</TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger>
+          <QuestionCircleIcon />
+      </TooltipTrigger>
+      <TooltipContent side={"top"}>This helpful description is placed on the top.</TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger>
+          <QuestionCircleIcon />
+      </TooltipTrigger>
+      <TooltipContent side={"bottom"}>This helpful description is placed on the bottom.</TooltipContent>
+    </Tooltip>
   </Tab>
   <Tab value="Code">
     ```tsx 
     import { Tooltip, TooltipTrigger, TooltipContent } from "@govtechmy/myds-react/tooltip";
 
-    <Tooltip open={true}>
+    <Tooltip>
       <TooltipTrigger>
           <QuestionCircleIcon />
       </TooltipTrigger>
-      <TooltipContent>This is a helpful description.</TooltipContent>
-  </Tooltip>
+      <TooltipContent side={"left"}>This helpful description is placed on the left.</TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger>
+          <QuestionCircleIcon />
+      </TooltipTrigger>
+      <TooltipContent side={"right"}>This helpful description is placed on the right.</TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger>
+          <QuestionCircleIcon />
+      </TooltipTrigger>
+      <TooltipContent side={"top"}>This helpful description is placed on the top.</TooltipContent>
+    </Tooltip>
+    <Tooltip>
+      <TooltipTrigger>
+          <QuestionCircleIcon />
+      </TooltipTrigger>
+      <TooltipContent side={"bottom"}>This helpful description is placed on the bottom.</TooltipContent>
+    </Tooltip>
     ```
   </Tab>
 </Tabs>
