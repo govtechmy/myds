@@ -13,10 +13,10 @@ import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex justify-center gap-1">
     <Tooltip>
-        <TooltipTrigger>
-            <QuestionCircleIcon />
-        </TooltipTrigger>
-        <TooltipContent>What does the fox says?</TooltipContent>,
+      <TooltipTrigger>
+          <QuestionCircleIcon />
+      </TooltipTrigger>
+      <TooltipContent>This is a helpful description.</TooltipContent>
     </Tooltip>
   </Tab>
   <Tab value="Code">
@@ -25,10 +25,10 @@ import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
     import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
 
     <Tooltip>
-        <TooltipTrigger>
-            <QuestionCircleIcon />
-        </TooltipTrigger>
-        <TooltipContent>What does the fox says?</TooltipContent>,
+      <TooltipTrigger>
+          <QuestionCircleIcon />
+      </TooltipTrigger>
+      <TooltipContent>This is a helpful description.</TooltipContent>
     </Tooltip>
     ```
   </Tab>
@@ -42,4 +42,147 @@ import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
       "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/tooltip.tsx",
   }}
 />
+
+## Usage
+```tsx
+  import { Tooltip, TooltipTrigger, TooltipContent } from "@govtechmy/myds-react/tooltip";
+```
+```tsx
+  <Tooltip>
+    <TooltipTrigger />
+    <TooltipContent />
+  </Tooltip>
+```
+## Examples
+### Controlled Component 
+The `open` props can be used to manually control the `open` state of the tooltip.
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex justify-center">
+    <Tooltip open={true}>
+      <TooltipTrigger>
+          <QuestionCircleIcon />
+      </TooltipTrigger>
+      <TooltipContent>This is a helpful description.</TooltipContent>
+  </Tooltip>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { Tooltip, TooltipTrigger, TooltipContent } from "@govtechmy/myds-react/tooltip";
+
+    <Tooltip open={true}>
+      <TooltipTrigger>
+          <QuestionCircleIcon />
+      </TooltipTrigger>
+      <TooltipContent>This is a helpful description.</TooltipContent>
+  </Tooltip>
+    ```
+  </Tab>
+</Tabs>
+
+### Tooltip Content Placement
+The `side` props can be used to manually adjust the placement of the `TooltipContent`. The only accepted values are: `left`, `right`, `top` and `bottom`.
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose flex flex-col justify-center items-center gap-10">
+    <Tooltip>
+      <TooltipTrigger>
+          <QuestionCircleIcon />
+      </TooltipTrigger>
+      <TooltipContent side={"left"}>This helpful description is placed on the left.</TooltipContent>
+  </Tooltip>
+  <Tooltip>
+    <TooltipTrigger>
+        <QuestionCircleIcon />
+    </TooltipTrigger>
+    <TooltipContent side={"right"}>This helpful description is placed on the right.</TooltipContent>
+  </Tooltip>
+  <Tooltip>
+    <TooltipTrigger>
+        <QuestionCircleIcon />
+    </TooltipTrigger>
+    <TooltipContent side={"top"}>This helpful description is placed on the top.</TooltipContent>
+  </Tooltip>
+  <Tooltip>
+    <TooltipTrigger>
+        <QuestionCircleIcon />
+    </TooltipTrigger>
+    <TooltipContent side={"bottom"}>This helpful description is placed on the bottom.</TooltipContent>
+  </Tooltip>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { Tooltip, TooltipTrigger, TooltipContent } from "@govtechmy/myds-react/tooltip";
+
+    <Tooltip open={true}>
+      <TooltipTrigger>
+          <QuestionCircleIcon />
+      </TooltipTrigger>
+      <TooltipContent>This is a helpful description.</TooltipContent>
+  </Tooltip>
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+### Tooltip
+`Tooltip` is the wrapper component which manages the tooltip's state. It is being built on top of `TooltipPrimitive.Provider` and `TooltipPrimitive.Root`. Please refer to the full API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/tooltip#provider).
+
+<TypeTable
+  type={{
+    defaultOpen: {
+      description: "The initial open state of the tooltip when it's first rendered.",
+      type: "boolean",
+    },
+    open: {
+      description: "Allows direct manipulation of the open state.",
+      type: "boolean",
+    },
+    onOpenChange: {
+      description: "Allows a callback to be fired when the open state changes.",
+      type: "function",
+    },
+    delayDuration: {
+      description: "The time delay before showing the tooltip when hovering.",
+      type: "number",
+      default: "700ms"
+    },
+    disableHoverableContent: {
+      description: "When true, prevents the user from hovering over the tooltip content.",
+      type: "boolean",
+    },
+  }}
+/>
+
+### TooltipContent
+`TooltipContent` is the "bubble" that displays the tooltip. It is being built on top of `TooltipPrimitive.Portal` and `TooltipPrimitive.Content`. Please refer to the full API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/tooltip#portal).
+
+<TypeTable
+  type={{
+    container: {
+      description: "The element to portal the tooltip content into.",
+      type: "HTMLElement",
+      default: "document.body"
+    },
+    arrowPadding: {
+      description: "Space between the arrow and the tooltip content edges.",
+      type: "number"
+    },
+    align: {
+      description: "Alignment along the tooltip's side.",
+      type: "enum",
+      typeDescription: "start | center | end",
+      default: "center"
+    },
+    side: {
+      description: "Preferred position of the tooltip.",
+      type: "enum",
+      typeDescription: "top | right | bottom | left",
+      default: "top"
+    },
+  }}
+/>
+
+### TooltipTrigger
+`TooltipTrigger` is the component where the user interacts with to show the tooltip. It is being built on top of `TooltipPrimitive.Trigger`. Please refer to the full API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/tooltip#content).
+
+
 
