@@ -859,12 +859,16 @@ export const PreviewSummaryListAction: FunctionComponent<PreviewSummaryList> = (
     </div>
   );
 };
-import { Pagination, PaginationProps } from "@govtechmy/myds-react/pagination";
+import {
+  AutoPagination,
+  Pagination,
+  AutoPaginationProps,
+} from "@govtechmy/myds-react/pagination";
 
-export const ClientPagination = forwardRef<HTMLElement, PaginationProps>(
+export const ClientPagination = forwardRef<HTMLElement, AutoPaginationProps>(
   (props, ref) => {
     return (
-      <Pagination
+      <AutoPagination
         {...props}
         ref={ref}
         onPageChange={(page) => console.log(page)}
