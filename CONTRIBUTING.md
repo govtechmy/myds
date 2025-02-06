@@ -16,19 +16,13 @@ Please note that we don't often accept pull requests for new features. Adding a 
 
 If you open a pull request for a new feature, we're likely to close it not because it's a bad idea, but because we aren't ready to prioritize the feature and don't want the PR to sit open for months or even years.
 
+## Turborepo
+
+MYDS is largely managed by [Turborepo](https://turbo.build/). If you would like contribute via code, we recommend learning to utilise the features of Turborepo to make your life easier, from running multiple dev servers, scope installs, using codegens and many more.
+
 ## Coding standards
 
-Our code formatting rules are defined in the "prettier" section of package.json. You can check your code against these standards by running:
-
-```
-pnpm run lint
-```
-
-To automatically fix any style violations in your code, you can run:
-
-```
-pnpm run format
-```
+Our code formatting rules are defined in the [prettierc](./.prettierrc) and [\_eslint](./packages/_eslint/).
 
 Running tests
 
