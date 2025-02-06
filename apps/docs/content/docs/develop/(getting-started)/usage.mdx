@@ -35,16 +35,20 @@ Make sure to refer each Component's API to find out what is available.
 
 ### Composition
 
-MYDS components are built with composition in-mind. Composition offers customization at the lowest level, giving developers the highest level of freedom to add their own twist to MYDS.
-At the same time, this technique also allows for achieving the opposite extreme by overriding props to apply designated classes or event listeners.
+MYDS components are built with composition in-mind. Composition offers customization at the lowest level, giving developers the highest level of freedom to implement their own logic on MYDS components.
+
+Take a look at some of the following examples below:
 
 #### A. Replace parent component
 
+This example demonstrates how to override props to apply designated classes or event listeners through `asChild`.
+
 <Preview>
   <Button variant="primary-ghost" size="small" asChild>
-    <Link href="#composition" className="no-underline">Scroll to title</Link>
+    <Link href="#composition" className="no-underline">
+      <span>Scroll to title</span>
+    </Link>
   </Button>
-
 </Preview>
 
 ```tsx title="Anchor masked as Button"
@@ -58,7 +62,11 @@ import { Link } from "@govtechmy/myds-react/link";
 </Button>;
 ```
 
+As a result, the `<Link>` inherits the style of the `<Button>` component while still functioning as a `<Link>`!
+
 #### B. Override props
+
+This example demonstrates how a parent component can override the child component's props by acting like a wrapper.
 
 <Preview>
   <PreviewButton
@@ -85,5 +93,4 @@ import { ArrowForwardIcon } from "@govtechmy/myds-react/icon";
 </Button>;
 ```
 
-This may be a new concept to some developers, however, it very much worth mastering.
-Composition is a powerful technique and offers immense value when building components.
+In this case, the `<ButtonIcon>` component applies the necessary CSS to `<ArrowForward />` icon to make it compliant with the `<Button>` component & the variant chosen.
