@@ -1,4 +1,6 @@
+import { FunctionComponent, useEffect, useState } from "react";
 import { clx } from "../utils";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import {
   Accordion,
   AccordionContent,
@@ -7,14 +9,9 @@ import {
 } from "./accordion";
 import { Sheet, SheetClose, SheetContent } from "./sheet";
 import { Button, button_cva } from "./button";
-import { ChevronDownIcon } from "../icons";
-import { CrossIcon, HamburgerMenuIcon, GlobeIcon } from "../icons";
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import { FunctionComponent } from "react";
-import React from "react";
-import { VariantProps, cva } from "class-variance-authority";
 import { Link } from "./link";
-import { useEffect, useState } from "react";
+import { ChevronDownIcon, CrossIcon, HamburgerMenuIcon } from "../icons";
+import { VariantProps, cva } from "class-variance-authority";
 
 const headerVariant = cva(
   ["font-semibold max-w-[223px] font-heading text-txt-black-900"],
