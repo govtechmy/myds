@@ -1,5 +1,5 @@
 ---
-title: Project Configuration
+title: Style Configuration
 description: Advanced configuration for stylesheet & TailwindCSS
 ---
 
@@ -8,7 +8,7 @@ import { Step, Steps } from "fumadocs-ui/components/steps";
 import { InfoIcon } from "@govtechmy/myds-react/icon";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
-MYDS stylesheet is composed of various CSS components to cater to a wide range of use cases.
+MYDS stylesheet is composed of various components to cater to a wide range of use cases.
 But you might not need everything in your project! Here's how we can be more selective with our imports!
 
 <Callout
@@ -53,52 +53,48 @@ So, you can omit importing the unwanted theme from your project!
 @import "@govtechmy/myds-style/dark.css";
 ```
 
-Please note, it is required to support the light mode by default.
+<Callout
+  type="info"
+  title="Important"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Please note it is required to support the light mode by default.
+</Callout>
 
 ## TailwindCSS
 
 [TailwindCSS](https://tailwindcss.com/docs/installation) is a utility-first CSS framework that serves as the bedrock for how MYDS is styled internally.
 However, using TailwindCSS is optional at the project level.
 
-If you do use TailwindCSS, MYDS provides the option for developers to extend its powerful features.
+If you do use TailwindCSS, MYDS provides the option for developers to leverage on the defined CSS classes or extend your own variation to MYDS.
 
-### Component
+### Installation
 
-<Accordions>
-  <Accordion title="My project does not use TailwindCSS">
-Got it! Just import the following CSS and we're done!
-```css
-/* Import Component CSS */
-@import "@govtechmy/myds-style/component.css";
-```
+Before we start, make sure you have installed the TailwindCSS packages in your project. Refer to the [official documentation](https://tailwindcss.com/docs/installation/using-vite) for more information.
 
-  </Accordion>
+### Preset Configuration
 
-  <Accordion title="My project uses TailwindCSS">
-Awesome, we can import the MYDS presets! Also we need to make sure the TailwindCSS is 'aware' of the component library.
-  Apply this to your project `tailwind.config.ts`
+Once TailwindCSS is installed, you can import the MYDS presets to your own project! Also we need to make sure the TailwindCSS is 'aware' of the components from the library.
 
 ```ts title="tailwind.config.ts"
 import { preset } from "@govtechmy/myds-style";
 
 export default {
   content: [
-    "src/**/*.{js,jsx,ts,tsx}",
+    "src/**/*.{js,jsx,ts,tsx}", // Your own project source files
     "node_modules/@govtechmy/myds-react/dist/**/*.{js,jsx,ts,tsx}",
   ],
   presets: [preset],
 };
 ```
 
-  </Accordion>
-</Accordions>
-
 ### Color Token
 
 MYDS has 2 types of color token that developers need to be aware of, which are:
 
-- Primitive token - The value of the primitive token is static & insensitive to theme changes.
+- **Primitive token** - The value of the primitive token is static & insensitive to theme changes.
 
-- Theme token - The value of the theme token changes based on the theme applied.
+- **Theme token** - The value of the theme token changes based on the theme applied.
 
-To learn the entire list of primitive & theme tokens available, read the [full configuration](#)
+To learn the entire list of primitive & theme tokens available, read the [full configuration](https://github.com/govtechmy/myds/blob/main/packages/style/tailwind.config.js)
