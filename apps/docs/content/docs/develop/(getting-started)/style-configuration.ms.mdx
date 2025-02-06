@@ -1,16 +1,15 @@
 ---
-title: Konfigurasi Style
-description: Konfigurasi lanjut untuk stylesheet & TailwindCSS
+title: Konfigurasi Gaya
+description: Konfigurasi lanjutan untuk stylesheet & TailwindCSS
 ---
 
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Step, Steps } from "fumadocs-ui/components/steps";
-import { Banner } from "fumadocs-ui/components/banner";
 import { InfoIcon } from "@govtechmy/myds-react/icon";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 
-MYDS stylesheet terdiri daripada pelbagai komponen yang direka untuk memenuhi pelbagai kegunaan.
-Namun anda mungkin tidak perlukan semuanya dalam projek anda! Berikut adalah cara-cara supaya anda boleh lebih selektif dengan import anda!
+Stylesheet MYDS terdiri daripada pelbagai komponen untuk memenuhi pelbagai kegunaan.
+Tetapi anda mungkin tidak memerlukan semuanya dalam projek anda! Berikut adalah cara kita boleh lebih selektif dengan import kita!
 
 <Callout
   type="warn"
@@ -18,16 +17,16 @@ Namun anda mungkin tidak perlukan semuanya dalam projek anda! Berikut adalah car
   className="bg-bg-warning-50 text-txt-warning border-transparent"
   icon={<InfoIcon className="size-5" />}
 >
-  Bahagian ini adalah untuk konfigurasi lanjut stylesheet. Jika anda berpuas
-  hati dengan konfigurasi ringkas yang diterangkan dalam
-  [Pemasangan](./install?#full-css), anda boleh abaikan halaman ini.
+  Bahagian ini adalah untuk konfigurasi gaya lanjutan. Jika anda berpuas hati
+  dengan konfigurasi mudah yang digariskan dalam
+  [Pemasangan](./install?#full-css), anda boleh melangkau halaman ini.
 </Callout>
 
 ## Asas
 
 ### Fon
 
-MYDS mendokong 2 jenis fon: `Poppins` & `Inter`. Kami mengesyorkan anda untuk mengimport fon melalui CDN yang dipercayai seperti [GoogleFonts](https://fonts.google.com/). Berikut adalah kod import CSS dalam satu baris!
+MYDS menyokong 2 jenis fon: `Poppins` & `Inter`. Kami mengesyorkan anda untuk mengimport melalui CDN yang bereputasi seperti [GoogleFonts](https://fonts.google.com/). Berikut adalah satu baris import CSS!
 
 ```css
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap");
@@ -35,7 +34,7 @@ MYDS mendokong 2 jenis fon: `Poppins` & `Inter`. Kami mengesyorkan anda untuk me
 
 ### Warna
 
-Kami mentakrifkan setiap warna dalam Bahasa Reka Bentuk MYDS sebagai pembolehubah CSS, yang kemudiannya menjadi bahan binaan untuk membina tema!
+Kami mentakrifkan setiap warna dalam Bahasa Reka Bentuk MYDS sebagai pembolehubah CSS, yang kemudiannya menjadi blok binaan untuk membina tema!
 
 ```css
 @import "@govtechmy/myds-style/color.css";
@@ -43,63 +42,60 @@ Kami mentakrifkan setiap warna dalam Bahasa Reka Bentuk MYDS sebagai pembolehuba
 
 ### Tema
 
-MYDS datang dilengkapi dengan mod 'Light' dan 'Dark'. Walau bagaimanapun, kami memahami bahawa tidak semua projek memerlukan ciri ini.
-Oleh itu, anda diberi pilihan untuk abai tema yang tidak diperlukan dari projek anda!
+MYDS menyokong kedua-dua mod terang dan gelap. Walau bagaimanapun, kami memahami bahawa tidak semua projek memerlukan ciri ini.
+Oleh itu, anda boleh mengabaikan import tema yang tidak diingini dari projek anda!
 
 ```css
-/* Import Tema Light */
+/* Import tema terang */
 @import "@govtechmy/myds-style/light.css";
 
-/* Import Tema Dark */
+/* Import tema gelap */
 @import "@govtechmy/myds-style/dark.css";
 ```
 
-Sila ambil perhatian, anda wajib menyediakan tema mod 'Light' secara lalai.
+<Callout
+  type="info"
+  title="Penting"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Sila ambil perhatian bahawa adalah diperlukan untuk menyokong mod terang
+  secara lalai.
+</Callout>
 
 ## TailwindCSS
 
-[TailwindCSS](https://tailwindcss.com/docs/installation) adalah rangka kerja CSS berasaskan utiliti yang menjadi asas kepada penggayaan MYDS secara dalaman.
-Walau bagaimanapun, penggunaan TailwindCSS adalah bukan syarat untuk membina dengan MYDS.
+[TailwindCSS](https://tailwindcss.com/docs/installation) adalah rangka kerja CSS berasaskan utiliti yang menjadi asas kepada cara MYDS digayakan secara dalaman.
+Walau bagaimanapun, menggunakan TailwindCSS adalah pilihan di peringkat projek.
 
-Namun, jika anda menggunakan TailwindCSS, MYDS menyediakan pilihan untuk pembangun memanfaatkan ciri-cirinya yang berkuasa.
+Jika anda menggunakan TailwindCSS, MYDS menyediakan pilihan untuk pembangun memanfaatkan kelas CSS yang ditakrifkan atau memperluaskan variasi anda sendiri kepada MYDS.
 
-### Komponen
+### Pemasangan
 
-<Accordions>
-  <Accordion title="Projek saya tidak menggunakan TailwindCSS">
-Baik! Hanya import CSS berikut dan kita selesai!
-```css
-/* Import Component CSS */
-@import "@govtechmy/myds-style/component.css";
-```
+Sebelum kita mula, pastikan anda telah memasang pakej TailwindCSS dalam projek anda. Rujuk [dokumentasi rasmi](https://tailwindcss.com/docs/installation/using-vite) untuk maklumat lanjut.
 
-  </Accordion>
+### Konfigurasi Preset
 
-  <Accordion title="Prokek saya menggunakan TailwindCSS">
-Hebat, kita boleh import preset MYDS! Dan kita perlu memastikan TailwindCSS 'sedar' tentang pustaka komponen.
-Terapkan ini pada projek anda `tailwind.config.ts`
+Setelah TailwindCSS dipasang, anda boleh mengimport preset MYDS ke dalam projek anda sendiri! Kita juga perlu memastikan TailwindCSS 'sedar' tentang pustaka komponen dari MYDS.
 
 ```ts title="tailwind.config.ts"
 import { preset } from "@govtechmy/myds-style";
 
 export default {
   content: [
-    "src/**/*.{js,jsx,ts,tsx}",
+    "src/**/*.{js,jsx,ts,tsx}", // Fail sumber projek anda sendiri
     "node_modules/@govtechmy/myds-react/dist/**/*.{js,jsx,ts,tsx}",
   ],
   presets: [preset],
 };
 ```
 
-  </Accordion>
-</Accordions>
-
 ### Token Warna
 
 MYDS mempunyai 2 jenis token warna yang perlu diketahui oleh pembangun, iaitu:
 
-- Token primitif - Nilai token primitif adalah statik & tidak sensitif kepada perubahan tema.
+- **Token primitif** - Nilai token primitif adalah statik & tidak sensitif kepada perubahan tema.
 
-- Token tema - Nilai token tema berubah berdasarkan tema yang digunakan.
+- **Token tema** - Nilai token tema berubah berdasarkan tema yang digunakan.
 
-Untuk mengetahui senarai penuh token primitif & tema yang tersedia, baca [konfigurasi penuh](#)
+Untuk mempelajari senarai penuh token primitif & tema yang tersedia, baca [konfigurasi penuh](https://github.com/govtechmy/myds/blob/main/packages/style/tailwind.config.js)

@@ -67,23 +67,15 @@ So, you can omit importing the unwanted theme from your project!
 [TailwindCSS](https://tailwindcss.com/docs/installation) is a utility-first CSS framework that serves as the bedrock for how MYDS is styled internally.
 However, using TailwindCSS is optional at the project level.
 
-If you do use TailwindCSS, MYDS provides the option for developers to extend its powerful features.
+If you do use TailwindCSS, MYDS provides the option for developers to leverage on the defined CSS classes or extend your own variation to MYDS.
 
-### Component
+### Installation
 
-<Accordions>
-  <Accordion title="My project does not use TailwindCSS">
-Got it! Just import the following CSS and we're done!
-```css
-/* Import Full CSS */
-@import "@govtechmy/myds-style/full.css";
-```
+Before we start, make sure you have installed the TailwindCSS packages in your project. Refer to the [official documentation](https://tailwindcss.com/docs/installation/using-vite) for more information.
 
-  </Accordion>
+### Preset Configuration
 
-  <Accordion title="My project uses TailwindCSS">
-Awesome, we can import the MYDS presets! Also we need to make sure the TailwindCSS is 'aware' of the component library.
-  Apply this to your project `tailwind.config.ts`
+Once TailwindCSS is installed, you can import the MYDS presets to your own project! Also we need to make sure the TailwindCSS is 'aware' of the components from the library.
 
 ```ts title="tailwind.config.ts"
 import { preset } from "@govtechmy/myds-style";
@@ -96,9 +88,6 @@ export default {
   presets: [preset],
 };
 ```
-
-  </Accordion>
-</Accordions>
 
 ### Color Token
 
