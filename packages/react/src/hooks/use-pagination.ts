@@ -37,5 +37,8 @@ export function usePagination({
     return createRange(mid_start, mid_end);
   };
 
-  return { visiblePages: getVisiblePageNumber() };
+  return {
+    visiblePages: getVisiblePageNumber(),
+    max,
+  };
 }

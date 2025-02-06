@@ -5,6 +5,7 @@ import React, {
   ComponentProps,
   FunctionComponent,
   forwardRef,
+  useContext,
 } from "react";
 import { Button } from "@govtechmy/myds-react/button";
 import { Toggle, ToggleThumb } from "./myds";
@@ -859,9 +860,9 @@ export const PreviewSummaryListAction: FunctionComponent<PreviewSummaryList> = (
     </div>
   );
 };
+
 import {
   AutoPagination,
-  Pagination,
   AutoPaginationProps,
 } from "@govtechmy/myds-react/pagination";
 
@@ -876,7 +877,6 @@ export const ClientPagination = forwardRef<HTMLElement, AutoPaginationProps>(
     );
   },
 );
-
 ClientPagination.displayName = "ClientPagination";
 
 interface PreviewNavbarProps extends ComponentProps<typeof Navbar> {}
@@ -1080,3 +1080,54 @@ export const PreviewActionGroup: FunctionComponent<PreviewNavbarProps> = (
     </Navbar>
   );
 };
+
+import {
+  Pagination,
+  PaginationContext,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationNext,
+  PaginationNumber,
+  PaginationPrevious,
+} from "@govtechmy/myds-react/pagination";
+import { usePagination } from "@govtechmy/myds-react/hooks";
+
+export const SimplePagination = () => {
+  const count = 200;
+  const limit = 10;
+  const page = 1;
+  const { visiblePages, max } = usePagination({ count, limit, page });
+  const pageFn = (page: number) => console.log(page);
+
+  return (
+    <Pagination
+      count={count}
+      limit={limit}
+      page={page}
+      onPageChange={pageFn}
+      type="default"
+    >
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious onClick={() => page > 1 && pageFn(page - 1)} />
+        </PaginationItem>
+
+        {visiblePages.map((pageNum, index) => (
+          <PaginationItem key={index}>
+            {pageNum === "..." ? (
+              <PaginationEllipsis />
+            ) : (
+              <PaginationNumber number={pageNum as number} />
+            )}
+          </PaginationItem>
+        ))}
+
+        <PaginationItem>
+          <PaginationNext onClick={() => page < max && pageFn(page + 1)} />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  );
+};
+SimplePagination.displayName = "SimplePagination";

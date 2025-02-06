@@ -3,7 +3,7 @@ title: Pagination
 description: Allows users to navigate through a large set of content divided into discrete pages.
 ---
 
-import {ClientPagination as Pagination} from "@/components/myds";
+import {ClientPagination as Pagination, SimplePagination} from "@/components/myds";
 import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
 import { TypeTable } from "fumadocs-ui/components/type-table";
@@ -33,14 +33,15 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
         type="full"
         maxDisplay={4}
       />
+      <SimplePagination />
     </div>
   </Tab>
   <Tab value="Code">
     ```tsx 
-    import { Pagination } from "@govtechmy/myds-react/pagination";
+    import { AutoPagination } from "@govtechmy/myds-react/pagination";
     
     // type default
-    <Pagination
+    <AutoPagination
       page={1}
       limit={10}
       count={200}
@@ -50,7 +51,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
     />
     
     // type simple
-    <Pagination
+    <AutoPagination
       page={1}
       limit={10}
       count={200}
@@ -60,7 +61,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
     />
 
     // type full
-    <Pagination
+    <AutoPagination
       page={1}
       limit={10}
       count={200}
@@ -84,11 +85,11 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 ## Simple Usage
 The `Pagination` component is intended for simple usage, however for more advanced usage, the user can opt-in to manually assemble the subcomponents: `PaginationRoot`, `PaginationItem`, `PaginationContent`, `PaginationEllipsis`, `PaginationNext`, `PaginationPrevious` and `PaginationNumber`.
 ```tsx 
-  import { Pagination } from "@govtechmy/myds-react/pagination";
+  import { AutoPagination } from "@govtechmy/myds-react/pagination";
 ```
 
 ```tsx 
-  <Pagination
+  <AutoPagination
   page={1}
   limit={10}
   count={200}
@@ -134,10 +135,10 @@ Use the `type` props to change the type of the `Pagination` component. The props
   </Tab>
   <Tab value="Code">
     ```tsx 
-    import { Pagination } from "@govtechmy/myds-react/pagination";
+    import { AutoPagination } from "@govtechmy/myds-react/pagination";
 
     // default type
-    <Pagination
+    <AutoPagination
       page={2}
       limit={10}
       count={200}
@@ -146,7 +147,7 @@ Use the `type` props to change the type of the `Pagination` component. The props
     />
     
     // simple type
-    <Pagination
+    <AutoPagination
       page={2}
       limit={10}
       count={200}
@@ -155,7 +156,7 @@ Use the `type` props to change the type of the `Pagination` component. The props
     />
     
     // full type
-    <Pagination
+    <AutoPagination
       page={2}
       limit={10}
       count={200}
@@ -190,10 +191,10 @@ Use the `page` props to change the current page number. The props is accepted by
   </Tab>
   <Tab value="Code">
     ```tsx 
-    import { Pagination } from "@govtechmy/myds-react/pagination";
+    import { AutoPagination } from "@govtechmy/myds-react/pagination";
 
     // default type
-    <Pagination
+    <AutoPagination
       page={2}
       limit={10}
       count={200}
@@ -202,7 +203,7 @@ Use the `page` props to change the current page number. The props is accepted by
     />
     
     // full type
-    <Pagination
+    <AutoPagination
       page={2}
       limit={10}
       count={200}
@@ -237,10 +238,10 @@ Use the `limit` props to adjust the number of items displayed per page. The prop
   </Tab>
   <Tab value="Code">
     ```tsx 
-    import { Pagination } from "@govtechmy/myds-react/pagination";
+    import { AutoPagination } from "@govtechmy/myds-react/pagination";
 
     // default type
-    <Pagination
+    <AutoPagination
       page={2}
       limit={10}
       count={200}
@@ -249,7 +250,7 @@ Use the `limit` props to adjust the number of items displayed per page. The prop
     />
     
     // full type
-    <Pagination
+    <AutoPagination
       page={2}
       limit={10}
       count={200}
@@ -284,10 +285,10 @@ Use the `count` props to set the total number of items to be displayed. The prop
   </Tab>
   <Tab value="Code">
     ```tsx 
-    import { Pagination } from "@govtechmy/myds-react/pagination";
+    import { AutoPagination } from "@govtechmy/myds-react/pagination";
 
     // default type
-    <Pagination
+    <AutoPagination
       page={2}
       limit={10}
       count={100}
@@ -296,7 +297,7 @@ Use the `count` props to set the total number of items to be displayed. The prop
     />
     
     // full type
-    <Pagination
+    <AutoPagination
       page={2}
       limit={10}
       count={100}
@@ -331,10 +332,10 @@ Use the `maxDisplay` props to adjust the number of items to be displayed for pag
   </Tab>
   <Tab value="Code">
     ```tsx 
-    import { Pagination } from "@govtechmy/myds-react/pagination";
+    import { AutoPagination } from "@govtechmy/myds-react/pagination";
 
     // default type
-    <Pagination
+    <AutoPagination
       page={2}
       limit={10}
       count={100}
@@ -342,7 +343,7 @@ Use the `maxDisplay` props to adjust the number of items to be displayed for pag
       maxDisplay={5}
     />
 
-    <Pagination
+    <AutoPagination
       page={5}
       limit={10}
       count={100}
@@ -355,7 +356,7 @@ Use the `maxDisplay` props to adjust the number of items to be displayed for pag
 
 ## Props
 
-### Pagination
+### AutoPagination
 A pagination component that handles page navigation and different display patterns: `default`, `simple`, and `full`. 
 <TypeTable
 type={{
@@ -403,7 +404,7 @@ type={{
   }}
 />
 
-### PaginationRoot
+### Pagination
 A container component that provides pagination context and navigation structure through a `nav` element. It manages the core pagination state (current page, total pages, etc.). 
 <TypeTable
 type={{
