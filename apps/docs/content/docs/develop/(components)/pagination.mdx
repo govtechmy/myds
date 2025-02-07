@@ -3,7 +3,18 @@ title: Pagination
 description: Allows users to navigate through a large set of content divided into discrete pages.
 ---
 
-import {ClientPagination as Pagination, SimplePagination} from "@/components/myds";
+import {
+  SimplePagination as AutoPagination, 
+  SelfPagination,
+  Pagination,
+  PaginationContext,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationNext,
+  PaginationNumber,
+  PaginationPrevious, 
+} from "@/components/myds";
 import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
 import { TypeTable } from "fumadocs-ui/components/type-table";
@@ -12,60 +23,24 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose">
     <div className="flex flex-col gap-10">
-      <Pagination
-        page={1}
-        limit={10}
-        count={200}
-        type="default"
-        maxDisplay={4}
-      />
-      <Pagination
+      <AutoPagination
         page={1}
         limit={10}
         count={200}
         type="simple"
         maxDisplay={4}
       />
-      <Pagination
-        page={1}
-        limit={10}
-        count={200}
-        type="full"
-        maxDisplay={4}
-      />
-      <SimplePagination />
     </div>
   </Tab>
   <Tab value="Code">
     ```tsx 
     import { AutoPagination } from "@govtechmy/myds-react/pagination";
     
-    // type default
-    <AutoPagination
-      page={1}
-      limit={10}
-      count={200}
-      type="default"
-      maxDisplay={4}
-      onPageChange={(page) => console.log(page)}
-    />
-    
-    // type simple
     <AutoPagination
       page={1}
       limit={10}
       count={200}
       type="simple"
-      maxDisplay={4}
-      onPageChange={(page) => console.log(page)}
-    />
-
-    // type full
-    <AutoPagination
-      page={1}
-      limit={10}
-      count={200}
-      type="full"
       maxDisplay={4}
       onPageChange={(page) => console.log(page)}
     />
@@ -82,27 +57,55 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
   }}
 />
 
+## Usage
 ## Simple Usage
-The `Pagination` component is intended for simple usage, however for more advanced usage, the user can opt-in to manually assemble the subcomponents: `PaginationRoot`, `PaginationItem`, `PaginationContent`, `PaginationEllipsis`, `PaginationNext`, `PaginationPrevious` and `PaginationNumber`.
+For simple usage, `AutoPagination` can be used directly. It is a pre-assembled component that handles common pagination use cases.
+
 ```tsx 
   import { AutoPagination } from "@govtechmy/myds-react/pagination";
 ```
 
 ```tsx 
-  <AutoPagination
-  page={1}
-  limit={10}
-  count={200}
-  type="default"
-  maxDisplay={4}
-  onPageChange={(page) => console.log(page)}
-  />
+  <AutoPagination />
+```
+
+### Advanced Usage
+For user that requires more advanced use cases, the pagination functionality can be assembled manually. The user can use the subcomponents: `Pagination`, `PaginationItem`, `PaginationContent`, `PaginationEllipsis`, `PaginationNext`, `PaginationPrevious` and `PaginationNumber`.
+```tsx 
+  import 
+  {
+    Pagination,
+    PaginationContext,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationNext,
+    PaginationNumber,
+    PaginationPrevious, 
+  } from "@/components/myds";
+```
+```tsx 
+  <Pagination>
+    <PaginationContent>
+      <PaginationItem>
+        <PaginationPrevious />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationNumber />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationEllipsis />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationNext />
+      </PaginationItem>
+    </PaginationContent>
+  </Pagination>
 ```
 
 ## Examples
-
-### Type  
-Use the `type` props to change the type of the `Pagination` component. The props is accepted by the `Pagination` component. Examples of use cases for each types are outlined below:
+### AutoPagination Types  
+Use the `type` props to change the type of the `AutoPagination` component. Examples of use cases for each types are outlined below:
 1. **default**: Ideal for contexts where users might want to jump to a specific page within a large number of pages.
 2. **simple**: Suitable for simpler navigation where users primarily move forward or backward.
 3. **full**: Similar to the `simple` type, this type displays the current page and total pages on the left and navigation buttons on far right.
@@ -110,21 +113,21 @@ Use the `type` props to change the type of the `Pagination` component. The props
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose">
     <div className="flex flex-col gap-10">
-      <Pagination
+      <AutoPagination
         page={2}
         limit={10}
         count={200}
         type="default"
         maxDisplay={4}
       />
-      <Pagination
+      <AutoPagination
         page={2}
         limit={10}
         count={200}
         type="simple"
         maxDisplay={4}
       />
-      <Pagination
+      <AutoPagination
         page={2}
         limit={10}
         count={200}
@@ -167,189 +170,72 @@ Use the `type` props to change the type of the `Pagination` component. The props
   </Tab>
 </Tabs>
 
-### Page 
-Use the `page` props to change the current page number. The props is accepted by the `Pagination` component. All the examples below has its `page` props set to 2.
+### Pagination Configurations 
+Opting into using `AutoPagination` or manual assembly of pagination subcomponents necessitates into the usage of props such as `page`, `limit` and `count`. The functionality and look of the pagination components will be influenced by them.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose">
-    <div className="flex flex-col gap-10">
-      <Pagination
+    <div className="flex flex-col gap-10 justify-center items-center">
+      <p className="text-md font-bold">AutoPagination</p>
+      <AutoPagination
         page={2}
         limit={10}
         count={200}
-        type="default"
+        type="simple"
         maxDisplay={4}
       />
-      <Pagination
-        page={2}
-        limit={10}
-        count={200}
-        type="full"
-        maxDisplay={4}
-      />
+      <p className="text-md font-bold">Manual assembly</p>
+      <SelfPagination page={4} count={180}/>
     </div>
   </Tab>
   <Tab value="Code">
     ```tsx 
     import { AutoPagination } from "@govtechmy/myds-react/pagination";
 
-    // default type
+    // simple type
     <AutoPagination
       page={2}
       limit={10}
       count={200}
-      type="default"
+      type="simple"
       maxDisplay={4}
     />
     
-    // full type
-    <AutoPagination
-      page={2}
-      limit={10}
-      count={200}
-      type="full"
-      maxDisplay={4}
-    />
-    ```
-  </Tab>
-</Tabs>
+    // self assembly
+    const count = 180;
+    const limit = 10;
+    const page = 4;
+    const { visiblePages, max } = usePagination({ count, limit, page });
+    const pageFn = (page: number) => console.log(page);
 
-### Limit 
-Use the `limit` props to adjust the number of items displayed per page. The props is accepted by the `Pagination` component. The example below has the `count` and `limit` set to 200 and 10 respectively. Hence the total number of pages displayed are 20.
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview" className="not-prose">
-    <div className="flex flex-col gap-10">
-      <Pagination
-        page={2}
-        limit={10}
-        count={200}
-        type="default"
-        maxDisplay={4}
-      />
-      <Pagination
-        page={2}
-        limit={10}
-        count={200}
-        type="full"
-        maxDisplay={4}
-      />
-    </div>
-  </Tab>
-  <Tab value="Code">
-    ```tsx 
-    import { AutoPagination } from "@govtechmy/myds-react/pagination";
-
-    // default type
-    <AutoPagination
-      page={2}
-      limit={10}
-      count={200}
+    <Pagination
+      count={count}
+      limit={limit}
+      page={page}
+      onPageChange={pageFn}
       type="default"
-      maxDisplay={4}
-    />
+    >
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious onClick={() => pageFn(page - 1)} />
+        </PaginationItem>
+
+        {visiblePages.map((pageNum, index) => (
+          <PaginationItem key={index}>
+            {pageNum === "..." ? (
+              <PaginationEllipsis />
+            ) : (
+              <PaginationNumber number={pageNum as number} />
+            )}
+          </PaginationItem>
+        ))}
+
+        <PaginationItem>
+          <PaginationNext onClick={() => pageFn(page + 1)} />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
     
-    // full type
-    <AutoPagination
-      page={2}
-      limit={10}
-      count={200}
-      type="full"
-      maxDisplay={4}
-    />
-    ```
-  </Tab>
-</Tabs>
-
-### Count 
-Use the `count` props to set the total number of items to be displayed. The props is accepted by the `Pagination` component. The example below has the `count` and `limit` set to 100 and 10 respectively. Hence the total number of pages displayed are 10.
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview" className="not-prose">
-    <div className="flex flex-col gap-10">
-      <Pagination
-        page={2}
-        limit={10}
-        count={100}
-        type="default"
-        maxDisplay={4}
-      />
-      <Pagination
-        page={2}
-        limit={10}
-        count={100}
-        type="full"
-        maxDisplay={4}
-      />
-    </div>
-  </Tab>
-  <Tab value="Code">
-    ```tsx 
-    import { AutoPagination } from "@govtechmy/myds-react/pagination";
-
-    // default type
-    <AutoPagination
-      page={2}
-      limit={10}
-      count={100}
-      type="default"
-      maxDisplay={4}
-    />
-    
-    // full type
-    <AutoPagination
-      page={2}
-      limit={10}
-      count={100}
-      type="full"
-      maxDisplay={4}
-    />
-    ```
-  </Tab>
-</Tabs>
-
-### maxDisplay 
-Use the `maxDisplay` props to adjust the number of items to be displayed for paginated numbers before ellipsis. The examples below have the props set to 5.
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview" className="not-prose">
-    <div className="flex flex-col gap-10">
-      <Pagination
-        page={2}
-        limit={10}
-        count={100}
-        type="default"
-        maxDisplay={5}
-      />
-      <Pagination
-        page={5}
-        limit={10}
-        count={100}
-        type="default"
-        maxDisplay={5}
-      />
-    </div>
-  </Tab>
-  <Tab value="Code">
-    ```tsx 
-    import { AutoPagination } from "@govtechmy/myds-react/pagination";
-
-    // default type
-    <AutoPagination
-      page={2}
-      limit={10}
-      count={100}
-      type="default"
-      maxDisplay={5}
-    />
-
-    <AutoPagination
-      page={5}
-      limit={10}
-      count={100}
-      type="default"
-      maxDisplay={5}
-    />
     ```
   </Tab>
 </Tabs>
@@ -357,7 +243,7 @@ Use the `maxDisplay` props to adjust the number of items to be displayed for pag
 ## Props
 
 ### AutoPagination
-A pagination component that handles page navigation and different display patterns: `default`, `simple`, and `full`. 
+A pagination component that handles page navigation and different display patterns: `default`, `simple`, and `full`. This is a standalone and pre-assembled component that can handle common pagination use cases.
 <TypeTable
 type={{
     count: {

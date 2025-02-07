@@ -3,7 +3,18 @@ title: Paginasi
 description: Membolehkan pengguna menavigasi kandungan yang telah dibahagikan kepada beberapa halaman yang berasingan.
 ---
 
-import {ClientPagination as Pagination} from "@/components/myds";
+import {
+  SimplePagination as AutoPagination, 
+  SelfPagination,
+  Pagination,
+  PaginationContext,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationNext,
+  PaginationNumber,
+  PaginationPrevious, 
+} from "@/components/myds";
 import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
 import { TypeTable } from "fumadocs-ui/components/type-table";
@@ -12,59 +23,24 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
   <Tab value="Pratonton" className="not-prose">
     <div className="flex flex-col gap-10">
-      <Pagination
-        page={1}
-        limit={10}
-        count={200}
-        type="default"
-        maxDisplay={4}
-      />
-      <Pagination
+      <AutoPagination
         page={1}
         limit={10}
         count={200}
         type="simple"
         maxDisplay={4}
       />
-      <Pagination
-        page={1}
-        limit={10}
-        count={200}
-        type="full"
-        maxDisplay={4}
-      />
     </div>
   </Tab>
   <Tab value="Kod">
     ```tsx 
-    import { Pagination } from "@govtechmy/myds-react/pagination";
+    import { AutoPagination } from "@govtechmy/myds-react/pagination";
     
-    // type default
-    <Pagination
-      page={1}
-      limit={10}
-      count={200}
-      type="default"
-      maxDisplay={4}
-      onPageChange={(page) => console.log(page)}
-    />
-    
-    // type simple
-    <Pagination
+    <AutoPagination
       page={1}
       limit={10}
       count={200}
       type="simple"
-      maxDisplay={4}
-      onPageChange={(page) => console.log(page)}
-    />
-
-    // type full
-    <Pagination
-      page={1}
-      limit={10}
-      count={200}
-      type="full"
       maxDisplay={4}
       onPageChange={(page) => console.log(page)}
     />
@@ -81,28 +57,54 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
   }}
 />
 
-## Penggunaan Mudah
-Komponen `Pagination` direka untuk penggunaan mudah, namun untuk penggunaan lebih lanjut, pengguna boleh memilih untuk mengatur subkomponen: `PaginationRoot`, `PaginationItem`, `PaginationContent`, `PaginationEllipsis`, `PaginationNext`, `PaginationPrevious` dan `PaginationNumber` secara manual.
+## Penggunaan 
+### Penggunaan Mudah
+Komponen `AutoPagination` boleh digunakan terus untuk penggunaan mudah. Komponen ini boleh digunakan untuk tujuan paginasi lazim.
+
 ```tsx 
-  import { Pagination } from "@govtechmy/myds-react/pagination";
+  import { AutoPagination } from "@govtechmy/myds-react/pagination";
 ```
 
 ```tsx 
-  <Pagination
-  page={1}
-  limit={10}
-  count={200}
-  type="default"
-  maxDisplay={4}
-  onPageChange={(page) => console.log(page)}
-  />
+  <AutoPagination />
+```
+### Penggunaan Lanjutan
+Sebagai alternatif kepada komponen `AutoPagination`, fungsi paginasi masih dapat dilaksanakan dengan kombinasi subkomponen: `Pagination`, `PaginationItem`, `PaginationContent`, `PaginationEllipsis`, `PaginationNext`, `PaginationPrevious` dan `PaginationNumber`.
+```tsx 
+  import 
+  {
+    Pagination,
+    PaginationContext,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationNext,
+    PaginationNumber,
+    PaginationPrevious, 
+  } from "@/components/myds";
+```
+```tsx 
+  <Pagination>
+    <PaginationContent>
+      <PaginationItem>
+        <PaginationPrevious />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationNumber />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationEllipsis />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationNext />
+      </PaginationItem>
+    </PaginationContent>
+  </Pagination>
 ```
 
 ## Contoh
-
-### Type
-Gunakan props `type` untuk menukar jenis komponen `Pagination`. Contoh penggunaan untuk setiap jenis adalah seperti berikut:
-
+### Jenis AutoPagination
+Gunakan props `type` untuk menukar jenis komponen `AutoPagination`. Contoh penggunaan untuk setiap jenis adalah seperti berikut:
 1. **default**: Sesuai untuk keadaan di mana pengguna mungkin ingin melompat ke halaman tertentu dalam jumlah halaman yang banyak.
 2. **simple**: Sesuai untuk navigasi yang lebih mudah di mana pengguna hanya bergerak ke muka surat sebelum atau selepas.
 3. **full**: Serupa dengan jenis `simple`, jenis ini memaparkan halaman semasa dan jumlah halaman di sebelah kiri berserta butang navigasi di sebelah kanan.
@@ -110,21 +112,21 @@ Gunakan props `type` untuk menukar jenis komponen `Pagination`. Contoh penggunaa
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
   <Tab value="Pratonton" className="not-prose">
     <div className="flex flex-col gap-10">
-      <Pagination
+      <AutoPagination
         page={2}
         limit={10}
         count={200}
         type="default"
         maxDisplay={4}
       />
-      <Pagination
+      <AutoPagination
         page={2}
         limit={10}
         count={200}
         type="simple"
         maxDisplay={4}
       />
-      <Pagination
+      <AutoPagination
         page={2}
         limit={10}
         count={200}
@@ -133,12 +135,12 @@ Gunakan props `type` untuk menukar jenis komponen `Pagination`. Contoh penggunaa
       />
     </div>
   </Tab>
-  <Tab value="Kod">
+  <Tab value="Code">
     ```tsx 
-    import { Pagination } from "@govtechmy/myds-react/pagination";
+    import { AutoPagination } from "@govtechmy/myds-react/pagination";
 
     // default type
-    <Pagination
+    <AutoPagination
       page={2}
       limit={10}
       count={200}
@@ -147,7 +149,7 @@ Gunakan props `type` untuk menukar jenis komponen `Pagination`. Contoh penggunaa
     />
     
     // simple type
-    <Pagination
+    <AutoPagination
       page={2}
       limit={10}
       count={200}
@@ -156,7 +158,7 @@ Gunakan props `type` untuk menukar jenis komponen `Pagination`. Contoh penggunaa
     />
     
     // full type
-    <Pagination
+    <AutoPagination
       page={2}
       limit={10}
       count={200}
@@ -167,197 +169,80 @@ Gunakan props `type` untuk menukar jenis komponen `Pagination`. Contoh penggunaa
   </Tab>
 </Tabs>
 
-### Page
-Gunakan props `page` untuk menukar nombor halaman semasa. Semua contoh di bawah mempunyai props `page` ditetapkan kepada 2.
+### Konfigurasi Paginasi
+Penggunaan `AutoPagination` atau pemasangan manual subkomponen paginasi memerlukan penggunaan `prop` seperti `page`, `limit` dan `count`. Fungsi dan rupa komponen paginasi akan dipengaruhi oleh prop-prop tersebut.
 
-<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
-  <Tab value="Pratonton" className="not-prose">
-    <div className="flex flex-col gap-10">
-      <Pagination
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+    <div className="flex flex-col gap-10 justify-center items-center">
+      <p className="text-md font-bold">AutoPagination</p>
+      <AutoPagination
         page={2}
         limit={10}
         count={200}
-        type="default"
+        type="simple"
         maxDisplay={4}
       />
-      <Pagination
-        page={2}
-        limit={10}
-        count={200}
-        type="full"
-        maxDisplay={4}
-      />
+      <p className="text-md font-bold">Manual assembly</p>
+      <SelfPagination page={4} count={180}/>
     </div>
   </Tab>
-  <Tab value="Kod">
+  <Tab value="Code">
     ```tsx 
-    import { Pagination } from "@govtechmy/myds-react/pagination";
+    import { AutoPagination } from "@govtechmy/myds-react/pagination";
 
-    // default type
-    <Pagination
+    // simple type
+    <AutoPagination
       page={2}
       limit={10}
       count={200}
-      type="default"
+      type="simple"
       maxDisplay={4}
     />
     
-    // full type
+    // self assembly
+    const count = 180;
+    const limit = 10;
+    const page = 4;
+    const { visiblePages, max } = usePagination({ count, limit, page });
+    const pageFn = (page: number) => console.log(page);
+
     <Pagination
-      page={2}
-      limit={10}
-      count={200}
-      type="full"
-      maxDisplay={4}
-    />
-    ```
-  </Tab>
-</Tabs>
-
-### Limit
-Gunakan props `limit` untuk mengubah bilangan item yang dipaparkan setiap halaman. Contoh di bawah mempunyai `count` dan `limit` yang ditetapkan kepada 200 dan 10. Oleh itu, jumlah halaman yang dipaparkan adalah 20.
-
-<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
-  <Tab value="Pratonton" className="not-prose">
-    <div className="flex flex-col gap-10">
-      <Pagination
-        page={2}
-        limit={10}
-        count={200}
-        type="default"
-        maxDisplay={4}
-      />
-      <Pagination
-        page={2}
-        limit={10}
-        count={200}
-        type="full"
-        maxDisplay={4}
-      />
-    </div>
-  </Tab>
-  <Tab value="Kod">
-    ```tsx 
-    import { Pagination } from "@govtechmy/myds-react/pagination";
-
-    // default type
-    <Pagination
-      page={2}
-      limit={10}
-      count={200}
+      count={count}
+      limit={limit}
+      page={page}
+      onPageChange={pageFn}
       type="default"
-      maxDisplay={4}
-    />
+    >
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious onClick={() => pageFn(page - 1)} />
+        </PaginationItem>
+
+        {visiblePages.map((pageNum, index) => (
+          <PaginationItem key={index}>
+            {pageNum === "..." ? (
+              <PaginationEllipsis />
+            ) : (
+              <PaginationNumber number={pageNum as number} />
+            )}
+          </PaginationItem>
+        ))}
+
+        <PaginationItem>
+          <PaginationNext onClick={() => pageFn(page + 1)} />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
     
-    // full type
-    <Pagination
-      page={2}
-      limit={10}
-      count={200}
-      type="full"
-      maxDisplay={4}
-    />
-    ```
-  </Tab>
-</Tabs>
-
-### Count
-Gunakan props `count` untuk menetapkan jumlah item yang akan dipaparkan. Contoh di bawah mempunyai `count` dan `limit` yang ditetapkan kepada 100 dan 10. Oleh itu, jumlah halaman yang dipaparkan adalah 10.
-
-<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
-  <Tab value="Pratonton" className="not-prose">
-    <div className="flex flex-col gap-10">
-      <Pagination
-        page={2}
-        limit={10}
-        count={100}
-        type="default"
-        maxDisplay={4}
-      />
-      <Pagination
-        page={2}
-        limit={10}
-        count={100}
-        type="full"
-        maxDisplay={4}
-      />
-    </div>
-  </Tab>
-  <Tab value="Kod">
-    ```tsx 
-    import { Pagination } from "@govtechmy/myds-react/pagination";
-
-    // default type
-    <Pagination
-      page={2}
-      limit={10}
-      count={100}
-      type="default"
-      maxDisplay={4}
-    />
-    
-    // full type
-    <Pagination
-      page={2}
-      limit={10}
-      count={100}
-      type="full"
-      maxDisplay={4}
-    />
-    ```
-  </Tab>
-</Tabs>
-
-### maxDisplay
-Gunakan props `maxDisplay` untuk menyesuaikan bilangan item yang akan dipaparkan untuk nombor pagination sebelum ellipsis. Contoh di bawah mempunyai props yang ditetapkan kepada 5.
-
-<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
-  <Tab value="Pratonton" className="not-prose">
-    <div className="flex flex-col gap-10">
-      <Pagination
-        page={2}
-        limit={10}
-        count={100}
-        type="default"
-        maxDisplay={5}
-      />
-      <Pagination
-        page={5}
-        limit={10}
-        count={100}
-        type="default"
-        maxDisplay={5}
-      />
-    </div>
-  </Tab>
-  <Tab value="Kod">
-    ```tsx 
-    import { Pagination } from "@govtechmy/myds-react/pagination";
-
-    // default type
-    <Pagination
-      page={2}
-      limit={10}
-      count={100}
-      type="default"
-      maxDisplay={5}
-    />
-
-    <Pagination
-      page={5}
-      limit={10}
-      count={100}
-      type="default"
-      maxDisplay={5}
-    />
     ```
   </Tab>
 </Tabs>
 
 ## Props
 
-### Pagination
-Komponen paginasi yang mengendalikan navigasi halaman.
+### AutoPagination
+Komponen paginasi yang mengendalikan navigasi halaman. Komponen ini sudah disiap pasang dan boleh digunakan terus untuk fungsi paginasi mudah.
 <TypeTable
 type={{
     count: {
@@ -404,7 +289,7 @@ type={{
   }}
 />
 
-### PaginationRoot
+### Pagination
 Komponen container yang menyediakan struktur navigasi melalui elemen `nav`.
 <TypeTable
 type={{

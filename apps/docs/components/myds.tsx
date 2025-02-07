@@ -866,7 +866,7 @@ import {
   AutoPaginationProps,
 } from "@govtechmy/myds-react/pagination";
 
-export const ClientPagination = forwardRef<HTMLElement, AutoPaginationProps>(
+export const SimplePagination = forwardRef<HTMLElement, AutoPaginationProps>(
   (props, ref) => {
     return (
       <AutoPagination
@@ -877,7 +877,7 @@ export const ClientPagination = forwardRef<HTMLElement, AutoPaginationProps>(
     );
   },
 );
-ClientPagination.displayName = "ClientPagination";
+SimplePagination.displayName = "SimplePagination";
 
 interface PreviewNavbarProps extends ComponentProps<typeof Navbar> {}
 
@@ -1093,10 +1093,10 @@ import {
 } from "@govtechmy/myds-react/pagination";
 import { usePagination } from "@govtechmy/myds-react/hooks";
 
-export const SimplePagination = () => {
-  const count = 200;
-  const limit = 10;
-  const page = 1;
+export const SelfPagination = ({ count = 200, limit = 10, page = 1 }) => {
+  // const count = 200;
+  // const limit = 10;
+  // const page = 1;
   const { visiblePages, max } = usePagination({ count, limit, page });
   const pageFn = (page: number) => console.log(page);
 
@@ -1110,7 +1110,7 @@ export const SimplePagination = () => {
     >
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious onClick={() => page > 1 && pageFn(page - 1)} />
+          <PaginationPrevious onClick={() => pageFn(page - 1)} />
         </PaginationItem>
 
         {visiblePages.map((pageNum, index) => (
@@ -1124,10 +1124,10 @@ export const SimplePagination = () => {
         ))}
 
         <PaginationItem>
-          <PaginationNext onClick={() => page < max && pageFn(page + 1)} />
+          <PaginationNext onClick={() => pageFn(page + 1)} />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
   );
 };
-SimplePagination.displayName = "SimplePagination";
+SelfPagination.displayName = "SelfPagination";
