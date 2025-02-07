@@ -1,7 +1,4 @@
-"use client";
-
-//for next js, use client need to be set else it will render on server.
-//basic react or even vanilla can just import and use as it is, but need to remove "use client" or syntax error will occur.
+//for next js, add 'use client'
 
 const THEME_KEY = "theme" as const;
 const LIGHT = "light" as const;
