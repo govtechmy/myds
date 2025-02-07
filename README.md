@@ -7,7 +7,7 @@
 There are two (2) key products in MYDS:
 
 1. **Design Language Guideline**: Aimed at designers and project managers, this guideline provides the principles, standards, and best practices for designing user interfaces that are cohesive and user-friendly.
-2. **Component Library** (🚧 _under active development_): Targeted at developers, this library offers a collection of reusable UI components that adhere to the design language guidelines, ensuring consistency and efficiency in development.
+2. **Component Library**: Targeted at developers, this library offers a collection of reusable UI components that adhere to the design language guidelines, ensuring consistency and efficiency in development.
 
 ## Documentation
 
@@ -16,12 +16,9 @@ There are two (2) key products in MYDS:
 
 ## Contributing
 
-MYDS is an open-source project and welcomes contributions from the public. To contribute:
+MYDS is an open-source project and welcomes contributions from the public. To contribute, please read our [contributing guideline](./CONTRIBUTING.md)
 
-1. **Discuss New Features**: Before submitting a pull request (PR), please open an issue to discuss the feature you would like to add or change. This helps to ensure that your contribution aligns with the project's goals and guidelines.
-2. **Submit a PR**: Once the feature has been discussed and approved, you can submit a PR with your changes. Please follow the contribution guidelines provided in the repository.
-
-We look forward to collaborating with you to improve MYDS.
+We look forward to see what you may bring to MYDS.
 
 ---
 

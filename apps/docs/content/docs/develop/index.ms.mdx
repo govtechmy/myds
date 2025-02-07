@@ -3,17 +3,8 @@ title: Pengenalan
 description: Pustaka komponen untuk Sistem Reka Bentuk Malaysia.
 ---
 
-import { InfoIcon } from "@govtechmy/myds-react/icon";
-
-<Callout
-  type="error"
-  title="Important"
-  className="bg-bg-danger-50 text-txt-danger border-transparent"
-  icon={<InfoIcon className="size-5" />}
->
-  Pustaka Komponen MYDS masih dalam fasa pembinaan dan dijangka akan berlangsung
-  pada penghujung tahun 2024. Kesabaran anda amat dihargai. Sekian, GNU
-</Callout>
+import StorybookIcon from "@/icons/storybook";
+import { GitHubIcon } from "@govtechmy/myds-react/icon";
 
 MYDS menawarkan pustaka komponen yang komprehensif untuk sistem reka bentuknya. Dibina untuk membantu pembangun membina aplikasi yang konsisten, mudah diakses, dan menarik secara visual untuk kerajaan Malaysia dan agensinya.
 Pustaka komponen ini menawarkan kira-kira 40 komponen yang direka dengan teliti & patuh kepada Bahasa Reka Bentuk MYDS.
@@ -27,4 +18,17 @@ Pustaka komponen ini menawarkan kira-kira 40 komponen yang direka dengan teliti 
 
 ### Berhasrat untuk Menyumbang?
 
-Anda boleh menemui maklumat lebih lanjut berkenaan MYDS, serta repositori GitHub dan Storybook kami di [Sumber Pembangun](#).
+<Cards>
+  <Card
+    href="https://github.com/govtechmy/myds"
+    title="GitHub (@govtechmy/myds)"
+    description="Repositori kod. Ikuti untuk kemas kini terkini, isu, dan perbincangan."
+    icon={<GitHubIcon />}
+  />
+  <Card
+    href="https://myds-storybook.vercel.app/"
+    title="Storybook"
+    description="Persekitaran Pembangunan UI. Terokai dan berinteraksi dengan komponen."
+    icon={<StorybookIcon />}
+  />
+</Cards>
