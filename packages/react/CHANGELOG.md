@@ -1,5 +1,12 @@
 # @govtechmy/myds-react
 
+## 0.0.6
+
+### Patch Changes
+
+- c309fd9: Fix to use ReactFragment instead of returning Element[]
+- 3c99cca: Navbar Documentation update and added missing props in navbar components
+
 ## 0.0.5
 
 ### Patch Changes

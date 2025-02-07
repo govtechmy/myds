@@ -1,5 +1,15 @@
 # @govtechmy/myds-docs
 
+## 0.0.7
+
+### Patch Changes
+
+- 585e752: Added documentation for Tooltip.
+- 2a8476b: Add CONTRIBUTING.md and update installation docs
+- Updated dependencies [c309fd9]
+- Updated dependencies [3c99cca]
+  - @govtechmy/myds-react@0.0.6
+
 ## 0.0.6
 
 ### Patch Changes
