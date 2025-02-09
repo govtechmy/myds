@@ -339,3 +339,4 @@ export type {
   DialogDescriptionProps,
   DialogIconProps,
 };
+export { dialog_footer_cva };
