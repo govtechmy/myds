@@ -1,5 +1,11 @@
 # @govtechmy/myds-react
 
+## 0.0.7
+
+### Patch Changes
+
+- 3d24986: Added CookieBannerPreferencesDisplay and CookieBannerPreferencesToggle in Cookies Banner component.
+
 ## 0.0.6
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @govtechmy/myds-docs
 
+## 0.0.8
+
+### Patch Changes
+
+- c813d43: Added documentation in English and Bahasa Melayu for Pagination component.
+- Updated dependencies [3d24986]
+  - @govtechmy/myds-react@0.0.7
+
 ## 0.0.7
 
 ### Patch Changes
