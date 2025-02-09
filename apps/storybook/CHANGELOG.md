@@ -1,5 +1,12 @@
 # @govtechmy/myds-storybook
 
+## 0.0.8
+
+### Patch Changes
+
+- Updated dependencies [3d24986]
+  - @govtechmy/myds-react@0.0.7
+
 ## 0.0.7
 
 ### Patch Changes
