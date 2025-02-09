@@ -12,6 +12,7 @@ import { Button, ButtonIcon } from "./button";
 import { ChevronLeftIcon } from "../icons/chevron-left";
 import { ChevronRightIcon } from "../icons/chevron-right";
 import { Slot } from "@radix-ui/react-slot";
+import { usePagination } from "../hooks/use-pagination";
 
 /**
  * Props for Pagination component.
@@ -43,7 +44,7 @@ const PaginationContext = createContext<
   onPageChange: (page) => {},
 });
 
-interface PaginationRootProps extends ComponentProps<"nav">, PaginatorProps {}
+interface PaginationProps extends ComponentProps<"nav">, PaginatorProps {}
 
 /**
  * Component that allows users to navigate through a large set of content divided into discrete pages.
@@ -51,35 +52,31 @@ interface PaginationRootProps extends ComponentProps<"nav">, PaginatorProps {}
  * @example
  * <Pagination propName="value" />
  */
-const PaginationRoot: ForwardRefExoticComponent<PaginationRootProps> =
-  forwardRef(
-    (
-      { count, limit, page, children, className, type, onPageChange, ...props },
-      ref,
-    ) => {
-      const totalPages = Math.ceil(count / limit);
-      return (
-        <PaginationContext.Provider
-          value={{ count, limit, page, totalPages, type, onPageChange }}
+const Pagination: ForwardRefExoticComponent<PaginationProps> = forwardRef(
+  (
+    { count, limit, page, children, className, type, onPageChange, ...props },
+    ref,
+  ) => {
+    const totalPages = Math.ceil(count / limit);
+    return (
+      <PaginationContext.Provider
+        value={{ count, limit, page, totalPages, type, onPageChange }}
+      >
+        <nav
+          ref={ref}
+          role="navigation"
+          aria-label="pagination"
+          className={clx("text-body-md flex w-full justify-center", className)}
+          {...props}
         >
-          <nav
-            ref={ref}
-            role="navigation"
-            aria-label="pagination"
-            className={clx(
-              "text-body-md flex w-full justify-center",
-              className,
-            )}
-            {...props}
-          >
-            {children}
-          </nav>
-        </PaginationContext.Provider>
-      );
-    },
-  );
+          {children}
+        </nav>
+      </PaginationContext.Provider>
+    );
+  },
+);
 
-PaginationRoot.displayName = "PaginationRoot";
+Pagination.displayName = "Pagination";
 
 const PaginationContent: ForwardRefExoticComponent<ComponentProps<"ul">> =
   forwardRef(({ className, ...props }, ref) => (
@@ -227,103 +224,86 @@ const PaginationEllipsis = ({
 );
 PaginationEllipsis.displayName = "PaginationEllipsis";
 
-interface PaginationProps extends ComponentProps<"nav">, PaginatorProps {
+interface AutoPaginationProps extends ComponentProps<"nav">, PaginatorProps {
   maxDisplay?: number;
   next?: ReactNode;
   previous?: ReactNode;
   fullText?: string;
 }
 
-const Pagination: ForwardRefExoticComponent<PaginationProps> = forwardRef(
-  (
-    { type = "default", maxDisplay = 4, next, previous, fullText, ...props },
-    ref,
-  ) => {
-    if (type === "simple") {
-      return (
-        <PaginationRoot ref={ref} type={type} {...props}>
-          <PaginationContent>
-            <PaginationItem>
-              {previous || <PaginationPrevious>Previous</PaginationPrevious>}
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLabel />
-            </PaginationItem>
-            <PaginationItem>
-              {next || <PaginationNext>Next</PaginationNext>}
-            </PaginationItem>
-          </PaginationContent>
-        </PaginationRoot>
-      );
-    }
-    if (type === "full") {
-      return (
-        <PaginationRoot ref={ref} type={type} {...props}>
-          <PaginationContent className="w-[512px]">
-            <PaginationItem className="flex-1">
-              <PaginationLabel content={fullText} />
-            </PaginationItem>
-            <PaginationItem>
-              {previous || <PaginationPrevious>Previous</PaginationPrevious>}
-            </PaginationItem>
+const AutoPagination: ForwardRefExoticComponent<AutoPaginationProps> =
+  forwardRef(
+    (
+      { type = "default", maxDisplay = 4, next, previous, fullText, ...props },
+      ref,
+    ) => {
+      const { visiblePages } = usePagination({
+        count: props.count,
+        limit: props.limit,
+        page: props.page,
+        maxDisplay,
+      });
 
-            <PaginationItem>
-              {next || <PaginationNext>Next</PaginationNext>}
-            </PaginationItem>
-          </PaginationContent>
-        </PaginationRoot>
-      );
-    }
+      if (type === "simple") {
+        return (
+          <Pagination ref={ref} type={type} {...props}>
+            <PaginationContent>
+              <PaginationItem>
+                {previous || <PaginationPrevious>Previous</PaginationPrevious>}
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLabel />
+              </PaginationItem>
+              <PaginationItem>
+                {next || <PaginationNext>Next</PaginationNext>}
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        );
+      }
+      if (type === "full") {
+        return (
+          <Pagination ref={ref} type={type} {...props}>
+            <PaginationContent className="w-[512px]">
+              <PaginationItem className="flex-1">
+                <PaginationLabel content={fullText} />
+              </PaginationItem>
+              <PaginationItem>
+                {previous || <PaginationPrevious>Previous</PaginationPrevious>}
+              </PaginationItem>
 
-    const { count, limit, page } = props;
-    const max = Math.ceil(count / limit);
-
-    const getVisiblePageNumber = () => {
-      if (max <= maxDisplay) return createRange(1, max);
-
-      if (page <= maxDisplay - 1) {
-        const ellipsis_start = maxDisplay;
-        return [...createRange(1, ellipsis_start), "...", max];
+              <PaginationItem>
+                {next || <PaginationNext>Next</PaginationNext>}
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        );
       }
 
-      if (page >= max - (maxDisplay - 1))
-        return [1, "...", ...createRange(max - (maxDisplay - 1), max)];
-
-      return [1, "...", ...createMiddlePages(), "...", max];
-    };
-
-    const createRange = (start: number, end: number) => {
-      return Array.from({ length: end - start + 1 }, (_, i) => i + start);
-    };
-
-    const createMiddlePages = () => {
-      const mid_start = Math.max(2, page - 1);
-      const mid_end = Math.min(page + 1, max - 1);
-      return createRange(mid_start, mid_end);
-    };
-
-    return (
-      <PaginationRoot ref={ref} type={type} {...props}>
-        <PaginationContent>
-          <PaginationItem>{previous || <PaginationPrevious />}</PaginationItem>
-          {getVisiblePageNumber().map((page, index) => (
-            <PaginationItem key={page}>
-              {page === "..." ? (
-                <PaginationEllipsis />
-              ) : (
-                typeof page === "number" && <PaginationNumber number={page} />
-              )}
+      return (
+        <Pagination ref={ref} type={type} {...props}>
+          <PaginationContent>
+            <PaginationItem>
+              {previous || <PaginationPrevious />}
             </PaginationItem>
-          ))}
-          <PaginationItem>{next || <PaginationNext />}</PaginationItem>
-        </PaginationContent>
-      </PaginationRoot>
-    );
-  },
-);
+            {visiblePages.map((page, index) => (
+              <PaginationItem key={page}>
+                {page === "..." ? (
+                  <PaginationEllipsis />
+                ) : (
+                  typeof page === "number" && <PaginationNumber number={page} />
+                )}
+              </PaginationItem>
+            ))}
+            <PaginationItem>{next || <PaginationNext />}</PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      );
+    },
+  );
 
 export {
-  PaginationRoot,
+  Pagination,
   PaginationContext,
   PaginationContent,
   PaginationEllipsis,
@@ -331,5 +311,7 @@ export {
   PaginationNext,
   PaginationNumber,
   PaginationPrevious,
-  Pagination,
+  AutoPagination,
 };
+
+export type { AutoPaginationProps };
