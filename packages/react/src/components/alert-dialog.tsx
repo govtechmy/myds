@@ -38,7 +38,7 @@ const AlertDialogContext = createContext<AlertDialogContextProps>({
   variant: "default",
 });
 
-interface AlertDialogProps
+export interface AlertDialogProps
   extends ComponentProps<typeof Dialog>,
     AlertDialogContextProps {}
 
@@ -52,7 +52,7 @@ const AlertDialog: ForwardRefExoticComponent<AlertDialogProps> = forwardRef(
   },
 );
 
-interface AlertDialogActionProps
+export interface AlertDialogActionProps
   extends Omit<ComponentProps<typeof DialogFooter>, "border"> {}
 
 const AlertDialogAction: ForwardRefExoticComponent<AlertDialogActionProps> =
