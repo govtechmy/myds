@@ -68,8 +68,8 @@ const DatePicker: FC<DatePickerProps> = ({
             {date ? formatDate(date) : placeholder}
           </Button>
         </DialogTrigger>
-        <DialogBody>
-          <DialogContent className="w-fit">
+        <DialogBody hideClose>
+          <DialogContent className="w-fit p-0">
             <Calendar
               className="w-[304px]"
               disabled={disabled}
