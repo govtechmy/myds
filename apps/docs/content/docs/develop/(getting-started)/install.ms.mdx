@@ -5,62 +5,69 @@ description: Panduan ringkas untuk bermula dengan MYDS.
 
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Step, Steps } from "fumadocs-ui/components/steps";
+import NextjsIcon from "@/icons/nextjs";
+import ViteIcon from "@/icons/vite";
+import LaravelIcon from "@/icons/laravel";
+
+### Pemasangan secara Manual
 
 MYDS boleh ditetapkan dengan pelbagai cara, bergantung kepada keperluan projek anda. Namun, cara yang paling mudah mengambil hanya 3-langkah!
 
 <Steps>
   <Step>
     ### Pemasangan pakej
-    <Tabs items={["npm", "yarn", "pnpm"]}>
-        ```sh tab="npm"
-        npm i @govtechmy/myds-react @govtechmy/myds-style 
-        ```
-        ```sh tab="yarn"
-        yarn add @govtechmy/myds-react @govtechmy/myds-style
-        ```
-        ```sh tab="pnpm"
-        pnpm add @govtechmy/myds-react @govtechmy/myds-style
-        ```
-    </Tabs>
-
+   
+     ```package-install
+    npm i @govtechmy/myds-react @govtechmy/myds-style
+    ```
   </Step>
 
   <Step>
 
-### Tetapkan stylesheet CSS<a name="full-css"></a>
+    ### Tetapkan stylesheet CSS<a name="full-css"></a>
 
-Anda boleh 'import' stylesheet MYDS secara keseluruhan mengikut salah satu cara di bawah.
+    Anda boleh 'import' stylesheet MYDS secara keseluruhan mengikut salah satu cara di bawah.
 
-#### A. Import melalui JS (Bundler)
+    __1. Import melalui JS (Bundler)__
 
-```ts
-// Letakkan dalam fail permulaan JS/TS (eg. index.{ts,js})
-import "@govtechmy/myds-style/full.css";
-```
+    ```ts
+    // Letakkan dalam fail permulaan JS/TS (eg. index.{ts,js})
+    import "@govtechmy/myds-style/full.css";
+    ```
 
-#### B. Import melalui CSS
+    __2. Import melalui CSS__
 
-```css
-/* Letakkan dalam fail permulaan CSS  */
-@import "@govtechmy/myds-style/full.css";
-```
+    ```css
+    /* Letakkan dalam fail permulaan CSS  */
+    @import "@govtechmy/myds-style/full.css";
+    ```
 
-Untuk tetapan yang lebih lanjut, sila baca [Konfigurasi Style](./style-configuration)
+    Untuk tetapan yang lebih lanjut, sila baca [Konfigurasi Style](./style-configuration)
 
   </Step>
 
 <Step>
-### Mula menggunakan komponen!
+    ### Mula menggunakan komponen!
 
-Terdapat pelbagai komponen yang tersedia dalam MYDS. Berikut adalah `<Button />` untuk anda mulakan!
+    Cubalah `<Button />` untuk memulakan membina dengan MYDS!
 
-```tsx
-import { Button } from "@govtechmy/myds-react/button";
+    ```tsx
+    import { Button } from "@govtechmy/myds-react/button";
 
-export default () => {
-  return <Button variant="primary-fill">Hello MYDS</Button>;
-};
-```
+    export default () => {
+      return <Button variant="primary-fill">Hello MYDS</Button>;
+    };
+    ```
 
 </Step>
 </Steps>
+
+### Panduan Berasaskan Framework
+
+Membina aplikasi dengan framework sedia ada? Lihat panduan di bawah!
+
+<Cards>
+  <Card href="/docs/develop/nextjs" title="Next.js" icon={<NextjsIcon />} />
+  <Card href="/docs/develop/vite" title="Vite" icon={<ViteIcon />} />
+  <Card href="/docs/develop/laravel" title="Laravel" icon={<LaravelIcon />} />
+</Cards>

@@ -1,4 +1,5 @@
 import { remarkImage } from "fumadocs-core/mdx-plugins";
+import { remarkInstall } from "fumadocs-docgen";
 import { defineDocs, defineConfig } from "fumadocs-mdx/config";
 
 export const { docs, meta } = defineDocs();
@@ -6,6 +7,7 @@ export const { docs, meta } = defineDocs();
 export default defineConfig({
   mdxOptions: {
     remarkPlugins: [
+      remarkInstall,
       [
         remarkImage,
         {

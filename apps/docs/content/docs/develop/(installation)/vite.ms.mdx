@@ -1,0 +1,92 @@
+---
+title: Vite
+description: Panduan ringkas untuk memasang MYDS dalam aplikasi Vite.
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+
+### Panduan Pemasangan
+
+<Steps>
+  <Step>
+    #### Bina projek Vite
+    ```sh title="terminal"
+    npm create vite@latest nama-projek -- --template react-ts
+    ```
+    Anda akan ditanya beberapa soalan. Pilih pilihan berikut:
+
+    ```sh title="terminal"
+    ✔ Project name: … nama-projek
+    ✔ Select a framework: » React
+    ✔ Select a variant: » TypeScript
+    ```
+
+    Selepas projek dibuat, pergi ke induk projek:
+    ```sh title="terminal"
+    cd nama-projek
+    ```
+
+  </Step>
+  
+  <Step>
+    #### Pasang pakej
+
+    ```package-install
+    npm i @govtechmy/myds-react @govtechmy/myds-style
+    ```
+
+  </Step>
+  
+  <Step>
+    #### Konfigurasi stylesheet CSS
+
+    Anda boleh menetapkan gaya melalui salah satu daripada dua (2) kaedah yang disenaraikan di bawah.
+
+    __1. Import CSS__
+
+    ```css title="src/index.css"
+    @import "@govtechmy/myds-style/full.css";
+    ```
+
+    __2. Tailwind CSS__
+
+    Sila baca [Konfigurasi Gaya](./style-configuration) untuk konfigurasi lanjutan.
+
+    </Step>
+
+  <Step>
+    #### Mula menggunakan komponen!
+
+    Cubalah `<Button />` untuk memulakan membina dengan MYDS!
+
+    ```tsx title="src/App.tsx"
+    import { Button } from "@govtechmy/myds-react/button";
+
+    function App() {
+      return (
+        <Button variant="primary-fill">
+          Hello MYDS
+        </Button>
+      );
+    }
+
+    export default App;
+    ```
+
+    ```tsx title="src/main.tsx"
+    import React from "react";
+    import ReactDOM from "react-dom/client";
+    import App from "./App";
+    import "./index.css";
+
+    ReactDOM.createRoot(document.getElementById("root")!).render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
+    ```
+    </Step>
+
+</Steps>
