@@ -74,11 +74,10 @@ type Story = StoryObj<typeof meta>;
  * Default example showing basic usage of the Footer component
  */
 export const Default: Story = {
-  ...createStory({}, "light"),
-  render: () => {
+  render: (args) => {
     return (
       <div className="light">
-        <Footer>
+        <Footer {...args}>
           <FooterTopSection>
             <FooterMainInfo>
               <ImageWithTitle
@@ -421,11 +420,10 @@ export const Custom: Story = {
  */
 
 export const CustomDark: Story = {
-  ...createStory({}, "dark"),
-  render: () => {
+  render: (args) => {
     return (
       <div className="dark">
-        <Footer>
+        <Footer {...args}>
           <FooterTopSection>
             <FooterMainInfo>
               <ImageWithTitle
