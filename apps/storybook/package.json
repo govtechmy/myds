@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "storybook build -o dist",
-    "start": "serve storybook-static"
+    "start": "serve storybook-static",
+    "test-storybook": "test-storybook"
   },
   "dependencies": {
     "@govtechmy/myds-react": "workspace:*",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
+    "@playwright/test": "^1.50.1",
     "@storybook/addon-a11y": "^8.5.6",
     "@storybook/addon-essentials": "^8.3.5",
     "@storybook/addon-interactions": "^8.3.5",

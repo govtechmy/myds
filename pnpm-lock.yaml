@@ -40,16 +40,16 @@ importers:
         version: link:../../packages/style
       fumadocs-core:
         specifier: 14.2.1
-        version: 14.2.1(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 14.2.1(@types/react@18.3.12)(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       fumadocs-mdx:
         specifier: 11.1.1
-        version: 11.1.1(acorn@8.14.0)(fumadocs-core@14.2.1(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+        version: 11.1.1(acorn@8.14.0)(fumadocs-core@14.2.1(@types/react@18.3.12)(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       fumadocs-ui:
         specifier: 13.4.10
-        version: 13.4.10(@types/react-dom@18.3.1)(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.15(ts-node@10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.5))(@types/node@22.5.4)(typescript@5.6.3)))
+        version: 13.4.10(@types/react-dom@18.3.1)(@types/react@18.3.12)(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.15(ts-node@10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.5))(@types/node@22.5.4)(typescript@5.6.3)))
       next:
         specifier: ^14.2.17
-        version: 14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -95,16 +95,16 @@ importers:
         version: link:../../packages/style
       fumadocs-core:
         specifier: 14.2.1
-        version: 14.2.1(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 14.2.1(@types/react@18.3.12)(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       fumadocs-mdx:
         specifier: 11.1.1
-        version: 11.1.1(acorn@8.14.0)(fumadocs-core@14.2.1(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+        version: 11.1.1(acorn@8.14.0)(fumadocs-core@14.2.1(@types/react@18.3.12)(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       fumadocs-ui:
         specifier: 13.4.10
-        version: 13.4.10(@types/react-dom@18.3.1)(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.15(ts-node@10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.5))(@types/node@22.5.4)(typescript@5.6.3)))
+        version: 13.4.10(@types/react-dom@18.3.1)(@types/react@18.3.12)(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.15(ts-node@10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.5))(@types/node@22.5.4)(typescript@5.6.3)))
       next:
         specifier: ^14.2.17
-        version: 14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -161,6 +161,9 @@ importers:
       '@chromatic-com/storybook':
         specifier: ^1.9.0
         version: 1.9.0(react@18.3.1)
+      '@playwright/test':
+        specifier: ^1.50.1
+        version: 1.50.1
       '@storybook/addon-a11y':
         specifier: ^8.5.6
         version: 8.5.6(storybook@8.5.6(prettier@3.3.3))
@@ -1216,6 +1219,11 @@ packages:
   '@pkgr/core@0.1.1':
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
+
+  '@playwright/test@1.50.1':
+    resolution: {integrity: sha512-Jii3aBg+CEDpgnuDxEp/h7BimHcUTDlpEtce89xEumlJ5ef2hqepZ+PWp1DDpYC/VO9fmWVI1IlEaoI5fK9FXQ==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   '@radix-ui/number@1.1.0':
     resolution: {integrity: sha512-V3gRzhVNU1ldS5XhAPTom1fOIo4ccrjjJgmE+LI2h/WaFpHmx0MQApT+KZHnx8abG6Avtfcz4WoEciMnpFT3HQ==}
@@ -7953,6 +7961,10 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
+  '@playwright/test@1.50.1':
+    dependencies:
+      playwright: 1.50.1
+
   '@radix-ui/number@1.1.0': {}
 
   '@radix-ui/primitive@1.1.0': {}
@@ -11196,7 +11208,7 @@ snapshots:
   fsevents@2.3.3:
     optional: true
 
-  fumadocs-core@13.4.10(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  fumadocs-core@13.4.10(@types/react@18.3.12)(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@formatjs/intl-localematcher': 0.5.8
       '@shikijs/rehype': 1.23.1
@@ -11205,7 +11217,7 @@ snapshots:
       github-slugger: 2.0.0
       image-size: 1.1.1
       negotiator: 0.6.4
-      next: 14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next: 14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       npm-to-yarn: 3.0.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -11221,7 +11233,7 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  fumadocs-core@14.2.1(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  fumadocs-core@14.2.1(@types/react@18.3.12)(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@formatjs/intl-localematcher': 0.5.8
       '@orama/orama': 3.0.1
@@ -11238,14 +11250,14 @@ snapshots:
       shiki: 1.23.1
       unist-util-visit: 5.0.0
     optionalDependencies:
-      next: 14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next: 14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
       - '@types/react'
       - supports-color
 
-  fumadocs-mdx@11.1.1(acorn@8.14.0)(fumadocs-core@14.2.1(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)):
+  fumadocs-mdx@11.1.1(acorn@8.14.0)(fumadocs-core@14.2.1(@types/react@18.3.12)(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)):
     dependencies:
       '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
       chokidar: 4.0.1
@@ -11253,16 +11265,16 @@ snapshots:
       esbuild: 0.24.0
       estree-util-value-to-estree: 3.2.1
       fast-glob: 3.3.2
-      fumadocs-core: 14.2.1(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      fumadocs-core: 14.2.1(@types/react@18.3.12)(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       gray-matter: 4.0.3
       micromatch: 4.0.8
-      next: 14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next: 14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       zod: 3.23.8
     transitivePeerDependencies:
       - acorn
       - supports-color
 
-  fumadocs-ui@13.4.10(@types/react-dom@18.3.1)(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.15(ts-node@10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.5))(@types/node@22.5.4)(typescript@5.6.3))):
+  fumadocs-ui@13.4.10(@types/react-dom@18.3.1)(@types/react@18.3.12)(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.15(ts-node@10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.5))(@types/node@22.5.4)(typescript@5.6.3))):
     dependencies:
       '@radix-ui/react-accordion': 1.2.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-collapsible': 1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -11274,9 +11286,9 @@ snapshots:
       '@tailwindcss/typography': 0.5.15(tailwindcss@3.4.15(ts-node@10.9.2(@swc/core@1.10.1(@swc/helpers@0.5.5))(@types/node@22.5.4)(typescript@5.6.3)))
       class-variance-authority: 0.7.0
       cmdk: 1.0.4(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      fumadocs-core: 13.4.10(@types/react@18.3.12)(next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      fumadocs-core: 13.4.10(@types/react@18.3.12)(next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       lucide-react: 0.438.0(react@18.3.1)
-      next: 14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next: 14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       next-themes: 0.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -13041,7 +13053,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  next@14.2.18(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  next@14.2.18(@playwright/test@1.50.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@next/env': 14.2.18
       '@swc/helpers': 0.5.5
@@ -13062,6 +13074,7 @@ snapshots:
       '@next/swc-win32-arm64-msvc': 14.2.18
       '@next/swc-win32-ia32-msvc': 14.2.18
       '@next/swc-win32-x64-msvc': 14.2.18
+      '@playwright/test': 1.50.1
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
