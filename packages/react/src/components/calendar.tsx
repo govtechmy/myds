@@ -105,7 +105,7 @@ const Calendar: FC<CalendarProps> = ({
         day_button: clx(
           buttonVariants({ variant: "default-ghost" }),
           "size-10 font-normal justify-center disabled:bg-transparent",
-          "rounded-md group-[.selected:not(.in-range)]:bg-bg-primary-600 group-[.selected:not(.in-range)]:text-white",
+          "rounded-md group-[.selected:not(.in-range)]:bg-primary-600 group-[.selected:not(.in-range)]:text-white",
         ),
         selected:
           props.mode === "single"
