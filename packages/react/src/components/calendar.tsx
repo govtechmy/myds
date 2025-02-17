@@ -101,21 +101,23 @@ const Calendar: FC<CalendarProps> = ({
         weekdays: "flex",
         weekday: "text-txt-black-500 font-normal w-10 text-body-xs py-2",
         week: "flex w-full mt-1.5",
-        day: "size-10",
+        day: "p-0",
         day_button: clx(
           buttonVariants({ variant: "default-ghost" }),
-          "size-10 p-0 font-normal justify-center disabled:bg-transparent",
+          "size-10 font-normal justify-center disabled:bg-transparent",
+          "rounded-md group-[.selected:not(.in-range)]:bg-bg-primary-600 group-[.selected:not(.in-range)]:text-white",
         ),
         selected:
           props.mode === "single"
             ? "*:bg-primary-600 *:text-white *:hover:bg-primary-600 *:hover:text-white *:focus:bg-primary-600 *:focus:text-white"
-            : "",
+            : "group selected",
         today: "bg-bg-black-50 text-txt-black-900",
         outside: "text-txt-black-900 opacity-50",
         disabled: "",
         range_start:
           "rounded-l-md bg-bg-primary-100 *:bg-primary-600 *:text-white *:hover:bg-primary-600 *:hover:text-white *:focus:bg-primary-600 *:focus:text-white",
-        range_middle: "bg-bg-primary-100 *:hover:bg-bg-primary-200",
+        range_middle:
+          "in-range bg-bg-primary-100 *:hover:bg-bg-primary-200 *:focus:bg-bg-primary-200",
         range_end:
           "rounded-r-md bg-bg-primary-100 *:bg-primary-600 *:text-white *:hover:bg-primary-600 *:hover:text-white *:focus:bg-primary-600 *:focus:text-white",
         hidden: "invisible",
