@@ -234,7 +234,7 @@ const FooterCopyrightDate: FunctionComponent<ComponentProps<"div">> = ({
     <div className={clx("text-txt-black-500 text-sm", className)} {...props}>
       {children} © {new Date().getFullYear()}
     </div>
-    <span className="bg-otl-gray-300 hidden h-3 w-px lg:block"></span>
+    <span className="bg-otl-gray-300 hidden h-3 w-px lg:block last:hidden"></span>
   </>
 );
 
