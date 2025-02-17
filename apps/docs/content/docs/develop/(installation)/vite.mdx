@@ -1,0 +1,76 @@
+---
+title: Vite
+description: A quick guide to set up MYDS in a Vite app.
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+
+### Steps to install
+
+<Steps>
+  <Step>
+   #### Create a Vite project
+    
+    ```package-install
+    npm init vite@latest
+    ```
+
+    You will be prompted with a series of questions. Select the following options:
+
+    ```sh title="terminal"
+    ✔ Project name: … project-name
+    ✔ Select a framework: › React
+    ✔ Select a variant: › TypeScript
+    ```
+
+  </Step>
+  
+   <Step>
+    #### Install packages
+    ```package-install
+    npm i @govtechmy/myds-react @govtechmy/myds-style 
+    ```
+  </Step>
+  
+  
+  <Step>
+    #### Configure CSS stylesheet
+
+    You may configure the MYDS styling through one of (2) methods listed below.
+
+    __1. CSS import__
+
+    ```css title="src/App.css"
+    @import "@govtechmy/myds-style/full.css";
+    ```
+
+    __2. Tailwind CSS__
+
+    Please read the [Style Configuration](./style-configuration) for more advanced configuration.
+
+    </Step>
+
+    <Step>
+    #### Start using the components!
+
+    Here is a `<Button />` for you to get started!
+
+    ```tsx title="src/App.tsx"
+    import { Button } from "@govtechmy/myds-react/button";
+
+    function App() {
+      return (
+          <Button variant="primary-fill">
+            Hello MYDS
+          </Button>
+      )
+    }
+
+    export default App
+
+    ```
+
+    </Step>
+
+</Steps>
