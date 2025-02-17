@@ -27,7 +27,7 @@ const MastheadHeader: FunctionComponent<MastheadHeaderProps> = ({
       className="block cursor-pointer list-none py-2.5 outline-none sm:py-1 [&::-webkit-details-marker]:hidden"
       tabIndex={-1}
     >
-      <div className="px-4.5 mx-auto flex max-w-[1280px] items-center gap-1.5 text-sm/4 max-sm:justify-between md:px-6">
+      <div className="px-4.5 container mx-auto flex max-w-[1280px] items-center gap-1.5 text-sm/4 max-sm:justify-between md:px-4">
         {children}
       </div>
     </summary>
@@ -65,7 +65,7 @@ const MastheadContent: FunctionComponent<PropsWithChildren> = ({
   return (
     <div className="group-open:animate-in group-open:slide-in-from-top-2 group-closed:animate-out group-closed:slide-out-to-top-1 overflow-hidden transition-all duration-300 ease-in-out">
       <div className="container mx-auto max-w-[1280px]">
-        <div className="gap-4.5 pt-4.5 grid grid-cols-1 pb-6 pl-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
+        <div className="gap-4.5 pt-4.5 grid grid-cols-1 pb-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
           <span className="text-txt-primary static text-sm sm:hidden">
             Here's how you know
           </span>
