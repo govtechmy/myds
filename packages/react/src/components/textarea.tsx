@@ -38,6 +38,6 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   },
 );
 
-TextArea.displayName = "InputText";
+TextArea.displayName = "TextArea";
 
 export { TextArea };

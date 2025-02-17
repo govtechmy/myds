@@ -282,7 +282,25 @@ const FooterTimestamp: FunctionComponent<FooterTimestampProps> = ({
   );
 };
 
-export default FooterTimestamp;
+
+/*========================================================================================================================*/
+
+Footer.displayName = "Footer";
+FooterTopSection.displayName = "FooterTopSection";
+FooterMainInfo.displayName = "FooterMainInfo";
+ImageWithTitle.displayName = "ImageWithTitle";
+Address.displayName = "Address";
+SocialMedia.displayName = "SocialMedia";
+SocialMediaItem.displayName = "SocialMediaItem";
+FooterContent.displayName = "FooterContent";
+FooterContentColumn.displayName = "FooterContentColumn";
+FooterBottomSection.displayName = "FooterBottomSection";
+FooterCopyright.displayName = "FooterCopyright";
+FooterCopyrightDate.displayName = "FooterCopyrightDate";
+FooterCopyrightLinkWrapper.displayName = "FooterCopyrightLinkWrapper";
+FooterTimestamp.displayName = "FooterTimestamp";
+
+/*========================================================================================================================*/
 
 export {
   Footer,

@@ -104,6 +104,14 @@ const AlertDialogContent: ForwardRefExoticComponent<
   );
 });
 
+AlertDialog.displayName = "AlertDialog";
+AlertDialogContent.displayName = "AlertDialogContent";
+AlertDialogDescription.displayName = "AlertDialogDescription";
+AlertDialogAction.displayName = "AlertDialogAction";
+AlertDialogClose.displayName = "AlertDialogClose";
+AlertDialogTitle.displayName = "AlertDialogTitle";
+AlertDialogTrigger.displayName = "AlertDialogTrigger";
+
 export {
   AlertDialog,
   AlertDialogContent,

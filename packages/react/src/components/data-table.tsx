@@ -574,5 +574,6 @@ const DataTable = <TData extends Record<string, any>>(
     </DataTableProvider>
   );
 };
+DataTable.displayName = "DataTable";
 
 export { DataTable, Cell, type ColumnDef };
