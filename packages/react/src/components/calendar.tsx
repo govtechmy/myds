@@ -105,13 +105,16 @@ const Calendar: FC<CalendarProps> = ({
         day_button: clx(
           buttonVariants({ variant: "default-ghost" }),
           "size-10 font-normal justify-center disabled:bg-transparent",
-          "rounded-md group-[.selected:not(.in-range)]:bg-primary-600 group-[.selected:not(.in-range)]:text-white",
+          "[.selected:not(.in-range)_&]:bg-primary-600 [.selected:not(.in-range)_&]:text-white",
+          "[.today:not(.selected)_&]:text-primary-600 [.today:selected)_&]:text-white",
         ),
-        selected:
+        selected: clx(
+          "selected",
           props.mode === "single"
             ? "*:bg-primary-600 *:text-white *:hover:bg-primary-600 *:hover:text-white *:focus:bg-primary-600 *:focus:text-white"
-            : "group selected",
-        today: "bg-bg-black-50 text-txt-black-900",
+            : "",
+        ),
+        today: "today",
         outside: "text-txt-black-900 opacity-50",
         disabled: "",
         range_start:
@@ -182,7 +185,7 @@ const Calendar: FC<CalendarProps> = ({
                             ? dateMatchers("month", date, props.disabled)
                             : false
                         }
-                        className="w-full h-full justify-center disabled:data-[selected=false]:bg-transparent"
+                        className="h-full w-full justify-center disabled:data-[selected=false]:bg-transparent"
                         onClick={() => {
                           setMonth(date);
                           setView("day");
