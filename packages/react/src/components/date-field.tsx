@@ -89,5 +89,6 @@ const DateField: FunctionComponent<DateFieldProps> = ({
     </div>
   );
 };
+DateField.displayName = "DateField";
 
 export { DateField };

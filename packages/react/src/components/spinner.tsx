@@ -57,3 +57,4 @@ export const Spinner: React.FC<SpinnerProps> = ({
     </div>
   );
 };
+Spinner.displayName = "Spinner";

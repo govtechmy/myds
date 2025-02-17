@@ -8,14 +8,13 @@ import { Slot } from "@radix-ui/react-slot";
  * @component
  * @example
  * <AnnounceBar>
- *        <AnnounceBarTag variant="warning">
- *          Maintenance
- *        </AnnounceBarTag>
- *        <AnnounceBarDescription>
- *          <p>This service is undergoing maintenance. Thank you for your patience. <Link *underline="always" primary href="#">Send us your feedback here.</Link></p>
- *        </AnnounceBarDescription>
- *   </AnnounceBar>
- * <AnnounceBar propName="value" />
+ *   <AnnounceBarTag variant="warning">
+ *     Maintenance
+ *   </AnnounceBarTag>
+ *   <AnnounceBarDescription>
+ *     <p>This service is undergoing maintenance. Thank you for your patience. <Link *underline="always" primary href="#">Send us your feedback here.</Link></p>
+ *   </AnnounceBarDescription>
+ * </AnnounceBar>
  */
 const AnnounceBar: ForwardRefExoticComponent<ComponentProps<"div">> =
   forwardRef(({ className, children, ...props }, ref) => {

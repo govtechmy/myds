@@ -56,5 +56,6 @@ const Link: ForwardRefExoticComponent<LinkProps> = forwardRef(
     );
   },
 );
+Link.displayName = "Link";
 
 export { Link };
