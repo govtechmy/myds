@@ -81,18 +81,20 @@ const Calendar: FC<CalendarProps> = ({
         className,
       )}
       classNames={{
-        months: "flex flex-col h-full",
+        months: "relative flex flex-col h-full",
         month: "flex flex-col h-full gap-y-1.5",
         month_caption: "",
         caption_label: "text-sm font-medium",
-        nav: "absolute right-3 flex gap-2 items-center",
+        nav: "absolute left-52 flex gap-2 items-center",
         button_previous: buttonVariants({
           variant: "default-outline",
           iconOnly: true,
+          className: "size-8",
         }),
         button_next: buttonVariants({
           variant: "default-outline",
           iconOnly: true,
+          className: "size-8",
         }),
         chevron: "size-4",
         month_grid: "w-full border-collapse space-y-1",
