@@ -147,6 +147,7 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
     );
   },
 );
+Button.displayName = "Button";
 
 /*========================================================================================================================*/
 
