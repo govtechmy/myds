@@ -16,7 +16,7 @@ import { fn } from "@storybook/test";
  *    const [date, setDate] = React.useState<Date>();
  *
  *    return (
- *      <DatePicker selected={date} onSelect={setDate} />
+ *      <DatePicker value={date} onValueChange={setDate} />
  *    )
  * }
  *
@@ -90,7 +90,7 @@ const meta = {
     },
     value: {
       description:
-        "The controlled date currently selected. Should be used in conjunction with `onSelect`.",
+        "The controlled date currently selected. Should be used in conjunction with `onValueChange`.",
     },
     size: {
       table: {
