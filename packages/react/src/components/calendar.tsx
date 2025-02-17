@@ -159,7 +159,7 @@ const Calendar: FC<CalendarProps> = ({
           return view === "day" ? (
             <table {...tableProps} />
           ) : view === "month" ? (
-            <div role="grid" className="grid grow grid-cols-3">
+            <table role="grid" className="grid grow grid-cols-3">
               {Array(12)
                 .fill(null)
                 .map((_, i) => {
@@ -171,27 +171,29 @@ const Calendar: FC<CalendarProps> = ({
                     month.getMonth() === i && month.getFullYear() === year;
 
                   return (
-                    <Button
-                      data-selected={isSelected}
-                      variant={isSelected ? "primary-fill" : "default-ghost"}
-                      disabled={
-                        props.disabled
-                          ? dateMatchers("month", date, props.disabled)
-                          : false
-                      }
-                      className="w-full justify-center disabled:data-[selected=false]:bg-transparent"
-                      onClick={() => {
-                        setMonth(date);
-                        setView("day");
-                      }}
-                    >
-                      {formatDate(date, "MMM")}
-                    </Button>
+                    <td role="gridcell">
+                      <Button
+                        data-selected={isSelected}
+                        variant={isSelected ? "primary-fill" : "default-ghost"}
+                        disabled={
+                          props.disabled
+                            ? dateMatchers("month", date, props.disabled)
+                            : false
+                        }
+                        className="w-full h-full justify-center disabled:data-[selected=false]:bg-transparent"
+                        onClick={() => {
+                          setMonth(date);
+                          setView("day");
+                        }}
+                      >
+                        {formatDate(date, "MMM")}
+                      </Button>
+                    </td>
                   );
                 })}
-            </div>
+            </table>
           ) : (
-            <div role="grid" className="grid grid-cols-3 overflow-y-auto">
+            <table role="grid" className="grid grid-cols-3 overflow-y-auto">
               {Array(maxYear - minYear + 1)
                 .fill(null)
                 .map((_, i) => {
@@ -204,27 +206,29 @@ const Calendar: FC<CalendarProps> = ({
                   date.setHours(0, 0, 0, 0);
 
                   return (
-                    <Button
-                      ref={isSelected ? yearRef : null}
-                      data-selected={isSelected}
-                      variant={isSelected ? "primary-fill" : "default-ghost"}
-                      className="h-11 w-full justify-center disabled:data-[selected=false]:bg-transparent"
-                      disabled={
-                        props.disabled
-                          ? dateMatchers("year", date, props.disabled)
-                          : false
-                      }
-                      onClick={() => {
-                        setYear(displayYear);
-                        setMonth(new Date(displayYear, month.getMonth()));
-                        setView("month");
-                      }}
-                    >
-                      {displayYear}
-                    </Button>
+                    <td role="gridcell">
+                      <Button
+                        ref={isSelected ? yearRef : null}
+                        data-selected={isSelected}
+                        variant={isSelected ? "primary-fill" : "default-ghost"}
+                        className="h-11 w-full justify-center disabled:data-[selected=false]:bg-transparent"
+                        disabled={
+                          props.disabled
+                            ? dateMatchers("year", date, props.disabled)
+                            : false
+                        }
+                        onClick={() => {
+                          setYear(displayYear);
+                          setMonth(new Date(displayYear, month.getMonth()));
+                          setView("month");
+                        }}
+                      >
+                        {displayYear}
+                      </Button>
+                    </td>
                   );
                 })}
-            </div>
+            </table>
           );
         },
         NextMonthButton(props) {
