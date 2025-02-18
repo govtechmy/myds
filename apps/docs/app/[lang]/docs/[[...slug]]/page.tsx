@@ -85,7 +85,9 @@ export function generateMetadata({ params }: PageParams) {
       description: page.data.description,
       images: {
         url: t("metadata.openGraph.images.1.url"),
+        alt: t("metadata.openGraph.images.1.alt"),
       },
+      url: t("metadata.openGraph.url.index"),
     },
   } satisfies Metadata;
 }
