@@ -204,14 +204,21 @@ const DemoNavbar = () => {
 
         <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
           {/* Button Search  : mobile hide if needed  */}
-          <Button variant="default-ghost" className="p-2">
-            <SearchIcon></SearchIcon>
+          <Button
+            variant="default-ghost"
+            iconOnly
+            aria-label="search-button"
+            size={"small"}
+          >
+            <SearchIcon />
           </Button>
 
           {/* Button Light Mode Toggle  : mobile hide if needed  */}
           <Button
             variant="default-ghost"
-            className="p-2"
+            iconOnly
+            aria-label="search-button"
+            size={"small"}
             onClick={handleToggle}
           >
             {isDarkMode ? <SunIcon /> : <MoonIcon />}
@@ -227,7 +234,7 @@ const DemoNavbar = () => {
               variant="outline"
               size="medium"
             >
-              <SelectTrigger>
+              <SelectTrigger aria-label="language-selection">
                 <GlobeIcon className="h-4 w-4"></GlobeIcon>
                 <SelectValue>{(value) => value || "EN"}</SelectValue>
               </SelectTrigger>
@@ -307,14 +314,21 @@ const KementerianDigitalNavbar = () => {
 
         <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
           {/* Button Search  : mobile hide if needed  */}
-          <Button variant="default-ghost" className="p-2">
-            <SearchIcon></SearchIcon>
+          <Button
+            variant="default-ghost"
+            iconOnly
+            aria-label="search-button"
+            size={"small"}
+          >
+            <SearchIcon />
           </Button>
 
           {/* Button Light Mode Toggle : mobile hide if needed  */}
           <Button
             variant="default-ghost"
-            className="p-2"
+            iconOnly
+            aria-label="search-button"
+            size={"small"}
             onClick={handleToggle}
           >
             {isDarkMode ? <SunIcon /> : <MoonIcon />}
@@ -330,7 +344,7 @@ const KementerianDigitalNavbar = () => {
               variant="outline"
               size="medium"
             >
-              <SelectTrigger>
+              <SelectTrigger aria-label="language-selection">
                 <GlobeIcon className="h-4 w-4"></GlobeIcon>
                 <SelectValue>{(value) => value || "EN"}</SelectValue>
               </SelectTrigger>

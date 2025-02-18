@@ -63,6 +63,7 @@ declare module "@tanstack/react-table" {
     sortable?: boolean;
     expandable?: boolean;
     tooltip?: ReactNode;
+    ariaLabel?: string;
   }
 }
 
@@ -264,7 +265,15 @@ const DataTableHeader: FunctionComponent = () => {
                     header.column.columnDef.meta?.className?.header,
                   )}
                   style={{ ...getCommonPinningStyles(header.column) }}
+                  aria-label={
+                    header.column.columnDef.meta?.ariaLabel || "table-header"
+                  }
                 >
+                  <span className="sr-only">
+                    {(header.column.columnDef.id == "_checkbox" ||
+                      header.column.columnDef.id == "_radio") &&
+                      "selection-column"}
+                  </span>
                   {header.isPlaceholder ? null : (
                     <div className="flex w-full items-center justify-between gap-2 whitespace-nowrap">
                       {flexRender(
@@ -492,6 +501,7 @@ const RadioColumn = <TData extends Record<string, any>>() => {
         <input
           type="radio"
           role="radio"
+          aria-label="radio"
           id={row.id}
           value={row.id}
           checked={row.getIsSelected()}
