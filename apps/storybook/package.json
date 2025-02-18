@@ -28,7 +28,7 @@
     "@storybook/react": "^8.3.5",
     "@storybook/react-vite": "^8.3.5",
     "@storybook/test": "^8.3.5",
-    "@storybook/test-runner": "^0.21.0",
+    "@storybook/test-runner": "^0.21.1",
     "@types/react": "^18",
     "autoprefixer": "^10.4.20",
     "axe-playwright": "^2.1.0",
