@@ -11,6 +11,7 @@ import defaultMdxComponents from "fumadocs-ui/mdx";
 import { Heading } from "fumadocs-ui/components/heading";
 import Image from "next/image";
 import { darkify } from "@/lib/constant";
+import { getRosetta } from "@/locales/_server";
 
 interface PageParams {
   params: { slug?: string[]; lang: string };
@@ -72,11 +73,21 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params }: PageParams) {
-  const page = source.getPage(params.slug);
+  const { t } = getRosetta(params.lang as "en" | "ms");
+  const page = source.getPage(params.slug, params.lang);
   if (!page) notFound();
 
   return {
     title: page.data.title,
     description: page.data.description,
+    openGraph: {
+      title: `${page.data.title} — MYDS`,
+      description: page.data.description,
+      images: {
+        url: t("metadata.openGraph.images.1.url"),
+        alt: t("metadata.openGraph.images.1.alt"),
+      },
+      url: t("metadata.openGraph.url.index"),
+    },
   } satisfies Metadata;
 }
