@@ -83,173 +83,54 @@ const meta: Meta<typeof Checkbox> = {
 export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
-export const Default: Story = {
-  ...createStory({}),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const Default: Story = createStory({});
 
-export const DefaultDark: Story = {
-  ...createStory({ className: "dark" }, "dark"),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const DefaultDark: Story = createStory({ className: "dark" }, "dark");
 
-export const Medium: Story = {
-  ...createStory({ size: "medium" }),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const Medium: Story = createStory({ size: "medium" });
 
-export const MediumDark: Story = {
-  ...createStory({ size: "medium", className: "dark" }, "dark"),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const MediumDark: Story = createStory(
+  { size: "medium", className: "dark" },
+  "dark",
+);
 
-export const Checked: Story = {
-  ...createStory({ checked: true }),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const Checked: Story = createStory({ checked: true });
 
-export const CheckedDark: Story = {
-  ...createStory({ checked: true, className: "dark" }, "dark"),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const CheckedDark: Story = createStory(
+  { checked: true, className: "dark" },
+  "dark",
+);
 
-export const Indeterminate: Story = {
-  ...createStory({ checked: "indeterminate" }),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const Indeterminate: Story = createStory({ checked: "indeterminate" });
 
-export const IndeterminateDark: Story = {
-  ...createStory({ checked: "indeterminate", className: "dark" }, "dark"),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const IndeterminateDark: Story = createStory(
+  { checked: "indeterminate", className: "dark" },
+  "dark",
+);
 
-export const Disabled: Story = {
-  ...createStory({ disabled: true }),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const Disabled: Story = createStory({ disabled: true });
 
-export const DisabledDark: Story = {
-  ...createStory({ disabled: true, className: "dark" }, "dark"),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const DisabledDark: Story = createStory(
+  { disabled: true, className: "dark" },
+  "dark",
+);
 
-export const DisabledChecked: Story = {
-  ...createStory({ disabled: true, checked: true }),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const DisabledChecked: Story = createStory({
+  disabled: true,
+  checked: true,
+});
 
-export const DisabledCheckedDark: Story = {
-  ...createStory({ disabled: true, className: "dark", checked: true }, "dark"),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const DisabledCheckedDark: Story = createStory(
+  { disabled: true, checked: true, className: "dark" },
+  "dark",
+);
 
-export const DisabledIndeterminate: Story = {
-  ...createStory({ disabled: true, checked: "indeterminate" }),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const DisabledIndeterminate: Story = createStory({
+  disabled: true,
+  checked: "indeterminate",
+});
 
-export const DisabledIndeterminateDark: Story = {
-  ...createStory(
-    { disabled: "indeterminate", className: "dark", checked: true },
-    "dark",
-  ),
-  render: (args) => {
-    return (
-      <div className="flex min-w-[360px] justify-between">
-        <Label htmlFor="checkbox">Auto-delete notifications</Label>
-        <Checkbox id="checkbox" {...args}></Checkbox>
-      </div>
-    );
-  },
-};
+export const DisabledIndeterminateDark: Story = createStory(
+  { disabled: true, checked: "indeterminate", className: "dark" },
+  "dark",
+);

@@ -68,6 +68,7 @@ const Checkbox = React.forwardRef<
       ref={ref}
       className={clx(checkbox_cva({ size, className }))}
       role="checkbox"
+      aria-label="checkbox"
       {...ariaProps}
       {...props}
     >

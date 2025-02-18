@@ -66,7 +66,7 @@ const meta = {
           <TooltipContent>What does the fox says?</TooltipContent>,
         ],
         top: [
-          <TooltipTrigger className="sr-only">
+          <TooltipTrigger>
             <QuestionCircleIcon />
           </TooltipTrigger>,
           <TooltipContent side="top" align="center">
