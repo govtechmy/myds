@@ -1,5 +1,13 @@
 # @govtechmy/myds-react
 
+## 0.0.8
+
+### Patch Changes
+
+- a61fba9: Add `hideClose` prop to DialogBody
+- 26ed81e: Masthead css update (container)
+- c45e030: remove DropdownTrigger `asChild` set as always true
+
 ## 0.0.7
 
 ### Patch Changes

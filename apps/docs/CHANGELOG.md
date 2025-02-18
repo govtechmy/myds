@@ -1,5 +1,15 @@
 # @govtechmy/myds-docs
 
+## 0.0.9
+
+### Patch Changes
+
+- a61fba9: Add `hideClose` prop to DialogBody
+- Updated dependencies [a61fba9]
+- Updated dependencies [26ed81e]
+- Updated dependencies [c45e030]
+  - @govtechmy/myds-react@0.0.8
+
 ## 0.0.8
 
 ### Patch Changes
