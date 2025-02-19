@@ -1,4 +1,3 @@
-"use client";
 import { createContext, ReactNode, useContext, useState } from "react";
 import { Button } from "../components/button";
 import { SunIcon } from "../icons/sun";
@@ -36,11 +35,7 @@ const useTheme = () => {
   return context;
 };
 
-const TriggerThemeButton = ({
-  themes = ["light", "dark"],
-}: {
-  themes: string[];
-}) => {
+const ThemeToggler = ({ themes = ["light", "dark"] }: { themes: string[] }) => {
   const { toggleTheme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -63,4 +58,4 @@ const TriggerThemeButton = ({
   );
 };
 
-export { ThemeProvider, useTheme, TriggerThemeButton };
+export { ThemeProvider, useTheme, ThemeToggler };
