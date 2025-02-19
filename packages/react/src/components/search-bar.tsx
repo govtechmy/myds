@@ -90,8 +90,14 @@ export const SearchBarInput: FunctionComponent<
         "text-txt-black-900 placeholder:text-txt-black-500 flex-1 bg-transparent focus:outline-none",
         className,
       )}
+      asChild
       {...props}
-    />
+    >
+      <input
+        aria-controls="search-input"
+        // The hardcoded aria-controls here is a temporary fix such that it matches the id of SearchBarResults. It is related to this error (https://github.com/dequelabs/axe-core/issues/4172)
+      />
+    </Command.Input>
   );
 });
 
@@ -184,7 +190,9 @@ export const SearchBarResults: FunctionComponent<
         search_bar_results_dropdown_cva({ size, className }),
         !open && "hidden",
       )}
+      // The hardcoded id here is a temporary fix such that it matches the value of aria-controls props of SearchBarInput. It is related to this error (https://github.com/dequelabs/axe-core/issues/4172)
       {...props}
+      id="search-input"
     />
   );
 };

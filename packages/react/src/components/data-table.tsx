@@ -537,6 +537,7 @@ const ExpandCell = <TData extends Record<string, any>>(
           <ButtonIcon
             data-expanded={row.getIsExpanded()}
             className="transform transition-transform data-[expanded=true]:rotate-90"
+            aria-label="expand row"
           >
             <ChevronRightIcon />
           </ButtonIcon>

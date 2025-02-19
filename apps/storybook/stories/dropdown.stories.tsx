@@ -14,7 +14,7 @@ import {
   OptionsIcon,
   SettingIcon,
 } from "@govtechmy/myds-react/icon";
-import { ButtonIcon } from "@govtechmy/myds-react/button";
+import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
 import { Link } from "@govtechmy/myds-react/link";
 
 /**
@@ -110,7 +110,9 @@ const meta = {
       description: "Select different dropdown scenarios",
       mapping: {
         basic: [
-          <DropdownTrigger>User</DropdownTrigger>,
+          <DropdownTrigger asChild>
+            <Button variant={"default-outline"}>User</Button>
+          </DropdownTrigger>,
           <DropdownContent>
             <DropdownItem>Profile</DropdownItem>
             <DropdownItem disabled>Billing</DropdownItem>
@@ -132,10 +134,16 @@ const meta = {
           </DropdownContent>,
         ],
         with_icon: [
-          <DropdownTrigger>
-            <ButtonIcon>
-              <OptionsIcon />
-            </ButtonIcon>
+          <DropdownTrigger asChild>
+            <Button
+              iconOnly
+              variant={"default-ghost"}
+              aria-label="options button"
+            >
+              <ButtonIcon>
+                <OptionsIcon />
+              </ButtonIcon>
+            </Button>
           </DropdownTrigger>,
           <DropdownContent side="bottom" align="end">
             <DropdownItem>
