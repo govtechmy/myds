@@ -32,3 +32,12 @@
     text-underline-position: from-font;
   }
 }
+/* The overwrite is related to this issue https://github.com/chanzuckerberg/axe-storybook-testing/issues/39 */
+.sb-show-main,
+#addon-backgrounds-color .sb-show-main,
+[id^="addon-backgrounds"] .sb-show-main 
+{
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+  transition: none !important;
+}
