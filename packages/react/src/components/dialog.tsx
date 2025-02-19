@@ -55,7 +55,9 @@ interface DialogBodyContextProps {
 }
 interface DialogBodyProps
   extends ComponentProps<typeof DialogPrimitive.Content>,
-    DialogBodyContextProps {}
+    DialogBodyContextProps {
+  hideClose?: boolean;
+}
 
 const DialogBodyContext = createContext<DialogBodyContextProps>({
   dismissible: true,
@@ -63,7 +65,17 @@ const DialogBodyContext = createContext<DialogBodyContextProps>({
 });
 
 const DialogBody: ForwardRefExoticComponent<DialogBodyProps> = forwardRef(
-  ({ className, children, dismissible = true, onDismiss, ...props }, ref) => {
+  (
+    {
+      className,
+      children,
+      hideClose = false,
+      dismissible = true,
+      onDismiss,
+      ...props
+    },
+    ref,
+  ) => {
     return (
       <DialogPrimitive.Portal>
         <DialogPrimitive.Overlay
@@ -98,7 +110,7 @@ const DialogBody: ForwardRefExoticComponent<DialogBodyProps> = forwardRef(
         >
           <DialogBodyContext.Provider value={{ dismissible, onDismiss }}>
             {children}
-            {dismissible && (
+            {!hideClose && (
               <DialogClose
                 className={clx(
                   "absolute right-4 top-4",
@@ -306,12 +318,15 @@ const DialogIcon: ForwardRefExoticComponent<DialogIconProps> = forwardRef(
 
 /*========================================================================================================================*/
 
-DialogBody.displayName = DialogPrimitive.Content.displayName;
+DialogBody.displayName = "DialogBody";
 DialogHeader.displayName = "DialogHeader";
 DialogFooter.displayName = "DialogFooter";
 DialogTitle.displayName = DialogPrimitive.Title.displayName;
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
 DialogIcon.displayName = "DialogIcon";
+DialogClose.displayName = DialogPrimitive.Close.displayName;
+DialogContent.displayName = DialogPrimitive.Content.displayName;
+DialogTrigger.displayName = DialogPrimitive.Trigger.displayName;
 
 /*========================================================================================================================*/
 
@@ -339,3 +354,4 @@ export type {
   DialogDescriptionProps,
   DialogIconProps,
 };
+export { dialog_footer_cva };

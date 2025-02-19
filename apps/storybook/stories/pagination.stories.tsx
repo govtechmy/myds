@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 import {
+  AutoPagination,
   Pagination,
   PaginationNext,
   PaginationPrevious,
@@ -34,7 +35,7 @@ import ArrowBack from "../react/arrow-back";
  */
 const meta = {
   title: "@govtechmy/myds-react/Pagination",
-  component: Pagination,
+  component: AutoPagination,
   parameters: {
     layout: "centered",
     query: {
@@ -94,7 +95,7 @@ const meta = {
       options: ["default", "simple", "full"],
     },
   },
-} satisfies Meta<typeof Pagination>;
+} satisfies Meta<typeof AutoPagination>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -250,9 +251,9 @@ export const CustomizedButtonAndLabel: Story = createStory({
  *    type="default"
  *    maxDisplay={4}
  *    onPageChange={(page) => {
- *                   console.log("will run this: urlParams.set('page', page.toString());");
- *                   urlParams.set("page", page.toString());
- *                  }}
+ *      console.log("will run this: urlParams.set('page', page.toString());");
+ *      urlParams.set("page", page.toString());
+ *    }}
  * />
  * );
  * ```
@@ -269,7 +270,7 @@ export const ServerSidePagination: Story = {
   render: (args, context) => {
     const urlParams = new URLSearchParams(document.location.search);
     return (
-      <Pagination
+      <AutoPagination
         page={Number(urlParams.get("page")) || 1}
         limit={10}
         count={199}

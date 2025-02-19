@@ -1,6 +1,6 @@
 {
   "name": "@govtechmy/myds-react",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
@@ -242,7 +242,7 @@
     "date-fns": "^4.1.0",
     "input-otp": "^1.4.1",
     "mitt": "^3.0.1",
-    "react-day-picker": "^9.2.1",
+    "react-day-picker": "^9.5.1",
     "tailwind-merge": "^2.4.0"
   }
 }

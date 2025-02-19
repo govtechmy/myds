@@ -112,6 +112,7 @@ const Select: React.ForwardRefExoticComponent<SelectProps> = React.forwardRef(
     );
   },
 );
+Select.displayName = "Select";
 
 const SelectGroup = SelectPrimitive.Group;
 
@@ -181,6 +182,7 @@ const SelectValue: React.ForwardRefExoticComponent<SelectValueProps> =
       </>
     );
   });
+SelectValue.displayName = "SelectValue";
 
 /*========================================================================================================================*/
 

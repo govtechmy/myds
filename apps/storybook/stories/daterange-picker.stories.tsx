@@ -19,7 +19,7 @@ import { createStory } from "../utils";
  *    });
  *
  *    return (
- *      <DateRangePicker selected={dateRange} onValueChange={setDateRange} />
+ *      <DateRangePicker value={dateRange} onValueChange={setDateRange} />
  *    )
  * }
  * ```
@@ -33,7 +33,7 @@ const meta = {
   },
   args: { onValueChange: fn() },
   argTypes: {
-    defaultDateRange: {
+    defaultValue: {
       description:
         "The date range when initially rendered. Use when you do not need to control the state of the date range picker.",
     },

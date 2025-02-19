@@ -1,0 +1,163 @@
+---
+title: Laravel
+description: A quick guide to set up MYDS in a Laravel app.
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+
+### Steps to install
+
+<Steps>
+  <Step>
+    #### Create a Laravel project
+    ```sh title="terminal"
+    laravel new project-name
+    ```
+    You will be prompted with a series of questions. You may choose whichever fit your project requirement(s):
+
+        ```sh title="terminal"
+    ✔ Would you like to install a starter kit?
+    ✔ Which testing framework do you prefer?
+    ✔ Which database will your application use?
+    ✔ Default database updated. Would you like to run the default database migrations?
+    ```
+
+    <Callout
+      type="info"
+      title="Important"
+      className="bg-bg-primary-50 text-txt-primary border-transparent"
+      icon={<InfoIcon className="size-5" />}
+    >
+      Laravel Breeze or Jetstream will handle the frontend setup for you, by installing the required dependencies. Just be sure to select `React with Inertia` or any `React` based option
+    </Callout>
+
+
+    After the project is created, head to the project root:
+    ```sh title="terminal"
+    cd project-name
+    npm install && npm run build
+    composer run dev
+    ```
+
+  </Step>
+  
+  <Step>
+    #### Install packages
+
+    ```package-install
+    npm i @govtechmy/myds-react @govtechmy/myds-style
+    // ☝️ Using a starter kit (Laravel Breeze or Jetstream)
+
+    npm i @govtechmy/myds-react @govtechmy/myds-style react react-dom @vitejs/plugin-react
+    // ☝️ Not using a starter kit
+    ```
+
+  </Step>
+  
+  <Step>
+    #### Configure CSS stylesheet
+
+    You may configure the styling through one of (2) methods listed below.
+
+    __1. CSS import__
+
+    ```css title="resources/css/app.css"
+    @import "@govtechmy/myds-style/full.css";
+    ```
+
+    __2. Tailwind CSS__
+
+    Please read the [Style Configuration](./style-configuration) for more advanced configuration.
+
+  </Step>
+  
+  <Step>
+    #### Configure `vite.config.js` & Blade integration
+
+    <Callout
+      type="info"
+      title="Important"
+      className="bg-bg-primary-50 text-txt-primary border-transparent"
+      icon={<InfoIcon className="size-5" />}
+    >
+     If you are using Laravel Breeze or Jetstream, this has been configured for you using an Inertia based setup. Otherwise, you need to configure it manually like below.
+    </Callout>
+
+
+
+    ```js title="vite.config.js"
+    import { defineConfig } from "vite";
+    import laravel from "laravel-vite-plugin";
+    import react from "@vitejs/plugin-react"; // [!code ++]
+
+    export default defineConfig({
+        plugins: [
+            laravel({
+                input: ["resources/css/app.css", "resources/js/app.js"],
+                refresh: true,
+            }),
+            react(), // [!code ++]
+        ],
+    });
+    ```
+
+    ```php title="resources/views/app.blade.php"
+    # Please make sure the following configuration exists in the Blade file.
+    <head>
+      # Non-Inertia setup
+      @viteReactRefresh # [!code ++]
+      @vite(['resources/css/app.css', 'resources/js/app.jsx']) # [!code ++]
+
+      # Inertia setup
+      @viteReactRefresh # [!code ++]
+      @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"]) # [!code ++]
+      @inertiaHead # [!code ++]
+    </head>
+    ```
+
+  </Step>
+
+  <Step>
+    #### Start using the components!
+
+    Here is a `<Button />` for you to get started!
+
+    ```tsx title="resources/js/app.jsx"
+    import { Button } from "@govtechmy/myds-react/button";
+
+    function App() {
+      return (
+          <Button variant="primary-fill">
+            Hello MYDS
+          </Button>
+      )
+    }
+
+    export default App
+    ```
+
+    If you are using an `Inertia` setup, you can start using the components in your `Pages` components.:
+
+    ```tsx title="app/js/Pages/Welcome.jsx"
+
+    import { PageProps } from '@/types';
+    import { Head, Link } from '@inertiajs/react';
+
+    export default function Welcome() {
+        return (
+          <>
+            <Head title="Welcome" />
+            <Button variant="primary-fill">
+              Hello MYDS
+            </Button>
+          </>
+        );
+
+    }
+
+    ```
+    </Step>
+
+</Steps>

@@ -1,15 +1,348 @@
 ---
 title: Pagination
-description: Pagination
+description: Allows users to navigate through a large set of content divided into discrete pages.
 ---
 
-import { InfoIcon } from "@govtechmy/myds-react/icon";
+import {
+  SimplePagination as AutoPagination, 
+  SelfPagination,
+  Pagination,
+  PaginationContext,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationNext,
+  PaginationNumber,
+  PaginationPrevious, 
+} from "@/components/myds";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
-<Callout
-  type="info"
-  title="Note"
-  className="bg-bg-primary-50 text-txt-primary border-transparent"
-  icon={<InfoIcon className="size-5" />}
->
-  Work in progress
-</Callout>
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+    <div className="flex flex-col gap-10">
+      <AutoPagination
+        page={1}
+        limit={10}
+        count={200}
+        type="simple"
+        maxDisplay={4}
+      />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { AutoPagination } from "@govtechmy/myds-react/pagination";
+    
+    <AutoPagination
+      page={1}
+      limit={10}
+      count={200}
+      type="simple"
+      maxDisplay={4}
+      onPageChange={(page) => console.log(page)}
+    />
+    ```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-pagination--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/pagination.tsx",
+  }}
+/>
+
+## Usage
+## Simple Usage
+For simple usage, `AutoPagination` can be used directly. It is a pre-assembled component that handles common pagination use cases.
+
+```tsx 
+  import { AutoPagination } from "@govtechmy/myds-react/pagination";
+```
+
+```tsx 
+  <AutoPagination />
+```
+
+### Advanced Usage
+For user that requires more advanced use cases, the pagination functionality can be assembled manually. The user can use the subcomponents: `Pagination`, `PaginationItem`, `PaginationContent`, `PaginationEllipsis`, `PaginationNext`, `PaginationPrevious` and `PaginationNumber`.
+```tsx 
+  import 
+  {
+    Pagination,
+    PaginationContext,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationNext,
+    PaginationNumber,
+    PaginationPrevious, 
+  } from "@/components/myds";
+```
+```tsx 
+  <Pagination>
+    <PaginationContent>
+      <PaginationItem>
+        <PaginationPrevious />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationNumber />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationEllipsis />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationNext />
+      </PaginationItem>
+    </PaginationContent>
+  </Pagination>
+```
+
+## Examples
+### AutoPagination Types  
+Use the `type` props to change the type of the `AutoPagination` component. Examples of use cases for each types are outlined below:
+1. **default**: Ideal for contexts where users might want to jump to a specific page within a large number of pages.
+2. **simple**: Suitable for simpler navigation where users primarily move forward or backward.
+3. **full**: Similar to the `simple` type, this type displays the current page and total pages on the left and navigation buttons on far right.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+    <div className="flex flex-col gap-10">
+      <AutoPagination
+        page={2}
+        limit={10}
+        count={200}
+        type="default"
+        maxDisplay={4}
+      />
+      <AutoPagination
+        page={2}
+        limit={10}
+        count={200}
+        type="simple"
+        maxDisplay={4}
+      />
+      <AutoPagination
+        page={2}
+        limit={10}
+        count={200}
+        type="full"
+        maxDisplay={4}
+      />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { AutoPagination } from "@govtechmy/myds-react/pagination";
+
+    // default type
+    <AutoPagination
+      page={2}
+      limit={10}
+      count={200}
+      type="default"
+      maxDisplay={4}
+    />
+    
+    // simple type
+    <AutoPagination
+      page={2}
+      limit={10}
+      count={200}
+      type="simple"
+      maxDisplay={4}
+    />
+    
+    // full type
+    <AutoPagination
+      page={2}
+      limit={10}
+      count={200}
+      type="full"
+      maxDisplay={4}
+    />
+    ```
+  </Tab>
+</Tabs>
+
+### Pagination Configurations 
+Opting into using `AutoPagination` or manual assembly of pagination subcomponents necessitates into the usage of props such as `page`, `limit` and `count`. The functionality and look of the pagination components will be influenced by them.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+    <div className="flex flex-col gap-10 justify-center items-center">
+      <p className="text-md font-bold">AutoPagination</p>
+      <AutoPagination
+        page={2}
+        limit={10}
+        count={200}
+        type="simple"
+        maxDisplay={4}
+      />
+      <p className="text-md font-bold">Manual assembly</p>
+      <SelfPagination page={4} count={180}/>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx 
+    import { AutoPagination } from "@govtechmy/myds-react/pagination";
+
+    // simple type
+    <AutoPagination
+      page={2}
+      limit={10}
+      count={200}
+      type="simple"
+      maxDisplay={4}
+    />
+    
+    // self assembly
+    const count = 180;
+    const limit = 10;
+    const page = 4;
+    const { visiblePages, max } = usePagination({ count, limit, page });
+    const pageFn = (page: number) => console.log(page);
+
+    <Pagination
+      count={count}
+      limit={limit}
+      page={page}
+      onPageChange={pageFn}
+      type="default"
+    >
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious onClick={() => pageFn(page - 1)} />
+        </PaginationItem>
+
+        {visiblePages.map((pageNum, index) => (
+          <PaginationItem key={index}>
+            {pageNum === "..." ? (
+              <PaginationEllipsis />
+            ) : (
+              <PaginationNumber number={pageNum as number} />
+            )}
+          </PaginationItem>
+        ))}
+
+        <PaginationItem>
+          <PaginationNext onClick={() => pageFn(page + 1)} />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+    
+    ```
+  </Tab>
+</Tabs>
+
+## Props
+
+### AutoPagination
+A pagination component that handles page navigation and different display patterns: `default`, `simple`, and `full`. This is a standalone and pre-assembled component that can handle common pagination use cases.
+<TypeTable
+type={{
+    count: {
+      description: "The total number of items to be displayed.",
+      type: "number"
+    },
+    limit: {
+      description: "The number of items per page.",
+      type: "number",
+    },
+    page: {
+      description: "The current page number.",
+      type: "number",
+    },
+    maxDisplay: {
+      description: "The number of items to display for paginated number before ellipsis.",
+      type: "number",
+      default: 4
+    },
+    type: {
+      description: "Style variant of the pagination",
+      type: "enum",
+      typeDescription:
+        "simple | default | full",
+      default: "default"
+    },
+    onPageChange: {
+      description: "A callback function that is invoked when the page changes.",
+      type: "function",
+      typeDescription: "(page: number) => void"
+    },
+    fullText: {
+      description: "The long description of the pagination information.",
+      type: "string"
+    }, 
+    next: {
+      description: "Optional ReactNode to replace the default PaginationNext button.",
+      type: "ReactNode"
+    },
+    previous: {
+      description: "Optional ReactNode to replace the default PaginationPrevious button.",
+      type: "ReactNode"
+    }
+  }}
+/>
+
+### Pagination
+A container component that provides pagination context and navigation structure through a `nav` element. It manages the core pagination state (current page, total pages, etc.). 
+<TypeTable
+type={{
+    count: {
+      description: "The total number of items to be displayed.",
+      type: "number"
+    },
+    limit: {
+      description: "The number of items per page.",
+      type: "number",
+    },
+    page: {
+      description: "The current page number.",
+      type: "number",
+    },
+    type: {
+      description: "Style variant of the pagination",
+      type: "enum",
+      typeDescription:
+        "simple | default | full",
+      default: "default"
+    },
+    onPageChange: {
+      description: "A callback function that is invoked when the page changes.",
+      type: "function",
+      typeDescription: "(page: number) => void"
+    }
+  }}
+/>
+
+### PaginationContent
+A layout component rendered as an unordered list `ul` that arranges `PaginationItem` in a horizontal row.
+
+### PaginationItem
+A wrapper component rendered as a list item `li` that contains individual pagination elements like `PaginationNext`, `PaginationPrevious`, `PaginationLabel` and `PaginationEllipsis`. 
+
+### PaginationNext
+A button component that handles navigaton to the next page. The underlying component can be substituted by using the `asChild` props.
+
+### PaginationPrevious
+A button component that handles navigaton to the previous page. The underlying component can be substituted by using the `asChild` props.
+
+### PaginationLabel
+A text component that displays pagination information.
+<TypeTable
+type={{
+    content: {
+      description: "The long description of the pagination information.",
+      type: "string"
+    }
+  }}
+/>
+
+### PaginationEllipsis
+A visual indicator component that represents skipped page numbers in the pagination sequence, rendered as three dots using an icon.

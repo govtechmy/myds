@@ -6,8 +6,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   AlertDialogClose,
+  AlertDialogProps,
+  AlertDialogActionProps,
 } from "@govtechmy/myds-react/alert-dialog";
 import { Button } from "@govtechmy/myds-react/button";
+import { DialogBodyProps } from "@govtechmy/myds-react/dialog";
 import type { Meta, StoryObj } from "@storybook/react";
 import { createStory } from "../utils";
 
@@ -56,7 +59,8 @@ import { createStory } from "../utils";
 // @ts-expect-error
 const meta: Meta = {
   title: "@govtechmy/myds-react/AlertDialog",
-  component: ({ dismissible, border, align, variant }) => {
+  component: AlertDialog,
+  render: ({ dismissible, align, variant }) => {
     return (
       <AlertDialog variant={variant}>
         <AlertDialogTrigger>
@@ -85,7 +89,7 @@ const meta: Meta = {
                   : null}
           </AlertDialogDescription>
 
-          <AlertDialogAction border={border} align={align}>
+          <AlertDialogAction align={align}>
             <AlertDialogClose>
               <Button variant="default-outline" size="medium">
                 {variant === "warning" ? "Kembali" : "Batal"}
@@ -111,7 +115,6 @@ const meta: Meta = {
     variant: "success",
     open: false,
     dismissible: true,
-    border: false,
     align: "end",
     defaultOpen: false,
     onDismiss: () => {},
@@ -122,7 +125,7 @@ const meta: Meta = {
     variant: {
       description: "The variant of the alert dialog",
       control: "inline-radio",
-      options: ["success", "warning", "danger"],
+      options: ["default", "success", "info", "warning", "danger"],
     },
     open: {
       description: "Controls the visibility of the dialog (controlled)",
@@ -169,16 +172,6 @@ const meta: Meta = {
         category: "AlertDialogContent",
       },
     },
-    border: {
-      description: "The footer should have a top border",
-      defaultValue: false,
-      control: {
-        type: "boolean",
-      },
-      table: {
-        category: "AlertDialogAction",
-      },
-    },
     action: {
       description:
         "The footer action space. Opposite to action buttons (children)",
@@ -198,18 +191,7 @@ const meta: Meta = {
       },
     },
   },
-} satisfies Meta<{
-  variant: "success" | "warning" | "danger";
-  triggerButtonVariant: "primary-fill" | "danger-fill";
-  open: boolean;
-  onOpenChange: () => void;
-  defaultOpen: boolean;
-  dismissible: boolean;
-  onDismiss: () => void;
-  border: boolean;
-  action: React.ReactNode;
-  align: "start" | "full" | "end";
-}>;
+} satisfies Meta<AlertDialogProps & AlertDialogActionProps & DialogBodyProps>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

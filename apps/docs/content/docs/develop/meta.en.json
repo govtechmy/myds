@@ -7,6 +7,11 @@
     "(getting-started)/style-configuration",
     "(getting-started)/usage",
 
+    "---Installation---",
+    "(installation)/nextjs",
+    "(installation)/vite",
+    "(installation)/laravel",
+
     "---Components ---",
     "(components)/accordion",
     "(components)/alert-dialog",

@@ -81,39 +81,46 @@ const Calendar: FC<CalendarProps> = ({
         className,
       )}
       classNames={{
-        months: "flex flex-col h-full",
+        months: "relative flex flex-col h-full",
         month: "flex flex-col h-full gap-y-1.5",
         month_caption: "",
         caption_label: "text-sm font-medium",
-        nav: "absolute right-3 flex gap-2 items-center",
+        nav: "absolute left-52 flex gap-2 items-center",
         button_previous: buttonVariants({
           variant: "default-outline",
           iconOnly: true,
+          className: "size-8",
         }),
         button_next: buttonVariants({
           variant: "default-outline",
           iconOnly: true,
+          className: "size-8",
         }),
         chevron: "size-4",
         month_grid: "w-full border-collapse space-y-1",
         weekdays: "flex",
         weekday: "text-txt-black-500 font-normal w-10 text-body-xs py-2",
         week: "flex w-full mt-1.5",
-        day: "size-10",
+        day: "p-0",
         day_button: clx(
           buttonVariants({ variant: "default-ghost" }),
-          "size-10 p-0 font-normal justify-center disabled:bg-transparent",
+          "size-10 font-normal justify-center disabled:bg-transparent",
+          "[.selected:not(.in-range)_&]:bg-primary-600 [.selected:not(.in-range)_&]:text-white",
+          "[.today:not(.selected)_&]:text-primary-600 [.today:selected)_&]:text-white",
         ),
-        selected:
+        selected: clx(
+          "selected",
           props.mode === "single"
             ? "*:bg-primary-600 *:text-white *:hover:bg-primary-600 *:hover:text-white *:focus:bg-primary-600 *:focus:text-white"
             : "",
-        today: "bg-bg-black-50 text-txt-black-900",
+        ),
+        today: "today",
         outside: "text-txt-black-900 opacity-50",
         disabled: "",
         range_start:
           "rounded-l-md bg-bg-primary-100 *:bg-primary-600 *:text-white *:hover:bg-primary-600 *:hover:text-white *:focus:bg-primary-600 *:focus:text-white",
-        range_middle: "bg-bg-primary-100 *:hover:bg-bg-primary-200",
+        range_middle:
+          "in-range bg-bg-primary-100 *:hover:bg-bg-primary-200 *:focus:bg-bg-primary-200",
         range_end:
           "rounded-r-md bg-bg-primary-100 *:bg-primary-600 *:text-white *:hover:bg-primary-600 *:hover:text-white *:focus:bg-primary-600 *:focus:text-white",
         hidden: "invisible",
@@ -157,7 +164,7 @@ const Calendar: FC<CalendarProps> = ({
           return view === "day" ? (
             <table {...tableProps} />
           ) : view === "month" ? (
-            <div role="grid" className="grid grow grid-cols-3">
+            <table role="grid" className="grid grow grid-cols-3">
               {Array(12)
                 .fill(null)
                 .map((_, i) => {
@@ -169,27 +176,29 @@ const Calendar: FC<CalendarProps> = ({
                     month.getMonth() === i && month.getFullYear() === year;
 
                   return (
-                    <Button
-                      data-selected={isSelected}
-                      variant={isSelected ? "primary-fill" : "default-ghost"}
-                      disabled={
-                        props.disabled
-                          ? dateMatchers("month", date, props.disabled)
-                          : false
-                      }
-                      className="w-full justify-center disabled:data-[selected=false]:bg-transparent"
-                      onClick={() => {
-                        setMonth(date);
-                        setView("day");
-                      }}
-                    >
-                      {formatDate(date, "MMM")}
-                    </Button>
+                    <td role="gridcell">
+                      <Button
+                        data-selected={isSelected}
+                        variant={isSelected ? "primary-fill" : "default-ghost"}
+                        disabled={
+                          props.disabled
+                            ? dateMatchers("month", date, props.disabled)
+                            : false
+                        }
+                        className="h-full w-full justify-center disabled:data-[selected=false]:bg-transparent"
+                        onClick={() => {
+                          setMonth(date);
+                          setView("day");
+                        }}
+                      >
+                        {formatDate(date, "MMM")}
+                      </Button>
+                    </td>
                   );
                 })}
-            </div>
+            </table>
           ) : (
-            <div role="grid" className="grid grid-cols-3 overflow-y-auto">
+            <table role="grid" className="grid grid-cols-3 overflow-y-auto">
               {Array(maxYear - minYear + 1)
                 .fill(null)
                 .map((_, i) => {
@@ -202,27 +211,29 @@ const Calendar: FC<CalendarProps> = ({
                   date.setHours(0, 0, 0, 0);
 
                   return (
-                    <Button
-                      ref={isSelected ? yearRef : null}
-                      data-selected={isSelected}
-                      variant={isSelected ? "primary-fill" : "default-ghost"}
-                      className="h-11 w-full justify-center disabled:data-[selected=false]:bg-transparent"
-                      disabled={
-                        props.disabled
-                          ? dateMatchers("year", date, props.disabled)
-                          : false
-                      }
-                      onClick={() => {
-                        setYear(displayYear);
-                        setMonth(new Date(displayYear, month.getMonth()));
-                        setView("month");
-                      }}
-                    >
-                      {displayYear}
-                    </Button>
+                    <td role="gridcell">
+                      <Button
+                        ref={isSelected ? yearRef : null}
+                        data-selected={isSelected}
+                        variant={isSelected ? "primary-fill" : "default-ghost"}
+                        className="h-11 w-full justify-center disabled:data-[selected=false]:bg-transparent"
+                        disabled={
+                          props.disabled
+                            ? dateMatchers("year", date, props.disabled)
+                            : false
+                        }
+                        onClick={() => {
+                          setYear(displayYear);
+                          setMonth(new Date(displayYear, month.getMonth()));
+                          setView("month");
+                        }}
+                      >
+                        {displayYear}
+                      </Button>
+                    </td>
                   );
                 })}
-            </div>
+            </table>
           );
         },
         NextMonthButton(props) {

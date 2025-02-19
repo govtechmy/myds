@@ -41,7 +41,8 @@ import {
  */
 const meta = {
   title: "@govtechmy/myds-react/Radio",
-  component: ({ ...props }) => {
+  component: Radio,
+  render: ({ ...props }) => {
     return (
       <Radio {...props}>
         <RadioItem>

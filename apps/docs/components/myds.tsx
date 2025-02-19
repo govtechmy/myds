@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState, ComponentProps, FunctionComponent } from "react";
+import React, {
+  useState,
+  ComponentProps,
+  FunctionComponent,
+  forwardRef,
+  useContext,
+} from "react";
 import { Button } from "@govtechmy/myds-react/button";
 import { Toggle, ToggleThumb } from "./myds";
 export * from "@govtechmy/myds-react/toggle";
@@ -855,6 +861,24 @@ export const PreviewSummaryListAction: FunctionComponent<PreviewSummaryList> = (
   );
 };
 
+import {
+  AutoPagination,
+  AutoPaginationProps,
+} from "@govtechmy/myds-react/pagination";
+
+export const SimplePagination = forwardRef<HTMLElement, AutoPaginationProps>(
+  (props, ref) => {
+    return (
+      <AutoPagination
+        {...props}
+        ref={ref}
+        onPageChange={(page) => console.log(page)}
+      />
+    );
+  },
+);
+SimplePagination.displayName = "SimplePagination";
+
 interface PreviewNavbarProps extends ComponentProps<typeof Navbar> {}
 
 export const PreviewNavbar: FunctionComponent<PreviewNavbarProps> = (props) => {
@@ -1056,3 +1080,54 @@ export const PreviewActionGroup: FunctionComponent<PreviewNavbarProps> = (
     </Navbar>
   );
 };
+
+import {
+  Pagination,
+  PaginationContext,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationNext,
+  PaginationNumber,
+  PaginationPrevious,
+} from "@govtechmy/myds-react/pagination";
+import { usePagination } from "@govtechmy/myds-react/hooks";
+
+export const SelfPagination = ({ count = 200, limit = 10, page = 1 }) => {
+  // const count = 200;
+  // const limit = 10;
+  // const page = 1;
+  const { visiblePages, max } = usePagination({ count, limit, page });
+  const pageFn = (page: number) => console.log(page);
+
+  return (
+    <Pagination
+      count={count}
+      limit={limit}
+      page={page}
+      onPageChange={pageFn}
+      type="default"
+    >
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious onClick={() => pageFn(page - 1)} />
+        </PaginationItem>
+
+        {visiblePages.map((pageNum, index) => (
+          <PaginationItem key={index}>
+            {pageNum === "..." ? (
+              <PaginationEllipsis />
+            ) : (
+              <PaginationNumber number={pageNum as number} />
+            )}
+          </PaginationItem>
+        ))}
+
+        <PaginationItem>
+          <PaginationNext onClick={() => pageFn(page + 1)} />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  );
+};
+SelfPagination.displayName = "SelfPagination";

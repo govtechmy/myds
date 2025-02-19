@@ -5,60 +5,69 @@ description: A quick guide to get you up and running with MYDS.
 
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Step, Steps } from "fumadocs-ui/components/steps";
+import NextjsIcon from "@/icons/nextjs";
+import ViteIcon from "@/icons/vite";
+import LaravelIcon from "@/icons/laravel";
+
+### Manual Installation
 
 MYDS can be configured in various ways, depending on the requirement of your project. But the simplest way can be done in 3-steps!
 
 <Steps>
   <Step>
-    ### Install packages
-    <Tabs items={["npm", "yarn", "pnpm"]}>
-        ```sh tab="npm"
-        npm i @govtechmy/myds-react @govtechmy/myds-style 
-        ```
-        ```sh tab="yarn"
-        yarn add @govtechmy/myds-react @govtechmy/myds-style
-        ```
-        ```sh tab="pnpm"
-        pnpm add @govtechmy/myds-react @govtechmy/myds-style
-        ```
-    </Tabs>
+    #### Install packages
+    
+     ```package-install
+    npm i @govtechmy/myds-react @govtechmy/myds-style
+    ```
 
   </Step>
 
   <Step>
-  ### Setup CSS stylesheet<a name="full-css"></a>
+  #### Setup CSS stylesheet
   
-You may import the full MYDS stylesheet in one of (2) ways below.
-#### A. Import via JS (Bundler)
+  You may import the full MYDS stylesheet in one of (2) ways below.
+  
+    __1. Import via JS (Bundler)__
 
-```ts
-// Place in the bundle entry point (eg. index.{ts,js})
-import "@govtechmy/myds-style/full.css";
-```
+    ```js title="src/index.js"
+    // Place in the bundle entry point (eg. index.{ts,js})
+    import "@govtechmy/myds-style/full.css";
+    ```
 
-#### B. Import via CSS
+    __2. Import via CSS__
 
-```css
-/* Place in the CSS entry point */
-@import "@govtechmy/myds-style/full.css";
-```
+    ```css title="src/index.css"
+    /* Place in the CSS entry point */
+    @import "@govtechmy/myds-style/full.css";
+    ```
 
-For more advanced configuration, please read the [Style Configuration](./style-configuration)
+    For more advanced configuration, please read the [Style Configuration](./style-configuration)
+    </Step>
 
-  </Step>
+  <Step>
+    #### Start using the components!
 
-<Step>
-### Start using the components!
+    Here is a `<Button />` for you to get started!
 
-There are a variety of components available in MYDS. Here is a `<Button />` for you to get started!
+    ```tsx
+    import { Button } from "@govtechmy/myds-react/button";
 
-```tsx
-import { Button } from "@govtechmy/myds-react/button";
+    export default () => {
+      return <Button variant="primary-fill">Hello MYDS</Button>;
+    };
+    ```
 
-export default () => {
-  return <Button variant="primary-fill">Hello MYDS</Button>;
-};
-```
+    </Step>
 
-</Step>
 </Steps>
+
+### Framework Guide
+
+Building your application with a framework? Check out the guides below!
+
+<Cards>
+  <Card href="/docs/develop/nextjs" title="Next.js" icon={<NextjsIcon />} />
+  <Card href="/docs/develop/vite" title="Vite" icon={<ViteIcon />} />
+  <Card href="/docs/develop/laravel" title="Laravel" icon={<LaravelIcon />} />
+</Cards>

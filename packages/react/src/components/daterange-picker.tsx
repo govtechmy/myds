@@ -5,7 +5,7 @@ import { format } from "date-fns";
 import { useControllableState } from "../hooks";
 import { Button, button_cva } from "./button";
 import { Calendar } from "./calendar";
-import { Dialog, DialogContent, DialogTrigger } from "./dialog";
+import { Dialog, DialogBody, DialogContent, DialogTrigger } from "./dialog";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { VariantProps } from "class-variance-authority";
 
@@ -82,29 +82,31 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
                 : placeholder}
             </Button>
           </DialogTrigger>
-          <DialogContent className="w-[304px] p-0">
-            <Calendar
-              disabled={
-                selectedDateRange?.to
-                  ? disabled
-                    ? Array.isArray(disabled)
-                      ? [...disabled, dateAfter]
-                      : [disabled, dateAfter]
-                    : dateAfter
-                  : disabled
-              }
-              locale={_locale}
-              mode="range"
-              month={selectedDateRange?.from}
-              onSelect={({ from, to }) => {
-                const date = from === selectedDateRange?.from ? to : from;
-                setSelectedDateRange({ ...selectedDateRange, from: date });
-              }}
-              required
-              selected={selectedDateRange}
-              {...props}
-            />
-          </DialogContent>
+          <DialogBody className="min-w-fit w-fit" hideClose>
+            <DialogContent className="w-[304px] p-0">
+              <Calendar
+                disabled={
+                  selectedDateRange?.to
+                    ? disabled
+                      ? Array.isArray(disabled)
+                        ? [...disabled, dateAfter]
+                        : [disabled, dateAfter]
+                      : dateAfter
+                    : disabled
+                }
+                locale={_locale}
+                mode="range"
+                month={selectedDateRange?.from}
+                onSelect={({ from, to }) => {
+                  const date = from === selectedDateRange?.from ? to : from;
+                  setSelectedDateRange({ ...selectedDateRange, from: date });
+                }}
+                required
+                selected={selectedDateRange}
+                {...props}
+              />
+            </DialogContent>
+          </DialogBody>
         </Dialog>
         -
         <Dialog>
@@ -122,26 +124,28 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
                 : placeholder}
             </Button>
           </DialogTrigger>
-          <DialogContent className="w-[304px] p-0">
-            <Calendar
-              disabled={
-                selectedDateRange?.from
-                  ? disabled
-                    ? Array.isArray(disabled)
-                      ? [...disabled, dateBefore]
-                      : [disabled, dateBefore]
-                    : dateBefore
-                  : disabled
-              }
-              locale={_locale}
-              mode="range"
-              month={selectedDateRange?.to}
-              onSelect={setSelectedDateRange}
-              required
-              selected={selectedDateRange}
-              {...props}
-            />
-          </DialogContent>
+          <DialogBody className="min-w-fit w-fit" hideClose>
+            <DialogContent className="w-[304px] p-0">
+              <Calendar
+                disabled={
+                  selectedDateRange?.from
+                    ? disabled
+                      ? Array.isArray(disabled)
+                        ? [...disabled, dateBefore]
+                        : [disabled, dateBefore]
+                      : dateBefore
+                    : disabled
+                }
+                locale={_locale}
+                mode="range"
+                month={selectedDateRange?.to}
+                onSelect={setSelectedDateRange}
+                required
+                selected={selectedDateRange}
+                {...props}
+              />
+            </DialogContent>
+          </DialogBody>
         </Dialog>
       </div>
 

@@ -1,6 +1,9 @@
 import React, {
+  ComponentProps,
   createContext,
+  ElementRef,
   forwardRef,
+  ForwardRefExoticComponent,
   useContext,
   useEffect,
   useState,
@@ -8,22 +11,19 @@ import React, {
 import { Button } from "./button";
 import {
   Dialog,
+  dialog_footer_cva,
+  DialogBody,
+  DialogBodyProps,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
+  DialogFooterProps,
   DialogHeader,
   DialogTitle,
 } from "./dialog";
-import { CrossIcon } from "../icons";
 import { clx } from "../utils";
 import { Slot } from "@radix-ui/react-slot";
-
-interface CookieBannerProps {
-  open?: boolean;
-  className?: string;
-  children?: React.ReactNode;
-}
-type CookieBannerRef = React.ComponentRef<typeof DialogContent>;
 
 /**
  * Root component for the Cookie Banner compound component.
@@ -131,9 +131,23 @@ type CookieBannerCustomiserProps = {
   asChild?: boolean;
 };
 
-const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
-  ({ open = false, className, children, ...props }, ref) => {
+type CookieBannerProps = Omit<ComponentProps<typeof Dialog>, "defaultOpen"> & {
+  className?: string;
+  dismissible?: boolean;
+  open: boolean;
+  onDismiss?: () => void;
+};
+
+const CookieBanner = forwardRef<
+  React.ElementRef<typeof DialogBody>,
+  CookieBannerProps
+>(
+  (
+    { open = false, onOpenChange, dismissible = true, className, ...props },
+    ref,
+  ) => {
     const [showPreferences, setShowPreferences] = useState(false);
+
     // Reset showPreferences when dialog closes
     useEffect(() => {
       if (!open) {
@@ -142,60 +156,42 @@ const CookieBanner = forwardRef<CookieBannerRef, CookieBannerProps>(
     }, [open]);
 
     return (
-      <CookieBannerContext.Provider
-        value={{ showPreferences, setShowPreferences }}
-      >
-        <Dialog open={open}>
-          <DialogContent
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <CookieBannerContext.Provider
+          value={{ showPreferences, setShowPreferences }}
+        >
+          <DialogBody
+            dismissible={dismissible}
+            ref={ref}
             className={clx(
               "bg-bg-white bottom-[18px] top-auto w-[calc(100%-36px)] translate-y-0 rounded-lg p-[18px] sm:bottom-[24px] sm:left-[24px] sm:max-w-[502px] sm:translate-x-0 sm:p-6",
               className,
             )}
-            ref={ref}
             {...props}
-          >
-            {children}
-          </DialogContent>
-        </Dialog>
-      </CookieBannerContext.Provider>
+          />
+        </CookieBannerContext.Provider>
+      </Dialog>
     );
   },
 );
 
-const CookieBannerHeader = DialogHeader;
-const CookieBannerTitle = DialogTitle;
-const CookieBannerClose = ({
-  className,
-  onClick,
-  ...props
-}: {
-  className?: string;
-  onClick: () => void;
-}) => {
-  return (
-    <Button
-      onClick={onClick}
-      variant={"default-ghost"}
-      size={"small"}
-      className={clx(
-        "size-[1.25rem]",
-        "grid place-content-center",
-        "text-txt-black-900",
-        "disabled:pointer-events-none",
-        "flex-shrink-0",
-        className,
-      )}
-      {...props}
-    >
-      <CrossIcon className="stroke-current" />
-    </Button>
-  );
-};
-const CookieBannerFooter = DialogFooter;
-const CookieBannerDescription = DialogDescription;
+const CookieBannerFooter: ForwardRefExoticComponent<ComponentProps<"div">> =
+  forwardRef(({ className, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={clx(
+          dialog_footer_cva({ border: false, align: "start" }),
+          "w-full flex-col justify-start gap-[0.5rem] p-0 pt-3 sm:flex-row",
+          className,
+        )}
+        {...props}
+      />
+    );
+  });
 
 const CookieBannerPreferences = forwardRef<
-  HTMLDivElement,
+  ElementRef<typeof DialogDescription>,
   CookieBannerPreferencesProps
 >(({ children, className, ...props }, ref) => {
   const context = useContext(CookieBannerContext);
@@ -205,18 +201,18 @@ const CookieBannerPreferences = forwardRef<
   if (!context.showPreferences) return null;
 
   return (
-    <div
+    <DialogDescription
       ref={ref}
-      className={clx("flex flex-col gap-2 py-3", className)}
+      className={clx("flex flex-col gap-2 px-0 py-3", className)}
       {...props}
     >
       {children}
-    </div>
+    </DialogDescription>
   );
 });
 
-const CookieBannerCustomiser = forwardRef<
-  HTMLElement,
+const CookieBannerPreferencesToggle = forwardRef<
+  HTMLButtonElement,
   CookieBannerCustomiserProps
 >(({ children, className, asChild = false, ...props }, ref) => {
   const context = useContext(CookieBannerContext);
@@ -228,11 +224,6 @@ const CookieBannerCustomiser = forwardRef<
     context.setShowPreferences(!context.showPreferences);
   };
 
-  if (context.showPreferences) {
-    // To hide the cutomizer buttons once clicked to reveal cookie preferences
-    return null;
-  }
-
   const Comp = asChild ? Slot : Button;
   return (
     <Comp
@@ -241,20 +232,63 @@ const CookieBannerCustomiser = forwardRef<
       className={clx("w-full justify-center sm:w-auto", className)}
       onClick={togglePreferences}
       {...props}
+      ref={ref}
     >
       {children}
     </Comp>
   );
 });
 
+const CookieBannerPreferencesDisplay = forwardRef<
+  HTMLElement,
+  CookieBannerCustomiserProps & {
+    showWhen?: "preferences-hidden" | "preferences-shown";
+  }
+>(
+  (
+    {
+      children,
+      className,
+      asChild = false,
+      showWhen = "preferences-hidden",
+      ...props
+    },
+    ref,
+  ) => {
+    const context = useContext(CookieBannerContext);
+    if (!context) {
+      throw new Error("Must be used within CookieBanner");
+    }
+
+    const shouldShow =
+      showWhen === "preferences-hidden"
+        ? !context.showPreferences
+        : context.showPreferences;
+
+    if (!shouldShow) {
+      // To hide the cutomizer buttons once clicked to reveal cookie preferences
+      return null;
+    }
+
+    const Comp = asChild ? Slot : "div";
+    return <Comp {...props}>{children}</Comp>;
+  },
+);
+
+const CookieBannerDescription = DialogDescription;
+const CookieBannerClose = DialogClose;
+const CookieBannerHeader = DialogHeader;
+const CookieBannerTitle = DialogTitle;
+
 CookieBanner.displayName = "CookieBanner";
-CookieBannerCustomiser.displayName = "CookieBannerCustomiser";
 CookieBannerFooter.displayName = "CookieBannerFooter";
 CookieBannerDescription.displayName = "CookieBannerDescription";
 CookieBannerClose.displayName = "CookieBannerClose";
 CookieBannerPreferences.displayName = "CookieBannerPreferences";
 CookieBannerTitle.displayName = "CookieBannerTitle";
 CookieBannerHeader.displayName = "CookieBannerHeader";
+CookieBannerPreferencesDisplay.displayName = "CookieBannerPreferencesDisplay";
+CookieBannerPreferencesToggle.displayName = "CookieBannerPreferencesToggle";
 
 export {
   CookieBanner,
@@ -263,6 +297,7 @@ export {
   CookieBannerDescription,
   CookieBannerClose,
   CookieBannerPreferences,
-  CookieBannerCustomiser,
   CookieBannerFooter,
+  CookieBannerPreferencesToggle,
+  CookieBannerPreferencesDisplay,
 };

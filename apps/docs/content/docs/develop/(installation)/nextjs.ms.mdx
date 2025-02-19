@@ -1,0 +1,103 @@
+---
+title: Next.js
+description: Panduan ringkas untuk memasang MYDS dalam aplikasi Next.js.
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+
+### Panduan Pemasangan
+
+<Steps>
+  <Step>
+    #### Bina projek Next.js
+    ```sh title="terminal"
+    npx create-next-app@latest nama-projek
+    ```
+    Anda akan ditanya beberapa soalan. Pilih pilihan berikut:
+
+    ```sh title="terminal"
+    ✔ Would you like to use TypeScript? … Yes
+    ✔ Would you like to use ESLint? … Yes
+    ✔ Would you like to use Tailwind CSS?
+    ✔ Would you like your code inside a `src/` directory? … No
+    ✔ Would you like to use App Router? (recommended) … Yes
+    ✔ Would you like to use Turbopack for `next dev`? … No
+    ✔ Would you like to customize the import alias (`@/*` by default)? … No
+    ✔ What import alias would you like configured? … @/* … Yes
+    ```
+
+    Selepas projek dibuat, pergi ke induk projek:
+    ```sh title="terminal"
+    cd nama-projek
+    ```
+
+  </Step>
+  
+  <Step>
+    #### Pasang pakej
+
+    ```package-install
+    npm i @govtechmy/myds-react @govtechmy/myds-style
+    ```
+
+  </Step>
+  
+  <Step>
+    #### Konfigurasi stylesheet CSS
+
+    Anda boleh menetapkan gaya melalui salah satu daripada dua (2) kaedah yang disenaraikan di bawah.
+
+    __1. Import CSS__
+
+    ```css title="app/global.css"
+    @import "@govtechmy/myds-style/full.css";
+    ```
+
+    __2. Tailwind CSS__
+
+    Sila baca [Konfigurasi Gaya](./style-configuration) untuk konfigurasi lanjutan.
+
+    </Step>
+
+  <Step>
+    #### Mula menggunakan komponen!
+
+    Cubalah `<Button />` untuk memulakan membina dengan MYDS!
+
+    ```tsx title="components/button.tsx"
+    "use client"; // [!code highlight] Untuk Next App Router, mesti sertakan baris ini
+    import { Button } from "@govtechmy/myds-react/button";
+
+    export default () => {
+      return <Button variant="primary-fill">Hello MYDS</Button>;
+    };
+    ```
+
+    <Callout
+      type="info"
+      title="Penting"
+      className="bg-bg-primary-50 text-txt-primary border-transparent"
+      icon={<InfoIcon className="size-5" />}
+    >
+      Komponen MYDS dibina untuk wujud di _client_, manakala Next.js App Router, secara lalai, membina komponen di _server_.
+
+      Untuk menetapkan komponen supaya dibina di _client_ dalam Next.js, anda perlu menyertakan arahan `use client` dalam fail komponen.
+      Manakala untuk Next.js Page Router, anda boleh mengabaikan arahan ini.
+    </Callout>
+
+    ```tsx title="app/page.tsx"
+    import Button from "../components/button";
+
+    export default function Home() {
+      return (
+        <div>
+          <Button />
+        </div>
+      );
+    }
+    ```
+    </Step>
+
+</Steps>
