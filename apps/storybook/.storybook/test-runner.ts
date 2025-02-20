@@ -3,6 +3,8 @@ import { injectAxe, checkA11y } from "axe-playwright";
 
 const config: TestRunnerConfig = {
   tags: {
+    // tags to skip stories being tested in accessibility test runner
+    // one example is page.stories.js
     exclude: ["skip"],
   },
   async preVisit(page) {

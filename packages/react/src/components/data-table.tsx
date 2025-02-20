@@ -265,9 +265,6 @@ const DataTableHeader: FunctionComponent = () => {
                     header.column.columnDef.meta?.className?.header,
                   )}
                   style={{ ...getCommonPinningStyles(header.column) }}
-                  aria-label={
-                    header.column.columnDef.meta?.ariaLabel || "table-header"
-                  }
                 >
                   <span className="sr-only">
                     {(header.column.columnDef.id == "_checkbox" ||
@@ -456,6 +453,7 @@ const CheckboxColumn = <TData extends Record<string, any>>() => {
           table.getIsAllRowsSelected() ||
           (table.getIsSomeRowsSelected() && "indeterminate")
         }
+        aria-label="checkbox"
         onClick={table.getToggleAllRowsSelectedHandler()}
       />
     ),
@@ -465,6 +463,7 @@ const CheckboxColumn = <TData extends Record<string, any>>() => {
         checked={row.getIsSelected()}
         value={row.id}
         disabled={!row.getCanSelect()}
+        aria-label="checkbox"
         onClick={row.getToggleSelectedHandler()}
       />
     ),

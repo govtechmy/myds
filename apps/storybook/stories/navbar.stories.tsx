@@ -25,7 +25,7 @@ import {
   SearchIcon,
   SunIcon,
 } from "@govtechmy/myds-react/icon";
-import { Button } from "@govtechmy/myds-react/button";
+import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
 
 /**
  * ### Overview
@@ -210,7 +210,9 @@ const DemoNavbar = () => {
             aria-label="search-button"
             size={"small"}
           >
-            <SearchIcon />
+            <ButtonIcon>
+              <SearchIcon />
+            </ButtonIcon>
           </Button>
 
           {/* Button Light Mode Toggle  : mobile hide if needed  */}
@@ -221,7 +223,7 @@ const DemoNavbar = () => {
             size={"small"}
             onClick={handleToggle}
           >
-            {isDarkMode ? <SunIcon /> : <MoonIcon />}
+            <ButtonIcon>{isDarkMode ? <SunIcon /> : <MoonIcon />}</ButtonIcon>
           </Button>
 
           {/* Select Language Toggle  : mobile hide if needed  */}
@@ -320,7 +322,9 @@ const KementerianDigitalNavbar = () => {
             aria-label="search-button"
             size={"small"}
           >
-            <SearchIcon />
+            <ButtonIcon>
+              <SearchIcon />
+            </ButtonIcon>
           </Button>
 
           {/* Button Light Mode Toggle : mobile hide if needed  */}
@@ -331,7 +335,7 @@ const KementerianDigitalNavbar = () => {
             size={"small"}
             onClick={handleToggle}
           >
-            {isDarkMode ? <SunIcon /> : <MoonIcon />}
+            <ButtonIcon>{isDarkMode ? <SunIcon /> : <MoonIcon />}</ButtonIcon>
           </Button>
 
           {/* Select Language Toggle : mobile hide if needed */}

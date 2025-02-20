@@ -10,6 +10,7 @@ export default {
     layout: 'fullscreen',
   },
   tags: ['skip'],
+  // skip tag to allow test runner to not run any test in this page
 };
 
 export const LoggedOut = {};
