@@ -1,5 +1,12 @@
 # @govtechmy/myds-react
 
+## 0.0.9
+
+### Patch Changes
+
+- f50b423: Fix: Make asChild non-default
+- 2f6d05d: Fix peer dependency version to include react 19
+
 ## 0.0.8
 
 ### Patch Changes
