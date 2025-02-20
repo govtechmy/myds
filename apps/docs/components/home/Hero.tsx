@@ -62,33 +62,31 @@ const Hero: FunctionComponent = () => {
         </div>
       </div>
 
-      <picture className="border-otl-divider col-span-full mt-[3rem] overflow-hidden border-t object-cover lg:col-span-6 lg:col-start-7 lg:mt-0 lg:border-l lg:border-t-0 lg:pr-0">
-        <div className="w-full overflow-hidden">
-          <Image
-            src="/common/hero.svg"
-            alt="Hero"
-            width={1200}
-            height={1200}
-            className={clx(
-              "img-light",
-              "h-[18.75rem] w-full object-cover transition-transform duration-300 hover:scale-105",
-              "md:max-lg:h-[25rem]",
-              "lg:h-[43.75rem]",
-            )}
-          />
-          <Image
-            src="/common/hero-dark.svg"
-            alt="Hero"
-            width={1200}
-            height={1200}
-            className={clx(
-              "img-dark",
-              "h-[18.75rem] w-full object-cover transition-transform duration-300 hover:scale-105",
-              "md:max-lg:h-[25rem]",
-              "lg:h-[43.75rem]",
-            )}
-          />
-        </div>
+      <picture className="border-otl-divider col-span-full mt-[3rem] w-full overflow-hidden border-t object-cover lg:col-span-6 lg:col-start-7 lg:mt-0 lg:border-l lg:border-t-0 lg:pr-0">
+        <Image
+          src="/common/hero.svg"
+          alt="Hero"
+          width={1200}
+          height={1200}
+          className={clx(
+            "img-light",
+            "h-[18.75rem] w-full object-cover transition-transform duration-300 hover:scale-105",
+            "md:max-lg:h-[25rem]",
+            "lg:h-[43.75rem]",
+          )}
+        />
+        <Image
+          src="/common/hero-dark.svg"
+          alt="Hero"
+          width={1200}
+          height={1200}
+          className={clx(
+            "img-dark",
+            "h-[18.75rem] w-full object-cover transition-transform duration-300 hover:scale-105",
+            "md:max-lg:h-[25rem]",
+            "lg:h-[43.75rem]",
+          )}
+        />
       </picture>
     </Section>
   );
