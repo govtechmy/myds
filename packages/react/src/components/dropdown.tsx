@@ -24,7 +24,7 @@ Dropdown.displayName = "Dropdown";
 const DropdownTrigger: ForwardRefExoticComponent<
   ComponentProps<typeof DropdownPrimitive.Trigger>
 > = forwardRef((props, ref) => {
-  return <DropdownPrimitive.Trigger {...props} asChild ref={ref} />;
+  return <DropdownPrimitive.Trigger {...props} ref={ref} />;
 });
 DropdownTrigger.displayName = "DropdownTrigger";
 
