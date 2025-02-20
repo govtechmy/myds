@@ -21,8 +21,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Change this line to use @playwright/test directly
-      - name: Install Playwright browsers
+      - name: Install Playwright Test Package
+        run: pnpm add -D @playwright/test
+
+      - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
       - name: Build Storybook
@@ -33,3 +35,10 @@ jobs:
           pnpm dlx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "pnpm dlx http-server dist --port 6006 --silent" \
             "pnpm dlx wait-on tcp:127.0.0.1:6006 && pnpm test-storybook"
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
