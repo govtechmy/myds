@@ -21,6 +21,7 @@ import {
   createContext,
   forwardRef,
   ForwardRefExoticComponent,
+  FunctionComponent,
   useContext,
 } from "react";
 import { clx } from "../utils";
@@ -42,23 +43,27 @@ export interface AlertDialogProps
   extends ComponentProps<typeof Dialog>,
     AlertDialogContextProps {}
 
-const AlertDialog: ForwardRefExoticComponent<AlertDialogProps> = forwardRef(
-  ({ variant, ...props }) => {
-    return (
-      <AlertDialogContext.Provider value={{ variant }}>
-        <Dialog {...props} />
-      </AlertDialogContext.Provider>
-    );
-  },
-);
-
+const AlertDialog: FunctionComponent<AlertDialogProps> = ({
+  variant,
+  ...props
+}) => {
+  return (
+    <AlertDialogContext.Provider value={{ variant }}>
+      <Dialog {...props} />
+    </AlertDialogContext.Provider>
+  );
+};
 export interface AlertDialogActionProps
   extends Omit<ComponentProps<typeof DialogFooter>, "border"> {}
 
 const AlertDialogAction: ForwardRefExoticComponent<AlertDialogActionProps> =
-  forwardRef(({ children, className, ...props }) => {
+  forwardRef(({ children, className, ...props }, ref) => {
     return (
-      <DialogFooter className={clx("px-0 pb-0", className)} {...props}>
+      <DialogFooter
+        ref={ref}
+        className={clx("px-0 pb-0", className)}
+        {...props}
+      >
         {children}
       </DialogFooter>
     );

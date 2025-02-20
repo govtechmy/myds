@@ -47,7 +47,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang={params.lang} className={clx("font-body")}>
+    <html lang={params.lang} className={clx("font-body light")}>
       <Analytics />
       <body>
         <FumaI18n
