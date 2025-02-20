@@ -48,7 +48,10 @@
     "(components)/text-area",
     "(components)/toast",
     "(components)/toggle",
-    "(components)/tooltip"
+    "(components)/tooltip",
+
+    "---Hooks ---",
+    "(hooks)/use-theme-toggler"
   ],
   "root": true
 }

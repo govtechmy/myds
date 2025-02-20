@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, ReactNode, useContext, useState } from "react";
 import { Button } from "../components/button";
 import { SunIcon } from "../icons/sun";
@@ -11,12 +13,18 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-const ThemeProvider = ({ children }: { children: ReactNode }) => {
+const ThemeProvider = ({
+  children,
+  themeKey = "theme",
+}: {
+  children: ReactNode;
+  themeKey: string;
+}) => {
   const [theme, setTheme] = useState<string>("light");
   const switchTheme = (newTheme: string) => {
     document.documentElement.classList.remove(theme);
     document.documentElement.classList.add(newTheme);
-    localStorage.setItem("theme", newTheme);
+    localStorage.setItem(themeKey, newTheme);
     setTheme(newTheme);
   };
 
@@ -35,25 +43,35 @@ const useTheme = () => {
   return context;
 };
 
-const ThemeToggler = ({ themes = ["light", "dark"] }: { themes: string[] }) => {
+interface Themes {
+  theme: string;
+  icon: ReactNode;
+}
+
+interface ThemeToggler {
+  themes: Themes[];
+}
+
+const ThemeToggler = ({
+  themes = [
+    { theme: "light", icon: <SunIcon /> },
+    { theme: "dark", icon: <MoonIcon /> },
+  ],
+}: {
+  themes: Themes[];
+}) => {
   const { toggleTheme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleClick = () => {
     const nextIndex = (currentIndex + 1) % themes.length;
     setCurrentIndex(nextIndex);
-    toggleTheme(themes[nextIndex]!);
+    toggleTheme(themes[nextIndex]?.theme!);
   };
 
   return (
     <Button variant="default-ghost" className="p-2" onClick={handleClick}>
-      {themes[currentIndex] === "light" ? (
-        <SunIcon />
-      ) : themes[currentIndex] === "dark" ? (
-        <MoonIcon />
-      ) : (
-        <PlaceholderIcon />
-      )}
+      {themes[currentIndex]?.icon ?? <PlaceholderIcon />}
     </Button>
   );
 };
