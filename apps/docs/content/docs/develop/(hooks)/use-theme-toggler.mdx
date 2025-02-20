@@ -16,9 +16,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
     <div className="flex justify-center">
-
       <SampleThemeToggler/>
-
     </div>
 
   </Tab>
@@ -26,8 +24,13 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
     ```tsx
     import { ThemeProvider, ThemeToggler } from "@govtechmy/myds-react/theme-toggler";
 
-    <ThemeProvider>
-      <ThemeToggler />
+      <ThemeProvider>
+        <ThemeToggler
+        themes={[
+          { theme: "light", icon: <SunIcon /> },
+          { theme: "dark", icon: <MoonIcon /> },
+        ]}
+      />
     </ThemeProvider>
     ```
 

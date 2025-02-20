@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode, useState } from "react";
 import { MoonIcon, PlaceholderIcon, SunIcon } from "../icons";
 import { Button } from "./button";
-import { useTheme } from "../hooks/use-theme-toggler";
+import { ThemeProvider, useTheme } from "../hooks/use-theme-toggler";
 
 interface Themes {
   theme: string;
@@ -35,4 +35,4 @@ const ThemeToggler: FunctionComponent<ThemeToggler> = ({
     </Button>
   );
 };
-export { ThemeToggler };
+export { ThemeToggler, ThemeProvider };
