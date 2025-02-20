@@ -46,9 +46,13 @@
     "(components)/tabs",
     "(components)/tag",
     "(components)/text-area",
+    "(components)/theme-toggler",
     "(components)/toast",
     "(components)/toggle",
-    "(components)/tooltip"
+    "(components)/tooltip",
+
+    "---Hooks ---",
+    "(hooks)/use-theme-toggler"
   ],
   "root": true
 }
