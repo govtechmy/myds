@@ -9,6 +9,7 @@ import { getRosetta } from "@/locales/_server";
 import type { Metadata } from "next";
 import Analytics from "@/components/analytics";
 import { AutoToast } from "@/components/myds";
+import Head from "next/head";
 
 interface MetadataProps {
   params: { lang: "en" | "ms" };
@@ -48,6 +49,9 @@ export default async function RootLayout({
 }) {
   return (
     <html lang={params.lang} className={clx("font-body light")}>
+      <Head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+      </Head>
       <Analytics />
       <body>
         <FumaI18n
