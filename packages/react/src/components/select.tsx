@@ -261,7 +261,6 @@ const SelectTrigger: React.ForwardRefExoticComponent<
         size,
         className,
       })}
-      aria-label="Select from options below"
       {...props}
     >
       {children}

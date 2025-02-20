@@ -154,7 +154,7 @@ const BrandLogo: FunctionComponent<BrandLogoProps> = ({
           width: "auto",
         }}
         className="h-8 w-fit select-none"
-        alt={alt || "logo"}
+        alt={alt || "brand logo"}
       />
       {isStringChild ? (
         <span

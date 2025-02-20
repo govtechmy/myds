@@ -19,7 +19,7 @@ const Tooltip: ForwardRefExoticComponent<
 const TooltipTrigger: ForwardRefExoticComponent<
   ComponentProps<typeof TooltipPrimitive.Trigger>
 > = forwardRef(({ className, ...props }, ref) => {
-  return <TooltipPrimitive.Trigger aria-label="Tooltip" {...props} ref={ref} />;
+  return <TooltipPrimitive.Trigger {...props} ref={ref} />;
 });
 
 const TooltipContent: ForwardRefExoticComponent<

@@ -35,8 +35,6 @@ const InputOTP = React.forwardRef<
     )}
     className={clx("disabled:cursor-not-allowed", className)}
     aria-invalid={invalid}
-    aria-label="input-otp"
-    aria-description={`Enter a ${props.maxLength}-character code. Each character appears in a separate box.`}
     {...props}
   >
     {children}

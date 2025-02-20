@@ -63,7 +63,6 @@ declare module "@tanstack/react-table" {
     sortable?: boolean;
     expandable?: boolean;
     tooltip?: ReactNode;
-    ariaLabel?: string;
   }
 }
 
