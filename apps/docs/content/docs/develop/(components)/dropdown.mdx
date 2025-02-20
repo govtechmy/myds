@@ -25,7 +25,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex justify-center">
     <Dropdown>
-      <DropdownTrigger>
+      <DropdownTrigger asChild>
         <Button variant="default-outline">Dropdown Menu</Button>
       </DropdownTrigger>
       <DropdownContent>
@@ -39,7 +39,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
   <Tab value="Code">
     ```tsx
     <Dropdown>
-      <DropdownTrigger>
+      <DropdownTrigger asChild>
         <Button variant="default-outline">Dropdown Menu</Button>
       </DropdownTrigger>
       <DropdownContent>
@@ -97,7 +97,7 @@ Use the `DropdownTrigger` to wrap the trigger element that opens the dropdown me
   <Tab value="Preview">
     <div className="not-prose flex flex-col items-center gap-3">
     <Dropdown>
-      <DropdownTrigger>
+      <DropdownTrigger asChild>
         <Button variant="primary-fill">Dropdown Menu</Button>
       </DropdownTrigger>
       <DropdownContent>
@@ -113,7 +113,7 @@ Use the `DropdownTrigger` to wrap the trigger element that opens the dropdown me
   <Tab value="Code">
     ```tsx
      <Dropdown>
-      <DropdownTrigger>
+      <DropdownTrigger asChild>
         <Button variant="primary-fill">Dropdown Menu</Button>
       </DropdownTrigger>
       <DropdownContent>
@@ -140,7 +140,7 @@ To use the dropdown menu in the controlled state, utilize the `open` and `onOpen
         <div>
             Uncontrolled
              <Dropdown defaultOpen={false}>
-                <DropdownTrigger>
+                <DropdownTrigger asChild>
                     <Button variant="primary-fill">Dropdown Menu</Button>
                 </DropdownTrigger>
                 <DropdownContent>
@@ -154,7 +154,7 @@ To use the dropdown menu in the controlled state, utilize the `open` and `onOpen
         <div>
             Controlled
             <Dropdown open={false}>
-                <DropdownTrigger>
+                <DropdownTrigger asChild>
                     <Button variant="primary-fill">Dropdown Menu</Button>
                 </DropdownTrigger>
                 <DropdownContent>
@@ -172,7 +172,7 @@ To use the dropdown menu in the controlled state, utilize the `open` and `onOpen
     ```tsx
     // Uncontrolled state
     <Dropdown defaultOpen={false}>
-        <DropdownTrigger>
+        <DropdownTrigger asChild>
             <Button variant="primary-fill">Dropdown Menu</Button>
         </DropdownTrigger>
         <DropdownContent>
@@ -185,7 +185,7 @@ To use the dropdown menu in the controlled state, utilize the `open` and `onOpen
 
     // Controlled state
     <Dropdown open={false}>
-        <DropdownTrigger>
+        <DropdownTrigger asChild>
             <Button variant="primary-fill">Dropdown Menu</Button>
         </DropdownTrigger>
         <DropdownContent>
@@ -208,7 +208,7 @@ You can add an icon to `DropdownItem` to provide visual cues for the user by usi
   <Tab value="Preview">
     <div className="not-prose space-y-2 flex flex-col items-center">
         <Dropdown>
-            <DropdownTrigger>
+            <DropdownTrigger asChild>
                 <Button variant="primary-fill">Dropdown Menu + Icon</Button>
             </DropdownTrigger>
             <DropdownContent side="bottom" align="end">
@@ -244,7 +244,7 @@ You can add an icon to `DropdownItem` to provide visual cues for the user by usi
   <Tab value="Code">
     ```tsx
     <Dropdown>
-        <DropdownTrigger>
+        <DropdownTrigger asChild>
             <Button variant="primary-fill">Dropdown Menu + Icon</Button>
         </DropdownTrigger>
         <DropdownContent side="bottom" align="end">
@@ -287,7 +287,7 @@ You can set the `variant` prop to `danger` on `DropdownItem` to indicate that th
   <Tab value="Preview">
     <div className="not-prose flex justify-center">
       <Dropdown>
-        <DropdownTrigger>
+        <DropdownTrigger asChild>
             <Button variant="primary-fill">With Variant: Danger </Button>
         </DropdownTrigger>
         <DropdownContent side="bottom" align="end">
@@ -305,7 +305,7 @@ You can set the `variant` prop to `danger` on `DropdownItem` to indicate that th
   <Tab value="Code">
     ```tsx
     <Dropdown>
-        <DropdownTrigger>
+        <DropdownTrigger asChild>
             <Button variant="primary-fill">With Variant: Danger </Button>
         </DropdownTrigger>
         <DropdownContent side="bottom" align="end">
@@ -330,7 +330,7 @@ You can set the `variant` prop to `danger` on `DropdownItem` to indicate that th
   <Tab value="Preview">
     <div className="not-prose flex justify-center">
     <Dropdown>
-        <DropdownTrigger>
+        <DropdownTrigger asChild>
             <Button variant="primary-fill">With Disabled Item </Button>
         </DropdownTrigger>
         <DropdownContent>
@@ -348,7 +348,7 @@ You can set the `variant` prop to `danger` on `DropdownItem` to indicate that th
   <Tab value="Code">
     ```tsx
     <Dropdown>
-        <DropdownTrigger>
+        <DropdownTrigger asChild>
             <Button variant="primary-fill">With Disabled Item </Button>
         </DropdownTrigger>
         <DropdownContent>
@@ -375,7 +375,7 @@ You can set `align` on `DialogContent` to align where the content viewport shoul
       <div>
         Start
         <Dropdown>
-            <DropdownTrigger>
+            <DropdownTrigger asChild>
                 <Button variant="primary-fill">Align: Start </Button>
             </DropdownTrigger>
             <DropdownContent align="start">
@@ -388,7 +388,7 @@ You can set `align` on `DialogContent` to align where the content viewport shoul
       <div>
         Center
        <Dropdown>
-            <DropdownTrigger>
+            <DropdownTrigger asChild>
                 <Button variant="primary-fill">Align: Center </Button>
             </DropdownTrigger>
             <DropdownContent align="center">
@@ -401,7 +401,7 @@ You can set `align` on `DialogContent` to align where the content viewport shoul
       <div>
         End
        <Dropdown>
-            <DropdownTrigger>
+            <DropdownTrigger asChild>
                 <Button variant="primary-fill">Align: End </Button>
             </DropdownTrigger>
             <DropdownContent align="end">
@@ -418,7 +418,7 @@ You can set `align` on `DialogContent` to align where the content viewport shoul
 ```tsx
 // Start
 <Dropdown>
-    <DropdownTrigger>
+    <DropdownTrigger asChild>
         <Button variant="primary-fill">Align: Start </Button>
     </DropdownTrigger>
     <DropdownContent align="start">
@@ -431,7 +431,7 @@ You can set `align` on `DialogContent` to align where the content viewport shoul
 // Center
 
 <Dropdown>
-  <DropdownTrigger>
+  <DropdownTrigger asChild>
     <Button variant="primary-fill">Align: Center </Button>
   </DropdownTrigger>
   <DropdownContent align="center">
@@ -444,7 +444,7 @@ You can set `align` on `DialogContent` to align where the content viewport shoul
 // End
 
 <Dropdown>
-  <DropdownTrigger>
+  <DropdownTrigger asChild>
     <Button variant="primary-fill">Align: End </Button>
   </DropdownTrigger>
   <DropdownContent align="end">
@@ -468,7 +468,7 @@ You can set `side` on `DialogContent` to position where the content viewport sho
       <div>
         Bottom
         <Dropdown>
-            <DropdownTrigger>
+            <DropdownTrigger asChild>
                 <Button variant="primary-fill">Side: Bottom </Button>
             </DropdownTrigger>
             <DropdownContent side="bottom">
@@ -481,7 +481,7 @@ You can set `side` on `DialogContent` to position where the content viewport sho
       <div>
         Top
        <Dropdown>
-            <DropdownTrigger>
+            <DropdownTrigger asChild>
                 <Button variant="primary-fill">Side: Top </Button>
             </DropdownTrigger>
             <DropdownContent side="top">
@@ -494,7 +494,7 @@ You can set `side` on `DialogContent` to position where the content viewport sho
       <div>
         Left
        <Dropdown>
-            <DropdownTrigger>
+            <DropdownTrigger asChild>
                 <Button variant="primary-fill">Side: Left </Button>
             </DropdownTrigger>
             <DropdownContent side="left">
@@ -507,7 +507,7 @@ You can set `side` on `DialogContent` to position where the content viewport sho
       <div>
         Right
        <Dropdown>
-            <DropdownTrigger>
+            <DropdownTrigger asChild>
                 <Button variant="primary-fill">Side: Right </Button>
             </DropdownTrigger>
             <DropdownContent side="right">
@@ -524,7 +524,7 @@ You can set `side` on `DialogContent` to position where the content viewport sho
 ```tsx
 // Bottom
  <Dropdown>
-    <DropdownTrigger>
+    <DropdownTrigger asChild>
         <Button variant="primary-fill">Side: Bottom </Button>
     </DropdownTrigger>
     <DropdownContent side="bottom">
@@ -537,7 +537,7 @@ You can set `side` on `DialogContent` to position where the content viewport sho
 // Top
 
 <Dropdown>
-  <DropdownTrigger>
+  <DropdownTrigger asChild>
     <Button variant="primary-fill">Side: Top </Button>
   </DropdownTrigger>
   <DropdownContent side="top">
@@ -550,7 +550,7 @@ You can set `side` on `DialogContent` to position where the content viewport sho
 // Left
 
 <Dropdown>
-  <DropdownTrigger>
+  <DropdownTrigger asChild>
     <Button variant="primary-fill">Side: Left </Button>
   </DropdownTrigger>
   <DropdownContent side="left">
@@ -563,7 +563,7 @@ You can set `side` on `DialogContent` to position where the content viewport sho
 // Right
 
 <Dropdown>
-  <DropdownTrigger>
+  <DropdownTrigger asChild>
     <Button variant="primary-fill">Side: Right </Button>
   </DropdownTrigger>
   <DropdownContent side="right">
@@ -596,6 +596,18 @@ You can set `side` on `DialogContent` to position where the content viewport sho
     onOpenChange: {
       description: "Change event listener (controlled)",
       type: "(open: boolean) => void",
+    },
+  }}
+/>
+
+### DropdownTrigger
+
+<TypeTable
+  type={{
+    asChild: {
+      description: "Flag to inherit child component directly",
+      type: "boolean",
+      default: "false",
     },
   }}
 />
