@@ -121,7 +121,6 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
   (
     {
       className,
-      type = "button",
       variant = "primary-fill",
       size = "small",
       children,
@@ -137,7 +136,6 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
       <ButtonContext.Provider value={{ variant, size }}>
         <Comp
           ref={ref}
-          type={type}
           className={clx(button_cva({ variant, size, className, iconOnly }))}
           {...props}
         >
@@ -147,6 +145,7 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
     );
   },
 );
+Button.displayName = "Button";
 
 /*========================================================================================================================*/
 

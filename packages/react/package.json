@@ -1,6 +1,6 @@
 {
   "name": "@govtechmy/myds-react",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
@@ -208,7 +208,8 @@
     }
   },
   "peerDependencies": {
-    "react": "^18"
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "publishConfig": {
     "access": "public"
@@ -242,7 +243,7 @@
     "date-fns": "^4.1.0",
     "input-otp": "^1.4.1",
     "mitt": "^3.0.1",
-    "react-day-picker": "^9.2.1",
+    "react-day-picker": "^9.5.1",
     "tailwind-merge": "^2.4.0"
   }
 }

@@ -1,8 +1,8 @@
-// MyDS preset
+// MYDS preset
 import config from "./tailwind.config";
 const { content, ...preset } = config;
 
-// MyDS Fumadocs preset
+// MYDS Fumadocs preset
 const preset_fumadocs = {
   light: {
     background: "0 0% 100%", // white

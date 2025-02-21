@@ -15,6 +15,7 @@ const Tooltip: ForwardRefExoticComponent<
     </TooltipPrimitive.Provider>
   );
 });
+Tooltip.displayName = TooltipPrimitive.Root.displayName;
 
 const TooltipTrigger: ForwardRefExoticComponent<
   ComponentProps<typeof TooltipPrimitive.Trigger>
@@ -56,5 +57,6 @@ const TooltipArrow = React.forwardRef<
     {...props}
   />
 ));
+TooltipArrow.displayName = TooltipPrimitive.Arrow.displayName;
 
 export { Tooltip, TooltipContent, TooltipTrigger };

@@ -90,6 +90,7 @@ const Toggle: React.FC<ToggleProps> = ({
     </ToggleContext.Provider>
   );
 };
+Toggle.displayName = "Toggle";
 
 interface ToggleThumbProps {
   className?: string;
@@ -130,5 +131,6 @@ const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
     </label>
   );
 };
+ToggleThumb.displayName = "ToggleThumb";
 
 export { Toggle, ToggleThumb };

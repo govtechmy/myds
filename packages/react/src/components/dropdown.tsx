@@ -10,7 +10,6 @@ import {
 import * as DropdownPrimitive from "@radix-ui/react-dropdown-menu";
 import { cva, VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
-import { Button } from "./button";
 
 /**----------------------------------------------
  * *                   INFO
@@ -20,12 +19,14 @@ import { Button } from "./button";
  *---------------------------------------------**/
 
 const Dropdown = DropdownPrimitive.Root;
+Dropdown.displayName = "Dropdown";
 
 const DropdownTrigger: ForwardRefExoticComponent<
   ComponentProps<typeof DropdownPrimitive.Trigger>
 > = forwardRef((props, ref) => {
-  return <DropdownPrimitive.Trigger {...props} asChild ref={ref} />;
+  return <DropdownPrimitive.Trigger {...props} ref={ref} />;
 });
+DropdownTrigger.displayName = "DropdownTrigger";
 
 // const DropdownGroup = DropdownPrimitive.Group;
 
@@ -96,7 +97,7 @@ const DropdownContent = forwardRef<
     </DropdownPrimitive.Portal>
   ),
 );
-DropdownContent.displayName = DropdownPrimitive.Content.displayName;
+DropdownContent.displayName = "DropdownContent";
 
 const dropdown_item_cva = cva(
   [
@@ -129,7 +130,7 @@ const DropdownItem = forwardRef<
     {...props}
   />
 ));
-DropdownItem.displayName = DropdownPrimitive.Item.displayName;
+DropdownItem.displayName = "DropdownItem";
 
 const dropdown_item_icon_cva = cva(
   "block stroke-inherit text-inherit stroke-[1.5px] size-4 shrink-0",

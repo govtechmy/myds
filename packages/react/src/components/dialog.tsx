@@ -318,12 +318,15 @@ const DialogIcon: ForwardRefExoticComponent<DialogIconProps> = forwardRef(
 
 /*========================================================================================================================*/
 
-DialogBody.displayName = DialogPrimitive.Content.displayName;
+DialogBody.displayName = "DialogBody";
 DialogHeader.displayName = "DialogHeader";
 DialogFooter.displayName = "DialogFooter";
 DialogTitle.displayName = DialogPrimitive.Title.displayName;
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
 DialogIcon.displayName = "DialogIcon";
+DialogClose.displayName = DialogPrimitive.Close.displayName;
+DialogContent.displayName = DialogPrimitive.Content.displayName;
+DialogTrigger.displayName = DialogPrimitive.Trigger.displayName;
 
 /*========================================================================================================================*/
 

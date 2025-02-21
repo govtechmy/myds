@@ -1,0 +1,105 @@
+---
+title: Next.js
+description: A quick guide to set up MYDS in a Next.js app.
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+
+### Steps to install
+
+<Steps>
+  <Step>
+    #### Create a Next.js project
+    ```sh title="terminal"
+    npx create-next-app@latest project-name
+    ```
+    You will be prompted with a series of questions. Select the following options:
+
+    ```sh title="terminal"
+    ✔ Would you like to use TypeScript? … Yes
+    ✔ Would you like to use ESLint? … Yes
+    ✔ Would you like to use Tailwind CSS?
+    ✔ Would you like your code inside a `src/` directory? … No
+    ✔ Would you like to use App Router? (recommended) … Yes
+    ✔ Would you like to use Turbopack for `next dev`? … No
+    ✔ Would you like to customize the import alias (`@/*` by default)? … No
+    ✔ What import alias would you like configured? … @/* … Yes
+    ```
+
+    After the project is created, head to the project root:
+    ```sh title="terminal"
+    cd project-name
+    ```
+
+  </Step>
+  
+  <Step>
+    #### Install packages
+
+    ```package-install
+    npm i @govtechmy/myds-react @govtechmy/myds-style
+    ```
+
+  </Step>
+  
+  <Step>
+    #### Configure CSS stylesheet
+
+    You may configure the styling through one of (2) methods listed below.
+
+    __1. CSS import__
+
+    ```css title="app/global.css"
+    @import "@govtechmy/myds-style/full.css";
+    ```
+
+    __2. Tailwind CSS__
+
+    Please read the [Style Configuration](./style-configuration) for more advanced configuration.
+
+    </Step>
+
+  <Step>
+    #### Start using the components!
+
+    Here is a `<Button />` for you to get started!
+
+    ```tsx title="components/button.tsx"
+    "use client"; // [!code highlight] For Next App Router, must include this line
+    import { Button } from "@govtechmy/myds-react/button";
+
+    export default () => {
+      return <Button variant="primary-fill">Hello MYDS</Button>;
+    };
+    ```
+
+    <Callout
+      type="info"
+      title="Important"
+      className="bg-bg-primary-50 text-txt-primary border-transparent"
+      icon={<InfoIcon className="size-5" />}
+    >
+      MYDS components are built for the client-side, while Next.js App router is
+      server rendered by default.
+
+      To tell Next.js to render the component client side, you
+      must include the `use client` directive in the component file. For Next.js Page router, you may omit the directive.
+    </Callout>
+
+
+    ```tsx title="app/page.tsx"
+    import Button from "../components/button";
+
+    export default function Home() {
+      return (
+        <div>
+          <Button />
+        </div>
+      );
+    }
+    ```
+    </Step>
+
+</Steps>
