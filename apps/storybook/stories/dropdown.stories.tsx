@@ -96,8 +96,7 @@ import { ButtonIcon } from "@govtechmy/myds-react/button";
 const meta = {
   title: "@govtechmy/myds-react/Dropdown",
   component: Dropdown,
-  tags: ["autodocs", "skip"],
-  // TODO: remove skip after dropdown trigger component has been merged
+  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
@@ -111,7 +110,7 @@ const meta = {
       description: "Select different dropdown scenarios",
       mapping: {
         basic: [
-          <DropdownTrigger asChild>User</DropdownTrigger>,
+          <DropdownTrigger>User</DropdownTrigger>,
           <DropdownContent>
             <DropdownItem>Profile</DropdownItem>
             <DropdownItem disabled>Billing</DropdownItem>
@@ -120,7 +119,7 @@ const meta = {
           </DropdownContent>,
         ],
         custom_trigger: [
-          <DropdownTrigger asChild>
+          <DropdownTrigger>
             <Link href="#" primary underline="always">
               hello
             </Link>
@@ -133,7 +132,7 @@ const meta = {
           </DropdownContent>,
         ],
         with_icon: [
-          <DropdownTrigger asChild>
+          <DropdownTrigger>
             <ButtonIcon>
               <OptionsIcon />
             </ButtonIcon>
