@@ -9,7 +9,7 @@ interface Themes {
 }
 
 interface ThemeToggler {
-  themes: Themes[];
+  themes?: Themes[];
 }
 
 const ThemeToggler: FunctionComponent<ThemeToggler> = ({
@@ -17,8 +17,6 @@ const ThemeToggler: FunctionComponent<ThemeToggler> = ({
     { theme: "light", icon: <SunIcon /> },
     { theme: "dark", icon: <MoonIcon /> },
   ],
-}: {
-  themes: Themes[];
 }) => {
   const { toggleTheme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
