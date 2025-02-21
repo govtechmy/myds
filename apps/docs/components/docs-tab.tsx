@@ -1,12 +1,12 @@
 "use client";
 
-import { MyDSConfig } from "@/app/[lang]/layout.config";
+import type { MYDSConfig } from "@/app/[lang]/layout.config";
 import { Tabs, TabsList, TabsTrigger } from "@govtechmy/myds-react/tabs";
 import { usePathname, useRouter } from "next/navigation";
 import { FunctionComponent } from "react";
 
 interface DocsTabProps {
-  menus: MyDSConfig["menu"];
+  menus: MYDSConfig["menu"];
 }
 
 const DocsTab: FunctionComponent<DocsTabProps> = ({ menus }) => {
