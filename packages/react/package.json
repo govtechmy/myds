@@ -15,6 +15,11 @@
       "type": "./dist/utils/index.d.ts",
       "import": "./dist/utils/index.mjs",
       "require": "./dist/utils/index.js"
+    }
+,
+    "./theme-toggler": {
+      "type": "./src/components/theme-toggler.tsx",
+      "default": "./src/components/theme-toggler.tsx"
     },
     "./navbar": {
       "type": "./dist/components/navbar.d.ts",

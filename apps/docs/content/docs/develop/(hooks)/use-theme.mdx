@@ -1,0 +1,122 @@
+---
+title: "useTheme Hook"
+description: "A custom hook to manage theme switching within a React application."
+---
+
+## useTheme
+
+The `useTheme` hook provides access to the current theme and a function to toggle between themes. It must be used within a `ThemeProvider`.
+
+## Installation
+
+Make sure your application is wrapped with `ThemeProvider` before using `useTheme`. You can use the provided `<ThemeToggle />` component or `implement a custom component` to use the hook.
+
+### Example: Root Layout
+
+```tsx
+import {
+  ThemeProvider,
+  ThemeToggler,
+} from "@govtechmy/myds-react/theme-toggler";
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <ThemeProvider>
+          <ThemeToggle />
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+### Example: Layout
+
+```tsx
+import {
+  ThemeProvider,
+  ThemeToggler,
+} from "@govtechmy/myds-react/theme-toggler";
+
+function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProvider>
+      <div className="app-container">
+        <ThemeToggle />
+        {children}
+      </div>
+    </ThemeProvider>
+  );
+}
+```
+
+## Using useTheme Hook
+
+### Implementing a Custom Theme Toggle Component
+
+The `useTheme` hook provides an easy way to manage theme states within your application. Below, we define a custom component that allows users to toggle between light and dark modes.
+
+```tsx
+import { ThemeProvider, useTheme } from "@govtechmy/myds-react/hooks/use-theme";
+
+const ThemeToggleCustom = () => {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <button onClick={() => toggleTheme(theme === "light" ? "dark" : "light")}>
+      Switch to {theme === "light" ? "dark" : "light"} mode
+    </button>
+  );
+};
+
+export { ThemeToggleCustom, ThemeProvider };
+```
+
+### Integrating the Theme Toggle into a Layout Component
+
+To apply the theme context across the application, wrap the entire layout with the `ThemeProvider`. This ensures that all child components can access the theme state and toggle functionality.
+
+```tsx
+import { ThemeToggleCustom, ThemeProvider } from "./ThemeToggleCustom";
+
+function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProvider>
+      <div className="app-container">
+        <ThemeToggleCustom />
+        {children}
+      </div>
+    </ThemeProvider>
+  );
+}
+```
+
+### Explanation
+
+- The `ThemeToggleCustom` component retrieves the current theme (`light` or `dark`) and provides a button to toggle between them.
+- The `Layout` component wraps the application in a `ThemeProvider`, making the theme context accessible to all child components.
+- Placing `ThemeToggleCustom` inside the `Layout` ensures that users can switch themes from any page.
+
+This approach keeps the theme logic modular, reusable, and easy to integrate into different parts of the application.
+
+**Note:** `useTheme` must be used within a `ThemeProvider`. Attempting to use it outside will throw an error.
+
+## API
+
+`const { theme, toggleTheme } = useTheme();`
+
+#### Parameters
+
+The useTheme hook does not accept any parameters.
+
+#### Returns:
+
+- **`theme: string`** – The current theme.
+- **`toggleTheme: (theme: string) => void`** – A function to update the theme dynamically.
