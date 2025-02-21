@@ -48,59 +48,53 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang={params.lang} className={clx("font-body light")}>
-      <Head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-      </Head>
-      <Analytics />
-      <body>
-        <FumaI18n
-          locale={params.lang}
-          locales={[
-            {
-              name: "English",
-              locale: "en",
+    <>
+      <FumaI18n
+        locale={params.lang}
+        locales={[
+          {
+            name: "English",
+            locale: "en",
+          },
+          {
+            name: "Bahasa Melayu",
+            locale: "ms",
+          },
+        ]}
+        translations={
+          {
+            en: {
+              search: "Search",
+              searchNoResult: "No results found",
+              toc: "On this page",
+              tocNoHeadings: "No Headings",
+              lastUpdate: "Last updated on",
+              chooseLanguage: "Choose a language",
+              nextPage: "Next",
+              previousPage: "Previous",
+              chooseTheme: "Theme",
+              editOnGithub: "Edit on GitHub",
             },
-            {
-              name: "Bahasa Melayu",
-              locale: "ms",
+            ms: {
+              search: "Cari",
+              searchNoResult: "Tiada hasil ditemui",
+              toc: "Di halaman ini",
+              tocNoHeadings: "Tiada Tajuk",
+              lastUpdate: "Dikemaskini pada",
+              chooseLanguage: "Pilih bahasa",
+              nextPage: "Seterusnya",
+              previousPage: "Sebelumnya",
+              chooseTheme: "Tema",
+              editOnGithub: "Edit di GitHub",
             },
-          ]}
-          translations={
-            {
-              en: {
-                search: "Search",
-                searchNoResult: "No results found",
-                toc: "On this page",
-                tocNoHeadings: "No Headings",
-                lastUpdate: "Last updated on",
-                chooseLanguage: "Choose a language",
-                nextPage: "Next",
-                previousPage: "Previous",
-                chooseTheme: "Theme",
-                editOnGithub: "Edit on GitHub",
-              },
-              ms: {
-                search: "Cari",
-                searchNoResult: "Tiada hasil ditemui",
-                toc: "Di halaman ini",
-                tocNoHeadings: "Tiada Tajuk",
-                lastUpdate: "Dikemaskini pada",
-                chooseLanguage: "Pilih bahasa",
-                nextPage: "Seterusnya",
-                previousPage: "Sebelumnya",
-                chooseTheme: "Tema",
-                editOnGithub: "Edit di GitHub",
-              },
-            }[params.lang]
-          }
-        >
-          <RosettaProvider locales={{ en, ms }}>
-            <AutoToast />
-            <RootProvider>{children}</RootProvider>
-          </RosettaProvider>
-        </FumaI18n>
-      </body>
-    </html>
+          }[params.lang]
+        }
+      >
+        <RosettaProvider locales={{ en, ms }}>
+          <AutoToast />
+          <RootProvider>{children}</RootProvider>
+        </RosettaProvider>
+      </FumaI18n>
+    </>
   );
 }

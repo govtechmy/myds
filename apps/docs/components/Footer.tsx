@@ -74,7 +74,8 @@ export default function Footer(props: Props) {
         <div className="text-dim-500 max-sm:px-4.5 flex flex-col justify-between gap-6 pt-8 text-sm lg:flex-row">
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center">
             <p>
-              {t("Footer.copyright")} © {new Date().getFullYear()}
+              {t("Footer.copyright") || "Hak Cipta Terpelihara"} ©{" "}
+              {new Date().getFullYear()}
             </p>
           </div>
         </div>
