@@ -2,4 +2,5 @@
 "@govtechmy/myds-react": patch
 ---
 
-Theme Toggler universal hook
+Added `useTheme` hook and documentation.  
+Added `ThemeToggler` component and documentation.

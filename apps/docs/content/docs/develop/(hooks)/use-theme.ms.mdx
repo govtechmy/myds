@@ -1,217 +1,122 @@
 ---
-title: useTheme
-description: The Toggle component is a versatile switch that allows users to toggle between two states.
+title: "useTheme Hook"
+description: "Hook khas untuk mengurus penukaran tema dalam aplikasi React."
 ---
 
-import { Quicklinks } from "@/components/quicklinks";
-import Preview from "@/components/preview";
-import { Toggle, ToggleThumb, ControlledToggle } from "@/components/myds";
-import { TypeTable } from "fumadocs-ui/components/type-table";
-import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+## useTheme
 
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
-    <div className="flex justify-center">
-      <Toggle>
-        <ToggleThumb />
-      </Toggle>
-    </div>
-  </Tab>
-  <Tab value="Code">
-    ```tsx
-    import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+Hook `useTheme` memberikan akses kepada tema semasa dan fungsi untuk menukar antara tema. Ia mesti digunakan dalam `ThemeProvider`.
 
-    <Toggle>
-      <ToggleThumb />
-    </Toggle>
-    ```
+## Pemasangan
 
-  </Tab>
-</Tabs>
+Pastikan aplikasi anda dibungkus dengan `ThemeProvider` sebelum menggunakan `useTheme`. Anda boleh menggunakan komponen `<ThemeToggle />` yang disediakan atau `membina komponen tersuai` untuk menggunakan hook ini.
 
-<Quicklinks
-  links={{
-    storybook:
-      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-toggle--docs",
-    source:
-      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/toggle.tsx",
-  }}
-/>
+### Contoh: Susun Atur Utama
 
-## Usage
+```tsx
+import {
+  ThemeProvider,
+  ThemeToggler,
+} from "@govtechmy/myds-react/theme-toggler";
 
-```tsx copy
-import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="ms">
+      <body>
+        <ThemeProvider>
+          <ThemeToggle />
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
 ```
 
-```tsx copy
-export default () => (
-  <Toggle>
-    <ToggleThumb />
-  </Toggle>
-);
+### Contoh: Susun Atur
+
+```tsx
+import {
+  ThemeProvider,
+  ThemeToggler,
+} from "@govtechmy/myds-react/theme-toggler";
+
+function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProvider>
+      <div className="app-container">
+        <ThemeToggle />
+        {children}
+      </div>
+    </ThemeProvider>
+  );
+}
 ```
 
-## Examples
+## Menggunakan Hook useTheme
 
-### Size
+### Membina Komponen Tukar Tema Tersuai
 
-Use the `size` prop to change the toggle size!
+Hook `useTheme` menyediakan cara mudah untuk mengurus status tema dalam aplikasi anda. Berikut adalah komponen tersuai yang membolehkan pengguna menukar antara mod cerah dan gelap.
 
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
-    <div className="space-y-2">
-        <div className="flex justify-center items-center h-fit gap-1">
-            <Toggle size="small">
-              <ToggleThumb/>
-            </Toggle>
-            <Toggle size='medium'>
-              <ToggleThumb/>
-            </Toggle>
-            <Toggle size="large">
-              <ToggleThumb/>
-            </Toggle>
-        </div>
-    </div>
-  </Tab>
-  <Tab value="Code">
-  ```tsx 
-import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
-
-<Toggle size="small">
-  <ToggleThumb />
-</Toggle>
-
-<Toggle size="medium">
-  <ToggleThumb />
-</Toggle>
-
-<Toggle size="large">
-  <ToggleThumb />
-</Toggle>
-
-````
-  </Tab>
-</Tabs>
-
-### Disabled
-
-Use the `disabled` prop to change to disabled style!
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
-  <div className="space-y-2">
-    <div className="flex justify-center items-center h-fit gap-1">
-        <Toggle disabled = {true}>
-         <ToggleThumb />
-        </Toggle>
-    </div>
-    <div className="flex justify-center items-center h-fit gap-1">
-        <Toggle disabled = {true} defaultChecked = {true}>
-         <ToggleThumb />
-        </Toggle>
-    </div>
-
-  </div>
-  </Tab>
-  <Tab value="Code">
 ```tsx
-import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+import { ThemeProvider, useTheme } from "@govtechmy/myds-react/hooks/use-theme";
 
-<Toggle disabled = {true}>
-    <ToggleThumb />
-</Toggle>
+const ThemeToggleCustom = () => {
+  const { theme, toggleTheme } = useTheme();
 
-<Toggle disabled = {true} defaultChecked = {true}>
-    <ToggleThumb />
-</Toggle>
+  return (
+    <button onClick={() => toggleTheme(theme === "light" ? "dark" : "light")}>
+      Tukar ke mod {theme === "light" ? "gelap" : "cerah"}
+    </button>
+  );
+};
 
-````
+export { ThemeToggleCustom, ThemeProvider };
+```
 
-  </Tab>
-</Tabs>
+### Mengintegrasikan Tukar Tema ke dalam Komponen Susun Atur
 
-### Controlled Toggle
+Untuk memastikan tema diterapkan di seluruh aplikasi, bungkus keseluruhan susun atur dengan `ThemeProvider`. Ini membolehkan semua komponen anak mengakses status tema dan fungsi penukaran tema.
 
-Toggle can be handled by Controlled Method
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
-    <div className="space-y-2">
-        <div className="flex justify-center items-center h-fit ">
-            <ControlledToggle/>
-        </div>
-    </div>
-  </Tab>
-  <Tab value="Code">
 ```tsx
-import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+import { ThemeToggleCustom, ThemeProvider } from "./ThemeToggleCustom";
 
-const ControlledToggle = () => {
-const [isChecked, setIsChecked] = React.useState(false);
-return (
+function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProvider>
+      <div className="app-container">
+        <ThemeToggleCustom />
+        {children}
+      </div>
+    </ThemeProvider>
+  );
+}
+```
 
-<div className="flex flex-col items-center justify-center">
-  <p>Current state: {isChecked ? "On" : "Off"}</p>
-  <Toggle checked={isChecked} onCheckedChange={setIsChecked}>
-    <ToggleThumb />
-  </Toggle>
-</div>
-); };
+### Penjelasan
 
-````
+- Komponen `ThemeToggleCustom` mendapatkan tema semasa (`cerah` atau `gelap`) dan menyediakan butang untuk menukar antara kedua-duanya.
+- Komponen `Layout` membungkus aplikasi dalam `ThemeProvider`, memastikan tema boleh diakses oleh semua komponen anak.
+- Meletakkan `ThemeToggleCustom` dalam `Layout` membolehkan pengguna menukar tema dari mana-mana halaman.
 
-  </Tab>
-</Tabs>
+Pendekatan ini menjadikan logik tema lebih modular, boleh digunakan semula, dan mudah disepadukan dalam pelbagai bahagian aplikasi.
 
+**Nota:** `useTheme` mesti digunakan dalam `ThemeProvider`. Menggunakannya di luar akan menyebabkan ralat.
 
-### Uncontrolled Toggle
+## API
 
-Toggle can be handled by Internally
+`const { theme, toggleTheme } = useTheme();`
 
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
-    <div className="space-y-2">
-        <div className="flex flex-col justify-center items-center h-fit ">
-          <p className="">This toggle manages its own state internally.</p>
-          <Toggle defaultChecked={false}>
-            <ToggleThumb />
-           </Toggle>
-        </div>
-    </div>
-  </Tab>
-  <Tab value="Code">
-```tsx
-import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
+#### Parameter
 
-<p className="">This toggle manages its own state internally.</p>
-<Toggle defaultChecked={false}>
-  <ToggleThumb />
-</Toggle>
+Hook `useTheme` tidak menerima sebarang parameter.
 
+#### Pulangan:
 
-````
-
-  </Tab>
-</Tabs>
-
-## Props
-
-### Toggle
-
-<TypeTable
-  type={{
-    size: {
-      description: "Sizes of the toggle",
-      type: "enum",
-      typeDescription: "small | medium | large",
-      default: "medium",
-    },
-    disabled: {
-      description: "Indicates whether the toggle is disabled",
-      type: "boolean",
-      typeDescription: "true | false",
-      default: "false",
-    },
-  }}
-/>
+- **`theme: string`** – Tema semasa.
+- **`toggleTheme: (theme: string) => void`** – Fungsi untuk menukar tema secara dinamik.
