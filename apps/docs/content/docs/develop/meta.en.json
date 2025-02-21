@@ -52,7 +52,7 @@
     "(components)/tooltip",
 
     "---Hooks ---",
-    "(hooks)/use-theme-toggler"
+    "(hooks)/use-theme"
   ],
   "root": true
 }

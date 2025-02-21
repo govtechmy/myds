@@ -1,7 +1,7 @@
 import { FunctionComponent, ReactNode, useState } from "react";
 import { MoonIcon, PlaceholderIcon, SunIcon } from "../icons";
 import { Button } from "./button";
-import { ThemeProvider, useTheme } from "../hooks/use-theme-toggler";
+import { ThemeProvider, useTheme } from "../hooks/use-theme";
 
 interface Themes {
   theme: string;
