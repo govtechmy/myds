@@ -1,5 +1,11 @@
 # @govtechmy/myds-react
 
+## 0.0.10
+
+### Patch Changes
+
+- 1f49811: Fix: ButtonIcon preserve size
+
 ## 0.0.9
 
 ### Patch Changes
