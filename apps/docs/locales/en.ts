@@ -273,4 +273,10 @@ export default {
         "Navigation components are used to help users move around a digital product.",
     },
   },
+
+  /* Error */
+  e404: {
+    title: "404 - Page Not Found | MYDS",
+    description: "The page you are looking for does not exist.",
+  },
 };

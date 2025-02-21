@@ -230,7 +230,7 @@ ButtonCounter.displayName = "ButtonCounter";
  */
 
 const button_icon_cva = cva(
-  "block stroke-inherit text-inherit stroke-[1.5px]",
+  "block stroke-inherit text-inherit stroke-[1.5px] shrink-0",
   {
     variants: {
       size: {

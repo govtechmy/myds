@@ -275,4 +275,10 @@ export default {
         "Komponen navigasi digunakan untuk membantu pengguna bergerak di sekitar produk digital.",
     },
   },
+
+  /* Error */
+  e404: {
+    title: "404 - Halaman tidak dijumpai | MYDS",
+    description: "Halaman yang anda cari tidak wujud.",
+  },
 };

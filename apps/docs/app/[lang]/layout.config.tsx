@@ -26,12 +26,12 @@ interface Option {
   props?: HTMLAttributes<HTMLElement>;
 }
 
-export type MyDSConfig = {
+export type MYDSConfig = {
   config: HomeLayoutProps;
   menu: Array<Option>;
 };
 
-export const getMYDSConfig = (lang: "en" | "ms"): MyDSConfig => {
+export const getMYDSConfig = (lang: "en" | "ms"): MYDSConfig => {
   const { t } = getRosetta(lang);
 
   const menu: Array<LinkItemType & Option> = [
