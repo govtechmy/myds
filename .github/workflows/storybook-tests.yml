@@ -29,6 +29,7 @@ jobs:
         run: pnpm build --filter=@govtechmy/myds-storybook
 
       - name: Serve Storybook and run tests
+        working-directory: ./apps/storybook
         run: |
           pnpm dlx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "pnpm dlx http-server dist --port 6006 --silent" \
