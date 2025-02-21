@@ -17,7 +17,11 @@ const Tooltip: ForwardRefExoticComponent<
 });
 Tooltip.displayName = TooltipPrimitive.Root.displayName;
 
-const TooltipTrigger = TooltipPrimitive.Trigger;
+const TooltipTrigger: ForwardRefExoticComponent<
+  ComponentProps<typeof TooltipPrimitive.Trigger>
+> = forwardRef(({ className, ...props }, ref) => {
+  return <TooltipPrimitive.Trigger {...props} ref={ref} />;
+});
 
 const TooltipContent: ForwardRefExoticComponent<
   ComponentProps<typeof TooltipPrimitive.Content> &

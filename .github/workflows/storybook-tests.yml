@@ -1,0 +1,38 @@
+name: "Storybook Accessibility Tests"
+
+on:
+  pull_request:
+    branches: -main
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.8
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright
+        working-directory: ./apps/storybook
+        run: pnpm exec playwright install --with-deps
+
+      - name: Build Storybook
+        run: pnpm build --filter=@govtechmy/myds-storybook
+
+      - name: Serve Storybook and run tests
+        working-directory: ./apps/storybook
+        run: |
+          pnpm dlx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+            "pnpm dlx http-server dist --port 6006 --silent" \
+            "pnpm dlx wait-on tcp:127.0.0.1:6006 && pnpm test-storybook"

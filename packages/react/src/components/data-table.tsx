@@ -265,6 +265,11 @@ const DataTableHeader: FunctionComponent = () => {
                   )}
                   style={{ ...getCommonPinningStyles(header.column) }}
                 >
+                  <span className="sr-only">
+                    {(header.column.columnDef.id == "_checkbox" ||
+                      header.column.columnDef.id == "_radio") &&
+                      "selection-column"}
+                  </span>
                   {header.isPlaceholder ? null : (
                     <div className="flex w-full items-center justify-between gap-2 whitespace-nowrap">
                       {flexRender(
@@ -447,6 +452,7 @@ const CheckboxColumn = <TData extends Record<string, any>>() => {
           table.getIsAllRowsSelected() ||
           (table.getIsSomeRowsSelected() && "indeterminate")
         }
+        aria-label="checkbox"
         onClick={table.getToggleAllRowsSelectedHandler()}
       />
     ),
@@ -456,6 +462,7 @@ const CheckboxColumn = <TData extends Record<string, any>>() => {
         checked={row.getIsSelected()}
         value={row.id}
         disabled={!row.getCanSelect()}
+        aria-label="checkbox"
         onClick={row.getToggleSelectedHandler()}
       />
     ),
@@ -492,6 +499,7 @@ const RadioColumn = <TData extends Record<string, any>>() => {
         <input
           type="radio"
           role="radio"
+          aria-label="radio"
           id={row.id}
           value={row.id}
           checked={row.getIsSelected()}
@@ -527,6 +535,7 @@ const ExpandCell = <TData extends Record<string, any>>(
           <ButtonIcon
             data-expanded={row.getIsExpanded()}
             className="transform transition-transform data-[expanded=true]:rotate-90"
+            aria-label="expand row"
           >
             <ChevronRightIcon />
           </ButtonIcon>

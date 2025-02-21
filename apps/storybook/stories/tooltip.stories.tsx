@@ -25,7 +25,7 @@ import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
  * import { Tooltip, TooltipTrigger, TooltipContent } from "@govtechmy/myds-react/tooltip";
  *
  * <Tooltip>
- *    <TooltipTrigger>
+ *     <TooltipTrigger aria-label="Tooltip">
  *      <QuestionCircleIcon />
  *    </TooltipTrigger>
  *    <TooltipContent>What does the fox says?</TooltipContent>,
@@ -60,13 +60,13 @@ const meta = {
       ],
       mapping: {
         basic: [
-          <TooltipTrigger>
+          <TooltipTrigger aria-label="Tooltip">
             <QuestionCircleIcon />
           </TooltipTrigger>,
           <TooltipContent>What does the fox says?</TooltipContent>,
         ],
         top: [
-          <TooltipTrigger>
+          <TooltipTrigger aria-label="Tooltip">
             <QuestionCircleIcon />
           </TooltipTrigger>,
           <TooltipContent side="top" align="center">
@@ -74,7 +74,7 @@ const meta = {
           </TooltipContent>,
         ],
         bottom: [
-          <TooltipTrigger>
+          <TooltipTrigger aria-label="Tooltip">
             <QuestionCircleIcon />
           </TooltipTrigger>,
           <TooltipContent side="bottom" align="center">
@@ -82,7 +82,7 @@ const meta = {
           </TooltipContent>,
         ],
         left: [
-          <TooltipTrigger>
+          <TooltipTrigger aria-label="Tooltip">
             <QuestionCircleIcon />
           </TooltipTrigger>,
           <TooltipContent side="left" align="center">
@@ -90,7 +90,7 @@ const meta = {
           </TooltipContent>,
         ],
         right: [
-          <TooltipTrigger>
+          <TooltipTrigger aria-label="Tooltip">
             <QuestionCircleIcon />
           </TooltipTrigger>,
           <TooltipContent side="right" align="center">
@@ -98,7 +98,7 @@ const meta = {
           </TooltipContent>,
         ],
         basicDark: [
-          <TooltipTrigger>
+          <TooltipTrigger aria-label="Tooltip">
             <QuestionCircleIcon className="text-bg-white" />
           </TooltipTrigger>,
           <TooltipContent className="dark" side="right">
@@ -140,7 +140,7 @@ const EdgeTooltipDemo = (props: any) => {
       <div className="flex w-full">
         <div className="flex-1" />
         <Tooltip>
-          <TooltipTrigger>
+          <TooltipTrigger aria-label="Tooltip">
             <QuestionCircleIcon />
           </TooltipTrigger>
           <TooltipContent side="right">
@@ -152,7 +152,7 @@ const EdgeTooltipDemo = (props: any) => {
       <div className="flex w-full">
         <div className="flex-1" />
         <Tooltip>
-          <TooltipTrigger>
+          <TooltipTrigger aria-label="Tooltip">
             <QuestionCircleIcon />
           </TooltipTrigger>
           <TooltipContent side="bottom" align="end">
@@ -161,13 +161,13 @@ const EdgeTooltipDemo = (props: any) => {
         </Tooltip>
       </div>
       <Tooltip>
-        <TooltipTrigger>
+        <TooltipTrigger aria-label="Tooltip">
           <QuestionCircleIcon />
         </TooltipTrigger>
         <TooltipContent>Hello world</TooltipContent>
       </Tooltip>
       <Tooltip>
-        <TooltipTrigger>
+        <TooltipTrigger aria-label="Tooltip">
           <QuestionCircleIcon />
         </TooltipTrigger>
         <TooltipContent side="right">
@@ -176,7 +176,7 @@ const EdgeTooltipDemo = (props: any) => {
         </TooltipContent>
       </Tooltip>
       <Tooltip>
-        <TooltipTrigger>
+        <TooltipTrigger aria-label="Tooltip">
           <QuestionCircleIcon />
         </TooltipTrigger>
         <TooltipContent side="left">
@@ -185,14 +185,14 @@ const EdgeTooltipDemo = (props: any) => {
         </TooltipContent>
       </Tooltip>
       <Tooltip>
-        <TooltipTrigger>
+        <TooltipTrigger aria-label="Tooltip">
           <QuestionCircleIcon />
         </TooltipTrigger>
         <TooltipContent side="bottom">Hello world</TooltipContent>
       </Tooltip>
       <div className="w-full">
         <Tooltip>
-          <TooltipTrigger>
+          <TooltipTrigger aria-label="Tooltip">
             <QuestionCircleIcon />
           </TooltipTrigger>
           <TooltipContent side="left">Hello world</TooltipContent>
@@ -200,7 +200,7 @@ const EdgeTooltipDemo = (props: any) => {
       </div>
       <div className="w-full">
         <Tooltip>
-          <TooltipTrigger>
+          <TooltipTrigger aria-label="Tooltip">
             <QuestionCircleIcon />
           </TooltipTrigger>
           <TooltipContent side="top" align="start">

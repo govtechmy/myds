@@ -106,7 +106,7 @@ const TableTooltip: ForwardRefExoticComponent<ComponentProps<typeof Tooltip>> =
   forwardRef(({ children, ...props }, ref) => {
     return (
       <Tooltip {...props}>
-        <TooltipTrigger>
+        <TooltipTrigger aria-label="Tooltip">
           <QuestionCircleIcon className="text-txt-black-500 size-4 cursor-help" />
         </TooltipTrigger>
         <TooltipContent side="top" align="center">

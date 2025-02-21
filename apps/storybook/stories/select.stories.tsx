@@ -168,13 +168,13 @@ const meta = {
       ],
       mapping: {
         "Options only": [
-          <SelectTrigger>
+          <SelectTrigger aria-label="Select from options below">
             <SelectValue label="Fruit" placeholder="Select" />
           </SelectTrigger>,
           <SelectContent>{CONTENT}</SelectContent>,
         ],
         "Options + Header": [
-          <SelectTrigger>
+          <SelectTrigger aria-label="Select from options below">
             <SelectValue label="Fruit" placeholder="Select" />
           </SelectTrigger>,
           <SelectContent>
@@ -189,7 +189,7 @@ const meta = {
           </SelectContent>,
         ],
         "Options + Footer": [
-          <SelectTrigger>
+          <SelectTrigger aria-label="Select from options below">
             <SelectValue label="Fruit" placeholder="Select" />
           </SelectTrigger>,
           <SelectContent>
@@ -202,7 +202,7 @@ const meta = {
           </SelectContent>,
         ],
         "Options + Header + Footer": [
-          <SelectTrigger>
+          <SelectTrigger aria-label="Select from options below">
             <SelectValue label="Fruit" placeholder="Select" />
           </SelectTrigger>,
           <SelectContent>
@@ -231,7 +231,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = createStory({
   children: [
-    <SelectTrigger>
+    <SelectTrigger aria-label="Select from options below">
       <SelectValue label="Fruit" placeholder="Select" />
     </SelectTrigger>,
     <SelectContent>
@@ -257,7 +257,7 @@ export const Default: Story = createStory({
 
 export const WithHeader: Story = createStory({
   children: [
-    <SelectTrigger>
+    <SelectTrigger aria-label="Select from options below">
       <SelectValue label="Fruit" placeholder="Select" />
     </SelectTrigger>,
     <SelectContent>
@@ -290,7 +290,7 @@ export const WithHeader: Story = createStory({
 
 export const WithFooter: Story = createStory({
   children: [
-    <SelectTrigger>
+    <SelectTrigger aria-label="Select from options below">
       <SelectValue label="Fruit" placeholder="Select" />
     </SelectTrigger>,
     <SelectContent>
@@ -330,7 +330,7 @@ const CustomOption = {
 export const CustomDisplay_Pill: Story = createStory({
   multiple: true,
   children: [
-    <SelectTrigger>
+    <SelectTrigger aria-label="Select from options below">
       <SelectValue label="Fruit">
         {(value) => (
           <div className="flex gap-1">
@@ -363,7 +363,7 @@ export const DarkDefault: Story = createStory(
   {
     children: [
       <div className="dark">
-        <SelectTrigger>
+        <SelectTrigger aria-label="Select from options below">
           <SelectValue label="Fruit" placeholder="Select" />
         </SelectTrigger>
         ,

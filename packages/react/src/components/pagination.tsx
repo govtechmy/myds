@@ -121,6 +121,7 @@ const PaginationPrevious: ForwardRefExoticComponent<
       className={clx(disabled && "shadow-transparent")}
       onClick={handlePreviousPage}
       {...props}
+      aria-label="previous page"
     >
       <ButtonIcon>
         <ChevronLeftIcon />
@@ -158,6 +159,7 @@ const PaginationNext: ForwardRefExoticComponent<
       className={clx(disabled && "shadow-transparent")}
       onClick={handleNextPage}
       {...props}
+      aria-label="next page"
     >
       {children}
       <ButtonIcon>
@@ -188,6 +190,7 @@ const PaginationNumber: ForwardRefExoticComponent<
         "h-10 w-10 items-center justify-center",
       )}
       {...props}
+      aria-label={`page ${number}`}
     >
       {number}
     </Button>

@@ -101,7 +101,7 @@
   --txt-primary-disabled: var(--_primary-600) / 0.4;
 
   /* Text - Danger */
-  --txt-danger: var(--_danger-600);
+  --txt-danger: var(--_danger-700);
   --txt-danger-disabled: var(--_danger-600) / 0.4;
 
   /* Text - Success */

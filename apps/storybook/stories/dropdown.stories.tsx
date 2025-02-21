@@ -14,7 +14,7 @@ import {
   OptionsIcon,
   SettingIcon,
 } from "@govtechmy/myds-react/icon";
-import { ButtonIcon } from "@govtechmy/myds-react/button";
+import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
 import { Link } from "@govtechmy/myds-react/link";
 
 /**
@@ -119,7 +119,7 @@ const meta = {
           </DropdownContent>,
         ],
         custom_trigger: [
-          <DropdownTrigger asChild>
+          <DropdownTrigger>
             <Link href="#" primary underline="always">
               hello
             </Link>

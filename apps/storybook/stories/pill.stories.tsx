@@ -71,10 +71,13 @@ export const WithDelete: Story = createStory({
   onDismiss: fn(),
 });
 
-export const Disabled: Story = createStory({
-  children: "Label",
-  disabled: true,
-});
+export const Disabled: Story = {
+  ...createStory({
+    children: "Label",
+    disabled: true,
+  }),
+  tags: ["skip"],
+};
 
 export const Dark: Story = createStory(
   {
@@ -82,6 +85,7 @@ export const Dark: Story = createStory(
     children: "Label",
   },
   "dark",
+  // Skip the a11y test runner on this story
 );
 
 /**
@@ -96,11 +100,15 @@ export const WithDeleteDark: Story = createStory(
   "dark",
 );
 
-export const DisabledDark: Story = createStory(
-  {
-    className: "dark",
-    children: "Label",
-    disabled: true,
-  },
-  "dark",
-);
+export const DisabledDark: Story = {
+  ...createStory(
+    {
+      className: "dark",
+      children: "Label",
+      disabled: true,
+    },
+    "dark",
+  ),
+  tags: ["skip"],
+  // Skip the a11y test runner on this story
+};

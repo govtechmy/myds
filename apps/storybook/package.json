@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "storybook build -o dist",
-    "start": "serve storybook-static"
+    "start": "serve storybook-static",
+    "test-storybook": "test-storybook"
   },
   "dependencies": {
     "@govtechmy/myds-react": "workspace:*",
@@ -16,22 +17,27 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
-    "@storybook/addon-essentials": "^8.3.5",
-    "@storybook/addon-interactions": "^8.3.5",
+    "@playwright/test": "^1.50.1",
+    "@storybook/addon-a11y": "^8.5.6",
+    "@storybook/addon-essentials": "^8.5.6",
+    "@storybook/addon-interactions": "^8.5.6",
     "@storybook/addon-links": "^8.3.5",
     "@storybook/addon-onboarding": "^8.3.5",
     "@storybook/addon-queryparams": "^7.0.1",
     "@storybook/blocks": "^8.3.5",
-    "@storybook/react": "^8.3.5",
-    "@storybook/react-vite": "^8.3.5",
-    "@storybook/test": "^8.3.5",
+    "@storybook/react": "^8.5.6",
+    "@storybook/react-vite": "^8.5.6",
+    "@storybook/test": "^8.5.6",
+    "@storybook/test-runner": "^0.21.1",
     "@types/react": "^18",
     "autoprefixer": "^10.4.20",
+    "axe-playwright": "^2.1.0",
+    "jest": "^29.7.0",
     "postcss": "^8.4.47",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "serve": "^14.2.4",
-    "storybook": "^8.3.5",
+    "storybook": "^8.5.6",
     "storybook-addon-deep-controls": "^0.9.2"
   }
 }

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Checkbox } from "@govtechmy/myds-react/checkbox";
 import { createStory } from "../utils";
+import { Label } from "@govtechmy/myds-react/label";
 
 /**
  * ### Overview
@@ -82,54 +83,81 @@ const meta: Meta<typeof Checkbox> = {
 export default meta;
 type Story = StoryObj<typeof Checkbox>;
 
-export const Default: Story = createStory({});
+export const Default: Story = createStory({ "aria-label": "checkbox" });
 
-export const DefaultDark: Story = createStory({ className: "dark" }, "dark");
+export const DefaultDark: Story = createStory(
+  { className: "dark", "aria-label": "checkbox" },
+  "dark",
+);
 
-export const Medium: Story = createStory({ size: "medium" });
+export const Medium: Story = createStory({
+  size: "medium",
+  "aria-label": "checkbox",
+});
 
 export const MediumDark: Story = createStory(
-  { size: "medium", className: "dark" },
+  { size: "medium", className: "dark", "aria-label": "checkbox" },
   "dark",
 );
 
-export const Checked: Story = createStory({ checked: true });
+export const Checked: Story = createStory({
+  checked: true,
+  "aria-label": "checkbox",
+});
 
 export const CheckedDark: Story = createStory(
-  { checked: true, className: "dark" },
+  { checked: true, className: "dark", "aria-label": "checkbox" },
   "dark",
 );
 
-export const Indeterminate: Story = createStory({ checked: "indeterminate" });
+export const Indeterminate: Story = createStory({
+  checked: "indeterminate",
+  "aria-label": "checkbox",
+});
 
 export const IndeterminateDark: Story = createStory(
-  { checked: "indeterminate", className: "dark" },
+  { checked: "indeterminate", className: "dark", "aria-label": "checkbox" },
   "dark",
 );
 
-export const Disabled: Story = createStory({ disabled: true });
+export const Disabled: Story = createStory({
+  disabled: true,
+  "aria-label": "checkbox",
+});
 
 export const DisabledDark: Story = createStory(
-  { disabled: true, className: "dark" },
+  { disabled: true, className: "dark", "aria-label": "checkbox" },
   "dark",
 );
 
 export const DisabledChecked: Story = createStory({
   disabled: true,
   checked: true,
+  "aria-label": "checkbox",
 });
 
 export const DisabledCheckedDark: Story = createStory(
-  { disabled: true, checked: true, className: "dark" },
+  {
+    disabled: true,
+    checked: true,
+    className: "dark",
+    "aria-label": "checkbox",
+  },
   "dark",
 );
 
 export const DisabledIndeterminate: Story = createStory({
   disabled: true,
   checked: "indeterminate",
+  "aria-label": "checkbox",
 });
 
 export const DisabledIndeterminateDark: Story = createStory(
-  { disabled: true, checked: "indeterminate", className: "dark" },
+  {
+    disabled: true,
+    checked: "indeterminate",
+    className: "dark",
+    "aria-label": "checkbox",
+  },
   "dark",
 );

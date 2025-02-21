@@ -61,7 +61,7 @@ const SummaryListTerm: FunctionComponent<ComponentProps<"td">> = ({
   ...props
 }) => (
   <td
-    role="dt"
+    role="term"
     className={clx(
       "text-txt-black-500 flex min-w-[190px] items-start py-3 pr-3",
       className,
@@ -78,7 +78,7 @@ const SummaryListDetail: FunctionComponent<ComponentProps<"td">> = ({
   ...props
 }) => (
   <td
-    role="dd"
+    role="definition"
     className={clx("text-txt-black-900 w-full py-3 pr-3", className)}
     {...props}
   >
@@ -92,7 +92,7 @@ const SummaryListAction: FunctionComponent<ComponentProps<"td">> = ({
   ...props
 }) => (
   <td
-    role="dd"
+    role="definition"
     className={clx("flex justify-end py-1.5 pr-3 text-right", className)}
     {...props}
   >
@@ -106,7 +106,7 @@ const SummaryListAddition: FunctionComponent<ComponentProps<"td">> = ({
   ...props
 }) => (
   <td
-    role="dd"
+    role="definition"
     className={clx("text-txt-black-900 min-w-36 py-2 pr-3", className)}
     {...props}
   >

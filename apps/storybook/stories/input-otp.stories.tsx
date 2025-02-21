@@ -66,7 +66,11 @@ export default meta;
 
 export const Light = createRender(() => {
   return (
-    <InputOTP maxLength={4}>
+    <InputOTP
+      maxLength={4}
+      aria-label="input-otp"
+      aria-description="Enter a 4-character code. Each character appears in a separate box."
+    >
       <InputOTPSlot index={0} />
       <InputOTPSlot index={1} />
       <InputOTPSlot index={2} />
@@ -77,7 +81,12 @@ export const Light = createRender(() => {
 
 export const LightInvalid = createRender(() => {
   return (
-    <InputOTP maxLength={4} invalid>
+    <InputOTP
+      maxLength={4}
+      invalid
+      aria-label="input-otp"
+      aria-description="Enter a 4-character code. Each character appears in a separate box."
+    >
       <InputOTPSlot index={0} />
       <InputOTPSlot index={1} />
       <InputOTPSlot index={2} />
@@ -88,7 +97,13 @@ export const LightInvalid = createRender(() => {
 
 export const LightDisabled = createRender(() => {
   return (
-    <InputOTP maxLength={4} disabled defaultValue="G31D">
+    <InputOTP
+      maxLength={4}
+      disabled
+      defaultValue="G31D"
+      aria-label="input-otp"
+      aria-description="Enter a 4-character code. Each character appears in a separate box."
+    >
       <InputOTPSlot index={0} />
       <InputOTPSlot index={1} />
       <InputOTPSlot index={2} />
@@ -99,7 +114,12 @@ export const LightDisabled = createRender(() => {
 
 export const Dark = createRender(() => {
   return (
-    <InputOTP maxLength={4} className="dark">
+    <InputOTP
+      maxLength={4}
+      className="dark"
+      aria-label="input-otp"
+      aria-description="Enter a 4-character code. Each character appears in a separate box."
+    >
       <InputOTPSlot index={0} className="dark" />
       <InputOTPSlot index={1} className="dark" />
       <InputOTPSlot index={2} className="dark" />
@@ -110,7 +130,13 @@ export const Dark = createRender(() => {
 
 export const DarkInvalid = createRender(() => {
   return (
-    <InputOTP maxLength={4} className="dark" invalid>
+    <InputOTP
+      maxLength={4}
+      className="dark"
+      invalid
+      aria-label="input-otp"
+      aria-description="Enter a 4-character code. Each character appears in a separate box."
+    >
       <InputOTPSlot index={0} className="dark" />
       <InputOTPSlot index={1} className="dark" />
       <InputOTPSlot index={2} className="dark" />
@@ -121,7 +147,14 @@ export const DarkInvalid = createRender(() => {
 
 export const DarkDisabled = createRender(() => {
   return (
-    <InputOTP maxLength={4} disabled defaultValue="G31D" className="dark">
+    <InputOTP
+      maxLength={4}
+      disabled
+      defaultValue="G31D"
+      className="dark"
+      aria-label="input-otp"
+      aria-description="Enter a 4-character code. Each character appears in a separate box."
+    >
       <InputOTPSlot index={0} className="dark" />
       <InputOTPSlot index={1} className="dark" />
       <InputOTPSlot index={2} className="dark" />
@@ -137,7 +170,12 @@ export const DarkDisabled = createRender(() => {
  */
 export const NumbersOnly = createRender(() => {
   return (
-    <InputOTP maxLength={4} pattern="^[0-9]{0,4}$">
+    <InputOTP
+      maxLength={4}
+      pattern="^[0-9]{0,4}$"
+      aria-label="input-otp"
+      aria-description="Enter a 4-character code. Each character appears in a separate box."
+    >
       <InputOTPSlot index={0} />
       <InputOTPSlot index={1} />
       <InputOTPSlot index={2} />
