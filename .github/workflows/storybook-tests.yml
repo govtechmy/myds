@@ -1,6 +1,8 @@
-name: "Storybook Tests"
+name: "Storybook Accessibility Tests"
 
-on: push
+on:
+  pull_request:
+    branches: -main
 
 jobs:
   test:
