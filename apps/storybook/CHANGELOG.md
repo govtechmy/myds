@@ -1,5 +1,16 @@
 # @govtechmy/myds-storybook
 
+## 0.0.12
+
+### Patch Changes
+
+- ced37db: Implement accessibility test on stories
+- Updated dependencies [6ddcc13]
+- Updated dependencies [6ddcc13]
+- Updated dependencies [6956a40]
+  - @govtechmy/myds-style@0.0.4
+  - @govtechmy/myds-react@0.0.11
+
 ## 0.0.11
 
 ### Patch Changes
