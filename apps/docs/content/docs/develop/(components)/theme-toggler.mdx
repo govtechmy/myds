@@ -1,0 +1,154 @@
+---
+title: ThemeToggler
+description: A component for managing and toggling themes dynamically, using useTheme hook
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="flex justify-center">
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import { ThemeToggler } from "@govtechmy/myds-react/theme-toggler";
+    import { ThemeProvider } from "@govtechmy/myds-react/hooks";
+    import { MoonIcon, SunIcon } from "@govtechmy/myds-react/icon";
+
+    <ThemeProvider>
+        <ThemeToggler/>
+    </ThemeProvider>
+    ```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-theme-toggler--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/theme-toggler.tsx",
+  }}
+/>
+
+## Usage
+
+```tsx copy
+import {
+  ThemeProvider,
+  ThemeToggler,
+} from "@govtechmy/myds-react/theme-toggler";
+```
+
+```tsx copy
+export default () => (
+  <ThemeProvider>
+    <ThemeToggler />
+  </ThemeProvider>
+);
+```
+
+## Examples
+
+### Basic Usage
+
+Wrap your application with `ThemeProvider` and use `ThemeToggler` to switch between themes.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="flex justify-center">
+    </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+    import { ThemeProvider, ThemeToggler } from "@govtechmy/myds-react/theme-toggler";
+    import { MoonIcon, SunIcon } from "@govtechmy/myds-react/icon";
+
+    <ThemeProvider>
+        <ThemeToggler/>
+    </ThemeProvider>
+
+````
+</Tab>
+</Tabs>
+
+### Custom Themes
+
+Pass an array of themes to `ThemeToggler` to customize the available themes.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+<Tab value="Preview">
+  <div className="flex justify-center">
+  </div>
+</Tab>
+<Tab value="Code">
+```tsx
+import { MoonIcon, SunIcon } from "@govtechmy/myds-react/icon";
+import {
+ThemeProvider,
+ThemeToggler,
+} from "@govtechmy/myds-react/theme-toggler";
+
+  <ThemeProvider>
+    <ThemeToggler
+      themes={[
+        { theme: "light", icon: <SunIcon /> },
+        { theme: "dark", icon: <MoonIcon /> },
+        { theme: "sephia", icon: <PlaceholderIcon /> },
+        { theme: "retro", icon: <PlaceholderIcon /> },
+      ]}
+    />
+  </ThemeProvider>
+````
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### ThemeToggler
+
+<TypeTable
+  type={{
+    themes: {
+      description:
+        "An array of theme objects, each containing a theme name and an associated icon.",
+      type: "{ theme: string; icon: ReactNode; }[]",
+      typeDescription: "Array of theme objects",
+      default:
+        '[{ theme: "light", icon: <SunIcon /> }, { theme: "dark", icon: <MoonIcon /> }]',
+    },
+  }}
+/>{" "}
+
+### ThemeProvider
+
+<TypeTable
+  type={{
+    children: {
+      description: "The children components wrapped by the provider.",
+      type: "ReactNode",
+      typeDescription: "React elements",
+    },
+  }}
+/>{" "}
+
+## Hook
+
+### useTheme
+
+<TypeTable
+  type={{
+    toggleTheme: {
+      description:
+        "Function to toggle the theme based on the provided theme name.",
+      type: "(theme: string) => void",
+      typeDescription: "Callback function",
+    },
+  }}
+/>{" "}
