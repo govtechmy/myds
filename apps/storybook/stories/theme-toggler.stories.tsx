@@ -18,33 +18,33 @@ import { createStory } from "../utils";
  * </ThemeProvider>
  * ```
  */
-// const meta = {
-//   title: "@govtechmy/myds-react/ThemeToggler",
-//   tags: ["autodocs"],
-//   parameters: {
-//     layout: "fullscreen",
-//   },
-//   decorators: [
-//     (Story) => (
-//       <ThemeProvider>
-//         <Story />
-//       </ThemeProvider>
-//     ),
-//   ],
-//   argTypes: {
-//     themes: {
-//       table: {
-//         type: { summary: "Themes[]" },
-//       },
-//       description:
-//         "Array of theme objects containing theme name and associated icon.",
-//       control: "object",
-//     },
-//   },
-// } satisfies Meta<typeof ThemeToggler>;
+const meta = {
+  title: "@govtechmy/myds-react/ThemeToggler",
+  tags: ["!dev"],
+  parameters: {
+    layout: "fullscreen",
+  },
+  decorators: [
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
+  argTypes: {
+    themes: {
+      table: {
+        type: { summary: "Themes[]" },
+      },
+      description:
+        "Array of theme objects containing theme name and associated icon.",
+      control: "object",
+    },
+  },
+} satisfies Meta<{}>;
 
-// export default meta;
-// type Story = StoryObj<typeof meta>;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 // /**
 //  * Default ThemeToggler story.
