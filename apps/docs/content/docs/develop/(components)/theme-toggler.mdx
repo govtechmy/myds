@@ -5,10 +5,7 @@ description: A component for managing and toggling themes dynamically, using use
 
 import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
-import {
-  SampleThemeToggler,
-  CustomThemeToggler
-} from "./theme-toggler.client";
+import { SampleThemeToggler, CustomThemeToggler } from "./theme-toggler.client";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
@@ -20,7 +17,8 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
   </Tab>
   <Tab value="Code">
     ```tsx
-    import { ThemeProvider, ThemeToggler } from "@govtechmy/myds-react/theme-toggler";
+    import { ThemeToggler } from "@govtechmy/myds-react/theme-toggler";
+    import { ThemeProvider } from "@govtechmy/myds-react/hooks";
     import { MoonIcon, SunIcon } from "@govtechmy/myds-react/icon";
 
     <ThemeProvider>
@@ -52,7 +50,7 @@ import {
 ```tsx copy
 export default () => (
   <ThemeProvider>
-    <ThemeToggler/>
+    <ThemeToggler />
   </ThemeProvider>
 );
 ```
@@ -77,8 +75,9 @@ Wrap your application with `ThemeProvider` and use `ThemeToggler` to switch betw
     <ThemeProvider>
         <ThemeToggler/>
     </ThemeProvider>
-  ```
-  </Tab>
+
+````
+</Tab>
 </Tabs>
 
 ### Custom Themes
@@ -86,71 +85,74 @@ Wrap your application with `ThemeProvider` and use `ThemeToggler` to switch betw
 Pass an array of themes to `ThemeToggler` to customize the available themes.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
-    <div className="flex justify-center">
-     <CustomThemeToggler/>
-    </div>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
- import { MoonIcon, SunIcon } from "@govtechmy/myds-react/icon";
- import {
-  ThemeProvider,
-  ThemeToggler,
- } from "@govtechmy/myds-react/theme-toggler";
+<Tab value="Preview">
+  <div className="flex justify-center">
+   <CustomThemeToggler/>
+  </div>
+</Tab>
+<Tab value="Code">
+```tsx
+import { MoonIcon, SunIcon } from "@govtechmy/myds-react/icon";
+import {
+ThemeProvider,
+ThemeToggler,
+} from "@govtechmy/myds-react/theme-toggler";
 
-    <ThemeProvider>
-      <ThemeToggler
-        themes={[
-          { theme: "light", icon: <SunIcon /> },
-          { theme: "dark", icon: <MoonIcon /> },
-          { theme: "sephia", icon: <PlaceholderIcon /> },
-          { theme: "retro", icon: <PlaceholderIcon /> },
-        ]}
-      />
-    </ThemeProvider>
-  ```
+  <ThemeProvider>
+    <ThemeToggler
+      themes={[
+        { theme: "light", icon: <SunIcon /> },
+        { theme: "dark", icon: <MoonIcon /> },
+        { theme: "sephia", icon: <PlaceholderIcon /> },
+        { theme: "retro", icon: <PlaceholderIcon /> },
+      ]}
+    />
+  </ThemeProvider>
+````
+
   </Tab>
 </Tabs>
 
-## Props  
+## Props
 
-### ThemeToggler  
+### ThemeToggler
 
-<TypeTable  
-  type={{  
-    themes: {  
-      description: "An array of theme objects, each containing a theme name and an associated icon.",  
-      type: "{ theme: string; icon: ReactNode; }[]",  
-      typeDescription: "Array of theme objects",  
-      default: '[{ theme: "light", icon: <SunIcon /> }, { theme: "dark", icon: <MoonIcon /> }]',  
-    },  
-  }}  
-/>  
+<TypeTable
+  type={{
+    themes: {
+      description:
+        "An array of theme objects, each containing a theme name and an associated icon.",
+      type: "{ theme: string; icon: ReactNode; }[]",
+      typeDescription: "Array of theme objects",
+      default:
+        '[{ theme: "light", icon: <SunIcon /> }, { theme: "dark", icon: <MoonIcon /> }]',
+    },
+  }}
+/>{" "}
 
-### ThemeProvider  
+### ThemeProvider
 
-<TypeTable  
-  type={{  
-    children: {  
-      description: "The children components wrapped by the provider.",  
-      type: "ReactNode",  
-      typeDescription: "React elements",  
-    },  
-  }}  
-/>  
+<TypeTable
+  type={{
+    children: {
+      description: "The children components wrapped by the provider.",
+      type: "ReactNode",
+      typeDescription: "React elements",
+    },
+  }}
+/>{" "}
 
-## Hook  
+## Hook
 
-### useTheme  
+### useTheme
 
-<TypeTable  
-  type={{  
-    toggleTheme: {  
-      description: "Function to toggle the theme based on the provided theme name.",  
-      type: "(theme: string) => void",  
-      typeDescription: "Callback function",  
-    },  
-  }}  
-/>  
-
+<TypeTable
+  type={{
+    toggleTheme: {
+      description:
+        "Function to toggle the theme based on the provided theme name.",
+      type: "(theme: string) => void",
+      typeDescription: "Callback function",
+    },
+  }}
+/>{" "}

@@ -1,92 +1,123 @@
 ---
-title: "useTheme Hook"
-description: "Hook khas untuk mengurus penukaran tema dalam aplikasi React."
+title: useTheme
+description: Memberikan akses kepada tema semasa dan kaedah untuk menukar tema.
 ---
 
-## useTheme
+import { Quicklinks } from "@/components/quicklinks";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { TypeTable } from "fumadocs-ui/components/type-table";
 
-Hook `useTheme` memberikan akses kepada tema semasa dan fungsi untuk menukar antara tema. Ia mesti digunakan dalam `ThemeProvider`.
+## Penggunaan
 
-## Pemasangan
+<Tabs items={["Hook", "Keperluan"]} defaultValue="Hook">
+  <Tab value="Hook" className="not-prose">
+    ```ts
+    import { useTheme } from "@govtechmy/myds-react/hooks";
 
-Pastikan aplikasi anda dibungkus dengan `ThemeProvider` sebelum menggunakan `useTheme`. Anda boleh menggunakan komponen `<ThemeToggle />` yang disediakan atau `membina komponen tersuai` untuk menggunakan hook ini.
+    const { theme, setTheme } = useTheme();
+    ```
 
-### Contoh: Susun Atur Utama
+  </Tab>
+  <Tab value="Keperluan">
+    ```tsx
+    import { ThemeProvider } from "@govtechmy/myds-react/hooks";
 
-```tsx
-import {
-  ThemeProvider,
-  ThemeToggler,
-} from "@govtechmy/myds-react/theme-toggler";
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="ms">
-      <body>
+    const Layout = () => {
+      return (
         <ThemeProvider>
-          <ThemeToggle />
-          {children}
+          {/* children goes here */}
         </ThemeProvider>
-      </body>
-    </html>
-  );
-}
-```
+      );
+    }
 
-### Contoh: Susun Atur
+    export default Layout;
+    ```
 
-```tsx
-import {
-  ThemeProvider,
-  ThemeToggler,
-} from "@govtechmy/myds-react/theme-toggler";
+  </Tab>
+</Tabs>
 
-function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <ThemeProvider>
-      <div className="app-container">
-        <ThemeToggle />
-        {children}
-      </div>
-    </ThemeProvider>
-  );
-}
-```
+<Quicklinks
+  links={{
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/hooks/use-theme.tsx",
+  }}
+/>
 
-## Menggunakan Hook useTheme
+<Callout
+  type="info"
+  title="Penting"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Pastikan aplikasi anda dibalut dengan `ThemeProvider` sebelum menggunakan
+  `useTheme` untuk menggunakan API yang disediakan.
+</Callout>
 
-### Membina Komponen Tukar Tema Tersuai
+## Contoh
 
-Hook `useTheme` menyediakan cara mudah untuk mengurus status tema dalam aplikasi anda. Berikut adalah komponen tersuai yang membolehkan pengguna menukar antara mod cerah dan gelap.
+### Membina Komponen Tukar Tema
 
-```tsx
-import { ThemeProvider, useTheme } from "@govtechmy/myds-react/hooks/use-theme";
+Hook `useTheme` menyediakan cara mudah untuk menguruskan keadaan tema dalam aplikasi anda. Di bawah, kami mentakrifkan komponen tersuai yang membolehkan pengguna menukar antara mod terang dan gelap.
 
-const ThemeToggleCustom = () => {
-  const { theme, toggleTheme } = useTheme();
+<Tabs items={["Tukar", "Pilih"]} defaultValue="Tukar">
+  <Tab value="Tukar" className="not-prose">
+    ```tsx title="theme-toggle.tsx"
+    import { useTheme } from "@govtechmy/myds-react/hooks";
 
-  return (
-    <button onClick={() => toggleTheme(theme === "light" ? "dark" : "light")}>
-      Tukar ke mod {theme === "light" ? "gelap" : "cerah"}
-    </button>
-  );
-};
+    const ThemeToggle = () => {
+      const { theme, setTheme } = useTheme();
 
-export { ThemeToggleCustom, ThemeProvider };
-```
+      return (
+        <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+          Tukar kepada mod {theme === "light" ? "gelap" : "terang"}
+        </button>
+      );
+    };
 
-### Mengintegrasikan Tukar Tema ke dalam Komponen Susun Atur
+    export { ThemeToggle }
+    ```
 
-Untuk memastikan tema diterapkan di seluruh aplikasi, bungkus keseluruhan susun atur dengan `ThemeProvider`. Ini membolehkan semua komponen anak mengakses status tema dan fungsi penukaran tema.
+  </Tab>
+  <Tab value="Pilih">
+    ```tsx title="theme-select.tsx"
+    import { Select } from "@govtechmy/myds-react/select";
+  
+    const ThemeSelect = () => {
+      const { theme, setTheme } = useTheme();
 
-```tsx
+      const handleChange = (newTheme: string) => {
+        setTheme(newTheme);
+      };
+
+      return (
+        <Select size="small" variant="outline" onValueChange={handleChange}>
+          <SelectTrigger>
+            <SelectValue label="Tema" placeholder="Pilih" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="light">Terang</SelectItem>
+            <SelectItem value="dark">Gelap</SelectItem>
+          </SelectContent>
+        </Select>
+      );
+    };
+
+    export { ThemeSelect }
+    ```
+
+  </Tab>
+</Tabs>
+
+### Mengisytiharkan ThemeProvider yang Boleh Diakses Secara Global
+
+Untuk menggunakan konteks tema di seluruh aplikasi, balut keseluruhan susun atur dengan `ThemeProvider`. Ini memastikan semua komponen anak boleh mengakses keadaan tema dan fungsi tukar.
+
+```tsx title="layout.tsx"
+import type { ReactNode } from "react";
 import { ThemeToggleCustom, ThemeProvider } from "./ThemeToggleCustom";
 
-function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider>
       <div className="app-container">
@@ -98,25 +129,36 @@ function Layout({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### Penjelasan
-
-- Komponen `ThemeToggleCustom` mendapatkan tema semasa (`cerah` atau `gelap`) dan menyediakan butang untuk menukar antara kedua-duanya.
-- Komponen `Layout` membungkus aplikasi dalam `ThemeProvider`, memastikan tema boleh diakses oleh semua komponen anak.
-- Meletakkan `ThemeToggleCustom` dalam `Layout` membolehkan pengguna menukar tema dari mana-mana halaman.
-
-Pendekatan ini menjadikan logik tema lebih modular, boleh digunakan semula, dan mudah disepadukan dalam pelbagai bahagian aplikasi.
-
-**Nota:** `useTheme` mesti digunakan dalam `ThemeProvider`. Menggunakannya di luar akan menyebabkan ralat.
-
 ## API
 
-`const { theme, toggleTheme } = useTheme();`
+### useTheme
 
-#### Parameter
+<TypeTable
+  type={{
+    theme: {
+      description: "Tema aktif semasa",
+      type: "string",
+      default: "light",
+    },
+    setTheme: {
+      description: "Kaedah untuk menukar tema",
+      type: "(theme: string) => void",
+    },
+  }}
+/>
 
-Hook `useTheme` tidak menerima sebarang parameter.
+### ThemeProvider
 
-#### Pulangan:
-
-- **`theme: string`** – Tema semasa.
-- **`toggleTheme: (theme: string) => void`** – Fungsi untuk menukar tema secara dinamik.
+<TypeTable
+  type={{
+    defaultTheme: {
+      description: "Tema lalai",
+      type: "string",
+      default: "light",
+    },
+    setTheme: {
+      description: "Kaedah untuk menukar tema",
+      type: "(theme: string) => void",
+    },
+  }}
+/>

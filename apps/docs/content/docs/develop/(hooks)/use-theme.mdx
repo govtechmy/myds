@@ -1,92 +1,123 @@
 ---
-title: "useTheme Hook"
-description: "A custom hook to manage theme switching within a React application."
+title: useTheme
+description: Provides access to the current theme and method to switch themes.
 ---
 
-## useTheme
+import { Quicklinks } from "@/components/quicklinks";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { TypeTable } from "fumadocs-ui/components/type-table";
 
-The `useTheme` hook provides access to the current theme and a function to toggle between themes. It must be used within a `ThemeProvider`.
+## Usage
 
-## Installation
+<Tabs items={["Hook", "Requirement"]} defaultValue="Hook">
+  <Tab value="Hook" className="not-prose">
+    ```ts
+    import { useTheme } from "@govtechmy/myds-react/hooks";
 
-Make sure your application is wrapped with `ThemeProvider` before using `useTheme`. You can use the provided `<ThemeToggle />` component or `implement a custom component` to use the hook.
+    const { theme, setTheme } = useTheme();
+    ```
 
-### Example: Root Layout
+  </Tab>
+  <Tab value="Requirement">
+    ```tsx
+    import { ThemeProvider } from "@govtechmy/myds-react/hooks";
 
-```tsx
-import {
-  ThemeProvider,
-  ThemeToggler,
-} from "@govtechmy/myds-react/theme-toggler";
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body>
+    const Layout = () => {
+      return (
         <ThemeProvider>
-          <ThemeToggle />
-          {children}
+          {/* children goes here */}
         </ThemeProvider>
-      </body>
-    </html>
-  );
-}
-```
+      );
+    }
 
-### Example: Layout
+    export default Layout;
+    ```
 
-```tsx
-import {
-  ThemeProvider,
-  ThemeToggler,
-} from "@govtechmy/myds-react/theme-toggler";
+  </Tab>
+</Tabs>
 
-function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <ThemeProvider>
-      <div className="app-container">
-        <ThemeToggle />
-        {children}
-      </div>
-    </ThemeProvider>
-  );
-}
-```
+<Quicklinks
+  links={{
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/hooks/use-theme.tsx",
+  }}
+/>
 
-## Using useTheme Hook
+<Callout
+  type="info"
+  title="Important"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Make sure your application is wrapped with `ThemeProvider` before using
+  `useTheme` to utilise the API provided.
+</Callout>
 
-### Implementing a Custom Theme Toggle Component
+## Example
+
+### Building a Theme Switch Component
 
 The `useTheme` hook provides an easy way to manage theme states within your application. Below, we define a custom component that allows users to toggle between light and dark modes.
 
-```tsx
-import { ThemeProvider, useTheme } from "@govtechmy/myds-react/hooks/use-theme";
+<Tabs items={["Toggle", "Select"]} defaultValue="Toggle">
+  <Tab value="Toggle" className="not-prose">
+    ```tsx title="theme-toggle.tsx"
+    import { useTheme } from "@govtechmy/myds-react/hooks";
 
-const ThemeToggleCustom = () => {
-  const { theme, toggleTheme } = useTheme();
+    const ThemeToggle = () => {
+      const { theme, setTheme } = useTheme();
 
-  return (
-    <button onClick={() => toggleTheme(theme === "light" ? "dark" : "light")}>
-      Switch to {theme === "light" ? "dark" : "light"} mode
-    </button>
-  );
-};
+      return (
+        <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+          Switch to {theme === "light" ? "dark" : "light"} mode
+        </button>
+      );
+    };
 
-export { ThemeToggleCustom, ThemeProvider };
-```
+    export { ThemeToggle }
+    ```
 
-### Integrating the Theme Toggle into a Layout Component
+  </Tab>
+  <Tab value="Select">
+    ```tsx title="theme-select.tsx"
+    import { Select } from "@govtechmy/myds-react/select";
+  
+    const ThemeSelect = () => {
+      const { theme, setTheme } = useTheme();
+
+      const handleChange = (newTheme: string) => {
+        setTheme(newTheme);
+      };
+
+      return (
+        <Select size="small" variant="outline" onValueChange={handleChange}>
+          <SelectTrigger>
+            <SelectValue label="Theme" placeholder="Select" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="light">Light</SelectItem>
+            <SelectItem value="dark">Dark</SelectItem>
+          </SelectContent>
+        </Select>
+      );
+    };
+
+    export { ThemeSelect }
+    ```
+
+  </Tab>
+</Tabs>
+
+### Declaring a Globally Accessible ThemeProvider
 
 To apply the theme context across the application, wrap the entire layout with the `ThemeProvider`. This ensures that all child components can access the theme state and toggle functionality.
 
-```tsx
+```tsx title="layout.tsx"
+import type { ReactNode } from "react";
 import { ThemeToggleCustom, ThemeProvider } from "./ThemeToggleCustom";
 
-function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider>
       <div className="app-container">
@@ -98,25 +129,36 @@ function Layout({ children }: { children: React.ReactNode }) {
 }
 ```
 
-### Explanation
-
-- The `ThemeToggleCustom` component retrieves the current theme (`light` or `dark`) and provides a button to toggle between them.
-- The `Layout` component wraps the application in a `ThemeProvider`, making the theme context accessible to all child components.
-- Placing `ThemeToggleCustom` inside the `Layout` ensures that users can switch themes from any page.
-
-This approach keeps the theme logic modular, reusable, and easy to integrate into different parts of the application.
-
-**Note:** `useTheme` must be used within a `ThemeProvider`. Attempting to use it outside will throw an error.
-
 ## API
 
-`const { theme, toggleTheme } = useTheme();`
+### useTheme
 
-#### Parameters
+<TypeTable
+  type={{
+    theme: {
+      description: "Current active theme",
+      type: "string",
+      default: "light",
+    },
+    setTheme: {
+      description: "Method to switch theme",
+      type: "(theme: string) => void",
+    },
+  }}
+/>
 
-The useTheme hook does not accept any parameters.
+### ThemeProvider
 
-#### Returns:
-
-- **`theme: string`** – The current theme.
-- **`toggleTheme: (theme: string) => void`** – A function to update the theme dynamically.
+<TypeTable
+  type={{
+    defaultTheme: {
+      description: "Default theme",
+      type: "string",
+      default: "light",
+    },
+    setTheme: {
+      description: "Method to switch theme",
+      type: "(theme: string) => void",
+    },
+  }}
+/>

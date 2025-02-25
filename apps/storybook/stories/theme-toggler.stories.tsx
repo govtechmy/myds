@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import {
-  ThemeToggler,
-  ThemeProvider,
-} from "@govtechmy/myds-react/theme-toggler";
+import { ThemeProvider } from "@govtechmy/myds-react/hooks";
+// import { ThemeToggler } from "@govtechmy/myds-react/theme-toggler";
 import { MoonIcon, PlaceholderIcon, SunIcon } from "@govtechmy/myds-react/icon";
 import { clx } from "@govtechmy/myds-react/utils";
+import { createStory } from "../utils";
 
 /**
  * ### Overview
@@ -19,82 +18,78 @@ import { clx } from "@govtechmy/myds-react/utils";
  * </ThemeProvider>
  * ```
  */
-const meta = {
-  title: "@govtechmy/myds-react/ThemeToggler",
-  component: ThemeToggler,
-  tags: ["autodocs"],
-  parameters: {
-    layout: "fullscreen",
-  },
-  decorators: [
-    (Story) => (
-      <ThemeProvider>
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
-  argTypes: {
-    themes: {
-      table: {
-        type: { summary: "Themes[]" },
-      },
-      description:
-        "Array of theme objects containing theme name and associated icon.",
-      control: "object",
-    },
-  },
-} satisfies Meta<typeof ThemeToggler>;
+// const meta = {
+//   title: "@govtechmy/myds-react/ThemeToggler",
+//   tags: ["autodocs"],
+//   parameters: {
+//     layout: "fullscreen",
+//   },
+//   decorators: [
+//     (Story) => (
+//       <ThemeProvider>
+//         <Story />
+//       </ThemeProvider>
+//     ),
+//   ],
+//   argTypes: {
+//     themes: {
+//       table: {
+//         type: { summary: "Themes[]" },
+//       },
+//       description:
+//         "Array of theme objects containing theme name and associated icon.",
+//       control: "object",
+//     },
+//   },
+// } satisfies Meta<typeof ThemeToggler>;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+// export default meta;
+// type Story = StoryObj<typeof meta>;
 
-/**
- * Default ThemeToggler story.
- */
+// /**
+//  * Default ThemeToggler story.
+//  */
+// export const Default: Story = {
+//   render: () => {
+//     const htmlClass = document.documentElement.className;
+//     return (
+//       <div
+//         className={clx(
+//           htmlClass,
+//           "bg-bg-white flex items-center justify-center py-8",
+//         )}
+//       >
+//         -- WIP --
+//         {/* <ThemeToggler /> */}
+//       </div>
+//     );
+//   },
+// };
 
-export const Default: Story = {
-  render: () => {
-    const htmlClass = document.documentElement.className;
-    return (
-      <div
-        className={clx(
-          htmlClass,
-          "bg-bg-white flex items-center justify-center py-8",
-        )}
-      >
-        <ThemeProvider>
-          <ThemeToggler />
-        </ThemeProvider>
-      </div>
-    );
-  },
-};
+// /**
+//  * ThemeToggler with custom themes.
+//  */
 
-/**
- * ThemeToggler with custom themes.
- */
-
-export const CustomContent: Story = {
-  render: () => {
-    const htmlClass = document.documentElement.className;
-    return (
-      <div
-        className={clx(
-          htmlClass,
-          "bg-bg-white flex items-center justify-center py-8",
-        )}
-      >
-        <ThemeProvider>
-          <ThemeToggler
-            themes={[
-              { theme: "light", icon: <SunIcon /> },
-              { theme: "dark", icon: <MoonIcon /> },
-              { theme: "pastel", icon: <PlaceholderIcon /> },
-              { theme: "retro", icon: <PlaceholderIcon /> },
-            ]}
-          />
-        </ThemeProvider>
-      </div>
-    );
-  },
-};
+// export const CustomContent: Story = {
+//   render: () => {
+//     const htmlClass = document.documentElement.className;
+//     return (
+//       <div
+//         className={clx(
+//           htmlClass,
+//           "bg-bg-white flex items-center justify-center py-8",
+//         )}
+//       >
+//         -- WIP --
+//         {/* <ThemeToggler
+//           themes={[
+//             { theme: "light", icon: <SunIcon /> },
+//             { theme: "dark", icon: <MoonIcon /> },
+//             { theme: "pastel", icon: <PlaceholderIcon /> },
+//             { theme: "retro", icon: <PlaceholderIcon /> },
+//           ]}
+//         /> */}
+//       </div>
+//     );
+//   },
+// };

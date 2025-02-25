@@ -1,29 +1,44 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  FunctionComponent,
+  ReactNode,
+  useContext,
+  useState,
+} from "react";
 
 interface ThemeContextType {
   theme: string;
-  toggleTheme: (theme: string) => void;
+  setTheme: (theme: string) => void;
+  defaultTheme: string;
 }
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
+const ThemeContext = createContext<ThemeContextType>({
+  theme: "light",
+  setTheme: () => {},
+  defaultTheme: "light",
+});
 
-const ThemeProvider = ({
-  children,
-  themeKey = "theme",
-}: {
+interface ThemeProviderProps {
   children: ReactNode;
-  themeKey?: string;
+  defaultTheme?: string;
+  storageKey?: string;
+}
+
+const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({
+  children,
+  defaultTheme = "light",
+  storageKey = "theme",
 }) => {
-  const [theme, setTheme] = useState<string>("light");
-  const switchTheme = (newTheme: string) => {
+  const [theme, setTheme] = useState<string>(defaultTheme);
+  const _setTheme = (newTheme: string) => {
     document.documentElement.classList.remove(theme);
     document.documentElement.classList.add(newTheme);
-    localStorage.setItem(themeKey, newTheme);
+    localStorage.setItem(storageKey, newTheme);
     setTheme(newTheme);
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme: switchTheme }}>
+    <ThemeContext.Provider value={{ theme, defaultTheme, setTheme: _setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
@@ -31,10 +46,8 @@ const ThemeProvider = ({
 
 const useTheme = () => {
   const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
+  if (!context) throw new Error("useTheme must be used within a ThemeProvider");
   return context;
 };
 
-export { ThemeProvider, useTheme };
+export { ThemeProvider, ThemeContext, useTheme };
