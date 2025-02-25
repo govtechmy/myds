@@ -1,5 +1,12 @@
 # @govtechmy/myds-react
 
+## 0.0.11
+
+### Patch Changes
+
+- 6956a40: Added `useTheme` hook and documentation.
+  Added `ThemeToggler` component and documentation.
+
 ## 0.0.10
 
 ### Patch Changes
