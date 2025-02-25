@@ -126,6 +126,7 @@ const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
         data-state={context.checked ? "checked" : "unchecked"}
         aria-checked={context.checked}
         aria-disabled={context.disabled}
+        aria-label="Toggle"
       />
     </label>
   );

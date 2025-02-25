@@ -9,6 +9,8 @@ export default {
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
     layout: 'fullscreen',
   },
+  tags: ['skip'],
+  // skip tag to allow test runner to not run any test in this page
 };
 
 export const LoggedOut = {};
