@@ -1,22 +1,19 @@
 ---
-title: ThemeToggler  
-description: Komponen untuk mengurus dan menukar tema secara dinamik, menggunakan hook useTheme.  
+title: ThemeToggler
+description: Komponen untuk mengurus dan menukar tema secara dinamik, menggunakan hook useTheme.
 ---
 
 import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
-import {
-  SampleThemeToggler,
-  CustomThemeToggler
-} from "./theme-toggler.client";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
     <div className="flex justify-center">
-      <SampleThemeToggler/>
+
     </div>
+
   </Tab>
   <Tab value="Code">
     ```tsx
@@ -52,21 +49,20 @@ import {
 ```tsx copy
 export default () => (
   <ThemeProvider>
-    <ThemeToggler/>
+    <ThemeToggler />
   </ThemeProvider>
 );
 ```
 
 ## Contoh
 
-### Penggunaan Asas  
+### Penggunaan Asas
 
 Wrap aplikasi anda dengan `ThemeProvider` dan gunakan `ThemeToggler` untuk bertukar antara tema.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
     <div className="flex justify-center">
-        <SampleThemeToggler/>
     </div>
   </Tab>
   <Tab value="Code">
@@ -77,79 +73,83 @@ Wrap aplikasi anda dengan `ThemeProvider` dan gunakan `ThemeToggler` untuk bertu
     <ThemeProvider>
         <ThemeToggler/>
     </ThemeProvider>
-  ```
-  </Tab>
+
+````
+</Tab>
 </Tabs>
 
-### Tema Tersuai  
+### Tema Tersuai
 
 Hantarkan satu array tema ke `ThemeToggler` untuk menyesuaikan tema yang tersedia.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
-    <div className="flex justify-center">
-     <CustomThemeToggler/>
-    </div>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
- import { MoonIcon, SunIcon } from "@govtechmy/myds-react/icon";
- import {
-  ThemeProvider,
-  ThemeToggler,
- } from "@govtechmy/myds-react/theme-toggler";
+<Tab value="Preview">
+  <div className="flex justify-center">
+  </div>
+</Tab>
+<Tab value="Code">
+```tsx
+import { MoonIcon, SunIcon } from "@govtechmy/myds-react/icon";
+import {
+ThemeProvider,
+ThemeToggler,
+} from "@govtechmy/myds-react/theme-toggler";
 
-    <ThemeProvider>
-      <ThemeToggler
-        themes={[
-          { theme: "light", icon: <SunIcon /> },
-          { theme: "dark", icon: <MoonIcon /> },
-          { theme: "sephia", icon: <PlaceholderIcon /> },
-          { theme: "retro", icon: <PlaceholderIcon /> },
-        ]}
-      />
-    </ThemeProvider>
-  ```
+  <ThemeProvider>
+    <ThemeToggler
+      themes={[
+        { theme: "light", icon: <SunIcon /> },
+        { theme: "dark", icon: <MoonIcon /> },
+        { theme: "sephia", icon: <PlaceholderIcon /> },
+        { theme: "retro", icon: <PlaceholderIcon /> },
+      ]}
+    />
+  </ThemeProvider>
+````
+
   </Tab>
 </Tabs>
 
-## Props  
+## Props
 
-### ThemeToggler  
+### ThemeToggler
 
-<TypeTable  
-  type={{  
-    themes: {  
-      description: "Satu array objek tema, setiap satu mengandungi nama tema dan ikon yang berkaitan.",  
-      type: "{ theme: string; icon: ReactNode; }[]",  
-      typeDescription: "Array objek tema",  
-      default: '[{ theme: "light", icon: <SunIcon /> }, { theme: "dark", icon: <MoonIcon /> }]',  
-    },  
-  }}  
-/>  
+<TypeTable
+  type={{
+    themes: {
+      description:
+        "Satu array objek tema, setiap satu mengandungi nama tema dan ikon yang berkaitan.",
+      type: "{ theme: string; icon: ReactNode; }[]",
+      typeDescription: "Array objek tema",
+      default:
+        '[{ theme: "light", icon: <SunIcon /> }, { theme: "dark", icon: <MoonIcon /> }]',
+    },
+  }}
+/>{" "}
 
-### ThemeProvider  
+### ThemeProvider
 
-<TypeTable  
-  type={{  
-    children: {  
-      description: "Komponen anak yang dibalut oleh penyedia.",  
-      type: "ReactNode",  
-      typeDescription: "Elemen React",  
-    },  
-  }}  
-/>  
+<TypeTable
+  type={{
+    children: {
+      description: "Komponen anak yang dibalut oleh penyedia.",
+      type: "ReactNode",
+      typeDescription: "Elemen React",
+    },
+  }}
+/>{" "}
 
-## Hook  
+## Hook
 
-### useTheme  
+### useTheme
 
-<TypeTable  
-  type={{  
-    toggleTheme: {  
-      description: "Fungsi untuk menukar tema berdasarkan nama tema yang diberikan.",  
-      type: "(theme: string) => void",  
-      typeDescription: "Fungsi panggil balik",  
-    },  
-  }}  
-/>  
+<TypeTable
+  type={{
+    toggleTheme: {
+      description:
+        "Fungsi untuk menukar tema berdasarkan nama tema yang diberikan.",
+      type: "(theme: string) => void",
+      typeDescription: "Fungsi panggil balik",
+    },
+  }}
+/>{" "}

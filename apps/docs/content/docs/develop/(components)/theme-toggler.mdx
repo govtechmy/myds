@@ -5,14 +5,12 @@ description: A component for managing and toggling themes dynamically, using use
 
 import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
-import { SampleThemeToggler, CustomThemeToggler } from "./theme-toggler.client";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
     <div className="flex justify-center">
-      <SampleThemeToggler/>
     </div>
   </Tab>
   <Tab value="Code">
@@ -64,7 +62,6 @@ Wrap your application with `ThemeProvider` and use `ThemeToggler` to switch betw
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
     <div className="flex justify-center">
-        <SampleThemeToggler/>
     </div>
   </Tab>
   <Tab value="Code">
@@ -87,7 +84,6 @@ Pass an array of themes to `ThemeToggler` to customize the available themes.
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
 <Tab value="Preview">
   <div className="flex justify-center">
-   <CustomThemeToggler/>
   </div>
 </Tab>
 <Tab value="Code">
