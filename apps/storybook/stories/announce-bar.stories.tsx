@@ -4,7 +4,6 @@ import { createStory } from "../utils";
 import {
   AnnounceBar,
   AnnounceBarDescription,
-  AnnounceBarProps,
   AnnounceBarTag,
 } from "@govtechmy/myds-react/announce-bar";
 import { Link } from "@govtechmy/myds-react/link";
