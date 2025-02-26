@@ -30,16 +30,26 @@ const AnnounceBar: ForwardRefExoticComponent<ComponentProps<"div">> =
   });
 
 const AnnounceBarTag: ForwardRefExoticComponent<
-  ComponentProps<typeof Tag> & { asChild?: boolean }
+  Omit<ComponentProps<typeof Tag>, "size" | "mode"> & { asChild?: boolean }
 > = forwardRef(
   (
     { variant = "primary", children, className, asChild = false, ...props },
     ref,
   ) => {
-    const Comp = asChild ? Slot : Tag;
+    if (asChild) {
+      return (
+        <Slot
+          ref={ref}
+          {...props}
+          className={clx("flex-shrink-0 whitespace-nowrap", className)}
+        >
+          {children}
+        </Slot>
+      );
+    }
 
     return (
-      <Comp
+      <Tag
         ref={ref}
         {...props}
         variant={variant}
@@ -48,7 +58,7 @@ const AnnounceBarTag: ForwardRefExoticComponent<
         className={clx("flex-shrink-0 whitespace-nowrap", className)}
       >
         {children}
-      </Comp>
+      </Tag>
     );
   },
 );

@@ -4,7 +4,6 @@ import { createStory } from "../utils";
 import {
   AnnounceBar,
   AnnounceBarDescription,
-  AnnounceBarProps,
   AnnounceBarTag,
 } from "@govtechmy/myds-react/announce-bar";
 import { Link } from "@govtechmy/myds-react/link";
@@ -139,7 +138,7 @@ export const DarkPrimary: Story = {
     return (
       <AnnounceBar className={className}>
         <AnnounceBarTag variant="primary">Alpha</AnnounceBarTag>
-        <AnnounceBarDescription asChild>
+        <AnnounceBarDescription>
           <p>
             This is a new service. Help us improve it.{" "}
             <Link underline="always" primary href="#">
@@ -162,7 +161,7 @@ export const DarkSuccess: Story = {
     return (
       <AnnounceBar className={className}>
         <AnnounceBarTag variant="success">Public Beta</AnnounceBarTag>
-        <AnnounceBarDescription asChild>
+        <AnnounceBarDescription>
           <p>
             Welcome to Public Beta! Try out the service and share your feedback.{" "}
             <Link underline="always" primary href="#">
