@@ -5,11 +5,7 @@ description: The Toggle component is a versatile switch that allows users to tog
 
 import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
-import {
-  Toggle,
-  ToggleThumb,
-  ControlledToggle,
-} from "@/components/myds";
+import { Toggle, ToggleThumb, ControlledToggle } from "@/components/myds";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
@@ -29,6 +25,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
       <ToggleThumb />
     </Toggle>
     ```
+
   </Tab>
 </Tabs>
 
@@ -43,11 +40,11 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
 ## Usage
 
-```tsx copy
+```ts copy title="Import"
 import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 ```
 
-```tsx copy
+```tsx copy title="Anatomy"
 export default () => (
   <Toggle>
     <ToggleThumb />
@@ -82,18 +79,18 @@ Use the `size` prop to change the toggle size!
 import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 
 <Toggle size="small">
-    <ToggleThumb />
+  <ToggleThumb />
 </Toggle>
 
 <Toggle size="medium">
-    <ToggleThumb />
+  <ToggleThumb />
 </Toggle>
 
 <Toggle size="large">
-    <ToggleThumb />
+  <ToggleThumb />
 </Toggle>
 
-```
+````
   </Tab>
 </Tabs>
 
@@ -129,11 +126,10 @@ import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
     <ToggleThumb />
 </Toggle>
 
-```
+````
 
   </Tab>
 </Tabs>
-
 
 ### Controlled Toggle
 
@@ -152,21 +148,21 @@ Toggle can be handled by Controlled Method
 import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 
 const ControlledToggle = () => {
-  const [isChecked, setIsChecked] = React.useState(false);
-  return (
-    <div className="flex flex-col items-center justify-center">
-      <p>Current state: {isChecked ? "On" : "Off"}</p>
-      <Toggle checked={isChecked} onCheckedChange={setIsChecked}>
-        <ToggleThumb />
-      </Toggle>
-    </div>
-  );
-};
+const [isChecked, setIsChecked] = React.useState(false);
+return (
 
-```
+<div className="flex flex-col items-center justify-center">
+  <p>Current state: {isChecked ? "On" : "Off"}</p>
+  <Toggle checked={isChecked} onCheckedChange={setIsChecked}>
+    <ToggleThumb />
+  </Toggle>
+</div>
+); };
+
+````
 
   </Tab>
-</Tabs> 
+</Tabs>
 
 
 ### Uncontrolled Toggle
@@ -194,10 +190,10 @@ import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 </Toggle>
 
 
-```
+````
 
   </Tab>
-</Tabs> 
+</Tabs>
 
 ## Props
 

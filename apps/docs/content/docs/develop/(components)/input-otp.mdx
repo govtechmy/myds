@@ -6,8 +6,8 @@ description: The Input OTP (One-Time Password) component allows users to enter a
 import { Quicklinks } from "@/components/quicklinks";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-import { InputOTP, InputOTPSlot } from "@/components/myds"
-import { InputOTPControlledExample } from "./input-otp.client"
+import { InputOTP, InputOTPSlot } from "@/components/myds";
+import { InputOTPControlledExample } from "./input-otp.client";
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex justify-center">
@@ -29,6 +29,7 @@ import { InputOTPControlledExample } from "./input-otp.client"
       <InputOTPSlot index={3} />
     </InputOTP>
     ```
+
   </Tab>
 </Tabs>
 
@@ -43,11 +44,11 @@ import { InputOTPControlledExample } from "./input-otp.client"
 
 ## Usage
 
-```tsx copy
-import { InputOTP, InputOTPSlot } from "@/components/myds"
+```ts copy title="Import"
+import { InputOTP, InputOTPSlot } from "@/components/myds";
 ```
 
-```tsx copy
+```tsx copy title="Anatomy"
 <InputOTP maxLength={4}>
   <InputOTPSlot index={0} />
   <InputOTPSlot index={1} />
@@ -82,6 +83,7 @@ Set the `invalid` prop to true to mark the input as invalid.
       <InputOTPSlot index={3} />
     </InputOTP>
     ```
+
   </Tab>
 </Tabs>
 
@@ -109,6 +111,7 @@ Disable the input by setting the `disabled` prop to true.
       <InputOTPSlot index={3} />
     </InputOTP>
     ```
+
   </Tab>
 </Tabs>
 
@@ -139,12 +142,13 @@ The input can be controlled by setting the `value` and `onChange` props. In the 
       <InputOTPSlot index={3} />
     </InputOTP>
     ```
+
   </Tab>
 </Tabs>
 
 ### Using the `pattern` Prop
 
-Pass a regex to the `pattern` prop to only accept values of a certain pattern. For example, we can use a regex to only accept numbers: 
+Pass a regex to the `pattern` prop to only accept values of a certain pattern. For example, we can use a regex to only accept numbers:
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex justify-center">
@@ -166,6 +170,7 @@ Pass a regex to the `pattern` prop to only accept values of a certain pattern. F
       <InputOTPSlot index={3} />
     </InputOTP>
     ```
+
   </Tab>
 </Tabs>
 
@@ -178,7 +183,8 @@ Pass a regex to the `pattern` prop to only accept values of a certain pattern. F
 <TypeTable
   type={{
     maxLength: {
-      description: "The max length of the OTP - it should correspond to the number of slots",
+      description:
+        "The max length of the OTP - it should correspond to the number of slots",
       type: "number",
     },
     defaultValue: {
@@ -190,9 +196,10 @@ Pass a regex to the `pattern` prop to only accept values of a certain pattern. F
       type: "string",
     },
     onChange: {
-      description: "Callback function when the value of the input changes (controlled)",
+      description:
+        "Callback function when the value of the input changes (controlled)",
       type: "function",
-      typeDescription: "(value: string) => void"
+      typeDescription: "(value: string) => void",
     },
     disabled: {
       type: "boolean",

@@ -4,7 +4,7 @@ description: Membolehkan pengguna menavigasi kandungan yang telah dibahagikan ke
 ---
 
 import {
-  SimplePagination as AutoPagination, 
+  SimplePagination as AutoPagination,
   SelfPagination,
   Pagination,
   PaginationContext,
@@ -13,7 +13,7 @@ import {
   PaginationItem,
   PaginationNext,
   PaginationNumber,
-  PaginationPrevious, 
+  PaginationPrevious,
 } from "@/components/myds";
 import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
@@ -33,9 +33,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
     </div>
   </Tab>
   <Tab value="Kod">
-    ```tsx 
-    import { AutoPagination } from "@govtechmy/myds-react/pagination";
-    
+    ```tsx import {AutoPagination} from "@govtechmy/myds-react/pagination";
     <AutoPagination
       page={1}
       limit={10}
@@ -57,54 +55,62 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
   }}
 />
 
-## Penggunaan 
+## Penggunaan
+
 ### Penggunaan Mudah
+
 Komponen `AutoPagination` boleh digunakan terus untuk penggunaan mudah. Komponen ini boleh digunakan untuk tujuan paginasi lazim.
 
-```tsx 
-  import { AutoPagination } from "@govtechmy/myds-react/pagination";
+```ts copy title="Import"
+import { AutoPagination } from "@govtechmy/myds-react/pagination";
 ```
 
-```tsx 
-  <AutoPagination />
+```tsx copy title="Anatomi"
+<AutoPagination />
 ```
+
 ### Penggunaan Lanjutan
+
 Sebagai alternatif kepada komponen `AutoPagination`, fungsi paginasi masih dapat dilaksanakan dengan kombinasi subkomponen: `Pagination`, `PaginationItem`, `PaginationContent`, `PaginationEllipsis`, `PaginationNext`, `PaginationPrevious` dan `PaginationNumber`.
-```tsx 
-  import 
-  {
-    Pagination,
-    PaginationContext,
-    PaginationContent,
-    PaginationEllipsis,
-    PaginationItem,
-    PaginationNext,
-    PaginationNumber,
-    PaginationPrevious, 
-  } from "@/components/myds";
+
+```ts copy title="Import"
+import {
+  Pagination,
+  PaginationContext,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationNext,
+  PaginationNumber,
+  PaginationPrevious,
+} from "@/components/myds";
 ```
-```tsx 
-  <Pagination>
-    <PaginationContent>
-      <PaginationItem>
-        <PaginationPrevious />
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationNumber />
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationEllipsis />
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationNext />
-      </PaginationItem>
-    </PaginationContent>
-  </Pagination>
+
+```tsx copy title="Anatomi"
+<Pagination>
+  <PaginationContent>
+    <PaginationItem>
+      <PaginationPrevious />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNumber />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationEllipsis />
+    </PaginationItem>
+    <PaginationItem>
+      <PaginationNext />
+    </PaginationItem>
+  </PaginationContent>
+</Pagination>
 ```
 
 ## Contoh
+
 ### Jenis AutoPagination
+
 Gunakan props `type` untuk menukar jenis komponen `AutoPagination`. Contoh penggunaan untuk setiap jenis adalah seperti berikut:
+
 1. **default**: Sesuai untuk keadaan di mana pengguna mungkin ingin melompat ke halaman tertentu dalam jumlah halaman yang banyak.
 2. **simple**: Sesuai untuk navigasi yang lebih mudah di mana pengguna hanya bergerak ke muka surat sebelum atau selepas.
 3. **full**: Serupa dengan jenis `simple`, jenis ini memaparkan halaman semasa dan jumlah halaman di sebelah kiri berserta butang navigasi di sebelah kanan.
@@ -147,7 +153,7 @@ Gunakan props `type` untuk menukar jenis komponen `AutoPagination`. Contoh pengg
       type="default"
       maxDisplay={4}
     />
-    
+
     // simple type
     <AutoPagination
       page={2}
@@ -156,7 +162,7 @@ Gunakan props `type` untuk menukar jenis komponen `AutoPagination`. Contoh pengg
       type="simple"
       maxDisplay={4}
     />
-    
+
     // full type
     <AutoPagination
       page={2}
@@ -166,10 +172,12 @@ Gunakan props `type` untuk menukar jenis komponen `AutoPagination`. Contoh pengg
       maxDisplay={4}
     />
     ```
+
   </Tab>
 </Tabs>
 
 ### Konfigurasi Paginasi
+
 Penggunaan `AutoPagination` atau pemasangan manual subkomponen paginasi memerlukan penggunaan `prop` seperti `page`, `limit` dan `count`. Fungsi dan rupa komponen paginasi akan dipengaruhi oleh prop-prop tersebut.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
@@ -199,7 +207,7 @@ Penggunaan `AutoPagination` atau pemasangan manual subkomponen paginasi memerluk
       type="simple"
       maxDisplay={4}
     />
-    
+
     // self assembly
     const count = 180;
     const limit = 10;
@@ -234,20 +242,23 @@ Penggunaan `AutoPagination` atau pemasangan manual subkomponen paginasi memerluk
         </PaginationItem>
       </PaginationContent>
     </Pagination>
-    
+
     ```
+
   </Tab>
 </Tabs>
 
 ## Props
 
 ### AutoPagination
+
 Komponen paginasi yang mengendalikan navigasi halaman. Komponen ini sudah disiap pasang dan boleh digunakan terus untuk fungsi paginasi mudah.
+
 <TypeTable
-type={{
+  type={{
     count: {
       description: "Jumlah item yang akan dipaparkan.",
-      type: "number"
+      type: "number",
     },
     limit: {
       description: "Bilangan item setiap halaman.",
@@ -258,44 +269,48 @@ type={{
       type: "number",
     },
     maxDisplay: {
-      description: "Bilangan item untuk dipaparkan bagi tujuan nombor paginasi sebelum elipsis.",
+      description:
+        "Bilangan item untuk dipaparkan bagi tujuan nombor paginasi sebelum elipsis.",
       type: "number",
-      default: 4
+      default: 4,
     },
     type: {
       description: "Variasi gaya paginasi komponen",
       type: "enum",
-      typeDescription:
-        "simple | default | full",
-      default: "default"
+      typeDescription: "simple | default | full",
+      default: "default",
     },
     onPageChange: {
-      description: "Fungsi callback yang akan dipanggil apabila halaman bertukar.",
+      description:
+        "Fungsi callback yang akan dipanggil apabila halaman bertukar.",
       type: "function",
-      typeDescription: "(page: number) => void"
+      typeDescription: "(page: number) => void",
     },
     fullText: {
       description: "Penerangan panjang untuk tujuan maklumat paginasi.",
-      type: "string"
-    }, 
+      type: "string",
+    },
     next: {
       description: "Komponen lalai untuk menggantikan butang PaginationNext.",
-      type: "ReactNode"
+      type: "ReactNode",
     },
     previous: {
-      description: "Komponen lalai untuk menggantikan butang PaginationPrevious.",
-      type: "ReactNode"
-    }
+      description:
+        "Komponen lalai untuk menggantikan butang PaginationPrevious.",
+      type: "ReactNode",
+    },
   }}
 />
 
 ### Pagination
+
 Komponen container yang menyediakan struktur navigasi melalui elemen `nav`.
+
 <TypeTable
-type={{
+  type={{
     count: {
       description: "Jumlah item yang akan dipaparkan.",
-      type: "number"
+      type: "number",
     },
     limit: {
       description: "Bilangan item setiap halaman.",
@@ -306,47 +321,55 @@ type={{
       type: "number",
     },
     maxDisplay: {
-      description: "Bilangan item untuk dipaparkan bagi tujuan nombor paginasi sebelum elipsis.",
+      description:
+        "Bilangan item untuk dipaparkan bagi tujuan nombor paginasi sebelum elipsis.",
       type: "number",
-      default: 4
+      default: 4,
     },
     type: {
       description: "Variasi gaya paginasi komponen",
       type: "enum",
-      typeDescription:
-        "simple | default | full",
-      default: "default"
+      typeDescription: "simple | default | full",
+      default: "default",
     },
     onPageChange: {
-      description: "Fungsi callback yang akan dipanggil apabila halaman bertukar.",
+      description:
+        "Fungsi callback yang akan dipanggil apabila halaman bertukar.",
       type: "function",
-      typeDescription: "(page: number) => void"
-    }
+      typeDescription: "(page: number) => void",
+    },
   }}
 />
 
 ### PaginationContent
+
 Komponen yang dirender sebagai elemen `ul` yang bertujuan untuk menyusun `PaginationItem` dalam arah mendatar.
 
 ### PaginationItem
+
 Komponen yang dirender sebagai elemen `li` yang mengandungi elemen seperti `PaginationNext`, `PaginationPrevious`, `PaginationLabel` dan `PaginationEllipsis`.
 
 ### PaginationNext
+
 Komponen `button` yang mengendalikan navigasi ke halaman seterusnya. Komponen lalai tersebut boleh digantikan dengan menggunakan props `asChild`.
 
 ### PaginationPrevious
+
 Komponen `button` yang mengendalikan navigasi ke halaman sebelumnya. Komponen lalai tersebut boleh digantikan dengan menggunakan props `asChild`.
 
 ### PaginationLabel
+
 Komponen teks yang memaparkan maklumat paginasi.
+
 <TypeTable
-type={{
+  type={{
     content: {
       description: "Penerangan panjang untuk tujuan maklumat paginasi.",
-      type: "string"
-    }
+      type: "string",
+    },
   }}
 />
 
 ### PaginationEllipsis
+
 Komponen penunjuk visual yang mewakili nombor halaman yang dilangkau dalam urutan pagination.

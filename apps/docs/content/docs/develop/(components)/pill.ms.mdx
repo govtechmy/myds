@@ -34,11 +34,11 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
 ## Usage
 
-```tsx copy
+```ts copy title="Import"
 import { Pill } from "@govtechmy/myds-react/pill";
 ```
 
-```tsx copy
+```tsx copy title="Anatomi"
 export default () => <Pill>Trending</Pill>;
 ```
 
@@ -62,6 +62,7 @@ Gunakan prop `size` untuk menukar saiz pil.
     <Pill size="medium">medium</Pill>;
     <Pill size="large">large</Pill>;
     ```
+
   </Tab>
 </Tabs>
 
@@ -79,6 +80,7 @@ Hantarkan fungsi panggil balik ke prop `onDismiss` untuk menunjukkan butang "x" 
 
     <Pill onDismiss={...}>Dengan butang "x" mengekori</Pill>
     ```
+
   </Tab>
 </Tabs>
 
@@ -98,6 +100,7 @@ Pil boleh dinyahaktifkan dengan menetapkan prop `disabled` kepada `true`. Apabil
     <Pill onDismiss={...}>Enabled</Pill>
     <Pill disabled onDismiss={...}>Disabled</Pill>
     ```
+
   </Tab>
 </Tabs>
 
@@ -118,7 +121,8 @@ Pil boleh dinyahaktifkan dengan menetapkan prop `disabled` kepada `true`. Apabil
       default: "false",
     },
     onDismiss: {
-      description: 'Callback function yang dipanggil apabila butang "x" mengekori diklik',
+      description:
+        'Callback function yang dipanggil apabila butang "x" mengekori diklik',
       type: "function",
     },
   }}

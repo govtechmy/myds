@@ -119,8 +119,9 @@ import {
         )}
       </SearchBarResults>
     </SearchBar>
-  ```
-  </Tab>
+    ```
+
+</Tab>
 </Tabs>
 
 <Quicklinks
@@ -134,7 +135,7 @@ import {
 
 ## Usage
 
-```tsx copy
+```ts copy title="Import"
 import {
   SearchBar,
   SearchBarInput,
@@ -148,7 +149,7 @@ import {
 } from "@govtechmy/myds-react/search-bar";
 ```
 
-```tsx copy
+```tsx copy title="Anatomy"
 export default () => (
   <SearchBar size="large">
     <SearchBarInputContainer>
@@ -230,6 +231,7 @@ Use the `size` prop to change the search bar's size.
       </SearchBarInputContainer>
     </SearchBar>
     ```
+
   </Tab>
 </Tabs>
 
@@ -267,8 +269,9 @@ You can use `SearchBarClearButton` to show a clear button.
         <SearchBarSearchButton />
       </SearchBarInputContainer>
     </SearchBar>
-  ```
-  </Tab>
+
+````
+</Tab>
 </Tabs>
 
 ### Hint
@@ -276,36 +279,37 @@ You can use `SearchBarClearButton` to show a clear button.
 Show a hint with `SearchBarHint`.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview" className="not-prose">
-    <SearchBar size="large">
-      <SearchBarInputContainer>
-        <SearchBarInput placeholder="Search by name" />
-        <SearchBarHint className="hidden lg:flex">Press <Pill size="small">/</Pill> to search</SearchBarHint>
-        <SearchBarSearchButton />
-      </SearchBarInputContainer>
-    </SearchBar>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
-    import {
-        SearchBar,
-        SearchBarInput, 
-        SearchBarInputContainer,
-        SearchBarSearchButton,
-        SearchBarHint,
-    } from "@govtechmy/myds-react/search-bar";
-    import { Pill } from "@govtechmy/myds-react/pill";
+<Tab value="Preview" className="not-prose">
+  <SearchBar size="large">
+    <SearchBarInputContainer>
+      <SearchBarInput placeholder="Search by name" />
+      <SearchBarHint className="hidden lg:flex">Press <Pill size="small">/</Pill> to search</SearchBarHint>
+      <SearchBarSearchButton />
+    </SearchBarInputContainer>
+  </SearchBar>
+</Tab>
+<Tab value="Code">
+```tsx
+  import {
+      SearchBar,
+      SearchBarInput,
+      SearchBarInputContainer,
+      SearchBarSearchButton,
+      SearchBarHint,
+  } from "@govtechmy/myds-react/search-bar";
+  import { Pill } from "@govtechmy/myds-react/pill";
 
-    <SearchBar size="large">
-      <SearchBarInputContainer>
-        <SearchBarInput placeholder="Search by name" />
-        <SearchBarHint className="hidden lg:flex">
-          Press <Pill size="small">/</Pill> to search
-        </SearchBarHint>
-        <SearchBarSearchButton />
-      </SearchBarInputContainer>
-    </SearchBar>
-  ```
+  <SearchBar size="large">
+    <SearchBarInputContainer>
+      <SearchBarInput placeholder="Search by name" />
+      <SearchBarHint className="hidden lg:flex">
+        Press <Pill size="small">/</Pill> to search
+      </SearchBarHint>
+      <SearchBarSearchButton />
+    </SearchBarInputContainer>
+  </SearchBar>
+````
+
   </Tab>
 </Tabs>
 
@@ -357,76 +361,79 @@ You can show search results or suggestions with the `SearchBarResults`, `SearchB
         </SearchBarResultsList>
       </SearchBarResults>
     </SearchBar>
-  ```
-  </Tab>
+
+````
+</Tab>
 </Tabs>
 
 You can also group results with the `SearchBarResultsGroup` component:
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview" className="not-prose h-[420px]">
-    <SearchBarGroupedResultsExample />
-  </Tab>
-  <Tab value="Code">
-  ```tsx
-    import {
-      SearchBar,
-      SearchBarInput,
-      SearchBarInputContainer,
-      SearchBarSearchButton,
-      SearchBarResults,
-      SearchBarResultsList,
-      SearchBarResultsItem,
-    } from "@govtechmy/myds-react/search-bar";
-    import {
-      ChevronRightIcon,
-      MoneyIcon,
-      StarIcon,
-      TrophyIcon,
-      UserIcon,
-    } from "@govtechmy/myds-react/icon";
+<Tab value="Preview" className="not-prose h-[420px]">
+  <SearchBarGroupedResultsExample />
+</Tab>
+<Tab value="Code">
+```tsx
+  import {
+    SearchBar,
+    SearchBarInput,
+    SearchBarInputContainer,
+    SearchBarSearchButton,
+    SearchBarResults,
+    SearchBarResultsList,
+    SearchBarResultsItem,
+  } from "@govtechmy/myds-react/search-bar";
+  import {
+    ChevronRightIcon,
+    MoneyIcon,
+    StarIcon,
+    TrophyIcon,
+    UserIcon,
+  } from "@govtechmy/myds-react/icon";
 
-    <SearchBar size="large">
-      <SearchBarInputContainer>
-        <SearchBarInput placeholder="Search by name" />
-        <SearchBarSearchButton />
-      </SearchBarInputContainer>
-      <SearchBarResults open>
-        <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
-          {Object.entries(groupedResults).map(([group, items]) => (
-            <SearchBarResultsGroup key={group} heading={group}>
-              {items.map((item) => (
-                <SearchBarResultsItem key={item.name} value={item.name}>
-                  <span className="bg-primary-50 text-txt-primary rounded-full p-px">
-                    {group === "Arts" ? (
-                      <StarIcon className="size-4" />
-                    ) : group === "Sports" ? (
-                      <TrophyIcon className="size-4" />
-                    ) : (
-                      <MoneyIcon className="size-4" />
-                    )}
+  <SearchBar size="large">
+    <SearchBarInputContainer>
+      <SearchBarInput placeholder="Search by name" />
+      <SearchBarSearchButton />
+    </SearchBarInputContainer>
+    <SearchBarResults open>
+      <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
+        {Object.entries(groupedResults).map(([group, items]) => (
+          <SearchBarResultsGroup key={group} heading={group}>
+            {items.map((item) => (
+              <SearchBarResultsItem key={item.name} value={item.name}>
+                <span className="bg-primary-50 text-txt-primary rounded-full p-px">
+                  {group === "Arts" ? (
+                    <StarIcon className="size-4" />
+                  ) : group === "Sports" ? (
+                    <TrophyIcon className="size-4" />
+                  ) : (
+                    <MoneyIcon className="size-4" />
+                  )}
+                </span>
+                <p className="line-clamp-1 flex-1">
+                  {item.name}{" "}
+                  <span className="text-txt-black-500 text-xs">
+                    {item.note}
                   </span>
-                  <p className="line-clamp-1 flex-1">
-                    {item.name}{" "}
-                    <span className="text-txt-black-500 text-xs">
-                      {item.note}
-                    </span>
-                  </p>
-                  <ChevronRightIcon />
-                </SearchBarResultsItem>
-              ))}
-            </SearchBarResultsGroup>
-          ))}
-        </SearchBarResultsList>
-      </SearchBarResults>
-    </SearchBar>
-  ```
+                </p>
+                <ChevronRightIcon />
+              </SearchBarResultsItem>
+            ))}
+          </SearchBarResultsGroup>
+        ))}
+      </SearchBarResultsList>
+    </SearchBarResults>
+  </SearchBar>
+````
+
   </Tab>
 </Tabs>
 
 ### Controlled Component
 
 The search bar must be controlled with props:
+
 - Set the `value` and `onValueChange` props for `SearchBarInput`
 - Set the `open` prop for `SearchBarResults`
 
@@ -514,8 +521,9 @@ In the example below, we also keep track of whether the search bar is focused or
         )}
       </SearchBarResults>
     </SearchBar>
-  ```
-  </Tab>
+
+```
+</Tab>
 </Tabs>
 
 ## Props
@@ -525,14 +533,14 @@ In the example below, we also keep track of whether the search bar is focused or
 `SearchBar` is abstracted from cmdk's `Command.Root`. Please refer to the API references in [this documentation](https://github.com/pacocoursey/cmdk#command-cmdk-root).
 
 <TypeTable
-  type={{
-    size: {
-      description: "Sizes of the search bar",
-      type: "enum",
-      typeDescription: "small | medium | large",
-      default: "medium",
-    },
-  }}
+type={{
+  size: {
+    description: "Sizes of the search bar",
+    type: "enum",
+    typeDescription: "small | medium | large",
+    default: "medium",
+  },
+}}
 />
 
 ### SearchBarInput
@@ -540,17 +548,17 @@ In the example below, we also keep track of whether the search bar is focused or
 `SearchBarInput` is abstracted from cmdk's `Command.Input`. Please refer to the API references in [this documentation](https://github.com/pacocoursey/cmdk#input-cmdk-input)
 
 <TypeTable
-  type={{
-    value: {
-      description: "Input value",
-      type: "string",
-    },
-    onValueChange: {
-      description: "Callback function when the input changes",
-      type: "function",
-      typeDescription: "(value: string) => void",
-    },
-  }}
+type={{
+  value: {
+    description: "Input value",
+    type: "string",
+  },
+  onValueChange: {
+    description: "Callback function when the input changes",
+    type: "function",
+    typeDescription: "(value: string) => void",
+  },
+}}
 />
 
 ### SearchBarInputContainer
@@ -572,12 +580,12 @@ In the example below, we also keep track of whether the search bar is focused or
 ### SearchBarResults
 
 <TypeTable
-  type={{
-    open: {
-      description: "Whether the results pop-up is open or closed",
-      type: "boolean",
-    },
-  }}
+type={{
+  open: {
+    description: "Whether the results pop-up is open or closed",
+    type: "boolean",
+  },
+}}
 />
 
 ### SearchBarResultsList
@@ -591,3 +599,4 @@ In the example below, we also keep track of whether the search bar is focused or
 ### SearchBarResultsGroup
 
 `SearchBarResultsGroup` is abstracted from cmdk's `Command.Group`. Please refer to the API references in [this documentation](https://github.com/pacocoursey/cmdk#group-cmdk-group-hidden)
+```

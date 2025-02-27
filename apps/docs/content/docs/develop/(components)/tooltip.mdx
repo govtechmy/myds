@@ -7,7 +7,11 @@ import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-import { Tooltip, TooltipTrigger, TooltipContent } from "@govtechmy/myds-react/tooltip";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@govtechmy/myds-react/tooltip";
 import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
@@ -31,6 +35,7 @@ import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
       <TooltipContent>This is a helpful description.</TooltipContent>
     </Tooltip>
     ```
+
   </Tab>
 </Tabs>
 
@@ -44,20 +49,30 @@ import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
 />
 
 ## Usage
-```tsx
-  import { Tooltip, TooltipTrigger, TooltipContent } from "@govtechmy/myds-react/tooltip";
+
+```ts copy title="Import"
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@govtechmy/myds-react/tooltip";
 ```
-```tsx
-  <Tooltip>
-    <TooltipTrigger />
-    <TooltipContent />
-  </Tooltip>
+
+```tsx copy title="Anatomy"
+<Tooltip>
+  <TooltipTrigger />
+  <TooltipContent />
+</Tooltip>
 ```
+
 ## Examples
-### Controlled Component 
+
+### Controlled Component
+
 The `open` and `onOpenChange` can be used to manually to handle the state programmatically.
 
 The `defaulOpen` props can be used to treat the component as an uncontrolled component.
+
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex justify-center">
     <Tooltip open={true}>
@@ -76,13 +91,16 @@ The `defaulOpen` props can be used to treat the component as an uncontrolled com
           <QuestionCircleIcon />
       </TooltipTrigger>
       <TooltipContent>This is a helpful description.</TooltipContent>
+
   </Tooltip>
     ```
   </Tab>
 </Tabs>
 
 ### Tooltip Content Placement
+
 The `side` props can be used to manually adjust the placement of the `TooltipContent`. The only accepted values are: `left`, `right`, `top` and `bottom`.
+
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex flex-col justify-center items-center gap-10">
     <Tooltip>
@@ -139,17 +157,21 @@ The `side` props can be used to manually adjust the placement of the `TooltipCon
       <TooltipContent side={"bottom"}>This helpful description is placed on the bottom.</TooltipContent>
     </Tooltip>
     ```
+
   </Tab>
 </Tabs>
 
 ## Props
+
 ### Tooltip
+
 `Tooltip` is the wrapper component which manages the tooltip's state. It is being built on top of `TooltipPrimitive.Provider` and `TooltipPrimitive.Root`. Please refer to the full API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/tooltip#provider).
 
 <TypeTable
   type={{
     defaultOpen: {
-      description: "The initial open state of the tooltip when it's first rendered.",
+      description:
+        "The initial open state of the tooltip when it's first rendered.",
       type: "boolean",
     },
     open: {
@@ -163,16 +185,18 @@ The `side` props can be used to manually adjust the placement of the `TooltipCon
     delayDuration: {
       description: "The time delay before showing the tooltip when hovering.",
       type: "number",
-      default: "700ms"
+      default: "700ms",
     },
     disableHoverableContent: {
-      description: "When true, prevents the user from hovering over the tooltip content.",
+      description:
+        "When true, prevents the user from hovering over the tooltip content.",
       type: "boolean",
     },
   }}
 />
 
 ### TooltipContent
+
 `TooltipContent` is the "bubble" that displays the tooltip. It is being built on top of `TooltipPrimitive.Portal` and `TooltipPrimitive.Content`. Please refer to the full API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/tooltip#portal).
 
 <TypeTable
@@ -180,29 +204,27 @@ The `side` props can be used to manually adjust the placement of the `TooltipCon
     container: {
       description: "The element to portal the tooltip content into.",
       type: "HTMLElement",
-      default: "document.body"
+      default: "document.body",
     },
     arrowPadding: {
       description: "Space between the arrow and the tooltip content edges.",
-      type: "number"
+      type: "number",
     },
     align: {
       description: "Alignment along the tooltip's side.",
       type: "enum",
       typeDescription: "start | center | end",
-      default: "center"
+      default: "center",
     },
     side: {
       description: "Preferred position of the tooltip.",
       type: "enum",
       typeDescription: "top | right | bottom | left",
-      default: "top"
+      default: "top",
     },
   }}
 />
 
 ### TooltipTrigger
+
 `TooltipTrigger` is the component where the user interacts with to show the tooltip. It is being built on top of `TooltipPrimitive.Trigger`. Please refer to the full API references in this [documentation](https://www.radix-ui.com/primitives/docs/components/tooltip#content).
-
-
-

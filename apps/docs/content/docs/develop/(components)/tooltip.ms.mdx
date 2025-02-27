@@ -7,7 +7,11 @@ import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-import { Tooltip, TooltipTrigger, TooltipContent } from "@govtechmy/myds-react/tooltip";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@govtechmy/myds-react/tooltip";
 import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
@@ -31,6 +35,7 @@ import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
       <TooltipContent>Ini merupakan penjelasan ringkas.</TooltipContent>
     </Tooltip>
     ```
+
   </Tab>
 </Tabs>
 
@@ -44,17 +49,24 @@ import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
 />
 
 ## Penggunaan
-```tsx
-  import { Tooltip, TooltipTrigger, TooltipContent } from "@govtechmy/myds-react/tooltip";
-```
-```tsx
-  <Tooltip>
-    <TooltipTrigger />
-    <TooltipContent />
-  </Tooltip>
+
+```ts copy title="Import"
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@govtechmy/myds-react/tooltip";
 ```
 
-## Contoh-contoh 
+```tsx copy title="Anatomy"
+<Tooltip>
+  <TooltipTrigger />
+  <TooltipContent />
+</Tooltip>
+```
+
+## Contoh-contoh
+
 ### Keadaan Tidak Terkawal vs Terkawal
 
 Untuk menggunakan komponen ini dalam keadaan tidak terkawal, tetapkan prop `defaultOpen` kepada keadaan awal input.
@@ -79,13 +91,16 @@ Untuk menggunakan komponen dalam keadaan terkawal, gunakan prop `open` dan `onOp
           <QuestionCircleIcon />
       </TooltipTrigger>
       <TooltipContent>Ini merupakan penjelasan ringkas.</TooltipContent>
+
   </Tooltip>
     ```
   </Tab>
 </Tabs>
 
 ## Penempatan Tooltip
+
 Props `side` boleh digunakan untuk melaraskan kedudukan `TooltipContent`. Nilai-nilai yang diterima ialah: `left`, `right`, `top` dan `bottom`.
+
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
   <Tab value="Pratonton" className="not-prose flex flex-col justify-center items-center gap-10">
     <Tooltip>
@@ -142,11 +157,14 @@ Props `side` boleh digunakan untuk melaraskan kedudukan `TooltipContent`. Nilai-
         <TooltipContent side={"bottom"}>Penjelasan terletak di sebelah bawah.</TooltipContent>
     </Tooltip>
     ```
+
   </Tab>
 </Tabs>
 
 ## Props
+
 ### Tooltip
+
 Komponen `Tooltip` dibina di atas `TooltipPrimitive.Provider` and `TooltipPrimitive.Root`. Sila rujuk senarai API lengkap dalam [documentasi ini](https://www.radix-ui.com/primitives/docs/components/tooltip#provider).
 
 <TypeTable
@@ -160,22 +178,25 @@ Komponen `Tooltip` dibina di atas `TooltipPrimitive.Provider` and `TooltipPrimit
       type: "boolean",
     },
     onOpenChange: {
-      description: "Membolehkan callback dilaksanakan apabila nilai 'open' berubah.",
+      description:
+        "Membolehkan callback dilaksanakan apabila nilai 'open' berubah.",
       type: "function",
     },
     delayDuration: {
       description: "Masa tertangguh sebelum tooltip ditunjukkan.",
       type: "number",
-      default: "700ms"
+      default: "700ms",
     },
     disableHoverableContent: {
-      description: "Jika nilai 'true', pengguna dihalang untuk 'hover' pada tooltip.",
+      description:
+        "Jika nilai 'true', pengguna dihalang untuk 'hover' pada tooltip.",
       type: "boolean",
     },
   }}
 />
 
 ### TooltipContent
+
 Komponen `TooltipContent` ini dibina di atas `TooltipPrimitive.Portal` dan `TooltipPrimitive.Content`. Sila rujuk senarai penuh API di [dokumentasi ini](https://www.radix-ui.com/primitives/docs/components/tooltip#portal).
 
 <TypeTable
@@ -183,26 +204,27 @@ Komponen `TooltipContent` ini dibina di atas `TooltipPrimitive.Portal` dan `Tool
     container: {
       description: "Elemen untuk menempatkan elemen TooltipContainer.",
       type: "HTMLElement",
-      default: "document.body"
+      default: "document.body",
     },
     arrowPadding: {
       description: "Ruang antara anak panah dan tepi kandungan tooltip.",
-      type: "number"
+      type: "number",
     },
     align: {
       description: "Penjajaran sepanjang sisi tooltip.",
       type: "enum",
       typeDescription: "start | center | end",
-      default: "center"
+      default: "center",
     },
     side: {
       description: "Kedudukan tooltip relatif kepada TooltipTriger.",
       type: "enum",
       typeDescription: "top | right | bottom | left",
-      default: "top"
+      default: "top",
     },
   }}
 />
 
 ### TooltipTrigger
+
 `TooltipTrigger` membolehkan pengguna untuk berinteraksi atas tujuan menunjukkan "tooltip". Komponenen ini dibina menggunakan `TooltipPrimitive.Trigger`. Sila rujuk senarai penuh API di [dokumentasi ini](https://www.radix-ui.com/primitives/docs/components/tooltip#content).

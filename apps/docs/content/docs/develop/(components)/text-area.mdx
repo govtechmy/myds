@@ -1,5 +1,5 @@
 ---
-title: TextArea
+title: Text Area
 description: This component is a multi-line text input component designed for longer form content. Unlike the Input component which is limited to a single line, it expands vertically to accommodate multiple lines of text.
 ---
 
@@ -37,22 +37,26 @@ size={'small'}
 
 ## Usage
 
-```tsx copy
+```ts copy title="Import"
 import { TextArea } from "@govtechmy/myds-react/textarea";
 ```
 
-```tsx copy
+```tsx copy title="Anatomy"
 export default () => (
-  <TextArea placeholder="Placeholder text displayed when the text area is empty." 
-  size={'small'} 
-  disabled={false}
+  <TextArea
+    placeholder="Placeholder text displayed when the text area is empty."
+    size={"small"}
+    disabled={false}
   />
 );
 ```
 
 ## Examples
+
 ### Size
+
 Controls the input field's size variant. Supports `small`, `medium`, or `large`.
+
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
   <div className="space-y-2">
@@ -68,7 +72,7 @@ Controls the input field's size variant. Supports `small`, `medium`, or `large`.
   ```tsx 
 import { TextArea } from "@govtechmy/myds-react/textarea";
 
-/** Size props*/
+/\*_ Size props_/
 
 <TextArea size="small" placeholder="Enter your text for your small TextArea."/>
 <TextArea size="medium" placeholder="Enter your text for your medium TextArea."/>
@@ -78,7 +82,9 @@ import { TextArea } from "@govtechmy/myds-react/textarea";
 </Tabs>
 
 ### Disabled
+
 The `disabled` props can be used to disable user input and applies a visual styling to indicate the field cannot be edited.
+
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
   <div className="space-y-2">
@@ -94,7 +100,7 @@ The `disabled` props can be used to disable user input and applies a visual styl
   ```tsx 
 import { TextArea } from "@govtechmy/myds-react/textarea";
 
-/** Size props*/
+/\*_ Size props_/
 
 <TextArea size="small" placeholder="The TextArea has been disabled." disabled/>
 <TextArea size="medium" placeholder="The TextArea has been disabled." disabled/>
@@ -106,6 +112,7 @@ import { TextArea } from "@govtechmy/myds-react/textarea";
 ## Props
 
 ### TextArea
+
 <TypeTable
   type={{
     size: {
@@ -115,13 +122,14 @@ import { TextArea } from "@govtechmy/myds-react/textarea";
       default: "medium",
     },
     disabled: {
-    description: "Makes the TextArea non-interactive and visually indicates it's disabled.",
+      description:
+        "Makes the TextArea non-interactive and visually indicates it's disabled.",
       type: "boolean",
       typeDescription: "true | false ",
       default: "false",
     },
     placeholder: {
-    description: "Displays placeholder text when the input field is empty.",
+      description: "Displays placeholder text when the input field is empty.",
       type: "string",
       typeDescription: "-",
       default: "-",

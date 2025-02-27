@@ -19,11 +19,10 @@ import { Spinner } from "@govtechmy/myds-react/spinner";
   <Tab value="Kod">
   
   ```tsx 
-import { Spinner } from "@govtechmy/myds-react/spinner";
+  import { Spinner } from "@govtechmy/myds-react/spinner";
 
-<Spinner />
-
-```
+  <Spinner />
+  ```
 </Tab>
 </Tabs>
 
@@ -38,14 +37,12 @@ storybook:
 
 ## Penggunaan
 
-```tsx copy
+```ts copy title="Import"
 import { Spinner } from "@govtechmy/myds-react/spinner";
 ```
 
-```tsx copy
-export default () => (
-    <Spinner />
-);
+```tsx copy title="Anatomi"
+export default () => <Spinner />;
 ```
 
 ## Contoh
@@ -93,7 +90,7 @@ import { Spinner } from "@govtechmy/myds-react/spinner";
   <Spinner />
 </Button>
 
-```
+````
   </Tab>
 </Tabs>
 
@@ -145,7 +142,7 @@ import { Button } from "@govtechmy/myds-react/button";
 <Button variant="default-outline">
     <span>default</span><Spinner/>
 </Button>
-```
+````
 
   </Tab>
 </Tabs>
@@ -199,8 +196,7 @@ import { Button } from "@govtechmy/myds-react/button";
     color: {
       description: "Varian warna pemuat",
       type: "enum",
-      typeDescription:
-        "white | gray ",
+      typeDescription: "white | gray ",
       default: "gray",
     },
     size: {
@@ -209,11 +205,11 @@ import { Button } from "@govtechmy/myds-react/button";
       typeDescription: "small | medium | large",
       default: "small",
     },
-    show:{
-      description:"Papar atau Sembunyikan Spinner",
-      type:"boolean",
+    show: {
+      description: "Papar atau Sembunyikan Spinner",
+      type: "boolean",
       typeDescription: "true | false",
-      default: "true", 
-    }
+      default: "true",
+    },
   }}
 />

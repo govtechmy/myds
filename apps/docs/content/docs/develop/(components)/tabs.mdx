@@ -11,13 +11,8 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/myds";
-import {
-    TabsContentExample,
-    TabsListExample
-} from "@/components/tabs-example"
-import {
-  ArrowForwardIcon
-} from "@govtechmy/myds-react/icon";
+import { TabsContentExample, TabsListExample } from "@/components/tabs-example";
+import { ArrowForwardIcon } from "@govtechmy/myds-react/icon";
 import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
 import { TypeTable } from "fumadocs-ui/components/type-table";
@@ -85,19 +80,23 @@ import { Tab, Tabs as FumaTabs } from "fumadocs-ui/components/tabs";
             </TabsContent>
        </Tabs>
        ```
+
    </Tab>
 </FumaTabs>
 
 ## Usage
-```tsx
+
+```ts copy title="Import"
 import {
   Tabs,
+  TabsList,
+  TabsTrigger,
   TabsContent,
   TabsCounter,
-} from "@/components/myds";
+} from "@govtechmy/myds-react/tabs";
 ```
 
-```tsx
+```tsx copy title="Anatomy"
 export default () => (
   <Tabs>
     <TabsList>
@@ -107,11 +106,13 @@ export default () => (
   </Tabs>
 );
 ```
+
 ## Examples
 
 ### Variant
 
 Use the `variant` prop to change the tabs style. Currently, there are 3 designs for the tabs which are outlined below:
+
 1. **Pill**: Features a pill-shaped design where the active tab is highlighted.
 2. **Enclosed**: Encases the entire tab group in a container, with the active tab highlighted using a different pill style.
 3. **Line**: Uses a line beneath the active tab, typically in a brand color, to indicate the selected tab within the group.
@@ -272,12 +273,14 @@ Use the `variant` prop to change the tabs style. Currently, there are 3 designs 
         </TabsContent>
        </Tabs>
        ```
+
    </Tab>
 </FumaTabs>
 
 ### Size
 
-Use the `size` prop to change the size of the tabs. Examples of use cases for both types are outlined below:    
+Use the `size` prop to change the size of the tabs. Examples of use cases for both types are outlined below:
+
 1. **Small**: Typically used for small components or on smaller devices like mobile phones.
 2. **Medium**: Commonly applied to medium or large-sized components or devices such as tablets and desktops.
 
@@ -394,7 +397,7 @@ Use the `size` prop to change the size of the tabs. Examples of use cases for bo
 
        <Tabs
            defaultValue="1"
-           size="medium" 
+           size="medium"
            variant="line"
        >
            <TabsList>
@@ -599,10 +602,12 @@ Use the `size` prop to change the size of the tabs. Examples of use cases for bo
             </TabsContent>
        </Tabs>
        ```
+
    </Tab>
 </FumaTabs>
 
 ### Leading Icons
+
 Leading icons serve as visual indicators placed at the start of tab items, enhancing usability by providing instant recognition of the tab's purpose. `TabsIcon` subcomponent can be used for that purpose. Furthermore, the `TabsIcon` can be placed to the left or right to the description of `TagsTrigger`.
 
 <FumaTabs items={["Preview", "Code"]} defaultValue="Preview">
@@ -703,10 +708,12 @@ Leading icons serve as visual indicators placed at the start of tab items, enhan
            meaningful social messages.
        </TabsContent>
        ```
+
    </Tab>
 </FumaTabs>
 
 ### Counter
+
 Counters appear as numerical indicators after tab labels, providing at-a-glance information about the quantity of items in each tab category. They help users quickly understand the distribution of items across different tab sections without needing to switch between them.
 
 <FumaTabs items={["Preview", "Code"]} defaultValue="Preview">
@@ -801,20 +808,22 @@ Counters appear as numerical indicators after tab labels, providing at-a-glance 
         </Tabs>
         ```
     </Tab>
+
 </FumaTabs>
 
 ## Props
 
 ### Tabs
+
 The primary container that composes all tab components together, managing state and interactions between triggers and their content panels. It is being built on top of `TabsPrimitive.Root`.
+
 <TypeTable
-type={{
+  type={{
     variant: {
       description: "Style variant of the tab",
       type: "enum",
-      typeDescription:
-        "pill | enclosed | line",
-      default: "line"
+      typeDescription: "pill | enclosed | line",
+      default: "line",
     },
     size: {
       description: "Sizes of the tab",
@@ -826,31 +835,35 @@ type={{
 />
 
 ### TabsList
+
 A container that houses and aligns all tab triggers, providing a consistent layout for navigation elements. It is being built on top of `TabsPrimitive.List`.
+
 <TypeTable
-type={{
+  type={{
     width: {
       description: "Width of the TabList",
       type: "enum",
-      typeDescription:
-        "full | fit",
-      default: "fit"
-    }
+      typeDescription: "full | fit",
+      default: "fit",
+    },
   }}
 />
 
 ### TabsTrigger
+
 Interactive element that toggles visibility of its corresponding tab panel when selected. It is being built on top of `TabsPrimitive.Trigger`.
 
 ### TabsContent
+
 The panel that displays content when its corresponding trigger is selected, hiding when another tab is activated. It is being built on top of `TabsPrimitive.Content`.
 
 ### TabsIcon
-The `TabsIcon` is a wrapper component that applies consistent styling and sizing to icons within `TabsTrigger`, using context-based size variants (`small` or `medium`). 
+
+The `TabsIcon` is a wrapper component that applies consistent styling and sizing to icons within `TabsTrigger`, using context-based size variants (`small` or `medium`).
 
 ### TabsCounter
-The `TabsCounter` is a component that displays numerical indicators or badges within `TabTrigger`,  adjusting its text size based on the parent tabs' context (`small` or `medium`).
 
+The `TabsCounter` is a component that displays numerical indicators or badges within `TabTrigger`, adjusting its text size based on the parent tabs' context (`small` or `medium`).
 
 <small>
   For more in-depth customization, you can refer to API references in this
