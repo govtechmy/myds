@@ -6,7 +6,15 @@ description: Notifikasi tidak mengganggu yang muncul sementara pada skrin untuk 
 import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
 import {
-  AutoToast, ToastRoot, ToastIcon, ToastProgress, ToastProvider, ToastViewport, ToastTitle, ToastDescription, ToastTriggerButton
+  AutoToast,
+  ToastRoot,
+  ToastIcon,
+  ToastProgress,
+  ToastProvider,
+  ToastViewport,
+  ToastTitle,
+  ToastDescription,
+  ToastTriggerButton,
 } from "@/components/myds";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
@@ -89,26 +97,29 @@ ToastDescription
 />
 
 ## Penggunaan
-### Penggunaan Mudah
-Untuk penggunaan mudah, `AutoToast` boleh digunakan secara terus untuk mengendalikan kes penggunaan biasa.
-```tsx copy
-import { AutoToast }from "@govtechmy/myds-react/toast";
 
-// put the component high up the layout tree
-<AutoToast />
+### Penggunaan Mudah
+
+Untuk penggunaan mudah, `AutoToast` boleh digunakan secara terus untuk mengendalikan kes penggunaan biasa.
+
+```tsx copy title="layout.tsx"
+import { AutoToast } from "@govtechmy/myds-react/toast";
+
+// Letakkan komponen ini di bahagian atas dalam DOM
+<AutoToast />;
 ```
 
-```tsx copy
-// to publish or emit a new event to the Toast 
+```tsx copy title="Anatomi"
+// Kemudian, terbitkan atau hantar peristiwa baru kepada Toast
 import { useToast } from "@govtechmy/myds-react/hooks";
 
 export default () => (
   const { toast } = useToast();
 <button
   onClick={() => {
-    toast({ variant: "message", 
-    title: "Hello, world!", 
-    description: "this is a message toast description" 
+    toast({ variant: "message",
+    title: "Hello, world!",
+    description: "this is a message toast description"
     });
   }}>
     Message
@@ -117,54 +128,56 @@ export default () => (
 ```
 
 ### Penggunaan Lanjutan
+
 Sebagai alternatif kepada penggunaan AutoToast, konstituensi komponen `Toast` boleh disusun secara manual.
+
 ```tsx copy
 import {
-ToastRoot, 
-ToastIcon, 
-ToastProgress, 
-ToastProvider, 
-ToastViewport, 
-ToastTitle, 
-ToastDescription 
+  ToastRoot,
+  ToastIcon,
+  ToastProgress,
+  ToastProvider,
+  ToastViewport,
+  ToastTitle,
+  ToastDescription,
 } from "@govtechmy/myds-react/toast";
 
 export default () => (
   <ToastProvider>
-      {toasts.map((toast, index) => (
-        <ToastRoot
-          key={props.id || index}
-          variant={toast.variant || "message"}
-          {...props}
-        >
-          <ToastIcon />
-          <div className="space-y-1">
-            <ToastTitle>{toast.title}</ToastTitle>
-            {toast.description && (
-              <ToastDescription>{toast.description}</ToastDescription>
-            )}
-          </div>
-          <ToastClose />
-          <ToastProgress />
-         </ToastRoot>
-     ))}
- 
-      <ToastViewport />
-    </ToastProvider>
+    {toasts.map((toast, index) => (
+      <ToastRoot
+        key={props.id || index}
+        variant={toast.variant || "message"}
+        {...props}
+      >
+        <ToastIcon />
+        <div className="space-y-1">
+          <ToastTitle>{toast.title}</ToastTitle>
+          {toast.description && (
+            <ToastDescription>{toast.description}</ToastDescription>
+          )}
+        </div>
+        <ToastClose />
+        <ToastProgress />
+      </ToastRoot>
+    ))}
+
+    <ToastViewport />
+  </ToastProvider>
 );
 ```
 
-```tsx copy
-// to publish or emit a new event to the Toast 
+```tsx copy title="Anatomi"
+// to publish or emit a new event to the Toast
 import { useToast } from "@govtechmy/myds-react/hooks";
 
 export default () => (
   const { toast } = useToast();
 <button
   onClick={() => {
-    toast({ variant: "message", 
-    title: "Hello, world!", 
-    description: "this is a message toast description" 
+    toast({ variant: "message",
+    title: "Hello, world!",
+    description: "this is a message toast description"
     });
   }}>
     Message
@@ -175,6 +188,7 @@ export default () => (
 ## Contoh
 
 ### Variant
+
 5 varian toast tersedia: `message`, `info`, `success`, `warning` dan `error`. Contoh penggunaan adalah:
 
 1. Varian `success` boleh digunakan untuk menunjukkan tindakan yang berjaya seperti membuat permintaan baharu atau menghantar borang.
@@ -201,20 +215,24 @@ import { Button } from "@govtechmy/myds-react/button";
 import { AutoToast }from "@govtechmy/myds-react/toast";
 
 // put the component high up the layout tree
+
 <AutoToast />
 
-// to publish or emit a new event to the Toast 
+// to publish or emit a new event to the Toast
 import { useToast } from "@govtechmy/myds-react/hooks";
 
 const { toast } = useToast();
+
 <button
   onClick={() => {
-    toast({ variant: "message", 
-    title: "Hello, world!", 
-    description: "this is a message toast description" 
+    toast({
+      variant: "message",
+      title: "Hello, world!",
+      description: "this is a message toast description",
     });
-  }}>
-    Message
+  }}
+>
+  Message
 </button>
 
 ```
@@ -260,3 +278,4 @@ const { toast } = useToast();
 
 
 
+```

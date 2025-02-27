@@ -1,0 +1,279 @@
+---
+title: Theme Switch
+description: A component that allows users to switching themes of the application dynamically.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { ThemeProvider, ThemeSwitch } from "@/components/myds";
+import { Callout } from "fumadocs-ui/components/callout";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+
+<ThemeProvider>
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="flex justify-center">
+        <ThemeSwitch/>
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
+    import { ThemeProvider } from "@govtechmy/myds-react/hooks";
+
+    <ThemeProvider>
+        <ThemeSwitch/>
+    </ThemeProvider>
+    ```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-themeswitch--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/theme-switch.tsx",
+  }}
+/>
+
+## Usage
+
+```ts copy title="Import"
+import { ThemeProvider } from "@govtechmy/myds-react/hooks";
+import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
+```
+
+```tsx copy title="Anatomy"
+export default () => (
+  <ThemeProvider>
+    <ThemeSwitch />
+  </ThemeProvider>
+);
+```
+
+## Examples
+
+### As Toggle
+
+By default, `ThemeSwitch` will appear as a toggle button, switching between `light` and `dark` mode, just like below.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="flex justify-center">
+      <ThemeSwitch as="toggle" />
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+```tsx
+import { ThemeProvider } from "@govtechmy/myds-react/hooks";
+import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
+
+<ThemeProvider>
+  <ThemeSwitch as="toggle" />
+</ThemeProvider>
+```
+
+</Tab>
+</Tabs>
+<Callout
+  type="info"
+  title="Important"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Make sure your application is wrapped with `ThemeProvider` before using
+  `ThemeSwitch` component.
+</Callout>
+
+### As Select
+
+You can also use `ThemeSwitch` as a select dropdown, allowing users to choose from a list of themes.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+<Tab value="Preview">
+  <div className="flex justify-center">
+    <ThemeSwitch as="select" />
+  </div>
+</Tab>
+<Tab value="Code">
+```tsx
+import { ThemeProvider } from "@govtechmy/myds-react/hooks";
+import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
+
+<ThemeProvider>
+  <ThemeSwitch as="select" />
+</ThemeProvider>
+```
+
+  </Tab>
+</Tabs>
+
+### Custom Themes
+
+You can also extend themes available by defining the `themes` property! This also lets you to customize the theme icons or change up the order of themes.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+<Tab value="Preview">
+  <div className="flex justify-center gap-6 items-center">
+  <ThemeSwitch
+    as="toggle"
+    themes={[
+      {
+        icon: "🌞",
+        label: "Light",
+        value: "light",
+      },
+      {
+        icon: "🌚",
+        label: "Dark",
+        value: "dark",
+      },
+      {
+        icon: "🌐",
+        label: "System",
+        value: "system",
+      },
+    ]}
+  />
+  <ThemeSwitch
+    as="select"
+    themes={[
+      {
+        icon: "🌞",
+        label: "Light",
+        value: "light",
+      },
+      {
+        icon: "🌚",
+        label: "Dark",
+        value: "dark",
+      },
+      {
+        icon: "🌐",
+        label: "System",
+        value: "system",
+      },
+    ]}
+  />
+  </div>
+</Tab>
+<Tab value="Code">
+```tsx
+import { ThemeProvider } from "@govtechmy/myds-react/hooks";
+import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
+
+<ThemeProvider>
+  <ThemeSwitch
+    as="toggle"
+    themes={[
+      {
+        icon: "🌞",
+        label: "Light",
+        value: "light",
+      },
+      {
+        icon: "🌚",
+        label: "Dark",
+        value: "dark",
+      },
+      {
+        icon: "🌐",
+        label: "System",
+        value: "system",
+      },
+    ]}
+  />
+  <ThemeSwitch
+    as="select"
+    themes={[
+      {
+        icon: "🌞",
+        label: "Light",
+        value: "light",
+      },
+      {
+        icon: "🌚",
+        label: "Dark",
+        value: "dark",
+      },
+      {
+        icon: "🌐",
+        label: "System",
+        value: "system",
+      },
+    ]}
+  />
+</ThemeProvider>
+```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### ThemeSwitch
+
+<TypeTable
+  type={{
+    as: {
+      as: "Component to appear as",
+      type: "enum",
+      typeDescription: "toggle | select",
+      default: "toggle",
+    },
+    themes: {
+      description:
+        "An array of theme objects, each containing a theme name and an associated icon.",
+      type: "Theme[]",
+      typeDescription: `type Theme = { 
+    label: string,
+    value: string, 
+    icon: ReactNode; 
+}`,
+      default: (
+        <pre>
+          <code>
+            {`[
+    { 
+        label: "Light",
+        value: "light", 
+        icon: <SunIcon />; 
+    },
+    { 
+        label: "Dark",
+        value: "dark", 
+        icon: <MoonIcon />; 
+    }
+]
+`}
+          </code>
+        </pre>
+      ),
+    },
+  }}
+/>
+
+### ThemeProvider
+
+<TypeTable
+  type={{
+    defaultTheme: {
+      description: "The default theme to be applied.",
+      type: "string",
+      typeDescription: "Theme name",
+      default: "light",
+    },
+    children: {
+      description: "The children components wrapped by the provider.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+</ThemeProvider>

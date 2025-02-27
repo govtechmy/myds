@@ -1,5 +1,5 @@
 ---
-title: TextArea
+title: Text Area
 description: Komponen ini adalah komponen input teks berbilang baris untuk kandungan yang lebih panjang. Berbanding dengan komponen `Input` yang terhad kepada satu baris, komponen ini boleh menampung berbilang baris teks.
 ---
 
@@ -39,22 +39,26 @@ size={'small'}
 
 ## Penggunaan
 
-```tsx copy
+```ts copy title="Import"
 import { TextArea } from "@govtechmy/myds-react/textarea";
 ```
 
-```tsx copy
+```tsx copy title="Anatomi"
 export default () => (
-  <TextArea placeholder="Placeholder text displayed when the text area is empty." 
-  size={'small'} 
-  disabled={false}
+  <TextArea
+    placeholder="Placeholder text displayed when the text area is empty."
+    size={"small"}
+    disabled={false}
   />
 );
 ```
 
 ## Contoh
+
 ### Size
+
 Mengawal varian saiz komponen. Menerima nilai `small`, `medium`, atau `large`.
+
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
   <Tab value="Pratonton">
   <div className="space-y-2">
@@ -70,7 +74,7 @@ Mengawal varian saiz komponen. Menerima nilai `small`, `medium`, atau `large`.
   ```tsx 
 import { TextArea } from "@govtechmy/myds-react/textarea";
 
-/** Size props*/
+/\*_ Size props_/
 
 <TextArea size="small" placeholder="Enter your text for your small TextArea."/>
 <TextArea size="medium" placeholder="Enter your text for your medium TextArea."/>
@@ -80,7 +84,9 @@ import { TextArea } from "@govtechmy/myds-react/textarea";
 </Tabs>
 
 ### Disabled
+
 Props in boleh digunakan untuk menyahaktifkan input pengguna dan menggunakan gaya visual untuk menunjukkan medan ini tidak boleh disunting.
+
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
   <Tab value="Pratonton">
   <div className="space-y-2">
@@ -96,7 +102,7 @@ Props in boleh digunakan untuk menyahaktifkan input pengguna dan menggunakan gay
   ```tsx 
 import { TextArea } from "@govtechmy/myds-react/textarea";
 
-/** Size props*/
+/\*_ Size props_/
 
 <TextArea size="small" placeholder="The TextArea has been disabled." disabled/>
 <TextArea size="medium" placeholder="The TextArea has been disabled." disabled/>
@@ -108,6 +114,7 @@ import { TextArea } from "@govtechmy/myds-react/textarea";
 ## Props
 
 ### TextArea
+
 <TypeTable
   type={{
     size: {
@@ -117,13 +124,14 @@ import { TextArea } from "@govtechmy/myds-react/textarea";
       default: "medium",
     },
     disabled: {
-    description: "Menjadikan TextArea tidak interaktif dan menunjukkan secara visual bahawa ia dinyahaktifkan.",
+      description:
+        "Menjadikan TextArea tidak interaktif dan menunjukkan secara visual bahawa ia dinyahaktifkan.",
       type: "boolean",
       typeDescription: "true | false ",
       default: "false",
     },
     placeholder: {
-    description: "Memaparkan teks 'placeholder' apabila medan input kosong.",
+      description: "Memaparkan teks 'placeholder' apabila medan input kosong.",
       type: "string",
       typeDescription: "-",
       default: "-",

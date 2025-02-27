@@ -338,7 +338,6 @@ import {
     <FooterTimestamp time="2024-12-05T10:00:00Z">Last Updated:</FooterTimestamp>
   </FooterBottomSection>
 </Footer>
-
 ```
   </Tab>
 </Tabs>
@@ -354,7 +353,7 @@ import {
 
 ## Usage
 
-```tsx copy
+```ts copy title="Import"
 import {
   Address,
   Footer,
@@ -371,143 +370,29 @@ import {
   FooterContentColumn,
   SocialMediaItem,
 } from "@govtechmy/myds-react/footer";
-import { Link } from "@govtechmy/myds-react/link";
-import {
-    FacebookIcon,
-    TikTokIcon
-} from "@govtechmy/myds-react/icon";
 ```
 
-```tsx copy
+```tsx copy title="Anatomy"
 export default () => (
   <Footer>
     <FooterTopSection>
       <FooterMainInfo>
-        <ImageWithTitle
-          imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-          imgAlt="JataNegara"
-        >
-          Organization Title
-        </ImageWithTitle>
-        <Address>
-          Sample Address Line 1, Sample Street Name, Sample Area, Sample
-          District, Sample City, 12345 Sample Postal Code, Sample Country
-        </Address>
-        <SocialMedia title="Follow Us">
-          <SocialMediaItem
-            icon={<FacebookIcon />}
-            href={"www.google.com"}
-            name={"Facebook"}
-          />
-          <SocialMediaItem
-            icon={<TikTokIcon />}
-            href={"www.google.com"}
-            name={"TikTok"}
-          />
+        <ImageWithTitle />
+        <Address />
+        <SocialMedia>
+          <SocialMediaItem />
         </SocialMedia>
       </FooterMainInfo>
       <FooterContent>
-        <FooterContentColumn title={"Title 1"}>
-          <Link
-            href="www.google.com"
-            underline="hover"
-            className="hover:text-txt-black-900"
-          >
-            Link 1
-          </Link>
-          <Link
-            href="www.google.com"
-            underline="hover"
-            className="hover:text-txt-black-900"
-          >
-            Link 2
-          </Link>
-          <Link
-            href="www.google.com"
-            underline="hover"
-            className="hover:text-txt-black-900"
-          >
-            Link 3
-          </Link>
-          <Link
-            href="www.google.com"
-            underline="hover"
-            className="hover:text-txt-black-900"
-          >
-            Link 4
-          </Link>
-        </FooterContentColumn>
-        <FooterContentColumn title={"Title 2"}>
-          <Link
-            href="www.google.com"
-            underline="hover"
-            className="hover:text-txt-black-900"
-          >
-            Link 1
-          </Link>
-          <Link
-            href="www.google.com"
-            underline="hover"
-            className="hover:text-txt-black-900"
-          >
-            Link 2
-          </Link>
-          <Link
-            href="www.google.com"
-            underline="hover"
-            className="hover:text-txt-black-900"
-          >
-            Link 3
-          </Link>
-          <Link
-            href="www.google.com"
-            underline="hover"
-            className="hover:text-txt-black-900"
-          >
-            Link 4
-          </Link>
-        </FooterContentColumn>
-        <FooterContentColumn title={"Open Source"}>
-          <Link
-            href="www.google.com"
-            underline="hover"
-            className="hover:text-txt-black-900"
-          >
-            Github Repo
-          </Link>
-          <Link
-            href="www.google.com"
-            underline="hover"
-            className="hover:text-txt-black-900"
-          >
-            Figma
-          </Link>
-        </FooterContentColumn>
+        <FooterContentColumn />
       </FooterContent>
     </FooterTopSection>
     <FooterBottomSection>
       <FooterCopyright>
-        <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
-        <FooterCopyrightLinkWrapper>
-          <Link
-            href="www.google.com"
-            underline="hover"
-            className="hover:text-txt-black-900"
-          >
-            Disclaimer
-          </Link>
-          <Link
-            href="www.google.com"
-            underline="hover"
-            className="hover:text-txt-black-900"
-          >
-            Privacy Policy
-          </Link>
-        </FooterCopyrightLinkWrapper>
+        <FooterCopyrightDate />
+        <FooterCopyrightLinkWrapper />
       </FooterCopyright>
-      <FooterTimestamp time="2024-12-05T10:00:00Z">
-        Last Updated:
-      </FooterTimestamp>
+      <FooterTimestamp />
     </FooterBottomSection>
   </Footer>
 );
@@ -528,7 +413,7 @@ The `Footer` serves as the primary container for the footer content. All subcomp
 
 The `FooterTopSection` is the upper part of the footer and contains two main areas:
 
-1.1 **FooterMainInfo**  
+1.1 **FooterMainInfo**
 1.2 **FooterContent**
 
 ### 1.1 FooterMainInfo
@@ -580,7 +465,7 @@ Content: Added as plain text inside the component.
       Sample Street Name, Sample Area,
       Sample District, Sample City,
       12345 Sample Postal Code,
-      Sample Country  
+      Sample Country
     </Address>
   </div>
 
@@ -588,11 +473,11 @@ Content: Added as plain text inside the component.
   <Tab value="Code">
 ```tsx
 <Address>
-  Sample Address Line 1,  
-  Sample Street Name, Sample Area,  
-  Sample District, Sample City,  
-  12345 Sample Postal Code,  
-  Sample Country  
+  Sample Address Line 1,
+  Sample Street Name, Sample Area,
+  Sample District, Sample City,
+  12345 Sample Postal Code,
+  Sample Country
 </Address>
 ```
   </Tab>
@@ -662,14 +547,12 @@ import {
   <SocialMediaItem icon={<XIcon />} href="https://www.twitter.com" name="X" />
 </SocialMedia>
 
-```
+````
+
   </Tab>
 </Tabs>
 
-
-
 ### 1.2 FooterContent
-
 
 The `FooterContent` component is designed for grouping related links in a structured layout, typically organized into columns. Each column is represented by a `FooterContentColumn`, which includes a title and associated links.
 
@@ -720,7 +603,7 @@ The `FooterContent` component is designed for grouping related links in a struct
     </Link>
   </FooterContentColumn>
 </FooterContent>
-```
+````
 
   </Tab>
 </Tabs>

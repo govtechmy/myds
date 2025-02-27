@@ -84,7 +84,7 @@ import { GovMyIcon, Lock2Icon, LockFillIcon } from "@govtechmy/myds-react/icon";
 
 ## Penggunaan
 
-```tsx copy
+```ts copy title="Import"
 import {
   Masthead,
   MastheadHeader,
@@ -98,7 +98,7 @@ import {
 import { GovMyIcon, Lock2Icon, LockFillIcon } from "@govtechmy/myds-react/icon";
 ```
 
-```tsx copy
+```tsx copy title="Anatomi"
 export default () => (
   <Masthead>
     <MastheadHeader>
@@ -142,11 +142,8 @@ export default () => (
     </div>
   </Tab>
   <Tab value="Code">
-    ```tsx 
-    import { Masthead } from "@govtechmy/myds-react/masthead";
-    
-    export default () => <Masthead />; 
-    ```
+    ```tsx import {Masthead} from "@govtechmy/myds-react/masthead"; export
+    default () => <Masthead />; ```
   </Tab>
 </Tabs>
 
@@ -225,8 +222,9 @@ export default () => (
         </MastheadSection>
       </MastheadContent>
     </Masthead>
-    ); 
+    );
     ```
+
   </Tab>
 </Tabs>
 
@@ -341,9 +339,10 @@ Komponen `MastheadSectionBody` mengandungi kandungan utama bagi bahagian tersebu
 <TypeTable
   type={{
     children: {
-      description: "Kandungan yang akan dipaparkan dalam komponen Masthead. Boleh termasuk MastheadHeader dan MastheadContent.",
+      description:
+        "Kandungan yang akan dipaparkan dalam komponen Masthead. Boleh termasuk MastheadHeader dan MastheadContent.",
       type: "ReactNode",
-      default: "<DefaultMastheadHeadHeader/>,<DefaultMastheadContent/>", 
+      default: "<DefaultMastheadHeadHeader/>,<DefaultMastheadContent/>",
     },
   }}
 />
@@ -353,7 +352,8 @@ Komponen `MastheadSectionBody` mengandungi kandungan utama bagi bahagian tersebu
 <TypeTable
   type={{
     children: {
-      description: "Kandungan untuk tajuk Masthead. Biasanya mengandungi komponen MastheadOfficialIndicator dan MastheadToggle.",
+      description:
+        "Kandungan untuk tajuk Masthead. Biasanya mengandungi komponen MastheadOfficialIndicator dan MastheadToggle.",
       type: "ReactNode",
     },
   }}
@@ -364,9 +364,10 @@ Komponen `MastheadSectionBody` mengandungi kandungan utama bagi bahagian tersebu
 <TypeTable
   type={{
     children: {
-      description: "Teks untuk dipaparkan bersama ikon bendera rasmi kerajaan Malaysia. Secara lalai adalah 'Official Malaysia Government Website'.",
+      description:
+        "Teks untuk dipaparkan bersama ikon bendera rasmi kerajaan Malaysia. Secara lalai adalah 'Official Malaysia Government Website'.",
       type: "ReactNode",
-      default: `"Official Malaysia Government Website"`
+      default: `"Official Malaysia Government Website"`,
     },
   }}
 />
@@ -376,9 +377,10 @@ Komponen `MastheadSectionBody` mengandungi kandungan utama bagi bahagian tersebu
 <TypeTable
   type={{
     children: {
-      description: "Teks untuk bahagian togol. Secara lalai adalah 'Here's how you know'.",
+      description:
+        "Teks untuk bahagian togol. Secara lalai adalah 'Here's how you know'.",
       type: "ReactNode",
-      default: `"Here's how you know"`
+      default: `"Here's how you know"`,
     },
   }}
 />
@@ -388,7 +390,8 @@ Komponen `MastheadSectionBody` mengandungi kandungan utama bagi bahagian tersebu
 <TypeTable
   type={{
     children: {
-      description: "Kandungan untuk badan komponen Masthead, biasanya mengandungi beberapa komponen MastheadSection.",
+      description:
+        "Kandungan untuk badan komponen Masthead, biasanya mengandungi beberapa komponen MastheadSection.",
       type: "ReactNode",
     },
   }}
@@ -399,11 +402,13 @@ Komponen `MastheadSectionBody` mengandungi kandungan utama bagi bahagian tersebu
 <TypeTable
   type={{
     icon: {
-      description: "Ikon untuk dipaparkan di sebelah kandungan bahagian. Biasanya ikon dari folder `icons`.",
+      description:
+        "Ikon untuk dipaparkan di sebelah kandungan bahagian. Biasanya ikon dari folder `icons`.",
       type: "ReactNode",
     },
     children: {
-      description: "Kandungan untuk dipaparkan dalam bahagian, seperti tajuk dan badan teks.",
+      description:
+        "Kandungan untuk dipaparkan dalam bahagian, seperti tajuk dan badan teks.",
       type: "ReactNode",
     },
   }}
@@ -414,7 +419,8 @@ Komponen `MastheadSectionBody` mengandungi kandungan utama bagi bahagian tersebu
 <TypeTable
   type={{
     children: {
-      description: "Tajuk untuk bahagian Masthead. Biasanya menerangkan kandungan dalam bahagian tersebut.",
+      description:
+        "Tajuk untuk bahagian Masthead. Biasanya menerangkan kandungan dalam bahagian tersebut.",
       type: "ReactNode",
     },
   }}
@@ -425,7 +431,8 @@ Komponen `MastheadSectionBody` mengandungi kandungan utama bagi bahagian tersebu
 <TypeTable
   type={{
     children: {
-      description: "Teks badan untuk bahagian Masthead. Menerangkan butiran atau maklumat tambahan berkaitan dengan tajuk bahagian.",
+      description:
+        "Teks badan untuk bahagian Masthead. Menerangkan butiran atau maklumat tambahan berkaitan dengan tajuk bahagian.",
       type: "ReactNode",
     },
   }}
