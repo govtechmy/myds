@@ -1,5 +1,14 @@
 # @govtechmy/myds-docs
 
+## 0.0.13
+
+### Patch Changes
+
+- 7eeb60d: Added ThemeSwitch docs
+- Updated dependencies [7eeb60d]
+- Updated dependencies [57bebb9]
+  - @govtechmy/myds-react@0.0.12
+
 ## 0.0.12
 
 ### Patch Changes

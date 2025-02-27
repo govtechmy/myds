@@ -1,5 +1,12 @@
 # @govtechmy/myds-react
 
+## 0.0.12
+
+### Patch Changes
+
+- 7eeb60d: Fix to listen to theme changes and update the ThemeSwitch state accordingly
+- 57bebb9: Fix ThemeContextProvider not recognising parent if reexported
+
 ## 0.0.11
 
 ### Patch Changes
