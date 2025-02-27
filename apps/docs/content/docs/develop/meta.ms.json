@@ -46,6 +46,7 @@
     "(components)/tabs",
     "(components)/tag",
     "(components)/text-area",
+    "(components)/theme-switch",
     "(components)/toast",
     "(components)/toggle",
     "(components)/tooltip",

@@ -1,4 +1,10 @@
-import { FunctionComponent, isValidElement, ReactNode, useState } from "react";
+import {
+  FunctionComponent,
+  isValidElement,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import { MoonIcon, SunIcon } from "../icons";
 import { Button } from "./button";
 import { useTheme } from "../hooks/use-theme";
@@ -42,11 +48,18 @@ const ThemeSwitch: FunctionComponent<ThemeSwitch> = ({
     setTheme(themes[nextIndex]!.value);
   };
 
+  useEffect(() => {
+    if (as === "toggle") {
+      const index = themes.findIndex((t) => t.value === theme);
+      setCurrentIndex(index);
+    }
+  }, [theme]);
+
   if (as === "toggle")
     return (
       <Button
         variant="default-ghost"
-        className="p-2"
+        className="aspect-square flex-shrink-0 rounded-md"
         onClick={handleToggle}
         aria-label={themes[currentIndex]?.label}
       >
