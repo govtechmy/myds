@@ -22,11 +22,11 @@ import { Link } from "@govtechmy/myds-react/link";
  * import { AnnounceBar, AnnounceBarDescription, AnnounceBarProps, AnnounceBarTag } from "@govtechmy/myds-react/announce-bar";
  *
  * <AnnounceBar {...args}>
- *       <AnnounceBarTag variant="primary">
+ *       <AnnounceBarTag variant="primary" mode="pill">
  *         Alpha
  *       </AnnounceBarTag>
  *       <AnnounceBarDescription>
- *         <p>This is a new service. Help us improve it. <Link underline="always" primary * *href="#">Send us your feedback here.</Link></p>
+ *         <p>This is a new service. Help us improve it. <Link underline="always" primary href="#">Send us your feedback here.</Link></p>
  *       </AnnounceBarDescription>
  * </AnnounceBar>
  * ```
@@ -51,7 +51,9 @@ export const LightPrimary: Story = {
   render: () => {
     return (
       <AnnounceBar>
-        <AnnounceBarTag variant="primary">Alpha</AnnounceBarTag>
+        <AnnounceBarTag variant="primary" mode="pill">
+          Alpha
+        </AnnounceBarTag>
         <AnnounceBarDescription>
           <p>
             This is a new service. Help us improve it.{" "}
@@ -74,7 +76,9 @@ export const LightSuccess: Story = {
   render: () => {
     return (
       <AnnounceBar>
-        <AnnounceBarTag variant="success">Public Beta</AnnounceBarTag>
+        <AnnounceBarTag variant="success" mode="pill">
+          Public Beta
+        </AnnounceBarTag>
         <AnnounceBarDescription>
           <p>
             Welcome to Public Beta! Try out the service and share your feedback.{" "}
@@ -97,7 +101,9 @@ export const LightWarning: Story = {
   render: () => {
     return (
       <AnnounceBar>
-        <AnnounceBarTag variant="warning">Maintenance</AnnounceBarTag>
+        <AnnounceBarTag variant="warning" mode="pill">
+          Maintenance
+        </AnnounceBarTag>
         <AnnounceBarDescription>
           <p>
             This service is undergoing maintenance. Thank you for your patience.{" "}
@@ -120,7 +126,9 @@ export const LightDanger: Story = {
   render: () => {
     return (
       <AnnounceBar>
-        <AnnounceBarTag variant="danger">Retired</AnnounceBarTag>
+        <AnnounceBarTag variant="danger" mode="pill">
+          Retired
+        </AnnounceBarTag>
         <AnnounceBarDescription>
           <p>This service has been retired and is no longer available.</p>
         </AnnounceBarDescription>
@@ -137,7 +145,9 @@ export const DarkPrimary: Story = {
   render: ({ className }) => {
     return (
       <AnnounceBar className={className}>
-        <AnnounceBarTag variant="primary">Alpha</AnnounceBarTag>
+        <AnnounceBarTag variant="primary" mode="pill">
+          Alpha
+        </AnnounceBarTag>
         <AnnounceBarDescription>
           <p>
             This is a new service. Help us improve it.{" "}
@@ -160,7 +170,9 @@ export const DarkSuccess: Story = {
   render: ({ className }) => {
     return (
       <AnnounceBar className={className}>
-        <AnnounceBarTag variant="success">Public Beta</AnnounceBarTag>
+        <AnnounceBarTag variant="success" mode="pill">
+          Public Beta
+        </AnnounceBarTag>
         <AnnounceBarDescription>
           <p>
             Welcome to Public Beta! Try out the service and share your feedback.{" "}
@@ -182,7 +194,9 @@ export const DarkWarning: Story = {
   render: ({ className }) => {
     return (
       <AnnounceBar className={className}>
-        <AnnounceBarTag variant="warning">Maintenance</AnnounceBarTag>
+        <AnnounceBarTag variant="warning" mode="pill">
+          Maintenance
+        </AnnounceBarTag>
         <AnnounceBarDescription>
           <p>
             This service is undergoing maintenance. Thank you for your patience.{" "}
@@ -205,7 +219,9 @@ export const DarkDanger: Story = {
   render: ({ className }) => {
     return (
       <AnnounceBar className={className}>
-        <AnnounceBarTag variant="danger">Retired</AnnounceBarTag>
+        <AnnounceBarTag variant="danger" mode="pill">
+          Retired
+        </AnnounceBarTag>
         <AnnounceBarDescription>
           <p>This service has been retired and is no longer available.</p>
         </AnnounceBarDescription>
