@@ -22,7 +22,7 @@ import { clx } from "@govtechmy/myds-react/utils";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Skiplink",
+  title: "@govtechmy/myds-react/Components/Skiplink",
   component: Skiplink,
   decorators: [
     (Story, context) => {

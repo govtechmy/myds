@@ -94,7 +94,7 @@ import { ButtonIcon } from "@govtechmy/myds-react/button";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Dropdown",
+  title: "@govtechmy/myds-react/Components/Dropdown",
   component: Dropdown,
   tags: ["autodocs"],
   parameters: {

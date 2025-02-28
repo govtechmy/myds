@@ -79,7 +79,7 @@ import { createStory } from "../utils";
  */
 // @ts-expect-error
 const meta: Meta = {
-  title: "@govtechmy/myds-react/Dialog",
+  title: "@govtechmy/myds-react/Components/Dialog",
   component: Dialog,
   render: ({ dismissible, border, align, border_header }) => {
     return (

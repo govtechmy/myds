@@ -25,7 +25,7 @@ import { createStory } from "../utils";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/DateRangePicker",
+  title: "@govtechmy/myds-react/Components/DateRangePicker",
   component: DateRangePicker,
   tags: ["autodocs"],
   parameters: {

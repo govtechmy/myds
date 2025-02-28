@@ -124,7 +124,7 @@ import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
  */
 
 const meta = {
-  title: "@govtechmy/myds-react/Navbar",
+  title: "@govtechmy/myds-react/Components/Navbar",
   component: Navbar,
   tags: ["autodocs"],
   parameters: {

@@ -49,7 +49,7 @@ import { XIcon } from "@govtechmy/myds-react/icon";
  */
 
 const meta = {
-  title: "@govtechmy/myds-react/Footer",
+  title: "@govtechmy/myds-react/Components/Footer",
   component: Footer,
   tags: ["autodocs"],
   parameters: {

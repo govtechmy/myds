@@ -26,7 +26,7 @@ import { createRender, createStory } from "../utils";
  */
 
 const meta: Meta<typeof Toggle> = {
-  title: "@govtechmy/myds-react/Toggle",
+  title: "@govtechmy/myds-react/Components/Toggle",
   component: Toggle,
   parameters: {
     layout: "centered",

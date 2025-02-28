@@ -19,7 +19,7 @@ import { createStory } from "../utils";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/ThemeToggler",
+  title: "@govtechmy/myds-react/Components/ThemeToggler",
   tags: ["!dev"],
   parameters: {
     layout: "fullscreen",

@@ -51,7 +51,7 @@ import React from "react";
  */
 
 const meta = {
-  title: "@govtechmy/myds-react/Accordion",
+  title: "@govtechmy/myds-react/Components/Accordion",
   component: Accordion,
   tags: ["autodocs"],
   parameters: {

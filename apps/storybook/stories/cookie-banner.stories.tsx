@@ -223,7 +223,7 @@ import { Checkbox } from "@govtechmy/myds-react/checkbox";
  */
 
 const meta = {
-  title: "@govtechmy/myds-react/CookiesBanner",
+  title: "@govtechmy/myds-react/Components/CookiesBanner",
   component: (args: React.ComponentProps<typeof CookieBanner>) => {
     const [open, setOpen] = useState(false);
     const [preferences, setPreferences] = useState({

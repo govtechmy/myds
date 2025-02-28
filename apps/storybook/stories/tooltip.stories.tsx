@@ -33,7 +33,7 @@ import { QuestionCircleIcon } from "@govtechmy/myds-react/icon";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Tooltip",
+  title: "@govtechmy/myds-react/Components/Tooltip",
   component: Tooltip,
   tags: ["autodocs"],
   parameters: {
