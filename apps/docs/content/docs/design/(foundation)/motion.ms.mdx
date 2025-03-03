@@ -1,0 +1,143 @@
+---
+title: Pergerakan
+description: Ubah elemen statik dalam antara muka digital dengan pergerakan yang bermakna dan interaksi yang memberikan maklum balas jelas kepada pengguna.
+---
+
+import { s3 } from "@/lib/constant";
+
+## Prinsip
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/motion-principle.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+1. **Ringkas**: Pergerakan harus membimbing, bukan mengganggu.
+2. **Harmoni**: Selaraskan pergerakan yang produktif dan ekspresif untuk pengalaman yang menyatu.
+3. **Berfungsi**: Setiap pergerakan mesti mempunyai tujuan yang jelas.
+
+## Jenis Pergerakan
+
+### Tiada pergerakan (Segera)
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/motion-type-instant.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+Digunakan sebagai pergerakan asal apabila tiada kesan gerak digunakan semasa transformasi.
+
+- Nama token: **instant**
+
+### Linear
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/motion-type-linear.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+Menambah sifat pergerakan CSS yang membolehkan elemen berubah secara beransur-ansur dari satu keadaan ke keadaan lain.
+
+- Bukan pilihan terbaik untuk animasi UI yang organik.
+- Nama token: **linear**
+- cubic-bezier(0, 0, 1, 1)
+
+### Ease-Out
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/motion-type-easeout.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+Lengkung pergerakan yang lancar dan semula jadi, terus ke sasaran tanpa pergerakan yang berlebihan. Menjamin kejelasan dan ketepatan.
+
+- **Kegunaan**: Antara muka berfungsi yang memerlukan gangguan minimum, seperti carta, peralihan keadaan UI & latar belakang pudar keluar.
+- Nama token: **easeout**
+- cubic-bezier(0, 0, 0.58, 1)
+
+### Ease-Out-Back (Tersuai)
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/motion-type-easeoutback.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+Pergerakan yang dinamik dan anjal, melebihi sasaran sebelum kembali stabil. Mewujudkan tenaga dan menambah karakter.
+
+- **Kegunaan**: Elemen yang menyerlah atau menarik perhatian, seperti animasi kejayaan atau butang interaktif.
+- Nama token: **easeoutback**
+- cubic-bezier(0.4, 1.4, 0.2, 1)
+
+## Tempoh Pergerakan
+
+| Token    | Tempoh Masa | Digunakan di?                                                  |
+| -------- | ----------- | -------------------------------------------------------------- |
+| `short`  | 200ms       | UI bersaiz kecil - Contoh: butang, dropdown & mikro-interaksi. |
+| `medium` | 400ms       | UI bersaiz sederhana - Contoh: callout, dialog amaran & toast. |
+| `long`   | 600ms       | UI bersaiz besar - Contoh: peralihan halaman & bahagian.       |
+
+## Token Pergerakan
+
+Nilai lalai yang digunakan untuk mengurus peralihan keadaan UI secara konsisten.
+
+Pembangun boleh menyesuaikan nama token menggunakan format [motion-type].[transition]. Secara asal, durasi peralihan telah ditetapkan sebagai short, medium, dan long. Namun, ia boleh digantikan dengan nilai dalam nombor bulat untuk kelajuan durasi yang berbeza.
+
+| Token                | Kod CSS                                                                                |
+| -------------------- | -------------------------------------------------------------------------------------- |
+| `easeoutback.short`  | `.btn:hover { transition: 200ms cubic-bezier(0.4, 1.4, 0.2, 1); }`                     |
+| `easeoutback.medium` | `.alert-dialog { transition: 400ms cubic-bezier(0.4, 1.4, 0.2, 1); }`                  |
+| `easeout.long`       | `.slides { transition: 600ms cubic-bezier(0, 0, 0.58, 1); /* OR 600ms ease-out */}`    |
+| `easeout.1000`       | `.circle { transition: 1000ms cubic-bezier(0, 0, 0.58, 1); /* OR 1000ms ease-out */ }` |
+| `easeoutback.1000`   | `.circle { transition: 1000ms cubic-bezier(0.4, 1.4, 0.2, 1); }`                       |
+
+## Contoh
+
+Berikut adalah contoh nilai pergerakan yang diterapkan pada komponen UI untuk interaksi yang lancar dan dinamik.
+
+### Toast
+
+Demonstrasi komponen Toast yang muncul dan hilang dengan menunggu di antaranya.
+
+Ia menampilkan tiga animasi:
+
+- Toast Masuk
+- Bar Progres
+- Toast Keluar
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/toast-animation-example.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+### Toast Masuk (Toast Enter)
+
+Toast muncul dengan lancar pada skrin dengan meluncur masuk dari bahagian bawah skrin.
+
+**Toast: easeoutback.medium**
+
+- Jenis gerak: easeoutback
+- Kelajuan: 400ms (sederhana)
+
+### Mula Tunggu (Delay Start) / Mula Bar Progres
+
+Setelah animasi "Toast Masuk" tamat, penunjuk visual (bar progress) mengira mundur selama kira-kira 3000ms, menunjukkan berapa lama Toast akan kekal kelihatan sebelum keluar.
+
+**Bar progres: linear.3000**
+
+- Jenis gerak: linear
+- Kelajuan: 3000ms
+
+### Tamat Bar Progres / Toast Keluar
+
+Setelah animasi "Bar Progres" tamat pada 3000ms, Toast meluncur keluar ke bahagian bawah skrin.
+
+**Toast: easeoutback.medium**
+
+- Jenis gerak: easeoutback
+- Kelajuan: 400ms (sederhana)
