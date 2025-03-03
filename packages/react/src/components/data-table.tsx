@@ -43,8 +43,8 @@ import { clx, pick } from "../utils";
 import { Button, ButtonIcon } from "./button";
 import {
   ChevronRightIcon,
-  FilterAscIcon,
-  FilterDescIcon,
+  FilterAscendingIcon,
+  FilterDescendingIcon,
   FilterIcon,
   ReloadIcon,
 } from "../icons";
@@ -300,8 +300,8 @@ const DataTableHeader: FunctionComponent = () => {
                             data-sorted={Boolean(header.column.getIsSorted())}
                           >
                             {{
-                              desc: <FilterDescIcon className="size-4" />,
-                              asc: <FilterAscIcon className="size-4" />,
+                              desc: <FilterDescendingIcon className="size-4" />,
+                              asc: <FilterAscendingIcon className="size-4" />,
                             }[header.column.getIsSorted() as string] ?? (
                               <FilterIcon className="size-4" />
                             )}

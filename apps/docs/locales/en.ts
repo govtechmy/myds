@@ -215,6 +215,7 @@ export default {
     home: "Home",
     design: "Design",
     develop: "Develop",
+    icon: "Icon",
   },
 
   /* Design */

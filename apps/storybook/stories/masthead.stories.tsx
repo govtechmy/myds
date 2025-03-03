@@ -9,8 +9,7 @@ import {
   MastheadSectionTitle,
   MastheadSectionBody,
 } from "@govtechmy/myds-react/masthead";
-import { Lock2Icon } from "../../../packages/react/src/icons/lock-2";
-import SolidLockIcon from "../../../packages/react/src/icons/solid-lock";
+import { Lock2Icon, LockFillIcon } from "../../../packages/react/src/icons/";
 import { GovMyIcon } from "../../../packages/react/src/icons/gov-my";
 import { createStory } from "../utils";
 
@@ -214,7 +213,7 @@ export const FullyCustomized: Story = {
           </MastheadSectionTitle>
           <MastheadSectionBody>
             Cari ikon kunci (
-            <SolidLockIcon className="mb-0.5 inline size-3.5" />) atau
+            <LockFillIcon className="mb-0.5 inline size-3.5" />) atau
             <span className="font-semibold"> https:// </span>
             sebagai langkah berjaga-jaga tambahan. Jika tiada, jangan kongsi
             sebarang maklumat sensitif.
@@ -253,7 +252,7 @@ export const FullyCustomizedDark: Story = {
             </MastheadSectionTitle>
             <MastheadSectionBody>
               Cari ikon kunci (
-              <SolidLockIcon className="mb-0.5 inline size-3.5" />) atau
+              <LockFillIcon className="mb-0.5 inline size-3.5" />) atau
               <span className="font-semibold"> https:// </span>
               sebagai langkah berjaga-jaga tambahan. Jika tiada, jangan kongsi
               sebarang maklumat sensitif.

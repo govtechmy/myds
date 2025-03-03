@@ -16,10 +16,12 @@ import {
   SocialMediaItem,
 } from "@govtechmy/myds-react/footer";
 import { Link } from "@govtechmy/myds-react/link";
-import { FacebookIcon } from "../../../packages/react/src/icons/facebook";
-import { InstagramIcon } from "../../../packages/react/src/icons/instagram";
-import { TikTokIcon } from "../../../packages/react/src/icons/tiktok";
-import { XIcon } from "@govtechmy/myds-react/icon";
+import {
+  XIcon,
+  FacebookIcon,
+  InstagramIcon,
+  TikTokIcon,
+} from "@govtechmy/myds-react/icon";
 
 /**
  * ### Overview

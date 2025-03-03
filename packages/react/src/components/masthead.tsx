@@ -1,8 +1,7 @@
 import React, { FunctionComponent, PropsWithChildren, useEffect } from "react";
 import { ChevronDownIcon } from "../icons/chevron-down";
-import { Lock2Icon } from "../icons/lock-2";
-import SolidLockIcon from "../icons/solid-lock";
-import MalaysiaFlagIcon from "../icons/malaysia-flag";
+import { Lock2Icon, LockFillIcon } from "../icons/";
+import { SpecialMalaysiaFlag } from "../icons/special-malaysia-flag";
 import { GovMyIcon } from "../icons/gov-my";
 
 // Types
@@ -39,7 +38,7 @@ const MastheadOfficialIndicator: FunctionComponent<
 > = ({ children = "Official Malaysia Government Website" }) => {
   return (
     <div className="flex select-none items-center gap-2">
-      <MalaysiaFlagIcon className="shrink-0" />
+      <SpecialMalaysiaFlag className="shrink-0" />
       <span className="text-txt-black-700">{children}</span>
     </div>
   );
@@ -119,7 +118,7 @@ const DefaultMastheadContent: FunctionComponent = () => (
       <MastheadSectionTitle>Secure websites use HTTPS</MastheadSectionTitle>
       <MastheadSectionBody>
         Look for a lock (
-        <SolidLockIcon className="mb-0.5 inline size-3.5" />) or
+        <LockFillIcon className="mb-0.5 inline size-3.5" />) or
         <span className="font-semibold"> https:// </span>
         as an added precaution. If not present, do not share any sensitive
         information.

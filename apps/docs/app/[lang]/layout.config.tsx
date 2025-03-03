@@ -49,6 +49,13 @@ export const getMYDSConfig = (lang: "en" | "ms"): MYDSConfig => {
       url: `/${lang}/docs/develop`,
       active: "nested-url",
     },
+    {
+      title: t("menu.icon"),
+      text: t("menu.icon"),
+      description: t("icon.description"),
+      url: `/${lang}/icon`,
+      active: "nested-url",
+    },
   ];
 
   return {

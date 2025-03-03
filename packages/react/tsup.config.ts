@@ -3,7 +3,7 @@ import { defineConfig } from "tsup";
 export default defineConfig((options) => ({
   ...options,
   entryPoints: [
-    "src/components/**/*.tsx",
+    "src/components/*.tsx",
     "src/hooks/**/*.ts",
     "src/utils/index.ts",
     "src/icons/index.ts",

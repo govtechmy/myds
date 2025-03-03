@@ -4,7 +4,7 @@ import FlagMY from "@/icons/flag-my";
 import ChevronDown from "@/icons/chevron-down";
 import EncryptedLock from "@/icons/encrypted-lock";
 import GovMY from "@/icons/govmy";
-import SolidLock from "@/icons/solid-lock";
+import { LockFillIcon } from "@govtechmy/myds-react/icon";
 import { clx } from "@govtechmy/myds-react/utils";
 
 import { useState } from "react";
@@ -70,7 +70,7 @@ export default function Masthead(props: { lang: "en" | "ms" }) {
                 </p>
                 <div className="text-txt-black-700 max-w-prose text-balance text-sm">
                   {t("Masthead.find_lock")}{" "}
-                  <SolidLock className="-ml-[3px] mb-0.5 mr-px inline size-3.5" />
+                  <LockFillIcon className="-ml-[3px] mb-0.5 mr-px inline size-3.5" />
                   {t("Masthead.or")}
                   <span className="font-semibold">https://</span>
                   {t("Masthead.precaution")}
