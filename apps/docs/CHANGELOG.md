@@ -1,5 +1,14 @@
 # @govtechmy/myds-docs
 
+## 0.0.14
+
+### Patch Changes
+
+- e267c3c: Added docs for Design > Motion
+- Updated dependencies [40b8a2b]
+- Updated dependencies [d4ed3ec]
+  - @govtechmy/myds-react@0.0.13
+
 ## 0.0.13
 
 ### Patch Changes
