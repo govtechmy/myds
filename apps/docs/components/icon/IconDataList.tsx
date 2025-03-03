@@ -512,7 +512,11 @@ export const iconDataList = [
   },
 
   // LEGACY Generic Icons
-
+  {
+    name: "agency-icon/jata-negara",
+    type: "Legacy: Generic",
+    svg: <Icons.LegacyJataNegaraIcon />,
+  },
   {
     name: "agency-icon/dosm",
     type: "Legacy: Generic",
