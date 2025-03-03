@@ -1,23 +1,31 @@
 import { fn } from "@storybook/test";
 
-import { Header } from "./Header";
+import Article from "./components/article";
 
 export default {
-  title: "@govtechmy/myds-react/Layout/Article",
-  component: Header,
+  title: "Example/Article",
+  component: Article,
+  // remove the automatic documentation for Layout
+  tags: ["!autodocs"],
   parameters: {
-    previewTabs: {
-      "storybook/docs/panel": { hidden: true },
+    layout: "fullscreen",
+  },
+};
+
+export const Mobile = {
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
     },
   },
 };
 
-export const LoggedIn = {
-  args: {
-    user: {
-      name: "Jane Doe",
+export const Tablet = {
+  parameters: {
+    viewport: {
+      defaultViewport: "tablet",
     },
   },
 };
 
-export const LoggedOut = {};
+export const Desktop = {};
