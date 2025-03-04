@@ -33,7 +33,7 @@ const MastheadHeader: FunctionComponent<MastheadHeaderProps> = ({
       className="block cursor-pointer list-none py-2.5 outline-none sm:py-1 [&::-webkit-details-marker]:hidden"
       tabIndex={-1}
     >
-      <div className="px-4.5 container mx-auto flex items-center gap-1.5 text-sm/4 max-sm:justify-between md:px-4">
+      <div className="px-4.5 mx-auto flex items-center gap-1.5 text-sm max-sm:justify-between md:max-lg:px-6 lg:px-0">
         {children}
       </div>
     </summary>
@@ -42,11 +42,13 @@ const MastheadHeader: FunctionComponent<MastheadHeaderProps> = ({
 
 const MastheadOfficialIndicator: FunctionComponent<
   MastheadOfficialIndicatorProps
-> = ({ children = "Official Malaysia Government Website" }) => {
+> = ({
+  children = "Official Malaysia Government Website abcakjfdsjkf sdfkhsfkskf sdfklsjfslkjdf",
+}) => {
   return (
     <div className="flex select-none items-center gap-2">
       <MalaysiaFlagIcon className="shrink-0" />
-      <span className="text-txt-black-700">{children}</span>
+      <span className="text-txt-black-700 line-clamp-2">{children}</span>
     </div>
   );
 };
@@ -55,7 +57,7 @@ const MastheadToggle: FunctionComponent<MastheadToggleProps> = ({
   children = "Here's how you know",
 }) => (
   <div
-    className="max-sm:bg-bg-washed text-txt-primary focus:ring-fr-primary flex items-center gap-0.5 rounded-sm p-1 pl-1.5 focus:outline-none focus:ring-[3px] focus:ring-inset max-sm:rounded-md max-sm:px-1"
+    className="max-sm:bg-otl-gray-200 text-txt-primary focus:ring-fr-primary flex items-center gap-0.5 rounded-sm p-1 pl-1.5 focus:outline-none focus:ring-[3px] focus:ring-inset max-sm:rounded-md max-sm:px-1"
     tabIndex={0}
   >
     <span className="text-txt-primary hidden select-none tracking-[-0.01em] sm:block">
@@ -71,7 +73,7 @@ const MastheadContent: FunctionComponent<ClassnameWithChildrenProps> = ({
 }) => {
   return (
     <div className="group-open:animate-in group-open:slide-in-from-top-2 group-closed:animate-out group-closed:slide-out-to-top-1 overflow-hidden transition-all duration-300 ease-in-out">
-      <div className={clx("px-4.5 container mx-auto", className)}>
+      <div className={clx("px-4.5 mx-auto md:max-lg:px-6 lg:px-0", className)}>
         <div className="gap-4.5 pt-4.5 grid grid-cols-1 pb-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
           <span className="text-txt-primary static text-sm sm:hidden">
             Here's how you know
@@ -103,11 +105,7 @@ const MastheadSectionTitle: FunctionComponent<MastheadSectionTitleProps> = ({
 
 const MastheadSectionBody: FunctionComponent<MastheadSectionBodyProps> = ({
   children,
-}) => (
-  <div className="text-txt-black-700 max-w-prose text-balance text-sm">
-    {children}
-  </div>
-);
+}) => <div className="text-txt-black-700 max-w-prose text-sm">{children}</div>;
 
 // Default content components
 const DefaultMastheadContent: FunctionComponent = () => (
@@ -173,7 +171,7 @@ const Masthead: FunctionComponent<MastheadProps> = ({ children }) => {
   if (!children) {
     return (
       <div className="bg-bg-washed outline-none print:hidden" data-nosnippet>
-        <details id="Masthead" className="group">
+        <details id="Masthead" className="group container w-full xl:mx-auto">
           <DefaultMastheadHeader />
           <DefaultMastheadContent />
         </details>
