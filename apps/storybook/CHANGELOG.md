@@ -1,5 +1,12 @@
 # @govtechmy/myds-storybook
 
+## 0.0.16
+
+### Patch Changes
+
+- Updated dependencies [7964da7]
+  - @govtechmy/myds-style@0.0.5
+
 ## 0.0.15
 
 ### Patch Changes

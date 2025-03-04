@@ -1,5 +1,11 @@
 # @govtechmy/myds-style
 
+## 0.0.5
+
+### Patch Changes
+
+- 7964da7: Style update
+
 ## 0.0.4
 
 ### Patch Changes
