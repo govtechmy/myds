@@ -18,7 +18,7 @@ import {
   RadioExample,
   RadioSimpleExample,
   RadioControlledExample,
-} from "./radio.client"
+} from "./radio.client";
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose">
@@ -82,6 +82,7 @@ import {
       </RadioItem>
     </Radio>
     ```
+
   </Tab>
 </Tabs>
 
@@ -96,7 +97,7 @@ import {
 
 ## Usage
 
-```tsx
+```ts copy title="Import"
 import {
   Radio,
   RadioButton,
@@ -106,7 +107,7 @@ import {
 } from "@govtechmy/myds-react/radio";
 ```
 
-```tsx
+```tsx copy title="Anatomi"
 <Radio>
   <RadioItem>
     <RadioButton value="apple" id="apple" />
@@ -209,6 +210,7 @@ Gunakan prop `size` untuk menukar saiz radio.
       </RadioItem>
     </Radio>
     ```
+
   </Tab>
 </Tabs>
 
@@ -278,6 +280,7 @@ Nyahaktifkan semua item radio dengan menetapkan prop `disabled` kepada true pada
       </RadioItem>
     </Radio>
     ```
+
   </Tab>
 </Tabs>
 
@@ -345,6 +348,7 @@ Nyahaktifkan item radio individu dengan menetapkan prop `disabled` kepada true p
       </RadioItem>
     </Radio>
     ```
+
   </Tab>
 </Tabs>
 
@@ -360,7 +364,6 @@ const [value, setValue] = useState("")
 </Radio>
 ```
 
-
 ## Props
 
 ### Radio
@@ -370,13 +373,14 @@ const [value, setValue] = useState("")
 <TypeTable
   type={{
     value: {
-      description: "Nilai item radio yang ditanda. Harus digunakan bersama dengan `onValueChange`.",
+      description:
+        "Nilai item radio yang ditanda. Harus digunakan bersama dengan `onValueChange`.",
       type: "string",
     },
     onValueChange: {
       description: "Event handler yang dipanggil apabila nilai berubah",
       type: "function",
-      typeDescription: "(value: string) => void"
+      typeDescription: "(value: string) => void",
     },
     size: {
       description: "Saiz radio",

@@ -1,0 +1,279 @@
+---
+title: Suis Tema
+description: Komponen untuk menguruskan dan menukar tema secara dinamik, menggunakan hook useTheme
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { ThemeProvider, ThemeSwitch } from "@/components/myds";
+import { Callout } from "fumadocs-ui/components/callout";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+
+<ThemeProvider>
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="flex justify-center">
+        <ThemeSwitch/>
+    </div>
+  </Tab>
+  <Tab value="Kod">
+    ```tsx
+    import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
+    import { ThemeProvider } from "@govtechmy/myds-react/hooks";
+
+    <ThemeProvider>
+        <ThemeSwitch/>
+    </ThemeProvider>
+    ```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-themeswitch--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/theme-switch.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```ts copy title="Import"
+import { ThemeProvider } from "@govtechmy/myds-react/hooks";
+import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
+```
+
+```tsx copy title="Anatomi" title="Pelaksanaan"
+export default () => (
+  <ThemeProvider>
+    <ThemeSwitch />
+  </ThemeProvider>
+);
+```
+
+## Contoh
+
+### Sebagai Suis Togol
+
+Secara lalai, `ThemeSwitch` akan muncul sebagai butang togol, beralih antara mod `terang` dan `gelap`, seperti di bawah.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
+    <div className="flex justify-center">
+      <ThemeSwitch as="toggle" />
+    </div>
+
+  </Tab>
+  <Tab value="Kod">
+```tsx
+import { ThemeProvider } from "@govtechmy/myds-react/hooks";
+import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
+
+<ThemeProvider>
+  <ThemeSwitch as="toggle" />
+</ThemeProvider>
+```
+
+</Tab>
+</Tabs>
+<Callout
+  type="info"
+  title="Penting"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Pastikan aplikasi anda dibalut dengan `ThemeProvider` sebelum menggunakan
+  komponen `ThemeSwitch`.
+</Callout>
+
+### Sebagai Pilihan
+
+Anda juga boleh menggunakan `ThemeSwitch` sebagai menu pilihan dropdown, membolehkan pengguna memilih dari senarai tema.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+<Tab value="Pratonton">
+  <div className="flex justify-center">
+    <ThemeSwitch as="select" />
+  </div>
+</Tab>
+<Tab value="Kod">
+```tsx
+import { ThemeProvider } from "@govtechmy/myds-react/hooks";
+import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
+
+<ThemeProvider>
+  <ThemeSwitch as="select" />
+</ThemeProvider>
+```
+
+  </Tab>
+</Tabs>
+
+### Tema Tersuai
+
+Anda juga boleh memperluaskan tema yang tersedia dengan menentukan sifat `themes`! Ini juga membolehkan anda menyesuaikan ikon tema atau mengubah susunan tema.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+<Tab value="Pratonton">
+  <div className="flex justify-center gap-6 items-center">
+  <ThemeSwitch
+    as="toggle"
+    themes={[
+      {
+        icon: "🌞",
+        label: "Terang",
+        value: "light",
+      },
+      {
+        icon: "🌚",
+        label: "Gelap",
+        value: "dark",
+      },
+      {
+        icon: "🌐",
+        label: "Sistem",
+        value: "system",
+      },
+    ]}
+  />
+  <ThemeSwitch
+    as="select"
+    themes={[
+      {
+        icon: "🌞",
+        label: "Terang",
+        value: "light",
+      },
+      {
+        icon: "🌚",
+        label: "Gelap",
+        value: "dark",
+      },
+      {
+        icon: "🌐",
+        label: "Sistem",
+        value: "system",
+      },
+    ]}
+  />
+  </div>
+</Tab>
+<Tab value="Kod">
+```tsx
+import { ThemeProvider } from "@govtechmy/myds-react/hooks";
+import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
+
+<ThemeProvider>
+  <ThemeSwitch
+    as="toggle"
+    themes={[
+      {
+        icon: "🌞",
+        label: "Terang",
+        value: "light",
+      },
+      {
+        icon: "🌚",
+        label: "Gelap",
+        value: "dark",
+      },
+      {
+        icon: "🌐",
+        label: "Sistem",
+        value: "system",
+      },
+    ]}
+  />
+  <ThemeSwitch
+    as="select"
+    themes={[
+      {
+        icon: "🌞",
+        label: "Terang",
+        value: "light",
+      },
+      {
+        icon: "🌚",
+        label: "Gelap",
+        value: "dark",
+      },
+      {
+        icon: "🌐",
+        label: "Sistem",
+        value: "system",
+      },
+    ]}
+  />
+</ThemeProvider>
+```
+
+  </Tab>
+</Tabs>
+
+## Props
+
+### ThemeSwitch
+
+<TypeTable
+  type={{
+    as: {
+      as: "Komponen untuk muncul sebagai",
+      type: "enum",
+      typeDescription: "toggle | select",
+      default: "toggle",
+    },
+    themes: {
+      description:
+        "Tatasusunan objek tema, setiap satu mengandungi nama tema dan ikon yang berkaitan.",
+      type: "Theme[]",
+      typeDescription: `type Theme = { 
+    label: string,
+    value: string, 
+    icon: ReactNode; 
+}`,
+      default: (
+        <pre>
+          <code>
+            {`[
+    { 
+        label: "Terang",
+        value: "light", 
+        icon: <SunIcon />; 
+    },
+    { 
+        label: "Gelap",
+        value: "dark", 
+        icon: <MoonIcon />; 
+    }
+]
+`}
+          </code>
+        </pre>
+      ),
+    },
+  }}
+/>
+
+### ThemeProvider
+
+<TypeTable
+  type={{
+    defaultTheme: {
+      description: "Tema lalai yang akan digunakan.",
+      type: "string",
+      typeDescription: "Nama tema",
+      default: "light",
+    },
+    children: {
+      description: "Komponen anak yang dibalut oleh penyedia.",
+      type: "ReactNode",
+    },
+  }}
+/>
+
+</ThemeProvider>

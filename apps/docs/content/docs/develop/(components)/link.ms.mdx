@@ -28,6 +28,7 @@ import { InfoIcon } from "@govtechmy/myds-react/icon";
       Sistem Reka Bentuk Rasmi Malaysia
     </Link>
     ```
+
   </Tab>
 </Tabs>
 
@@ -46,7 +47,7 @@ import { InfoIcon } from "@govtechmy/myds-react/icon";
 import { Link } from "@govtechmy/myds-react/link";
 ```
 
-```tsx copy
+```tsx copy title="Anatomi"
 export default () => (
   <Link href="/" primary>
     {/* Destinasi pautan harus dinyatakan di sini. */}
@@ -59,7 +60,7 @@ export default () => (
 
 ### Prop asChild
 
-Sekiranya anda perlu menggunakan komponen `Link` daripada pakej yang lain, anda boleh 
+Sekiranya anda perlu menggunakan komponen `Link` daripada pakej yang lain, anda boleh
 menggunakan prop `asChild` seperti berikut (Next.js sebagai contoh):
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
@@ -79,6 +80,7 @@ menggunakan prop `asChild` seperti berikut (Next.js sebagai contoh):
       <NextLink href="#">Custom Link</NextLink>
     </Link>
     ```
+
   </Tab>
 </Tabs>
 
@@ -109,6 +111,7 @@ Prop ini menetapkan sama ada pautan dibuka dalam tab baharu dengan menggunakan `
 
     <Link href="https://digital.gov.my" newTab>Ministry of Digital</Link>
     ```
+
   </Tab>
 </Tabs>
 
@@ -118,8 +121,8 @@ Prop ini menetapkan sama ada pautan dibuka dalam tab baharu dengan menggunakan `
   className="bg-bg-primary-50 text-txt-primary border-transparent"
   icon={<InfoIcon className="size-5" />}
 >
-Semua versi semasa pelayar web terkini secara automatik menggunakan `rel="noopener"`
-bagi semua pautan mempunyai `target="_blank"`
+  Semua versi semasa pelayar web terkini secara automatik menggunakan
+  `rel="noopener"` bagi semua pautan mempunyai `target="_blank"`
 </Callout>
 
 ### Primary
@@ -142,6 +145,7 @@ Prop ini digunakan untuk menetapkan warna teks pautan.
     <Link href="#" primary>Primary</Link>
     <Link href="#">Inherit from parent</Link>
     ```
+
   </Tab>
 </Tabs>
 
@@ -167,6 +171,7 @@ Prop ini digunakan untuk menetapkan waktu pautan digaris bawah.
     <Link href="#underline" underline="hover">Hover</Link>
     <Link href="#underline" underline="none">None</Link>
     ```
+
   </Tab>
 </Tabs>
 
@@ -177,7 +182,8 @@ Prop ini digunakan untuk menetapkan waktu pautan digaris bawah.
 <TypeTable
   type={{
     asChild: {
-      description: 'Digunakan untuk "merender" elemen anak (child element) berbanding elemen lalai (default element).',
+      description:
+        'Digunakan untuk "merender" elemen anak (child element) berbanding elemen lalai (default element).',
       type: "boolean",
     },
     href: {
@@ -185,12 +191,14 @@ Prop ini digunakan untuk menetapkan waktu pautan digaris bawah.
       type: "string",
     },
     newTab: {
-      description: "Tetapan sama ada pautan akan dibuka dalam tab baharu atau tidak.",
+      description:
+        "Tetapan sama ada pautan akan dibuka dalam tab baharu atau tidak.",
       type: "boolean",
       default: "false",
     },
     primary: {
-      description: "Tetapan warna teks kepada primary (biru) atau mewarisi warna daripada komponen induk.",
+      description:
+        "Tetapan warna teks kepada primary (biru) atau mewarisi warna daripada komponen induk.",
       type: "boolean",
       default: "false",
     },

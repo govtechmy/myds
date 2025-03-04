@@ -4,7 +4,7 @@ export default defineConfig((options) => ({
   ...options,
   entryPoints: [
     "src/components/**/*.tsx",
-    "src/hooks/**/*.ts",
+    "src/hooks/index.ts",
     "src/utils/index.ts",
     "src/icons/index.ts",
   ],

@@ -84,7 +84,7 @@ import { GovMyIcon, Lock2Icon, LockFillIcon } from "@govtechmy/myds-react/icon";
 
 ## Usage
 
-```tsx copy
+```ts copy title="Import"
 import {
   Masthead,
   MastheadHeader,
@@ -98,7 +98,7 @@ import {
 import { GovMyIcon, Lock2Icon, LockFillIcon } from "@govtechmy/myds-react/icon";
 ```
 
-```tsx copy
+```tsx copy title="Anatomy"
 export default () => (
   <Masthead>
     <MastheadHeader>
@@ -142,11 +142,8 @@ export default () => (
     </div>
   </Tab>
   <Tab value="Code">
-    ```tsx 
-    import { Masthead } from "@govtechmy/myds-react/masthead";
-    
-    export default () => <Masthead />; 
-    ```
+    ```tsx import {Masthead} from "@govtechmy/myds-react/masthead"; export
+    default () => <Masthead />; ```
   </Tab>
 </Tabs>
 
@@ -225,8 +222,9 @@ export default () => (
         </MastheadSection>
       </MastheadContent>
     </Masthead>
-    ); 
+    );
     ```
+
   </Tab>
 </Tabs>
 
@@ -341,9 +339,10 @@ The `MastheadSectionBody` component contains the primary content of the section,
 <TypeTable
   type={{
     children: {
-      description: "Content to be displayed inside the Masthead component. Can include a MastheadHeader and MastheadContent.",
+      description:
+        "Content to be displayed inside the Masthead component. Can include a MastheadHeader and MastheadContent.",
       type: "ReactNode",
-      default: "<DefaultMastheadHeadHeader/>,<DefaultMastheadContent/>", 
+      default: "<DefaultMastheadHeadHeader/>,<DefaultMastheadContent/>",
     },
   }}
 />
@@ -353,7 +352,8 @@ The `MastheadSectionBody` component contains the primary content of the section,
 <TypeTable
   type={{
     children: {
-      description: "Content for the Masthead header. Typically contains the MastheadOfficialIndicator and MastheadToggle components.",
+      description:
+        "Content for the Masthead header. Typically contains the MastheadOfficialIndicator and MastheadToggle components.",
       type: "ReactNode",
     },
   }}
@@ -364,9 +364,10 @@ The `MastheadSectionBody` component contains the primary content of the section,
 <TypeTable
   type={{
     children: {
-      description: "Text to display alongside the official Malaysia government flag icon. Defaults to 'Official Malaysia Government Website'.",
+      description:
+        "Text to display alongside the official Malaysia government flag icon. Defaults to 'Official Malaysia Government Website'.",
       type: "ReactNode",
-      default: `"Official Malaysia Government Website"`
+      default: `"Official Malaysia Government Website"`,
     },
   }}
 />
@@ -376,9 +377,10 @@ The `MastheadSectionBody` component contains the primary content of the section,
 <TypeTable
   type={{
     children: {
-      description: "Text for the toggle section. Defaults to 'Here's how you know'.",
+      description:
+        "Text for the toggle section. Defaults to 'Here's how you know'.",
       type: "ReactNode",
-      default: `"Here's how you know"`
+      default: `"Here's how you know"`,
     },
   }}
 />
@@ -388,7 +390,8 @@ The `MastheadSectionBody` component contains the primary content of the section,
 <TypeTable
   type={{
     children: {
-      description: "Content for the body of the Masthead component, typically containing multiple MastheadSection components.",
+      description:
+        "Content for the body of the Masthead component, typically containing multiple MastheadSection components.",
       type: "ReactNode",
     },
   }}
@@ -399,11 +402,13 @@ The `MastheadSectionBody` component contains the primary content of the section,
 <TypeTable
   type={{
     icon: {
-      description: "Icon to display next to the section content. Typically an icon from the `icons` folder.",
+      description:
+        "Icon to display next to the section content. Typically an icon from the `icons` folder.",
       type: "ReactNode",
     },
     children: {
-      description: "Content to display within the section, such as a title and body of text.",
+      description:
+        "Content to display within the section, such as a title and body of text.",
       type: "ReactNode",
     },
   }}
@@ -414,7 +419,8 @@ The `MastheadSectionBody` component contains the primary content of the section,
 <TypeTable
   type={{
     children: {
-      description: "Title for the Masthead section. Typically describes the content in the section.",
+      description:
+        "Title for the Masthead section. Typically describes the content in the section.",
       type: "ReactNode",
     },
   }}
@@ -425,9 +431,9 @@ The `MastheadSectionBody` component contains the primary content of the section,
 <TypeTable
   type={{
     children: {
-      description: "Body text for the Masthead section. Describes the details or additional information related to the section title.",
+      description:
+        "Body text for the Masthead section. Describes the details or additional information related to the section title.",
       type: "ReactNode",
     },
   }}
 />
-

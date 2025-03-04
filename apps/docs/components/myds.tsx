@@ -5,7 +5,6 @@ import React, {
   ComponentProps,
   FunctionComponent,
   forwardRef,
-  useContext,
 } from "react";
 import { Button } from "@govtechmy/myds-react/button";
 import { Toggle, ToggleThumb } from "./myds";
@@ -38,6 +37,9 @@ export * from "@govtechmy/myds-react/input-otp";
 export * from "@govtechmy/myds-react/tabs";
 export * from "@govtechmy/myds-react/navbar";
 export * from "@govtechmy/myds-react/summary-list";
+export * from "@govtechmy/myds-react/theme-switch";
+export { ThemeProvider } from "@govtechmy/myds-react/hooks";
+
 import {
   Callout,
   CalloutTitle,

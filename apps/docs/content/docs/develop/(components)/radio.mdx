@@ -18,7 +18,7 @@ import {
   RadioExample,
   RadioSimpleExample,
   RadioControlledExample,
-} from "./radio.client"
+} from "./radio.client";
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose">
@@ -82,6 +82,7 @@ import {
       </RadioItem>
     </Radio>
     ```
+
   </Tab>
 </Tabs>
 
@@ -96,7 +97,7 @@ import {
 
 ## Usage
 
-```tsx
+```ts copy title="Import"
 import {
   Radio,
   RadioButton,
@@ -106,7 +107,7 @@ import {
 } from "@govtechmy/myds-react/radio";
 ```
 
-```tsx
+```tsx copy title="Anatomy"
 <Radio>
   <RadioItem>
     <RadioButton value="apple" id="apple" />
@@ -209,6 +210,7 @@ Use the `size` prop to change the radio size.
       </RadioItem>
     </Radio>
     ```
+
   </Tab>
 </Tabs>
 
@@ -278,6 +280,7 @@ Disable all radio items by setting the `disabled` prop to true on the `Radio` co
       </RadioItem>
     </Radio>
     ```
+
   </Tab>
 </Tabs>
 
@@ -345,6 +348,7 @@ Disable individual radio items by setting the `disabled` prop to true on the `Ra
       </RadioItem>
     </Radio>
     ```
+
   </Tab>
 </Tabs>
 
@@ -360,7 +364,6 @@ const [value, setValue] = useState("")
 </Radio>
 ```
 
-
 ## Props
 
 ### Radio
@@ -370,13 +373,14 @@ const [value, setValue] = useState("")
 <TypeTable
   type={{
     value: {
-      description: "The controlled value of the radio item to check. Should be used in conjunction with `onValueChange`.",
+      description:
+        "The controlled value of the radio item to check. Should be used in conjunction with `onValueChange`.",
       type: "string",
     },
     onValueChange: {
       description: "Event handler called when the value changes",
       type: "function",
-      typeDescription: "(value: string) => void"
+      typeDescription: "(value: string) => void",
     },
     size: {
       description: "Sizes of the radio",

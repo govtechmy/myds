@@ -207,181 +207,6 @@ import {
   SocialMediaItem,
 } from "@govtechmy/myds-react/footer";
 
-<Footer>
-  <FooterTopSection>
-    <FooterMainInfo>
-      <ImageWithTitle
-        imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-        imgAlt="JataNegara"
-      >
-        Judul Organisasi
-      </ImageWithTitle>
-      <Address>
-        Sampel Alamat Baris 1,{"\n"}
-        Sampel Nama Jalan, Sampel Kawasan,{"\n"}
-        Sampel Daerah, Sampel Bandar,{"\n"}
-        12345 Sampel Kod Pos,{"\n"}
-        Sampel Negara
-      </Address>
-      <SocialMedia title="Ikuti Kami">
-        <SocialMediaItem
-          icon={<FacebookIcon />}
-          href={"www.google.com"}
-          name={"Facebook"}
-        />
-        <SocialMediaItem
-          icon={<TikTokIcon />}
-          href={"www.google.com"}
-          name={"TikTok"}
-        />
-      </SocialMedia>
-    </FooterMainInfo>
-    <FooterContent>
-      <FooterContentColumn title={"Tajuk 1"}>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 1
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 2
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 3
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 4
-        </Link>
-      </FooterContentColumn>
-      <FooterContentColumn title={"Tajuk 2"}>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 1
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 2
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 3
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Pautan 4
-        </Link>
-      </FooterContentColumn>
-      <FooterContentColumn title={"Sumber Terbuka"}>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Repo Github
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Figma
-        </Link>
-      </FooterContentColumn>
-    </FooterContent>
-  </FooterTopSection>
-  <FooterBottomSection>
-    <FooterCopyright>
-      <FooterCopyrightDate>Hak Cipta Terpelihara</FooterCopyrightDate>
-      <FooterCopyrightLinkWrapper>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Penafian
-        </Link>
-        <Link
-          href="www.google.com"
-          underline="hover"
-          className="hover:text-txt-black-900"
-        >
-          Polisi Privasi
-        </Link>
-      </FooterCopyrightLinkWrapper>
-    </FooterCopyright>
-    <FooterTimestamp time="2024-12-05T10:00:00Z">
-      Kemas Kini Terakhir:
-    </FooterTimestamp>
-  </FooterBottomSection>
-</Footer>
-
-```
-  </Tab>
-</Tabs>
-
-<Quicklinks
-  links={{
-    storybook:
-      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-footer--docs",
-    source:
-      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/footer.tsx",
-  }}
-/>
-
-## Penggunaan
-
-```tsx copy
-import {
-  Address,
-  Footer,
-  FooterBottomSection,
-  FooterCopyright,
-  FooterContent,
-  FooterMainInfo,
-  FooterTimestamp,
-  FooterTopSection,
-  ImageWithTitle,
-  SocialMedia,
-  FooterCopyrightDate,
-  FooterCopyrightLinkWrapper,
-  FooterContentColumn,
-  SocialMediaItem,
-} from "@govtechmy/myds-react/footer";
-import { Link } from "@govtechmy/myds-react/link";
-import {
-    FacebookIcon,
-    TikTokIcon
-} from "@govtechmy/myds-react/icon";
-```
-
-```tsx copy
-export default () => (
   <Footer>
     <FooterTopSection>
       <FooterMainInfo>
@@ -389,14 +214,14 @@ export default () => (
           imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
           imgAlt="JataNegara"
         >
-          Tajuk Organisasi
+          Judul Organisasi
         </ImageWithTitle>
         <Address>
-          Sample Alamat Baris 1,{"\n"}
-          Sample Nama Jalan, Sample Kawasan,{"\n"}
-          Sample Daerah, Sample Bandar,{"\n"}
-          12345 Sample Kod Pos,{"\n"}
-          Sample Negara
+          Sampel Alamat Baris 1,{"\n"}
+          Sampel Nama Jalan, Sampel Kawasan,{"\n"}
+          Sampel Daerah, Sampel Bandar,{"\n"}
+          12345 Sampel Kod Pos,{"\n"}
+          Sampel Negara
         </Address>
         <SocialMedia title="Ikuti Kami">
           <SocialMediaItem
@@ -513,6 +338,63 @@ export default () => (
       <FooterTimestamp time="2024-12-05T10:00:00Z">
         Kemas Kini Terakhir:
       </FooterTimestamp>
+    </FooterBottomSection>
+  </Footer>
+```
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-footer--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/footer.tsx",
+  }}
+/>
+
+## Penggunaan
+
+```ts copy title="Import"
+import {
+  Address,
+  Footer,
+  FooterBottomSection,
+  FooterCopyright,
+  FooterContent,
+  FooterMainInfo,
+  FooterTimestamp,
+  FooterTopSection,
+  ImageWithTitle,
+  SocialMedia,
+  FooterCopyrightDate,
+  FooterCopyrightLinkWrapper,
+  FooterContentColumn,
+  SocialMediaItem,
+} from "@govtechmy/myds-react/footer";
+```
+
+```tsx copy title="Anatomi"
+export default () => (
+  <Footer>
+    <FooterTopSection>
+      <FooterMainInfo>
+        <ImageWithTitle />
+        <Address />
+        <SocialMedia>
+          <SocialMediaItem />
+        </SocialMedia>
+      </FooterMainInfo>
+      <FooterContent>
+        <FooterContentColumn />
+      </FooterContent>
+    </FooterTopSection>
+    <FooterBottomSection>
+      <FooterCopyright>
+        <FooterCopyrightDate />
+        <FooterCopyrightLinkWrapper />
+      </FooterCopyright>
+      <FooterTimestamp />
     </FooterBottomSection>
   </Footer>
 );
@@ -667,7 +549,7 @@ import {
   <SocialMediaItem icon={<XIcon />} href="https://www.twitter.com" name="X" />
 </SocialMedia>
 
-```
+````
   </Tab>
 </Tabs>
 
@@ -725,7 +607,7 @@ Komponen `FooterContent` direka untuk mengumpulkan pautan yang berkaitan dalam s
     </Link>
   </FooterContentColumn>
 </FooterContent>
-```
+````
 
   </Tab>
 </Tabs>
