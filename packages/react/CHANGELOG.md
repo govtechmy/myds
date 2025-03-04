@@ -1,5 +1,11 @@
 # @govtechmy/myds-react
 
+## 0.0.14
+
+### Patch Changes
+
+- 4ce2d50: fix masthead responsive issue
+
 ## 0.0.13
 
 ### Patch Changes
