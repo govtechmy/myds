@@ -1,6 +1,6 @@
 {
   "name": "@govtechmy/myds-storybook",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "private": true,
   "scripts": {
     "dev": "storybook dev -p 6006",
