@@ -15,15 +15,15 @@ import {
   TabsList,
   TabsTrigger,
 } from "@govtechmy/myds-react/tabs";
-import { PlaceholderIcon } from "@govtechmy/myds-react/icon";
+import { Button } from "../myds";
 
 export default function SearchBarIcons() {
   const [hasFocus, setHasFocus] = useState(false);
   const [query, setQuery] = useState("");
 
   const filterIcons = (query: any, conditions: any) => {
-    return iconDataList.filter(({ type, name }) => {
-      const iconData = `${type} ${name}`.toLowerCase();
+    return iconDataList.filter(({ type, filename }) => {
+      const iconData = `${type} ${filename}`.toLowerCase();
       const iconType = type.toLowerCase();
       return (
         iconData.includes(query.toLowerCase()) &&
@@ -97,8 +97,7 @@ export default function SearchBarIcons() {
         </SearchBarInputContainer>
       </SearchBar>
 
-      <div className="my-8 flex space-x-2">
-        <PlaceholderIcon></PlaceholderIcon>
+      <div className="flex items-center justify-center">
         <Tabs defaultValue="2" size="medium" variant="line">
           <TabsList>
             <TabsTrigger value="1">All</TabsTrigger>
@@ -110,33 +109,137 @@ export default function SearchBarIcons() {
             <TabsTrigger value="7">Legacy: Generic</TabsTrigger>
             <TabsTrigger value="8">Legacy: Borderless</TabsTrigger>
           </TabsList>
-          {[...Array(8)].map((_, index) => (
-            <TabsContent
-              key={index + 1}
-              value={(index + 1).toString()}
-              className="py-6"
-            >
-              <pre>
-                {JSON.stringify(
-                  { [`result${index + 1}`]: eval(`result${index + 1}`) },
-                  null,
-                  2,
-                )}
-              </pre>
-              <div className="bg-bg-danger-200">
-                {result1.map((item, index) => (
-                  <div key={index}>
-                    <div className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md">
-                      <div>{item.name}</div>
-                      <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
-                        {item.svg}
+
+          <TabsContent className="py-6" value="1">
+            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+              {result1.map((item, index) => (
+                <div>
+                  <div
+                    key={index}
+                    className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
+                  >
+                    <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
+                      {item.svg}
+                    </div>
+                  </div>
+                  <div>{item.name}</div>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+          <TabsContent className="py-6" value="2">
+            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+              {result2.map((item, index) => (
+                <div className="flex flex-col items-center justify-center">
+                  <div
+                    key={index}
+                    className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black p-4 shadow-md"
+                  >
+                    <div className="flex items-center justify-center">
+                      {item.svg}
+                      <div className="absolute">
+                        <Button className="h-[70px] w-full">Copy SVG</Button>
+                        <Button className="h-[70px]">Copy JSX</Button>
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </TabsContent>
-          ))}
+                  <div className="text-txt-black-500 flex items-center justify-center truncate py-2 text-sm hover:line-clamp-2">
+                    {item.name}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+          <TabsContent className="py-6" value="3">
+            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+              {result3.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
+                >
+                  <div>{item.filename}</div>
+                  <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
+                    {item.svg}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+          <TabsContent className="py-6" value="4">
+            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+              {result4.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
+                >
+                  <div>{item.filename}</div>
+                  <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
+                    {item.svg}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+          <TabsContent className="py-6" value="5">
+            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+              {result5.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
+                >
+                  <div>{item.filename}</div>
+                  <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
+                    {item.svg}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+          <TabsContent className="py-6" value="6">
+            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+              {result6.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
+                >
+                  <div>{item.filename}</div>
+                  <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
+                    {item.svg}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+          <TabsContent className="py-6" value="7">
+            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+              {result7.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
+                >
+                  <div>{item.filename}</div>
+                  <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
+                    {item.svg}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+          <TabsContent className="py-6" value="8">
+            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+              {result8.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
+                >
+                  <div>{item.filename}</div>
+                  <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
+                    {item.svg}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
         </Tabs>
       </div>
     </div>

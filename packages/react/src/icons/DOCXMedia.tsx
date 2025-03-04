@@ -39,7 +39,7 @@ export const DOCXMediaIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (
           <path
             d="M29.1667 12.5833V0L43.7501 14.5833H31.1667C30.0622 14.5833 29.1667 13.6879 29.1667 12.5833Z"
             fill="url(#paint0_linear_2648_6591)"
-            fill-opacity="0.3"
+            fillOpacity="0.3"
             style={{ mixBlendMode: "hard-light" }}
           />
         </g>
