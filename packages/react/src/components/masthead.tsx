@@ -4,10 +4,16 @@ import { Lock2Icon } from "../icons/lock-2";
 import SolidLockIcon from "../icons/solid-lock";
 import MalaysiaFlagIcon from "../icons/malaysia-flag";
 import { GovMyIcon } from "../icons/gov-my";
+import { clx } from "../utils";
 
 // Types
 type MastheadContentProps = {
   icon: React.ReactNode;
+  children: React.ReactNode;
+};
+
+type ClassnameWithChildrenProps = {
+  className?: string;
   children: React.ReactNode;
 };
 
@@ -27,7 +33,7 @@ const MastheadHeader: FunctionComponent<MastheadHeaderProps> = ({
       className="block cursor-pointer list-none py-2.5 outline-none sm:py-1 [&::-webkit-details-marker]:hidden"
       tabIndex={-1}
     >
-      <div className="px-4.5 container mx-auto flex max-w-[1280px] items-center gap-1.5 text-sm/4 max-sm:justify-between md:px-4">
+      <div className="px-4.5 container mx-auto flex items-center gap-1.5 text-sm/4 max-sm:justify-between md:px-4">
         {children}
       </div>
     </summary>
@@ -59,12 +65,13 @@ const MastheadToggle: FunctionComponent<MastheadToggleProps> = ({
   </div>
 );
 
-const MastheadContent: FunctionComponent<PropsWithChildren> = ({
+const MastheadContent: FunctionComponent<ClassnameWithChildrenProps> = ({
   children,
+  className,
 }) => {
   return (
     <div className="group-open:animate-in group-open:slide-in-from-top-2 group-closed:animate-out group-closed:slide-out-to-top-1 overflow-hidden transition-all duration-300 ease-in-out">
-      <div className="container mx-auto max-w-[1280px]">
+      <div className={clx("px-4.5 container mx-auto", className)}>
         <div className="gap-4.5 pt-4.5 grid grid-cols-1 pb-6 sm:grid-cols-2 sm:gap-6 sm:pb-8 sm:pt-6">
           <span className="text-txt-primary static text-sm sm:hidden">
             Here's how you know
