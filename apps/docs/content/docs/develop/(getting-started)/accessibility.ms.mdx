@@ -1,0 +1,704 @@
+---
+title: Kebolehcapaian
+description: Panduan ini akan membantu anda membina aplikasi web yang mudah diakses menggunakan sistem reka bentuk MYDS. Mengikuti garis panduan ini memastikan aplikasi anda mampu diguna oleh orang kelainan upaya (OKU) dan memenuhi piawaian WCAG 2.2.
+---
+
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+import Eslint from "@/icons/eslint";
+import IBMEqualAccess from "@/icons/ibm-equal-access";
+import Storybook from "@/icons/storybook";
+
+## Prinsip Teras
+
+WCAG 2.2 dibina berdasarkan empat prinsip:
+
+1. **Boleh Dicapai**: Maklumat mestilah boleh disampaikan kepada pengguna dengan cara yang wajar
+2. **Boleh Dikendali**: Komponen antara muka mesti boleh dikendali oleh pelbagai jenis pengguna
+3. **Boleh Difahami**: Maklumat dan operasi mesti boleh difahami
+4. **Mencukupi**: Kandungan maklumat mesti mencukupi untuk berfungsi dengan pelbagai agen pengguna dan teknologi bantuan
+
+## Navigasi Papan Kekunci
+
+Navigasi papan kekunci membolehkan pengguna berinteraksi dengan aplikasi anda tanpa menggunakan tetikus. Ia penting bagi pengguna yang mempunyai kelumpuhan fizikal atau mereka yang bergantung kepada teknologi pembaca skrin.
+
+**Keperluan**
+
+- Semua elemen interaktif mesti boleh diakses dengan papan kekunci
+- Turutan fokus mesti intuitif & jelas
+- Perangkap papan kekunci mesti dielakkan
+- Pintasan papan kekunci harus boleh dikonfigurasi atau dielakkan
+
+**Petua Pelaksanaan**
+
+```tsx
+// ✅ PATUT: Gunakan elemen asli atau pastikan elemen tersuai mempunyai pengendalian papan kekunci yang betul [!code ++]
+<button onClick={handleClick}>Hantar</button>
+
+// ❌ JANGAN: Gunakan div untuk elemen interaktif tanpa sokongan papan kekunci [!code --]
+<div onClick={handleClick}>Hantar</div> // Tidak boleh diakses dengan papan kekunci!
+```
+
+```tsx
+// ✅ PATUT: Tentukan sifat kebolehcapaian & laksanakan pengendali papan kekunci untuk komponen tersuai
+const CustomButton = (props) => {
+  const handleKeyDown = (e) => { ... }; // [!code highlight]
+
+  return (
+    <div
+      role="button" // [!code highlight]
+      tabIndex={0} // [!code highlight]
+      onClick={props.onClick}
+      onKeyDown={handleKeyDown} // [!code highlight]
+    >
+      {props.children}
+    </div>
+  );
+};
+```
+
+**Petua Pengujian**
+
+- Cuba navigasi seluruh aplikasi anda menggunakan hanya <kbd>Tab</kbd> , <kbd>Shift + Tab</kbd> , <kbd>Enter</kbd> , dan <kbd>Space</kbd>
+- Pastikan penunjuk fokus sentiasa kelihatan
+- Sahkan bahawa urutan fokus mengikuti susun atur visual
+
+## Pengurusan Fokus
+
+Pengurusan fokus memastikan bahawa pengguna boleh menavigasi aplikasi anda dengan cara yang boleh diramal dan cekap, sama ada secara visual atau auditori.
+
+**Keperluan**
+
+- Penunjuk fokus mesti kelihatan
+- Fokus mesti diuruskan dengan betul apabila kandungan berubah
+
+**Petua Pelaksanaan**
+
+```jsx
+// ✅ PATUT: Gunakan refs untuk menguruskan fokus
+const modalRef = useRef(null);
+const openModal = () => { ... };
+
+return (
+  <>
+    <button onClick={openModal}>Buka Modal</button>
+    {isOpen && (
+      <div
+        ref={modalRef}
+        tabIndex={-1} // Menjadikan bekas TIDAK boleh difokuskan [!code highlight]
+        role="dialog" // [!code highlight]
+        aria-modal="true" // [!code highlight]
+      >
+        {/*  Fokuskan elemen ini sebaliknya apabila modal muncul [!code highlight] */}
+        <button autoFocus>
+            Elemen pertama yang boleh difokuskan
+        </button>
+
+      </div>
+    )}
+  </>
+);
+```
+
+<Callout
+  type="info"
+  title="Nota"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Menggunakan komponen `Dialog` dari MYDS menguruskan semua ini untuk anda!
+</Callout>
+
+**Petua Pengujian**
+
+- Pastikan fokus terperangkap dalam modals sehingga ia ditutup
+- Selepas menutup modal, fokus harus kembali kepada elemen yang mencetuskannya
+- Penunjuk fokus harus kelihatan dan menonjol (**nisbah kontras minimum 3:1**)
+
+## HTML Semantik dan ARIA
+
+**Keperluan**
+
+- Gunakan elemen HTML semantik bila mungkin
+- ARIA hanya boleh digunakan apabila semantik HTML tidak mencukupi
+- Pastikan semua atribut ARIA digunakan dengan betul
+
+**Petua Pelaksanaan**
+
+```jsx
+// ✅ PATUT: Gunakan HTML semantik
+<nav>
+  {/* [!code ++] */}
+  <ul>
+    {/* [!code ++] */}
+    <li><a href="/home">Rumah</a></li>
+     {/* [!code ++] */}
+    <li><a href="/about">Tentang</a></li>
+    {/* [!code ++] */}
+  </ul>
+</nav>
+
+// ❌ JANGAN: Gunakan elemen generik apabila elemen semantik wujud
+<div class="nav">
+  {/* [!code --] */}
+  <div class="nav-item"><a href="/home">Rumah</a></div>
+  {/* [!code --] */}
+  <div class="nav-item"><a href="/about">Tentang</a></div>
+</div>
+```
+
+```jsx
+// Apabila widget tersuai diperlukan, gunakan peranan dan sifat ARIA yang sesuai
+<div role="tablist" aria-label="Tab Aplikasi">
+  <button
+    role="tab" // [!code highlight]
+    aria-selected={selectedTab === "tab1"} // [!code highlight]
+    aria-controls="tab1-panel" // [!code highlight]
+    onClick={() => selectTab("tab1")} // [!code highlight]
+  >
+    Tab 1
+  </button>
+  <div
+    id="tab1-panel"
+    role="tabpanel" // [!code highlight]
+    aria-labelledby="tab1" // [!code highlight]
+    hidden={selectedTab !== "tab1"}
+  >
+    Kandungan Tab 1
+  </div>
+</div>
+```
+
+**Petua Pengujian**
+
+- Sahkan penggunaan ARIA anda dengan alat automatik
+- Uji dengan pembaca skrin untuk memastikan ARIA menyampaikan maklumat yang dimaksudkan
+- Sahkan bahawa semua komponen tersuai mempunyai peranan dan keadaan yang sesuai
+
+## Borang dan Pengesahan
+
+**Keperluan**
+
+- Semua medan borang mesti mempunyai label yang berkaitan
+- Mesej ralat mesti dikaitkan secara programatik dengan medan mereka
+- Medan yang diperlukan mesti ditunjukkan dengan jelas
+- Arahan untuk medan kompleks mesti disediakan
+
+**Petua Pelaksanaan**
+
+```jsx
+// ✅ PATUT: Kaitkan label dengan input menggunakan htmlFor
+<div>
+  {/* [!code ++] */}
+  <label htmlFor="username">Nama Pengguna</label>
+  <input
+    id="username"
+    type="text"
+    aria-required="true"
+    aria-describedby="username-hint"
+  />
+  <p id="username-hint">Pilih nama pengguna dengan sekurang-kurangnya 5 aksara</p>
+</div>
+
+// Untuk ralat pengesahan
+<div>
+  {/* [!code ++] */}
+  <label htmlFor="email">Emel</label>
+  <input
+    id="email"
+    type="email"
+    aria-invalid={emailError ? "true" : "false"}
+    aria-describedby={emailError ? "email-error" : undefined}
+  />
+  {emailError && (
+    // [!code ++]
+    <p id="email-error" role="alert">
+      {emailError}
+    </p>
+  )}
+</div>
+```
+
+**Petua Pengujian**
+
+- Pastikan semua kawalan borang mempunyai label yang kelihatan
+- Sahkan bahawa pembaca skrin mengumumkan ralat pengesahan
+- Periksa bahawa cadangan ralat memberikan panduan yang jelas untuk pembetulan
+- Uji borang dengan papan kekunci sahaja dan pembaca skrin
+
+## Imej dan Media
+
+**Keperluan**
+
+- Semua imej mesti mempunyai teks alternatif
+- Imej hiasan harus mempunyai atribut alt kosong
+- Imej kompleks memerlukan penerangan terperinci
+- Kandungan video memerlukan kapsyen dan transkrip
+
+**Petua Pelaksanaan**
+
+```jsx
+// ✅ PATUT: Tambah teks alt yang sesuai
+<img src="logo.png" alt="Logo Syarikat" /> // [!code word:alt]
+
+// Untuk imej hiasan, gunakan alt kosong
+<img src="decorative-line.png" alt="" role="presentation" />
+
+// Untuk SVG, pastikan kebolehcapaian
+<svg aria-hidden="true" focusable="false">
+  {/* Kandungan SVG */}
+</svg>
+
+// Untuk imej kompleks
+<figure>
+  <img src="chart.png" alt="Carta bar menunjukkan pertumbuhan jualan" />
+  <figcaption>
+    Rajah 1: Pertumbuhan jualan dari 2020-2023, dengan peningkatan 15% setiap tahun
+  </figcaption>
+</figure>
+```
+
+**Petua Pengujian**
+
+- Semak semua imej dengan alat automatik untuk memastikan teks alt wujud
+- Minta pakar kandungan menyemak teks alt untuk ketepatan dan kegunaan
+- Pastikan imej hiasan disembunyikan dengan betul daripada pembaca skrin
+
+## Warna dan Kontras
+
+**Keperluan**
+
+- Teks mesti mempunyai **nisbah kontras minimum 4.5:1 (3:1 untuk teks besar)**
+- Komponen UI memerlukan **nisbah kontras minimum 3:1**
+- Maklumat tidak boleh disampaikan oleh warna sahaja
+
+**Petua Pelaksanaan**
+
+```jsx
+// ✅ PATUT: Gunakan kontras yang mencukupi dan pelbagai penunjuk
+const ErrorMessage = ({ message }) => (
+  <div className="error-container">
+    <span aria-hidden="true">❌</span> {/* Penunjuk visual */}
+    <span className="error-text">{message}</span>
+  </div>
+);
+```
+
+```jsx
+// ❌ JANGAN: Bergantung hanya pada warna
+const StatusIndicator = ({ status }) => (
+  // Ini hanya menggunakan warna untuk menyampaikan status
+  <div className={`status-dot status-${status}`}></div>
+);
+```
+
+```jsx
+// ✅ PATUT: Tambah teks atau corak
+const BetterStatusIndicator = ({ status }) => (
+  <div className={`status-indicator status-${status}`} aria-label={status}>
+    {status === "success" && "✓"}
+    {status === "error" && "✕"}
+    {status === "warning" && "!"}
+  </div>
+);
+```
+
+**Petua Pengujian**
+
+- Gunakan alat pemeriksa kontras untuk semua teks dan elemen UI
+- Uji halaman dalam skala kelabu untuk mengenal pasti maklumat yang bergantung pada warna
+- Sahkan bahawa semua penunjuk status menggunakan pelbagai petunjuk (bentuk, teks, ikon)
+
+## Gerakan dan Animasi
+
+**Keperluan**
+
+- Benarkan pengguna untuk menjeda, menghentikan, atau menyembunyikan kandungan yang bergerak
+- Elakkan kandungan yang berkelip lebih daripada tiga kali sesaat
+- Hormati keutamaan gerakan yang dikurangkan
+
+**Petua Pelaksanaan**
+
+```jsx
+// ✅ PATUT: Hormati prefers-reduced-motion
+import { useEffect, useState } from "react";
+
+const useReducedMotion = () => {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
+
+    const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  return prefersReducedMotion;
+};
+
+// Penggunaan dalam komponen
+const AnimatedComponent = () => {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    // [!code highlight]
+    <div className={prefersReducedMotion ? "no-animation" : "animate-fade"}>
+      Kandungan
+    </div>
+  );
+};
+```
+
+**Petua Pengujian**
+
+- Uji dengan tetapan gerakan yang dikurangkan pada peringkat OS
+- Pastikan semua animasi boleh dilumpuhkan
+- Sahkan bahawa tiada kandungan yang berkelip dengan cepat
+
+## Komponen Interaktif
+
+**Keperluan**
+
+- Komponen tersuai mesti menggunakan peranan dan keadaan ARIA yang sesuai
+- Widget kompleks mesti mengikuti amalan pengarang WAI-ARIA
+- Sasaran sentuhan memerlukan saiz minimum 44x44px dengan jarak yang mencukupi
+
+**Petua Pelaksanaan**
+
+```jsx
+// Komponen dropdown yang boleh diakses
+const Dropdown = ({ label, options, selectedOption, onChange }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div ref={dropdownRef} className="dropdown-container">
+      <button
+        aria-haspopup="listbox" // [!code highlight]
+        aria-expanded={isOpen} // [!code highlight]
+        aria-labelledby="dropdown-label" // [!code highlight]
+        id="dropdown-button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="dropdown-trigger"
+      >
+        <span id="dropdown-label">{label}: </span>
+        {selectedOption || "Pilih satu pilihan"}
+      </button>
+
+      {isOpen && (
+        <ul
+          role="listbox" // [!code highlight]
+          aria-labelledby="dropdown-label" // [!code highlight]
+          className="dropdown-menu" // [!code highlight]
+          tabIndex={-1} // [!code highlight]
+        >
+          {options.map((option) => (
+            <li
+              key={option.value}
+              role="option" // [!code highlight]
+              aria-selected={option.value === selectedOption}
+              onClick={() => {
+                onChange(option.value);
+                setIsOpen(false);
+              }}
+              className="dropdown-item"
+            >
+              {option.label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+```
+
+**Petua Pengujian**
+
+- Sahkan bahawa semua komponen tersuai mempunyai peranan ARIA yang sesuai
+- Uji widget kompleks dengan pembaca skrin untuk mengesahkan mereka mengumumkan perubahan keadaan
+- Periksa bahawa sasaran sentuhan cukup besar pada peranti mudah alih
+
+## Struktur Halaman dan Navigasi
+
+**Keperluan**
+
+- Halaman mesti mempunyai struktur tajuk yang betul (**h1-h6**)
+- Landmark mesti digunakan untuk mengenal pasti kawasan halaman
+- Pautan lompat harus disediakan untuk kandungan yang berulang
+- Tajuk halaman mesti deskriptif dan unik
+
+**Petua Pelaksanaan**
+
+```jsx
+// ✅ PATUT: Gunakan landmark dengan betul
+const PageLayout = ({ children }) => (
+  <>
+    <a href="#main-content" className="skip-link">
+      Lompat ke kandungan utama
+    </a>
+    <header>
+      <nav aria-label="Navigasi Utama">{/* Item navigasi */}</nav>
+    </header>
+    <main id="main-content">{children}</main>
+    <aside aria-label="Maklumat Berkaitan">{/* Kandungan sidebar */}</aside>
+    <footer>{/* Kandungan footer */}</footer>
+  </>
+);
+```
+
+```jsx
+// ✅ PATUT: Gunakan hierarki tajuk yang betul
+const PageContent = () => (
+  <>
+    <h1>Tajuk Halaman Utama</h1>
+    <section>
+      <h2>Tajuk Seksyen</h2>
+      <p>Kandungan...</p>
+      <article>
+        <h3>Tajuk Artikel</h3>
+        <p>Lebih banyak kandungan...</p>
+      </article>
+    </section>
+  </>
+);
+```
+
+**Petua Pengujian**
+
+- Gunakan alat garis besar tajuk untuk mengesahkan struktur tajuk yang betul
+- Uji navigasi dengan pembaca skrin untuk mengesahkan landmark diumumkan
+- Sahkan bahawa pautan lompat berfungsi dan kelihatan apabila difokuskan
+
+## Kandungan dan Teks
+
+**Keperluan**
+
+- Teks mesti **boleh dibesarkan sehingga 200% tanpa kehilangan kandungan**
+- Tahap bacaan harus menampung keupayaan yang pelbagai
+- Akronim dan jargon harus ditakrifkan
+- Susun atur harus mengalir semula pada **400% zoom tanpa tatal mendatar**
+
+**Petua Pelaksanaan**
+
+```css title="Contoh CSS"
+/* ✅ PATUT: Gunakan unit relatif untuk teks dan susun atur */
+body {
+  font-size: 16px; /* Saiz asas */
+}
+
+h1 {
+  font-size: 2rem; /* Relatif kepada saiz asas */
+}
+
+.container {
+  max-width: 80ch; /* Lebar berdasarkan aksara untuk kebolehbacaan */
+  padding: 1rem;
+}
+```
+
+```jsx
+// Untuk akronim dan singkatan
+const Acronym = ({ acronym, definition }) => (
+  <abbr title={definition}>{acronym}</abbr>
+);
+
+// Penggunaan
+<Acronym
+  acronym="WCAG"
+  definition="Garis Panduan Kebolehcapaian Kandungan Web"
+/>;
+```
+
+**Petua Pengujian**
+
+- Uji halaman pada **200% zoom** untuk mengesahkan teks kekal boleh dibaca
+- Uji dengan zoom teks sahaja pada pelayar
+- Sahkan bahawa susun atur mengalir semula dengan betul pada **400% zoom tanpa tatal mendatar**
+
+## Kriteria Kejayaan Baru WCAG 2.2
+
+**Keperluan**
+
+- Penampilan Fokus (2.4.11, AAA): Pastikan penunjuk fokus mempunyai kawasan minimum, kontras, dan tidak terhalang
+- Pergerakan Seret (2.5.7, AA): Fungsi yang menggunakan seret mesti mempunyai kaedah alternatif
+- Saiz Sasaran (2.5.8, AA): Saiz sasaran sekurang-kurangnya 24x24 piksel CSS (44x44 disyorkan)
+- Bantuan Konsisten (3.2.6, A): Mekanisme bantuan seperti maklumat hubungan mesti konsisten
+- Pengesahan Boleh Diakses (3.3.7, A): Ujian kognitif mesti mempunyai alternatif
+- Kemasukan Berulang (3.3.8, A): Kurangkan kemasukan data yang berulang
+- Kawalan Kelihatan (2.4.13, AA): Komponen antara muka pengguna yang didedahkan pada hover/fokus mesti boleh ditutup, boleh dihover, dan berterusan
+
+**Petua Pelaksanaan**
+
+```jsx
+// Untuk alternatif seret
+const DragComponent = () => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  // Pengendali seret
+  const handleDrag = (e) => {
+    // Pelaksanaan seret
+  };
+
+  // Kawalan butang alternatif
+  const moveUp = () => setPosition({ ...position, y: position.y - 10 });
+  const moveDown = () => setPosition({ ...position, y: position.y + 10 });
+  const moveLeft = () => setPosition({ ...position, x: position.x - 10 });
+  const moveRight = () => setPosition({ ...position, x: position.x + 10 });
+
+  return (
+    <div>
+      <div
+        draggable="true"
+        onDrag={handleDrag}
+        style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
+      >
+        Elemen Boleh Diseret
+      </div>
+
+      {/* Kawalan alternatif */}
+      <div className="controls">
+        <button onClick={moveUp} aria-label="Gerak ke atas">
+          ↑
+        </button>
+        <button onClick={moveDown} aria-label="Gerak ke bawah">
+          ↓
+        </button>
+        <button onClick={moveLeft} aria-label="Gerak ke kiri">
+          ←
+        </button>
+        <button onClick={moveRight} aria-label="Gerak ke kanan">
+          →
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// Untuk kemasukan berulang
+const MultiStepForm = () => {
+  const [userData, setUserData] = useState({});
+
+  // Simpan data antara langkah dan isi semula apabila mungkin
+  return (
+    <form>
+      <StepOne
+        onNext={(data) => setUserData({ ...userData, ...data })}
+        initialData={userData} // Isi semula dengan data sedia ada
+      />
+      {/* Lebih banyak langkah */}
+    </form>
+  );
+};
+```
+
+**Petua Pengujian**
+
+- Pastikan semua fungsi seret mempunyai alternatif papan kekunci
+- Sahkan bahawa tooltip dan popover kekal kelihatan sehingga ditutup
+- Uji aliran pengesahan untuk alternatif fungsi kognitif
+
+## Pengujian dan Pengesahan
+
+### Pengujian Automatik
+
+- Integrasikan linting kebolehcapaian dalam aliran kerja pembangunan anda
+- Jalankan ujian automatik sebagai sebahagian daripada pipeline CI/CD
+- Gunakan alat seperti `jest-axe` untuk pengujian komponen
+
+```jsx
+// Contoh ujian jest-axe
+import { axe } from "jest-axe";
+import { render } from "@testing-library/react";
+import Button from "./Button";
+
+test("Komponen Button tidak sepatutnya mempunyai pelanggaran kebolehcapaian", async () => {
+  const { container } = render(<Button>Klik saya</Button>);
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+});
+```
+
+<Callout
+  type="info"
+  title="Nota"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Kami juga mengesyorkan `Storybook` dan suite addon pengujiannya jika anda
+  mempunyai pasukan kejuruteraan yang sederhana hingga besar.
+</Callout>
+
+### Pengujian Manual
+
+- Uji dengan navigasi papan kekunci
+- Uji dengan pembaca skrin (NVDA, JAWS, VoiceOver)
+- Uji dengan mod kontras tinggi
+- Uji dengan pembesaran teks dan zoom
+- Uji dengan tetapan gerakan yang dikurangkan
+
+### Alat
+
+<Cards>
+  <Card
+    href="https://github.com/jsx-eslint/eslint-plugin-jsx-a11y"
+    title="eslint-plugin-jsx-a11y"
+    description={"Plugin ESLint untuk peraturan kebolehcapaian"}
+    icon={<Eslint />}
+  />
+  <Card
+    href="https://github.com/nickcolley/jest-axe"
+    title="jest-axe"
+    description="Ujian automatik untuk pipeline CI"
+    icon={"♿️"}
+  />
+  <Card
+    href="https://chromewebstore.google.com/detail/ibm-equal-access-accessib/lkcagbfjnkomcinoddgooolagloogehp"
+    title="IBM Equal Access Toolkit"
+    description="Sambungan Chrome untuk ujian kebolehcapaian"
+    icon={<IBMEqualAccess />}
+  />
+  <Card
+    href="https://storybook.js.org/"
+    title="Storybook"
+    description="Persekitaran pembangunan UI yang lengkap"
+    icon={<Storybook />}
+  />
+</Cards>
+
+## Sumber & Rujukan
+
+<Cards>
+  <Card
+    href="https://www.w3.org/TR/WCAG22/"
+    title="Dokumentasi WCAG 2.2"
+    description="Dokumentasi rasmi WCAG 2.2"
+  />
+  <Card
+    href="https://www.w3.org/WAI/WCAG22/quickref/"
+    title="Kriteria Kejayaan WCAG 2.2"
+    description="Panduan rujukan cepat untuk WCAG 2.2"
+  />
+  <Card
+    href="https://reactjs.org/docs/accessibility.html"
+    title="Dokumentasi Kebolehcapaian React"
+    description="Dokumentasi mengenai kebolehcapaian untuk React"
+  />
+  <Card
+    href="https://www.w3.org/WAI/ARIA/apg/"
+    title="Amalan Pengarang WAI-ARIA"
+    description="Garis panduan untuk mencipta komponen tersuai yang boleh diakses"
+  />
+</Cards>
