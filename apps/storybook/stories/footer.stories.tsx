@@ -17,7 +17,6 @@ import {
 } from "@govtechmy/myds-react/footer";
 import { Link } from "@govtechmy/myds-react/link";
 import {
-  XIcon,
   FacebookIcon,
   InstagramIcon,
   TikTokIcon,
@@ -245,7 +244,7 @@ export const Custom: Story = {
                 name={"Facebook"}
               />
               <SocialMediaItem
-                icon={<XIcon />}
+                icon={<TikTokIcon />}
                 href={"www.google.com"}
                 name={"X"}
               />
@@ -448,7 +447,7 @@ export const CustomDark: Story = {
                 name={"Facebook"}
               />
               <SocialMediaItem
-                icon={<XIcon />}
+                icon={<TikTokIcon />}
                 href={"www.google.com"}
                 name={"X"}
               />

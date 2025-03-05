@@ -1,7 +1,7 @@
 import { Button } from "@govtechmy/myds-react/button";
 
 import { useToast } from "@govtechmy/myds-react/hooks";
-import { IconDataList } from "./icon/IconDataList";
+import { IconDataList } from "./IconDataList";
 
 export default function ResultMap({ result }: { result: IconDataList }) {
   const { toast } = useToast();
