@@ -128,7 +128,7 @@ const meta = {
   component: Navbar,
   tags: ["autodocs"],
   parameters: {
-    layout: "full",
+    layout: "padded",
   },
   argTypes: {
     children: {
@@ -274,15 +274,6 @@ const KementerianDigitalNavbar = () => {
             </NavItemsMenu>
             <NavItemsMenu href="/menu2" active={false}>
               Policy
-            </NavItemsMenu>
-            <NavItemsMenu href="/menu3" active={false}>
-              Achievements
-            </NavItemsMenu>
-            <NavItemsMenu href="/menu4" active={false}>
-              Media
-            </NavItemsMenu>
-            <NavItemsMenu href="/menu5" active={false}>
-              Directory
             </NavItemsMenu>
             <NavItemsMenu href="/menu6" active={false}>
               Contact Us

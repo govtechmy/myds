@@ -47,13 +47,13 @@ const Navbar: FunctionComponent<NavbarProps> = ({
   return (
     <header
       className={clx(
-        "bg-bg-white sticky top-0 z-50 lg:border-b lg:backdrop-blur-[30px] print:hidden",
+        "bg-bg-white border-otl-gray-200 sticky top-0 z-50 border-b lg:backdrop-blur-[30px] print:hidden",
         background,
       )}
     >
       <div
         className={clx(
-          "border-otl-gray-200 bg-bg-white container mx-auto flex h-16 items-center justify-between gap-3 py-3 max-xl:pr-3 max-lg:border-b lg:gap-4",
+          "max-md:px-4.5 flex h-16 max-w-[1280px] items-center justify-between gap-3 py-3 md:max-xl:px-6 lg:gap-4 xl:mx-auto xl:px-0",
           showMenu ? "" : "xl:bg-transparent",
           className,
         )}

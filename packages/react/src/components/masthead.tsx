@@ -171,7 +171,10 @@ const Masthead: FunctionComponent<MastheadProps> = ({ children }) => {
   if (!children) {
     return (
       <div className="bg-bg-washed outline-none print:hidden" data-nosnippet>
-        <details id="Masthead" className="group container xl:mx-auto">
+        <details
+          id="Masthead"
+          className="max-md:px-4.5 group max-w-[1280px] md:max-xl:px-6 lg:gap-4 xl:mx-auto xl:px-0"
+        >
           <DefaultMastheadHeader />
           <DefaultMastheadContent />
         </details>
@@ -191,7 +194,10 @@ const Masthead: FunctionComponent<MastheadProps> = ({ children }) => {
 
   return (
     <div className="bg-bg-washed outline-none print:hidden" data-nosnippet>
-      <details id="Masthead" className="group">
+      <details
+        id="Masthead"
+        className="max-md:px-4.5 group max-w-[1280px] md:max-xl:px-6 lg:gap-4 xl:mx-auto xl:px-0"
+      >
         {!hasHeader && <DefaultMastheadHeader />}
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
