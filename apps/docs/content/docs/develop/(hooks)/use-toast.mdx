@@ -1,0 +1,145 @@
+---
+title: useToast
+description: Manage toast lifecycle events dynamically from anywhere inside the app.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Usage
+
+<Tabs items={["Hook", "Requirement"]} defaultValue="Hook">
+  <Tab value="Hook" className="not-prose">
+    ```ts
+    import { useToast } from "@govtechmy/myds-react/hooks";
+
+    const { toast } = useToast();
+
+    const handleClick = () => {
+      toast({
+        variant: "message",
+        title: "Hello, world!",
+        description: "This is a description",
+      });
+    };
+    ```
+
+  </Tab>
+  <Tab value="Requirement">
+    ```tsx
+    // Place this component at the root of your application
+    import { AutoToast } from "@govtechmy/myds-react/toast";
+
+    <AutoToast />
+    ```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/hooks/use-toast.tsx",
+  }}
+/>
+
+<Callout
+  type="info"
+  title="Important"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Make sure your `<AutoToast />` or a self-assembled [Toast
+  component](/docs/develop/toast#advanced-usage) is defined anywhere in your
+  application to display toast notifications.
+</Callout>
+
+## Example
+
+### Trigger a Toast Event
+
+A toast event can be triggered by calling the `toast` method from the `useToast` hook. Define a `ToastEvent` object with the required properties and pass it to the `toast` method.
+
+```ts title="Example"
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+//... inside your component
+const { toast } = useToast();
+
+// For default message toast.
+// Experiment with different variants: "success" | "info" | "warning" | "error"
+toast({
+  variant: "message",
+  title: "Hello, world!",
+  description: "This is a description",
+});
+```
+
+### Building a Self Assembled Toast Component
+
+The `useToast` hook provides the handlers required to listen to toast events from anywhere inside your application. This can be achieved through the `subscribe` and `unsubscribe` handlers and can be seen in the [Advanced Usage](/docs/develop/toast#advanced-usage) of the Toast documentation.
+
+```ts title="Toast.tsx"
+import { useEffect } from "react";
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+//... inside your component
+const { subscribe, unsubscribe } = useToast();
+
+useEffect(() => {
+  subscribe(); // Run once to subscribe to toast events
+  return () => {
+    unsubscribe(); // On unmount, unsubscribe from toast events
+  };
+}, []);
+```
+
+### Accessing Active Toasts
+
+Toasts can be accessed through the `toasts` object provided by the `useToast` hook. This object contains an array of active toast events.
+
+```ts title="Example"
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+const { toasts } = useToast();
+console.log(toasts);
+```
+
+## API
+
+### useTheme
+
+<TypeTable
+  type={{
+    toast: {
+      description: "Method to trigger toast event.",
+      type: "(props: ToastEvent) => void",
+      typeDescription: `type ToastEvent = {
+    variant: "success" | "message" | "info" | "warning" | "error";
+    title: ReactNode;
+    description?: ReactNode;
+};`,
+    },
+    toasts: {
+      description: "Active toast events.",
+      type: "ToastEvent[]",
+      typeDescription: `type ToastEvent = {
+    variant: "success" | "message" | "info" | "warning" | "error";
+    title: ReactNode;
+    description?: ReactNode;
+};`,
+    },
+    subscribe: {
+      description:
+        "Handler to subscribe to toast event publications. Used in self-assembled Toast component.",
+      type: "() => void",
+    },
+    unsubscribe: {
+      description:
+        "Handler to unsubscribe from toast event publications. Used in self-assembled Toast component.",
+      type: "() => void",
+    },
+  }}
+/>

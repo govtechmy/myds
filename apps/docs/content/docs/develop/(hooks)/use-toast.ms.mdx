@@ -1,0 +1,145 @@
+---
+title: useToast
+description: Menguruskan acara kitaran hayat toast secara dinamik dari mana-mana sahaja dalam aplikasi.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Penggunaan
+
+<Tabs items={["Hook", "Keperluan"]} defaultValue="Hook">
+  <Tab value="Hook" className="not-prose">
+    ```ts
+    import { useToast } from "@govtechmy/myds-react/hooks";
+
+    const { toast } = useToast();
+
+    const handleClick = () => {
+      toast({
+        variant: "message",
+        title: "Hello, world!",
+        description: "Ini adalah deskripsi",
+      });
+    };
+    ```
+
+  </Tab>
+  <Tab value="Keperluan">
+    ```tsx
+    // Letakkan komponen ini di akar aplikasi anda
+    import { AutoToast } from "@govtechmy/myds-react/toast";
+
+    <AutoToast />
+    ```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/hooks/use-toast.tsx",
+  }}
+/>
+
+<Callout
+  type="info"
+  title="Penting"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Pastikan `<AutoToast />` anda atau [komponen Toast yang dibina
+  sendiri](/docs/develop/toast#advanced-usage) ditakrifkan di mana-mana dalam
+  aplikasi anda untuk memaparkan notifikasi toast.
+</Callout>
+
+## Contoh
+
+### Mencetuskan Acara Toast
+
+Acara toast boleh dicetuskan dengan memanggil kaedah `toast` dari hook `useToast`. Tentukan objek `ToastEvent` dengan sifat yang diperlukan dan serahkannya kepada kaedah `toast`.
+
+```ts title="Contoh"
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+//... dalam komponen anda
+const { toast } = useToast();
+
+// Untuk toast mesej lalai.
+// Cuba pelbagai varian: "success" | "info" | "warning" | "error"
+toast({
+  variant: "message",
+  title: "Hello, world!",
+  description: "Ini adalah maklumat tambahan",
+});
+```
+
+### Membina Komponen Toast yang Dibina Sendiri
+
+Hook `useToast` menyediakan pengendali yang diperlukan untuk mendengar acara toast dari mana-mana sahaja dalam aplikasi anda. Ini boleh dicapai melalui pengendali `subscribe` dan `unsubscribe` dan boleh dilihat dalam [Penggunaan Lanjutan](/docs/develop/toast#advanced-usage) dokumentasi Toast.
+
+```ts title="Toast.tsx"
+import { useEffect } from "react";
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+//... dalam komponen anda
+const { subscribe, unsubscribe } = useToast();
+
+useEffect(() => {
+  subscribe(); // Jalankan sekali untuk melanggan acara toast
+  return () => {
+    unsubscribe(); // Pada unmount, batalkan langganan dari acara toast
+  };
+}, []);
+```
+
+### Mengakses Toast Aktif
+
+Toast boleh diakses melalui objek `toasts` yang disediakan oleh hook `useToast`. Objek ini mengandungi array acara toast aktif.
+
+```ts title="Contoh"
+import { useToast } from "@govtechmy/myds-react/hooks";
+
+const { toasts } = useToast();
+console.log(toasts);
+```
+
+## API
+
+### useTheme
+
+<TypeTable
+  type={{
+    toast: {
+      description: "Kaedah untuk mencetuskan acara toast.",
+      type: "(props: ToastEvent) => void",
+      typeDescription: `type ToastEvent = {
+    variant: "success" | "message" | "info" | "warning" | "error";
+    title: ReactNode;
+    description?: ReactNode;
+};`,
+    },
+    toasts: {
+      description: "Acara toast aktif.",
+      type: "ToastEvent[]",
+      typeDescription: `type ToastEvent = {
+    variant: "success" | "message" | "info" | "warning" | "error";
+    title: ReactNode;
+    description?: ReactNode;
+};`,
+    },
+    subscribe: {
+      description:
+        "Pengendali untuk melanggan penerbitan acara toast. Digunakan dalam komponen Toast yang dibina sendiri.",
+      type: "() => void",
+    },
+    unsubscribe: {
+      description:
+        "Pengendali untuk membatalkan langganan penerbitan acara toast. Digunakan dalam komponen Toast yang dibina sendiri.",
+      type: "() => void",
+    },
+  }}
+/>
