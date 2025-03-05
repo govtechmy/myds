@@ -1,3 +1,5 @@
+"use client";
+
 import {
   SearchBar,
   SearchBarInput,
@@ -8,18 +10,24 @@ import {
 } from "@govtechmy/myds-react/search-bar";
 import { Pill } from "@govtechmy/myds-react/pill";
 import { useEffect, useRef, useState } from "react";
-import { iconDataList } from "./IconDataList";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@govtechmy/myds-react/tabs";
-import { Button } from "../myds";
+import type { IconData } from "./IconDataList";
+import { useToast } from "@govtechmy/myds-react/hooks";
+import ResultMap from "./resultMap";
 
-export default function SearchBarIcons() {
+type Props = {
+  iconDataList: IconData[];
+};
+
+export default function SearchBarIcons({ iconDataList }: Props) {
   const [hasFocus, setHasFocus] = useState(false);
   const [query, setQuery] = useState("");
+  const { toast } = useToast();
 
   const filterIcons = (query: any, conditions: any) => {
     return iconDataList.filter(({ type, filename }) => {
@@ -34,42 +42,52 @@ export default function SearchBarIcons() {
     });
   };
 
-  const result1 = filterIcons(query, [() => true]);
-  const result2 = filterIcons(query, [
+  const resultAll = filterIcons(query, [() => true]);
+  const resultGeneric = filterIcons(query, [
     (iconType: string | string[]) => !iconType.includes("legacy"),
     (iconType: string | string[]) => iconType.includes("generic"),
     (iconType: string | string[]) => !iconType.includes("filled"),
   ]);
-  const result3 = filterIcons(query, [
+  const resultFilled = filterIcons(query, [
     (iconType: string | string[]) => !iconType.includes("legacy"),
     (iconType: string | string[]) => iconType.includes("filled"),
   ]);
-  const result4 = filterIcons(query, [
+  const resultWYSIWYG = filterIcons(query, [
     (iconType: string | string[]) => !iconType.includes("legacy"),
     (iconType: string | string[]) => iconType.includes("wysiwyg"),
   ]);
-  const result5 = filterIcons(query, [
+  const resultSocialMedia = filterIcons(query, [
     (iconType: string | string[]) => !iconType.includes("legacy"),
     (iconType: string | string[]) => iconType.includes("social media"),
   ]);
-  const result6 = filterIcons(query, [
+  const resultMedia = filterIcons(query, [
     (iconType: string | string[]) => !iconType.includes("legacy"),
     (iconType: string | string[]) => !iconType.includes("social"),
     (iconType: string | string[]) => iconType.includes("media"),
   ]);
-  const result7 = filterIcons(query, [
+  const resultLegacyGeneric = filterIcons(query, [
     (iconType: string | string[]) => iconType.includes("legacy"),
     (iconType: string | string[]) => iconType.includes("generic"),
   ]);
-  const result8 = filterIcons(query, [
+  const resultLegacyBorderless = filterIcons(query, [
     (iconType: string | string[]) => iconType.includes("legacy"),
     (iconType: string | string[]) => iconType.includes("borderless"),
   ]);
 
   const inputRef = useFocusOnKeyPress<HTMLInputElement>("/", hasFocus);
+  const results = [
+    resultAll,
+    resultGeneric,
+    resultFilled,
+    resultWYSIWYG,
+    resultSocialMedia,
+    resultMedia,
+    resultLegacyGeneric,
+    resultLegacyBorderless,
+  ];
 
   return (
-    <div>
+    <div className="">
       <SearchBar
         size="large"
         onBlur={(e) => {
@@ -77,6 +95,7 @@ export default function SearchBarIcons() {
           if (blurredByChild) return;
           setHasFocus(false);
         }}
+        className="pb-6"
       >
         <SearchBarInputContainer>
           <SearchBarInput
@@ -88,160 +107,37 @@ export default function SearchBarIcons() {
             onBlur={() => setHasFocus(false)}
           />
           {query && <SearchBarClearButton onClick={() => setQuery("")} />}
-          <SearchBarSearchButton />
           {!hasFocus && (
             <SearchBarHint className="hidden lg:flex">
               Press <Pill size="small">/</Pill> to search
             </SearchBarHint>
           )}
+          <SearchBarSearchButton />
         </SearchBarInputContainer>
       </SearchBar>
 
-      <div className="flex items-center justify-center">
-        <Tabs defaultValue="2" size="medium" variant="line">
-          <TabsList>
-            <TabsTrigger value="1">All</TabsTrigger>
-            <TabsTrigger value="2">Generic</TabsTrigger>
-            <TabsTrigger value="3">Filled</TabsTrigger>
-            <TabsTrigger value="4">WYSIWYG</TabsTrigger>
-            <TabsTrigger value="5">Social Media</TabsTrigger>
-            <TabsTrigger value="6">Media</TabsTrigger>
-            <TabsTrigger value="7">Legacy: Generic</TabsTrigger>
-            <TabsTrigger value="8">Legacy: Borderless</TabsTrigger>
-          </TabsList>
+      <Tabs defaultValue="2" size="medium" variant="line">
+        <TabsList>
+          <TabsTrigger value="1">All</TabsTrigger>
+          <TabsTrigger value="2">Generic</TabsTrigger>
+          <TabsTrigger value="3">Filled</TabsTrigger>
+          <TabsTrigger value="4">WYSIWYG</TabsTrigger>
+          <TabsTrigger value="5">Social Media</TabsTrigger>
+          <TabsTrigger value="6">Media</TabsTrigger>
+          <TabsTrigger value="7">Legacy: Generic</TabsTrigger>
+          <TabsTrigger value="8">Legacy: Borderless</TabsTrigger>
+        </TabsList>
 
-          <TabsContent className="py-6" value="1">
-            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-              {result1.map((item, index) => (
-                <div>
-                  <div
-                    key={index}
-                    className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
-                  >
-                    <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
-                      {item.svg}
-                    </div>
-                  </div>
-                  <div>{item.name}</div>
-                </div>
-              ))}
-            </div>
+        {results.map((result, index) => (
+          <TabsContent
+            key={index}
+            className="py-6"
+            value={(index + 1).toString()}
+          >
+            <ResultMap result={result} />
           </TabsContent>
-          <TabsContent className="py-6" value="2">
-            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-              {result2.map((item, index) => (
-                <div className="flex flex-col items-center justify-center">
-                  <div
-                    key={index}
-                    className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black p-4 shadow-md"
-                  >
-                    <div className="flex items-center justify-center">
-                      {item.svg}
-                      <div className="absolute">
-                        <Button className="h-[70px] w-full">Copy SVG</Button>
-                        <Button className="h-[70px]">Copy JSX</Button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-txt-black-500 flex items-center justify-center truncate py-2 text-sm hover:line-clamp-2">
-                    {item.name}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent className="py-6" value="3">
-            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-              {result3.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
-                >
-                  <div>{item.filename}</div>
-                  <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
-                    {item.svg}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent className="py-6" value="4">
-            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-              {result4.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
-                >
-                  <div>{item.filename}</div>
-                  <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
-                    {item.svg}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent className="py-6" value="5">
-            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-              {result5.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
-                >
-                  <div>{item.filename}</div>
-                  <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
-                    {item.svg}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent className="py-6" value="6">
-            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-              {result6.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
-                >
-                  <div>{item.filename}</div>
-                  <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
-                    {item.svg}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent className="py-6" value="7">
-            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-              {result7.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
-                >
-                  <div>{item.filename}</div>
-                  <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
-                    {item.svg}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </TabsContent>
-          <TabsContent className="py-6" value="8">
-            <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-              {result8.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black bg-white p-4 shadow-md"
-                >
-                  <div>{item.filename}</div>
-                  <div className="border-bg-black-900 flex h-10 w-10 items-center justify-center border">
-                    {item.svg}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
-      </div>
+        ))}
+      </Tabs>
     </div>
   );
 }

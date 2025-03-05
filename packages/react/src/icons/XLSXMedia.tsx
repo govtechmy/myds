@@ -67,7 +67,7 @@ export const XLSXMediaIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (
           gradientUnits="userSpaceOnUse"
         >
           <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
