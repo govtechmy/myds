@@ -1,9 +1,18 @@
-import React, { ComponentProps, forwardRef, FunctionComponent } from "react";
+import React, {
+  ComponentProps,
+  forwardRef,
+  ForwardRefExoticComponent,
+  FunctionComponent,
+  RefAttributes,
+} from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import { clx } from "../utils";
 
 const tag_cva = cva(
-  ["inline-flex gap-[5px] font-medium font-body justify-center items-center"],
+  [
+    "inline-flex gap-[5px] font-medium font-body justify-center items-center",
+    "flex-shrink-0 whitespace-nowrap",
+  ],
   {
     variants: {
       variant: {
@@ -55,30 +64,38 @@ const dot_cva = cva(["inline-block rounded-full text-inherit bg-current"], {
  */
 interface TagProps extends ComponentProps<"div">, VariantProps<typeof tag_cva> {
   dot?: boolean;
-  variant: "default" | "primary" | "success" | "danger" | "warning";
-  size: "small" | "medium" | "large";
-  mode: "pill" | "default";
+  variant?: "default" | "primary" | "success" | "danger" | "warning";
+  size?: "small" | "medium" | "large";
+  mode?: "pill" | "default";
 }
 
-const Tag = forwardRef<HTMLDivElement, TagProps>(
-  (
-    { children, variant, size, mode, dot = false, className, ...props },
-    ref,
-  ) => {
-    return (
-      <div
-        ref={ref}
-        className={clx(tag_cva({ variant, size, mode }), className)}
-        {...props}
-      >
-        {dot && <span className={clx(dot_cva({ size }))} />}
-        {children}
-      </div>
-    );
-  },
-);
+const Tag: ForwardRefExoticComponent<TagProps & RefAttributes<HTMLDivElement>> =
+  forwardRef(
+    (
+      {
+        children,
+        variant = "default",
+        size = "medium",
+        mode = "default",
+        dot = false,
+        className,
+        ...props
+      },
+      ref,
+    ) => {
+      return (
+        <div
+          ref={ref}
+          className={clx(tag_cva({ variant, size, mode }), className)}
+          {...props}
+        >
+          {dot && <span className={clx(dot_cva({ size }))} />}
+          {children}
+        </div>
+      );
+    },
+  );
 
 Tag.displayName = "Tag";
 
 export { Tag };
-export type { TagProps };

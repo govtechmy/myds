@@ -1,0 +1,701 @@
+---
+title: Accessibility
+description: This guide will help you build accessible web application using MYDS. Following these guidelines ensures your application is usable by people with diverse abilities and meet WCAG 2.2 standards.
+---
+
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+import Eslint from "@/icons/eslint";
+import IBMEqualAccess from "@/icons/ibm-equal-access";
+import Storybook from "@/icons/storybook";
+
+## Core Principles
+
+WCAG 2.2 is built around four principles:
+
+1. **Perceivable**: Information must be presentable to users in ways they can perceive
+2. **Operable**: Interface components must be operable by diverse users
+3. **Understandable**: Information and operation must be understandable
+4. **Robust**: Content must be robust enough to work with various user agents and assistive technologies
+
+## Keyboard Navigation
+
+Keyboard navigation allows users to interact with your application without a mouse. It's essential for users with motor impairments or those who rely on screen readers.
+
+**Requirements**
+
+- All interactive elements must be keyboard accessible
+- Focus order must be logical and intuitive
+- Keyboard traps must be avoided
+- Keyboard shortcuts should be configurable or avoidable
+
+**Implementation Tips**
+
+```tsx
+// ✅ DO: Use native elements or ensure custom elements have proper keyboard handling [!code ++]
+<button onClick={handleClick}>Submit</button>
+
+// ❌ DO NOT: Use divs for interactive elements without keyboard support [!code --]
+<div onClick={handleClick}>Submit</div> // Not keyboard accessible!
+```
+
+```tsx
+// ✅ DO: Define accessibility properties & implement keyboard handlers for custom components
+const CustomButton = (props) => {
+  const handleKeyDown = (e) => { ... }; // [!code highlight]
+
+  return (
+    <div
+      role="button" // [!code highlight]
+      tabIndex={0} // [!code highlight]
+      onClick={props.onClick}
+      onKeyDown={handleKeyDown} // [!code highlight]
+    >
+      {props.children}
+    </div>
+  );
+};
+```
+
+**Testing Tips**
+
+- Try navigating your entire application using only <kbd>Tab</kbd> , <kbd>Shift + Tab</kbd> , <kbd>Enter</kbd> , and <kbd>Space</kbd>
+- Ensure focus indicators are visible at all times
+- Verify that focus order follows the visual layout
+
+## Focus Management
+
+Focus management ensures that users can navigate your application in a predictable and efficient manner, be it visually or audibly.
+
+**Requirements**
+
+- Focus indicators must be visible
+- Focus must be appropriately managed when content changes
+
+**Implementation Tips**
+
+```jsx
+// ✅ DO: Use refs to manage focus
+const modalRef = useRef(null);
+const openModal = () => { ... };
+
+return (
+  <>
+    <button onClick={openModal}>Open Modal</button>
+    {isOpen && (
+      <div
+        ref={modalRef}
+        tabIndex={-1} // Makes the container NOT focusable [!code highlight]
+        role="dialog" // [!code highlight]
+        aria-modal="true" // [!code highlight]
+      >
+        {/*  Focuses this element instead when modal appears [!code highlight] */}
+        <button autoFocus>
+            First focusable element
+        </button>
+
+      </div>
+    )}
+  </>
+);
+```
+
+<Callout
+  type="info"
+  title="Note"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Using `Dialog` component from MYDS handles all of this for you!
+</Callout>
+
+**Testing Tips**
+
+- Ensure focus is trapped within modals until they're closed
+- After closing a modal, focus should return to the element that triggered it
+- Focus indicators should be visible and prominent (**minimum 3:1 contrast ratio**)
+
+## Semantic HTML and ARIA
+
+**Requirements**
+
+- Use semantic HTML elements whenever possible
+- ARIA should only be used when HTML semantics are insufficient
+- Ensure all ARIA attributes are used correctly
+
+**Implementation Tips**
+
+```jsx
+// ✅ DO: Use semantic HTML
+<nav>
+  {/* [!code ++] */}
+  <ul>
+    {/* [!code ++] */}
+    <li><a href="/home">Home</a></li>
+     {/* [!code ++] */}
+    <li><a href="/about">About</a></li>
+    {/* [!code ++] */}
+  </ul>
+</nav>
+
+// ❌ DO NOT: Use generic elements when semantic ones exist
+<div class="nav">
+  {/* [!code --] */}
+  <div class="nav-item"><a href="/home">Home</a></div>
+  {/* [!code --] */}
+  <div class="nav-item"><a href="/about">About</a></div>
+</div>
+```
+
+```jsx
+// When custom widgets are necessary, use appropriate ARIA roles and properties
+<div role="tablist" aria-label="Application Tabs">
+  <button
+    role="tab" // [!code highlight]
+    aria-selected={selectedTab === "tab1"} // [!code highlight]
+    aria-controls="tab1-panel" // [!code highlight]
+    onClick={() => selectTab("tab1")} // [!code highlight]
+  >
+    Tab 1
+  </button>
+  <div
+    id="tab1-panel"
+    role="tabpanel" // [!code highlight]
+    aria-labelledby="tab1" // [!code highlight]
+    hidden={selectedTab !== "tab1"}
+  >
+    Tab 1 content
+  </div>
+</div>
+```
+
+**Testing Tips**
+
+- Validate your ARIA usage with automated tools
+- Test with screen readers to ensure ARIA conveys the intended information
+- Verify that all custom components have appropriate roles and states
+
+## Forms and Validation
+
+**Requirements**
+
+- All form fields must have associated labels
+- Error messages must be programmatically associated with their fields
+- Required fields must be clearly indicated
+- Instructions for complex fields must be provided
+
+**Implementation Tips**
+
+```jsx
+// ✅ DO: Associate labels with inputs using htmlFor
+<div>
+  {/* [!code ++] */}
+  <label htmlFor="username">Username</label>
+  <input
+    id="username"
+    type="text"
+    aria-required="true"
+    aria-describedby="username-hint"
+  />
+  <p id="username-hint">Choose a username with at least 5 characters</p>
+</div>
+
+// For validation errors
+<div>
+  {/* [!code ++] */}
+  <label htmlFor="email">Email</label>
+  <input
+    id="email"
+    type="email"
+    aria-invalid={emailError ? "true" : "false"}
+    aria-describedby={emailError ? "email-error" : undefined}
+  />
+  {emailError && (
+    // [!code ++]
+    <p id="email-error" role="alert">
+      {emailError}
+    </p>
+  )}
+</div>
+```
+
+**Testing Tips**
+
+- Ensure all form controls have visible labels
+- Verify that screen readers announce validation errors
+- Check that error suggestions provide clear guidance for correction
+- Test forms with keyboard only and screen readers
+
+## Images and Media
+
+**Requirements**
+
+- All images must have alternative text
+- Decorative images should have empty alt attributes
+- Complex images need detailed descriptions
+- Video content requires captions and transcripts
+
+**Implementation Tips**
+
+```jsx
+// ✅ DO: Add appropriate alt text
+<img src="logo.png" alt="Company Logo" /> // [!code word:alt]
+
+// For decorative images, use empty alt
+<img src="decorative-line.png" alt="" role="presentation" />
+
+// For SVGs, ensure accessibility
+<svg aria-hidden="true" focusable="false">
+  {/* SVG content */}
+</svg>
+
+// For complex images
+<figure>
+  <img src="chart.png" alt="Bar chart showing sales growth" />
+  <figcaption>
+    Figure 1: Sales growth from 2020-2023, with 15% increase year over year
+  </figcaption>
+</figure>
+```
+
+**Testing Tips**
+
+- Review all images with automated tools to ensure alt text exists
+- Have content experts review alt text for accuracy and usefulness
+- Ensure decorative images are properly hidden from screen readers
+
+## Color and Contrast
+
+**Requirements**
+
+- Text must have **minimum contrast ratio of 4.5:1 (3:1 for large text)**
+- UI components require **minimum contrast ratio of 3:1**
+- Information must not be conveyed by color alone
+
+**Implementation Tips**
+
+```jsx
+// ✅ DO: Use sufficient contrast and multiple indicators
+const ErrorMessage = ({ message }) => (
+  <div className="error-container">
+    <span aria-hidden="true">❌</span> {/* Visual indicator */}
+    <span className="error-text">{message}</span>
+  </div>
+);
+```
+
+```jsx
+// ❌ DO NOT: Rely solely on color
+const StatusIndicator = ({ status }) => (
+  // This only uses color to convey status
+  <div className={`status-dot status-${status}`}></div>
+);
+```
+
+```jsx
+// ✅ DO: Add text or patterns
+const BetterStatusIndicator = ({ status }) => (
+  <div className={`status-indicator status-${status}`} aria-label={status}>
+    {status === "success" && "✓"}
+    {status === "error" && "✕"}
+    {status === "warning" && "!"}
+  </div>
+);
+```
+
+**Testing Tips**
+
+- Use contrast checking tools for all text and UI elements
+- Test pages in grayscale to identify color-dependent information
+- Verify that all status indicators use multiple cues (shape, text, icons)
+
+## Motion and Animation
+
+**Requirements**
+
+- Allow users to pause, stop, or hide moving content
+- Avoid content that flashes more than three times per second
+- Respect reduced motion preferences
+
+**Implementation Tips**
+
+```jsx
+// ✅ DO: Respect prefers-reduced-motion
+import { useEffect, useState } from "react";
+
+const useReducedMotion = () => {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
+
+    const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  return prefersReducedMotion;
+};
+
+// Usage in components
+const AnimatedComponent = () => {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    // [!code highlight]
+    <div className={prefersReducedMotion ? "no-animation" : "animate-fade"}>
+      Content
+    </div>
+  );
+};
+```
+
+**Testing Tips**
+
+- Test with OS-level reduced motion settings enabled
+- Ensure all animations can be disabled
+- Verify that no content flashes rapidly
+
+## Interactive Components
+
+**Requirements**
+
+- Custom components must use appropriate ARIA roles and states
+- Complex widgets must follow WAI-ARIA authoring practices
+- Touch targets need minimum size of 44x44px with adequate spacing
+
+**Implementation Tips**
+
+```jsx
+// Accessible dropdown component
+const Dropdown = ({ label, options, selectedOption, onChange }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div ref={dropdownRef} className="dropdown-container">
+      <button
+        aria-haspopup="listbox" // [!code highlight]
+        aria-expanded={isOpen} // [!code highlight]
+        aria-labelledby="dropdown-label" // [!code highlight]
+        id="dropdown-button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="dropdown-trigger"
+      >
+        <span id="dropdown-label">{label}: </span>
+        {selectedOption || "Select an option"}
+      </button>
+
+      {isOpen && (
+        <ul
+          role="listbox" // [!code highlight]
+          aria-labelledby="dropdown-label" // [!code highlight]
+          className="dropdown-menu" // [!code highlight]
+          tabIndex={-1} // [!code highlight]
+        >
+          {options.map((option) => (
+            <li
+              key={option.value}
+              role="option" // [!code highlight]
+              aria-selected={option.value === selectedOption}
+              onClick={() => {
+                onChange(option.value);
+                setIsOpen(false);
+              }}
+              className="dropdown-item"
+            >
+              {option.label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+```
+
+**Testing Tips**
+
+- Verify that all custom components have appropriate ARIA roles
+- Test complex widgets with screen readers to confirm they announce state changes
+- Check that touch targets are sufficiently large on mobile devices
+
+## Page Structure and Navigation
+
+**Requirements**
+
+- Pages must have proper heading structure (**h1-h6**)
+- Landmarks must be used to identify page regions
+- Skip links should be provided for repeated content
+- Page titles must be descriptive and unique
+
+**Implementation Tips**
+
+```jsx
+// ✅ DO: Use landmarks appropriately
+const PageLayout = ({ children }) => (
+  <>
+    <a href="#main-content" className="skip-link">
+      Skip to main content
+    </a>
+    <header>
+      <nav aria-label="Main Navigation">{/* Navigation items */}</nav>
+    </header>
+    <main id="main-content">{children}</main>
+    <aside aria-label="Related Information">{/* Sidebar content */}</aside>
+    <footer>{/* Footer content */}</footer>
+  </>
+);
+```
+
+```jsx
+// ✅ DO: Use proper heading hierarchy
+const PageContent = () => (
+  <>
+    <h1>Main Page Title</h1>
+    <section>
+      <h2>Section Heading</h2>
+      <p>Content...</p>
+      <article>
+        <h3>Article Heading</h3>
+        <p>More content...</p>
+      </article>
+    </section>
+  </>
+);
+```
+
+**Testing Tips**
+
+- Use heading outline tools to verify proper heading structure
+- Test navigation with screen readers to confirm landmarks are announced
+- Verify that skip links work and are visible when focused
+
+## Content and Text
+
+**Requirements**
+
+- Text must be **resizable up to 200% without loss of content**
+- Reading level should accommodate diverse abilities
+- Acronyms and jargon should be defined
+- Layout should reflow at **400% zoom without horizontal scrolling**
+
+**Implementation Tips**
+
+```css title="Example CSS"
+/* ✅ DO: Use relative units for text and layout */
+body {
+  font-size: 16px; /* Base size */
+}
+
+h1 {
+  font-size: 2rem; /* Relative to base size */
+}
+
+.container {
+  max-width: 80ch; /* Character-based width for readability */
+  padding: 1rem;
+}
+```
+
+```jsx
+// For acronyms and abbreviations
+const Acronym = ({ acronym, definition }) => (
+  <abbr title={definition}>{acronym}</abbr>
+);
+
+// Usage
+<Acronym acronym="WCAG" definition="Web Content Accessibility Guidelines" />;
+```
+
+**Testing Tips**
+
+- Test pages at **200% zoom** to verify text remains readable
+- Test with browser text-only zoom
+- Verify that layouts reflow properly at **400% zoom without horizontal scrolling**
+
+## WCAG 2.2 New Success Criteria
+
+**Requirements**
+
+- Focus Appearance (2.4.11, AAA): Ensure focus indicators have minimum area, contrast, and are not obscured
+- Dragging Movements (2.5.7, AA): Functions that use dragging must have alternative methods
+- Target Size (2.5.8, AA): Target size of at least 24x24 CSS pixels (44x44 recommended)
+- Consistent Help (3.2.6, A): Help mechanisms like contact information must be consistent
+- Accessible Authentication (3.3.7, A): Cognitive tests must have alternatives
+- Redundant Entry (3.3.8, A): Minimize repetitive data entry
+- Visible Controls (2.4.13, AA): User interface components revealed on hover/focus must be dismissible, hoverable, and persistent
+
+**Implementation Tips**
+
+```jsx
+// For dragging alternatives
+const DragComponent = () => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  // Drag handlers
+  const handleDrag = (e) => {
+    // Drag implementation
+  };
+
+  // Alternative button controls
+  const moveUp = () => setPosition({ ...position, y: position.y - 10 });
+  const moveDown = () => setPosition({ ...position, y: position.y + 10 });
+  const moveLeft = () => setPosition({ ...position, x: position.x - 10 });
+  const moveRight = () => setPosition({ ...position, x: position.x + 10 });
+
+  return (
+    <div>
+      <div
+        draggable="true"
+        onDrag={handleDrag}
+        style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
+      >
+        Draggable Element
+      </div>
+
+      {/* Alternative controls */}
+      <div className="controls">
+        <button onClick={moveUp} aria-label="Move up">
+          ↑
+        </button>
+        <button onClick={moveDown} aria-label="Move down">
+          ↓
+        </button>
+        <button onClick={moveLeft} aria-label="Move left">
+          ←
+        </button>
+        <button onClick={moveRight} aria-label="Move right">
+          →
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// For redundant entry
+const MultiStepForm = () => {
+  const [userData, setUserData] = useState({});
+
+  // Store data between steps and pre-fill when possible
+  return (
+    <form>
+      <StepOne
+        onNext={(data) => setUserData({ ...userData, ...data })}
+        initialData={userData} // Pre-fill with existing data
+      />
+      {/* More steps */}
+    </form>
+  );
+};
+```
+
+**Testing Tips**
+
+- Ensure all draggable functions have keyboard alternatives
+- Verify that tooltips and popovers remain visible until dismissed
+- Test authentication flows for cognitive function alternatives
+
+## Testing and Validation
+
+### Automated Testing
+
+- Integrate accessibility linting in your development workflow
+- Run automated tests as part of CI/CD pipelines
+- Use tools like `jest-axe` for component testing
+
+```jsx
+// Example jest-axe test
+import { axe } from "jest-axe";
+import { render } from "@testing-library/react";
+import Button from "./Button";
+
+test("Button component should not have accessibility violations", async () => {
+  const { container } = render(<Button>Click me</Button>);
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+});
+```
+
+<Callout
+  type="info"
+  title="Note"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  We also recommend `Storybook` and its suite of testing addons if you have a
+  medium to large engineering team.
+</Callout>
+
+### Manual Testing
+
+- Test with keyboard navigation
+- Test with screen readers (NVDA, JAWS, VoiceOver)
+- Test with high contrast mode
+- Test with text resizing and zoom
+- Test with reduced motion settings
+
+### Tools
+
+<Cards>
+  <Card
+    href="https://github.com/jsx-eslint/eslint-plugin-jsx-a11y"
+    title="eslint-plugin-jsx-a11y"
+    description={"ESLint plugin for accessibility rules"}
+    icon={<Eslint />}
+  />
+  <Card
+    href="https://github.com/nickcolley/jest-axe"
+    title="jest-axe"
+    description="Automated testing for CI pipeline"
+    icon={"♿️"}
+  />
+  <Card
+    href="https://chromewebstore.google.com/detail/ibm-equal-access-accessib/lkcagbfjnkomcinoddgooolagloogehp"
+    title="IBM Equal Access Toolkit"
+    description="Chrome extension for accessibility testing"
+    icon={<IBMEqualAccess />}
+  />
+  <Card
+    href="https://storybook.js.org/"
+    title="Storybook"
+    description="Full-featured UI development environment"
+    icon={<Storybook />}
+  />
+</Cards>
+
+## Resource & References
+
+<Cards>
+  <Card
+    href="https://www.w3.org/TR/WCAG22/"
+    title="WCAG 2.2 Documentation"
+    description="Official WCAG 2.2 documentation"
+  />
+  <Card
+    href="https://www.w3.org/WAI/WCAG22/quickref/"
+    title="WCAG 2.2 Success Criteria"
+    description="Quick reference guide for WCAG 2.2"
+  />
+  <Card
+    href="https://reactjs.org/docs/accessibility.html"
+    title="React Accessibility Docs"
+    description="Documentation on accessibility for React"
+  />
+  <Card
+    href="https://www.w3.org/WAI/ARIA/apg/"
+    title="WAI-ARIA Authoring Practices"
+    description="Guidelines for creating accessible custom components"
+  />
+</Cards>

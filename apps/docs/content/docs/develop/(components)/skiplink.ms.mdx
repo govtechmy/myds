@@ -7,9 +7,7 @@ import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-import {
-  Skiplink
-} from "@/components/myds";
+import { Skiplink } from "@/components/myds";
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
   <Tab value="Pratonton">
@@ -63,6 +61,7 @@ import {
       </span>
     </main>
     ```
+
   </Tab>
 </Tabs>
 
@@ -75,12 +74,13 @@ import {
   }}
 />
 
-## Usage
-```tsx copy
+## Penggunaan
+
+```ts copy title="Import"
 import { Skiplink } from "@govtechmy/myds-react/skiplink";
 ```
 
-```tsx copy
+```tsx copy title="Anatomi"
 export default () => (
   <Skiplink href="#main-content">
     <span>Skip to main content</span>
@@ -96,13 +96,15 @@ export default () => (
 ## Props
 
 ### Skiplink
+
 <TypeTable
   type={{
     href: {
-      description: "Menentukan ID buat sasaran destinasi HTML elemen yang pautan langkau perlu navigasi apabila diaktifkan.",
+      description:
+        "Menentukan ID buat sasaran destinasi HTML elemen yang pautan langkau perlu navigasi apabila diaktifkan.",
       type: "string",
       typeDescription: "-",
       default: "-",
-    }
+    },
   }}
 />

@@ -1,0 +1,146 @@
+---
+title: Motion
+description: Transform static elements in digital interfaces through purposeful movement and interaction with clear user feedback.
+---
+
+import { s3 } from "@/lib/constant";
+
+## Principle
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/motion-principle.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+1. **Simple**: Motion should guide, not distract.
+2. **Harmony**: Sync productive and expressive motion for cohesive experiences.
+3. **Functional**: Every motion must serve a clear purpose.
+
+## Motion Types
+
+### No transition (Instant)
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/motion-type-instant.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+Used as the default transition when no motion effect is applied during transformations.
+
+- Token name: **instant**
+
+### Linear
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/motion-type-linear.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+Adding CSS transition property allowing element to interpolate from one state to
+another.
+
+- Not the best choice to animate UI organically.
+- Token name: **linear**
+- cubic-bezier(0, 0, 1, 1)
+
+### Ease-Out
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/motion-type-easeout.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+A smooth, natural curve moving directly to the target without overshooting.
+Ensures clarity and precision.
+
+- Use Cases: Functional interfaces requiring minimal distraction, such as charts, UI state transition & background fade-out.
+- Token name: **easeout**
+- cubic-bezier(0, 0, 0.58, 1)
+
+### Ease-Out-Back (Custom)
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/motion-type-easeoutback.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+A dynamic, spring-like motion that overshoots the target before settling.
+Creates energy and adds personality.
+
+- Use Cases: Playful or attention-grabbing elements, like success animations or buttons.
+- Token name: **easeoutback**
+- cubic-bezier(0.4, 1.4, 0.2, 1)
+
+## Transition Duration
+
+| Token Variable | Duration | Where to use?                                                 |
+| -------------- | -------- | ------------------------------------------------------------- |
+| `short`        | 200ms    | Small-size UI such as buttons, dropdown & micro-interactions. |
+| `medium`       | 400ms    | Medium-size UI such as callout, alert dialog & toast.         |
+| `long`         | 600ms    | Large-size UI such as page, section transition.               |
+
+## Motion Tokens
+
+Predefined values used to manage UI state transitions consistently.
+
+Developers can customize the token name using the format [motion-type].[transition]. By default, transition durations are predefined as short, medium, and long. However, these can be replaced with custom values in rounded numbers for different speed durations.
+
+| Token Variable       | CSS Code                                                                               |
+| -------------------- | -------------------------------------------------------------------------------------- |
+| `easeoutback.short`  | `.btn:hover { transition: 200ms cubic-bezier(0.4, 1.4, 0.2, 1); }`                     |
+| `easeoutback.medium` | `.alert-dialog { transition: 400ms cubic-bezier(0.4, 1.4, 0.2, 1); }`                  |
+| `easeout.long`       | `.slides { transition: 600ms cubic-bezier(0, 0, 0.58, 1); /* OR 600ms ease-out */}`    |
+| `easeout.1000`       | `.circle { transition: 1000ms cubic-bezier(0, 0, 0.58, 1); /* OR 1000ms ease-out */ }` |
+| `easeoutback.1000`   | `.circle { transition: 1000ms cubic-bezier(0.4, 1.4, 0.2, 1); }`                       |
+
+## Examples
+
+Showcasing motion effects applied to UI components for smooth and dynamic interactions.
+
+### Toast
+
+A simple demonstration of a Toast component appearing and disappearing with a delay in between.
+
+It features three animations:
+
+- Toast Enter
+- Progress Bar
+- Toast Exit
+
+<figure>
+  <video controls="true" allowfullscreen="true">
+    <source src={s3("/design/toast-animation-example.mov")} type="video/mp4" />
+  </video>
+</figure>
+
+### Toast Enter
+
+The Toast smoothly appears on the screen by sliding in from the bottom of the screen.
+
+**Toast: easeoutback.medium**
+
+- Motion type: easeoutback
+- Speed: 400ms (medium)
+
+### Delay Start / Progress Bar Start
+
+After “Toast Enter” animation ended, a visual indicator (bar) counts down for about 3000ms, showing how long the Toast will remain visible before exiting.
+
+**Progress bar: linear.3000**
+
+- Motion type: linear
+- Speed: 3000ms
+
+### Progress Bar End / Toast Exit
+
+After 3000ms “Progress bar” animation ended, the toast disappears gracefully by sliding out to the bottom of the screen.
+
+**Toast: easeoutback.medium**
+
+- Motion type: easeoutback
+- Speed: 400ms (medium)

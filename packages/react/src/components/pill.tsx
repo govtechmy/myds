@@ -53,7 +53,7 @@ export const Pill: ForwardRefExoticComponent<PillProps> = React.forwardRef(
             className="p-0"
             onClick={onDismiss}
           >
-            <ButtonIcon>
+            <ButtonIcon aria-label="close button">
               <CrossIcon className="text-txt-black-500 size-4" />
             </ButtonIcon>
           </Button>

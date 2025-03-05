@@ -119,36 +119,37 @@ import {
         )}
       </SearchBarResults>
     </SearchBar>
-  ```
-  </Tab>
+
+````
+</Tab>
 </Tabs>
 
 <Quicklinks
-  links={{
-    storybook:
-      "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-searchbar--docs",
-    source:
-      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/search-bar.tsx",
-  }}
+links={{
+  storybook:
+    "https://myds-storybook.vercel.app/?path=/docs/govtechmy-myds-react-searchbar--docs",
+  source:
+    "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/search-bar.tsx",
+}}
 />
 
 ## Usage
 
-```tsx copy
+```ts copy title="Import"
 import {
-  SearchBar,
-  SearchBarInput,
-  SearchBarInputContainer,
-  SearchBarSearchButton,
-  SearchBarResults,
-  SearchBarResultsList,
-  SearchBarResultsItem,
-  SearchBarClearButton,
-  SearchBarHint,
+SearchBar,
+SearchBarInput,
+SearchBarInputContainer,
+SearchBarSearchButton,
+SearchBarResults,
+SearchBarResultsList,
+SearchBarResultsItem,
+SearchBarClearButton,
+SearchBarHint,
 } from "@govtechmy/myds-react/search-bar";
-```
+````
 
-```tsx copy
+```tsx copy title="Anatomi"
 export default () => (
   <SearchBar size="large">
     <SearchBarInputContainer>
@@ -230,6 +231,7 @@ Gunakan prop `size` untuk menukar saiz bar carian.
       </SearchBarInputContainer>
     </SearchBar>
     ```
+
   </Tab>
 </Tabs>
 
@@ -267,8 +269,9 @@ Anda boleh menggunakan `SearchBarClearButton` untuk menunjukkan butang _clear_.
         <SearchBarSearchButton />
       </SearchBarInputContainer>
     </SearchBar>
-  ```
-  </Tab>
+
+````
+</Tab>
 </Tabs>
 
 ### Hint
@@ -276,36 +279,37 @@ Anda boleh menggunakan `SearchBarClearButton` untuk menunjukkan butang _clear_.
 Tunjukkan _hint_ dengan `SearchBarHint`.
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview" className="not-prose">
-    <SearchBar size="large">
-      <SearchBarInputContainer>
-        <SearchBarInput placeholder="Search by name" />
-        <SearchBarHint className="hidden lg:flex">Press <Pill size="small">/</Pill> to search</SearchBarHint>
-        <SearchBarSearchButton />
-      </SearchBarInputContainer>
-    </SearchBar>
-  </Tab>
-  <Tab value="Code">
-  ```tsx
-    import {
-        SearchBar,
-        SearchBarInput, 
-        SearchBarInputContainer,
-        SearchBarSearchButton,
-        SearchBarHint,
-    } from "@govtechmy/myds-react/search-bar";
-    import { Pill } from "@govtechmy/myds-react/pill";
+<Tab value="Preview" className="not-prose">
+  <SearchBar size="large">
+    <SearchBarInputContainer>
+      <SearchBarInput placeholder="Search by name" />
+      <SearchBarHint className="hidden lg:flex">Press <Pill size="small">/</Pill> to search</SearchBarHint>
+      <SearchBarSearchButton />
+    </SearchBarInputContainer>
+  </SearchBar>
+</Tab>
+<Tab value="Code">
+```tsx
+  import {
+      SearchBar,
+      SearchBarInput,
+      SearchBarInputContainer,
+      SearchBarSearchButton,
+      SearchBarHint,
+  } from "@govtechmy/myds-react/search-bar";
+  import { Pill } from "@govtechmy/myds-react/pill";
 
-    <SearchBar size="large">
-      <SearchBarInputContainer>
-        <SearchBarInput placeholder="Search by name" />
-        <SearchBarHint className="hidden lg:flex">
-          Press <Pill size="small">/</Pill> to search
-        </SearchBarHint>
-        <SearchBarSearchButton />
-      </SearchBarInputContainer>
-    </SearchBar>
-  ```
+  <SearchBar size="large">
+    <SearchBarInputContainer>
+      <SearchBarInput placeholder="Search by name" />
+      <SearchBarHint className="hidden lg:flex">
+        Press <Pill size="small">/</Pill> to search
+      </SearchBarHint>
+      <SearchBarSearchButton />
+    </SearchBarInputContainer>
+  </SearchBar>
+````
+
   </Tab>
 </Tabs>
 
@@ -357,76 +361,79 @@ Anda boleh menunjukkan hasil carian atau cadangan dengan komponen `SearchBarResu
         </SearchBarResultsList>
       </SearchBarResults>
     </SearchBar>
-  ```
-  </Tab>
+
+````
+</Tab>
 </Tabs>
 
 Anda juga boleh mengumpulkan hasil dengan komponen `SearchBarResultsGroup`:
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview" className="not-prose h-[420px]">
-    <SearchBarGroupedResultsExample />
-  </Tab>
-  <Tab value="Code">
-  ```tsx
-    import {
-      SearchBar,
-      SearchBarInput,
-      SearchBarInputContainer,
-      SearchBarSearchButton,
-      SearchBarResults,
-      SearchBarResultsList,
-      SearchBarResultsItem,
-    } from "@govtechmy/myds-react/search-bar";
-    import {
-      ChevronRightIcon,
-      MoneyIcon,
-      StarIcon,
-      TrophyIcon,
-      UserIcon,
-    } from "@govtechmy/myds-react/icon";
+<Tab value="Preview" className="not-prose h-[420px]">
+  <SearchBarGroupedResultsExample />
+</Tab>
+<Tab value="Code">
+```tsx
+  import {
+    SearchBar,
+    SearchBarInput,
+    SearchBarInputContainer,
+    SearchBarSearchButton,
+    SearchBarResults,
+    SearchBarResultsList,
+    SearchBarResultsItem,
+  } from "@govtechmy/myds-react/search-bar";
+  import {
+    ChevronRightIcon,
+    MoneyIcon,
+    StarIcon,
+    TrophyIcon,
+    UserIcon,
+  } from "@govtechmy/myds-react/icon";
 
-    <SearchBar size="large">
-      <SearchBarInputContainer>
-        <SearchBarInput placeholder="Search by name" />
-        <SearchBarSearchButton />
-      </SearchBarInputContainer>
-      <SearchBarResults open>
-        <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
-          {Object.entries(groupedResults).map(([group, items]) => (
-            <SearchBarResultsGroup key={group} heading={group}>
-              {items.map((item) => (
-                <SearchBarResultsItem key={item.name} value={item.name}>
-                  <span className="bg-primary-50 text-txt-primary rounded-full p-px">
-                    {group === "Arts" ? (
-                      <StarIcon className="size-4" />
-                    ) : group === "Sports" ? (
-                      <TrophyIcon className="size-4" />
-                    ) : (
-                      <MoneyIcon className="size-4" />
-                    )}
+  <SearchBar size="large">
+    <SearchBarInputContainer>
+      <SearchBarInput placeholder="Search by name" />
+      <SearchBarSearchButton />
+    </SearchBarInputContainer>
+    <SearchBarResults open>
+      <SearchBarResultsList className="max-h-[400px] overflow-y-scroll">
+        {Object.entries(groupedResults).map(([group, items]) => (
+          <SearchBarResultsGroup key={group} heading={group}>
+            {items.map((item) => (
+              <SearchBarResultsItem key={item.name} value={item.name}>
+                <span className="bg-primary-50 text-txt-primary rounded-full p-px">
+                  {group === "Arts" ? (
+                    <StarIcon className="size-4" />
+                  ) : group === "Sports" ? (
+                    <TrophyIcon className="size-4" />
+                  ) : (
+                    <MoneyIcon className="size-4" />
+                  )}
+                </span>
+                <p className="line-clamp-1 flex-1">
+                  {item.name}{" "}
+                  <span className="text-txt-black-500 text-xs">
+                    {item.note}
                   </span>
-                  <p className="line-clamp-1 flex-1">
-                    {item.name}{" "}
-                    <span className="text-txt-black-500 text-xs">
-                      {item.note}
-                    </span>
-                  </p>
-                  <ChevronRightIcon />
-                </SearchBarResultsItem>
-              ))}
-            </SearchBarResultsGroup>
-          ))}
-        </SearchBarResultsList>
-      </SearchBarResults>
-    </SearchBar>
-  ```
+                </p>
+                <ChevronRightIcon />
+              </SearchBarResultsItem>
+            ))}
+          </SearchBarResultsGroup>
+        ))}
+      </SearchBarResultsList>
+    </SearchBarResults>
+  </SearchBar>
+````
+
   </Tab>
 </Tabs>
 
 ### Komponen Terkawal
 
 Bar carian mesti dikawal dengan prop:
+
 - Tetapkan props `value` dan `onValueChange` untuk `SearchBarInput`
 - Tetapkan prop `open` untuk `SearchBarResults`
 
@@ -514,8 +521,9 @@ Dalam contoh di bawah, kami juga menjejaki sama ada bar carian difokuskan atau t
         )}
       </SearchBarResults>
     </SearchBar>
-  ```
-  </Tab>
+
+```
+</Tab>
 </Tabs>
 
 ## Props
@@ -525,14 +533,14 @@ Dalam contoh di bawah, kami juga menjejaki sama ada bar carian difokuskan atau t
 `SearchBar` disarikan daripada `Command.Root` cmdk. Sila rujuk rujukan API dalam [dokumentasi ini](https://github.com/pacocoursey/cmdk#command-cmdk-root).
 
 <TypeTable
-  type={{
-    size: {
-      description: "Saiz search bar",
-      type: "enum",
-      typeDescription: "small | medium | large",
-      default: "medium",
-    },
-  }}
+type={{
+  size: {
+    description: "Saiz search bar",
+    type: "enum",
+    typeDescription: "small | medium | large",
+    default: "medium",
+  },
+}}
 />
 
 ### SearchBarInput
@@ -540,17 +548,17 @@ Dalam contoh di bawah, kami juga menjejaki sama ada bar carian difokuskan atau t
 `SearchBarInput` disarikan daripada `Command.Input` cmdk. Sila rujuk rujukan API dalam [dokumentasi ini](https://github.com/pacocoursey/cmdk#input-cmdk-input)
 
 <TypeTable
-  type={{
-    value: {
-      description: "Nilai input",
-      type: "string",
-    },
-    onValueChange: {
-      description: "Callback function apabila input berubah",
-      type: "function",
-      typeDescription: "(value: string) => void",
-    },
-  }}
+type={{
+  value: {
+    description: "Nilai input",
+    type: "string",
+  },
+  onValueChange: {
+    description: "Callback function apabila input berubah",
+    type: "function",
+    typeDescription: "(value: string) => void",
+  },
+}}
 />
 
 ### SearchBarInputContainer
@@ -572,12 +580,12 @@ Dalam contoh di bawah, kami juga menjejaki sama ada bar carian difokuskan atau t
 ### SearchBarResults
 
 <TypeTable
-  type={{
-    open: {
-      description: "Sama ada pop-up keputusan dibuka atau ditutup",
-      type: "boolean",
-    },
-  }}
+type={{
+  open: {
+    description: "Sama ada pop-up keputusan dibuka atau ditutup",
+    type: "boolean",
+  },
+}}
 />
 
 ### SearchBarResultsList
@@ -591,3 +599,4 @@ Dalam contoh di bawah, kami juga menjejaki sama ada bar carian difokuskan atau t
 ### SearchBarResultsGroup
 
 `SearchBarResultsGroup` disarikan daripada `Command.Group` cmdk. Sila rujuk rujukan API dalam [dokumentasi ini](https://github.com/pacocoursey/cmdk#group-cmdk-group-hidden)
+```

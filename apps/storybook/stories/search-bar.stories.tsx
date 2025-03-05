@@ -154,7 +154,7 @@ const DemoBasicSearchBar = (props: ComponentProps<typeof SearchBar>) => {
             </SearchBarHint>
           )
         )}
-        <SearchBarSearchButton />
+        <SearchBarSearchButton aria-label="Search" />
       </SearchBarInputContainer>
       <SearchBarResults open={!!query && hasFocus}>
         {hasQuery && !results.length && (
@@ -229,7 +229,7 @@ const DemoGroupedSearchBar = (props: ComponentProps<typeof SearchBar>) => {
             </SearchBarHint>
           )
         )}
-        <SearchBarSearchButton />
+        <SearchBarSearchButton aria-label="Search" />
       </SearchBarInputContainer>
       <SearchBarResults open={!!query && hasFocus}>
         {hasQuery && !results.length && (

@@ -1,5 +1,32 @@
 # @govtechmy/myds-react
 
+## 0.0.14
+
+### Patch Changes
+
+- 4ce2d50: fix masthead responsive issue
+
+## 0.0.13
+
+### Patch Changes
+
+- 40b8a2b: Remove vitest in favor of jest (storybook)
+- d4ed3ec: 1. Remove asChild props from AnnounceBarDescription 2. Small refactor on AnnounceBatTag
+
+## 0.0.12
+
+### Patch Changes
+
+- 7eeb60d: Fix to listen to theme changes and update the ThemeSwitch state accordingly
+- 57bebb9: Fix ThemeContextProvider not recognising parent if reexported
+
+## 0.0.11
+
+### Patch Changes
+
+- 6956a40: Added `useTheme` hook and documentation.
+  Added `ThemeToggler` component and documentation.
+
 ## 0.0.10
 
 ### Patch Changes

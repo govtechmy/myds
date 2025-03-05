@@ -15,16 +15,8 @@ const config: StorybookConfig = {
     "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
 
-  addons: [
-    // "storybook-tailwind-dark-mode",
-    getAbsolutePath("@storybook/addon-onboarding"),
-    getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-essentials"),
-    getAbsolutePath("@chromatic-com/storybook"),
-    getAbsolutePath("@storybook/addon-interactions"),
-    getAbsolutePath("@storybook/addon-queryparams"),
-    "storybook-addon-deep-controls",
-  ],
+  addons: [// "storybook-tailwind-dark-mode",
+  getAbsolutePath("@storybook/addon-onboarding"), getAbsolutePath("@storybook/addon-links"), getAbsolutePath("@storybook/addon-essentials"), getAbsolutePath("@chromatic-com/storybook"), getAbsolutePath("@storybook/addon-interactions"), getAbsolutePath("@storybook/addon-queryparams"), "storybook-addon-deep-controls", getAbsolutePath("@storybook/addon-a11y")],
   framework: {
     name: getAbsolutePath("@storybook/react-vite"),
     options: {},

@@ -6,7 +6,15 @@ description: Non-intrusive notification that appears temporarily on the screen t
 import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
 import {
-  AutoToast, ToastRoot, ToastIcon, ToastProgress, ToastProvider, ToastViewport, ToastTitle, ToastDescription, ToastTriggerButton
+  AutoToast,
+  ToastRoot,
+  ToastIcon,
+  ToastProgress,
+  ToastProvider,
+  ToastViewport,
+  ToastTitle,
+  ToastDescription,
+  ToastTriggerButton,
 } from "@/components/myds";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
@@ -89,93 +97,86 @@ ToastDescription
 />
 
 ## Usage
-### Simple Usage
-For simple usage, `AutoToast` can be used directly. It is a pre-assembled, simplified version of the `Toast` that handles common use cases. 
-```tsx copy
-import { AutoToast }from "@govtechmy/myds-react/toast";
 
-// put the component high up the layout tree
-<AutoToast />
+### Simple Usage
+
+For simple usage, `AutoToast` can be used directly. It is a pre-assembled, simplified version of the `Toast` that handles common use cases.
+
+```tsx copy title="layout.tsx"
+import { AutoToast } from "@govtechmy/myds-react/toast";
+
+// Put the component high up in the DOM tree
+<AutoToast />;
 ```
 
-```tsx copy
-// to publish or emit a new event to the Toast 
+```tsx copy title="Anatomy"
+// Then, publish or emit a new event to the Toast
 import { useToast } from "@govtechmy/myds-react/hooks";
 
-export default () => (
+export default () => {
   const { toast } = useToast();
-<button
-  onClick={() => {
-    toast({ variant: "message", 
-    title: "Hello, world!", 
-    description: "this is a message toast description" 
-    });
-  }}>
-    Message
-</button>
-);
+  return (
+    <button
+      onClick={() => {
+        toast({
+          variant: "message",
+          title: "Hello, world!",
+          description: "this is a message toast description",
+        });
+      }}
+    >
+      Message
+    </button>
+  );
+};
 ```
 
 ### Advanced Usage
+
 Instead of using `AutoToast`, the `Toast` component can be assembled manually for more control.
+
 ```tsx copy
 import {
-ToastRoot, 
-ToastIcon, 
-ToastProgress, 
-ToastProvider, 
-ToastViewport, 
-ToastTitle, 
-ToastDescription 
+  ToastRoot,
+  ToastIcon,
+  ToastProgress,
+  ToastProvider,
+  ToastViewport,
+  ToastTitle,
+  ToastDescription,
 } from "@govtechmy/myds-react/toast";
 
 export default () => (
   <ToastProvider>
-      {toasts.map((toast, index) => (
-        <ToastRoot
-          key={props.id || index}
-          variant={toast.variant || "message"}
-          {...props}
-        >
-          <ToastIcon />
-          <div className="space-y-1">
-            <ToastTitle>{toast.title}</ToastTitle>
-            {toast.description && (
-              <ToastDescription>{toast.description}</ToastDescription>
-            )}
-          </div>
-          <ToastClose />
-          <ToastProgress />
-         </ToastRoot>
-     ))}
- 
-      <ToastViewport />
-    </ToastProvider>
-);
-```
+    {toasts.map((toast, index) => (
+      <ToastRoot
+        key={props.id || index}
+        variant={toast.variant || "message"}
+        {...props}
+      >
+        <ToastIcon />
+        <div className="space-y-1">
+          <ToastTitle>{toast.title}</ToastTitle>
+          {toast.description && (
+            <ToastDescription>{toast.description}</ToastDescription>
+          )}
+        </div>
+        <ToastClose />
+        <ToastProgress />
+      </ToastRoot>
+    ))}
 
-```tsx copy
-// to publish or emit a new event to the Toast 
-import { useToast } from "@govtechmy/myds-react/hooks";
-
-export default () => (
-  const { toast } = useToast();
-<button
-  onClick={() => {
-    toast({ variant: "message", 
-    title: "Hello, world!", 
-    description: "this is a message toast description" 
-    });
-  }}>
-    Message
-</button>
+    <ToastViewport />
+  </ToastProvider>
 );
 ```
 
 ## Examples
 
 ### Variant
+
 5 variants of toast are availablle: `message`, `info`, `success`, `warning` and `error`. The examples of use cases are:
+
 1. `success` variant can be used to indicates a successful action such as creating a new request or submitting a form.
 2. `warning` variant can alert the users to take notice, often used for reminders or actions that require attention, such as reporting spam.
 3. `information` variant can provides additional details to keep user informed.
@@ -200,20 +201,24 @@ import { Button } from "@govtechmy/myds-react/button";
 import { AutoToast }from "@govtechmy/myds-react/toast";
 
 // put the component high up the layout tree
+
 <AutoToast />
 
-// to publish or emit a new event to the Toast 
+// to publish or emit a new event to the Toast
 import { useToast } from "@govtechmy/myds-react/hooks";
 
 const { toast } = useToast();
+
 <button
   onClick={() => {
-    toast({ variant: "message", 
-    title: "Hello, world!", 
-    description: "this is a message toast description" 
+    toast({
+      variant: "message",
+      title: "Hello, world!",
+      description: "this is a message toast description",
     });
-  }}>
-    Message
+  }}
+>
+  Message
 </button>
 
 ```
@@ -259,3 +264,4 @@ const { toast } = useToast();
 
 
 
+```

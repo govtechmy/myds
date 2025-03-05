@@ -6,8 +6,8 @@ description: Komponen Input OTP (One-Time Password) membenarkan pengguna memasuk
 import { Quicklinks } from "@/components/quicklinks";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
-import { InputOTP, InputOTPSlot } from "@/components/myds"
-import { InputOTPControlledExample } from "./input-otp.client"
+import { InputOTP, InputOTPSlot } from "@/components/myds";
+import { InputOTPControlledExample } from "./input-otp.client";
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose flex justify-center">
@@ -29,6 +29,7 @@ import { InputOTPControlledExample } from "./input-otp.client"
       <InputOTPSlot index={3} />
     </InputOTP>
     ```
+
   </Tab>
 </Tabs>
 
@@ -43,11 +44,11 @@ import { InputOTPControlledExample } from "./input-otp.client"
 
 ## Usage
 
-```tsx copy
-import { InputOTP, InputOTPSlot } from "@/components/myds"
+```ts copy title="Import"
+import { InputOTP, InputOTPSlot } from "@/components/myds";
 ```
 
-```tsx copy
+```tsx copy title="Anatomi"
 <InputOTP maxLength={4}>
   <InputOTPSlot index={0} />
   <InputOTPSlot index={1} />
@@ -82,6 +83,7 @@ Tetapkan prop `invalid` kepada true untuk menandakan input sebagai tidak sah.
       <InputOTPSlot index={3} />
     </InputOTP>
     ```
+
   </Tab>
 </Tabs>
 
@@ -109,6 +111,7 @@ Nyahaktifkan input dengan menetapkan prop `disabled` kepada true.
       <InputOTPSlot index={3} />
     </InputOTP>
     ```
+
   </Tab>
 </Tabs>
 
@@ -139,6 +142,7 @@ Input boleh dikawal dengan menetapkan props `value` dan `onChange`. Dalam contoh
       <InputOTPSlot index={3} />
     </InputOTP>
     ```
+
   </Tab>
 </Tabs>
 
@@ -166,6 +170,7 @@ Hantar regex kepada prop `pattern` untuk hanya menerima nilai corak tertentu. Se
       <InputOTPSlot index={3} />
     </InputOTP>
     ```
+
   </Tab>
 </Tabs>
 
@@ -178,7 +183,8 @@ Hantar regex kepada prop `pattern` untuk hanya menerima nilai corak tertentu. Se
 <TypeTable
   type={{
     maxLength: {
-      description: "Panjang maksimum OTP - ia harus sepadan dengan bilangan slot",
+      description:
+        "Panjang maksimum OTP - ia harus sepadan dengan bilangan slot",
       type: "number",
     },
     defaultValue: {
@@ -192,7 +198,7 @@ Hantar regex kepada prop `pattern` untuk hanya menerima nilai corak tertentu. Se
     onChange: {
       description: "Callback function apabila nilai input berubah (terkawal)",
       type: "function",
-      typeDescription: "(value: string) => void"
+      typeDescription: "(value: string) => void",
     },
     disabled: {
       type: "boolean",

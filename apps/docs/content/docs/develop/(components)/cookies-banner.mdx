@@ -206,7 +206,7 @@ import { CookiesBannerPreview } from "@/components/cookies-banner-preview";
 
 ## Usage
 
-```tsx
+```ts copy title="Import"
 import {
   CookieBanner,
   CookieBannerClose,
@@ -220,7 +220,7 @@ import {
 } from "@govtechmy/myds-react/cookie-banner";
 ```
 
-```tsx
+```tsx copy title="Anatomy"
 export default () => (
   <CookieBanner>
     <CookieBannerHeader>
@@ -230,9 +230,9 @@ export default () => (
     <CookieBannerPreferences />
     <CookieBannerFooter>
       <CookieBannerPreferencesToggle>
-       <CookieBannerPreferencesDisplay>
-         <CookieBannerClose />
-       </CookieBannerPreferencesDisplay>
+        <CookieBannerPreferencesDisplay>
+          <CookieBannerClose />
+        </CookieBannerPreferencesDisplay>
       </CookieBannerPreferencesToggle>
     </CookieBannerFooter>
   </CookieBanner>
@@ -242,18 +242,20 @@ export default () => (
 ## Props
 
 ### CookieBanner
-Houses all the constituent components of the cookie banners. The component is a *controlled* component. It is being built on `Dialog.Root` and `DialogBody`.
+
+Houses all the constituent components of the cookie banners. The component is a _controlled_ component. It is being built on `Dialog.Root` and `DialogBody`.
+
 <TypeTable
   type={{
     open: {
       description: "State to control cookie banners open or close",
       type: "boolean",
-      typeDescription:
-        "true | false",
-        default: 'false'
+      typeDescription: "true | false",
+      default: "false",
     },
     dismissible: {
-      description: "To control whether the cookie banner should have a close button",
+      description:
+        "To control whether the cookie banner should have a close button",
       type: "boolean",
       default: "true",
     },
@@ -262,7 +264,8 @@ Houses all the constituent components of the cookie banners. The component is a 
       type: "() => void",
     },
     onOpenChange: {
-      description: "Event listener for when the cookie banner is opened or closed (controlled)",
+      description:
+        "Event listener for when the cookie banner is opened or closed (controlled)",
       type: "(open: boolean) => void",
     },
   }}
@@ -277,6 +280,7 @@ Contains the `CookieBannerTitle` and `CookieBannerClose` components. It is being
 To customise the title of the cookie banner. It is being built on `DialogTitle`.
 
 ### CookieBannerClose
+
 To change the `open` state of the Cookie Banner. It is being built on `DialogClose`.
 
 ### CookieBannerPreferences
@@ -284,24 +288,29 @@ To change the `open` state of the Cookie Banner. It is being built on `DialogClo
 A container component that wraps cookie preference options, typically containing checkboxes and descriptions for different cookie categories.
 
 ### CookieBannerFooter
-Contains action elements like buttons and the customiser for cookie preferences. 
+
+Contains action elements like buttons and the customiser for cookie preferences.
 
 ### CookieBannerPreferencesToggle
+
 A button component that toggles the visibility of cookie preference options. By default, renders as a Button component but can be customized using `asChild` props.
 
 ### CookieBannerPreferencesDisplay
+
 A wrapper that shows or hide depends on the value of the `showPreferences` state of the `CookiesBanner`. If the `showWhen` props is `preferences-hidden`, the wrapper will not be shown when `showPreferences` props is falsy. By default, renders as a `div` component but can be customized using `asChild` props.
 
 <TypeTable
   type={{
     showWhen: {
-      description: "The visibility of the component depends on the value of 'showPreferences' props.",
+      description:
+        "The visibility of the component depends on the value of 'showPreferences' props.",
       type: "enum",
       typeDescription: "preferences-hidden | preferences-shown",
-      default: "preferences-hidden"
-    }
+      default: "preferences-hidden",
+    },
   }}
 />
 
 ### CookieBannerDescription
-Contains the description of the cookies banner. It is being build on `DialogDescription`. 
+
+Contains the description of the cookies banner. It is being build on `DialogDescription`.

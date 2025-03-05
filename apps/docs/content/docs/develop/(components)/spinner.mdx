@@ -18,34 +18,32 @@ import { Spinner } from "@govtechmy/myds-react/spinner";
   </Tab>
   <Tab value="Code">
   
-  ```tsx 
+```tsx 
 import { Spinner } from "@govtechmy/myds-react/spinner";
 
-<Spinner/>
-
+<Spinner />
 ```
+
 </Tab>
 </Tabs>
 
 <Quicklinks
-links={{
-storybook:
-  "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-spinner--docs",
-source:
-  "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/spinner.tsx",
-}}
+  links={{
+    storybook:
+      "https://myds-storybook.vercel.app/?path=%2Fdocs%2Fgovtechmy-myds-react-spinner--docs",
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/spinner.tsx",
+  }}
 />
 
 ## Usage
 
-```tsx copy
+```ts copy title="Import"
 import { Spinner } from "@govtechmy/myds-react/spinner";
 ```
 
-```tsx copy
-export default () => (
-    <Spinner/>
-);
+```tsx copy title="Anatomy"
+export default () => <Spinner />;
 ```
 
 ## Examples
@@ -69,28 +67,32 @@ Use the `color` prop to change the spinner style!
   </div>
   </Tab>
   <Tab value="Code">
-  ```tsx 
+  ```tsx
 import { Spinner } from "@govtechmy/myds-react/spinner";
 
 /** Color: Gray **/
+
 <Button variant="default-outline">
-    Loading Gray
-    <Spinner color={"gray"} />
+  Loading Gray
+  <Spinner color={"gray"} />
 </Button>
 
 /** Color: White **/
-<Button >
-    Loading White
-    <Spinner color={"white"} />
+
+<Button>
+  Loading White
+  <Spinner color={"white"} />
 </Button>
 
 /** Varian: Default **/
+
 <Button variant="default-outline">
-    Loading Default
-    <Spinner />
+  Loading Default
+  <Spinner />
 </Button>
 
-```
+````
+
   </Tab>
 </Tabs>
 
@@ -127,27 +129,30 @@ Use the `size` prop to change the spinner size!
 import { Button } from "@govtechmy/myds-react/button";
 
 /** Size **/
+
 <Button variant="default-outline">
-    <span>small</span><Spinner size={"small"}/>
+  <span>small</span>
+  <Spinner size={"small"} />
 </Button>
 
 <Button variant="default-outline">
-    <span>medium</span><Spinner size={"medium"}/>
+  <span>medium</span>
+  <Spinner size={"medium"} />
 </Button>
 
 <Button variant="default-outline">
-    <span>large</span><Spinner size={"large"}/>
+  <span>large</span>
+  <Spinner size={"large"} />
 </Button>
-      
+
 <Button variant="default-outline">
-    <span>default</span><Spinner/>
+  <span>default</span>
+  <Spinner />
 </Button>
-```
+````
 
   </Tab>
 </Tabs>
-
-
 
 ### Show
 
@@ -174,12 +179,15 @@ Use the `show` prop to show or hide the spinner
 import { Button } from "@govtechmy/myds-react/button";
 
 /** Show or Hide **/
+
 <Button variant="default-outline">
-  <span>Spinner Show</span><Spinner show={true}/>
+  <span>Spinner Show</span>
+  <Spinner show={true} />
 </Button>
 
 <Button variant="default-outline">
-  <span>Spinner Hide</span><Spinner show={false}/>
+  <span>Spinner Hide</span>
+  <Spinner show={false} />
 </Button>
 ```
 
@@ -195,8 +203,7 @@ import { Button } from "@govtechmy/myds-react/button";
     color: {
       description: "Color variant of the spinner",
       type: "enum",
-      typeDescription:
-        "white | gray ",
+      typeDescription: "white | gray ",
       default: "gray",
     },
     size: {
@@ -205,12 +212,11 @@ import { Button } from "@govtechmy/myds-react/button";
       typeDescription: "small | medium | large",
       default: "small",
     },
-    show:{
-      description:"Show or Hide Spinner",
-      type:"boolean",
+    show: {
+      description: "Show or Hide Spinner",
+      type: "boolean",
       typeDescription: "true | false",
-      default: "true", 
-    }
+      default: "true",
+    },
   }}
 />
-

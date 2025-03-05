@@ -14,7 +14,7 @@ import {
   OptionsIcon,
   SettingIcon,
 } from "@govtechmy/myds-react/icon";
-import { ButtonIcon } from "@govtechmy/myds-react/button";
+import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
 import { Link } from "@govtechmy/myds-react/link";
 
 /**
@@ -120,6 +120,7 @@ const meta = {
         ],
         custom_trigger: [
           <DropdownTrigger asChild>
+            {/* asChild is used here because interactive controls must not be nested as per https://dequeuniversity.com/rules/axe/4.10/nested-interactive?application=axeAPI */}
             <Link href="#" primary underline="always">
               hello
             </Link>
@@ -133,7 +134,7 @@ const meta = {
         ],
         with_icon: [
           <DropdownTrigger>
-            <ButtonIcon>
+            <ButtonIcon aria-label="options button">
               <OptionsIcon />
             </ButtonIcon>
           </DropdownTrigger>,

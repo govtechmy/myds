@@ -1,5 +1,18 @@
 # @govtechmy/myds-style
 
+## 0.0.5
+
+### Patch Changes
+
+- 7964da7: Style update
+
+## 0.0.4
+
+### Patch Changes
+
+- 6ddcc13: Fix --danger color to comply WCAG contrast
+- 6ddcc13: CSS output rebuild
+
 ## 0.0.3
 
 ### Patch Changes

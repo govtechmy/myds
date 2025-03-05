@@ -5,6 +5,7 @@
     "index",
     "(getting-started)/install",
     "(getting-started)/style-configuration",
+    "(getting-started)/accessibility",
     "(getting-started)/usage",
 
     "---Installation---",
@@ -46,9 +47,13 @@
     "(components)/tabs",
     "(components)/tag",
     "(components)/text-area",
+    "(components)/theme-switch",
     "(components)/toast",
     "(components)/toggle",
-    "(components)/tooltip"
+    "(components)/tooltip",
+
+    "---Hooks ---",
+    "(hooks)/use-theme"
   ],
   "root": true
 }

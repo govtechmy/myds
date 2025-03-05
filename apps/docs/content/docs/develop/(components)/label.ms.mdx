@@ -39,9 +39,7 @@ import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 
 <>
   <div className="flex items-center justify-between">
-    <Label htmlFor="checkbox" >
-      Padamkan notifikasi secara automatik
-    </Label>
+    <Label htmlFor="checkbox">Padamkan notifikasi secara automatik</Label>
     <Checkbox id="checkbox"></Checkbox>
   </div>
   <div className="flex items-center justify-between">
@@ -69,26 +67,24 @@ import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 
 ## Penggunaan
 
-```tsx copy
+```ts copy title="Import"
 import { Label } from "@govtechmy/myds-react/label";
 import { Checkbox } from "@govtechmy/myds-react/checkbox";
 import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 ```
 
-```tsx copy
+```tsx copy title="Anatomi"
 export default () => (
   <>
     <div className="flex items-center justify-between">
-      <Label htmlFor="checkbox" >
-        Padamkan notifikasi secara automatik
-      </Label>
-      <Checkbox id="checkbox" ></Checkbox>
+      <Label htmlFor="checkbox">Padamkan notifikasi secara automatik</Label>
+      <Checkbox id="checkbox"></Checkbox>
     </div>
     <div className="flex items-center justify-between">
-      <Label htmlFor="toggle" >
+      <Label htmlFor="toggle">
         Dayakan keselamatan 2FA (Pengesahan Dua Faktor)?
       </Label>
-      <Toggle id="toggle" >
+      <Toggle id="toggle">
         <ToggleThumb />
       </Toggle>
     </div>
@@ -170,7 +166,7 @@ import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
   </div>
 </>
 
-```
+````
     </Tab>
 </Tabs>
 
@@ -196,7 +192,7 @@ import { Label } from "@govtechmy/myds-react/label";
     <span>Label Dihasilkan Secara Tersuai</span>
 </Label>
 
-```
+````
 
     </Tab>
 

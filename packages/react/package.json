@@ -1,6 +1,6 @@
 {
   "name": "@govtechmy/myds-react",
-  "version": "0.0.10",
+  "version": "0.0.14",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
@@ -205,6 +205,11 @@
       "type": "./dist/components/daterange-picker.d.ts",
       "import": "./dist/components/daterange-picker.mjs",
       "require": "./dist/components/daterange-picker.js"
+    },
+    "./theme-switch": {
+      "type": "./dist/components/theme-switch.d.ts",
+      "import": "./dist/components/theme-switch.mjs",
+      "require": "./dist/components/theme-switch.js"
     }
   },
   "peerDependencies": {

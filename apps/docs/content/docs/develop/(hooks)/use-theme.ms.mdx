@@ -1,0 +1,164 @@
+---
+title: useTheme
+description: Memberikan akses kepada tema semasa dan kaedah untuk menukar tema.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Penggunaan
+
+<Tabs items={["Hook", "Keperluan"]} defaultValue="Hook">
+  <Tab value="Hook" className="not-prose">
+    ```ts
+    import { useTheme } from "@govtechmy/myds-react/hooks";
+
+    const { theme, setTheme } = useTheme();
+    ```
+
+  </Tab>
+  <Tab value="Keperluan">
+    ```tsx
+    import { ThemeProvider } from "@govtechmy/myds-react/hooks";
+
+    const Layout = () => {
+      return (
+        <ThemeProvider>
+          {/* children goes here */}
+        </ThemeProvider>
+      );
+    }
+
+    export default Layout;
+    ```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/hooks/use-theme.tsx",
+  }}
+/>
+
+<Callout
+  type="info"
+  title="Penting"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Pastikan aplikasi anda dibalut dengan `ThemeProvider` sebelum menggunakan
+  `useTheme` untuk menggunakan API yang disediakan.
+</Callout>
+
+## Contoh
+
+### Membina Komponen Tukar Tema
+
+Hook `useTheme` menyediakan cara mudah untuk menguruskan keadaan tema dalam aplikasi anda. Di bawah, kami mentakrifkan komponen tersuai yang membolehkan pengguna menukar antara mod terang dan gelap.
+
+<Tabs items={["Tukar", "Pilih"]} defaultValue="Tukar">
+  <Tab value="Tukar" className="not-prose">
+    ```tsx title="theme-toggle.tsx"
+    import { useTheme } from "@govtechmy/myds-react/hooks";
+
+    const ThemeToggle = () => {
+      const { theme, setTheme } = useTheme();
+
+      return (
+        <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+          Tukar kepada mod {theme === "light" ? "gelap" : "terang"}
+        </button>
+      );
+    };
+
+    export { ThemeToggle }
+    ```
+
+  </Tab>
+  <Tab value="Pilih">
+    ```tsx title="theme-select.tsx"
+    import { Select } from "@govtechmy/myds-react/select";
+  
+    const ThemeSelect = () => {
+      const { theme, setTheme } = useTheme();
+
+      const handleChange = (newTheme: string) => {
+        setTheme(newTheme);
+      };
+
+      return (
+        <Select size="small" variant="outline" onValueChange={handleChange}>
+          <SelectTrigger>
+            <SelectValue label="Tema" placeholder="Pilih" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="light">Terang</SelectItem>
+            <SelectItem value="dark">Gelap</SelectItem>
+          </SelectContent>
+        </Select>
+      );
+    };
+
+    export { ThemeSelect }
+    ```
+
+  </Tab>
+</Tabs>
+
+### Mengisytiharkan ThemeProvider yang Boleh Diakses Secara Global
+
+Untuk menggunakan konteks tema di seluruh aplikasi, balut keseluruhan susun atur dengan `ThemeProvider`. Ini memastikan semua komponen anak boleh mengakses keadaan tema dan fungsi tukar.
+
+```tsx title="layout.tsx"
+import type { ReactNode } from "react";
+import { ThemeToggleCustom, ThemeProvider } from "./ThemeToggleCustom";
+
+export default function Layout({ children }: { children: ReactNode }) {
+  return (
+    <ThemeProvider>
+      <div className="app-container">
+        <ThemeToggleCustom />
+        {children}
+      </div>
+    </ThemeProvider>
+  );
+}
+```
+
+## API
+
+### useTheme
+
+<TypeTable
+  type={{
+    theme: {
+      description: "Tema aktif semasa",
+      type: "string",
+      default: "light",
+    },
+    setTheme: {
+      description: "Kaedah untuk menukar tema",
+      type: "(theme: string) => void",
+    },
+  }}
+/>
+
+### ThemeProvider
+
+<TypeTable
+  type={{
+    defaultTheme: {
+      description: "Tema lalai",
+      type: "string",
+      default: "light",
+    },
+    setTheme: {
+      description: "Kaedah untuk menukar tema",
+      type: "(theme: string) => void",
+    },
+  }}
+/>
