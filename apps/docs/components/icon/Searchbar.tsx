@@ -18,7 +18,7 @@ import {
 } from "@govtechmy/myds-react/tabs";
 import type { IconData } from "./IconDataList";
 import { useToast } from "@govtechmy/myds-react/hooks";
-import ResultMap from "./resultMap";
+import ResultMap from "./ResultMap";
 
 type Props = {
   iconDataList: IconData[];
