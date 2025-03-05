@@ -145,6 +145,8 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
           "design/(components)",
           "develop/(getting-started)",
           "develop/(components)",
+          "develop/(hooks)",
+          "develop/(installation)",
         ],
         name: "project",
         message: "Docs MDX for:",
