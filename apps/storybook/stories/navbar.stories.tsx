@@ -158,7 +158,7 @@ const DemoNavbar = () => {
 
   return (
     <div className={clx(isDarkMode ? "light" : "dark")}>
-      <Navbar showMenu={showMenu} className="px-2">
+      <Navbar showMenu={showMenu}>
         <NavbarContainer>
           <BrandLogo imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg">
             MYDS
@@ -262,7 +262,7 @@ const KementerianDigitalNavbar = () => {
 
   return (
     <div className={clx(isDarkMode ? "light" : "dark")}>
-      <Navbar showMenu={showMenu} className="px-2">
+      <Navbar showMenu={showMenu}>
         <NavbarContainer>
           <BrandLogo imageSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png">
             Ministry Of Digital

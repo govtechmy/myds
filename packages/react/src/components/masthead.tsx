@@ -33,7 +33,7 @@ const MastheadHeader: FunctionComponent<MastheadHeaderProps> = ({
       className="block h-9 cursor-pointer list-none outline-none [&::-webkit-details-marker]:hidden"
       tabIndex={-1}
     >
-      <div className="px-4.5 mx-auto flex h-full items-center gap-1.5 text-sm leading-4 max-sm:justify-between md:leading-5 md:max-lg:px-6 lg:px-0">
+      <div className="px-4.5 font-body mx-auto flex h-full items-center gap-1.5 text-sm leading-4 max-sm:justify-between md:leading-5 md:max-lg:px-6 lg:px-0">
         {children}
       </div>
     </summary>
@@ -171,7 +171,7 @@ const Masthead: FunctionComponent<MastheadProps> = ({ children }) => {
   if (!children) {
     return (
       <div className="bg-bg-washed outline-none print:hidden" data-nosnippet>
-        <details id="Masthead" className="group container w-full xl:mx-auto">
+        <details id="Masthead" className="group container xl:mx-auto">
           <DefaultMastheadHeader />
           <DefaultMastheadContent />
         </details>
