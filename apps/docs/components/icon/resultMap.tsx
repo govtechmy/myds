@@ -45,7 +45,7 @@ export default function ResultMap({ result }: { result: IconDataList }) {
                     description: "You have copied the svg",
                   });
                 }}
-                className="text-txt-black-500 flex h-[70px] w-full items-center justify-center rounded-b-none rounded-t-lg border-0 bg-transparent hover:bg-gray-300/70 dark:text-[#303030]"
+                className="text-txt-black-500 flex h-[70px] w-full items-center justify-center rounded-b-lg rounded-t-none border-0 bg-transparent hover:bg-gray-300/70 dark:text-[#303030]"
               >
                 Copy JSX
               </Button>
