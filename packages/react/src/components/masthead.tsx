@@ -42,11 +42,9 @@ const MastheadHeader: FunctionComponent<MastheadHeaderProps> = ({
 
 const MastheadOfficialIndicator: FunctionComponent<
   MastheadOfficialIndicatorProps
-> = ({
-  children = "Official Malaysia Government Website Official Malaysia Government Website Official Malaysia Government Website Official Malaysia Government WebsiteOfficial Malaysia Government Website Official Malaysia Government Website Official Malaysia Government Website",
-}) => {
+> = ({ children = "Official Malaysia Government" }) => {
   return (
-    <div className="flex flex-1 select-none items-center gap-2">
+    <div className="flex select-none items-center gap-2">
       <MalaysiaFlagIcon className="shrink-0" />
       <span className="text-txt-black-700 line-clamp-2 md:line-clamp-1">
         {children}
@@ -59,7 +57,7 @@ const MastheadToggle: FunctionComponent<MastheadToggleProps> = ({
   children = "Here's how you know",
 }) => (
   <div
-    className="max-sm:bg-otl-gray-200 text-txt-primary focus:ring-fr-primary flex w-fit items-center gap-0.5 rounded-sm p-1 pl-1.5 focus:outline-none focus:ring-[3px] focus:ring-inset max-sm:rounded-md max-sm:px-1"
+    className="max-sm:bg-otl-gray-200 text-txt-primary focus:ring-fr-primary flex shrink-0 items-center gap-0.5 rounded-sm p-1 pl-1.5 focus:outline-none focus:ring-[3px] focus:ring-inset max-sm:rounded-md max-sm:px-1"
     tabIndex={0}
   >
     <span className="text-txt-primary hidden select-none tracking-[-0.01em] sm:block">
