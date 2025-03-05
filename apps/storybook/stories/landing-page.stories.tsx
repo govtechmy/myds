@@ -27,4 +27,10 @@ export const Tablet = {
   },
 };
 
-export const Desktop = {};
+export const Desktop = {
+  parameters: {
+    viewport: {
+      defaultViewport: "desktop",
+    },
+  },
+};
