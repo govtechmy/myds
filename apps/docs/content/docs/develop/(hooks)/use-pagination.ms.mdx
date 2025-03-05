@@ -1,0 +1,105 @@
+---
+title: usePagination
+description: Menguruskan keadaan dan tindakan penomboran untuk senarai dan jadual.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Penggunaan
+
+<Tabs items={["Hook", "Keperluan"]} defaultValue="Hook">
+  <Tab value="Hook" className="not-prose">
+    ```ts
+    import { usePagination } from "@govtechmy/myds-react/hooks";
+
+    const { visiblePages, max } = usePagination({ count: 10, page: 1, limit: 10, maxDisplay: 4 });
+    ```
+
+  </Tab>
+  <Tab value="Keperluan">
+    ```tsx
+    // Tiada keperluan prasyarat
+    ```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/hooks/use-pagination.tsx",
+  }}
+/>
+
+## Contoh
+
+### Membina Komponen Penomboran Tersuai
+
+Hook `usePagination` menyediakan pengendali yang diperlukan untuk menguruskan keadaan dan tindakan penomboran untuk komponen senarai dan jadual. Ini boleh dilihat dalam [Konfigurasi Penomboran](/docs/develop/pagination#pagination-configurations) dokumentasi Penomboran.
+
+```tsx title="Contoh"
+import { usePagination } from "@govtechmy/myds-react/hooks";
+
+//... dalam komponen anda
+const { visiblePages } = usePagination();
+
+// Komponen Penomboran yang dibina sendiri
+<Pagination ref={ref} type={type} {...props}>
+  <PaginationContent>
+    <PaginationItem>{previous || <PaginationPrevious />}</PaginationItem>
+    {visiblePages.map((page, index) => (
+      <PaginationItem key={page}>
+        {page === "..." ? (
+          <PaginationEllipsis />
+        ) : (
+          typeof page === "number" && <PaginationNumber number={page} />
+        )}
+      </PaginationItem>
+    ))}
+    <PaginationItem>{next || <PaginationNext />}</PaginationItem>
+  </PaginationContent>
+</Pagination>;
+```
+
+## API
+
+### usePagination (Argumen)
+
+<TypeTable
+  type={{
+    count: {
+      description: "Jumlah bilangan item",
+      type: 'Array<number | "...">',
+    },
+    page: {
+      description: "Indeks halaman semasa (lalai).",
+      type: "number",
+    },
+    limit: {
+      description: "Bilangan item setiap halaman.",
+      type: "number",
+    },
+    displayMax: {
+      description: "Bilangan maksimum item penomboran tengah.",
+      type: "number",
+    },
+  }}
+/>
+
+### usePagination (Pulangan)
+
+<TypeTable
+  type={{
+    visiblePages: {
+      description: "Array item halaman yang akan dipaparkan",
+      type: 'Array<number | "...">',
+    },
+    max: {
+      description: "Menentukan bilangan maksimum halaman.",
+      type: "number",
+    },
+  }}
+/>

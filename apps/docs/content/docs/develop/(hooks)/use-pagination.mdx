@@ -1,0 +1,105 @@
+---
+title: usePagination
+description: Manage pagination state and actions for list and tables.
+---
+
+import { Quicklinks } from "@/components/quicklinks";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { InfoIcon } from "@govtechmy/myds-react/icon";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+
+## Usage
+
+<Tabs items={["Hook", "Requirement"]} defaultValue="Hook">
+  <Tab value="Hook" className="not-prose">
+    ```ts
+    import { usePagination } from "@govtechmy/myds-react/hooks";
+
+    const { visiblePages, max } = usePagination({ count: 10, page: 1, limit: 10, maxDisplay: 4 });
+    ```
+
+  </Tab>
+  <Tab value="Requirement">
+    ```tsx
+    // No prerequisite requirement
+    ```
+
+  </Tab>
+</Tabs>
+
+<Quicklinks
+  links={{
+    source:
+      "https://github.com/govtechmy/myds/blob/main/packages/react/src/hooks/use-pagination.tsx",
+  }}
+/>
+
+## Example
+
+### Building a Self Assembled Pagination Component
+
+The `usePagination` hook provides the handlers required to manage pagination state and actions for list and tables. This can be seen in the [Pagination Configuration](/docs/develop/pagination#pagination-configurations) of the Pagination documentation.
+
+```tsx title="Example"
+import { usePagination } from "@govtechmy/myds-react/hooks";
+
+//... inside your component
+const { visiblePages } = usePagination();
+
+// Self assembled Pagination component
+<Pagination ref={ref} type={type} {...props}>
+  <PaginationContent>
+    <PaginationItem>{previous || <PaginationPrevious />}</PaginationItem>
+    {visiblePages.map((page, index) => (
+      <PaginationItem key={page}>
+        {page === "..." ? (
+          <PaginationEllipsis />
+        ) : (
+          typeof page === "number" && <PaginationNumber number={page} />
+        )}
+      </PaginationItem>
+    ))}
+    <PaginationItem>{next || <PaginationNext />}</PaginationItem>
+  </PaginationContent>
+</Pagination>;
+```
+
+## API
+
+### usePagination (Arguments)
+
+<TypeTable
+  type={{
+    count: {
+      description: "Total number of items",
+      type: 'Array<number | "...">',
+    },
+    page: {
+      description: "Current (default) page index.",
+      type: "number",
+    },
+    limit: {
+      description: "Number of items per page.",
+      type: "number",
+    },
+    displayMax: {
+      description: "Maximum number of middle pagination items.",
+      type: "number",
+    },
+  }}
+/>
+
+### usePagination (Return)
+
+<TypeTable
+  type={{
+    visiblePages: {
+      description: "Array of page items to be displayed",
+      type: 'Array<number | "...">',
+    },
+    max: {
+      description: "Determined max ceiling number of pages.",
+      type: "number",
+    },
+  }}
+/>

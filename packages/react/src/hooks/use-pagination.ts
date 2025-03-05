@@ -1,7 +1,7 @@
 interface usePaginationProps {
-  count: number;
-  limit: number;
-  page: number;
+  count: number; // Total number of items
+  limit: number; // Number of items per page
+  page: number; // Current page
   maxDisplay?: number;
 }
 
@@ -11,6 +11,7 @@ export function usePagination({
   page,
   maxDisplay = 4,
 }: usePaginationProps) {
+  // Calculate the maximum number of pages
   const max = Math.ceil(count / limit);
 
   const getVisiblePageNumber = () => {
