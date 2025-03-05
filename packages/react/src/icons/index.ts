@@ -214,7 +214,6 @@ export * from "./warning-diamond";
 export * from "./warning-fill";
 export * from "./warning";
 export * from "./whatsapp";
-export * from "./x";
 export * from "./youtube";
 export * from "./zoom-in";
 export * from "./zoom-out";
