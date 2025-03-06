@@ -217,6 +217,7 @@ export default {
     home: "Laman Utama",
     design: "Reka Bentuk",
     develop: "Pembangunan",
+    icon: "ikon",
   },
 
   /* Design */
