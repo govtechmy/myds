@@ -17,7 +17,6 @@ import {
   TabsTrigger,
 } from "@govtechmy/myds-react/tabs";
 import type { IconData } from "./IconDataList";
-import { useToast } from "@govtechmy/myds-react/hooks";
 import ResultMap from "./ResultMap";
 
 type Props = {
@@ -27,8 +26,6 @@ type Props = {
 export default function SearchBarIcons({ iconDataList }: Props) {
   const [hasFocus, setHasFocus] = useState(false);
   const [query, setQuery] = useState("");
-  const { toast } = useToast();
-
   const filterIcons = (query: any, conditions: any) => {
     return iconDataList.filter(({ type, filename }) => {
       const iconData = `${type} ${filename}`.toLowerCase();
@@ -67,11 +64,6 @@ export default function SearchBarIcons({ iconDataList }: Props) {
   ]);
   const resultLegacyGeneric = filterIcons(query, [
     (iconType: string | string[]) => iconType.includes("legacy"),
-    (iconType: string | string[]) => iconType.includes("generic"),
-  ]);
-  const resultLegacyBorderless = filterIcons(query, [
-    (iconType: string | string[]) => iconType.includes("legacy"),
-    (iconType: string | string[]) => iconType.includes("borderless"),
   ]);
 
   const inputRef = useFocusOnKeyPress<HTMLInputElement>("/", hasFocus);
@@ -83,7 +75,6 @@ export default function SearchBarIcons({ iconDataList }: Props) {
     resultSocialMedia,
     resultMedia,
     resultLegacyGeneric,
-    resultLegacyBorderless,
   ];
 
   return (
@@ -124,8 +115,7 @@ export default function SearchBarIcons({ iconDataList }: Props) {
           <TabsTrigger value="4">WYSIWYG</TabsTrigger>
           <TabsTrigger value="5">Social Media</TabsTrigger>
           <TabsTrigger value="6">Media</TabsTrigger>
-          <TabsTrigger value="7">Legacy: Generic</TabsTrigger>
-          <TabsTrigger value="8">Legacy: Borderless</TabsTrigger>
+          <TabsTrigger value="7">Agency Icon (Legacy)</TabsTrigger>
         </TabsList>
 
         {results.map((result, index) => (
