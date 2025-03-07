@@ -1,11 +1,29 @@
 import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
-import { Footer } from "@govtechmy/myds-react/footer";
 import {
+  Address,
+  Footer,
+  FooterBottomSection,
+  FooterContent,
+  FooterContentColumn,
+  FooterCopyright,
+  FooterCopyrightDate,
+  FooterCopyrightLinkWrapper,
+  FooterMainInfo,
+  FooterTimestamp,
+  FooterTopSection,
+  ImageWithTitle,
+  SocialMedia,
+  SocialMediaItem,
+} from "@govtechmy/myds-react/footer";
+import {
+  FacebookIcon,
   GlobeIcon,
   MoonIcon,
   SearchIcon,
   SunIcon,
+  TikTokIcon,
 } from "@govtechmy/myds-react/icon";
+import { Link } from "@govtechmy/myds-react/link";
 import { Masthead } from "@govtechmy/myds-react/masthead";
 import {
   BrandLogo,
@@ -62,6 +80,47 @@ const DemoNavbar = () => {
   );
 };
 
+const DemoFooter = () => {
+  return (
+    <Footer>
+      <FooterTopSection>
+        <FooterMainInfo>
+          <ImageWithTitle
+            imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+            imgAlt="JataNegara"
+          >
+            Organization Title
+          </ImageWithTitle>
+          <Address>
+            Sample Address Line 1,{"\n"}
+            Sample Street Name, Sample Area,{"\n"}
+            Sample District, Sample City,{"\n"}
+            12345 Sample Postal Code,{"\n"}
+            Sample Country
+          </Address>
+          <SocialMedia title="Follow Us">
+            <SocialMediaItem
+              icon={<FacebookIcon />}
+              href={"www.google.com"}
+              name={"Facebook"}
+            />
+            <SocialMediaItem
+              icon={<TikTokIcon />}
+              href={"www.google.com"}
+              name={"TikTok"}
+            />
+          </SocialMedia>
+        </FooterMainInfo>
+      </FooterTopSection>
+      <FooterBottomSection>
+        <FooterCopyright>
+          <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
+        </FooterCopyright>
+      </FooterBottomSection>
+    </Footer>
+  );
+};
+
 export default function LandingPage() {
   return (
     <div>
@@ -109,7 +168,7 @@ export default function LandingPage() {
           <Button>Click here</Button>
         </div>
       </div>
-      <Footer />
+      <DemoFooter />
     </div>
   );
 }
