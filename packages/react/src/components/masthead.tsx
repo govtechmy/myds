@@ -33,7 +33,7 @@ const MastheadHeader: FunctionComponent<MastheadHeaderProps> = ({
       className="block h-9 cursor-pointer list-none outline-none [&::-webkit-details-marker]:hidden"
       tabIndex={-1}
     >
-      <div className="px-4.5 font-body mx-auto flex h-full items-center gap-1.5 text-sm leading-4 max-sm:justify-between md:leading-5 md:max-lg:px-6 lg:px-0">
+      <div className="font-body flex h-full items-center gap-1.5 text-sm leading-4 max-sm:justify-between md:leading-5">
         {children}
       </div>
     </summary>

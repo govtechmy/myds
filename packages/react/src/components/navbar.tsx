@@ -107,7 +107,7 @@ const NavbarActionGroup: FunctionComponent<NavbarActionGroupProps> = ({
     <div className="flex items-center gap-2">
       {children}
       <Button
-        variant="default-outline"
+        variant="default-ghost"
         className={clx(
           "block p-2.5 xl:hidden",
           showMenu && "bg-bg-washed",
@@ -210,14 +210,7 @@ const NavigationMenuCombo: FunctionComponent<NavigationMenuProps> = ({
 interface NavItemsMenuProps {
   children: React.ReactNode;
   href: string;
-  active: boolean;
-  className?: string;
-}
-
-interface NavItemsMenuProps {
-  children: React.ReactNode;
-  href: string;
-  active: boolean;
+  active?: boolean;
   className?: string;
 }
 

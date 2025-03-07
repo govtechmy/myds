@@ -82,7 +82,7 @@ const meta = {
   component: Masthead,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen",
+    layout: "padded",
     docs: {
       description: {
         component:

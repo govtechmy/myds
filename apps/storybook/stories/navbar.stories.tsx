@@ -43,10 +43,10 @@ import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
  *             MYDS
  *         </BrandLogo>
  *         <NavigationMenuCombo showMenu={showMenu} setMenu={setMenu}>
- *             <NavItemsMenu href="/menu1" active={false}>
+ *             <NavItemsMenu href="#" active={false}>
  *                 MinistryProfile
  *             </NavItemsMenu>
- *             <NavItemsMenu href="/menu2" active={false}>
+ *             <NavItemsMenu href="#" active={false}>
  *                 Policy
  *             </NavItemsMenu>
  *             <NavItemsMenu href="/menu3" active={false}>
@@ -160,15 +160,18 @@ const DemoNavbar = () => {
     <div className={clx(isDarkMode ? "light" : "dark")}>
       <Navbar showMenu={showMenu}>
         <NavbarContainer>
-          <BrandLogo imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg">
+          <BrandLogo
+            imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+            href="#"
+          >
             MYDS
           </BrandLogo>
 
           <NavigationMenuCombo showMenu={showMenu} setMenu={setMenu}>
-            <NavItemsMenu href="/menu1" active={false}>
+            <NavItemsMenu href="#" active={false}>
               Menu 1
             </NavItemsMenu>
-            <NavItemsMenu href="/menu2" active={false}>
+            <NavItemsMenu href="#" active={false}>
               Menu 2
             </NavItemsMenu>
 
@@ -260,19 +263,26 @@ const KementerianDigitalNavbar = () => {
     setIsDarkMode(!isDarkMode);
   };
 
+  console.log(showMenu);
+
   return (
     <div className={clx(isDarkMode ? "light" : "dark")}>
       <Navbar showMenu={showMenu}>
         <NavbarContainer>
-          <BrandLogo imageSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png">
-            Ministry Of Digital
+          <BrandLogo
+            imageSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+            href="#"
+          >
+            <h2 className="font-body font-heading text-txt-black-900 font-semibold max-sm:hidden">
+              Ministry Of Digital
+            </h2>
           </BrandLogo>
 
           <NavigationMenuCombo showMenu={showMenu} setMenu={setMenu}>
-            <NavItemsMenu href="/menu1" active={false}>
+            <NavItemsMenu href="#" active={false}>
               MinistryProfile
             </NavItemsMenu>
-            <NavItemsMenu href="/menu2" active={false}>
+            <NavItemsMenu href="#" active={false}>
               Policy
             </NavItemsMenu>
             <NavItemsMenu href="/menu6" active={false}>
