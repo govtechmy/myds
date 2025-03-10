@@ -16,10 +16,12 @@ import {
   SocialMediaItem,
 } from "@govtechmy/myds-react/footer";
 import { Link } from "@govtechmy/myds-react/link";
-import { FacebookIcon } from "../../../packages/react/src/icons/facebook";
-import { InstagramIcon } from "../../../packages/react/src/icons/instagram";
-import { TikTokIcon } from "../../../packages/react/src/icons/tiktok";
-import { XIcon } from "@govtechmy/myds-react/icon";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TikTokIcon,
+  TwitterIcon,
+} from "@govtechmy/myds-react/icon";
 
 /**
  * ### Overview
@@ -243,7 +245,7 @@ export const Custom: Story = {
                 name={"Facebook"}
               />
               <SocialMediaItem
-                icon={<XIcon />}
+                icon={<TwitterIcon />}
                 href={"www.google.com"}
                 name={"X"}
               />
@@ -446,7 +448,7 @@ export const CustomDark: Story = {
                 name={"Facebook"}
               />
               <SocialMediaItem
-                icon={<XIcon />}
+                icon={<TwitterIcon />}
                 href={"www.google.com"}
                 name={"X"}
               />
