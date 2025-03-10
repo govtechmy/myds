@@ -7,10 +7,10 @@ export default function ResultMap({ result }: { result: IconDataList }) {
   const { toast } = useToast();
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+    <div className="grid grid-cols-8 gap-2">
       {result.map((icon, index) => (
         <div key={index} className="flex flex-col items-center justify-center">
-          <div className="relative flex h-[140px] w-[140px] flex-col items-center justify-center rounded-xl border border-black shadow-md">
+          <div className="relative flex h-[140px] w-full flex-col items-center justify-center rounded-xl border border-black shadow-md">
             <div className="flex items-center justify-center">{icon.svg}</div>
             <div className="absolute w-full opacity-0 hover:opacity-100">
               <Button
