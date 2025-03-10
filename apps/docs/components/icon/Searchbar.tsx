@@ -108,7 +108,7 @@ export default function SearchBarIcons({ iconDataList }: Props) {
       </SearchBar>
 
       <Tabs defaultValue="2" size="medium" variant="line">
-        <TabsList>
+        <TabsList width="full" className="overflow-x-auto text-nowrap">
           <TabsTrigger value="1">All</TabsTrigger>
           <TabsTrigger value="2">Generic</TabsTrigger>
           <TabsTrigger value="3">Filled</TabsTrigger>

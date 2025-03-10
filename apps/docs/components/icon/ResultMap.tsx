@@ -2,12 +2,13 @@ import { Button } from "@govtechmy/myds-react/button";
 
 import { useToast } from "@govtechmy/myds-react/hooks";
 import { IconDataList } from "./IconDataList";
+import { clx } from "@govtechmy/myds-react/utils";
 
 export default function ResultMap({ result }: { result: IconDataList }) {
   const { toast } = useToast();
 
   return (
-    <div className="grid grid-cols-8 gap-2">
+    <div className={clx("grid gap-2", "icon-custom-grid-cols")}>
       {result.map((icon, index) => (
         <div key={index} className="flex flex-col items-center justify-center">
           <div className="relative flex h-[140px] w-full flex-col items-center justify-center rounded-xl border border-black shadow-md">
