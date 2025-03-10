@@ -1,19 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import {
-  Address,
   Footer,
-  FooterBottomSection,
-  FooterCopyright,
-  FooterContent,
-  FooterMainInfo,
-  FooterTimestamp,
-  FooterTopSection,
-  ImageWithTitle,
-  SocialMedia,
-  FooterCopyrightDate,
-  FooterCopyrightLinkWrapper,
-  FooterContentColumn,
-  SocialMediaItem,
   SiteInfo,
   FooterRoot,
   SiteLinkGroup,
@@ -35,21 +22,23 @@ import { TwitterIcon, XIcon, YoutubeIcon } from "@govtechmy/myds-react/icon";
  * ### Usage
  * ```tsx
  * import {
- * Footer,
- * FooterTopSection,
- * FooterMainInfo,
- * ImageWithTitle,
- * Address,
- * SocialMedia,
- * SocialMediaItem,
- * FooterContent,
- * FooterContentColumn,
- * FooterBottomSection,
- * FooterCopyright,
- * FooterCopyrightDate,
- * FooterCopyrightLinkWrapper,
- * FooterTimestamp,
+ *   Footer,
+ *   SiteInfo,
+ *   FooterRoot,
+ *   SiteLinkGroup,
+ *   SiteLinkTitle,
+ *   SiteLink
  * } from "@govtechmy/myds-react/footer";
+ *
+ * <FooterRoot>
+ *   <Footer>
+ *     <SiteInfo />
+ *     <SiteLinkGroup>
+ *       <SiteLinkTitle />
+ *       <SiteLink />
+ *     </SiteLinkGroup>
+ *   </Footer>
+ * </FooterRoot>
  * ```
  */
 
@@ -58,12 +47,12 @@ const meta = {
   component: Footer,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen",
+    layout: "padded",
   },
   argTypes: {
     children: {
       control: false,
-      description: "Content for the Footer",
+      description: "Children for the Footer",
       table: {
         type: { summary: "React.ReactNode" },
       },
@@ -100,12 +89,10 @@ const ExampleFooterComponent = ({ ...args }) => {
               Kementerian Digital
             </p>
           </div>
-          <p className="text-txt-black-700 text-body-sm whitespace-pre">
-            Aras 13, 14 & 15, Blok Menara,{"\n"}
-            Menara Usahawan{"\n"}
-            No. 18, Persiaran Perdana, Presint 2{"\n"}
-            Pusat Pentadbiran Kerajaan Persekutuan{"\n"}
-            62000 Putrajaya, Malaysia
+          <p className="text-txt-black-700 text-body-sm">
+            Aras 13, 14 & 15, Blok Menara, Menara Usahawan, No. 18, Persiaran
+            Perdana, Presint 2, Pusat Pentadbiran Kerajaan Persekutuan, 62000
+            Putrajaya, Malaysia
           </p>
           <p className="text-txt-black-900 text-body-sm font-semibold">
             Follow us
@@ -119,7 +106,7 @@ const ExampleFooterComponent = ({ ...args }) => {
               underline="none"
               className="hover:text-txt-black-900"
             >
-              <FacebookIcon />
+              <FacebookIcon className="text-txt-black-700" />
             </Link>
             <Link
               href="#"
@@ -129,7 +116,7 @@ const ExampleFooterComponent = ({ ...args }) => {
               underline="none"
               className="hover:text-txt-black-900"
             >
-              <TwitterIcon />
+              <TwitterIcon className="text-txt-black-700" />
             </Link>
             <Link
               href="#"
@@ -139,7 +126,7 @@ const ExampleFooterComponent = ({ ...args }) => {
               underline="none"
               className="hover:text-txt-black-900"
             >
-              <InstagramIcon />
+              <InstagramIcon className="text-txt-black-700" />
             </Link>
             <Link
               href="#"
@@ -149,7 +136,7 @@ const ExampleFooterComponent = ({ ...args }) => {
               underline="none"
               className="hover:text-txt-black-900"
             >
-              <YoutubeIcon />
+              <YoutubeIcon className="text-txt-black-700" />
             </Link>
           </div>
         </SiteInfo>
@@ -330,356 +317,24 @@ const ExampleFooterComponent = ({ ...args }) => {
         </SiteLinkGroup>
       </Footer>
       <hr className="bg-otl-gray-200" />
-      <div className="text-txt-black-500 mx-auto flex w-full max-w-[1280px] flex-row justify-between">
-        <div className="flex flex-row gap-3">
+      <div className="text-txt-black-500 md:max-lg:gap-4.5 mx-auto flex w-full max-w-[1280px] flex-col justify-between max-md:gap-4 lg:flex-row lg:gap-6">
+        <div className="flex flex-col gap-3 lg:flex-row">
           <p>All Rights Reserved © {date.getFullYear()}</p>
-          <p>|</p>
-          <a href="#">Disclaimer</a>
-          <a href="#">Privacy Policy</a>
+          <p className="hidden lg:inline">|</p>
+          <div className="text-txt-black-700 flex flex-grow flex-row gap-3">
+            <a href="#">Disclaimer</a>
+            <a href="#">Privacy Policy</a>
+          </div>
         </div>
         <p>Last updated: {formattedDate}</p>
       </div>
     </FooterRoot>
   );
 };
-// const ExampleFooterComponent = ({ ...args }) => {
-//   return (
-//     <Footer {...args}>
-//       <FooterTopSection>
-//         <FooterMainInfo>
-//           <ImageWithTitle
-//             imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-//             imgAlt="JataNegara"
-//           >
-//             Organization Title
-//           </ImageWithTitle>
-//           <Address>
-//             Sample Address Line 1,{"\n"}
-//             Sample Street Name, Sample Area,{"\n"}
-//             Sample District, Sample City,{"\n"}
-//             12345 Sample Postal Code,{"\n"}
-//             Sample Country
-//           </Address>
-//           <SocialMedia title="Follow Us">
-//             <SocialMediaItem
-//               icon={<FacebookIcon />}
-//               href={"www.google.com"}
-//               name={"Facebook"}
-//             />
-//             <SocialMediaItem
-//               icon={<TikTokIcon />}
-//               href={"www.google.com"}
-//               name={"TikTok"}
-//             />
-//           </SocialMedia>
-//         </FooterMainInfo>
-//         <FooterContent>
-//           <FooterContentColumn title={"Title 1"}>
-//             <Link
-//               href="www.google.com"
-//               underline="hover"
-//               className="hover:text-txt-black-900"
-//             >
-//               Link 1
-//             </Link>
-//             <Link
-//               href="www.google.com"
-//               underline="hover"
-//               className="hover:text-txt-black-900"
-//             >
-//               Link 2
-//             </Link>
-//             <Link
-//               href="www.google.com"
-//               underline="hover"
-//               className="hover:text-txt-black-900"
-//             >
-//               Link 3
-//             </Link>
-//             <Link
-//               href="www.google.com"
-//               underline="hover"
-//               className="hover:text-txt-black-900"
-//             >
-//               Link 4
-//             </Link>
-//           </FooterContentColumn>
-//           <FooterContentColumn title={"Title 2"}>
-//             <Link
-//               href="www.google.com"
-//               underline="hover"
-//               className="hover:text-txt-black-900"
-//             >
-//               Link 1
-//             </Link>
-//             <Link
-//               href="www.google.com"
-//               underline="hover"
-//               className="hover:text-txt-black-900"
-//             >
-//               Link 2
-//             </Link>
-//             <Link
-//               href="www.google.com"
-//               underline="hover"
-//               className="hover:text-txt-black-900"
-//             >
-//               Link 3
-//             </Link>
-//             <Link
-//               href="www.google.com"
-//               underline="hover"
-//               className="hover:text-txt-black-900"
-//             >
-//               Link 4
-//             </Link>
-//           </FooterContentColumn>
-//           <FooterContentColumn title={"Open Source"}>
-//             <Link
-//               href="www.google.com"
-//               underline="hover"
-//               className="hover:text-txt-black-900"
-//             >
-//               Github Repo
-//             </Link>
-//             <Link
-//               href="www.google.com"
-//               underline="hover"
-//               className="hover:text-txt-black-900"
-//             >
-//               Figma
-//             </Link>
-//           </FooterContentColumn>
-//         </FooterContent>
-//       </FooterTopSection>
-//       <FooterBottomSection>
-//         <FooterCopyright>
-//           <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
-//           <FooterCopyrightLinkWrapper>
-//             <Link
-//               href="www.google.com"
-//               underline="hover"
-//               className="hover:text-txt-black-900"
-//             >
-//               Disclaimer
-//             </Link>
-//             <Link
-//               href="www.google.com"
-//               underline="hover"
-//               className="hover:text-txt-black-900"
-//             >
-//               Privacy Policy
-//             </Link>
-//           </FooterCopyrightLinkWrapper>
-//         </FooterCopyright>
-//         <FooterTimestamp time="2024-12-05T10:00:00Z">
-//           Last Updated:
-//         </FooterTimestamp>
-//       </FooterBottomSection>
-//     </Footer>
-//   );
-// };
 
 export const Default: Story = {
   render: (args) => {
     return <ExampleFooterComponent {...args} />;
-  },
-};
-
-/**
- * Custom footer configuration with complete layout including agency information,
- * navigation links, social media, and disclaimer.
- */
-
-export const Custom: Story = {
-  render: (args) => {
-    return (
-      <Footer {...args}>
-        <FooterTopSection>
-          <FooterMainInfo>
-            <ImageWithTitle
-              imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-              imgAlt="JataNegara"
-            >
-              Ministry of Digital
-            </ImageWithTitle>
-            <Address>
-              Aras 13, 14 & 15, Blok Menara,{"\n"}
-              Menara Usahawan{"\n"}
-              No. 18, Persiaran Perdana, Presint 2{"\n"}
-              Pusat Pentadbiran Kerajaan Persekutuan{"\n"}
-              62000 Putrajaya, Malaysia
-            </Address>
-            <SocialMedia title="Follow Us">
-              <SocialMediaItem
-                icon={<FacebookIcon />}
-                href={"www.google.com"}
-                name={"Facebook"}
-              />
-              <SocialMediaItem
-                icon={<XIcon />}
-                href={"www.google.com"}
-                name={"X"}
-              />
-              <SocialMediaItem
-                icon={<InstagramIcon />}
-                href={"www.google.com"}
-                name={"Instagram"}
-              />
-              <SocialMediaItem
-                icon={<TikTokIcon />}
-                href={"www.google.com"}
-                name={"TikTok"}
-              />
-            </SocialMedia>
-          </FooterMainInfo>
-          <FooterContent>
-            <FooterContentColumn title={"About Us"}>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Ministry Of Digital
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Directory
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Achievements
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Directory
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Policy
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Media
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Contact Us
-              </Link>
-            </FooterContentColumn>
-            <FooterContentColumn title={"Quick Links"}>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                SpotMe
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                MyGovUC
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                DDMS
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                MyMesyuarat
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                ePenyata Gaji
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                HRMIS
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                ePerolehan
-              </Link>
-            </FooterContentColumn>
-            <FooterContentColumn title={"Open Source"}>
-              <Link
-                href="https://github.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                GitHub Repo
-              </Link>
-              <Link
-                href="https://www.figma.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Figma
-              </Link>
-            </FooterContentColumn>
-          </FooterContent>
-        </FooterTopSection>
-        <FooterBottomSection>
-          <FooterCopyright>
-            <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
-            <FooterCopyrightLinkWrapper>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Disclaimer
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Privacy Policy
-              </Link>
-            </FooterCopyrightLinkWrapper>
-          </FooterCopyright>
-          <FooterTimestamp time="2024-12-05T10:00:00Z">
-            Last Updated:
-          </FooterTimestamp>
-        </FooterBottomSection>
-      </Footer>
-    );
   },
 };
 
@@ -696,191 +351,6 @@ export const CustomDark: Story = {
     ),
   ],
   render: (args) => {
-    return (
-      <Footer {...args}>
-        <FooterTopSection>
-          <FooterMainInfo>
-            <ImageWithTitle
-              imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-              imgAlt="JataNegara"
-            >
-              Ministry of Digital
-            </ImageWithTitle>
-            <Address>
-              Aras 13, 14 & 15, Blok Menara,{"\n"}
-              Menara Usahawan{"\n"}
-              No. 18, Persiaran Perdana, Presint 2{"\n"}
-              Pusat Pentadbiran Kerajaan Persekutuan{"\n"}
-              62000 Putrajaya, Malaysia
-            </Address>
-            <SocialMedia title="Follow Us">
-              <SocialMediaItem
-                icon={<FacebookIcon />}
-                href={"www.google.com"}
-                name={"Facebook"}
-              />
-              <SocialMediaItem
-                icon={<XIcon />}
-                href={"www.google.com"}
-                name={"X"}
-              />
-              <SocialMediaItem
-                icon={<InstagramIcon />}
-                href={"www.google.com"}
-                name={"Instagram"}
-              />
-              <SocialMediaItem
-                icon={<TikTokIcon />}
-                href={"www.google.com"}
-                name={"TikTok"}
-              />
-            </SocialMedia>
-          </FooterMainInfo>
-          <FooterContent>
-            <FooterContentColumn title={"About Us"}>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Ministry Of Digital
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Directory
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Achievements
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Directory
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Policy
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Media
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Contact Us
-              </Link>
-            </FooterContentColumn>
-            <FooterContentColumn title={"Quick Links"}>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                SpotMe asdkjadjkaskjhda asdkjadjkaskjhda asdkjadjkaskjhda
-                asdkjadjkaskjhda
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                MyGovUC
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                DDMS
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                MyMesyuarat
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                ePenyata Gaji
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                HRMIS
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                ePerolehan
-              </Link>
-            </FooterContentColumn>
-            <FooterContentColumn title={"Open Source"}>
-              <Link
-                href="https://github.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                GitHub Repo
-              </Link>
-              <Link
-                href="https://www.figma.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Figma
-              </Link>
-            </FooterContentColumn>
-          </FooterContent>
-        </FooterTopSection>
-        <FooterBottomSection>
-          <FooterCopyright>
-            <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
-            <FooterCopyrightLinkWrapper>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Disclaimer
-              </Link>
-              <Link
-                href="https://www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Privacy Policy
-              </Link>
-            </FooterCopyrightLinkWrapper>
-          </FooterCopyright>
-          <FooterTimestamp time={new Date()}>Last Updated:</FooterTimestamp>
-        </FooterBottomSection>
-      </Footer>
-    );
+    return <ExampleFooterComponent {...args} />;
   },
 };
