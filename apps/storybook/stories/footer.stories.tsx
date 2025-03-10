@@ -20,7 +20,7 @@ import {
   FacebookIcon,
   InstagramIcon,
   TikTokIcon,
-  TwitterIcon,
+  TwitterXIcon,
 } from "@govtechmy/myds-react/icon";
 
 /**
@@ -245,7 +245,7 @@ export const Custom: Story = {
                 name={"Facebook"}
               />
               <SocialMediaItem
-                icon={<TwitterIcon />}
+                icon={<TwitterXIcon />}
                 href={"www.google.com"}
                 name={"X"}
               />
@@ -448,7 +448,7 @@ export const CustomDark: Story = {
                 name={"Facebook"}
               />
               <SocialMediaItem
-                icon={<TwitterIcon />}
+                icon={<TwitterXIcon />}
                 href={"www.google.com"}
                 name={"X"}
               />

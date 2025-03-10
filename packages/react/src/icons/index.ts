@@ -202,7 +202,7 @@ export * from "./thumbs-up";
 export * from "./tik-tok";
 export * from "./trash";
 export * from "./trophy";
-export * from "./twitter";
+export * from "./twitter-x";
 export * from "./underlined-WYSIWYG";
 export * from "./undo";
 export * from "./unlink-WYSIWYG";

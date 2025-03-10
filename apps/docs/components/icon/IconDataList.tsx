@@ -897,7 +897,7 @@ export const iconDataList: IconData[] = [
     filename: "X",
     name: "x",
     type: "Social Media",
-    svg: <Icons.TwitterIcon />,
+    svg: <Icons.TwitterXIcon />,
   },
   {
     filename: "LinkedIn",
