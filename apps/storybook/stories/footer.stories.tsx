@@ -14,12 +14,17 @@ import {
   FooterCopyrightLinkWrapper,
   FooterContentColumn,
   SocialMediaItem,
+  SiteInfo,
+  FooterRoot,
+  SiteLinkGroup,
+  SiteLinkTitle,
+  SiteLink,
 } from "@govtechmy/myds-react/footer";
 import { Link } from "@govtechmy/myds-react/link";
 import { FacebookIcon } from "../../../packages/react/src/icons/facebook";
 import { InstagramIcon } from "../../../packages/react/src/icons/instagram";
 import { TikTokIcon } from "../../../packages/react/src/icons/tiktok";
-import { XIcon } from "@govtechmy/myds-react/icon";
+import { TwitterIcon, XIcon, YoutubeIcon } from "@govtechmy/myds-react/icon";
 
 /**
  * ### Overview
@@ -72,143 +77,412 @@ type Story = StoryObj<typeof meta>;
 /**
  * Default example showing basic usage of the Footer component
  */
+const ExampleFooterComponent = ({ ...args }) => {
+  const date = new Date();
+
+  const formattedDate = date.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+  return (
+    <FooterRoot {...args}>
+      <Footer>
+        <SiteInfo>
+          <div className="text-txt-black-900 flex items-center gap-x-2.5">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+              width={36}
+              alt="Malaysia Coat of Arms"
+              className="select-none"
+            />
+            <p className="font-poppins text-body-md whitespace-nowrap font-semibold">
+              Kementerian Digital
+            </p>
+          </div>
+          <p className="text-txt-black-700 text-body-sm whitespace-pre">
+            Aras 13, 14 & 15, Blok Menara,{"\n"}
+            Menara Usahawan{"\n"}
+            No. 18, Persiaran Perdana, Presint 2{"\n"}
+            Pusat Pentadbiran Kerajaan Persekutuan{"\n"}
+            62000 Putrajaya, Malaysia
+          </p>
+          <p className="text-txt-black-900 text-body-sm font-semibold">
+            Follow us
+          </p>
+          <div className="flex gap-3">
+            <Link
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook link"
+              underline="none"
+              className="hover:text-txt-black-900"
+            >
+              <FacebookIcon />
+            </Link>
+            <Link
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter link"
+              underline="none"
+              className="hover:text-txt-black-900"
+            >
+              <TwitterIcon />
+            </Link>
+            <Link
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram link"
+              underline="none"
+              className="hover:text-txt-black-900"
+            >
+              <InstagramIcon />
+            </Link>
+            <Link
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Youtube link"
+              underline="none"
+              className="hover:text-txt-black-900"
+            >
+              <YoutubeIcon />
+            </Link>
+          </div>
+        </SiteInfo>
+        <SiteLinkGroup>
+          <SiteLinkTitle>
+            Super super long long long long long title
+          </SiteLinkTitle>
+          <SiteLink>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 1 super super long super super long
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 2
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 3
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 4
+            </Link>
+          </SiteLink>
+        </SiteLinkGroup>
+        <SiteLinkGroup>
+          <SiteLinkTitle>
+            Super super long long long long long title
+          </SiteLinkTitle>
+          <SiteLink>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 1
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 2
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 3
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 4
+            </Link>
+          </SiteLink>
+        </SiteLinkGroup>
+        <SiteLinkGroup>
+          <SiteLinkTitle>
+            Super super long long long long long title
+          </SiteLinkTitle>
+          <SiteLink>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 1
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 2
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 3
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 4
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 5
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 6
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 7
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 8
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 9
+            </Link>
+          </SiteLink>
+        </SiteLinkGroup>
+        <SiteLinkGroup>
+          <SiteLinkTitle>
+            Super super long long long long long title
+          </SiteLinkTitle>
+          <SiteLink>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 1
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 2
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 3
+            </Link>
+            <Link
+              href="www.google.com"
+              underline="hover"
+              className="hover:text-txt-black-900"
+            >
+              Link 4
+            </Link>
+          </SiteLink>
+        </SiteLinkGroup>
+      </Footer>
+      <hr className="bg-otl-gray-200" />
+      <div className="text-txt-black-500 mx-auto flex w-full max-w-[1280px] flex-row justify-between">
+        <div className="flex flex-row gap-3">
+          <p>All Rights Reserved © {date.getFullYear()}</p>
+          <p>|</p>
+          <a href="#">Disclaimer</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <p>Last updated: {formattedDate}</p>
+      </div>
+    </FooterRoot>
+  );
+};
+// const ExampleFooterComponent = ({ ...args }) => {
+//   return (
+//     <Footer {...args}>
+//       <FooterTopSection>
+//         <FooterMainInfo>
+//           <ImageWithTitle
+//             imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+//             imgAlt="JataNegara"
+//           >
+//             Organization Title
+//           </ImageWithTitle>
+//           <Address>
+//             Sample Address Line 1,{"\n"}
+//             Sample Street Name, Sample Area,{"\n"}
+//             Sample District, Sample City,{"\n"}
+//             12345 Sample Postal Code,{"\n"}
+//             Sample Country
+//           </Address>
+//           <SocialMedia title="Follow Us">
+//             <SocialMediaItem
+//               icon={<FacebookIcon />}
+//               href={"www.google.com"}
+//               name={"Facebook"}
+//             />
+//             <SocialMediaItem
+//               icon={<TikTokIcon />}
+//               href={"www.google.com"}
+//               name={"TikTok"}
+//             />
+//           </SocialMedia>
+//         </FooterMainInfo>
+//         <FooterContent>
+//           <FooterContentColumn title={"Title 1"}>
+//             <Link
+//               href="www.google.com"
+//               underline="hover"
+//               className="hover:text-txt-black-900"
+//             >
+//               Link 1
+//             </Link>
+//             <Link
+//               href="www.google.com"
+//               underline="hover"
+//               className="hover:text-txt-black-900"
+//             >
+//               Link 2
+//             </Link>
+//             <Link
+//               href="www.google.com"
+//               underline="hover"
+//               className="hover:text-txt-black-900"
+//             >
+//               Link 3
+//             </Link>
+//             <Link
+//               href="www.google.com"
+//               underline="hover"
+//               className="hover:text-txt-black-900"
+//             >
+//               Link 4
+//             </Link>
+//           </FooterContentColumn>
+//           <FooterContentColumn title={"Title 2"}>
+//             <Link
+//               href="www.google.com"
+//               underline="hover"
+//               className="hover:text-txt-black-900"
+//             >
+//               Link 1
+//             </Link>
+//             <Link
+//               href="www.google.com"
+//               underline="hover"
+//               className="hover:text-txt-black-900"
+//             >
+//               Link 2
+//             </Link>
+//             <Link
+//               href="www.google.com"
+//               underline="hover"
+//               className="hover:text-txt-black-900"
+//             >
+//               Link 3
+//             </Link>
+//             <Link
+//               href="www.google.com"
+//               underline="hover"
+//               className="hover:text-txt-black-900"
+//             >
+//               Link 4
+//             </Link>
+//           </FooterContentColumn>
+//           <FooterContentColumn title={"Open Source"}>
+//             <Link
+//               href="www.google.com"
+//               underline="hover"
+//               className="hover:text-txt-black-900"
+//             >
+//               Github Repo
+//             </Link>
+//             <Link
+//               href="www.google.com"
+//               underline="hover"
+//               className="hover:text-txt-black-900"
+//             >
+//               Figma
+//             </Link>
+//           </FooterContentColumn>
+//         </FooterContent>
+//       </FooterTopSection>
+//       <FooterBottomSection>
+//         <FooterCopyright>
+//           <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
+//           <FooterCopyrightLinkWrapper>
+//             <Link
+//               href="www.google.com"
+//               underline="hover"
+//               className="hover:text-txt-black-900"
+//             >
+//               Disclaimer
+//             </Link>
+//             <Link
+//               href="www.google.com"
+//               underline="hover"
+//               className="hover:text-txt-black-900"
+//             >
+//               Privacy Policy
+//             </Link>
+//           </FooterCopyrightLinkWrapper>
+//         </FooterCopyright>
+//         <FooterTimestamp time="2024-12-05T10:00:00Z">
+//           Last Updated:
+//         </FooterTimestamp>
+//       </FooterBottomSection>
+//     </Footer>
+//   );
+// };
+
 export const Default: Story = {
   render: (args) => {
-    return (
-      <Footer {...args}>
-        <FooterTopSection>
-          <FooterMainInfo>
-            <ImageWithTitle
-              imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-              imgAlt="JataNegara"
-            >
-              Organization Title
-            </ImageWithTitle>
-            <Address>
-              Sample Address Line 1,{"\n"}
-              Sample Street Name, Sample Area,{"\n"}
-              Sample District, Sample City,{"\n"}
-              12345 Sample Postal Code,{"\n"}
-              Sample Country
-            </Address>
-            <SocialMedia title="Follow Us">
-              <SocialMediaItem
-                icon={<FacebookIcon />}
-                href={"www.google.com"}
-                name={"Facebook"}
-              />
-              <SocialMediaItem
-                icon={<TikTokIcon />}
-                href={"www.google.com"}
-                name={"TikTok"}
-              />
-            </SocialMedia>
-          </FooterMainInfo>
-          <FooterContent>
-            <FooterContentColumn title={"Title 1"}>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Link 1
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Link 2
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Link 3
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Link 4
-              </Link>
-            </FooterContentColumn>
-            <FooterContentColumn title={"Title 2"}>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Link 1
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Link 2
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Link 3
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Link 4
-              </Link>
-            </FooterContentColumn>
-            <FooterContentColumn title={"Open Source"}>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Github Repo
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Figma
-              </Link>
-            </FooterContentColumn>
-          </FooterContent>
-        </FooterTopSection>
-        <FooterBottomSection>
-          <FooterCopyright>
-            <FooterCopyrightDate>All Rights Reserved</FooterCopyrightDate>
-            <FooterCopyrightLinkWrapper>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Disclaimer
-              </Link>
-              <Link
-                href="www.google.com"
-                underline="hover"
-                className="hover:text-txt-black-900"
-              >
-                Privacy Policy
-              </Link>
-            </FooterCopyrightLinkWrapper>
-          </FooterCopyright>
-          <FooterTimestamp time="2024-12-05T10:00:00Z">
-            Last Updated:
-          </FooterTimestamp>
-        </FooterBottomSection>
-      </Footer>
-    );
+    return <ExampleFooterComponent {...args} />;
   },
 };
 
@@ -520,7 +794,8 @@ export const CustomDark: Story = {
                 underline="hover"
                 className="hover:text-txt-black-900"
               >
-                SpotMe
+                SpotMe asdkjadjkaskjhda asdkjadjkaskjhda asdkjadjkaskjhda
+                asdkjadjkaskjhda
               </Link>
               <Link
                 href="https://www.google.com"
