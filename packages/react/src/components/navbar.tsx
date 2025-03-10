@@ -1,167 +1,98 @@
-import { FunctionComponent, useEffect, useState } from "react";
-import { clx } from "../utils";
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "./accordion";
-import { Sheet, SheetClose, SheetContent } from "./sheet";
-import { Button, button_cva } from "./button";
+  FunctionComponent,
+  useState,
+  createContext,
+  useContext,
+  ReactNode,
+  ComponentProps,
+} from "react";
+import { clx } from "../utils";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@radix-ui/react-navigation-menu";
+import { Portal } from "@radix-ui/react-portal";
+import { Button } from "./button";
 import { Link } from "./link";
 import { ChevronDownIcon, CrossIcon, HamburgerMenuIcon } from "../icons";
-import { VariantProps, cva } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 
-const headerVariant = cva(
-  ["font-semibold max-w-[223px] font-heading text-txt-black-900"],
+interface NavbarProps extends ComponentProps<"header"> {}
 
-  {
-    variants: {
-      type: {
-        shortname: "text-lg leading-[26px]  ",
-        longname: "text-xs leading-[14px] line-clamp-2",
-      },
-    },
-    defaultVariants: {
-      type: "shortname",
-    },
-  },
-);
-
-// Navbar Main
-//==========================================================================
-interface NavbarProps {
-  showMenu: Boolean;
-  children?: React.ReactNode;
-  className?: string;
-  background?: string;
+interface NavbarContextProps {
+  show: boolean;
+  setShow: (value: boolean) => void;
 }
+const NavbarContext = createContext<NavbarContextProps>({
+  show: false,
+  setShow: () => {},
+});
 
-const Navbar: FunctionComponent<NavbarProps> = ({
-  showMenu,
-  children,
-  className,
-  background,
-}) => {
+const Navbar: FunctionComponent<NavbarProps> = ({ children, className }) => {
+  const [show, setShow] = useState(false);
   return (
-    <header
-      className={clx(
-        "bg-bg-white sticky top-0 z-50 lg:border-b lg:backdrop-blur-[30px] print:hidden",
-        background,
-      )}
-    >
-      <div
+    <NavbarContext.Provider value={{ show, setShow }}>
+      <header
+        id="navbar"
         className={clx(
-          "border-otl-gray-200 bg-bg-white container mx-auto flex h-16 items-center justify-between gap-3 py-3 max-xl:pr-3 max-lg:border-b lg:gap-4",
-          showMenu ? "" : "xl:bg-transparent",
+          "bg-bg-white border-otl-gray-200 shadow-button sticky top-0 z-50 h-16 w-full border-b print:hidden",
           className,
         )}
         data-nosnippet
       >
-        {children}
-      </div>
-    </header>
+        <div className="relative mx-auto flex h-16 max-w-[1280px] items-center justify-between gap-4 px-6 xl:px-0">
+          {children}
+        </div>
+      </header>
+    </NavbarContext.Provider>
   );
 };
-//==========================================================================
 
-// Navbar Container
-//==========================================================================
-interface NavbarContainerProps {
-  children?: React.ReactNode;
-  className?: string;
+interface NavbarLogoProps extends ComponentProps<typeof Link> {
+  src: string;
+  alt: string;
+  maxChars?: number;
 }
-const NavbarContainer: FunctionComponent<NavbarContainerProps> = ({
-  children,
-  className,
-}) => {
-  return (
-    <div
-      className={clx(
-        "text-bg-black-900 flex items-center justify-between gap-3 lg:gap-4",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-};
-//==========================================================================
 
-// Navbar Action Group
-//==========================================================================
-interface NavbarActionGroupProps {
-  children?: React.ReactNode;
-  showMenu: boolean;
-  setMenu: (value: boolean) => void;
-  className?: string;
-}
-const NavbarActionGroup: FunctionComponent<NavbarActionGroupProps> = ({
-  children,
-  showMenu,
-  setMenu,
-  className,
-}) => {
-  return (
-    <div className="flex items-center gap-2">
-      {children}
-      <Button
-        variant="default-outline"
-        className={clx(
-          "block p-2.5 xl:hidden",
-          showMenu && "bg-bg-washed",
-          className,
-        )}
-        onClick={() => setMenu(!showMenu)}
-      >
-        {showMenu ? <CrossIcon /> : <HamburgerMenuIcon />}
-      </Button>
-    </div>
-  );
-};
-//==========================================================================
-
-// Brand Logo
-//==========================================================================
-
-interface BrandLogoProps extends VariantProps<typeof headerVariant> {
-  children?: React.ReactNode;
-  imageSrc: string;
-  alt?: string;
-  href?: string;
-}
-const BrandLogo: FunctionComponent<BrandLogoProps> = ({
-  imageSrc,
+const logo_cva = cva(
+  ["font-semibold max-w-[200px] font-heading text-txt-black-900"],
+  {
+    variants: {
+      too_long: {
+        false: "text-lg leading-[26px]",
+        true: "text-xs leading-[14px] line-clamp-2",
+      },
+    },
+    defaultVariants: {
+      too_long: false,
+    },
+  },
+);
+const NavbarLogo: FunctionComponent<NavbarLogoProps> = ({
+  src,
   alt,
   href = "/",
   children,
+  maxChars = 19,
 }) => {
-  const isStringChild = typeof children === "string";
-  const isLongName = isStringChild && children.length > 19;
-
   return (
     <Link
       href={href}
       underline="none"
-      className={clx("flex h-full w-full items-center gap-2.5")}
+      className="flex h-full w-auto items-center gap-2.5"
     >
       <img
-        src={imageSrc}
+        src={src}
         width={40}
         height={32}
-        style={{
-          width: "auto",
-        }}
-        className="h-8 w-fit select-none"
-        alt={alt || "brand logo"}
+        className="aspect-auto h-full max-h-8 w-auto select-none"
+        alt={alt}
       />
-      {isStringChild ? (
-        <span
-          className={clx(
-            headerVariant({ type: isLongName ? "longname" : "shortname" }),
-          )}
-        >
+      {typeof children === "string" ? (
+        <span className={logo_cva({ too_long: children.length > maxChars })}>
           {children}
         </span>
       ) : (
@@ -170,267 +101,147 @@ const BrandLogo: FunctionComponent<BrandLogoProps> = ({
     </Link>
   );
 };
-//==========================================================================
-
-// Navigation Bar
-//==========================================================================
-
 interface NavigationMenuProps {
-  showMenu?: boolean;
-  setMenu?: (value: boolean) => void;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const NavigationMenuCombo: FunctionComponent<NavigationMenuProps> = ({
-  showMenu = false,
-  setMenu = () => {},
-  children,
-}) => {
+const NavbarMenu: FunctionComponent<NavigationMenuProps> = ({ children }) => {
+  const { show } = useContext(NavbarContext);
   return (
-    <NavigationMenu.Root key="desktop">
-      <Sheet key="mobile" open={showMenu} onOpenChange={setMenu}>
-        <NavigationMenu.List className="group hidden list-none justify-center space-x-1 xl:flex">
+    <NavigationMenu className="grow">
+      {/* Desktop */}
+      <NavigationMenuList className="hidden xl:flex xl:justify-start xl:gap-1">
+        {children}
+      </NavigationMenuList>
+
+      {/* Tablet / Mobile */}
+      <Portal>
+        <div
+          className={clx(
+            "bg-bg-white shadow-context-menu absolute bottom-full z-40 block xl:hidden",
+            "h-fit w-full rounded-b-lg p-3 transition-transform motion-reduce:transition-none",
+            "overflow-autp max-h-full",
+            show && "-mb-16 translate-y-full",
+          )}
+        >
           {children}
-        </NavigationMenu.List>
-        <div className="relative right-0 top-full">
-          <NavigationMenu.Viewport className="shadow-card data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 medium:w-[var(--radix-navigation-menu-viewport-width)] absolute mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-lg" />
         </div>
-
-        <SheetContent
-          side="top"
-          className="bg-bg-white absolute top-full z-10 flex h-[90vh] flex-col gap-1 overflow-scroll rounded-b-xl p-3 xl:hidden"
-        >
-          {children}
-        </SheetContent>
-      </Sheet>
-    </NavigationMenu.Root>
+      </Portal>
+    </NavigationMenu>
   );
 };
 
-interface NavItemsMenuProps {
+interface NavbarMenuItemProps {
   children: React.ReactNode;
   href: string;
-  active: boolean;
   className?: string;
 }
 
-interface NavItemsMenuProps {
-  children: React.ReactNode;
-  href: string;
-  active: boolean;
-  className?: string;
-}
+const navbar_menu_item_cva = cva(
+  [
+    "bg-transparent hover:bg-bg-washed text-txt-black-700 truncate px-2.5 py-1.5",
+    "transition-colors motion-reduce:transition-none list-none",
+    "w-full xl:w-fit text-body-sm flex items-center cursor-pointer",
+  ],
+  {
+    variants: {
+      is_from_dropdown: {
+        true: "text-sm font-normal ml-3 mt-1 xl:ml-0 xl:w-full xl:mt-0 rounded-xs text-left",
+        false: "font-medium rounded-md",
+      },
+    },
+  },
+);
 
-const NavItemsMenu: FunctionComponent<NavItemsMenuProps> = ({
+const NavbarMenuItem: FunctionComponent<NavbarMenuItemProps> = ({
   className,
   children,
   href,
-  active = false,
 }) => {
-  const [isClient, setIsClient] = useState(false);
-  const [clientWindow, setClientWindow] = useState(false);
-
-  // Effect to detect client-side rendering
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (isClient && window) {
-      setClientWindow(window.location.pathname.includes(href));
-    }
-  }, [isClient, href]);
-
+  const is_from_dropdown = useContext(NavbarMenuDropdownContext);
   return (
-    <>
-      {/* Desktop */}
-      <NavigationMenu.Item className="list-none">
-        <Link
-          href={href}
-          data-state={active ? "open" : "close"}
-          underline="none"
-          className={clx(
-            button_cva({ variant: "default-ghost" }),
-            "data-[state=open]:bg-bg-washed w-max bg-transparent transition-colors",
-            "hidden lg:block",
-            clientWindow && "bg-bg-washed-active",
-            className,
-          )}
-        >
-          {children}
-        </Link>
-      </NavigationMenu.Item>
-
-      {/* Mobile */}
-      <SheetClose asChild>
-        <Link
-          href={href}
-          data-state={active ? "open" : "close"}
-          underline="none"
-          className={clx(
-            button_cva({
-              variant: "default-ghost",
-              size: "medium",
-            }),
-            "data-[state=open]:bg-bg-washed flex w-full justify-start text-left text-base",
-            "block lg:hidden",
-            clientWindow && "bg-bg-washed-active",
-            className,
-          )}
-        >
-          {children}
-        </Link>
-      </SheetClose>
-    </>
+    <NavigationMenuItem
+      className={clx(navbar_menu_item_cva({ is_from_dropdown }), className)}
+    >
+      <Link href={href} underline="none" className="w-full">
+        {children}
+      </Link>
+    </NavigationMenuItem>
   );
 };
 
-interface NavItemsDropdownProps {
-  children: React.ReactNode;
-  menu: string;
+interface NavbarMenuDropdownProps {
+  children: ReactNode;
+  title: ReactNode;
   className?: string;
 }
 
-const NavItemsDropdown: FunctionComponent<NavItemsDropdownProps> = ({
+const NavbarMenuDropdownContext = createContext(false);
+
+const NavbarMenuDropdown: FunctionComponent<NavbarMenuDropdownProps> = ({
   children,
-  menu,
+  title,
   className,
 }) => {
-  return [
-    //Desktop
-    <NavigationMenu.Item
-      key="desktop-dropdown"
-      className="relative hidden xl:block"
-    >
-      <NavigationMenu.Trigger
-        className={clx(
-          button_cva({ variant: "default-ghost" }),
-          "data-[state=open]:bg-bg-washed group w-max select-none bg-transparent transition-colors",
-        )}
-      >
-        {menu}
-        <ChevronDownIcon
-          className="relative top-px ml-1 transition duration-200 group-data-[state=open]:rotate-180"
-          aria-hidden="true"
-        />
-      </NavigationMenu.Trigger>
-      <NavigationMenu.Content
-        className={clx(
-          "data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out",
-          "data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out",
-          "data-[motion=from-end]:slide-in-from-right-52",
-          "data-[motion=from-start]:slide-in-from-left-52",
-          "data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52",
-          className,
-        )}
-      >
-        <ul className="bg-bg-white shadow-card list-none rounded-lg border p-3">
-          {children}
-        </ul>
-      </NavigationMenu.Content>
-    </NavigationMenu.Item>,
-    //Mobile
-    <Accordion
-      className="bg-bg-white block xl:hidden"
-      type="single"
-      collapsible
-      key="mobile-dropdown"
-    >
-      <AccordionItem className="border-0" value="item-1">
-        <AccordionTrigger
+  return (
+    <NavbarMenuDropdownContext.Provider value={true}>
+      <NavigationMenuItem key="desktop-dropdown" className="relative list-none">
+        <NavigationMenuTrigger
           className={clx(
-            button_cva({
-              variant: "default-ghost",
-              size: "medium",
-            }),
-            "bg-bg-white justify-start text-left text-base hover:bg-none hover:no-underline focus:ring-0",
+            navbar_menu_item_cva({ is_from_dropdown: false }),
+            "data-[state=open]:bg-bg-washed group w-full select-none bg-transparent transition-colors xl:w-max",
+          )}
+        >
+          {title}
+          <ChevronDownIcon
+            className="relative top-px ml-1.5 size-4 transition group-data-[state=open]:rotate-180 motion-reduce:transition-none"
+            aria-hidden="true"
+          />
+        </NavigationMenuTrigger>
+        <NavigationMenuContent
+          className={clx(
+            "xl:absolute xl:left-0 xl:top-full xl:mt-2 xl:min-w-[220px]",
+            "xl:bg-bg-white xl:shadow-context-menu xl:list-none xl:rounded-md xl:p-1.5",
+            "w-full xl:w-fit",
             className,
           )}
         >
-          {menu}
-        </AccordionTrigger>
-        <AccordionContent>{children}</AccordionContent>
-      </AccordionItem>
-    </Accordion>,
-  ];
+          <ul>{children}</ul>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+    </NavbarMenuDropdownContext.Provider>
+  );
 };
 
-interface NavItemsDropdownItemsProps {
-  href: string;
-  children: React.ReactNode;
+interface NavbarActionProps {
+  children?: React.ReactNode;
   className?: string;
 }
 
-const NavItemsDropdownItems: FunctionComponent<NavItemsDropdownItemsProps> = ({
+const NavbarAction: FunctionComponent<NavbarActionProps> = ({
   children,
-  href,
   className,
 }) => {
-  const [isClient, setIsClient] = useState(false);
-  const [clientWindow, setClientWindow] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (isClient && window) {
-      setClientWindow(window.location.pathname.includes(href));
-    }
-  }, [isClient, href]);
-
+  const { show, setShow } = useContext(NavbarContext);
   return (
-    <>
-      {/* Desktop */}
-      <li key={href} className="hidden list-none lg:block">
-        <Link
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          underline="none"
-          className={clx(
-            button_cva({ variant: "default-ghost" }),
-            "data-[state=open]:bg-bg-washed block w-full justify-start bg-transparent transition-colors",
-            "text-left",
-            clientWindow && "bg-bg-washed-active",
-            className,
-          )}
-        >
-          {children}
-        </Link>
-      </li>
-
-      {/* Mobile */}
-      <SheetClose asChild className="lg:hidden">
-        <li key={href} className="list-none">
-          <Link
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            underline="none"
-            className={clx(
-              button_cva({ variant: "default-ghost", size: "medium" }),
-              clientWindow && "bg-bg-washed-active",
-              "data-[state=open]:bg-bg-washed w-full justify-start text-left text-sm",
-              "h-10 pl-6",
-              className,
-            )}
-          >
-            {children}
-          </Link>
-        </li>
-      </SheetClose>
-    </>
+    <div className="flex items-center justify-end gap-2">
+      {children}
+      <Button
+        variant="default-ghost"
+        className={clx("xl:hidden", className)}
+        onClick={() => setShow(!show)}
+      >
+        {show ? <CrossIcon /> : <HamburgerMenuIcon />}
+      </Button>
+    </div>
   );
 };
 
 export {
   Navbar,
-  NavbarContainer,
-  BrandLogo,
-  NavbarActionGroup,
-  NavigationMenuCombo,
-  NavItemsMenu,
-  NavItemsDropdown,
-  NavItemsDropdownItems,
+  NavbarLogo,
+  NavbarAction,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuDropdown,
 };
