@@ -2,23 +2,26 @@ import {
   Children,
   cloneElement,
   ComponentProps,
+  ComponentPropsWithoutRef,
   forwardRef,
   ForwardRefExoticComponent,
-  FunctionComponent,
   isValidElement,
   ReactElement,
+  ReactNode,
+  RefAttributes,
 } from "react";
 import { clx } from "../utils";
 import { Slot } from "@radix-ui/react-slot";
+import { Link } from "./link";
 
-interface FooterProps extends ComponentProps<"div"> {}
-const Footer: ForwardRefExoticComponent<FooterProps> = forwardRef(
+interface FooterSectionProps extends ComponentProps<"div"> {}
+const FooterSection: ForwardRefExoticComponent<FooterSectionProps> = forwardRef(
   ({ children, className, ...props }, ref) => {
     return (
       <div
         ref={ref}
         className={clx(
-          "grid grid-cols-2 gap-6 md:grid-cols-4 lg:mx-auto lg:max-w-[1280px] lg:grid-cols-12",
+          "border-otl-gray-200 grid grid-cols-2 gap-6 border-b pb-6 md:grid-cols-4 md:pb-8 lg:mx-auto lg:max-w-[1280px] lg:grid-cols-12",
           className,
         )}
         {...props}
@@ -29,8 +32,8 @@ const Footer: ForwardRefExoticComponent<FooterProps> = forwardRef(
   },
 );
 
-interface FooterRootProps extends ComponentProps<"footer"> {}
-const FooterRoot: ForwardRefExoticComponent<FooterRootProps> = forwardRef(
+interface FooterProps extends ComponentProps<"footer"> {}
+const Footer: ForwardRefExoticComponent<FooterProps> = forwardRef(
   ({ children, className, ...props }, ref) => {
     return (
       <footer
@@ -70,53 +73,20 @@ const SiteInfo: ForwardRefExoticComponent<SiteInfoProps> = forwardRef(
   },
 );
 
-interface SiteLinkGroupProps extends ComponentProps<"div"> {}
-const SiteLinkGroup: ForwardRefExoticComponent<SiteLinkGroupProps> = forwardRef(
-  ({ children, className, ...props }, ref) => {
-    return (
-      <div
-        className={clx(
-          "flex flex-col gap-2",
-          "max-lg:col-span-full md:gap-3",
-          "lg:col-span-2",
-          className,
-        )}
-        {...props}
-        ref={ref}
-      >
-        {children}
-      </div>
-    );
-  },
-);
-
-interface SiteLinkTitle extends ComponentProps<"h6"> {
-  asChild?: boolean;
+interface SiteLinkGroupProps extends ComponentProps<"div"> {
+  groupTitle: ReactNode;
 }
-const SiteLinkTitle: ForwardRefExoticComponent<SiteLinkTitle> = forwardRef(
-  ({ children, className, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "h6";
+const SiteLinkGroup: ForwardRefExoticComponent<SiteLinkGroupProps> = forwardRef(
+  ({ children, className, groupTitle, ...props }, ref) => {
+    const titleElement =
+      typeof groupTitle === "string" ? (
+        <h6 className="text-txt-black-900 line-clamp-1 font-semibold">
+          {groupTitle}
+        </h6>
+      ) : (
+        groupTitle
+      );
 
-    return (
-      <Comp
-        className={clx(
-          "text-txt-black-900 line-clamp-1 font-semibold",
-          className,
-        )}
-        ref={ref}
-        {...props}
-      >
-        {children}
-      </Comp>
-    );
-  },
-);
-
-interface SiteLink extends ComponentProps<"nav"> {}
-
-const SiteLink: ForwardRefExoticComponent<SiteLink> = forwardRef(
-  ({ children, className, ...props }, ref) => {
-    // clone the child and add line-clamp-1 to limit text length
     const processedChildren = Children.toArray(children)
       .slice(0, 8)
       .map((child, index) => {
@@ -130,30 +100,101 @@ const SiteLink: ForwardRefExoticComponent<SiteLink> = forwardRef(
           key: index,
         });
       });
-
     return (
-      <nav
+      <div
         className={clx(
-          "gap-x-4.5 grid grid-cols-2 md:grid-cols-4 md:gap-x-6 lg:grid-cols-2",
-          "max-md:gap-y-2 md:max-lg:gap-y-3 lg:gap-y-2",
+          "flex flex-col gap-2",
+          "max-lg:col-span-full md:gap-3",
+          "lg:col-span-2",
           className,
         )}
-        ref={ref}
         {...props}
+        ref={ref}
       >
-        {processedChildren}
-      </nav>
+        {titleElement}
+        <nav
+          className={clx(
+            "gap-x-4.5 grid grid-cols-2 md:grid-cols-4 md:gap-x-6 lg:grid-cols-2",
+            "max-md:gap-y-2 md:max-lg:gap-y-3 lg:gap-y-2",
+            className,
+          )}
+          ref={ref}
+          {...props}
+        >
+          {processedChildren}
+        </nav>
+      </div>
     );
   },
 );
 
+interface FooterLogoProps extends ComponentProps<"div"> {
+  logoTitle: ReactNode;
+  logo: ReactNode;
+}
+const FooterLogo: ForwardRefExoticComponent<FooterLogoProps> = forwardRef(
+  ({ logoTitle, logo, className, ...props }, ref) => {
+    const titleElement =
+      typeof logoTitle === "string" ? (
+        <p className="font-poppins text-body-md font-semibold">{logoTitle}</p>
+      ) : (
+        logoTitle
+      );
+    return (
+      <div
+        className={clx(
+          "text-txt-black-900 flex items-center gap-x-2.5",
+          className,
+        )}
+        {...props}
+        ref={ref}
+      >
+        {logo}
+        {titleElement}
+      </div>
+    );
+  },
+);
+
+interface SiteLinkProps extends ComponentProps<typeof Link> {
+  href?: string;
+}
+
+const SiteLink: ForwardRefExoticComponent<SiteLinkProps> = forwardRef(
+  ({ children, className, asChild = false, href, ...props }, ref) => {
+    if (asChild) {
+      return (
+        <Slot
+          className={clx("hover:text-txt-black-900", className)}
+          ref={ref}
+          {...props}
+        >
+          {children}
+        </Slot>
+      );
+    }
+
+    return (
+      <Link
+        className={clx("hover:text-txt-black-900", className)}
+        ref={ref}
+        href={href}
+        underline="hover"
+        {...props}
+      >
+        {children}
+      </Link>
+    );
+  },
+);
+
+FooterSection.displayName = "FooterSection";
 Footer.displayName = "Footer";
-FooterRoot.displayName = "FooterRoot";
 SiteInfo.displayName = "SiteInfo";
 SiteLinkGroup.displayName = "SiteLinkGroup";
-SiteLinkTitle.displayName = "SiteLinkTitle";
 SiteLink.displayName = "SiteLink";
+FooterLogo.displayName = "FooterLogo";
 
 /*========================================================================================================================*/
 
-export { Footer, SiteInfo, SiteLinkGroup, SiteLinkTitle, SiteLink, FooterRoot };
+export { FooterSection, SiteInfo, SiteLinkGroup, SiteLink, Footer, FooterLogo };
