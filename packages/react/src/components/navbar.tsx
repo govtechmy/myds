@@ -31,7 +31,11 @@ const NavbarContext = createContext<NavbarContextProps>({
   setShow: () => {},
 });
 
-const Navbar: FunctionComponent<NavbarProps> = ({ children, className }) => {
+const Navbar: FunctionComponent<NavbarProps> = ({
+  children,
+  className,
+  ...props
+}) => {
   const [show, setShow] = useState(false);
   return (
     <NavbarContext.Provider value={{ show, setShow }}>
@@ -42,6 +46,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({ children, className }) => {
           className,
         )}
         data-nosnippet
+        {...props}
       >
         <div className="relative mx-auto flex h-16 max-w-[1280px] items-center justify-between gap-4 px-6 xl:px-0">
           {children}
@@ -50,6 +55,8 @@ const Navbar: FunctionComponent<NavbarProps> = ({ children, className }) => {
     </NavbarContext.Provider>
   );
 };
+
+Navbar.displayName = "Navbar";
 
 interface NavbarLogoProps extends ComponentProps<typeof Link> {
   src: string;
@@ -62,8 +69,8 @@ const logo_cva = cva(
   {
     variants: {
       too_long: {
-        false: "text-lg leading-[26px]",
-        true: "text-xs leading-[14px] line-clamp-2",
+        false: "text-body-lg",
+        true: "text-body-xs leading-[14px] line-clamp-2",
       },
     },
     defaultVariants: {
@@ -77,12 +84,15 @@ const NavbarLogo: FunctionComponent<NavbarLogoProps> = ({
   href = "/",
   children,
   maxChars = 19,
+  className,
+  ...props
 }) => {
   return (
     <Link
       href={href}
       underline="none"
-      className="flex h-full w-auto items-center gap-2.5"
+      className={clx("flex h-full w-auto items-center gap-2.5", className)}
+      {...props}
     >
       <img
         src={src}
@@ -101,6 +111,8 @@ const NavbarLogo: FunctionComponent<NavbarLogoProps> = ({
     </Link>
   );
 };
+
+NavbarLogo.displayName = "NavbarLogo";
 interface NavigationMenuProps {
   children: ReactNode;
 }
@@ -131,8 +143,11 @@ const NavbarMenu: FunctionComponent<NavigationMenuProps> = ({ children }) => {
   );
 };
 
-interface NavbarMenuItemProps {
-  children: React.ReactNode;
+NavbarMenu.displayName = "NavbarMenu";
+
+interface NavbarMenuItemProps
+  extends ComponentProps<typeof NavigationMenuItem> {
+  children: ReactNode;
   href: string;
   className?: string;
 }
@@ -157,11 +172,13 @@ const NavbarMenuItem: FunctionComponent<NavbarMenuItemProps> = ({
   className,
   children,
   href,
+  ...props
 }) => {
   const is_from_dropdown = useContext(NavbarMenuDropdownContext);
   return (
     <NavigationMenuItem
       className={clx(navbar_menu_item_cva({ is_from_dropdown }), className)}
+      {...props}
     >
       <Link href={href} underline="none" className="w-full">
         {children}
@@ -169,6 +186,8 @@ const NavbarMenuItem: FunctionComponent<NavbarMenuItemProps> = ({
     </NavigationMenuItem>
   );
 };
+
+NavbarMenuItem.displayName = "NavbarMenuItem";
 
 interface NavbarMenuDropdownProps {
   children: ReactNode;
@@ -213,8 +232,10 @@ const NavbarMenuDropdown: FunctionComponent<NavbarMenuDropdownProps> = ({
   );
 };
 
+NavbarMenuDropdown.displayName = "NavbarMenuDropdown";
+
 interface NavbarActionProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
 }
 
@@ -236,6 +257,8 @@ const NavbarAction: FunctionComponent<NavbarActionProps> = ({
     </div>
   );
 };
+
+NavbarAction.displayName = "NavbarAction";
 
 export {
   Navbar,

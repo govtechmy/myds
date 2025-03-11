@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { createRender } from "../utils";
+import type { Meta } from "@storybook/react";
+import { createStory } from "../utils";
 import {
   Navbar,
   NavbarLogo,
@@ -15,8 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@govtechmy/myds-react/select";
-import React, { useState } from "react";
-import { clx } from "@govtechmy/myds-react/utils";
 import { GlobeIcon, SearchIcon } from "@govtechmy/myds-react/icon";
 import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
 import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
@@ -29,13 +27,8 @@ import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
  *
  * ### Usage
  * ```tsx
- * <Navbar showtitle={showMenu} className="px-2">
- *     <NavbarContainer>
- *         <NavbarLogo
- *             src="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
- *         >
- *             MYDS
- *         </NavbarLogo>
+ *   <Navbar>
+ *      <NavbarLogo src="https://d2391uizq0pg2.cloudfront.net/common/logo.svg">MYDS</NavbarLogo>
  *         <NavbarMenu>
  *             <NavbarMenuItem href="/menu1">
  *                 MinistryProfile
@@ -80,7 +73,6 @@ import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
  *                 </NavbarMenuItem>
  *             </NavItemsDropdown>
  *         </NavbarMenu>
- *     </NavbarContainer>
  *
  *     <NavbarAction showtitle={showMenu} settitle={setMenu}>
  *         <Button variant="default-ghost" className="p-2">
@@ -124,6 +116,15 @@ const meta = {
   parameters: {
     layout: "full",
   },
+  decorators: [
+    (Story) => {
+      return (
+        <div className="h-[300px]">
+          <Story />
+        </div>
+      );
+    },
+  ],
   argTypes: {
     children: {
       control: false,
@@ -136,18 +137,11 @@ const meta = {
 } satisfies Meta<typeof Navbar>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-const DemoNavbar = () => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
-  const [value, setValue] = React.useState("EN");
-  const handleToggle = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  return (
-    <div className={clx(isDarkMode ? "light" : "dark")}>
-      <Navbar>
+export const NavbarCustomMyds = createStory(
+  {
+    children: (
+      <>
         <NavbarLogo
           src="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
           alt="Malaysian Government Design System"
@@ -188,17 +182,10 @@ const DemoNavbar = () => {
 
           {/* Select Language Toggle  : mobile hide if needed  */}
           <div className="hidden sm:block">
-            <Select
-              value={value}
-              onValueChange={setValue}
-              defaultValue="EN"
-              multiple={false}
-              variant="outline"
-              size="small"
-            >
+            <Select defaultValue="EN" variant="outline" size="small">
               <SelectTrigger aria-label="language-selection">
                 <GlobeIcon className="h-4 w-4"></GlobeIcon>
-                <SelectValue>{(value) => value || "EN"}</SelectValue>
+                <SelectValue />
               </SelectTrigger>
               <SelectContent
                 align="end"
@@ -210,28 +197,22 @@ const DemoNavbar = () => {
             </Select>
           </div>
         </NavbarAction>
-      </Navbar>
-    </div>
-  );
-};
+      </>
+    ),
+  },
+  "light",
+);
 
-const KementerianDigitalNavbar = () => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
-  const [value, setValue] = React.useState("EN");
-  const handleToggle = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  return (
-    <div className={clx(isDarkMode ? "light" : "dark")}>
-      <Navbar>
+export const NavbarCustomKementerianDigital = createStory(
+  {
+    children: (
+      <>
         <NavbarLogo
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
           alt="Kementerian Digital"
         >
           Ministry Of Digital
         </NavbarLogo>
-
         <NavbarMenu>
           <NavbarMenuItem href="/menu1">MinistryProfile</NavbarMenuItem>
           <NavbarMenuItem href="/menu2">Policy</NavbarMenuItem>
@@ -262,7 +243,6 @@ const KementerianDigitalNavbar = () => {
             <NavbarMenuItem href="/submenu6">MYNIC Berhad</NavbarMenuItem>
           </NavbarMenuDropdown>
         </NavbarMenu>
-
         <NavbarAction>
           {/* Button Search  : mobile hide if needed  */}
           <Button
@@ -281,14 +261,7 @@ const KementerianDigitalNavbar = () => {
 
           {/* Select Language Toggle : mobile hide if needed */}
           <div className="hidden sm:block">
-            <Select
-              value={value}
-              onValueChange={setValue}
-              defaultValue="EN"
-              multiple={false}
-              variant="outline"
-              size="medium"
-            >
+            <Select defaultValue="EN" variant="outline" size="medium">
               <SelectTrigger aria-label="language-selection">
                 <GlobeIcon className="h-4 w-4"></GlobeIcon>
                 <SelectValue>{(value) => value || "EN"}</SelectValue>
@@ -300,26 +273,8 @@ const KementerianDigitalNavbar = () => {
             </Select>
           </div>
         </NavbarAction>
-      </Navbar>
-    </div>
-  );
-};
-
-export const NavbarCustomMyds = createRender((args: Story["args"]) => {
-  return (
-    <div className="h-[300px]">
-      <DemoNavbar />
-    </div>
-  );
-}, "light");
-
-export const NavbarCustomKementerianDigital = createRender(
-  (args: Story["args"]) => {
-    return (
-      <div className="h-[300px]">
-        <KementerianDigitalNavbar />
-      </div>
-    );
+      </>
+    ),
   },
   "light",
 );
