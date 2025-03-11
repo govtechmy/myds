@@ -126,6 +126,10 @@ const meta = {
             <TabsTrigger value="2">Perodua</TabsTrigger>
             <TabsTrigger value="3">Toyota</TabsTrigger>
             <TabsTrigger value="4">Lamborghini</TabsTrigger>
+            <TabsTrigger value="5">Lamborghini</TabsTrigger>
+            <TabsTrigger value="6">Lamborghini</TabsTrigger>
+            <TabsTrigger value="7">Lamborghini</TabsTrigger>
+            <TabsTrigger value="8">Lamborghini</TabsTrigger>
           </TabsList>
         ),
         "Text + Right Icon": (
