@@ -304,13 +304,13 @@ export const iconDataList: IconData[] = [
     filename: "Icon/outline/filter-descending",
     name: "filter-descending",
     type: "Generic",
-    svg: <Icons.FilterDescendingIcon />,
+    svg: <Icons.FilterDescIcon />,
   },
   {
     filename: "Icon/outline/filter-ascending",
     name: "filter-ascending",
     type: "Generic",
-    svg: <Icons.FilterAscendingIcon />,
+    svg: <Icons.FilterAscIcon />,
   },
   {
     filename: "Icon/outline/map",
