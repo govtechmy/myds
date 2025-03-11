@@ -11,13 +11,8 @@ export type IconDataList = IconData[];
 
 export const iconDataList: IconData[] = [
   //Generic Icons : 120 icons
+  //Remove 1 Icon - Placeholder
 
-  {
-    filename: "Icon/outline/placeholder",
-    name: "placeholder",
-    type: "Generic",
-    svg: <Icons.PlaceholderIcon />,
-  },
   {
     filename: "Icon/outline/hamburger-menu",
     name: "hamburger-menu",

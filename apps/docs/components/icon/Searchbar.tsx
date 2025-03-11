@@ -18,6 +18,7 @@ import {
 } from "@govtechmy/myds-react/tabs";
 import type { IconData } from "./IconDataList";
 import ResultMap from "./ResultMap";
+import { clx } from "@govtechmy/myds-react/utils";
 
 type Props = {
   iconDataList: IconData[];
@@ -107,16 +108,25 @@ export default function SearchBarIcons({ iconDataList }: Props) {
         </SearchBarInputContainer>
       </SearchBar>
 
-      <Tabs defaultValue="2" size="medium" variant="line" className="h-[200px]">
-        <TabsList width="full" className="overflow-x-auto text-nowrap">
-          <TabsTrigger value="1">All</TabsTrigger>
-          <TabsTrigger value="2">Generic</TabsTrigger>
-          <TabsTrigger value="3">Filled</TabsTrigger>
-          <TabsTrigger value="4">WYSIWYG</TabsTrigger>
-          <TabsTrigger value="5">Social Media</TabsTrigger>
-          <TabsTrigger value="6">Media</TabsTrigger>
-          <TabsTrigger value="7">Agency Icon (Legacy)</TabsTrigger>
-        </TabsList>
+      <Tabs defaultValue="2" size="medium" variant="line">
+        <div className="border-otl-gray-200 h-[60px] border-b-2">
+          <TabsList
+            width="full"
+            className={clx(
+              "h-full flex-grow overflow-y-clip overflow-x-scroll scroll-smooth text-nowrap",
+              "before:-bottom-0 before:contents before:h-0 before:bg-transparent",
+            )}
+          >
+            <div className="w-1 shrink-0"></div>
+            <TabsTrigger value="1">All</TabsTrigger>
+            <TabsTrigger value="2">Generic</TabsTrigger>
+            <TabsTrigger value="3">Filled</TabsTrigger>
+            <TabsTrigger value="4">WYSIWYG</TabsTrigger>
+            <TabsTrigger value="5">Social Media</TabsTrigger>
+            <TabsTrigger value="6">Media</TabsTrigger>
+            <TabsTrigger value="7">Agency Icon (Legacy)</TabsTrigger>
+          </TabsList>
+        </div>
 
         {results.map((result, index) => (
           <TabsContent

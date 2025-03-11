@@ -60,7 +60,7 @@ export const DOCXMediaIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (
           y2="11"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
+          <stop stopColor="white" />
           <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
       </defs>
