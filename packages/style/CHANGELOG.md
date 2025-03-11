@@ -1,5 +1,11 @@
 # @govtechmy/myds-style
 
+## 0.0.6
+
+### Patch Changes
+
+- 9d51bae: Refactor Navbar component
+
 ## 0.0.5
 
 ### Patch Changes

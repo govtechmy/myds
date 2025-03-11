@@ -1,5 +1,12 @@
 # @govtechmy/myds-react
 
+## 0.0.15
+
+### Patch Changes
+
+- 9d51bae: Refactor Navbar component
+- 353589f: Restructure Footer component
+
 ## 0.0.14
 
 ### Patch Changes
