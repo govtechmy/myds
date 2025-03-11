@@ -1,5 +1,15 @@
 # @govtechmy/myds-storybook
 
+## 0.0.17
+
+### Patch Changes
+
+- 353589f: Restructure Footer component
+- Updated dependencies [9d51bae]
+- Updated dependencies [353589f]
+  - @govtechmy/myds-react@0.0.15
+  - @govtechmy/myds-style@0.0.6
+
 ## 0.0.16
 
 ### Patch Changes

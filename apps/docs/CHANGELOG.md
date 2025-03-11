@@ -1,5 +1,17 @@
 # @govtechmy/myds-docs
 
+## 0.0.17
+
+### Patch Changes
+
+- 8e8d0d9: Modify Footer docs to reflect the latest change.
+- 3dd63a8: Added usePagination hook docs
+- 21dd39c: Added useToast hook docs
+- Updated dependencies [9d51bae]
+- Updated dependencies [353589f]
+  - @govtechmy/myds-react@0.0.15
+  - @govtechmy/myds-style@0.0.6
+
 ## 0.0.16
 
 ### Patch Changes
