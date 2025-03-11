@@ -75,9 +75,10 @@ const SiteInfo: ForwardRefExoticComponent<SiteInfoProps> = forwardRef(
 
 interface SiteLinkGroupProps extends ComponentProps<"div"> {
   groupTitle: ReactNode;
+  linkCount?: number;
 }
 const SiteLinkGroup: ForwardRefExoticComponent<SiteLinkGroupProps> = forwardRef(
-  ({ children, className, groupTitle, ...props }, ref) => {
+  ({ children, className, groupTitle, linkCount = 8, ...props }, ref) => {
     const titleElement =
       typeof groupTitle === "string" ? (
         <h6 className="text-txt-black-900 line-clamp-1 font-semibold">
@@ -88,7 +89,7 @@ const SiteLinkGroup: ForwardRefExoticComponent<SiteLinkGroupProps> = forwardRef(
       );
 
     const processedChildren = Children.toArray(children)
-      .slice(0, 8)
+      .slice(0, linkCount)
       .map((child, index) => {
         if (!isValidElement(child)) return child;
 
@@ -129,8 +130,8 @@ const SiteLinkGroup: ForwardRefExoticComponent<SiteLinkGroupProps> = forwardRef(
 );
 
 interface FooterLogoProps extends ComponentProps<"div"> {
-  logoTitle: ReactNode;
-  logo: ReactNode;
+  logoTitle?: ReactNode;
+  logo?: ReactNode;
 }
 const FooterLogo: ForwardRefExoticComponent<FooterLogoProps> = forwardRef(
   ({ logoTitle, logo, className, ...props }, ref) => {

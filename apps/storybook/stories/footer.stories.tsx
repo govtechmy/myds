@@ -8,9 +8,12 @@ import {
   FooterLogo,
 } from "@govtechmy/myds-react/footer";
 import { Link } from "@govtechmy/myds-react/link";
-import { FacebookIcon } from "../../../packages/react/src/icons/facebook";
-import { InstagramIcon } from "../../../packages/react/src/icons/instagram";
-import { TwitterIcon, XIcon, YoutubeIcon } from "@govtechmy/myds-react/icon";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TwitterIcon,
+  YoutubeIcon,
+} from "@govtechmy/myds-react/icon";
 
 /**
  * ### Overview
@@ -145,41 +148,41 @@ export const Default: Story = {
             </div>
           </SiteInfo>
           <SiteLinkGroup groupTitle="Super super long long long long long title">
-            <SiteLink href="www.google.com">
+            <SiteLink href="#">
               Link 1 super super long super super long
             </SiteLink>
-            <SiteLink href="www.google.com">Link 2</SiteLink>
-            <SiteLink href="www.google.com">Link 3</SiteLink>
-            <SiteLink href="www.google.com">Link 4</SiteLink>
+            <SiteLink href="#">Link 2</SiteLink>
+            <SiteLink href="#">Link 3</SiteLink>
+            <SiteLink href="#">Link 4</SiteLink>
           </SiteLinkGroup>
           <SiteLinkGroup groupTitle="Super super long long long long long title">
-            <SiteLink href="www.google.com">
+            <SiteLink href="#">
               Link 1 super super long super super long
             </SiteLink>
-            <SiteLink href="www.google.com">Link 2</SiteLink>
-            <SiteLink href="www.google.com">Link 3</SiteLink>
-            <SiteLink href="www.google.com">Link 4</SiteLink>
+            <SiteLink href="#">Link 2</SiteLink>
+            <SiteLink href="#">Link 3</SiteLink>
+            <SiteLink href="#">Link 4</SiteLink>
           </SiteLinkGroup>
           <SiteLinkGroup groupTitle="Super super long long long long long title">
-            <SiteLink href="www.google.com">
+            <SiteLink href="#">
               Link 1 super super long super super long
             </SiteLink>
-            <SiteLink href="www.google.com">Link 2</SiteLink>
-            <SiteLink href="www.google.com">Link 3</SiteLink>
-            <SiteLink href="www.google.com">Link 4</SiteLink>
+            <SiteLink href="#">Link 2</SiteLink>
+            <SiteLink href="#">Link 3</SiteLink>
+            <SiteLink href="#">Link 4</SiteLink>
           </SiteLinkGroup>
           <SiteLinkGroup groupTitle="Super super long long long long long title">
-            <SiteLink href="www.google.com">
+            <SiteLink href="#">
               Link 1 super super long super super long
             </SiteLink>
-            <SiteLink href="www.google.com">Link 2</SiteLink>
-            <SiteLink href="www.google.com">Link 3</SiteLink>
-            <SiteLink href="www.google.com">Link 4</SiteLink>
-            <SiteLink href="www.google.com">Link 5</SiteLink>
-            <SiteLink href="www.google.com">Link 6</SiteLink>
-            <SiteLink href="www.google.com">Link 7</SiteLink>
-            <SiteLink href="www.google.com">Link 8</SiteLink>
-            <SiteLink href="www.google.com">Link 9</SiteLink>
+            <SiteLink href="#">Link 2</SiteLink>
+            <SiteLink href="#">Link 3</SiteLink>
+            <SiteLink href="#">Link 4</SiteLink>
+            <SiteLink href="#">Link 5</SiteLink>
+            <SiteLink href="#">Link 6</SiteLink>
+            <SiteLink href="#">Link 7</SiteLink>
+            <SiteLink href="#">Link 8</SiteLink>
+            <SiteLink href="#">Link 9</SiteLink>
           </SiteLinkGroup>
         </FooterSection>
         <FooterSection className="text-txt-black-500 md:max-lg:gap-4.5 mx-auto flex w-full max-w-[1280px] flex-col justify-between border-none text-sm max-md:gap-4 lg:flex-row lg:gap-6">
@@ -291,41 +294,41 @@ export const CustomDark: Story = {
             </div>
           </SiteInfo>
           <SiteLinkGroup groupTitle="Super super long long long long long title">
-            <SiteLink href="www.google.com">
+            <SiteLink href="#">
               Link 1 super super long super super long
             </SiteLink>
-            <SiteLink href="www.google.com">Link 2</SiteLink>
-            <SiteLink href="www.google.com">Link 3</SiteLink>
-            <SiteLink href="www.google.com">Link 4</SiteLink>
+            <SiteLink href="#">Link 2</SiteLink>
+            <SiteLink href="#">Link 3</SiteLink>
+            <SiteLink href="#">Link 4</SiteLink>
           </SiteLinkGroup>
           <SiteLinkGroup groupTitle="Super super long long long long long title">
-            <SiteLink href="www.google.com">
+            <SiteLink href="#">
               Link 1 super super long super super long
             </SiteLink>
-            <SiteLink href="www.google.com">Link 2</SiteLink>
-            <SiteLink href="www.google.com">Link 3</SiteLink>
-            <SiteLink href="www.google.com">Link 4</SiteLink>
+            <SiteLink href="#">Link 2</SiteLink>
+            <SiteLink href="#">Link 3</SiteLink>
+            <SiteLink href="#">Link 4</SiteLink>
           </SiteLinkGroup>
           <SiteLinkGroup groupTitle="Super super long long long long long title">
-            <SiteLink href="www.google.com">
+            <SiteLink href="#">
               Link 1 super super long super super long
             </SiteLink>
-            <SiteLink href="www.google.com">Link 2</SiteLink>
-            <SiteLink href="www.google.com">Link 3</SiteLink>
-            <SiteLink href="www.google.com">Link 4</SiteLink>
+            <SiteLink href="#">Link 2</SiteLink>
+            <SiteLink href="#">Link 3</SiteLink>
+            <SiteLink href="#">Link 4</SiteLink>
           </SiteLinkGroup>
           <SiteLinkGroup groupTitle="Super super long long long long long title">
-            <SiteLink href="www.google.com">
+            <SiteLink href="#">
               Link 1 super super long super super long
             </SiteLink>
-            <SiteLink href="www.google.com">Link 2</SiteLink>
-            <SiteLink href="www.google.com">Link 3</SiteLink>
-            <SiteLink href="www.google.com">Link 4</SiteLink>
-            <SiteLink href="www.google.com">Link 5</SiteLink>
-            <SiteLink href="www.google.com">Link 6</SiteLink>
-            <SiteLink href="www.google.com">Link 7</SiteLink>
-            <SiteLink href="www.google.com">Link 8</SiteLink>
-            <SiteLink href="www.google.com">Link 9</SiteLink>
+            <SiteLink href="#">Link 2</SiteLink>
+            <SiteLink href="#">Link 3</SiteLink>
+            <SiteLink href="#">Link 4</SiteLink>
+            <SiteLink href="#">Link 5</SiteLink>
+            <SiteLink href="#">Link 6</SiteLink>
+            <SiteLink href="#">Link 7</SiteLink>
+            <SiteLink href="#">Link 8</SiteLink>
+            <SiteLink href="#">Link 9</SiteLink>
           </SiteLinkGroup>
         </FooterSection>
         <FooterSection className="text-txt-black-500 md:max-lg:gap-4.5 mx-auto flex w-full max-w-[1280px] flex-col justify-between border-none text-sm max-md:gap-4 lg:flex-row lg:gap-6">
