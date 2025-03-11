@@ -136,7 +136,7 @@ const NavbarMenu: FunctionComponent<NavigationMenuProps> = ({ children }) => {
             show && "-mb-16 translate-y-full",
           )}
         >
-          {children}
+          <ul>{children}</ul>
         </div>
       </Portal>
     </NavigationMenu>
@@ -234,23 +234,32 @@ const NavbarMenuDropdown: FunctionComponent<NavbarMenuDropdownProps> = ({
 
 NavbarMenuDropdown.displayName = "NavbarMenuDropdown";
 
-interface NavbarActionProps {
+interface NavbarActionProps extends ComponentProps<typeof Button> {
   children?: ReactNode;
   className?: string;
+  onClick?: () => void;
 }
 
 const NavbarAction: FunctionComponent<NavbarActionProps> = ({
   children,
   className,
+  onClick,
+  ...props
 }) => {
   const { show, setShow } = useContext(NavbarContext);
+  const handleToggle = () => {
+    setShow(!show);
+    if (onClick) onClick();
+  };
   return (
     <div className="flex items-center justify-end gap-2">
       {children}
       <Button
         variant="default-ghost"
         className={clx("xl:hidden", className)}
-        onClick={() => setShow(!show)}
+        onClick={handleToggle}
+        aria-label={`${show ? "Close" : "Open"} navigation menu`}
+        {...props}
       >
         {show ? <CrossIcon /> : <HamburgerMenuIcon />}
       </Button>
