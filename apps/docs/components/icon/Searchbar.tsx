@@ -118,13 +118,27 @@ export default function SearchBarIcons({ iconDataList }: Props) {
             )}
           >
             <div className="w-1 shrink-0"></div>
-            <TabsTrigger value="1">All</TabsTrigger>
-            <TabsTrigger value="2">Generic</TabsTrigger>
-            <TabsTrigger value="3">Filled</TabsTrigger>
-            <TabsTrigger value="4">WYSIWYG</TabsTrigger>
-            <TabsTrigger value="5">Social Media</TabsTrigger>
-            <TabsTrigger value="6">Media</TabsTrigger>
-            <TabsTrigger value="7">Agency Icon (Legacy)</TabsTrigger>
+            <TabsTrigger className="before:-bottom-[9px]" value="1">
+              All
+            </TabsTrigger>
+            <TabsTrigger className="before:-bottom-[9px]" value="2">
+              Generic
+            </TabsTrigger>
+            <TabsTrigger className="before:-bottom-[9px]" value="3">
+              Filled
+            </TabsTrigger>
+            <TabsTrigger className="before:-bottom-[9px]" value="4">
+              WYSIWYG
+            </TabsTrigger>
+            <TabsTrigger className="before:-bottom-[9px]" value="5">
+              Social Media
+            </TabsTrigger>
+            <TabsTrigger className="before:-bottom-[9px]" value="6">
+              Media
+            </TabsTrigger>
+            <TabsTrigger className="before:-bottom-[9px]" value="7">
+              Agency Icon (Legacy)
+            </TabsTrigger>
           </TabsList>
         </div>
 
