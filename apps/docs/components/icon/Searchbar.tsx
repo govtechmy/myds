@@ -113,7 +113,7 @@ export default function SearchBarIcons({ iconDataList }: Props) {
           <TabsList
             width="full"
             className={clx(
-              "h-full flex-grow overflow-y-clip overflow-x-scroll scroll-smooth text-nowrap",
+              "no-scrollbar h-full flex-grow overflow-y-clip overflow-x-scroll scroll-smooth text-nowrap",
               "before:-bottom-0 before:contents before:h-0 before:bg-transparent",
             )}
           >
