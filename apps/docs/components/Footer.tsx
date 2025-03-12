@@ -37,9 +37,9 @@ export default function Footer(props: Props) {
                 alt="Jata Negara"
               />
               <div>
-                <h6 className="whitespace-nowrap font-semibold">
+                <span className="whitespace-nowrap font-semibold text-inherit">
                   {props.ministry}
-                </h6>
+                </span>
               </div>
             </div>
             <p
