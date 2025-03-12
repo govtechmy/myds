@@ -32,6 +32,7 @@ export * from "@govtechmy/myds-react/table";
 export * from "@govtechmy/myds-react/data-table";
 export * from "@govtechmy/myds-react/search-bar";
 export * from "@govtechmy/myds-react/masthead";
+export * from "@govtechmy/myds-react/navbar";
 export * from "@govtechmy/myds-react/radio";
 export * from "@govtechmy/myds-react/input-otp";
 export * from "@govtechmy/myds-react/tabs";
@@ -90,7 +91,15 @@ import {
   MastheadSectionTitle,
   MastheadSectionBody,
 } from "@govtechmy/myds-react/masthead";
-import { GovMyIcon, Lock2Icon, LockFillIcon } from "@govtechmy/myds-react/icon";
+import {
+  FacebookIcon,
+  GovMyIcon,
+  InstagramIcon,
+  Lock2Icon,
+  LockFillIcon,
+  TwitterIcon,
+  YoutubeIcon,
+} from "@govtechmy/myds-react/icon";
 import {
   SummaryList,
   SummaryListAction,
@@ -101,16 +110,6 @@ import {
   SummaryListTerm,
 } from "@govtechmy/myds-react/summary-list";
 import { SwapIcon } from "@govtechmy/myds-react/icon";
-import {
-  BrandLogo,
-  Navbar,
-  NavbarActionGroup,
-  NavbarContainer,
-  NavigationMenuCombo,
-  NavItemsDropdown,
-  NavItemsDropdownItems,
-  NavItemsMenu,
-} from "@govtechmy/myds-react/navbar";
 import {
   GlobeIcon,
   MoonIcon,
@@ -881,211 +880,8 @@ export const SimplePagination = forwardRef<HTMLElement, AutoPaginationProps>(
 );
 SimplePagination.displayName = "SimplePagination";
 
-interface PreviewNavbarProps extends ComponentProps<typeof Navbar> {}
-
-export const PreviewNavbar: FunctionComponent<PreviewNavbarProps> = (props) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
-  const [value, setValue] = React.useState("EN");
-  const [showMenu, setMenu] = useState<boolean>(false);
-  const handleToggle = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  return (
-    <Navbar showMenu={showMenu} className="px-2">
-      <NavbarContainer>
-        <BrandLogo imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg">
-          MYDS
-        </BrandLogo>
-
-        <NavigationMenuCombo showMenu={showMenu} setMenu={setMenu}>
-          <NavItemsMenu href="/menu1" active={false}>
-            Menu 1
-          </NavItemsMenu>
-          <NavItemsMenu href="/menu2" active={false}>
-            Menu 2
-          </NavItemsMenu>
-
-          <NavItemsDropdown menu="Menu Dropdown">
-            <NavItemsDropdownItems href="/submenu1">
-              Submenu 1
-            </NavItemsDropdownItems>
-            <NavItemsDropdownItems href="/submenu2">
-              Submenu 2
-            </NavItemsDropdownItems>
-            <NavItemsDropdownItems href="/submenu3">
-              Submenu 3
-            </NavItemsDropdownItems>
-            <NavItemsDropdownItems href="/submenu1">
-              Submenu 4
-            </NavItemsDropdownItems>
-            <NavItemsDropdownItems href="/submenu2">
-              Submenu 5
-            </NavItemsDropdownItems>
-            <NavItemsDropdownItems href="/submenu3">
-              Submenu 6
-            </NavItemsDropdownItems>
-            <NavItemsDropdownItems href="/submenu3">
-              Submenu 7
-            </NavItemsDropdownItems>
-          </NavItemsDropdown>
-
-          <NavItemsMenu href="/menu3" active={false}>
-            Menu 3
-          </NavItemsMenu>
-        </NavigationMenuCombo>
-      </NavbarContainer>
-
-      <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
-        {/* Button Search  : mobile hide if needed  */}
-        <Button variant="default-ghost" className="p-2">
-          <SearchIcon></SearchIcon>
-        </Button>
-
-        {/* Button Light Mode Toggle  : mobile hide if needed  */}
-        <Button variant="default-ghost" className="p-2" onClick={handleToggle}>
-          {isDarkMode ? <SunIcon /> : <MoonIcon />}
-        </Button>
-
-        {/* Select Language Toggle  : mobile hide if needed  */}
-        <div className="hidden sm:block">
-          <Select
-            value={value}
-            onValueChange={setValue}
-            defaultValue="EN"
-            multiple={false}
-            variant="outline"
-            size="medium"
-          >
-            <SelectTrigger>
-              <GlobeIcon className="h-4 w-4"></GlobeIcon>
-              <SelectValue>{(value) => value || "EN"}</SelectValue>
-            </SelectTrigger>
-            <SelectContent className="font-body rounded-[4px] py-1">
-              <SelectItem value="EN">EN</SelectItem>
-              <SelectItem value="BM">BM</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </NavbarActionGroup>
-    </Navbar>
-  );
-};
-
-interface PreviewBrandLogoProps extends ComponentProps<typeof BrandLogo> {}
-
-export const PreviewBrandLogo: FunctionComponent<PreviewBrandLogoProps> = (
-  props,
-) => {
-  return (
-    <BrandLogo
-      imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
-      href="/"
-    >
-      MYDS
-    </BrandLogo>
-  );
-};
-
-export const PreviewNavItemsMenu: FunctionComponent<PreviewNavbarProps> = (
-  props,
-) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
-  const [value, setValue] = React.useState("EN");
-  const [showMenu, setMenu] = useState<boolean>(false);
-  const handleToggle = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  return (
-    <Navbar showMenu={showMenu} className="px-2">
-      <NavbarContainer>
-        <NavigationMenuCombo showMenu={showMenu} setMenu={setMenu}>
-          <NavItemsMenu href="/menu1" active={false}>
-            Menu 1
-          </NavItemsMenu>
-          <NavItemsMenu href="/menu2" active={false}>
-            Menu 2
-          </NavItemsMenu>
-
-          <NavItemsDropdown menu="Menu Dropdown">
-            <NavItemsDropdownItems href="/submenu1">
-              Submenu 1
-            </NavItemsDropdownItems>
-            <NavItemsDropdownItems href="/submenu2">
-              Submenu 2
-            </NavItemsDropdownItems>
-            <NavItemsDropdownItems href="/submenu3">
-              Submenu 3
-            </NavItemsDropdownItems>
-          </NavItemsDropdown>
-
-          <NavItemsMenu href="/menu3" active={false}>
-            Menu 3
-          </NavItemsMenu>
-        </NavigationMenuCombo>
-      </NavbarContainer>
-
-      <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
-        <div className="block h-10 w-[200px] lg:hidden"></div>
-      </NavbarActionGroup>
-    </Navbar>
-  );
-};
-
-export const PreviewActionGroup: FunctionComponent<PreviewNavbarProps> = (
-  props,
-) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
-  const [value, setValue] = React.useState("EN");
-  const [showMenu, setMenu] = useState<boolean>(false);
-  const handleToggle = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  return (
-    <Navbar showMenu={showMenu} className="px-2">
-      <NavbarContainer></NavbarContainer>
-
-      <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
-        {/* Button Search  : mobile hide if needed  */}
-        <Button variant="default-ghost" className="p-2">
-          <SearchIcon></SearchIcon>
-        </Button>
-
-        {/* Button Light Mode Toggle  : mobile hide if needed  */}
-        <Button variant="default-ghost" className="p-2" onClick={handleToggle}>
-          {isDarkMode ? <SunIcon /> : <MoonIcon />}
-        </Button>
-
-        {/* Select Language Toggle  : mobile hide if needed  */}
-        <div className="hidden sm:block">
-          <Select
-            value={value}
-            onValueChange={setValue}
-            defaultValue="EN"
-            multiple={false}
-            variant="outline"
-            size="medium"
-          >
-            <SelectTrigger>
-              <GlobeIcon className="h-4 w-4"></GlobeIcon>
-              <SelectValue>{(value) => value || "EN"}</SelectValue>
-            </SelectTrigger>
-            <SelectContent className="font-body rounded-[4px] py-1">
-              <SelectItem value="EN">EN</SelectItem>
-              <SelectItem value="BM">BM</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </NavbarActionGroup>
-    </Navbar>
-  );
-};
-
 import {
   Pagination,
-  PaginationContext,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
@@ -1094,11 +890,17 @@ import {
   PaginationPrevious,
 } from "@govtechmy/myds-react/pagination";
 import { usePagination } from "@govtechmy/myds-react/hooks";
+import {
+  Footer,
+  FooterLogo,
+  FooterSection,
+  SiteInfo,
+  SiteLink,
+  SiteLinkGroup,
+} from "@govtechmy/myds-react/footer";
+import { Link } from "@govtechmy/myds-react/link";
 
 export const SelfPagination = ({ count = 200, limit = 10, page = 1 }) => {
-  // const count = 200;
-  // const limit = 10;
-  // const page = 1;
   const { visiblePages, max } = usePagination({ count, limit, page });
   const pageFn = (page: number) => console.log(page);
 
@@ -1132,4 +934,197 @@ export const SelfPagination = ({ count = 200, limit = 10, page = 1 }) => {
     </Pagination>
   );
 };
-SelfPagination.displayName = "SelfPagination";
+
+export const SiteInfoComponent = () => {
+  return (
+    <SiteInfo className="not-prose">
+      <div className="text-txt-black-900 flex items-center gap-x-2.5">
+        <FooterLogo
+          logoTitle={
+            <p className="font-poppins text-body-md whitespace-nowrap font-semibold">
+              Kementerian Digital
+            </p>
+          }
+          logo={
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+              width={36}
+              height={30}
+              alt="Malaysia Coat of Arms"
+              className="select-none"
+            />
+          }
+        />
+      </div>
+      <p className="text-txt-black-700 text-body-sm">
+        Aras 13, 14 & 15, Blok Menara, Menara Usahawan, No. 18, Persiaran
+        Perdana, Presint 2, Pusat Pentadbiran Kerajaan Persekutuan, 62000
+        Putrajaya, Malaysia
+      </p>
+      <p className="text-txt-black-900 text-body-sm font-semibold">Follow us</p>
+      <div className="flex gap-3">
+        <Link
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook link"
+          underline="none"
+          className="hover:text-txt-black-900"
+        >
+          <FacebookIcon className="text-txt-black-700" />
+        </Link>
+        <Link
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Twitter link"
+          underline="none"
+          className="hover:text-txt-black-900"
+        >
+          <TwitterIcon className="text-txt-black-700" />
+        </Link>
+        <Link
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram link"
+          underline="none"
+          className="hover:text-txt-black-900"
+        >
+          <InstagramIcon className="text-txt-black-700" />
+        </Link>
+        <Link
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Youtube link"
+          underline="none"
+          className="hover:text-txt-black-900"
+        >
+          <YoutubeIcon className="text-txt-black-700" />
+        </Link>
+      </div>
+    </SiteInfo>
+  );
+};
+
+export const FooterComponent = () => {
+  return (
+    <Footer>
+      <FooterSection>
+        <SiteInfo className="not-prose">
+          <div className="text-txt-black-900 flex items-center gap-x-2.5">
+            <FooterLogo
+              logo={
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+                  width={36}
+                  height={30}
+                  alt="Malaysia Coat of Arms"
+                  className="select-none"
+                />
+              }
+            />
+          </div>
+          <p className="text-txt-black-700 text-body-sm">
+            Aras 13, 14 & 15, Blok Menara, Menara Usahawan, No. 18, Persiaran
+            Perdana, Presint 2, Pusat Pentadbiran Kerajaan Persekutuan, 62000
+            Putrajaya, Malaysia
+          </p>
+          <p className="text-txt-black-900 text-body-sm font-semibold">
+            Follow us
+          </p>
+          <div className="flex gap-3">
+            <Link
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook link"
+              underline="none"
+              className="hover:text-txt-black-900"
+            >
+              <FacebookIcon className="text-txt-black-700" />
+            </Link>
+            <Link
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter link"
+              underline="none"
+              className="hover:text-txt-black-900"
+            >
+              <TwitterIcon className="text-txt-black-700" />
+            </Link>
+            <Link
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram link"
+              underline="none"
+              className="hover:text-txt-black-900"
+            >
+              <InstagramIcon className="text-txt-black-700" />
+            </Link>
+            <Link
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Youtube link"
+              underline="none"
+              className="hover:text-txt-black-900"
+            >
+              <YoutubeIcon className="text-txt-black-700" />
+            </Link>
+          </div>
+        </SiteInfo>
+        <SiteLinkGroup groupTitle="Super super long long long long long title">
+          <SiteLink href="#">Link 1 super super long super super long</SiteLink>
+          <SiteLink href="#">Link 2</SiteLink>
+          <SiteLink href="#">Link 3</SiteLink>
+          <SiteLink href="#">Link 4</SiteLink>
+        </SiteLinkGroup>
+        <SiteLinkGroup groupTitle="Super super long long long long long title">
+          <SiteLink href="#">Link 1 super super long super super long</SiteLink>
+          <SiteLink href="#">Link 2</SiteLink>
+          <SiteLink href="#">Link 3</SiteLink>
+          <SiteLink href="#">Link 4</SiteLink>
+        </SiteLinkGroup>
+        <SiteLinkGroup groupTitle="Super super long long long long long title">
+          <SiteLink href="#">Link 1 super super long super super long</SiteLink>
+          <SiteLink href="#">Link 2</SiteLink>
+          <SiteLink href="#">Link 3</SiteLink>
+          <SiteLink href="#">Link 4</SiteLink>
+        </SiteLinkGroup>
+        <SiteLinkGroup groupTitle="Super super long long long long long title">
+          <SiteLink href="#">Link 1 super super long super super long</SiteLink>
+          <SiteLink href="#">Link 2</SiteLink>
+          <SiteLink href="#">Link 3</SiteLink>
+          <SiteLink href="#">Link 4</SiteLink>
+          <SiteLink href="#">Link 5</SiteLink>
+          <SiteLink href="#">Link 6</SiteLink>
+          <SiteLink href="#">Link 7</SiteLink>
+          <SiteLink href="#">Link 8</SiteLink>
+          <SiteLink href="#">Link 9</SiteLink>
+        </SiteLinkGroup>
+      </FooterSection>
+    </Footer>
+  );
+};
+
+export const SiteLinkGroupComponent = () => {
+  return (
+    <SiteLinkGroup groupTitle="Super super long long long long long long long long title">
+      <SiteLink href="#">
+        Link 1 super super long super super long long long long
+      </SiteLink>
+      <SiteLink href="#">Link 2</SiteLink>
+      <SiteLink href="#">Link 3</SiteLink>
+      <SiteLink href="#">Link 4</SiteLink>
+      <SiteLink href="#">Link 5</SiteLink>
+      <SiteLink href="#">Link 6</SiteLink>
+      <SiteLink href="#">Link 7</SiteLink>
+      <SiteLink href="#">Link 8</SiteLink>
+      <SiteLink href="#">Link 9</SiteLink>
+    </SiteLinkGroup>
+  );
+};

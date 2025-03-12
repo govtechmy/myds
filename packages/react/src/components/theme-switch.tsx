@@ -16,7 +16,6 @@ import {
   SelectContent,
 } from "./select";
 import { Slot } from "@radix-ui/react-slot";
-import { cva } from "class-variance-authority";
 
 interface Theme {
   label: string;
@@ -27,6 +26,7 @@ interface Theme {
 interface ThemeSwitch {
   as?: "toggle" | "select";
   themes?: Array<Theme>;
+  onChange?: (value: string) => void;
 }
 
 const ThemeSwitch: FunctionComponent<ThemeSwitch> = ({
@@ -35,17 +35,40 @@ const ThemeSwitch: FunctionComponent<ThemeSwitch> = ({
     { label: "Light", value: "light", icon: <SunIcon /> },
     { label: "Dark", value: "dark", icon: <MoonIcon /> },
   ],
+  onChange,
 }) => {
   const { theme, setTheme, defaultTheme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const getTheme = (value: string) =>
+    themes.find((theme) => theme.value === value);
+
+  const displayIcon = (value?: string | null) => {
+    if (!value) return null;
+    const _theme = getTheme(value);
+    if (isValidElement(_theme?.icon))
+      return (
+        <Slot className={"text-txt-black-900 size-4 flex-shrink-0"}>
+          {_theme?.icon}
+        </Slot>
+      );
+    return _theme?.icon;
+  };
+
   /*------------------ as toggle -----------------*/
-  const handleToggle = () => {
+  const handleChange = (value?: string) => {
     if (themes.length <= 1) return;
 
-    const nextIndex = (currentIndex + 1) % themes.length;
-    setCurrentIndex(nextIndex);
-    setTheme(themes[nextIndex]!.value);
+    if (as === "toggle") {
+      const nextIndex = (currentIndex + 1) % themes.length;
+      setCurrentIndex(nextIndex);
+      setTheme(themes[nextIndex]!.value);
+      if (onChange) onChange(themes[nextIndex]!.value);
+    } else if (as === "select") {
+      if (!value) return;
+      setTheme(value);
+      if (onChange) onChange(value);
+    }
   };
 
   useEffect(() => {
@@ -60,36 +83,24 @@ const ThemeSwitch: FunctionComponent<ThemeSwitch> = ({
       <Button
         variant="default-ghost"
         className="aspect-square flex-shrink-0 rounded-md"
-        onClick={handleToggle}
+        onClick={() => handleChange()}
+        size="small"
         aria-label={themes[currentIndex]?.label}
+        iconOnly
       >
-        {themes[currentIndex]?.icon || themes[currentIndex]?.label}
+        {displayIcon(themes[currentIndex]?.value) ||
+          themes[currentIndex]?.label}
       </Button>
     );
 
   /*------------------ as select -----------------*/
 
-  const getTheme = (value: string) =>
-    themes.find((theme) => theme.value === value);
-
-  const displayIcon = (value: string) => {
-    const _theme = getTheme(value);
-    if (isValidElement(_theme?.icon))
-      return (
-        <Slot className={"text-txt-black-900 size-4 flex-shrink-0"}>
-          {_theme?.icon}
-        </Slot>
-      );
-    return _theme?.icon;
-  };
-
   return (
     <Select
-      multiple={false}
-      size={"small"}
-      variant={"outline"}
+      size="small"
+      variant="outline"
       value={theme || defaultTheme}
-      onValueChange={(value) => setTheme(value)}
+      onValueChange={handleChange}
     >
       <SelectTrigger>
         <SelectValue>

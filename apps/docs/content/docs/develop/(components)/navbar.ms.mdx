@@ -1,9 +1,8 @@
 ---
-title: Navbar
-description: Komponen Navbar ialah bar navigasi standard untuk laman web kerajaan Malaysia.
+title: Bar Navigasi
+description: Komponen Bar Navigasi menetapkan menu navigasi yang jelas untuk pengguna melayari laman web.
 ---
 
-import { clx } from "@govtechmy/myds-react/utils";
 import {
   GlobeIcon,
   MoonIcon,
@@ -14,145 +13,138 @@ import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
 import {
   Button,
-  PreviewNavbar,
-  PreviewBrandLogo,
-  PreviewNavItemsMenu,
-  PreviewActionGroup,
+  ButtonIcon,
+  Navbar,
+  NavbarLogo,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuDropdown,
+  NavbarAction,
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+  ThemeSwitch,
 } from "@/components/myds";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton" className="not-prose">
-  <Tab value="Pratonton">
-    <div className="h-[250px] w-max overflow-scroll px-2">
-      <div className="origin-top-left scale-[0.9]">
-        <PreviewNavbar />
-      </div>
+  <Tab value="Pratonton" className="p-0">
+    <div className="h-[250px] scale-90 w-full">
+      <Navbar>
+        <NavbarLogo
+          src="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+          alt="Sistem Reka Bentuk Kerajaan Malaysia"
+        >
+          <span className="font-semibold text-body-lg font-heading text-txt-black-900">MYDS</span>
+        </NavbarLogo>
+
+        <NavbarMenu>
+          <NavbarMenuItem href="/menu1">Menu 1</NavbarMenuItem>
+          <NavbarMenuItem href="/menu2">Menu 2</NavbarMenuItem>
+          <NavbarMenuDropdown title="Menu Dropdown">
+            <NavbarMenuItem href="/submenu1">Submenu 1</NavbarMenuItem>
+            <NavbarMenuItem href="/submenu2">Submenu 2</NavbarMenuItem>
+            <NavbarMenuItem href="/submenu3">Submenu 3</NavbarMenuItem>
+            <NavbarMenuItem href="/submenu1">Submenu 4</NavbarMenuItem>
+          </NavbarMenuDropdown>
+          <NavbarMenuItem href="/menu3">Menu 3</NavbarMenuItem>
+        </NavbarMenu>
+
+        <NavbarAction>
+          {/* Butang Carian: sembunyikan pada mudah alih jika perlu */}
+          <Button
+            variant="default-ghost"
+            iconOnly
+            aria-label="butang-carian"
+            size={"small"}
+          >
+            <ButtonIcon>
+              <SearchIcon />
+            </ButtonIcon>
+          </Button>
+
+          {/* Butang Tukar Mod Cahaya: sembunyikan pada mudah alih jika perlu */}
+          <ThemeSwitch as="toggle" />
+
+          {/* Pilihan Bahasa: sembunyikan pada mudah alih jika perlu */}
+          <div className="hidden sm:block">
+            <Select defaultValue="EN" variant="outline" size="small">
+              <SelectTrigger aria-label="pilihan-bahasa">
+                <GlobeIcon className="h-4 w-4"></GlobeIcon>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent
+                align="end"
+                className="font-body rounded-[4px] py-1"
+              >
+                <SelectItem value="EN">EN</SelectItem>
+                <SelectItem value="BM">BM</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </NavbarAction>
+      </Navbar>
     </div>
+
   </Tab>
 
   <Tab value="Kod">
-  ```tsx
-<Navbar showMenu={showMenu} className="px-2">
-    <NavbarContainer>
-        <BrandLogo
-            imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+```tsx
+<Navbar>
+  <NavbarLogo
+    src="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+    alt="Sistem Reka Bentuk Kerajaan Malaysia"
+  >
+    MYDS
+  </NavbarLogo>
+  <NavbarMenu>
+    <NavbarMenuItem href="/menu1">Menu 1</NavbarMenuItem>
+    <NavbarMenuItem href="/menu2">Menu 2</NavbarMenuItem>
+    <NavbarMenuDropdown title="Menu Dropdown">
+      <NavbarMenuItem href="/submenu1">Submenu 1</NavbarMenuItem>
+      <NavbarMenuItem href="/submenu2">Submenu 2</NavbarMenuItem>
+      <NavbarMenuItem href="/submenu3">Submenu 3</NavbarMenuItem>
+      <NavbarMenuItem href="/submenu1">Submenu 4</NavbarMenuItem>
+    </NavbarMenuDropdown>
+    <NavbarMenuItem href="/menu3">Menu 3</NavbarMenuItem>
+  </NavbarMenu>
+  <NavbarAction>
+    {/* Butang Carian: sembunyikan pada mudah alih jika perlu */}
+    <Button
+      variant="default-ghost"
+      iconOnly
+      aria-label="butang-carian"
+      size={"small"}
+    >
+      <ButtonIcon>
+        <SearchIcon />
+      </ButtonIcon>
+    </Button>
+
+    {/* Butang Tukar Mod Cahaya: sembunyikan pada mudah alih jika perlu */}
+    <ThemeSwitch as="toggle" />
+
+    {/* Pilihan Bahasa: sembunyikan pada mudah alih jika perlu */}
+    <div className="hidden sm:block">
+      <Select defaultValue="EN" variant="outline" size="small">
+        <SelectTrigger aria-label="pilihan-bahasa">
+          <GlobeIcon className="h-4 w-4"></GlobeIcon>
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent
+          align="end"
+          className="font-body rounded-[4px] py-1"
         >
-            MYDS
-        </BrandLogo>
+          <SelectItem value="EN">EN</SelectItem>
+          <SelectItem value="BM">BM</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
 
-        <NavigationMenuCombo
-            showMenu={showMenu}
-            setMenu={setMenu}
-            childrenDesktop={
-                <>
-                    <NavItemsMenu href="/menu1" active={false}>
-                        Menu 1
-                    </NavItemsMenu>
-                    <NavItemsMenu href="/menu2" active={false}>
-                        Menu 2
-                    </NavItemsMenu>
-
-                    <NavItemsDropdown menu="Menu Dropdown">
-                        <NavItemsDropdownItems href="/submenu1">
-                            Submenu 1
-                        </NavItemsDropdownItems>
-                        <NavItemsDropdownItems href="/submenu2">
-                            Submenu 2
-                        </NavItemsDropdownItems>
-                        <NavItemsDropdownItems href="/submenu3">
-                            Submenu 3
-                        </NavItemsDropdownItems>
-                        <NavItemsDropdownItems href="/submenu1">
-                            Submenu 4
-                        </NavItemsDropdownItems>
-                        <NavItemsDropdownItems href="/submenu2">
-                            Submenu 5
-                        </NavItemsDropdownItems>
-                        <NavItemsDropdownItems href="/submenu3">
-                            Submenu 6
-                        </NavItemsDropdownItems>
-                        <NavItemsDropdownItems href="/submenu3">
-                            Submenu 7
-                        </NavItemsDropdownItems>
-                    </NavItemsDropdown>
-
-                    <NavItemsMenu href="/menu3" active={false}>
-                        Menu 3
-                    </NavItemsMenu>
-                </>
-            }
-            childrenMobile={
-                <>
-                    <NavItemsMenu href="/menu1" active={false}>
-                        <div>Menu 1</div>
-                    </NavItemsMenu>
-                    <NavItemsMenu href="/menu2" active={false}>
-                        Menu 2
-                    </NavItemsMenu>
-                    <NavItemsDropdown menu="Menu Dropdown">
-                        <NavItemsDropdownItems href="/submenu1">
-                            Submenu 1
-                        </NavItemsDropdownItems>
-                        <NavItemsDropdownItems href="/submenu2">
-                            Submenu 2
-                        </NavItemsDropdownItems>
-                        <NavItemsDropdownItems href="/submenu3">
-                            Submenu 3
-                        </NavItemsDropdownItems>
-                        <NavItemsDropdownItems href="/submenu1">
-                            Submenu 4
-                        </NavItemsDropdownItems>
-                        <NavItemsDropdownItems href="/submenu2">
-                            Submenu 5
-                        </NavItemsDropdownItems>
-                        <NavItemsDropdownItems href="/submenu3">
-                            Submenu 6
-                        </NavItemsDropdownItems>
-                        <NavItemsDropdownItems href="/submenu3">
-                            Submenu 7
-                        </NavItemsDropdownItems>
-                    </NavItemsDropdown>
-                    <NavItemsMenu href="/menu3" active={false}>
-                        Menu 3
-                    </NavItemsMenu>
-                </>
-            }
-        ></NavigationMenuCombo>
-    </NavbarContainer>
-
-    <NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
-        <Button variant="default-ghost" className="p-2">
-            <SearchIcon></SearchIcon>
-        </Button>
-
-        <Button
-            variant="default-ghost"
-            className="p-2"
-            onClick={handleToggle}
-        >
-            {isDarkMode ? <SunIcon /> : <MoonIcon />}
-        </Button>
-
-        <Select
-            value={value}
-            onValueChange={setValue}
-            defaultValue="EN"
-            multiple={false}
-            variant="outline"
-            size="medium"
-        >
-            <SelectTrigger>
-                <GlobeIcon className="h-4 w-4"></GlobeIcon>
-                <SelectValue>{(value) => value || "EN"}</SelectValue>
-            </SelectTrigger>
-            <SelectContent className="font-body rounded-[4px] py-1">
-                <SelectItem value="EN">EN</SelectItem>
-                <SelectItem value="BM">BM</SelectItem>
-            </SelectContent>
-        </Select>
-    </NavbarActionGroup>
-
+  </NavbarAction>
 </Navbar>
 ```
 </Tab>
@@ -172,13 +164,11 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 ```ts copy title="Import"
 import {
   Navbar,
-  BrandLogo,
-  NavbarContainer,
-  NavbarActionGroup,
-  NavItemsDropdown,
-  NavItemsDropdownItems,
-  NavItemsMenu,
-  NavigationMenuCombo,
+  NavbarLogo,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuDropdown,
+  NavbarAction,
 } from "@govtechmy/myds-react/navbar";
 ```
 
@@ -186,212 +176,171 @@ import {
 export default () => {
   return (
     <Navbar>
-      <NavbarContainer>
-        <BrandLogo />
-        <NavigationMenuCombo>
-          <NavItemsMenu />
-          <NavItemsDropdown>
-            <NavItemsDropdownItems />
-          </NavItemsDropdown>
-        </NavigationMenuCombo>
-      </NavbarContainer>
+      <NavbarLogo />
+      <NavbarMenu>
+        <NavbarMenuItem />
+        <NavbarMenuDropdown>
+          <NavbarMenuItem />
+        </NavbarMenuDropdown>
+      </NavbarMenu>
       <NavbarActionGroup />
     </Navbar>
   );
 };
 ```
 
----
+## Contoh
 
-### Pembungkus Utama: `Navbar`
-
-`Navbar` berfungsi sebagai wadah utama untuk kandungan bar navigasi. Ia menyokong penyesuaian melalui props, termasuk keupayaan untuk memaparkan atau menyembunyikan menu, menambah elemen kanak-kanak, dan menerapkan nama kelas tambahan. Semua subkomponen disusun di dalam pembalut ini. Ia dibahagikan kepada dua bahagian utama:
-
-1. `NavbarContainer`
-2. `NavbarActionGroup`
-
----
-
-## 1. NavbarContainer
-
-`NavbarContainer` adalah bahagian kiri bar navigasi dan mengandungi dua kawasan utama:
-
-1.1 **BrandLogo**  
-1.2 **NavigationMenuCombo**
-
-### 1.1 BrandLogo
-
-Komponen `BrandLogo` memaparkan imej logo bersama dengan nama Organisasi. Ia boleh diklik dan mengarahkan ke href yang ditetapkan.
-
-**Contoh**:
+### Logo Bar Navigasi
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
 
 <Tab value="Pratonton" className="not-prose">
   <div className="flex h-fit items-center justify-center gap-1">
-    <PreviewBrandLogo />
+    <NavbarLogo
+      src="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+      alt="Sistem Reka Bentuk Kerajaan Malaysia"
+    >
+      <span className="text-body-lg font-heading text-txt-black-900 font-semibold">
+        MYDS
+      </span>
+    </NavbarLogo>
   </div>
 </Tab>
 
   <Tab value="Kod">
-
 ```tsx
-<BrandLogo
-  imageSrc="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
-  href="/"
->
-  MYDS
-</BrandLogo>
+  <NavbarLogo
+    src="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+    alt="Sistem Reka Bentuk Kerajaan Malaysia"
+  >
+    MYDS
+  </NavbarLogo>
 ```
-
   </Tab>
 </Tabs>
 
-### 1.2 NavigationMenuCombo
-
-Komponen `NavigationMenuCombo` adalah komponen navigasi responsif yang direka untuk menyesuaikan dengan lancar pada kedua-dua susun atur desktop dan mudah alih. Ia berfungsi sebagai wadah untuk pelbagai elemen navigasi, memastikan fungsi dan penampilan yang konsisten merentasi peranti. Komponen ini menyokong pautan navigasi standard dan menu dropdown.
-
-#### 1.2.1 NavItemsMenu
-
-Komponen `NavItemsMenu` mewakili item navigasi individu yang boleh digunakan dalam kedua-dua menu desktop dan mudah alih. Ia menyediakan cara yang mudah untuk memaut ke halaman atau bahagian aplikasi yang berbeza sambil mengekalkan reka bentuk yang seragam. Untuk contoh di bawah, cari Menu 1, Menu 2 atau Menu 3 untuk pelaksanaan mereka.
-
-#### 1.2.2 NavItemsDropdown
-
-Komponen `NavItemsDropdown` adalah menu dropdown yang fleksibel direka untuk digunakan dalam kedua-dua susun atur desktop dan mudah alih. Ia membolehkan pengguna mengakses pilihan navigasi tambahan dalam menu yang terstruktur dan boleh diperluas. Untuk contoh di bawah, cari Menu Dropdown untuk pelaksanaan mereka.
-
-#### 1.2.2.1 NavItemsDropdownItems
-
-Komponen `NavItemsDropdownItems` digunakan untuk mentakrifkan item individu dalam menu dropdown. Item-item ini boleh merangkumi pautan ke halaman atau bahagian dan dihias dengan konsisten dengan reka bentuk navigasi keseluruhan untuk memastikan pengalaman pengguna yang kemas. Untuk contoh di bawah, cari submenu 1, submenu 2 atau submenu 3 untuk pelaksanaan mereka.
-
-**Contoh**:
+### Menu Bar Navigasi
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
 
 <Tab value="Pratonton" className="not-prose">
-  <div className="h-[200px] w-max overflow-scroll px-2">
-    <div className="origin-top-left scale-[0.9]">
-      <PreviewNavItemsMenu />
-    </div>
+  <div className="h-[250px] w-full scale-90">
+    <Navbar>
+      <NavbarMenu>
+        <NavbarMenuItem href="/menu1">Menu 1</NavbarMenuItem>
+        <NavbarMenuItem href="/menu2">Menu 2</NavbarMenuItem>
+        <NavbarMenuDropdown title="Menu Dropdown">
+          <NavbarMenuItem href="/submenu1">Submenu 1</NavbarMenuItem>
+          <NavbarMenuItem href="/submenu2">Submenu 2</NavbarMenuItem>
+          <NavbarMenuItem href="/submenu3">Submenu 3</NavbarMenuItem>
+          <NavbarMenuItem href="/submenu1">Submenu 4</NavbarMenuItem>
+        </NavbarMenuDropdown>
+        <NavbarMenuItem href="/menu3">Menu 3</NavbarMenuItem>
+      </NavbarMenu>
+    </Navbar>
   </div>
 </Tab>
 
   <Tab value="Kod">
 
 ```tsx
-<NavbarContainer>
-  <NavigationMenuCombo
-    showMenu={showMenu}
-    setMenu={setMenu}
-    childrenDesktop={
-      <>
-        <NavItemsMenu href="/menu1" active={false}>
-          Menu 1
-        </NavItemsMenu>
-        <NavItemsMenu href="/menu2" active={false}>
-          Menu 2
-        </NavItemsMenu>
-        <NavItemsDropdown menu="Menu Dropdown">
-          <NavItemsDropdownItems href="/submenu1">
-            Submenu 1
-          </NavItemsDropdownItems>
-          <NavItemsDropdownItems href="/submenu2">
-            Submenu 2
-          </NavItemsDropdownItems>
-          <NavItemsDropdownItems href="/submenu3">
-            Submenu 3
-          </NavItemsDropdownItems>
-        </NavItemsDropdown>
-        <NavItemsMenu href="/menu3" active={false}>
-          Menu 3
-        </NavItemsMenu>
-      </>
-    }
-    childrenMobile={
-      <>
-        <NavItemsMenu href="/menu1" active={false}>
-          <div>Menu 1</div>
-        </NavItemsMenu>
-        <NavItemsMenu href="/menu2" active={false}>
-          Menu 2
-        </NavItemsMenu>
-        <NavItemsDropdown menu="Menu Dropdown">
-          <NavItemsDropdownItems href="/submenu1">
-            Submenu 1
-          </NavItemsDropdownItems>
-          <NavItemsDropdownItems href="/submenu2">
-            Submenu 2
-          </NavItemsDropdownItems>
-          <NavItemsDropdownItems href="/submenu3">
-            Submenu 3
-          </NavItemsDropdownItems>
-        </NavItemsDropdown>
-        <NavItemsMenu href="/menu3" active={false}>
-          Menu 3
-        </NavItemsMenu>
-      </>
-    }
-  ></NavigationMenuCombo>
-</NavbarContainer>
+<Navbar>
+  <NavbarMenu>
+    <NavbarMenuItem href="/menu1">Menu 1</NavbarMenuItem>
+    <NavbarMenuItem href="/menu2">Menu 2</NavbarMenuItem>
+    <NavbarMenuDropdown title="Menu Dropdown">
+      <NavbarMenuItem href="/submenu1">Submenu 1</NavbarMenuItem>
+      <NavbarMenuItem href="/submenu2">Submenu 2</NavbarMenuItem>
+      <NavbarMenuItem href="/submenu3">Submenu 3</NavbarMenuItem>
+      <NavbarMenuItem href="/submenu1">Submenu 4</NavbarMenuItem>
+    </NavbarMenuDropdown>
+    <NavbarMenuItem href="/menu3">Menu 3</NavbarMenuItem>
+  </NavbarMenu>
+</Navbar>
 ```
 
   </Tab>
 </Tabs>
 
-## 2. NavbarActionGroup
-
-Komponen `NavbarActionGroup` mewakili bahagian sebelah kanan bar navigasi. Bahagian ini direka untuk memberikan fleksibiliti kepada pembangun untuk memasukkan sebarang elemen tindakan yang dirasakan perlu. Menyokong paparan mudah alih dengan menyediakan toggle hamburger untuk `NavigationMenuCombo`.
-
-#### Kegunaan Umum
-
-- **Butang Tindakan**: Tambah butang seperti toggle menu atau toggle mod cahaya.
-- **Elemen Interaksi Pengguna**: Masukkan ciri seperti penukar bahasa atau menu profil pengguna.
-- **Fungsi Carian**: Sertakan butang carian untuk akses pantas.
-
-**Contoh**:
+### Tindakan Bar Navigasi
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
 
 <Tab value="Pratonton">
-  <div className="flex h-fit items-center justify-center gap-1">
-    <PreviewActionGroup />
+  <div className="h-[250px] w-full scale-90">
+    <Navbar>
+    <div></div>
+
+      <NavbarAction>
+          <Button
+            variant="default-ghost"
+            iconOnly
+            aria-label="butang-carian"
+            size={"small"}
+          >
+            <ButtonIcon>
+              <SearchIcon />
+            </ButtonIcon>
+          </Button>
+
+          <ThemeSwitch as="toggle" />
+
+
+          <div className="hidden sm:block">
+            <Select defaultValue="EN" variant="outline" size="small">
+              <SelectTrigger aria-label="pilihan-bahasa">
+                <GlobeIcon className="h-4 w-4"></GlobeIcon>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent
+                align="end"
+                className="font-body rounded-[4px] py-1"
+              >
+                <SelectItem value="EN">EN</SelectItem>
+                <SelectItem value="BM">BM</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </NavbarAction>
+    </Navbar>
+
   </div>
 </Tab>
 
   <Tab value="Kod">
 
 ```tsx
-<NavbarActionGroup showMenu={showMenu} setMenu={setMenu}>
-  {/* Button Search  : mobile hide if needed  */}
-  <Button variant="default-ghost" className="p-2">
-    <SearchIcon></SearchIcon>
+<NavbarAction>
+  {/* Butang Carian: sembunyikan pada mudah alih jika perlu */}
+  <Button
+    variant="default-ghost"
+    iconOnly
+    aria-label="butang-carian"
+    size={"small"}
+  >
+    <ButtonIcon>
+      <SearchIcon />
+    </ButtonIcon>
   </Button>
 
-  {/* Button Light Mode Toggle  : mobile hide if needed  */}
-  <Button variant="default-ghost" className="p-2" onClick={handleToggle}>
-    {isDarkMode ? <SunIcon /> : <MoonIcon />}
-  </Button>
+  {/* Butang Tukar Mod Cahaya: sembunyikan pada mudah alih jika perlu */}
+  <ThemeSwitch as="toggle" />
 
-  {/* Select Language Toggle  : mobile hide if needed  */}
+  {/* Pilihan Bahasa: sembunyikan pada mudah alih jika perlu */}
   <div className="hidden sm:block">
-    <Select
-      value={value}
-      onValueChange={setValue}
-      defaultValue="EN"
-      multiple={false}
-      variant="outline"
-      size="medium"
-    >
-      <SelectTrigger>
+    <Select defaultValue="EN" variant="outline" size="small">
+      <SelectTrigger aria-label="pilihan-bahasa">
         <GlobeIcon className="h-4 w-4"></GlobeIcon>
-        <SelectValue>{(value) => value || "EN"}</SelectValue>
+        <SelectValue />
       </SelectTrigger>
-      <SelectContent className="font-body rounded-[4px] py-1">
+      <SelectContent align="end" className="font-body rounded-[4px] py-1">
         <SelectItem value="EN">EN</SelectItem>
         <SelectItem value="BM">BM</SelectItem>
       </SelectContent>
     </Select>
   </div>
-</NavbarActionGroup>
+</NavbarAction>
 ```
 
   </Tab>
@@ -403,92 +352,53 @@ Komponen `NavbarActionGroup` mewakili bahagian sebelah kanan bar navigasi. Bahag
 
 <TypeTable
   type={{
-    showMenu: {
-      description: "Mengawal sama ada menu dipaparkan atau disembunyikan.",
-      type: "boolean",
-    },
     children: {
-      description: "Kandungan yang akan dipaparkan di dalam Navbar.",
+      description: "Kandungan yang akan dipaparkan di dalam Bar Navigasi.",
       type: "ReactNode",
     },
     className: {
-      description: "Gaya tambahan untuk Navbar.",
-      type: "string",
-    },
-    className: {
-      description: "Gaya tambahan untuk latar belakang Navbar.",
+      description: "Gaya tambahan untuk Bar Navigasi.",
       type: "string",
     },
   }}
 />
 
-### NavbarContainer
+### NavbarLogo
 
 <TypeTable
   type={{
     children: {
-      description: "Kandungan yang akan dipaparkan di dalam NavbarContainer.",
+      description: "Tajuk logo Bar Navigasi.",
       type: "ReactNode",
-    },
-    className: {
-      description: "Gaya tambahan untuk NavbarContainer.",
-      type: "string",
-    },
-  }}
-/>
-
-### BrandLogo
-
-<TypeTable
-  type={{
-    imageSrc: {
-      description: "URL sumber untuk imej logo.",
-      type: "string",
-    },
-    alt: {
-      description: "Teks alternatif untuk imej logo.",
-      type: "string",
     },
     href: {
       description: "URL untuk navigasi apabila logo diklik.",
       type: "string",
       defaultValue: "/",
     },
-    children: {
-      description:
-        "Teks atau kandungan tambahan yang dipaparkan di sebelah logo.",
-      type: "ReactNode",
+    src: {
+      description: "URL imej untuk logo Bar Navigasi.",
+      type: "string",
+    },
+    alt: {
+      description: "Teks alternatif untuk logo Bar Navigasi.",
+      type: "string",
     },
   }}
 />
 
-### NavigationMenuCombo
+### NavbarMenu
 
 <TypeTable
   type={{
-    showMenu: {
-      description: "Menunjukkan sama ada menu mudah alih sedang dipaparkan.",
-      type: "boolean",
-      defaultValue: "false",
-    },
-    setMenu: {
-      description: "Fungsi untuk menukar paparan menu mudah alih.",
-      type: "(value: boolean) => void",
-    },
-    childrenDesktop: {
-      description:
-        "Kandungan yang akan dipaparkan dalam menu navigasi desktop.",
-      type: "ReactNode",
-    },
-    childrenMobile: {
-      description:
-        "Kandungan yang akan dipaparkan dalam menu navigasi mudah alih.",
-      type: "ReactNode",
+    children: {
+      description: "Kandungan yang akan dipaparkan di dalam Menu Bar Navigasi.",
+      type: "string",
     },
   }}
 />
 
-### NavItemsMenu
+### NavbarMenuItem
 
 <TypeTable
   type={{
@@ -500,11 +410,6 @@ Komponen `NavbarActionGroup` mewakili bahagian sebelah kanan bar navigasi. Bahag
       description: "URL untuk item navigasi.",
       type: "string",
     },
-    active: {
-      description: "Menunjukkan sama ada item ini aktif.",
-      type: "boolean",
-      defaultValue: "false",
-    },
     className: {
       description: "Gaya tambahan untuk item navigasi.",
       type: "string",
@@ -512,63 +417,35 @@ Komponen `NavbarActionGroup` mewakili bahagian sebelah kanan bar navigasi. Bahag
   }}
 />
 
-### NavItemsDropdown
+### NavbarMenuDropdown
 
 <TypeTable
   type={{
     children: {
-      description: "Kandungan menu dropdown.",
+      description:
+        "Kandungan yang akan dipaparkan di dalam Menu Dropdown Bar Navigasi.",
       type: "ReactNode",
     },
-    menu: {
-      description: "Teks untuk butang dropdown.",
+    title: {
+      description: "Teks tajuk dropdown.",
       type: "string",
     },
     className: {
-      description: "Gaya tambahan untuk dropdown.",
-      type: "string",
-    },
-  }}
-/>
-
-### NavItemsDropdownItems
-
-<TypeTable
-  type={{
-    href: {
-      description: "URL untuk item dropdown.",
-      type: "string",
-    },
-    children: {
-      description: "Kandungan item dropdown.",
-      type: "ReactNode",
-    },
-    className: {
-      description: "Gaya tambahan untuk item dropdown.",
-      type: "string",
-    },
-  }}
-/>
-
-### NavbarActionGroup
-
-<TypeTable
-  type={{
-    children: {
-      description: "Kandungan yang akan dipaparkan di dalam NavbarActionGroup.",
-      type: "ReactNode",
-    },
-    showMenu: {
-      description: "Menunjukkan sama ada menu sedang dipaparkan.",
+      description: "Gaya tambahan untuk kandungan dropdown.",
       type: "boolean",
+      defaultValue: "false",
     },
-    setMenu: {
-      description: "Fungsi untuk menukar paparan menu.",
-      type: "(value: boolean) => void",
-    },
-    className: {
-      description: "Gaya tambahan untuk NavbarActionGroup.",
-      type: "string",
+  }}
+/>
+
+### NavbarAction
+
+<TypeTable
+  type={{
+    children: {
+      description:
+        "Kandungan yang akan dipaparkan di dalam Tindakan Bar Navigasi.",
+      type: "ReactNode",
     },
   }}
 />

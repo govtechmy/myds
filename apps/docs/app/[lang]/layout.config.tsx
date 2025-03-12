@@ -73,7 +73,7 @@ export const getMYDSConfig = (lang: "en" | "ms"): MYDSConfig => {
             <h3 className="font-heading text-[18px] font-semibold leading-[26px]">
               MYDS
             </h3>
-            <Tag className="text-accent text-xs">Beta</Tag>
+            <Tag className="text-txt-accent text-xs">Beta</Tag>
           </div>
         ),
       },

@@ -15,7 +15,7 @@ type SelectBase = Omit<
 };
 
 type SelectSingle = SelectBase & {
-  multiple: false;
+  multiple?: false;
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;

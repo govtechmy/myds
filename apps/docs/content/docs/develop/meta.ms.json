@@ -53,7 +53,9 @@
     "(components)/tooltip",
 
     "---Hooks ---",
-    "(hooks)/use-theme"
+    "(hooks)/use-pagination",
+    "(hooks)/use-theme",
+    "(hooks)/use-toast"
   ],
   "root": true
 }
