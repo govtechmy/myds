@@ -1,5 +1,5 @@
 "use client";
-import { FunctionComponent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   CookieBanner,
   CookieBannerClose,

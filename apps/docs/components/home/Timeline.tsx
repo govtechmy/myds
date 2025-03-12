@@ -57,7 +57,7 @@ export default function Timeline(props: Props) {
   });
 
   // Determine the starting position of the first item of each year in the timeline (1 = right, -1 = left)
-  const itemPositions = dataByYears.map((data, i) => {
+  const itemPositions = dataByYears.map((data) => {
     return data.length % 2 === 0 ? 1 : -1;
   });
 
