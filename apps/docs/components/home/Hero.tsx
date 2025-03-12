@@ -30,7 +30,7 @@ const Hero: FunctionComponent = () => {
           "lg:col-span-5 lg:col-start-1 lg:justify-center lg:pl-6 lg:pr-0 lg:pt-0",
         )}
       >
-        <span className="text-txt-accent text-body-sm font-semibold uppercase tracking-[0.2em]">
+        <span className="text-txt-accent dark:text-danger-500 text-body-sm font-semibold uppercase tracking-[0.2em]">
           {t("common.beta")}
         </span>
         <h1 className="text-balance lg:text-start">{t("Home.title.hero")}</h1>

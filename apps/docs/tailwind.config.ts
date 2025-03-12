@@ -21,7 +21,11 @@ const config: Config = {
     preset,
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "txt-accent": "rgb(var(--txt-accent))",
+      },
+    },
   },
 };
 

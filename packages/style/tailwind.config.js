@@ -206,7 +206,6 @@ module.exports = {
         "bg-warning-950": "rgb(var(--bg-warning-950))",
         "bg-warning-disabled": "rgb(var(--bg-warning-disabled))",
         "txt-white": "rgb(var(--txt-white))",
-        "txt-accent": "rgb(var(--txt-accent))",
         "txt-white-disabled": "rgb(var(--txt-white-disabled))",
         "txt-black-900": "rgb(var(--txt-black-900))",
         "txt-black-700": "rgb(var(--txt-black-700))",
