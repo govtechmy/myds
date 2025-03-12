@@ -1,4 +1,4 @@
-export default function MalaysiaFlagIcon({ ...props }) {
+export function MalaysiaFlagIcon({ ...props }) {
   return (
     <svg
       width="32"
@@ -6,6 +6,7 @@ export default function MalaysiaFlagIcon({ ...props }) {
       viewBox="0 0 32 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <g clipPath="url(#clip0_1654_3921)">
         <rect width="31.9713" height="16" fill="white" />
