@@ -7,7 +7,6 @@ import React, {
   forwardRef,
 } from "react";
 import { Button } from "@govtechmy/myds-react/button";
-import { Toggle, ToggleThumb } from "./myds";
 export * from "@govtechmy/myds-react/toggle";
 export * from "@govtechmy/myds-react/button";
 export * from "@govtechmy/myds-react/link";
@@ -81,6 +80,7 @@ import {
 } from "@govtechmy/myds-react/select";
 import { Tag } from "@govtechmy/myds-react/tag";
 import { Cell } from "@govtechmy/myds-react/data-table";
+import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 import {
   FacebookIcon,
   InstagramIcon,
