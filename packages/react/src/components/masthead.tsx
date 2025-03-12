@@ -97,6 +97,8 @@ const MastheadTitle: FunctionComponent<ComponentProps<"p">> = ({
   );
 };
 
+MastheadTitle.displayName = "MastheadTitle";
+
 const MastheadTrigger: FunctionComponent<ComponentProps<"button">> = ({
   children,
   onClick,
