@@ -1,11 +1,29 @@
 import { Button } from "@govtechmy/myds-react/button";
-
-import { useToast } from "@govtechmy/myds-react/hooks";
 import { IconDataList } from "./IconDataList";
 import { clx } from "@govtechmy/myds-react/utils";
+import { useState } from "react";
 
 export default function ResultMap({ result }: { result: IconDataList }) {
-  const { toast } = useToast();
+  const [copiedSVGIndex, setCopiedSVGIndex] = useState<number | null>(null);
+  const [copiedJSXIndex, setCopiedJSXIndex] = useState<number | null>(null);
+
+  const handleCopy = async (
+    iconName: string,
+    index: number,
+    type: "svg" | "jsx",
+  ) => {
+    const response = await fetch(`/assets/icons/${iconName}.svg`);
+    const filecontent = await response.text();
+    navigator.clipboard.writeText(filecontent || "");
+
+    if (type === "svg") {
+      setCopiedSVGIndex(index);
+      setTimeout(() => setCopiedSVGIndex(null), 2000);
+    } else {
+      setCopiedJSXIndex(index);
+      setTimeout(() => setCopiedJSXIndex(null), 2000);
+    }
+  };
 
   return (
     <div className={clx("grid gap-2", "icon-custom-grid-cols")}>
@@ -15,40 +33,16 @@ export default function ResultMap({ result }: { result: IconDataList }) {
             <div className="flex items-center justify-center">{icon.svg}</div>
             <div className="absolute w-full opacity-0 hover:opacity-100">
               <Button
-                onClick={async () => {
-                  const response = await fetch(
-                    `/assets/icons/${icon.name}.svg`,
-                  );
-                  const filecontent = await response.text();
-
-                  navigator.clipboard.writeText(filecontent || "");
-                  toast({
-                    variant: "message",
-                    title: "Copied!",
-                    description: "You have copied the svg",
-                  });
-                }}
+                onClick={() => handleCopy(icon.name ?? "", index, "svg")}
                 className="text-txt-black-500 flex h-[70px] w-full items-center justify-center rounded-b-none rounded-t-lg border-0 bg-transparent hover:bg-gray-300/70 dark:text-[#303030]"
               >
-                Copy SVG
+                {copiedSVGIndex === index ? "Copied!" : "Copy SVG"}
               </Button>
               <Button
-                onClick={async () => {
-                  const response = await fetch(
-                    `/assets/icons/${icon.name}.svg`,
-                  );
-                  const filecontent = await response.text();
-
-                  navigator.clipboard.writeText(filecontent || "");
-                  toast({
-                    variant: "message",
-                    title: "Copied!",
-                    description: "You have copied the svg",
-                  });
-                }}
+                onClick={() => handleCopy(icon.name ?? "", index, "jsx")}
                 className="text-txt-black-500 flex h-[70px] w-full items-center justify-center rounded-b-lg rounded-t-none border-0 bg-transparent hover:bg-gray-300/70 dark:text-[#303030]"
               >
-                Copy JSX
+                {copiedJSXIndex === index ? "Copied!" : "Copy JSX"}
               </Button>
             </div>
           </div>
