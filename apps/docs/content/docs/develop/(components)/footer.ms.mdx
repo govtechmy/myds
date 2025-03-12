@@ -100,7 +100,7 @@ import {
           underline="none"
           className="hover:text-txt-black-900"
         >
-          <TwitterIcon className="text-txt-black-700" />
+          <TwitterXIcon className="text-txt-black-700" />
         </Link>
         <Link
           href="#"
@@ -259,185 +259,106 @@ export default () => (
   </Tab>
 </Tabs>
 
-#### 1.1.3 SocialMedia
+### SiteInfo
 
-Pembungkus untuk pautan media sosial, dengan ikon yang diimport.
-
-**Contoh**:
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
-  <div className="flex justify-center items-center h-fit pb-4">
-<SocialMedia title="Ikuti Kami">
-  <SocialMediaItem
-    icon={<FacebookIcon />}
-    href="https://www.facebook.com"
-    name="Facebook"
-  />
-  <SocialMediaItem
-    icon={<TikTokIcon />}
-    href="https://www.tiktok.com"
-    name="TikTok"
-  />
-    <SocialMediaItem
-    icon={<InstagramIcon />}
-    href="https://www.instagram.com"
-    name="Instagram"
-  />
-    <SocialMediaItem
-    icon={<TwitterXIcon />}
-    href="https://www.twitter.com"
-    name="X"
-  />
-</SocialMedia>
-
-  </div>
-
-  </Tab>
-  <Tab value="Code">
-```tsx
-
-import {
-  FacebookIcon,
-  InstagramIcon,
-  TikTokIcon,
-  TwitterXIcon,
-} from "@govtechmy/myds-react/icon";
-
-<SocialMedia title="Ikuti Kami">
-  <SocialMediaItem
-    icon={<FacebookIcon />}
-    href="https://www.facebook.com"
-    name="Facebook"
-  />
-  <SocialMediaItem
-    icon={<TikTokIcon />}
-    href="https://www.tiktok.com"
-    name="TikTok"
-  />
-  <SocialMediaItem
-    icon={<InstagramIcon />}
-    href="https://www.instagram.com"
-    name="Instagram"
-  />
-  <SocialMediaItem
-    icon={<TwitterXIcon />}
-    href="https://www.twitter.com"
-    name="X"
-  />
-</SocialMedia>
-
-````
-  </Tab>
-</Tabs>
-
-
-
-### 1.2 FooterContent
-
-Komponen `FooterContent` direka untuk mengumpulkan pautan yang berkaitan dalam susun atur yang tersusun, biasanya diatur dalam lajur. Setiap lajur diwakili oleh `FooterContentColumn`, yang merangkumi tajuk dan pautan yang berkaitan.
-
-**Contoh**:
-
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
-  <Tab value="Preview">
-  <div className="flex justify-center items-center h-fit gap-1">
-  <FooterContent>
-<FooterContentColumn title="Tajuk 1">
-  <Link asChild href="https://www.example.com" underline="hover">
-    Patutan 1
-  </Link>
-  <Link asChild href="https://www.example.com" underline="hover">
-    Patutan 2
-  </Link>
-</FooterContentColumn>
-<FooterContentColumn title="Tajuk 2">
-  <Link asChild href="https://www.example.com" underline="hover">
-    Patutan 1
-  </Link>
-  <Link asChild href="https://www.example.com" underline="hover">
-    Patutan 2
-  </Link>
-</FooterContentColumn>
-</FooterContent>
-
-  </div>
-
-  </Tab>
-  <Tab value="Code">
-```tsx
-<FooterContent>
-  <FooterContentColumn title="Tajuk 1">
-    <Link href="https://www.example.com" underline="hover">
-      Patutan 1
-    </Link>
-    <Link href="https://www.example.com" underline="hover">
-      Patutan 2
-    </Link>
-  </FooterContentColumn>
-  <FooterContentColumn title="Tajuk 2">
-    <Link href="https://www.example.com" underline="hover">
-      Patutan 1
-    </Link>
-    <Link href="https://www.example.com" underline="hover">
-      Patutan 2
-    </Link>
-  </FooterContentColumn>
-</FooterContent>
-````
-
-  </Tab>
-</Tabs>
-
-## 2. FooterBottomSection
-
-`FooterBottomSection` adalah bahagian bawah footer. Ia mengandungi yang berikut:
-
-1.1 **FooterCopyright**  
-1.2 **FooterTimestamp**
-
-### 2.1 FooterCopyright
-
-Kawasan `FooterCopyright` memaparkan maklumat hak cipta dan pautan berkaitan tambahan. Ia termasuk komponen berikut:
-
-#### 2.1.1 FooterCopyrightDate
-
-Memaparkan kenyataan hak cipta dengan tahun.
-
-**Contoh**:
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
-  <div className="flex justify-center items-center h-fit gap-1">
-  <FooterCopyrightDate>Hak Cipta Terpelihara</FooterCopyrightDate>
-  </div>
-
-  </Tab>
-  <Tab value="Code">
-```tsx
-<FooterCopyrightDate>Hak Cipta Terpelihara</FooterCopyrightDate>
-```
-  </Tab>
-</Tabs>
-
-### SiteLinkGroup
-
-Bekas (container) yang menyusun koleksi `SiteLink` ke dalam kumpulan bertajuk.
+Komponen HTML `aside` yang digunakan untuk mengandungi maklumat seperti maklumat jabatan dan pautan media sosial.
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
   <Tab value="Pratonton">
     <div className="max-w-[50%] mx-auto bg-bg-gray-50">
-      <SiteLinkGroupComponent />
+      <SiteInfoComponent />
     </div>
   </Tab>
   <Tab value="Kod">
   ```
   import 
   {
-  SiteLinkGroup,
-  SiteLink,
+  SiteInfo,
   } from "@govtechmy/myds-react/footer";
+
+    <SiteInfo className="not-prose">
+      <div className="text-txt-black-900 flex items-center gap-x-2.5">
+        <FooterLogo
+          logo={
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+              width={36}
+              height={30}
+              alt="Malaysia Coat of Arms"
+              className="select-none"
+            />
+          }
+        />
+      </div>
+      <p className="text-txt-black-700 text-body-sm">
+        Aras 13, 14 & 15, Blok Menara, Menara Usahawan, No. 18, Persiaran
+        Perdana, Presint 2, Pusat Pentadbiran Kerajaan Persekutuan, 62000
+        Putrajaya, Malaysia
+      </p>
+      <p className="text-txt-black-900 text-body-sm font-semibold">
+        Follow us
+      </p>
+      <div className="flex gap-3">
+        <Link
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook link"
+          underline="none"
+          className="hover:text-txt-black-900"
+        >
+          <FacebookIcon className="text-txt-black-700" />
+        </Link>
+        <Link
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Twitter link"
+          underline="none"
+          className="hover:text-txt-black-900"
+        >
+          <TwitterXIcon className="text-txt-black-700" />
+        </Link>
+        <Link
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram link"
+          underline="none"
+          className="hover:text-txt-black-900"
+        >
+          <InstagramIcon className="text-txt-black-700" />
+        </Link>
+        <Link
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Youtube link"
+          underline="none"
+          className="hover:text-txt-black-900"
+        >
+          <YoutubeIcon className="text-txt-black-700" />
+        </Link>
+      </div>
+    </SiteInfo>
+
+```
+</Tab>
+</Tabs>
+
+### SiteLinkGroup
+Bekas (container) yang menyusun koleksi `SiteLink` ke dalam kumpulan bertajuk.
+
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
+<Tab value="Pratonton">
+  <div className="max-w-[50%] mx-auto bg-bg-gray-50">
+    <SiteLinkGroupComponent />
+  </div>
+</Tab>
+<Tab value="Kod">
+```
+
+import { SiteLinkGroup, SiteLink } from "@govtechmy/myds-react/footer";
 
   <SiteLinkGroup groupTitle="Super super long long long long long long long long title">
       <SiteLink href="#">

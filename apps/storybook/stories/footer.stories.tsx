@@ -77,46 +77,34 @@ export const Default: Story = {
     });
     return (
       <Footer {...args}>
-        <FooterTopSection>
-          <FooterMainInfo>
-            <ImageWithTitle
-              imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-              imgAlt="JataNegara"
-            >
-              Ministry of Digital
-            </ImageWithTitle>
-            <Address>
-              Aras 13, 14 & 15, Blok Menara,{"\n"}
-              Menara Usahawan{"\n"}
-              No. 18, Persiaran Perdana, Presint 2{"\n"}
-              Pusat Pentadbiran Kerajaan Persekutuan{"\n"}
-              62000 Putrajaya, Malaysia
-            </Address>
-            <SocialMedia title="Follow Us">
-              <SocialMediaItem
-                icon={<FacebookIcon />}
-                href={"www.google.com"}
-                name={"Facebook"}
+        <FooterSection>
+          <SiteInfo>
+            <div className="text-txt-black-900 flex items-center gap-x-2.5">
+              <FooterLogo
+                logoTitle={
+                  <p className="font-poppins text-body-md whitespace-nowrap font-semibold">
+                    Kementerian Digital
+                  </p>
+                }
+                logo={
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+                    width={36}
+                    alt="Malaysia Coat of Arms"
+                    className="select-none"
+                  />
+                }
               />
-              <SocialMediaItem
-                icon={<TwitterXIcon />}
-                href={"www.google.com"}
-                name={"X"}
-              />
-              <SocialMediaItem
-                icon={<InstagramIcon />}
-                href={"www.google.com"}
-                name={"Instagram"}
-              />
-              <SocialMediaItem
-                icon={<TikTokIcon />}
-                href={"www.google.com"}
-                name={"TikTok"}
-              />
-            </SocialMedia>
-          </FooterMainInfo>
-          <FooterContent>
-            <FooterContentColumn title={"About Us"}>
+            </div>
+            <p className="text-txt-black-700 text-body-sm">
+              Aras 13, 14 & 15, Blok Menara, Menara Usahawan, No. 18, Persiaran
+              Perdana, Presint 2, Pusat Pentadbiran Kerajaan Persekutuan, 62000
+              Putrajaya, Malaysia
+            </p>
+            <p className="text-txt-black-900 text-body-sm font-semibold">
+              Follow us
+            </p>
+            <div className="flex gap-3">
               <Link
                 href="#"
                 target="_blank"
@@ -135,7 +123,7 @@ export const Default: Story = {
                 underline="none"
                 className="hover:text-txt-black-900"
               >
-                <TwitterIcon className="text-txt-black-700" />
+                <TwitterXIcon className="text-txt-black-700" />
               </Link>
               <Link
                 href="#"
@@ -235,46 +223,34 @@ export const CustomDark: Story = {
     });
     return (
       <Footer {...args}>
-        <FooterTopSection>
-          <FooterMainInfo>
-            <ImageWithTitle
-              imgSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-              imgAlt="JataNegara"
-            >
-              Ministry of Digital
-            </ImageWithTitle>
-            <Address>
-              Aras 13, 14 & 15, Blok Menara,{"\n"}
-              Menara Usahawan{"\n"}
-              No. 18, Persiaran Perdana, Presint 2{"\n"}
-              Pusat Pentadbiran Kerajaan Persekutuan{"\n"}
-              62000 Putrajaya, Malaysia
-            </Address>
-            <SocialMedia title="Follow Us">
-              <SocialMediaItem
-                icon={<FacebookIcon />}
-                href={"www.google.com"}
-                name={"Facebook"}
+        <FooterSection>
+          <SiteInfo>
+            <div className="text-txt-black-900 flex items-center gap-x-2.5">
+              <FooterLogo
+                logoTitle={
+                  <p className="font-poppins text-body-md whitespace-nowrap font-semibold">
+                    Kementerian Digital
+                  </p>
+                }
+                logo={
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+                    width={36}
+                    alt="Malaysia Coat of Arms"
+                    className="select-none"
+                  />
+                }
               />
-              <SocialMediaItem
-                icon={<TwitterXIcon />}
-                href={"www.google.com"}
-                name={"X"}
-              />
-              <SocialMediaItem
-                icon={<InstagramIcon />}
-                href={"www.google.com"}
-                name={"Instagram"}
-              />
-              <SocialMediaItem
-                icon={<TikTokIcon />}
-                href={"www.google.com"}
-                name={"TikTok"}
-              />
-            </SocialMedia>
-          </FooterMainInfo>
-          <FooterContent>
-            <FooterContentColumn title={"About Us"}>
+            </div>
+            <p className="text-txt-black-700 text-body-sm">
+              Aras 13, 14 & 15, Blok Menara, Menara Usahawan, No. 18, Persiaran
+              Perdana, Presint 2, Pusat Pentadbiran Kerajaan Persekutuan, 62000
+              Putrajaya, Malaysia
+            </p>
+            <p className="text-txt-black-900 text-body-sm font-semibold">
+              Follow us
+            </p>
+            <div className="flex gap-3">
               <Link
                 href="#"
                 target="_blank"
@@ -293,7 +269,7 @@ export const CustomDark: Story = {
                 underline="none"
                 className="hover:text-txt-black-900"
               >
-                <TwitterIcon className="text-txt-black-700" />
+                <TwitterXIcon className="text-txt-black-700" />
               </Link>
               <Link
                 href="#"
