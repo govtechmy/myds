@@ -4,11 +4,11 @@ export function TabsContentExample({ lang = "eng" }: { lang?: "eng" | "bm" }) {
   return lang == "eng" ? (
     <>
       <TabsContent value="1" className="py-6">
-        A novel is a long work of fiction that presents a complete story with
+        {`A novel is a long work of fiction that presents a complete story with
         characters, plot, and setting. It typically encompasses various themes
         such as love, family, life struggles, and societal challenges. Novels
         allow readers to immerse themselves in new worlds through the author's
-        imagination.
+        imagination.`}
       </TabsContent>
 
       <TabsContent value="2" className="py-6">

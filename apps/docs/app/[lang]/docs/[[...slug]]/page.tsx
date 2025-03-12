@@ -58,8 +58,14 @@ export default async function Page({ params }: PageParams) {
                 darkify(props.src as string),
               ];
               const { width, height } = props;
-              const widthNum = width ? parseInt(width.toString(), 10) : 100;
-              const heightNum = height ? parseInt(height.toString(), 10) : 100;
+              const widthNum =
+                width !== undefined
+                  ? parseInt(width.toString(), 10)
+                  : undefined;
+              const heightNum =
+                height !== undefined
+                  ? parseInt(height.toString(), 10)
+                  : undefined;
 
               const alt = props.alt || "";
 

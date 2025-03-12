@@ -895,6 +895,7 @@ import {
   SiteLinkGroup,
 } from "@govtechmy/myds-react/footer";
 import { Link } from "@govtechmy/myds-react/link";
+import Image from "next/image";
 
 export const SelfPagination = ({ count = 200, limit = 10, page = 1 }) => {
   const { visiblePages } = usePagination({ count, limit, page });
@@ -942,8 +943,8 @@ export const SiteInfoComponent = () => {
             </p>
           }
           logo={
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+            <Image
+              src="/common/jata-negara.png"
               width={36}
               height={30}
               alt="Malaysia Coat of Arms"
@@ -1012,8 +1013,8 @@ export const FooterComponent = () => {
           <div className="text-txt-black-900 flex items-center gap-x-2.5">
             <FooterLogo
               logo={
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+                <Image
+                  src="/common/jata-negara.png"
                   width={36}
                   height={30}
                   alt="Malaysia Coat of Arms"

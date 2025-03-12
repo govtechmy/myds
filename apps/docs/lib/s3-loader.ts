@@ -4,6 +4,8 @@ interface S3LoaderProps {
   src: string;
 }
 
-export default ({ src }: S3LoaderProps) => {
+const s3Loader = ({ src }: S3LoaderProps) => {
   return `https://d2391uizq0pg2.cloudfront.net${src}`;
 };
+
+export default s3Loader;
