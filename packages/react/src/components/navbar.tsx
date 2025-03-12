@@ -48,7 +48,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({
         data-nosnippet
         {...props}
       >
-        <div className="relative mx-auto flex h-16 max-w-[1280px] items-center justify-between gap-4 px-6 xl:px-0">
+        <div className="relative mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-4 px-6 xl:px-0">
           {children}
         </div>
       </header>

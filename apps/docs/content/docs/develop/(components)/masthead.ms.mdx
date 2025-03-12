@@ -1,74 +1,83 @@
 ---
 title: Masthead
-description: Komponen Masthead adalah Masthead yang telah distandardkan untuk laman web kerajaan Malaysia.
+description: Komponen Masthead adalah header standard untuk laman web kerajaan Malaysia.
 ---
 
-import {
-  Lock2Icon,
-  GovMyIcon,
-  SolidLockIcon,
-} from "@govtechmy/myds-react/icon";
+import { Lock2Icon, GovMyIcon, LockFillIcon } from "@govtechmy/myds-react/icon";
 import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import {
-  PreviewMasthead,
-  PreviewMastheadContent,
-  PreviewMastheadHeader,
+  Masthead,
+  MastheadHeader,
+  MastheadContent,
+  MastheadTitle,
+  MastheadTrigger,
+  MastheadSection,
 } from "@/components/myds";
 
-<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
-  <Tab value="Preview">
-    <div className="w-[1000px] origin-top-left scale-[0.7]">
-      <PreviewMasthead />
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton" className="not-prose">
+  <Tab value="Pratonton">
+    <div className="h-[250px] w-full">
+      <Masthead>
+        <MastheadHeader>
+          <MastheadTitle>Portal Rasmi Kerajaan Malaysia</MastheadTitle>
+          <MastheadTrigger>Kenal pasti begini</MastheadTrigger>
+        </MastheadHeader>
+        <MastheadContent>
+          <MastheadSection
+            icon={<GovMyIcon />}
+            title="Laman web rasmi kerajaan berakhir dengan .gov.my"
+          >
+            Jika pautan tidak berakhir dengan <b>.gov.my</b>, keluar dari laman web dengan segera walaupun ia kelihatan serupa.
+          </MastheadSection>
+          <MastheadSection
+            icon={<Lock2Icon className="inline-block size-3.5" />}
+            title="Laman web yang selamat menggunakan HTTPS"
+          >
+            Cari kunci (<LockFillIcon className="inline-block size-3.5" />) atau https:// sebagai langkah berjaga-jaga tambahan. Jika tidak ada, jangan kongsi sebarang maklumat sensitif.
+          </MastheadSection>
+        </MastheadContent>
+      </Masthead>
     </div>
   </Tab>
-  <Tab value="Code">
-    ```tsx
+  <Tab value="Kod">
+```tsx
 import {
   Masthead,
   MastheadHeader,
   MastheadContent,
-  MastheadOfficialIndicator,
-  MastheadToggle,
+  MastheadTitle,
+  MastheadTrigger,
   MastheadSection,
-  MastheadSectionTitle,
-  MastheadSectionBody,
 } from "@govtechmy/myds-react/masthead";
 import { GovMyIcon, Lock2Icon, LockFillIcon } from "@govtechmy/myds-react/icon";
 
-    <Masthead>
-      <MastheadHeader>
-        <MastheadOfficialIndicator>
-          Official Malaysia Government Website
-        </MastheadOfficialIndicator>
-        <MastheadToggle>Here's how you know</MastheadToggle>
-      </MastheadHeader>
-      <MastheadContent>
-        <MastheadSection icon={<GovMyIcon />}>
-          <MastheadSectionTitle>
-            Official government websites end with .gov.my
-          </MastheadSectionTitle>
-          <MastheadSectionBody>
-            If the link does not end with
-            <span className="font-semibold"> .gov.my</span>, exit the website
-            immediately even if it looks similar.
-          </MastheadSectionBody>
-        </MastheadSection>
-        <MastheadSection icon={<Lock2Icon height={24} width={24} />}>
-          <MastheadSectionTitle>Secure websites use HTTPS</MastheadSectionTitle>
-          <MastheadSectionBody>
-            Look for a lock (
-            <SolidLockIcon className="mb-0.5 inline size-3.5" />) atau
-            <span className="font-semibold"> https:// </span>
-            as an added precaution. If not present, do not share any sensitive
-            information.
-          </MastheadSectionBody>
-        </MastheadSection>
-      </MastheadContent>
-    </Masthead>
-    ```
+<Masthead>
+  <MastheadHeader>
+    <MastheadTitle>Portal Rasmi Kerajaan Malaysia</MastheadTitle>
+    <MastheadTrigger>Ketahui Lebih Lanjut</MastheadTrigger>
+  </MastheadHeader>
+  <MastheadContent>
+    <MastheadSection
+      icon={<GovMyIcon />}
+      title="Laman web rasmi kerajaan berakhir dengan .gov.my"
+    >
+      Jika pautan tidak berakhir dengan <b>.gov.my</b>, keluar dari laman web
+      dengan segera walaupun ia kelihatan serupa.
+    </MastheadSection>
+    <MastheadSection
+      icon={<Lock2Icon className="inline-block size-3.5" />}
+      title="Laman web yang selamat menggunakan HTTPS"
+    >
+      Cari kunci (<LockFillIcon className="inline-block size-3.5" />) atau
+      https:// sebagai langkah berjaga-jaga tambahan. Jika tidak ada, jangan
+      kongsi sebarang maklumat sensitif.
+    </MastheadSection>
+  </MastheadContent>
+</Masthead>
+```
 
   </Tab>
 </Tabs>
@@ -89,248 +98,25 @@ import {
   Masthead,
   MastheadHeader,
   MastheadContent,
-  MastheadOfficialIndicator,
-  MastheadToggle,
+  MastheadTitle,
+  MastheadTrigger,
   MastheadSection,
-  MastheadSectionTitle,
-  MastheadSectionBody,
 } from "@govtechmy/myds-react/masthead";
-import { GovMyIcon, Lock2Icon, LockFillIcon } from "@govtechmy/myds-react/icon";
 ```
 
 ```tsx copy title="Anatomi"
 export default () => (
   <Masthead>
     <MastheadHeader>
-      <MastheadOfficialIndicator>
-        Official Malaysia Government Website
-      </MastheadOfficialIndicator>
-      <MastheadToggle>Here's how you know</MastheadToggle>
+      <MastheadTitle />
+      <MastheadTrigger />
     </MastheadHeader>
     <MastheadContent>
-      <MastheadSection icon={<GovMyIcon />}>
-        <MastheadSectionTitle>
-          Official government websites end with .gov.my
-        </MastheadSectionTitle>
-        <MastheadSectionBody>
-          If the link does not end with
-          <span className="font-semibold"> .gov.my</span>, exit the website
-          immediately even if it looks similar.
-        </MastheadSectionBody>
-      </MastheadSection>
-      <MastheadSection icon={<Lock2Icon height={24} width={24} />}>
-        <MastheadSectionTitle>Secure websites use HTTPS</MastheadSectionTitle>
-        <MastheadSectionBody>
-          Look for a lock (
-          <SolidLockIcon className="mb-0.5 inline size-3.5" />) atau
-          <span className="font-semibold"> https:// </span>
-          as an added precaution. If not present, do not share any sensitive
-          information.
-        </MastheadSectionBody>
-      </MastheadSection>
+      <MastheadSection />
     </MastheadContent>
   </Masthead>
 );
 ```
-
-## Penggunaan Dipermudahkan
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
-  <Tab value="Preview">
-    <div className="w-[1000px] origin-top-left scale-[0.7]">
-      <PreviewMasthead />
-    </div>
-  </Tab>
-  <Tab value="Code">
-    ```tsx import {Masthead} from "@govtechmy/myds-react/masthead"; export
-    default () => <Masthead />; ```
-  </Tab>
-</Tabs>
-
-## Penggunaan Dipermudahkan - MastheadHeader
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
-  <Tab value="Preview">
-    <div className="w-[1000px] origin-top-left scale-[0.7]">
-      <PreviewMasthead />
-    </div>
-  </Tab>
-  <Tab value="Code">
-    ```tsx
-import {
-  Masthead,
-  MastheadHeader,
-  MastheadOfficialIndicator,
-  MastheadToggle,
-} from "@govtechmy/myds-react/masthead";
-
-export default () => (
-  <Masthead>
-    <MastheadHeader>
-      <MastheadOfficialIndicator>
-        Official Malaysia Government Website
-      </MastheadOfficialIndicator>
-      <MastheadToggle>Here's how you know</MastheadToggle>
-    </MastheadHeader>
-  </Masthead>
-);
-    ```
-  </Tab>
-</Tabs>
-
-## Penggunaan Dipermudahkan - MastheadContent
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
-  <Tab value="Preview">
-    <div className="w-[1000px] origin-top-left scale-[0.7]">
-      <PreviewMasthead />
-    </div>
-  </Tab>
-  <Tab value="Code">
-    ```tsx 
-    import {
-      Masthead,
-      MastheadContent,
-      MastheadSection,
-      MastheadSectionTitle,
-      MastheadSectionBody
-    }
-    from "@govtechmy/myds-react/masthead";
-
-    export default () => (
-    <Masthead>
-      <MastheadContent>
-        <MastheadSection icon={<GovMyIcon />}>
-          <MastheadSectionTitle>
-            Official government websites end with .gov.my
-          </MastheadSectionTitle>
-          <MastheadSectionBody>
-            If the link does not end with
-            <span className="font-semibold"> .gov.my</span>, exit the website
-            immediately even if it looks similar.
-          </MastheadSectionBody>
-        </MastheadSection>
-        <MastheadSection icon={<Lock2Icon />}>
-          <MastheadSectionTitle>Secure websites use HTTPS</MastheadSectionTitle>
-          <MastheadSectionBody>
-            Look for a lock (
-            <SolidLockIcon className="mb-0.5 inline size-3.5" />) atau
-            <span className="font-semibold"> https:// </span>
-            as an added precaution. If not present, do not share any sensitive
-            information.
-          </MastheadSectionBody>
-        </MastheadSection>
-      </MastheadContent>
-    </Masthead>
-    );
-    ```
-
-  </Tab>
-</Tabs>
-
----
-
-### Pembungkus Utama: `Masthead`
-
-`Masthead` berfungsi sebagai pembungkus utama untuk kandungan masthead. Semua subkomponen disusun di dalam pembungkus ini. Ia terbahagi kepada dua bahagian utama:
-
-1. `MastheadHeader`
-2. `MastheadContent`
-
----
-
-## 1.MastheadHeader
-
-`MastheadHeader` adalah bahagian atas masthead dan mengandungi dua kawasan utama:
-
-1.1 **MastheadOfficialIndicator**  
-1.2 **MastheadToggle**
-
-### 1.1 MastheadOfficialIndicator
-
-Komponen `MastheadOfficialIndicator` direka untuk memberi penjelasan yang jelas bahawa laman web ini adalah portal kerajaan yang sah.
-
-**Komponen**:
-
-- **MalaysiaFlagIcon**: Memaparkan bendera rasmi Malaysia.
-- **Text Element**: Menampilkan label "Official Malaysia Government Website"
-
-### 1.2 MastheadToggle
-
-Komponen `MastheadToggle` menyediakan kawalan interaktif yang membolehkan pengguna menukar ketampakan maklumat tambahan.
-
-**Komponen**:
-
-- **ChevronDownIcon**: Ikon yang menggambarkan chevron yang menghadap ke bawah, digunakan untuk menunjukkan dan mengaktifkan togol ketampakan dropdown.
-- **Label**: Memaparkan teks "Here's how you know" apabila dropdown berada dalam keadaan terlipat.
-
-**Contoh**:
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
-    <PreviewMastheadHeader />
-  </Tab>
-  <Tab value="Code">
-    ```tsx
-    <MastheadHeader>
-      <MastheadOfficialIndicator>
-        Official Malaysia Government Website
-      </MastheadOfficialIndicator>
-      <MastheadToggle>Here's how you know</MastheadToggle>
-    </MastheadHeader>
-    ```
-  </Tab>
-</Tabs>
-
-## 2. MastheadContent
-
-Komponen `MastheadContent` merujuk kepada bahagian bawah masthead, yang akan dipaparkan setelah togol diaktifkan.
-
-### 2.1 MastheadSection
-
-`MastheadSection` mewakili bahagian individu dalam `MastheadContent`. Ia mengandungi yang berikut:
-
-#### 2.1.1 MastheadSectionTitle
-
-Komponen `MastheadSectionTitle` mentakrifkan tajuk utama bagi sesuatu bahagian, memberikan konteks yang jelas dan mengarahkan perhatian pengguna kepada kandungan bahagian tersebut.
-
-#### 2.1.2 MastheadSectionBody
-
-Komponen `MastheadSectionBody` mengandungi kandungan utama bagi bahagian tersebut, memaparkan maklumat atau media yang relevan dalam susun atur yang terstruktur.
-
-**Contoh**:
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
-    <PreviewMastheadContent />
-  </Tab>
-  <Tab value="Code">
-    ```tsx
-    <MastheadContent>
-      <MastheadSection icon={<GovMyIcon />}>
-        <MastheadSectionTitle>
-          Official government websites end with .gov.my
-        </MastheadSectionTitle>
-        <MastheadSectionBody>
-          If the link does not end with
-          <span className="font-semibold"> .gov.my</span>, exit the website
-          immediately even if it looks similar.
-        </MastheadSectionBody>
-      </MastheadSection>
-      <MastheadSection icon={<Lock2Icon height={24} width={24} />}>
-        <MastheadSectionTitle>Secure websites use HTTPS</MastheadSectionTitle>
-        <MastheadSectionBody>
-          Look for a lock (
-          <LockFillIcon className="mb-0.5 inline size-3.5" />) atau
-          <span className="font-semibold"> https:// </span>
-          as an added precaution. If not present, do not share any sensitive
-          information.
-        </MastheadSectionBody>
-      </MastheadSection>
-    </MastheadContent>
-    ```
-  </Tab>
-</Tabs>
 
 ## Props
 
@@ -340,9 +126,8 @@ Komponen `MastheadSectionBody` mengandungi kandungan utama bagi bahagian tersebu
   type={{
     children: {
       description:
-        "Kandungan yang akan dipaparkan dalam komponen Masthead. Boleh termasuk MastheadHeader dan MastheadContent.",
+        "Kandungan yang akan dipaparkan di dalam komponen Masthead. Boleh termasuk MastheadHeader dan MastheadContent.",
       type: "ReactNode",
-      default: "<DefaultMastheadHeadHeader/>,<DefaultMastheadContent/>",
     },
   }}
 />
@@ -353,34 +138,30 @@ Komponen `MastheadSectionBody` mengandungi kandungan utama bagi bahagian tersebu
   type={{
     children: {
       description:
-        "Kandungan untuk tajuk Masthead. Biasanya mengandungi komponen MastheadOfficialIndicator dan MastheadToggle.",
+        "Kandungan untuk header Masthead. Biasanya mengandungi komponen MastheadTitle dan MastheadTrigger.",
       type: "ReactNode",
     },
   }}
 />
 
-### MastheadOfficialIndicator
+### MastheadTitle
 
 <TypeTable
   type={{
     children: {
-      description:
-        "Teks untuk dipaparkan bersama ikon bendera rasmi kerajaan Malaysia. Secara lalai adalah 'Official Malaysia Government Website'.",
+      description: "Teks untuk dipaparkan bersama bendera rasmi Malaysia.",
       type: "ReactNode",
-      default: `"Official Malaysia Government Website"`,
     },
   }}
 />
 
-### MastheadToggle
+### MastheadTrigger
 
 <TypeTable
   type={{
     children: {
-      description:
-        "Teks untuk bahagian togol. Secara lalai adalah 'Here's how you know'.",
+      description: "Teks untuk tindakan pencetus",
       type: "ReactNode",
-      default: `"Here's how you know"`,
     },
   }}
 />
@@ -391,7 +172,7 @@ Komponen `MastheadSectionBody` mengandungi kandungan utama bagi bahagian tersebu
   type={{
     children: {
       description:
-        "Kandungan untuk badan komponen Masthead, biasanya mengandungi beberapa komponen MastheadSection.",
+        "Kandungan untuk badan komponen Masthead, mengharapkan komponen MastheadSection.",
       type: "ReactNode",
     },
   }}
@@ -401,38 +182,18 @@ Komponen `MastheadSectionBody` mengandungi kandungan utama bagi bahagian tersebu
 
 <TypeTable
   type={{
+    title: {
+      description:
+        "Tajuk untuk seksyen Masthead. Biasanya menerangkan kandungan dalam seksyen.",
+      type: "ReactNode",
+    },
     icon: {
-      description:
-        "Ikon untuk dipaparkan di sebelah kandungan bahagian. Biasanya ikon dari folder `icons`.",
+      description: "Ikon untuk dipaparkan di sebelah kandungan seksyen",
       type: "ReactNode",
     },
     children: {
       description:
-        "Kandungan untuk dipaparkan dalam bahagian, seperti tajuk dan badan teks.",
-      type: "ReactNode",
-    },
-  }}
-/>
-
-### MastheadSectionTitle
-
-<TypeTable
-  type={{
-    children: {
-      description:
-        "Tajuk untuk bahagian Masthead. Biasanya menerangkan kandungan dalam bahagian tersebut.",
-      type: "ReactNode",
-    },
-  }}
-/>
-
-### MastheadSectionBody
-
-<TypeTable
-  type={{
-    children: {
-      description:
-        "Teks badan untuk bahagian Masthead. Menerangkan butiran atau maklumat tambahan berkaitan dengan tajuk bahagian.",
+        "Kandungan untuk dipaparkan dalam seksyen, seperti tajuk dan teks badan.",
       type: "ReactNode",
     },
   }}
