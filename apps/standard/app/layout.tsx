@@ -22,7 +22,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className={clx("font-body")}>
+    <html className={clx("font-body")} lang="en">
       <body>
         <Masthead />
         <RootProvider>{children}</RootProvider>

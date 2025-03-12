@@ -23,7 +23,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        accent: "rgba(189, 90, 48, 1)",
+        "txt-accent": "rgb(var(--txt-accent))",
       },
     },
   },
