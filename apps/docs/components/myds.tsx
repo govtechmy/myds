@@ -80,7 +80,7 @@ import {
   SelectItem,
 } from "@govtechmy/myds-react/select";
 import { Tag } from "@govtechmy/myds-react/tag";
-import { Cell } from "@govtechmy/myds-react/data-table";
+import { Cell, ColumnDef } from "@govtechmy/myds-react/data-table";
 import {
   Masthead,
   MastheadHeader,
@@ -110,12 +110,6 @@ import {
   SummaryListTerm,
 } from "@govtechmy/myds-react/summary-list";
 import { SwapIcon } from "@govtechmy/myds-react/icon";
-import {
-  GlobeIcon,
-  MoonIcon,
-  SearchIcon,
-  SunIcon,
-} from "@govtechmy/myds-react/icon";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
@@ -302,7 +296,7 @@ export const CustomValueSelect: FunctionComponent = () => {
           {(value) => (
             <div className="flex gap-1">
               {Array.isArray(value)
-                ? value.map((v) => <Pill>{v}</Pill>)
+                ? value.map((v, i) => <Pill key={i}>{v}</Pill>)
                 : value}
             </div>
           )}
@@ -517,7 +511,13 @@ export const DataTableColumns = [
   },
 ];
 
-export const DataTableFooterColumns = [
+type Employee = {
+  name: string;
+  age: number;
+  position: string;
+};
+
+export const DataTableFooterColumns: ColumnDef<Employee>[] = [
   {
     accessorKey: "name",
     header: "Name",
@@ -525,7 +525,7 @@ export const DataTableFooterColumns = [
     meta: {
       expandable: true,
     },
-    footer: ({ table }: any) => `No. of Employees: ${table.getRowCount()}`,
+    footer: ({ table }) => `No. of Employees: ${table.getRowCount()}`,
   },
   {
     accessorKey: "age",
@@ -687,9 +687,7 @@ export const DataTableRadio = {
 
 interface PreviewMastheadProps extends ComponentProps<typeof Masthead> {}
 
-export const PreviewMasthead: FunctionComponent<PreviewMastheadProps> = (
-  props,
-) => {
+export const PreviewMasthead: FunctionComponent<PreviewMastheadProps> = () => {
   return (
     <div className="not-prose">
       <Masthead>
@@ -697,7 +695,7 @@ export const PreviewMasthead: FunctionComponent<PreviewMastheadProps> = (
           <MastheadOfficialIndicator>
             Official Malaysia Government Website
           </MastheadOfficialIndicator>
-          <MastheadToggle>Here's how you know</MastheadToggle>
+          <MastheadToggle>{"Here's how you know"}</MastheadToggle>
         </MastheadHeader>
         <MastheadContent>
           <MastheadSection icon={<GovMyIcon />}>
@@ -728,9 +726,9 @@ export const PreviewMasthead: FunctionComponent<PreviewMastheadProps> = (
   );
 };
 
-export const PreviewMastheadContent: FunctionComponent<PreviewMastheadProps> = (
-  props,
-) => {
+export const PreviewMastheadContent: FunctionComponent<
+  PreviewMastheadProps
+> = () => {
   return (
     <div className="not-prose">
       <MastheadContent>
@@ -759,16 +757,16 @@ export const PreviewMastheadContent: FunctionComponent<PreviewMastheadProps> = (
   );
 };
 
-export const PreviewMastheadHeader: FunctionComponent<PreviewMastheadProps> = (
-  props,
-) => {
+export const PreviewMastheadHeader: FunctionComponent<
+  PreviewMastheadProps
+> = () => {
   return (
     <div className="not-prose">
       <MastheadHeader>
         <MastheadOfficialIndicator>
           Official Malaysia Government Website
         </MastheadOfficialIndicator>
-        <MastheadToggle>Here's how you know</MastheadToggle>
+        <MastheadToggle>{"Here's how you know"}</MastheadToggle>
       </MastheadHeader>
     </div>
   );
@@ -776,9 +774,7 @@ export const PreviewMastheadHeader: FunctionComponent<PreviewMastheadProps> = (
 
 interface PreviewSummaryList extends ComponentProps<typeof SummaryList> {}
 
-export const PreviewSummaryList: FunctionComponent<PreviewSummaryList> = (
-  props,
-) => {
+export const PreviewSummaryList: FunctionComponent<PreviewSummaryList> = () => {
   return (
     <SummaryList>
       <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
@@ -850,9 +846,9 @@ export const PreviewSummaryList: FunctionComponent<PreviewSummaryList> = (
   );
 };
 
-export const PreviewSummaryListAction: FunctionComponent<PreviewSummaryList> = (
-  props,
-) => {
+export const PreviewSummaryListAction: FunctionComponent<
+  PreviewSummaryList
+> = () => {
   return (
     <div className="not-prose w-[660px]">
       <Button variant="primary-ghost" className="h-8">
@@ -901,7 +897,7 @@ import {
 import { Link } from "@govtechmy/myds-react/link";
 
 export const SelfPagination = ({ count = 200, limit = 10, page = 1 }) => {
-  const { visiblePages, max } = usePagination({ count, limit, page });
+  const { visiblePages } = usePagination({ count, limit, page });
   const pageFn = (page: number) => console.log(page);
 
   return (

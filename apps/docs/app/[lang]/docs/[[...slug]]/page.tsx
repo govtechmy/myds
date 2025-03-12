@@ -12,6 +12,7 @@ import { Heading } from "fumadocs-ui/components/heading";
 import Image from "next/image";
 import { darkify } from "@/lib/constant";
 import { getRosetta } from "@/locales/_server";
+import { ImgHTMLAttributes } from "react";
 
 interface PageParams {
   params: { slug?: string[]; lang: string };
@@ -51,13 +52,35 @@ export default async function Page({ params }: PageParams) {
             h6: (props) => (
               <Heading as="h6" {...props} className="font-body font-semibold" />
             ),
-            img: (props: any) => {
-              const [light, dark] = [props.src, darkify(props.src)];
+            img: (props: ImgHTMLAttributes<HTMLImageElement>) => {
+              const [light, dark] = [
+                props.src as string,
+                darkify(props.src as string),
+              ];
+              const { width, height } = props;
+              const widthNum = width ? parseInt(width.toString(), 10) : 100;
+              const heightNum = height ? parseInt(height.toString(), 10) : 100;
+
+              const alt = props.alt || "";
 
               return (
                 <>
-                  <Image {...props} src={light} className="img-light" />
-                  <Image {...props} src={dark || light} className="img-dark" />
+                  <Image
+                    {...props}
+                    src={light}
+                    className="img-light"
+                    alt={alt}
+                    width={widthNum}
+                    height={heightNum}
+                  />
+                  <Image
+                    {...props}
+                    src={dark || light}
+                    className="img-dark"
+                    alt={alt}
+                    width={widthNum}
+                    height={heightNum}
+                  />
                 </>
               );
             },

@@ -6,7 +6,8 @@
     "dev": "storybook dev -p 6006",
     "build": "storybook build -o dist",
     "start": "serve storybook-static",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "lint": "next lint"
   },
   "dependencies": {
     "@govtechmy/myds-react": "workspace:*",
