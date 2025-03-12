@@ -147,4 +147,7 @@
 
   /* Ring - Danger */
   --fr-danger: var(--_danger-300) / 0.4;
+
+  /* Text - Accent */
+  --txt-accent: var(--_accent_light)
 }
