@@ -1,5 +1,11 @@
 # @govtechmy/myds-react
 
+## 0.0.16
+
+### Patch Changes
+
+- 07e9ffb: Refactored Masthead component
+
 ## 0.0.15
 
 ### Patch Changes
