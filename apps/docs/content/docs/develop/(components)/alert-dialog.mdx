@@ -39,27 +39,22 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
   </Tab>
   <Tab value="Code">
     ```tsx
-    <Dialog>
-      <DialogTrigger>
-        <Button variant="primary-fill">Open Dialog</Button>
-      </DialogTrigger>
-      <DialogBody>
-        <DialogHeader>
-          <DialogTitle>Dialog Title</DialogTitle>
-        </DialogHeader>
-        <DialogContent>
-          <DialogDescription>Dialog content goes here.</DialogDescription>
-        </DialogContent>
-        <DialogFooter>
-          <DialogClose>
+    <AlertDialog variant="success">
+      <AlertDialogTrigger>
+        <Button variant="primary-fill">Open AlertDialog</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogTitle>AlertDialog Title</AlertDialogTitle>
+        <AlertDialogAction>
+          <AlertDialogClose>
             <Button variant="default-outline">Secondary Action</Button>
-          </DialogClose>
-          <DialogClose>
+          </AlertDialogClose>
+          <AlertDialogClose>
             <Button variant="primary-fill">Primary Action</Button>
-          </DialogClose>
-        </DialogFooter>
-      </DialogBody>
-    </Dialog>
+          </AlertDialogClose>
+        </AlertDialogAction>
+      </AlertDialogContent>
+    </AlertDialog>
     ```
   </Tab>
 </Tabs>

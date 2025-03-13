@@ -5,15 +5,16 @@ import {
   forwardRef,
   ReactElement,
   JSXElementConstructor,
-  cloneElement,
   ReactNode,
   createContext,
   useContext,
+  LegacyRef,
 } from "react";
 import { CrossIcon } from "../icons/cross";
 import { clx } from "../utils";
 import { Button } from "./button";
 import { cva } from "class-variance-authority";
+import { Slot } from "@radix-ui/react-slot";
 
 const Dialog = DialogPrimitive.Root;
 type DialogProps = ComponentProps<typeof Dialog>;
@@ -253,7 +254,7 @@ const DialogTitle: ForwardRefExoticComponent<DialogTitleProps> = forwardRef(
     <DialogPrimitive.Title
       ref={ref}
       className={clx(
-        "text-body-lg text-txt-black-900 font-semibold",
+        "text-body-lg text-txt-black-900 font-body font-semibold",
         className,
       )}
       {...props}
@@ -305,14 +306,16 @@ interface DialogIconProps {
   variant: "default" | "primary" | "success" | "warning" | "danger";
   children: ReactElement<any, string | JSXElementConstructor<any>>;
   className?: string;
+  ref?: LegacyRef<HTMLElement>;
 }
 
 const DialogIcon: ForwardRefExoticComponent<DialogIconProps> = forwardRef(
   ({ variant, children, className }, ref) => {
-    return cloneElement(children, {
-      ref,
-      className: clx(dialog_icon_cva({ variant, className })),
-    });
+    return (
+      <Slot ref={ref} className={clx(dialog_icon_cva({ variant }), className)}>
+        {children}
+      </Slot>
+    );
   },
 );
 
