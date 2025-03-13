@@ -1,14 +1,27 @@
 import SearchBarIcons from "@/components/icon/Searchbar";
 import { iconDataList } from "@/components/icon/IconDataList";
-import IconsHeroDesktop from "@/icons/icons-hero-desktop";
+import IconsHeroDesktopLight from "@/icons/icons-hero-desktop-light";
+import IconsHeroDesktopDark from "@/icons/icons-hero-desktop-dark";
+import { clx } from "@govtechmy/myds-react/utils";
 
 export default function Hello() {
   return (
     <div className="container">
-      <IconsHeroDesktop></IconsHeroDesktop>
-      <div className="from-primary-700 via-primary-300 to-warning-200 my-4 rounded-lg bg-gradient-to-r py-24 text-gray-800">
-        <h1 className="mx-auto max-w-2xl text-center text-5xl max-sm:text-3xl">
-          Beautifully crafted SVG icons, by the makers of MYDS.
+      <div className="relative">
+        <IconsHeroDesktopLight className="icon-hero-desktop-light h-auto w-full py-8"></IconsHeroDesktopLight>
+        <IconsHeroDesktopDark className="icon-hero-desktop-dark h-auto w-full py-8"></IconsHeroDesktopDark>
+
+        <h1
+          className={clx(
+            "absolute inset-0 flex flex-col items-center justify-center text-center",
+            "max-[500px]:text-heading-2xs max-[600px]:text-heading-xs",
+          )}
+        >
+          Beautifully crafted SVG icons,
+          <span className="text-txt-black-900">
+            made for{" "}
+            <span className="text-txt-primary">effortless integration</span>
+          </span>
         </h1>
       </div>
       <SearchBarIcons iconDataList={iconDataList}></SearchBarIcons>

@@ -6,13 +6,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 
 :root {
-  --_accent: 182 88 47;     
-  --_accent-dark: 220 151 121; 
+  --_accent: 182 88 47;
+  --_accent-dark: 220 151 121;
   --txt-accent: var(--_accent);
 }
 
 .dark {
   --txt-accent: var(--_accent-dark);
+}
+
+.icon-hero-desktop-light {
+  display: block;
+}
+.icon-hero-desktop-dark {
+  display: none;
+}
+.dark .icon-hero-desktop-light {
+  display: none;
+}
+.dark .icon-hero-desktop-dark {
+  display: block;
 }
 
 @tailwind base;
