@@ -28,6 +28,33 @@
   display: block;
 }
 
+@media (max-width: 640px) {
+  .icon-hero-desktop-light,
+  .icon-hero-desktop-dark {
+    display: none !important;
+  }
+}
+
+.icon-hero-mobile-light {
+  display: block;
+}
+.icon-hero-mobile-dark {
+  display: none;
+}
+.dark .icon-hero-mobile-light {
+  display: none;
+}
+.dark .icon-hero-mobile-dark {
+  display: block;
+}
+
+@media (min-width: 639px) {
+  .icon-hero-mobile-light,
+  .icon-hero-mobile-dark {
+    display: none !important;
+  }
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -14,7 +14,7 @@ export default function IconsHeroDesktopDark({
       xmlns="http://www.w3.org/2000/svg"
       className={clx("", className)}
     >
-      <g id="icon-hero-desktop-dark" clip-path="url(#clip0_849_19242)">
+      <g id="icon-hero-desktop-dark" clipPath="url(#clip0_849_19242)">
         <rect width="1280" height="336" fill="#18181B" />
         <circle
           id="gradient"
@@ -49,7 +49,7 @@ export default function IconsHeroDesktopDark({
           strokeDasharray="6 6"
         />
         <g id="With Label">
-          <g id="Icon/outline/gov-my" clip-path="url(#clip1_849_19242)">
+          <g id="Icon/outline/gov-my" clipPath="url(#clip1_849_19242)">
             <path
               id="Vector"
               d="M116.241 160.134L111.546 161.132M116.241 160.134L120.349 159.261M116.241 160.134L116.375 159.998C117.662 158.679 117.044 156.462 115.261 155.998L114.194 155.721C113.692 155.591 113.245 155.3 112.921 154.894L112.584 154.471M111.546 161.132L107.438 162.005M111.546 161.132L111.369 161.062C109.656 160.381 109.319 158.104 110.759 156.955L111.621 156.268C112.027 155.944 112.317 155.498 112.448 154.995L112.584 154.471M112.584 154.471L112.397 153.591M112.397 153.591L112.147 152.417L115.206 152.38L112.397 153.591Z"
@@ -134,7 +134,7 @@ export default function IconsHeroDesktopDark({
             transform="translate(238.732 83.5509) rotate(12)"
             fill="#18181B"
           />
-          <g id="Icon/outline/email" clip-path="url(#clip2_849_19242)">
+          <g id="Icon/outline/email" clipPath="url(#clip2_849_19242)">
             <path
               id="Vector_4"
               d="M243.848 94.8361L254.689 109.485L270.551 100.512M241.762 97.0763C242.244 94.8074 244.474 93.359 246.743 93.8413L268.311 98.4258C270.58 98.908 272.028 101.138 271.546 103.407L268.053 119.84C267.571 122.109 265.341 123.557 263.072 123.075L241.504 118.491C239.235 118.008 237.786 115.778 238.269 113.509L241.762 97.0763Z"
@@ -203,7 +203,7 @@ export default function IconsHeroDesktopDark({
             transform="translate(892.803 245.829) rotate(12)"
             fill="#18181B"
           />
-          <g id="Icon/outline/phone" clip-path="url(#clip3_849_19242)">
+          <g id="Icon/outline/phone" clipPath="url(#clip3_849_19242)">
             <path
               id="Vector_5"
               d="M905.761 254.488L899.959 253.254C898.463 252.937 896.993 253.891 896.675 255.387C893.497 270.341 903.043 285.04 917.997 288.219C919.492 288.537 920.962 287.582 921.28 286.087L922.514 280.284L917.036 274.673L913.023 277.279C912.326 277.732 911.429 277.728 910.786 277.201C909.695 276.308 907.96 274.697 906.398 272.412C904.799 270.073 904.061 267.762 903.737 266.389C903.555 265.62 903.917 264.854 904.58 264.423L908.659 261.775L905.761 254.488Z"
@@ -272,7 +272,7 @@ export default function IconsHeroDesktopDark({
             transform="translate(1007 92.3068) rotate(-12)"
             fill="#18181B"
           />
-          <g id="Icon/outline/flag" clip-path="url(#clip4_849_19242)">
+          <g id="Icon/outline/flag" clipPath="url(#clip4_849_19242)">
             <path
               id="Vector_6"
               d="M1018.61 118.056L1016.94 110.231M1016.94 110.231L1014.12 96.9283C1014.12 96.9283 1017.67 92.4922 1023.9 94.8492C1030.12 97.2062 1033.68 92.7701 1033.68 92.7701L1036.51 106.073C1036.51 106.073 1032.95 110.509 1026.72 108.152C1020.5 105.795 1016.94 110.231 1016.94 110.231Z"
@@ -341,7 +341,7 @@ export default function IconsHeroDesktopDark({
             transform="translate(354.023 271.477) rotate(-12)"
             fill="#18181B"
           />
-          <g id="Icon/outline/clock" clip-path="url(#clip5_849_19242)">
+          <g id="Icon/outline/clock" clipPath="url(#clip5_849_19242)">
             <path
               id="Vector_7"
               d="M371.67 277.54L373 283.801L378.478 282.636M384.347 281.389C385.679 287.655 381.679 293.815 375.412 295.147C369.146 296.479 362.986 292.479 361.654 286.212C360.322 279.946 364.322 273.786 370.589 272.454C376.855 271.122 383.015 275.122 384.347 281.389Z"

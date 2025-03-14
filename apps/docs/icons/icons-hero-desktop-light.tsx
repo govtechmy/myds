@@ -14,7 +14,7 @@ export default function IconsHeroDesktopLight({
       xmlns="http://www.w3.org/2000/svg"
       className={clx("", className)}
     >
-      <g id="icon-hero-desktop" clip-path="url(#clip0_849_19029)">
+      <g id="icon-hero-desktop" clipPath="url(#clip0_849_19029)">
         <rect width="1280" height="336" fill="white" />
         <circle
           id="gradient"
@@ -49,7 +49,7 @@ export default function IconsHeroDesktopLight({
           strokeDasharray="6 6"
         />
         <g id="With Label">
-          <g id="Icon/outline/gov-my" clip-path="url(#clip1_849_19029)">
+          <g id="Icon/outline/gov-my" clipPath="url(#clip1_849_19029)">
             <path
               id="Vector"
               d="M116.242 160.134L111.547 161.132M116.242 160.134L120.35 159.261M116.242 160.134L116.376 159.998C117.663 158.679 117.045 156.462 115.262 155.998L114.195 155.721C113.693 155.591 113.246 155.3 112.922 154.894L112.585 154.471M111.547 161.132L107.439 162.005M111.547 161.132L111.37 161.062C109.657 160.381 109.32 158.104 110.76 156.955L111.622 156.268C112.028 155.944 112.318 155.498 112.449 154.995L112.585 154.471M112.585 154.471L112.398 153.591M112.398 153.591L112.148 152.417L115.207 152.38L112.398 153.591Z"
@@ -134,7 +134,7 @@ export default function IconsHeroDesktopLight({
             transform="translate(238.732 83.5509) rotate(12)"
             fill="white"
           />
-          <g id="Icon/outline/email" clip-path="url(#clip2_849_19029)">
+          <g id="Icon/outline/email" clipPath="url(#clip2_849_19029)">
             <path
               id="Vector_4"
               d="M243.848 94.8361L254.69 109.485L270.552 100.512M241.762 97.0763C242.244 94.8074 244.475 93.359 246.743 93.8413L268.312 98.4258C270.581 98.908 272.029 101.138 271.547 103.407L268.054 119.84C267.571 122.109 265.341 123.557 263.072 123.075L241.504 118.491C239.235 118.008 237.787 115.778 238.269 113.509L241.762 97.0763Z"
@@ -203,7 +203,7 @@ export default function IconsHeroDesktopLight({
             transform="translate(892.803 245.829) rotate(12)"
             fill="white"
           />
-          <g id="Icon/outline/phone" clip-path="url(#clip3_849_19029)">
+          <g id="Icon/outline/phone" clipPath="url(#clip3_849_19029)">
             <path
               id="Vector_5"
               d="M905.761 254.488L899.959 253.254C898.463 252.937 896.993 253.891 896.675 255.387C893.497 270.341 903.043 285.04 917.997 288.219C919.492 288.537 920.962 287.582 921.28 286.087L922.514 280.284L917.036 274.673L913.023 277.279C912.326 277.732 911.429 277.728 910.786 277.201C909.695 276.308 907.96 274.697 906.398 272.412C904.799 270.073 904.061 267.762 903.737 266.389C903.555 265.62 903.917 264.854 904.58 264.423L908.659 261.775L905.761 254.488Z"
@@ -272,7 +272,7 @@ export default function IconsHeroDesktopLight({
             transform="translate(1007 92.3068) rotate(-12)"
             fill="white"
           />
-          <g id="Icon/outline/flag" clip-path="url(#clip4_849_19029)">
+          <g id="Icon/outline/flag" clipPath="url(#clip4_849_19029)">
             <path
               id="Vector_6"
               d="M1018.61 118.056L1016.94 110.231M1016.94 110.231L1014.12 96.9283C1014.12 96.9283 1017.67 92.4922 1023.9 94.8492C1030.12 97.2062 1033.68 92.7701 1033.68 92.7701L1036.51 106.073C1036.51 106.073 1032.95 110.509 1026.72 108.152C1020.5 105.795 1016.94 110.231 1016.94 110.231Z"
@@ -341,7 +341,7 @@ export default function IconsHeroDesktopLight({
             transform="translate(354.023 271.477) rotate(-12)"
             fill="white"
           />
-          <g id="Icon/outline/clock" clip-path="url(#clip5_849_19029)">
+          <g id="Icon/outline/clock" clipPath="url(#clip5_849_19029)">
             <path
               id="Vector_7"
               d="M371.669 277.54L373 283.801L378.478 282.636M384.346 281.389C385.678 287.655 381.678 293.815 375.412 295.147C369.145 296.479 362.985 292.479 361.653 286.212C360.321 279.946 364.322 273.786 370.588 272.454C376.855 271.122 383.015 275.122 384.346 281.389Z"
