@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "check-exports": "attw --pack . --profile node16"
+    "check-exports": "attw --pack . --profile node16",
+    "lint": "eslint --ext .ts,.tsx src/",
+    "lint:fix": "eslint --ext .ts,.tsx --fix src/"
   },
   "files": [
     "dist",
@@ -224,6 +226,9 @@
     "@types/node": "^22.7.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@typescript-eslint/parser": "^7.1.0",
+    "eslint": "^9.22.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "react-dom": "^18",

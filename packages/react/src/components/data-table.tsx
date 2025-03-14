@@ -498,7 +498,7 @@ const RadioColumn = <TData extends Record<string, any>>() => {
       >
         <input
           type="radio"
-          role="radio"
+          // role="radio"
           aria-label="radio"
           id={row.id}
           value={row.id}
