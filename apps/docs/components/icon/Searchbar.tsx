@@ -87,7 +87,7 @@ export default function SearchBarIcons({ iconDataList }: Props) {
           if (blurredByChild) return;
           setHasFocus(false);
         }}
-        className="pb-6"
+        className="max-w-[600px] pb-6"
       >
         <SearchBarInputContainer>
           <SearchBarInput
