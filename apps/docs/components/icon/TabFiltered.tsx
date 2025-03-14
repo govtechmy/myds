@@ -11,16 +11,6 @@ import { IconData } from "./IconDataList";
 import { useContext } from "react";
 import { SearchContext } from "./SearchProvider";
 
-interface resultsProps {
-  all: IconData[];
-  generic: IconData[];
-  filled: IconData[];
-  wysiwyg: IconData[];
-  socialMedia: IconData[];
-  media: IconData[];
-  legacyGeneric: IconData[];
-}
-
 export default function TabFiltered() {
   const searchContext = useContext(SearchContext);
 
@@ -33,11 +23,11 @@ export default function TabFiltered() {
   return (
     <div className="w-full">
       <Tabs defaultValue="2" size="medium" variant="pill">
-        <div className="flex h-[60px] justify-center">
+        <div className="flex h-[46px] justify-center">
           <TabsList
             width="full"
             className={clx(
-              "no-scrollbar h-full flex-grow justify-center overflow-y-clip overflow-x-scroll scroll-smooth text-nowrap",
+              "no-scrollbar h-full flex-grow items-center justify-center overflow-x-scroll scroll-smooth text-nowrap max-md:justify-start",
             )}
           >
             <div className="w-1 shrink-0"></div>
@@ -64,7 +54,7 @@ export default function TabFiltered() {
           ).map((resultArray, index) => (
             <TabsContent
               key={index}
-              className="py-6"
+              className="py-8"
               value={(index + 1).toString()}
             >
               <ResultMap result={resultArray} />
