@@ -9,8 +9,7 @@ import {
   CollapsibleTrigger,
   CollapsibleContent,
 } from "@radix-ui/react-collapsible";
-import { ChevronDownIcon } from "../icons/chevron-down";
-import { SpecialMalaysiaFlagIcon } from "../icons/malaysia-flag";
+import { ChevronDownIcon, SpecialMalaysiaFlagIcon } from "../icons/";
 import { clx } from "../utils";
 import { Slot } from "@radix-ui/react-slot";
 
