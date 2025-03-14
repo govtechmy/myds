@@ -61,7 +61,6 @@ const Hero: FunctionComponent = () => {
           </Button>
         </div>
       </div>
-
       <picture className="border-otl-divider col-span-full mt-[3rem] w-full overflow-hidden border-t object-cover lg:col-span-6 lg:col-start-7 lg:mt-0 lg:border-l lg:border-t-0 lg:pr-0">
         <Image
           src="/common/hero.svg"

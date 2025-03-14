@@ -64,7 +64,6 @@ export default async function HomePage({
             reversed={(i + 1) % 2 === 0}
           />
         ))}
-
         <Timeline
           // TODO: Refactor this
           cover={{
@@ -81,7 +80,6 @@ export default async function HomePage({
           }))}
         />
         <Feedback id="contribute" />
-
         <Footer
           ministry={t("common.names.kd")}
           descriptionWithNewlines={`Aras 13, 14 dan 15, Blok Menara, Menara Usahawan
