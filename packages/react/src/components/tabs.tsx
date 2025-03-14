@@ -83,7 +83,7 @@ const tabs_trigger_cva = cva(
       variant: {
         pill: [
           "bg-transparent data-[state=active]:bg-bg-washed-active transition-colors rounded-full",
-          "before:h-auto before:w-[1px] before:content-[''] before:absolute before:-left-1 before:bg-otl-gray-300 before:first-of-type:hidden",
+          // "before:h-auto before:w-[1px] before:content-[''] before:absolute before:-left-1 before:bg-otl-gray-300 before:first-of-type:hidden",
         ],
         enclosed: [
           "data-[state=active]:bg-bg-dialog-active rounded-md transition-[border] data-[state=active]:border-otl-gray-200",

@@ -28,7 +28,7 @@
   display: block;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 639px) {
   .icon-hero-desktop-light,
   .icon-hero-desktop-dark {
     display: none !important;
@@ -48,7 +48,7 @@
   display: block;
 }
 
-@media (min-width: 639px) {
+@media (min-width: 640px) {
   .icon-hero-mobile-light,
   .icon-hero-mobile-dark {
     display: none !important;
