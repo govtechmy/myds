@@ -8,6 +8,8 @@ import {
 import { clx } from "@govtechmy/myds-react/utils";
 import ResultMap from "./ResultMap";
 import { IconData } from "./IconDataList";
+import { useContext } from "react";
+import { SearchContext } from "./SearchProvider";
 
 interface resultsProps {
   all: IconData[];
@@ -19,7 +21,15 @@ interface resultsProps {
   legacyGeneric: IconData[];
 }
 
-export default function TabFiltered({ results }: { results: resultsProps }) {
+export default function TabFiltered() {
+  const searchContext = useContext(SearchContext);
+
+  if (!searchContext) {
+    throw new Error("Hello must be used within a SearchProvider");
+  }
+
+  const { results } = searchContext;
+
   return (
     <div className="w-full">
       <Tabs defaultValue="2" size="medium" variant="pill">
