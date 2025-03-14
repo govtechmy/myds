@@ -15,7 +15,7 @@ export default function TabFiltered() {
   const searchContext = useContext(SearchContext);
 
   if (!searchContext) {
-    throw new Error("Hello must be used within a SearchProvider");
+    throw new Error("SearchContext must be used within a SearchProvider");
   }
 
   const { results } = searchContext;
@@ -31,13 +31,48 @@ export default function TabFiltered() {
             )}
           >
             <div className="w-1 shrink-0"></div>
-            <TabsTrigger value="1">All</TabsTrigger>
-            <TabsTrigger value="2">Generic</TabsTrigger>
-            <TabsTrigger value="3">Filled</TabsTrigger>
-            <TabsTrigger value="4">WYSIWYG</TabsTrigger>
-            <TabsTrigger value="5">Social Media</TabsTrigger>
-            <TabsTrigger value="6">Media</TabsTrigger>
-            <TabsTrigger value="7">Agency Icon (Legacy)</TabsTrigger>
+            <TabsTrigger
+              className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
+              value="1"
+            >
+              All
+            </TabsTrigger>
+            <TabsTrigger
+              className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
+              value="2"
+            >
+              Generic
+            </TabsTrigger>
+            <TabsTrigger
+              className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
+              value="3"
+            >
+              Filled
+            </TabsTrigger>
+            <TabsTrigger
+              className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
+              value="4"
+            >
+              WYSIWYG
+            </TabsTrigger>
+            <TabsTrigger
+              className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
+              value="5"
+            >
+              Social Media
+            </TabsTrigger>
+            <TabsTrigger
+              className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
+              value="6"
+            >
+              Media
+            </TabsTrigger>
+            <TabsTrigger
+              className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
+              value="7"
+            >
+              Agency Icon (Legacy)
+            </TabsTrigger>
           </TabsList>
         </div>
         <div>

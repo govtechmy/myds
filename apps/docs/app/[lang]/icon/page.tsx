@@ -8,7 +8,7 @@ import IconsHeroMobileDark from "@/icons/icons-hero-mobile-dark";
 import TabFiltered from "@/components/icon/TabFiltered";
 import { SearchProvider } from "@/components/icon/SearchProvider";
 
-export default function Hello() {
+export default function IconHomepage() {
   return (
     <SearchProvider>
       <div className="container">
