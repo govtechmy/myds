@@ -3,14 +3,11 @@ import {
   Masthead,
   MastheadHeader,
   MastheadContent,
-  MastheadOfficialIndicator,
-  MastheadToggle,
+  MastheadTrigger,
   MastheadSection,
-  MastheadSectionTitle,
-  MastheadSectionBody,
+  MastheadTitle,
 } from "@govtechmy/myds-react/masthead";
-import { Lock2Icon, LockFillIcon } from "../../../packages/react/src/icons/";
-import { GovMyIcon } from "../../../packages/react/src/icons/gov-my";
+import { Lock2Icon, GovMyIcon, LockFillIcon } from "@govtechmy/myds-react/icon";
 import { createStory } from "../utils";
 
 /**
@@ -48,12 +45,12 @@ import { createStory } from "../utils";
  * const CustomHeader = () => (
  *   <Masthead>
  *     <MastheadHeader>
- *       <MastheadOfficialIndicator>
+ *       <MastheadTitle>
  *         Custom Official Text
- *       </MastheadOfficialIndicator>
- *       <MastheadToggle>
+ *       </MastheadTitle>
+ *       <MastheadTrigger>
  *         Custom Toggle Text
- *       </MastheadToggle>
+ *       </MastheadTrigger>
  *     </MastheadHeader>
  *   </Masthead>
  * );
@@ -90,6 +87,10 @@ const meta = {
     },
   },
   argTypes: {
+    className: {
+      control: "text",
+      description: "CSS classes to apply to the Masthead",
+    },
     children: {
       control: false,
       description: "Content for the Masthead (header and/or content sections)",
@@ -103,163 +104,213 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  render: () => <Masthead />,
-};
-
-export const DefaultDark: Story = {
-  render: () => (
-    <div className="dark">
-      <Masthead />
-    </div>
-  ),
-};
-
-export const CustomHeader: Story = {
-  render: () => (
-    <Masthead>
+export const Default: Story = createStory({
+  children: (
+    <>
       <MastheadHeader>
-        <MastheadOfficialIndicator>
-          Portal Rasmi Kerajaan Malaysia
-        </MastheadOfficialIndicator>
-        <MastheadToggle>Ketahui Lebih Lanjut</MastheadToggle>
+        <MastheadTitle>Portal Rasmi Kerajaan Malaysia</MastheadTitle>
+        <MastheadTrigger>Ketahui Lebih Lanjut</MastheadTrigger>
       </MastheadHeader>
-    </Masthead>
-  ),
-};
 
-export const CustomHeaderDark: Story = {
-  ...createStory({}, "dark"),
-  render: () => {
-    return (
-      <div className="dark">
-        <Masthead>
-          <MastheadHeader>
-            <MastheadOfficialIndicator>
-              Portal Rasmi Kerajaan Malaysia
-            </MastheadOfficialIndicator>
-            <MastheadToggle>Ketahui Lebih Lanjut</MastheadToggle>
-          </MastheadHeader>
-        </Masthead>
-      </div>
-    );
-  },
-};
-
-export const CustomContent: Story = {
-  render: () => (
-    <Masthead>
       <MastheadContent>
-        <MastheadSection icon={<GovMyIcon />}>
-          <MastheadSectionTitle>
-            Laman web rasmi kerajaan berakhir dengan .gov.my
-          </MastheadSectionTitle>
-          <MastheadSectionBody>
-            Sekiranya pautan tidak berakhir dengan
-            <span className="font-semibold"> .gov.my</span>, sila keluar dari
-            laman web dengan segera walaupun ia kelihatan serupa.
-          </MastheadSectionBody>
+        <MastheadSection
+          icon={<GovMyIcon />}
+          title={"Official government websites end with .gov.my"}
+        >
+          If the link does not end with <b>.gov.my</b>, exit the website
+          immediately even if it looks similar.
+        </MastheadSection>
+        <MastheadSection
+          icon={<Lock2Icon />}
+          title={"Secure websites use HTTPS"}
+        >
+          Look for a lock (<LockFillIcon className="inline-block" />) or
+          https:// as an added precaution. If not present, do not share any
+          sensitive information.
         </MastheadSection>
       </MastheadContent>
-    </Masthead>
+    </>
   ),
-};
+});
 
-export const CustomContentDark: Story = {
-  render: () => (
-    <div className="dark">
-      <Masthead>
-        <MastheadContent>
-          <MastheadSection icon={<GovMyIcon />}>
-            <MastheadSectionTitle>
-              Laman web rasmi kerajaan berakhir dengan .gov.my
-            </MastheadSectionTitle>
-            <MastheadSectionBody>
-              Sekiranya pautan tidak berakhir dengan
-              <span className="font-semibold"> .gov.my</span>, sila keluar dari
-              laman web dengan segera walaupun ia kelihatan serupa.
-            </MastheadSectionBody>
-          </MastheadSection>
-        </MastheadContent>
-      </Masthead>
-    </div>
-  ),
-};
-
-// Fully customized
-export const FullyCustomized: Story = {
-  render: () => (
-    <Masthead>
-      <MastheadHeader>
-        <MastheadOfficialIndicator>
-          Portal Rasmi Kerajaan Malaysia
-        </MastheadOfficialIndicator>
-        <MastheadToggle>Ketahui Lebih Lanjut</MastheadToggle>
-      </MastheadHeader>
-      <MastheadContent>
-        <MastheadSection icon={<GovMyIcon />}>
-          <MastheadSectionTitle>
-            Laman web rasmi kerajaan berakhir dengan .gov.my
-          </MastheadSectionTitle>
-          <MastheadSectionBody>
-            Sekiranya pautan tidak berakhir dengan
-            <span className="font-semibold"> .gov.my</span>, sila keluar dari
-            laman web dengan segera walaupun ia kelihatan serupa.
-          </MastheadSectionBody>
-        </MastheadSection>
-        <MastheadSection icon={<Lock2Icon />}>
-          <MastheadSectionTitle>
-            Laman web selamat menggunakan HTTPS
-          </MastheadSectionTitle>
-          <MastheadSectionBody>
-            Cari ikon kunci (
-            <LockFillIcon className="mb-0.5 inline size-3.5" />) atau
-            <span className="font-semibold"> https:// </span>
-            sebagai langkah berjaga-jaga tambahan. Jika tiada, jangan kongsi
-            sebarang maklumat sensitif.
-          </MastheadSectionBody>
-        </MastheadSection>
-      </MastheadContent>
-    </Masthead>
-  ),
-};
-
-// Fully customized
-export const FullyCustomizedDark: Story = {
-  render: () => (
-    <div className="dark">
-      <Masthead>
+export const DefaultDark: Story = createStory(
+  {
+    className: "dark",
+    children: (
+      <>
         <MastheadHeader>
-          <MastheadOfficialIndicator>
-            Portal Rasmi Kerajaan Malaysia
-          </MastheadOfficialIndicator>
-          <MastheadToggle>Ketahui Lebih Lanjut</MastheadToggle>
+          <MastheadTitle>Portal Rasmi Kerajaan Malaysia</MastheadTitle>
+          <MastheadTrigger>Ketahui Lebih Lanjut</MastheadTrigger>
         </MastheadHeader>
+
         <MastheadContent>
-          <MastheadSection icon={<GovMyIcon />}>
-            <MastheadSectionTitle>
-              Laman web rasmi kerajaan berakhir dengan .gov.my
-            </MastheadSectionTitle>
-            <MastheadSectionBody>
-              Sekiranya pautan tidak berakhir dengan
-              <span className="font-semibold"> .gov.my</span>, sila keluar dari
-              laman web dengan segera walaupun ia kelihatan serupa.
-            </MastheadSectionBody>
+          <MastheadSection
+            icon={<GovMyIcon />}
+            title={"Official government websites end with .gov.my"}
+          >
+            If the link does not end with <b>.gov.my</b>, exit the website
+            immediately even if it looks similar.
           </MastheadSection>
-          <MastheadSection icon={<Lock2Icon />}>
-            <MastheadSectionTitle>
-              Laman web selamat menggunakan HTTPS
-            </MastheadSectionTitle>
-            <MastheadSectionBody>
-              Cari ikon kunci (
-              <LockFillIcon className="mb-0.5 inline size-3.5" />) atau
-              <span className="font-semibold"> https:// </span>
-              sebagai langkah berjaga-jaga tambahan. Jika tiada, jangan kongsi
-              sebarang maklumat sensitif.
-            </MastheadSectionBody>
+          <MastheadSection
+            icon={<Lock2Icon />}
+            title={"Secure websites use HTTPS"}
+          >
+            Look for a lock (<LockFillIcon className="inline-block" />) or
+            https:// as an added precaution. If not present, do not share any
+            sensitive information.
           </MastheadSection>
         </MastheadContent>
-      </Masthead>
-    </div>
-  ),
-};
+      </>
+    ),
+  },
+  "dark",
+);
+
+// export const CustomHeader: Story = {
+//   render: () => (
+//     <Masthead>
+//       <MastheadHeader>
+//         <MastheadTitle>
+//           Portal Rasmi Kerajaan Malaysia
+//         </MastheadTitle>
+//         <MastheadTrigger>Ketahui Lebih Lanjut</MastheadTrigger>
+//       </MastheadHeader>
+//     </Masthead>
+//   ),
+// };
+
+// export const CustomHeaderDark: Story = {
+//   ...createStory({}, "dark"),
+//   render: () => {
+//     return (
+//       <div className="dark">
+//         <Masthead>
+//           <MastheadHeader>
+//             <MastheadTitle>
+//               Portal Rasmi Kerajaan Malaysia
+//             </MastheadTitle>
+//             <MastheadTrigger>Ketahui Lebih Lanjut</MastheadTrigger>
+//           </MastheadHeader>
+//         </Masthead>
+//       </div>
+//     );
+//   },
+// };
+
+// export const CustomContent: Story = {
+//   render: () => (
+//     <Masthead>
+//       <MastheadContent>
+//         <MastheadSection icon={<GovMyIcon />}>
+//           <MastheadSectionTitle>
+//             Laman web rasmi kerajaan berakhir dengan .gov.my
+//           </MastheadSectionTitle>
+//           <MastheadSectionBody>
+//             Sekiranya pautan tidak berakhir dengan
+//             <span className="font-semibold"> .gov.my</span>, sila keluar dari
+//             laman web dengan segera walaupun ia kelihatan serupa.
+//           </MastheadSectionBody>
+//         </MastheadSection>
+//       </MastheadContent>
+//     </Masthead>
+//   ),
+// };
+
+// export const CustomContentDark: Story = {
+//   render: () => (
+//     <div className="dark">
+//       <Masthead>
+//         <MastheadContent>
+//           <MastheadSection icon={<GovMyIcon />}>
+//             <MastheadSectionTitle>
+//               Laman web rasmi kerajaan berakhir dengan .gov.my
+//             </MastheadSectionTitle>
+//             <MastheadSectionBody>
+//               Sekiranya pautan tidak berakhir dengan
+//               <span className="font-semibold"> .gov.my</span>, sila keluar dari
+//               laman web dengan segera walaupun ia kelihatan serupa.
+//             </MastheadSectionBody>
+//           </MastheadSection>
+//         </MastheadContent>
+//       </Masthead>
+//     </div>
+//   ),
+// };
+
+// // Fully customized
+// export const FullyCustomized: Story = {
+//   render: () => (
+//     <Masthead>
+//       <MastheadHeader>
+//         <MastheadOfficialIndicator>
+//           Portal Rasmi Kerajaan Malaysia
+//         </MastheadOfficialIndicator>
+//         <MastheadTrigger>Ketahui Lebih Lanjut</MastheadTrigger>
+//       </MastheadHeader>
+//       <MastheadContent>
+//         <MastheadSection icon={<GovMyIcon />}>
+//           <MastheadSectionTitle>
+//             Laman web rasmi kerajaan berakhir dengan .gov.my
+//           </MastheadSectionTitle>
+//           <MastheadSectionBody>
+//             Sekiranya pautan tidak berakhir dengan
+//             <span className="font-semibold"> .gov.my</span>, sila keluar dari
+//             laman web dengan segera walaupun ia kelihatan serupa.
+//           </MastheadSectionBody>
+//         </MastheadSection>
+//         <MastheadSection icon={<Lock2Icon />}>
+//           <MastheadSectionTitle>
+//             Laman web selamat menggunakan HTTPS
+//           </MastheadSectionTitle>
+//           <MastheadSectionBody>
+//             Cari ikon kunci (
+//             <LockIcon className="mb-0.5 inline size-3.5" />) atau
+//             <span className="font-semibold"> https:// </span>
+//             sebagai langkah berjaga-jaga tambahan. Jika tiada, jangan kongsi
+//             sebarang maklumat sensitif.
+//           </MastheadSectionBody>
+//         </MastheadSection>
+//       </MastheadContent>
+//     </Masthead>
+//   ),
+// };
+
+// // Fully customized
+// export const FullyCustomizedDark: Story = {
+//   render: () => (
+//     <div className="dark">
+//       <Masthead>
+//         <MastheadHeader>
+//           <MastheadOfficialIndicator>
+//             Portal Rasmi Kerajaan Malaysia
+//           </MastheadOfficialIndicator>
+//           <MastheadTrigger>Ketahui Lebih Lanjut</MastheadTrigger>
+//         </MastheadHeader>
+//         <MastheadContent>
+//           <MastheadSection icon={<GovMyIcon />}>
+//             <MastheadSectionTitle>
+//               Laman web rasmi kerajaan berakhir dengan .gov.my
+//             </MastheadSectionTitle>
+//             <MastheadSectionBody>
+//               Sekiranya pautan tidak berakhir dengan
+//               <span className="font-semibold"> .gov.my</span>, sila keluar dari
+//               laman web dengan segera walaupun ia kelihatan serupa.
+//             </MastheadSectionBody>
+//           </MastheadSection>
+//           <MastheadSection icon={<Lock2Icon />}>
+//             <MastheadSectionTitle>
+//               Laman web selamat menggunakan HTTPS
+//             </MastheadSectionTitle>
+//             <MastheadSectionBody>
+//               Cari ikon kunci (
+//               <LockIcon className="mb-0.5 inline size-3.5" />) atau
+//               <span className="font-semibold"> https:// </span>
+//               sebagai langkah berjaga-jaga tambahan. Jika tiada, jangan kongsi
+//               sebarang maklumat sensitif.
+//             </MastheadSectionBody>
+//           </MastheadSection>
+//         </MastheadContent>
+//       </Masthead>
+//     </div>
+//   ),
+// };

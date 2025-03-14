@@ -242,12 +242,20 @@ module.exports = {
           "0%": { width: "100%" },
           "100%": { width: "0%" },
         },
-        "slide-down": {
+        "accordion-slide-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
         },
-        "slide-up": {
+        "accordion-slide-up": {
           from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "collapsible-slide-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-collapsible-content-height)" },
+        },
+        "collapsible-slide-up": {
+          from: { height: "var(--radix-collapsible-content-height)" },
           to: { height: "0" },
         },
         slideDownAndFade: {
@@ -273,8 +281,10 @@ module.exports = {
       },
       animation: {
         expire: "decrease-width 5s linear",
-        "slide-down": "slide-down 300ms ease-out",
-        "slide-up": "slide-up 300ms ease-out",
+        "accordion-slide-down": "accordion-slide-down 300ms ease-out",
+        "accordion-slide-up": "accordion-slide-up 300ms ease-out",
+        "collapsible-slide-down": "collapsible-slide-down 300ms ease-out",
+        "collapsible-slide-up": "collapsible-slide-up 300ms ease-out",
         shimmer: "shimmer 1200ms linear infinite",
       },
     },

@@ -1,5 +1,14 @@
 # @govtechmy/myds-docs
 
+## 0.0.18
+
+### Patch Changes
+
+- 27d8b4a: Improve the accessibility of the landing page.
+- Updated dependencies [07e9ffb]
+  - @govtechmy/myds-react@0.0.16
+  - @govtechmy/myds-style@0.0.7
+
 ## 0.0.17
 
 ### Patch Changes
