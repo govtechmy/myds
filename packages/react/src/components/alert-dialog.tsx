@@ -26,8 +26,8 @@ import {
 import { clx } from "../utils";
 
 const AlertDialogTrigger = DialogTrigger;
-const AlertDialogTitle = DialogTitle;
-const AlertDialogDescription = DialogDescription;
+const AlertDialogTitle: typeof DialogTitle = DialogTitle;
+const AlertDialogDescription: typeof DialogDescription = DialogDescription;
 const AlertDialogClose = DialogClose;
 
 interface AlertDialogContextProps {
