@@ -271,22 +271,6 @@ module.exports = {
           from: { transform: "translateY(-100%)" },
           to: { transform: "translateY(0)" },
         },
-        slideDownAndFade: {
-          from: { opacity: "0", transform: "translateY(-2px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        slideLeftAndFade: {
-          from: { opacity: "0", transform: "translateX(2px)" },
-          to: { opacity: "1", transform: "translateX(0)" },
-        },
-        slideUpAndFade: {
-          from: { opacity: "0", transform: "translateY(2px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        slideRightAndFade: {
-          from: { opacity: "0", transform: "translateX(-2px)" },
-          to: { opacity: "1", transform: "translateX(0)" },
-        },
         shimmer: {
           "0%": { backgroundPosition: "0% 0" },
           "100%": { backgroundPosition: "200% 0%" }, // Pause at the end
@@ -301,6 +285,9 @@ module.exports = {
         "collapsible-slide-down": "collapsible-slide-down 300ms ease-out",
         "collapsible-slide-up": "collapsible-slide-up 300ms ease-out",
         shimmer: "shimmer 1200ms linear infinite",
+      },
+      transformOrigin: {
+        "tooltip-origin": "var(--radix-tooltip-content-transform-origin)",
       },
     },
     boxShadow: {
