@@ -237,6 +237,11 @@ module.exports = {
         "fr-primary": "rgb(var(--fr-primary))",
         "fr-danger": "rgb(var(--fr-danger))",
       },
+      transitionDuration: {
+        200: "200ms",
+        400: "400ms",
+        600: "600ms",
+      },
       keyframes: {
         "decrease-width": {
           "0%": { width: "100%" },
@@ -257,6 +262,14 @@ module.exports = {
         "collapsible-slide-up": {
           from: { height: "var(--radix-collapsible-content-height)" },
           to: { height: "0" },
+        },
+        "slide-up": {
+          from: { transform: "translateY(100%)" },
+          to: { transform: "translateY(0)" },
+        },
+        "slide-down": {
+          from: { transform: "translateY(-100%)" },
+          to: { transform: "translateY(0)" },
         },
         slideDownAndFade: {
           from: { opacity: "0", transform: "translateY(-2px)" },
@@ -281,6 +294,8 @@ module.exports = {
       },
       animation: {
         expire: "decrease-width 5s linear",
+        "slide-up": "slide-up 300ms ease-out",
+        "slide-down": "slide-down 300ms ease-out",
         "accordion-slide-down": "accordion-slide-down 300ms ease-out",
         "accordion-slide-up": "accordion-slide-up 300ms ease-out",
         "collapsible-slide-down": "collapsible-slide-down 300ms ease-out",
