@@ -3,6 +3,7 @@ import {
   ComponentPropsWithoutRef,
   forwardRef,
   ForwardRefExoticComponent,
+  FunctionComponent,
 } from "react";
 import {
   Tooltip as Root,
@@ -15,14 +16,13 @@ import {
 import { clx } from "../utils";
 import { cva } from "class-variance-authority";
 
-const Tooltip: ForwardRefExoticComponent<ComponentProps<typeof Root>> =
-  forwardRef((props, ref) => {
-    return (
-      <TooltipProvider delayDuration={200}>
-        <Root {...props} />
-      </TooltipProvider>
-    );
-  });
+const Tooltip: FunctionComponent<ComponentProps<typeof Root>> = (props) => {
+  return (
+    <TooltipProvider delayDuration={200}>
+      <Root {...props} />
+    </TooltipProvider>
+  );
+};
 Tooltip.displayName = Tooltip.displayName;
 
 interface TooltipContentProps
