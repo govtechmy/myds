@@ -108,6 +108,7 @@ module.exports = {
       spacing: {
         2.5: "0.625rem",
         4.5: "1.125rem",
+        10.5: "2.625rem",
       },
       fontSize: {
         DEFAULT: ["0.875rem", { lineHeight: "1.25rem" }],

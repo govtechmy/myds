@@ -6,12 +6,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   AlertDialogClose,
-  AlertDialogProps,
-  AlertDialogActionProps,
 } from "@govtechmy/myds-react/alert-dialog";
 import { Button } from "@govtechmy/myds-react/button";
-import { DialogBodyProps } from "@govtechmy/myds-react/dialog";
+import { DialogBody } from "@govtechmy/myds-react/dialog";
 import type { Meta, StoryObj } from "@storybook/react";
+import type { ComponentProps } from "react";
 import { createStory } from "../utils";
 
 /**
@@ -88,7 +87,6 @@ const meta: Meta = {
                   ? "Tindakan ini akan memadamkan data secara kekal dan tidak dapat dikembalikan. Adakah anda mahu meneruskan?"
                   : null}
           </AlertDialogDescription>
-
           <AlertDialogAction align={align}>
             <AlertDialogClose>
               <Button variant="default-outline" size="medium">
@@ -172,16 +170,16 @@ const meta: Meta = {
         category: "AlertDialogContent",
       },
     },
-    action: {
-      description:
-        "The footer action space. Opposite to action buttons (children)",
-      action: "action",
-      // @ts-expect-error
-      type: "ReactNode",
-      table: {
-        category: "AlertDialogAction",
-      },
-    },
+    // action: {
+    //   description:
+    //     "The footer action space. Opposite to action buttons (children)",
+    //   action: "action",
+    //   // @ts-expect-error
+    //   type: "ReactNode",
+    //   table: {
+    //     category: "AlertDialogAction",
+    //   },
+    // },
     align: {
       description: "The footer children should fill up the available width",
       control: "inline-radio",
@@ -191,7 +189,11 @@ const meta: Meta = {
       },
     },
   },
-} satisfies Meta<AlertDialogProps & AlertDialogActionProps & DialogBodyProps>;
+} satisfies Meta<
+  ComponentProps<typeof AlertDialog> &
+    ComponentProps<typeof AlertDialogAction> &
+    ComponentProps<typeof DialogBody>
+>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
