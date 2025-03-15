@@ -167,10 +167,10 @@ export default {
     not_govmy: "If the link does not end with ",
     close_site: ", exit the website immediately even if it looks similar.",
     secure: "Secure websites use HTTPS",
-    find_lock: "Look for a lock (",
+    find_lock: "Look for the lock icon (",
     or: ") or ",
     precaution:
-      " as an added precaution. If not present, do not share any sensitive information.",
+      " as an added precaution. If not present, leave the site immediately.",
   },
   Header: {
     about: "About",
