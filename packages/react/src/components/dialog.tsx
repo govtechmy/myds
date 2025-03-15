@@ -139,20 +139,17 @@ interface DialogHeaderProps extends ComponentProps<"div"> {
   border?: boolean;
 }
 
-const dialog_header_cva = cva(
-  "flex w-full flex-col text-left px-6 pt-6 pb-4.5",
-  {
-    variants: {
-      border: {
-        true: "border-otl-gray-200 border-b",
-        false: "",
-      },
-    },
-    defaultVariants: {
-      border: false,
+const dialog_header_cva = cva("flex w-full flex-col text-left px-6 pt-6", {
+  variants: {
+    border: {
+      true: "border-otl-gray-200 border-b pb-4.5 mb-6",
+      false: "pb-2",
     },
   },
-);
+  defaultVariants: {
+    border: false,
+  },
+});
 
 const DialogHeader: ForwardRefExoticComponent<DialogHeaderProps> = forwardRef(
   ({ className, border, ...props }, ref) => {
@@ -172,7 +169,7 @@ interface DialogContentProps extends ComponentProps<"div"> {}
 const DialogContent: ForwardRefExoticComponent<DialogContentProps> = forwardRef(
   ({ className, ...props }, ref) => {
     return (
-      <div ref={ref} className={clx("w-full p-6", className)} {...props} />
+      <div ref={ref} className={clx("w-full px-6", className)} {...props} />
     );
   },
 );
@@ -344,16 +341,4 @@ export {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-};
-export type {
-  DialogProps,
-  DialogTriggerProps,
-  DialogCloseProps,
-  DialogBodyProps,
-  DialogContentProps,
-  DialogHeaderProps,
-  DialogFooterProps,
-  DialogTitleProps,
-  DialogDescriptionProps,
-  DialogIconProps,
 };
