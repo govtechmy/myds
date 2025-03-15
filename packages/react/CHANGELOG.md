@@ -1,5 +1,11 @@
 # @govtechmy/myds-react
 
+## 0.0.18
+
+### Patch Changes
+
+- 2558fb8: Fix alert dialog spacing
+
 ## 0.0.17
 
 ### Patch Changes
