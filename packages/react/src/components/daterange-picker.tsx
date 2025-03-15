@@ -82,7 +82,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
                 : placeholder}
             </Button>
           </DialogTrigger>
-          <DialogBody className="min-w-fit w-fit" hideClose>
+          <DialogBody className="w-fit min-w-fit" hideClose>
             <DialogContent className="w-[304px] p-0">
               <Calendar
                 disabled={
@@ -103,6 +103,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
                 }}
                 required
                 selected={selectedDateRange}
+                daterange="from"
                 {...props}
               />
             </DialogContent>
@@ -124,7 +125,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
                 : placeholder}
             </Button>
           </DialogTrigger>
-          <DialogBody className="min-w-fit w-fit" hideClose>
+          <DialogBody className="w-fit min-w-fit" hideClose>
             <DialogContent className="w-[304px] p-0">
               <Calendar
                 disabled={
@@ -142,6 +143,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
                 onSelect={setSelectedDateRange}
                 required
                 selected={selectedDateRange}
+                daterange="to"
                 {...props}
               />
             </DialogContent>
@@ -186,6 +188,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
               }}
               required
               selected={selectedDateRange}
+              daterange="from"
               {...props}
             />
           </PopoverContent>
@@ -223,6 +226,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
               onSelect={setSelectedDateRange}
               required
               selected={selectedDateRange}
+              daterange="to"
               {...props}
             />
           </PopoverContent>
