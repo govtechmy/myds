@@ -5,15 +5,16 @@ import {
   forwardRef,
   ReactElement,
   JSXElementConstructor,
-  cloneElement,
   ReactNode,
   createContext,
   useContext,
+  LegacyRef,
 } from "react";
 import { CrossIcon } from "../icons/cross";
 import { clx } from "../utils";
 import { Button } from "./button";
 import { cva } from "class-variance-authority";
+import { Slot } from "@radix-ui/react-slot";
 
 const Dialog = DialogPrimitive.Root;
 type DialogProps = ComponentProps<typeof Dialog>;
@@ -138,20 +139,17 @@ interface DialogHeaderProps extends ComponentProps<"div"> {
   border?: boolean;
 }
 
-const dialog_header_cva = cva(
-  "flex w-full flex-col text-left px-6 pt-6 pb-4.5",
-  {
-    variants: {
-      border: {
-        true: "border-otl-gray-200 border-b",
-        false: "",
-      },
-    },
-    defaultVariants: {
-      border: false,
+const dialog_header_cva = cva("flex w-full flex-col text-left px-6 pt-6", {
+  variants: {
+    border: {
+      true: "border-otl-gray-200 border-b pb-4.5 mb-6",
+      false: "pb-2",
     },
   },
-);
+  defaultVariants: {
+    border: false,
+  },
+});
 
 const DialogHeader: ForwardRefExoticComponent<DialogHeaderProps> = forwardRef(
   ({ className, border, ...props }, ref) => {
@@ -171,7 +169,7 @@ interface DialogContentProps extends ComponentProps<"div"> {}
 const DialogContent: ForwardRefExoticComponent<DialogContentProps> = forwardRef(
   ({ className, ...props }, ref) => {
     return (
-      <div ref={ref} className={clx("w-full p-6", className)} {...props} />
+      <div ref={ref} className={clx("w-full px-6", className)} {...props} />
     );
   },
 );
@@ -253,7 +251,7 @@ const DialogTitle: ForwardRefExoticComponent<DialogTitleProps> = forwardRef(
     <DialogPrimitive.Title
       ref={ref}
       className={clx(
-        "text-body-lg text-txt-black-900 font-semibold",
+        "text-body-lg text-txt-black-900 font-body font-semibold",
         className,
       )}
       {...props}
@@ -305,14 +303,16 @@ interface DialogIconProps {
   variant: "default" | "primary" | "success" | "warning" | "danger";
   children: ReactElement<any, string | JSXElementConstructor<any>>;
   className?: string;
+  ref?: LegacyRef<HTMLElement>;
 }
 
 const DialogIcon: ForwardRefExoticComponent<DialogIconProps> = forwardRef(
   ({ variant, children, className }, ref) => {
-    return cloneElement(children, {
-      ref,
-      className: clx(dialog_icon_cva({ variant, className })),
-    });
+    return (
+      <Slot ref={ref} className={clx(dialog_icon_cva({ variant }), className)}>
+        {children}
+      </Slot>
+    );
   },
 );
 
@@ -342,16 +342,3 @@ export {
   DialogTitle,
   DialogTrigger,
 };
-export type {
-  DialogProps,
-  DialogTriggerProps,
-  DialogCloseProps,
-  DialogBodyProps,
-  DialogContentProps,
-  DialogHeaderProps,
-  DialogFooterProps,
-  DialogTitleProps,
-  DialogDescriptionProps,
-  DialogIconProps,
-};
-export { dialog_footer_cva };

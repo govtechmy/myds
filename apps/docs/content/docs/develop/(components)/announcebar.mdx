@@ -21,7 +21,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
           <p>
             <span>This is a new service. Help us improve it. </span>
             <Link underline="always" primary href="#">
-              <span>Send us your feedback here.</span>
+              <span className="text-inherit">Send us your feedback here.</span>
             </Link>
           </p>
         </AnnounceBarDescription>
@@ -92,7 +92,7 @@ Use the `variant` prop to change the announcebar style!
             <p>
             <span>This is a new service. Help us improve it. </span>
             <Link underline="always" primary href="#">
-                <span>Send us your feedback here.</span>
+                <span className="text-inherit">Send us your feedback here.</span>
             </Link>
             </p>
         </AnnounceBarDescription>
@@ -103,7 +103,7 @@ Use the `variant` prop to change the announcebar style!
             <p>
             <span>This is a new service. Help us improve it. </span>
             <Link underline="always" primary href="#">
-                <span>Send us your feedback here.</span>
+                <span className="text-inherit">Send us your feedback here.</span>
             </Link>
             </p>
         </AnnounceBarDescription>
@@ -114,7 +114,7 @@ Use the `variant` prop to change the announcebar style!
             <p>
             <span>This is a new service. Help us improve it. </span>
             <Link underline="always" primary href="#">
-                <span>Send us your feedback here.</span>
+                <span className="text-inherit">Send us your feedback here.</span>
             </Link>
             </p>
         </AnnounceBarDescription>
@@ -125,7 +125,7 @@ Use the `variant` prop to change the announcebar style!
             <p>
             <span>This is a new service. Help us improve it. </span>
             <Link underline="always" primary href="#">
-                <span>Send us your feedback here.</span>
+                <span className="text-inherit">Send us your feedback here.</span>
             </Link>
             </p>
         </AnnounceBarDescription>
@@ -136,7 +136,7 @@ Use the `variant` prop to change the announcebar style!
             <p>
             <span>This is a new service. Help us improve it. </span>
             <Link underline="always" primary href="#">
-                <span>Send us your feedback here.</span>
+                <span className="text-inherit">Send us your feedback here.</span>
             </Link>
             </p>
         </AnnounceBarDescription>
@@ -211,6 +211,21 @@ Use the `variant` prop to change the announcebar style!
 
 ## Props
 
+### AnnounceBar
+
+<TypeTable
+  type={{
+    border: {
+      description: "Whether to show a border at the bottom of the AnnounceBar",
+      type: "boolean",
+      default: "true",
+    },
+    children: {
+      type: "ReactNode",
+    },
+  }}
+/>
+
 ### AnnounceBarTag
 
 <TypeTable
@@ -218,9 +233,21 @@ Use the `variant` prop to change the announcebar style!
     variant: {
       description: "Style variant of the button",
       type: "enum",
-      typeDescription:
-        "primary-fill | primary-outline | primary-ghost | danger-fill | danger-outline | danger-ghost | default-outline | default-ghost",
-      default: "default-outline",
+      typeDescription: "default | primary | success | warning | danger",
+      default: "default",
+    },
+    children: {
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### AnnounceBarDescription
+
+<TypeTable
+  type={{
+    children: {
+      type: "ReactNode",
     },
   }}
 />
