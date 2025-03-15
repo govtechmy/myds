@@ -17,7 +17,6 @@ import { cva } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
 
 const Dialog = DialogPrimitive.Root;
-type DialogProps = ComponentProps<typeof Dialog>;
 
 /*========================================================================================================================*/
 
@@ -26,8 +25,6 @@ const DialogTrigger: ForwardRefExoticComponent<
 > = forwardRef((props, ref) => {
   return <DialogPrimitive.Trigger ref={ref} {...props} asChild />;
 });
-
-type DialogTriggerProps = ComponentProps<typeof DialogTrigger>;
 
 /*========================================================================================================================*/
 
@@ -45,8 +42,6 @@ const DialogClose: ForwardRefExoticComponent<
     />
   );
 });
-
-type DialogCloseProps = ComponentProps<typeof DialogClose>;
 
 /*========================================================================================================================*/
 
@@ -284,7 +279,7 @@ const DialogDescription: ForwardRefExoticComponent<DialogDescriptionProps> =
  * @returns {ReactElement} The cloned child element with the forwarded ref and applied class name.
  */
 
-const dialog_icon_cva = cva("block stroke-[1.5px] size-[30px] shrink-0", {
+const dialog_icon_cva = cva("block stroke-[1.5px] size-10.5 shrink-0", {
   variants: {
     variant: {
       default: "",

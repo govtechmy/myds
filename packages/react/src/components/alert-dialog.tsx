@@ -27,7 +27,15 @@ import { clx } from "../utils";
 
 const AlertDialogTrigger = DialogTrigger;
 const AlertDialogTitle: typeof DialogTitle = DialogTitle;
-const AlertDialogDescription: typeof DialogDescription = DialogDescription;
+const AlertDialogDescription: ForwardRefExoticComponent<
+  ComponentProps<typeof DialogDescription>
+> = forwardRef(({ children, className, ...props }, ref) => {
+  return (
+    <DialogDescription ref={ref} className={clx("pt-2", className)} {...props}>
+      {children}
+    </DialogDescription>
+  );
+});
 const AlertDialogClose = DialogClose;
 
 interface AlertDialogContextProps {
@@ -38,7 +46,7 @@ const AlertDialogContext = createContext<AlertDialogContextProps>({
   variant: "default",
 });
 
-export interface AlertDialogProps
+interface AlertDialogProps
   extends ComponentProps<typeof Dialog>,
     AlertDialogContextProps {}
 
@@ -52,7 +60,7 @@ const AlertDialog: FunctionComponent<AlertDialogProps> = ({
     </AlertDialogContext.Provider>
   );
 };
-export interface AlertDialogActionProps
+interface AlertDialogActionProps
   extends Omit<ComponentProps<typeof DialogFooter>, "border"> {}
 
 const AlertDialogAction: ForwardRefExoticComponent<AlertDialogActionProps> =
@@ -98,11 +106,11 @@ const AlertDialogContent: ForwardRefExoticComponent<
 
   return (
     <DialogBody ref={ref} {...props}>
-      <DialogContent>
+      <DialogContent className="py-6">
         <DialogIcon variant={map[variant].variant} className="mb-4">
           {map[variant].icon}
         </DialogIcon>
-        <div className="space-y-2">{children}</div>
+        <div>{children}</div>
       </DialogContent>
     </DialogBody>
   );
