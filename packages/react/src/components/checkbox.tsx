@@ -1,13 +1,16 @@
-import * as React from "react";
-import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
+import {
+  Checkbox as CheckboxRoot,
+  CheckboxIndicator,
+} from "@radix-ui/react-checkbox";
 import { CheckIcon } from "../icons/check";
 import { MinusIcon } from "../icons/minus";
 import { clx } from "../utils";
 import { cva, type VariantProps } from "class-variance-authority";
+import { ComponentProps, forwardRef, ForwardRefExoticComponent } from "react";
 
 const checkbox_cva = cva(
   [
-    "rounded-sm outline-none flex items-center justify-center",
+    "outline-none flex items-center justify-center",
     "border border-otl-gray-200 hover:border-otl-gray-300 shadow-button bg-bg-white",
     "data-[state=checked]:bg-primary-600 data-[state=checked]:border-none data-[state=checked]:hover:border-primary-700 data-[state=checked]:hover:bg-primary-700",
     "data-[state=indeterminate]:bg-primary-600 data-[state=indeterminate]:border-none data-[state=indeterminate]:hover:border-primary-700 data-[state=indeterminate]:hover:bg-primary-700",
@@ -18,9 +21,9 @@ const checkbox_cva = cva(
   {
     variants: {
       size: {
-        small: "size-4",
-        medium: "size-5",
-        large: "size-5",
+        small: "size-4 rounded-xs",
+        medium: "size-5 rounded-[5px]",
+        large: "size-5 rounded-[5px]",
       },
     },
     defaultVariants: {
@@ -52,32 +55,26 @@ const checkbox_icon_cva = cva(
 );
 
 interface CheckboxProps
-  extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
-    VariantProps<typeof checkbox_cva> {
-  description?: string;
-}
+  extends ComponentProps<typeof CheckboxRoot>,
+    VariantProps<typeof checkbox_cva> {}
 
-const Checkbox = React.forwardRef<
-  React.ElementRef<typeof CheckboxPrimitive.Root>,
-  CheckboxProps
->(({ className, size, description, ...props }, ref) => {
-  const ariaProps = description ? { "aria-description": description } : {};
-
-  return (
-    <CheckboxPrimitive.Root
-      ref={ref}
-      className={clx(checkbox_cva({ size, className }))}
-      role="checkbox"
-      {...ariaProps}
-      {...props}
-    >
-      <CheckboxPrimitive.Indicator className={checkbox_icon_cva({ size })}>
-        <MinusIcon className="minus-icon" />
-        <CheckIcon className="checked-icon" />
-      </CheckboxPrimitive.Indicator>
-    </CheckboxPrimitive.Root>
-  );
-});
+const Checkbox: ForwardRefExoticComponent<CheckboxProps> = forwardRef(
+  ({ className, size, ...props }, ref) => {
+    return (
+      <CheckboxRoot
+        ref={ref}
+        className={clx(checkbox_cva({ size }), className)}
+        role="checkbox"
+        {...props}
+      >
+        <CheckboxIndicator className={checkbox_icon_cva({ size })}>
+          <MinusIcon className="minus-icon" />
+          <CheckIcon className="checked-icon" />
+        </CheckboxIndicator>
+      </CheckboxRoot>
+    );
+  },
+);
 
 Checkbox.displayName = "Checkbox";
 

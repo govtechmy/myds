@@ -9,7 +9,10 @@ import { Button, ButtonIcon, ButtonCounter, Link } from "@/components/myds";
 import { TypeTable } from "fumadocs-ui/components/type-table";
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import { Quicklinks } from "@/components/quicklinks";
-import { CookiesBannerPreview } from "@/components/cookies-banner-preview";
+import {
+  CookiesBannerPreview,
+  CookiesPreferencesDemo,
+} from "@/components/cookies-banner-preview";
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
@@ -18,178 +21,176 @@ import { CookiesBannerPreview } from "@/components/cookies-banner-preview";
     </div>
   </Tab>
   <Tab value="Code">
-    ```tsx
+    ```tsx copy
     import {
-    CookieBanner,
-    CookieBannerClose,
-    CookieBannerPreferencesToggle,
-    CookieBannerPreferencesDisplay,
-    CookieBannerDescription,
-    CookieBannerFooter,
-    CookieBannerHeader,
-    CookieBannerPreferences,
-    CookieBannerTitle,
-  }
-  const [open, setOpen] = useState(false);
-  const [preferences, setPreferences] = useState({
-    necessary: true,
-    analytics: true,
-    performance: true,
-  });
-  
-  // Reset preferences back to default when dialog closes
-  useEffect(() => {
-    if (!open) {
-      setPreferences({
+      CookieBanner,
+      CookieBannerClose,
+      CookieBannerDescription,
+      CookieBannerAction,
+      CookieBannerPreferences,
+      CookieBannerTitle,
+      CookieBannerPreferencesTrigger,
+    } from "@govtechmy/myds-react/cookie-banner";
+
+    const CookiesBannerPreview = () => {
+      const [open, setOpen] = useState(false);
+      const [preferences, setPreferences] = useState({
         necessary: true,
         analytics: true,
         performance: true,
       });
-    }
-  }, [open]);
-  
-      <CookieBanner
-        open={open}
-        onOpenChange={setOpen}
-        onDismiss={() => alert("Cookie banner has been dismissed.")}
-        dismissible={true}
-      >
-        <CookieBannerHeader className="space-y-0 p-0 pb-1" border={false}>
-          <CookieBannerTitle className="text-body-md pb-1">
-            Customise Preferences
-          </CookieBannerTitle>
-          <CookieBannerDescription>
-            This website uses cookies to improve user experience. We need your
-            consent to use some of the cookies.
-          </CookieBannerDescription>
-        </CookieBannerHeader>
-        <CookieBannerPreferences className="flex flex-col gap-2 py-3">
-          <div className="flex flex-row gap-2.5">
-            <Checkbox
-              id="necessary"
-              checked={true}
-              className="mt-0.5 flex-shrink-0"
-              disabled
-            />
-            <div className="flex flex-col justify-start gap-1">
-              <label
-                htmlFor="necessary"
-                className="text-txt-black-900 text-body-sm font-semibold"
-              >
-                Necessary
-              </label>
-              <p className="text-txt-black-500 text-body-sm">
-                Enable essential site features like secure log-ins and cookies
-                consent settings. We do not store personal data.
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-row space-x-2.5">
-            <Checkbox
-              id="analytics"
-              checked={preferences.analytics}
-              onCheckedChange={(checked: boolean) => {
-                setPreferences((prev) => ({
-                  ...prev,
-                  analytics: checked,
-                }));
-              }}
-              className="mt-0.5 flex-shrink-0"
-            />
-            <div className="flex flex-col space-y-1">
-              <label
-                htmlFor="analytics"
-                className="text-txt-black-900 text-body-sm font-semibold"
-              >
-                Analytics
-              </label>
-              <p className="text-txt-black-500 text-body-sm">
-                Track metrics like visitor count, bounce rate, and traffic
-                sources.
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-row space-x-2.5">
-            <Checkbox
-              id="performance"
-              checked={preferences.performance}
-              onCheckedChange={(checked: boolean) => {
-                setPreferences((prev) => ({
-                  ...prev,
-                  performance: checked,
-                }));
-              }}
-              className="mt-0.5 flex-shrink-0"
-            />
-            <div className="flex flex-col space-y-1">
-              <label
-                htmlFor="performance"
-                className="text-txt-black-900 text-body-sm font-semibold"
-              >
-                Performance
-              </label>
-              <p className="text-txt-black-500 text-body-sm">
-                Help analyze key website metrics, improving the user experience.
-              </p>
-            </div>
-          </div>
-        </CookieBannerPreferences>
-        <CookieBannerFooter>
-          <CookieBannerPreferencesDisplay asChild>
-            <CookieBannerClose>
-              <Button
-                variant="primary-fill"
-                size="medium"
-                onClick={() => alert("Accept all cookies.")}
-                className="w-full justify-center sm:w-auto"
-              >
-                Accept All
-              </Button>
-            </CookieBannerClose>
-          </CookieBannerPreferencesDisplay>
-          <CookieBannerPreferencesDisplay asChild>
-            <CookieBannerClose>
-              <Button
-                variant="primary-fill"
-                size="medium"
-                onClick={() => alert("Reject all cookies.")}
-                className="w-full justify-center sm:w-auto"
-              >
-                Reject All
-              </Button>
-            </CookieBannerClose>
-          </CookieBannerPreferencesDisplay>
-          <CookieBannerPreferencesDisplay>
-            <CookieBannerPreferencesToggle>
-              Customise
-            </CookieBannerPreferencesToggle>
-          </CookieBannerPreferencesDisplay>
-          <CookieBannerPreferencesDisplay asChild showWhen="preferences-shown">
-            <CookieBannerClose>
-              <Button
-                variant="primary-fill"
-                size="medium"
-                onClick={() => alert("Accept saved preferences.")}
-                className="w-full justify-center sm:w-auto"
-              >
-                Save preferences
-              </Button>
-            </CookieBannerClose>
-          </CookieBannerPreferencesDisplay>
-          <CookieBannerPreferencesDisplay asChild showWhen="preferences-shown">
-            <CookieBannerClose>
-              <Button
-                variant="primary-fill"
-                size="medium"
-                onClick={() => alert("Necessary cookies accepted.")}
-                className="w-full justify-center sm:w-auto"
-              >
-                Accept necessary cookies
-              </Button>
-            </CookieBannerClose>
-          </CookieBannerPreferencesDisplay>
-        </CookieBannerFooter>
-      </CookieBanner>
+
+      // Reset preferences back to default when dialog closes
+      useEffect(() => {
+        if (!open) {
+          setPreferences({
+            necessary: true,
+            analytics: true,
+            performance: true,
+          });
+        }
+      }, [open]);
+
+      return (
+        <div>
+          {/* Trigger */}
+          <Button variant="primary-fill" onClick={() => setOpen(true)}>
+            Open Cookie Settings
+          </Button>
+
+          {/* Cookie Banner */}
+          <CookieBanner open={open} onOpenChange={setOpen}>
+            <CookieBannerTitle>Cookie Preferences</CookieBannerTitle>
+            <CookieBannerDescription>
+              This website uses cookies to improve user experience. We need your
+              consent to use some of the cookies.
+            </CookieBannerDescription>
+
+            <CookieBannerPreferences className="flex flex-col gap-2 py-3">
+              <div className="flex flex-row gap-2.5">
+                <Checkbox
+                  id="necessary"
+                  checked={true}
+                  className="mt-0.5 flex-shrink-0"
+                  disabled
+                />
+                <div className="flex flex-col justify-start gap-1">
+                  <label
+                    htmlFor="necessary"
+                    className="text-txt-black-900 text-body-sm font-semibold"
+                  >
+                    Necessary
+                  </label>
+                  <p className="text-txt-black-500 text-body-sm">
+                    Enable essential site features like secure log-ins and cookies
+                    consent settings. We do not store personal data.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-row space-x-2.5">
+                <Checkbox
+                  id="analytics"
+                  checked={preferences.analytics}
+                  onCheckedChange={(checked: boolean) => {
+                    setPreferences((prev) => ({
+                      ...prev,
+                      analytics: checked,
+                    }));
+                  }}
+                  className="mt-0.5 flex-shrink-0"
+                />
+                <div className="flex flex-col space-y-1">
+                  <label
+                    htmlFor="analytics"
+                    className="text-txt-black-900 text-body-sm font-semibold"
+                  >
+                    Analytics
+                  </label>
+                  <p className="text-txt-black-500 text-body-sm">
+                    Track metrics like visitor count, bounce rate, and traffic
+                    sources.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-row space-x-2.5">
+                <Checkbox
+                  id="performance"
+                  checked={preferences.performance}
+                  onCheckedChange={(checked: boolean) => {
+                    setPreferences((prev) => ({
+                      ...prev,
+                      performance: checked,
+                    }));
+                  }}
+                  className="mt-0.5 flex-shrink-0"
+                />
+                <div className="flex flex-col space-y-1">
+                  <label
+                    htmlFor="performance"
+                    className="text-txt-black-900 text-body-sm font-semibold"
+                  >
+                    Performance
+                  </label>
+                  <p className="text-txt-black-500 text-body-sm">
+                    Help analyze key website metrics, improving the user experience.
+                  </p>
+                </div>
+              </div>
+            </CookieBannerPreferences>
+
+            <CookieBannerAction>
+              <CookieBannerClose asChild>
+                <Button
+                  variant="primary-fill"
+                  size="medium"
+                  onClick={() => alert("Accept all cookies.")}
+                  className="w-full justify-center sm:w-auto"
+                >
+                  Accept All
+                </Button>
+              </CookieBannerClose>
+              <CookieBannerClose asChild>
+                <Button
+                  variant="primary-fill"
+                  size="medium"
+                  onClick={() => alert("Reject all cookies.")}
+                  className="w-full justify-center sm:w-auto"
+                >
+                  Reject All
+                </Button>
+              </CookieBannerClose>
+
+              <CookieBannerPreferencesTrigger>
+                Customise
+              </CookieBannerPreferencesTrigger>
+            </CookieBannerAction>
+
+            <CookieBannerAction preferences>
+              <CookieBannerClose asChild>
+                <Button
+                  variant="primary-fill"
+                  size="medium"
+                  onClick={() => alert("Accept saved preferences.")}
+                  className="w-full justify-center sm:w-auto"
+                >
+                  Save preferences
+                </Button>
+              </CookieBannerClose>
+              <CookieBannerClose asChild>
+                <Button
+                  variant="primary-fill"
+                  size="medium"
+                  onClick={() => alert("Necessary cookies accepted.")}
+                  className="w-full justify-center sm:w-auto"
+                >
+                  Accept necessary cookies
+                </Button>
+              </CookieBannerClose>
+            </CookieBannerAction>
+          </CookieBanner>
+        </div>
+      );
+    };
     ```
 
   </Tab>
@@ -210,107 +211,414 @@ import { CookiesBannerPreview } from "@/components/cookies-banner-preview";
 import {
   CookieBanner,
   CookieBannerClose,
-  CookieBannerPreferencesToggle,
-  CookieBannerPreferencesDisplay,
   CookieBannerDescription,
-  CookieBannerFooter,
-  CookieBannerHeader,
+  CookieBannerAction,
   CookieBannerPreferences,
   CookieBannerTitle,
+  CookieBannerPreferencesTrigger,
 } from "@govtechmy/myds-react/cookie-banner";
 ```
 
 ```tsx copy title="Anatomy"
 export default () => (
   <CookieBanner>
-    <CookieBannerHeader>
-      <CookieBannerTitle />
-      <CookieBannerDescription />
-    </CookieBannerHeader>
+    <CookieBannerTitle />
+    <CookieBannerDescription />
     <CookieBannerPreferences />
-    <CookieBannerFooter>
-      <CookieBannerPreferencesToggle>
-        <CookieBannerPreferencesDisplay>
-          <CookieBannerClose />
-        </CookieBannerPreferencesDisplay>
-      </CookieBannerPreferencesToggle>
-    </CookieBannerFooter>
+    <CookieBannerAction>
+      <CookieBannerClose />
+    </CookieBannerAction>
   </CookieBanner>
 );
 ```
+
+## Examples
+
+### Uncontrolled vs Controlled State
+
+Cookie Banner can be handled as a **controlled** or **uncontrolled** component.
+
+- To use as an **uncontrolled** component, define the `defaultOpen` prop as initial state.
+- To use as a **controlled** component, replace with the `open` and `onOpenChange` props.
+
+Below is an example of a **controlled Cookie Banner**.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="flex justify-center">
+      <CookiesBannerPreview />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx copy
+    import {
+      CookieBanner,
+      CookieBannerClose,
+      CookieBannerDescription,
+      CookieBannerAction,
+      CookieBannerPreferences,
+      CookieBannerTitle,
+      CookieBannerPreferencesTrigger,
+    } from "@govtechmy/myds-react/cookie-banner";
+
+    const CookiesBannerPreview = () => {
+      const [open, setOpen] = useState(false);
+      const [preferences, setPreferences] = useState({
+        necessary: true,
+        analytics: true,
+        performance: true,
+      });
+
+      // Reset preferences back to default when dialog closes
+      useEffect(() => {
+        if (!open) {
+          setPreferences({
+            necessary: true,
+            analytics: true,
+            performance: true,
+          });
+        }
+      }, [open]);
+
+      return (
+        <div>
+          {/* Trigger */}
+          <Button variant="primary-fill" onClick={() => setOpen(true)}>
+            Open Cookie Settings
+          </Button>
+
+          {/* Cookie Banner */}
+          <CookieBanner open={open} onOpenChange={setOpen}>
+            <CookieBannerTitle>Cookie Preferences</CookieBannerTitle>
+            <CookieBannerDescription>
+              This website uses cookies to improve user experience. We need your
+              consent to use some of the cookies.
+            </CookieBannerDescription>
+
+            <CookieBannerPreferences className="flex flex-col gap-2 py-3">
+              <div className="flex flex-row gap-2.5">
+                <Checkbox
+                  id="necessary"
+                  checked={true}
+                  className="mt-0.5 flex-shrink-0"
+                  disabled
+                />
+                <div className="flex flex-col justify-start gap-1">
+                  <label
+                    htmlFor="necessary"
+                    className="text-txt-black-900 text-body-sm font-semibold"
+                  >
+                    Necessary
+                  </label>
+                  <p className="text-txt-black-500 text-body-sm">
+                    Enable essential site features like secure log-ins and cookies
+                    consent settings. We do not store personal data.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-row space-x-2.5">
+                <Checkbox
+                  id="analytics"
+                  checked={preferences.analytics}
+                  onCheckedChange={(checked: boolean) => {
+                    setPreferences((prev) => ({
+                      ...prev,
+                      analytics: checked,
+                    }));
+                  }}
+                  className="mt-0.5 flex-shrink-0"
+                />
+                <div className="flex flex-col space-y-1">
+                  <label
+                    htmlFor="analytics"
+                    className="text-txt-black-900 text-body-sm font-semibold"
+                  >
+                    Analytics
+                  </label>
+                  <p className="text-txt-black-500 text-body-sm">
+                    Track metrics like visitor count, bounce rate, and traffic
+                    sources.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-row space-x-2.5">
+                <Checkbox
+                  id="performance"
+                  checked={preferences.performance}
+                  onCheckedChange={(checked: boolean) => {
+                    setPreferences((prev) => ({
+                      ...prev,
+                      performance: checked,
+                    }));
+                  }}
+                  className="mt-0.5 flex-shrink-0"
+                />
+                <div className="flex flex-col space-y-1">
+                  <label
+                    htmlFor="performance"
+                    className="text-txt-black-900 text-body-sm font-semibold"
+                  >
+                    Performance
+                  </label>
+                  <p className="text-txt-black-500 text-body-sm">
+                    Help analyze key website metrics, improving the user experience.
+                  </p>
+                </div>
+              </div>
+            </CookieBannerPreferences>
+
+            <CookieBannerAction>
+              <CookieBannerClose asChild>
+                <Button
+                  variant="primary-fill"
+                  size="medium"
+                  onClick={() => alert("Accept all cookies.")}
+                  className="w-full justify-center sm:w-auto"
+                >
+                  Accept All
+                </Button>
+              </CookieBannerClose>
+              <CookieBannerClose asChild>
+                <Button
+                  variant="primary-fill"
+                  size="medium"
+                  onClick={() => alert("Reject all cookies.")}
+                  className="w-full justify-center sm:w-auto"
+                >
+                  Reject All
+                </Button>
+              </CookieBannerClose>
+
+              <CookieBannerPreferencesTrigger>
+                Customise
+              </CookieBannerPreferencesTrigger>
+            </CookieBannerAction>
+
+            <CookieBannerAction preferences>
+              <CookieBannerClose asChild>
+                <Button
+                  variant="primary-fill"
+                  size="medium"
+                  onClick={() => alert("Accept saved preferences.")}
+                  className="w-full justify-center sm:w-auto"
+                >
+                  Save preferences
+                </Button>
+              </CookieBannerClose>
+              <CookieBannerClose asChild>
+                <Button
+                  variant="primary-fill"
+                  size="medium"
+                  onClick={() => alert("Necessary cookies accepted.")}
+                  className="w-full justify-center sm:w-auto"
+                >
+                  Accept necessary cookies
+                </Button>
+              </CookieBannerClose>
+            </CookieBannerAction>
+          </CookieBanner>
+        </div>
+      );
+    };
+    ```
+
+  </Tab>
+</Tabs>
+
+<Callout
+  type="info"
+  title="Note"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  We recommend to keep **CookieBanner** as an uncontrolled component (via
+  `defaultOpen`). You may use client-side storage APIs such as `localStorage` or
+  `sessionStorage` to store the state, and retrieve it when the user visits the
+  website again.
+</Callout>
+
+### Preference Call-to-Action (CTA)
+
+`CookieBannerAction` is responsible for displaying the call-to-action (CTAs) for the cookie banner. However, when allowing user to choose their cookie preferences, you may want to present a different CTAs. With `CookieBannerAction`, simply pass the `preferences` prop to display the preference CTAs.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <div className="flex justify-center">
+      <CookiesPreferencesDemo />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx copy
+    const CookiesPreferencesDemo = () => {
+    const [open, setOpen] = useState(false);
+
+    return (
+      <div className="flex flex-col gap-4">
+        <Button variant="primary-fill" onClick={() => setOpen(true)}>
+          Open Cookie Settings
+        </Button>
+        <CookieBanner open={open} onOpenChange={setOpen}>
+          <CookieBannerTitle className="text-body-md pb-1">
+            Cookie Preferences
+          </CookieBannerTitle>
+          <CookieBannerDescription>
+            This website uses cookies to improve user experience. We need your
+            consent to use some of the cookies.
+          </CookieBannerDescription>
+
+          <CookieBannerPreferences className="bg-bg-washed px-2 font-mono">
+            Hello from MYDS!
+          </CookieBannerPreferences>
+
+          {/* Default CTA */}
+          <CookieBannerAction>
+            <CookieBannerClose asChild>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={() => alert("Accept all cookies.")}
+                className="w-full justify-center sm:w-auto"
+              >
+                Accept All
+              </Button>
+            </CookieBannerClose>
+            <CookieBannerClose asChild>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={() => alert("Reject all cookies.")}
+                className="w-full justify-center sm:w-auto"
+              >
+                Reject All
+              </Button>
+            </CookieBannerClose>
+
+            <CookieBannerPreferencesTrigger>
+              Customise
+            </CookieBannerPreferencesTrigger>
+          </CookieBannerAction>
+
+          {/* Preference CTA */}
+          <CookieBannerAction preferences>
+            <CookieBannerPreferencesTrigger>Back</CookieBannerPreferencesTrigger>
+            <CookieBannerClose asChild>
+              <Button
+                variant="primary-fill"
+                size="medium"
+                onClick={() => alert("Necessary cookies accepted.")}
+                className="w-full justify-center sm:w-auto"
+              >
+                Accept necessary cookies
+              </Button>
+            </CookieBannerClose>
+          </CookieBannerAction>
+        </CookieBanner>
+      </div>
+      );
+    };
+
+    ```
+
+  </Tab>
+</Tabs>
+
+<Callout
+  type="info"
+  title="Note"
+  className="bg-bg-primary-50 text-txt-primary border-transparent"
+  icon={<InfoIcon className="size-5" />}
+>
+  Use `CookieBannerPreferencesTrigger` to toggle the visibility of cookie
+  preference options!
+</Callout>
 
 ## Props
 
 ### CookieBanner
 
-Houses all the constituent components of the cookie banners. The component is a _controlled_ component. It is being built on `Dialog.Root` and `DialogBody`.
-
 <TypeTable
   type={{
-    open: {
-      description: "State to control cookie banners open or close",
+    defaultOpen: {
       type: "boolean",
-      typeDescription: "true | false",
       default: "false",
     },
-    dismissible: {
-      description:
-        "To control whether the cookie banner should have a close button",
+    open: {
       type: "boolean",
-      default: "true",
-    },
-    onDismiss: {
-      description: "Event listener for when the cookie banner is dismissed",
-      type: "() => void",
+      default: "false",
     },
     onOpenChange: {
-      description:
-        "Event listener for when the cookie banner is opened or closed (controlled)",
-      type: "(open: boolean) => void",
+      type: "(value: boolean) => void",
     },
   }}
 />
 
-### CookieBannerHeader
-
-Contains the `CookieBannerTitle` and `CookieBannerClose` components. It is being built on `DialogHeader`.
-
 ### CookieBannerTitle
-
-To customise the title of the cookie banner. It is being built on `DialogTitle`.
-
-### CookieBannerClose
-
-To change the `open` state of the Cookie Banner. It is being built on `DialogClose`.
-
-### CookieBannerPreferences
-
-A container component that wraps cookie preference options, typically containing checkboxes and descriptions for different cookie categories.
-
-### CookieBannerFooter
-
-Contains action elements like buttons and the customiser for cookie preferences.
-
-### CookieBannerPreferencesToggle
-
-A button component that toggles the visibility of cookie preference options. By default, renders as a Button component but can be customized using `asChild` props.
-
-### CookieBannerPreferencesDisplay
-
-A wrapper that shows or hide depends on the value of the `showPreferences` state of the `CookiesBanner`. If the `showWhen` props is `preferences-hidden`, the wrapper will not be shown when `showPreferences` props is falsy. By default, renders as a `div` component but can be customized using `asChild` props.
 
 <TypeTable
   type={{
-    showWhen: {
-      description:
-        "The visibility of the component depends on the value of 'showPreferences' props.",
-      type: "enum",
-      typeDescription: "preferences-hidden | preferences-shown",
-      default: "preferences-hidden",
+    children: {
+      type: "ReactNode",
     },
   }}
 />
 
 ### CookieBannerDescription
 
-Contains the description of the cookies banner. It is being build on `DialogDescription`.
+<TypeTable
+  type={{
+    children: {
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### CookieBannerPreferences
+
+<TypeTable
+  type={{
+    children: {
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### CookieBannerPreferencesTrigger
+
+<TypeTable
+  type={{
+    asChild: {
+      type: "boolean",
+      description: "Overrides to use the child component as base DOM element.",
+    },
+    children: {
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### CookieBannerAction
+
+<TypeTable
+  type={{
+    preferences: {
+      type: "boolean",
+    },
+    children: {
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### CookieBannerClose
+
+<TypeTable
+  type={{
+    asChild: {
+      type: "boolean",
+      description: "Overrides to use the child component as base DOM element.",
+    },
+    children: {
+      type: "ReactNode",
+    },
+  }}
+/>

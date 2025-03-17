@@ -7,7 +7,6 @@ import React, {
   forwardRef,
 } from "react";
 import { Button } from "@govtechmy/myds-react/button";
-import { Toggle, ToggleThumb } from "./myds";
 export * from "@govtechmy/myds-react/toggle";
 export * from "@govtechmy/myds-react/button";
 export * from "@govtechmy/myds-react/link";
@@ -40,7 +39,7 @@ export * from "@govtechmy/myds-react/navbar";
 export * from "@govtechmy/myds-react/summary-list";
 export * from "@govtechmy/myds-react/theme-switch";
 export { ThemeProvider } from "@govtechmy/myds-react/hooks";
-
+import Image from "next/image";
 import {
   Callout,
   CalloutTitle,
@@ -48,7 +47,7 @@ import {
   CalloutAction,
   CalloutClose,
 } from "@govtechmy/myds-react/callout";
-import { useToast } from "@govtechmy/myds-react/hooks";
+import { useToast, usePagination } from "@govtechmy/myds-react/hooks";
 import { DatePicker } from "@govtechmy/myds-react/date-picker";
 import { DateRangePicker } from "@govtechmy/myds-react/daterange-picker";
 import { Pill } from "@govtechmy/myds-react/pill";
@@ -81,24 +80,13 @@ import {
 } from "@govtechmy/myds-react/select";
 import { Tag } from "@govtechmy/myds-react/tag";
 import { Cell, ColumnDef } from "@govtechmy/myds-react/data-table";
-import {
-  Masthead,
-  MastheadHeader,
-  MastheadContent,
-  MastheadOfficialIndicator,
-  MastheadToggle,
-  MastheadSection,
-  MastheadSectionTitle,
-  MastheadSectionBody,
-} from "@govtechmy/myds-react/masthead";
+import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 import {
   FacebookIcon,
-  GovMyIcon,
   InstagramIcon,
-  Lock2Icon,
-  LockFillIcon,
   TwitterIcon,
   YoutubeIcon,
+  SwapIcon,
 } from "@govtechmy/myds-react/icon";
 import {
   SummaryList,
@@ -109,7 +97,25 @@ import {
   SummaryListRow,
   SummaryListTerm,
 } from "@govtechmy/myds-react/summary-list";
-import { SwapIcon } from "@govtechmy/myds-react/icon";
+
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationNext,
+  PaginationNumber,
+  PaginationPrevious,
+} from "@govtechmy/myds-react/pagination";
+import {
+  Footer,
+  FooterLogo,
+  FooterSection,
+  SiteInfo,
+  SiteLink,
+  SiteLinkGroup,
+} from "@govtechmy/myds-react/footer";
+import { Link } from "@govtechmy/myds-react/link";
 
 interface PreviewButtonProps extends ComponentProps<typeof Button> {
   pantun: string;
@@ -685,93 +691,6 @@ export const DataTableRadio = {
   rowId: "id",
 };
 
-interface PreviewMastheadProps extends ComponentProps<typeof Masthead> {}
-
-export const PreviewMasthead: FunctionComponent<PreviewMastheadProps> = () => {
-  return (
-    <div className="not-prose">
-      <Masthead>
-        <MastheadHeader>
-          <MastheadOfficialIndicator>
-            Official Malaysia Government Website
-          </MastheadOfficialIndicator>
-          <MastheadToggle>{"Here's how you know"}</MastheadToggle>
-        </MastheadHeader>
-        <MastheadContent>
-          <MastheadSection icon={<GovMyIcon />}>
-            <MastheadSectionTitle>
-              Official government websites end with .gov.my
-            </MastheadSectionTitle>
-            <MastheadSectionBody>
-              If the link does not end with
-              <span className="font-semibold"> .gov.my</span>, exit the website
-              immediately even if it looks similar.
-            </MastheadSectionBody>
-          </MastheadSection>
-          <MastheadSection icon={<Lock2Icon height={24} width={24} />}>
-            <MastheadSectionTitle>
-              Secure websites use HTTPS
-            </MastheadSectionTitle>
-            <MastheadSectionBody>
-              Look for a lock (
-              <LockFillIcon className="mb-0.5 inline size-3.5" />) atau
-              <span className="font-semibold"> https:// </span>
-              as an added precaution. If not present, do not share any sensitive
-              information.
-            </MastheadSectionBody>
-          </MastheadSection>
-        </MastheadContent>
-      </Masthead>
-    </div>
-  );
-};
-
-export const PreviewMastheadContent: FunctionComponent<
-  PreviewMastheadProps
-> = () => {
-  return (
-    <div className="not-prose">
-      <MastheadContent>
-        <MastheadSection icon={<GovMyIcon />}>
-          <MastheadSectionTitle>
-            Official government websites end with .gov.my
-          </MastheadSectionTitle>
-          <MastheadSectionBody>
-            If the link does not end with
-            <span className="font-semibold"> .gov.my</span>, exit the website
-            immediately even if it looks similar.
-          </MastheadSectionBody>
-        </MastheadSection>
-        <MastheadSection icon={<Lock2Icon height={24} width={24} />}>
-          <MastheadSectionTitle>Secure websites use HTTPS</MastheadSectionTitle>
-          <MastheadSectionBody>
-            Look for a lock (
-            <LockFillIcon className="mb-0.5 inline size-3.5" />) atau
-            <span className="font-semibold"> https:// </span>
-            as an added precaution. If not present, do not share any sensitive
-            information.
-          </MastheadSectionBody>
-        </MastheadSection>
-      </MastheadContent>
-    </div>
-  );
-};
-
-export const PreviewMastheadHeader: FunctionComponent<
-  PreviewMastheadProps
-> = () => {
-  return (
-    <div className="not-prose">
-      <MastheadHeader>
-        <MastheadOfficialIndicator>
-          Official Malaysia Government Website
-        </MastheadOfficialIndicator>
-        <MastheadToggle>{"Here's how you know"}</MastheadToggle>
-      </MastheadHeader>
-    </div>
-  );
-};
-
 interface PreviewSummaryList extends ComponentProps<typeof SummaryList> {}
 
 export const PreviewSummaryList: FunctionComponent<PreviewSummaryList> = () => {
@@ -875,27 +794,6 @@ export const SimplePagination = forwardRef<HTMLElement, AutoPaginationProps>(
   },
 );
 SimplePagination.displayName = "SimplePagination";
-
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationNext,
-  PaginationNumber,
-  PaginationPrevious,
-} from "@govtechmy/myds-react/pagination";
-import { usePagination } from "@govtechmy/myds-react/hooks";
-import {
-  Footer,
-  FooterLogo,
-  FooterSection,
-  SiteInfo,
-  SiteLink,
-  SiteLinkGroup,
-} from "@govtechmy/myds-react/footer";
-import { Link } from "@govtechmy/myds-react/link";
-import Image from "next/image";
 
 export const SelfPagination = ({ count = 200, limit = 10, page = 1 }) => {
   const { visiblePages } = usePagination({ count, limit, page });

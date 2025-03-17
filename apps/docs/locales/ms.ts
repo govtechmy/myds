@@ -169,10 +169,10 @@ export default {
     close_site:
       ", segera tutupkan halaman itu walaupun ia menyerupai portal rasmi!",
     secure: "Portal yang selamat menggunakan HTTPS",
-    find_lock: "Periksa ikon loker (",
+    find_lock: "Periksa ikon kunci mangga (",
     or: ") atau ",
     precaution:
-      " di depan pautan. Sekiranya tiada, jangan kongsikan sebarang maklumat sensitif.",
+      " di depan pautan. Sekiranya tiada, tinggalkan laman sesawang serta merta.",
   },
   Header: {
     about: "Tentang",

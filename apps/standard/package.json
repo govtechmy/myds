@@ -1,6 +1,6 @@
 {
   "name": "@govtechmy/kd-standard",
-  "version": "0.0.17",
+  "version": "0.0.20",
   "private": true,
   "scripts": {
     "build": "next build",
