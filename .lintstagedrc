@@ -1,0 +1,4 @@
+{
+  "apps/docs/**/*.{js,ts,tsx,jsx}": ["lint"],
+  "packages/react/**/*.{js,ts,tsx,jsx}": ["lint"]
+}

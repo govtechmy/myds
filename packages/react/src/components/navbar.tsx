@@ -150,6 +150,7 @@ interface NavbarMenuItemProps
   children: ReactNode;
   href: string;
   className?: string;
+  asChild?: boolean;
 }
 
 const navbar_menu_item_cva = cva(
@@ -172,6 +173,7 @@ const NavbarMenuItem: FunctionComponent<NavbarMenuItemProps> = ({
   className,
   children,
   href,
+  asChild,
   ...props
 }) => {
   const is_from_dropdown = useContext(NavbarMenuDropdownContext);
@@ -180,7 +182,7 @@ const NavbarMenuItem: FunctionComponent<NavbarMenuItemProps> = ({
       className={clx(navbar_menu_item_cva({ is_from_dropdown }), className)}
       {...props}
     >
-      <Link href={href} underline="none" className="w-full">
+      <Link href={href} underline="none" className="w-full" asChild={asChild}>
         {children}
       </Link>
     </NavigationMenuItem>

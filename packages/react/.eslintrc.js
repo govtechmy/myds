@@ -1,6 +1,6 @@
 module.exports = {
-  root: true,
   extends: ["@myds/eslint-config/react-internal.js"],
+  // root: true,
   ignorePatterns: [
     "dist/",
     "node_modules/",
