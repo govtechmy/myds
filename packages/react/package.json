@@ -231,6 +231,7 @@
     "tsup": "^8.3.5"
   },
   "dependencies": {
+    "@myds/eslint-config": "workspace:*",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-collapsible": "^1.1.3",
@@ -252,7 +253,6 @@
     "input-otp": "^1.4.1",
     "mitt": "^3.0.1",
     "react-day-picker": "^9.5.1",
-    "tailwind-merge": "^2.4.0",
-    "@myds/eslint-config": "workspace:*"
+    "tailwind-merge": "^2.4.0"
   }
 }
