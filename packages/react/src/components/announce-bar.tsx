@@ -1,7 +1,6 @@
 import { ComponentProps, forwardRef, ForwardRefExoticComponent } from "react";
 import { clx } from "../utils";
 import { Tag } from "./tag";
-import { Slot } from "@radix-ui/react-slot";
 
 /**
  * AnnounceBar component description.
@@ -16,18 +15,27 @@ import { Slot } from "@radix-ui/react-slot";
  *   </AnnounceBarDescription>
  * </AnnounceBar>
  */
-const AnnounceBar: ForwardRefExoticComponent<ComponentProps<"div">> =
-  forwardRef(({ className, children, ...props }, ref) => {
+
+interface AnnounceBarProps extends ComponentProps<"div"> {
+  border?: boolean;
+}
+const AnnounceBar: ForwardRefExoticComponent<AnnounceBarProps> = forwardRef(
+  ({ className, children, border = true, ...props }, ref) => {
     return (
       <div
         ref={ref}
-        className={clx("mx-[18px] flex flex-row gap-2 py-2 md:mx-6", className)}
+        className={clx(
+          "mx-[18px] flex flex-row gap-2 py-2 md:mx-6",
+          border && "border-otl-gray-200 border-b",
+          className,
+        )}
         {...props}
       >
         {children}
       </div>
     );
-  });
+  },
+);
 
 const AnnounceBarTag: typeof Tag = Tag;
 

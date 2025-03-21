@@ -1,4 +1,4 @@
-export default function SolidLockIcon({ ...props }) {
+export function SolidLockIcon({ ...props }) {
   return (
     <svg
       width="12"

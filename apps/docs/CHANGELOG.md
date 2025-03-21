@@ -1,5 +1,62 @@
 # @govtechmy/myds-docs
 
+## 0.0.20
+
+### Patch Changes
+
+- Updated dependencies [2558fb8]
+  - @govtechmy/myds-react@0.0.18
+  - @govtechmy/myds-style@0.0.9
+
+## 0.0.19
+
+### Patch Changes
+
+- Updated dependencies [1ae118c]
+- Updated dependencies [6fe6aa7]
+- Updated dependencies [8ec3c92]
+- Updated dependencies [2f311ad]
+- Updated dependencies [105565f]
+- Updated dependencies [263f775]
+  - @govtechmy/myds-react@0.0.17
+  - @govtechmy/myds-style@0.0.8
+
+## 0.0.18
+
+### Patch Changes
+
+- 27d8b4a: Improve the accessibility of the landing page.
+- Updated dependencies [07e9ffb]
+  - @govtechmy/myds-react@0.0.16
+  - @govtechmy/myds-style@0.0.7
+
+## 0.0.17
+
+### Patch Changes
+
+- 8e8d0d9: Modify Footer docs to reflect the latest change.
+- 3dd63a8: Added usePagination hook docs
+- 21dd39c: Added useToast hook docs
+- Updated dependencies [9d51bae]
+- Updated dependencies [353589f]
+  - @govtechmy/myds-react@0.0.15
+  - @govtechmy/myds-style@0.0.6
+
+## 0.0.16
+
+### Patch Changes
+
+- 43a94da: Added Accessibility guide for Developers
+- Updated dependencies [7964da7]
+  - @govtechmy/myds-style@0.0.5
+
+## 0.0.15
+
+### Patch Changes
+
+- Updated dependencies [4ce2d50]
+  - @govtechmy/myds-react@0.0.14
+
 ## 0.0.14
 
 ### Patch Changes

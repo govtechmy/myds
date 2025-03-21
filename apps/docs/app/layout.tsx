@@ -8,7 +8,7 @@ const RootLayout: FunctionComponent<{ children: ReactNode }> = ({
   children,
 }) => {
   return (
-    <html className={clx("font-body light")}>
+    <html className={clx("font-body light")} lang="en">
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
       </Head>

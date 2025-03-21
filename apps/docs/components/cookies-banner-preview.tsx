@@ -1,15 +1,13 @@
 "use client";
-import { FunctionComponent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   CookieBanner,
   CookieBannerClose,
   CookieBannerDescription,
-  CookieBannerFooter,
-  CookieBannerHeader,
+  CookieBannerAction,
   CookieBannerPreferences,
   CookieBannerTitle,
-  CookieBannerPreferencesDisplay,
-  CookieBannerPreferencesToggle,
+  CookieBannerPreferencesTrigger,
 } from "@govtechmy/myds-react/cookie-banner";
 import { Button } from "@govtechmy/myds-react/button";
 import { Checkbox } from "@govtechmy/myds-react/checkbox";
@@ -38,21 +36,15 @@ const CookiesBannerPreview = () => {
       <Button variant="primary-fill" onClick={() => setOpen(true)}>
         Open Cookie Settings
       </Button>
-      <CookieBanner
-        open={open}
-        onOpenChange={setOpen}
-        onDismiss={() => alert("Cookie banner has been dismissed.")}
-        dismissible={true}
-      >
-        <CookieBannerHeader className="space-y-0 p-0 pb-1" border={false}>
-          <CookieBannerTitle className="text-body-md pb-1">
-            Customise Preferences
-          </CookieBannerTitle>
-          <CookieBannerDescription>
-            This website uses cookies to improve user experience. We need your
-            consent to use some of the cookies.
-          </CookieBannerDescription>
-        </CookieBannerHeader>
+      <CookieBanner open={open} onOpenChange={setOpen}>
+        <CookieBannerTitle className="text-body-md pb-1">
+          Cookie Preferences
+        </CookieBannerTitle>
+        <CookieBannerDescription>
+          This website uses cookies to improve user experience. We need your
+          consent to use some of the cookies.
+        </CookieBannerDescription>
+
         <CookieBannerPreferences className="flex flex-col gap-2 py-3">
           <div className="flex flex-row gap-2.5">
             <Checkbox
@@ -124,64 +116,125 @@ const CookiesBannerPreview = () => {
             </div>
           </div>
         </CookieBannerPreferences>
-        <CookieBannerFooter>
-          <CookieBannerPreferencesDisplay asChild>
-            <CookieBannerClose>
-              <Button
-                variant="primary-fill"
-                size="medium"
-                onClick={() => alert("Accept all cookies.")}
-                className="w-full justify-center sm:w-auto"
-              >
-                Accept All
-              </Button>
-            </CookieBannerClose>
-          </CookieBannerPreferencesDisplay>
-          <CookieBannerPreferencesDisplay asChild>
-            <CookieBannerClose>
-              <Button
-                variant="primary-fill"
-                size="medium"
-                onClick={() => alert("Reject all cookies.")}
-                className="w-full justify-center sm:w-auto"
-              >
-                Reject All
-              </Button>
-            </CookieBannerClose>
-          </CookieBannerPreferencesDisplay>
-          <CookieBannerPreferencesDisplay>
-            <CookieBannerPreferencesToggle>
-              Customise
-            </CookieBannerPreferencesToggle>
-          </CookieBannerPreferencesDisplay>
-          <CookieBannerPreferencesDisplay asChild showWhen="preferences-shown">
-            <CookieBannerClose>
-              <Button
-                variant="primary-fill"
-                size="medium"
-                onClick={() => alert("Accept saved preferences.")}
-                className="w-full justify-center sm:w-auto"
-              >
-                Save preferences
-              </Button>
-            </CookieBannerClose>
-          </CookieBannerPreferencesDisplay>
-          <CookieBannerPreferencesDisplay asChild showWhen="preferences-shown">
-            <CookieBannerClose>
-              <Button
-                variant="primary-fill"
-                size="medium"
-                onClick={() => alert("Necessary cookies accepted.")}
-                className="w-full justify-center sm:w-auto"
-              >
-                Accept necessary cookies
-              </Button>
-            </CookieBannerClose>
-          </CookieBannerPreferencesDisplay>
-        </CookieBannerFooter>
+
+        <CookieBannerAction>
+          <CookieBannerClose asChild>
+            <Button
+              variant="primary-fill"
+              size="medium"
+              onClick={() => alert("Accept all cookies.")}
+              className="w-full justify-center sm:w-auto"
+            >
+              Accept All
+            </Button>
+          </CookieBannerClose>
+          <CookieBannerClose asChild>
+            <Button
+              variant="primary-fill"
+              size="medium"
+              onClick={() => alert("Reject all cookies.")}
+              className="w-full justify-center sm:w-auto"
+            >
+              Reject All
+            </Button>
+          </CookieBannerClose>
+
+          <CookieBannerPreferencesTrigger>
+            Customise
+          </CookieBannerPreferencesTrigger>
+        </CookieBannerAction>
+
+        <CookieBannerAction preferences>
+          <CookieBannerClose asChild>
+            <Button
+              variant="primary-fill"
+              size="medium"
+              onClick={() => alert("Accept saved preferences.")}
+              className="w-full justify-center sm:w-auto"
+            >
+              Save preferences
+            </Button>
+          </CookieBannerClose>
+          <CookieBannerClose asChild>
+            <Button
+              variant="primary-fill"
+              size="medium"
+              onClick={() => alert("Necessary cookies accepted.")}
+              className="w-full justify-center sm:w-auto"
+            >
+              Accept necessary cookies
+            </Button>
+          </CookieBannerClose>
+        </CookieBannerAction>
       </CookieBanner>
     </div>
   );
 };
 
-export { CookiesBannerPreview };
+const CookiesPreferencesDemo = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="flex flex-col gap-4">
+      <Button variant="primary-fill" onClick={() => setOpen(true)}>
+        Open Cookie Settings
+      </Button>
+      <CookieBanner open={open} onOpenChange={setOpen}>
+        <CookieBannerTitle className="text-body-md pb-1">
+          Cookie Preferences
+        </CookieBannerTitle>
+        <CookieBannerDescription>
+          This website uses cookies to improve user experience. We need your
+          consent to use some of the cookies.
+        </CookieBannerDescription>
+
+        <CookieBannerPreferences className="bg-bg-washed px-2 font-mono">
+          Hello from MYDS!
+        </CookieBannerPreferences>
+
+        <CookieBannerAction>
+          <CookieBannerClose asChild>
+            <Button
+              variant="primary-fill"
+              size="medium"
+              onClick={() => alert("Accept all cookies.")}
+              className="w-full justify-center sm:w-auto"
+            >
+              Accept All
+            </Button>
+          </CookieBannerClose>
+          <CookieBannerClose asChild>
+            <Button
+              variant="primary-fill"
+              size="medium"
+              onClick={() => alert("Reject all cookies.")}
+              className="w-full justify-center sm:w-auto"
+            >
+              Reject All
+            </Button>
+          </CookieBannerClose>
+
+          <CookieBannerPreferencesTrigger>
+            Customise
+          </CookieBannerPreferencesTrigger>
+        </CookieBannerAction>
+
+        <CookieBannerAction preferences>
+          <CookieBannerPreferencesTrigger>Back</CookieBannerPreferencesTrigger>
+          <CookieBannerClose asChild>
+            <Button
+              variant="primary-fill"
+              size="medium"
+              onClick={() => alert("Necessary cookies accepted.")}
+              className="w-full justify-center sm:w-auto"
+            >
+              Accept necessary cookies
+            </Button>
+          </CookieBannerClose>
+        </CookieBannerAction>
+      </CookieBanner>
+    </div>
+  );
+};
+
+export { CookiesBannerPreview, CookiesPreferencesDemo };

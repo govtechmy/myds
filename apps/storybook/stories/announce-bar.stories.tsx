@@ -46,6 +46,29 @@ type Story = StoryObj<typeof meta>;
 /**
  * This story represents the implementation of AnnounceBar in light primary mode. It can be utilized in indicating the Alpha stage.
  */
+export const WithBorder: Story = {
+  ...createStory({}),
+  render: () => {
+    return (
+      <AnnounceBar border>
+        <AnnounceBarTag variant="primary" mode="pill">
+          Alpha
+        </AnnounceBarTag>
+        <AnnounceBarDescription>
+          <p>
+            This is a new service. Help us improve it.{" "}
+            <Link underline="always" primary href="#">
+              Send us your feedback here.
+            </Link>
+          </p>
+        </AnnounceBarDescription>
+      </AnnounceBar>
+    );
+  },
+};
+/**
+ * This story represents the implementation of AnnounceBar in light primary mode. It can be utilized in indicating the Alpha stage.
+ */
 export const LightPrimary: Story = {
   ...createStory({}),
   render: () => {

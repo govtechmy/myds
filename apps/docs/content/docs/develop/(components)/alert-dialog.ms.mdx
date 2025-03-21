@@ -39,27 +39,22 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
   </Tab>
   <Tab value="Kod">
     ```tsx
-    <Dialog>
-      <DialogTrigger>
-        <Button variant="primary-fill">Buka Dialog</Button>
-      </DialogTrigger>
-      <DialogBody>
-        <DialogHeader>
-          <DialogTitle>Tajuk Dialog</DialogTitle>
-        </DialogHeader>
-        <DialogContent>
-          <DialogDescription>Kandungan dialog di sini.</DialogDescription>
-        </DialogContent>
-        <DialogFooter>
-          <DialogClose>
+    <AlertDialog variant="success">
+      <AlertDialogTrigger>
+        <Button variant="primary-fill">Buka Dialog Amaran</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogTitle>Tajuk Dialog Amaran</AlertDialogTitle>
+        <AlertDialogAction>
+          <AlertDialogClose>
             <Button variant="default-outline">Tindakan Sekunder</Button>
-          </DialogClose>
-          <DialogClose>
+          </AlertDialogClose>
+          <AlertDialogClose>
             <Button variant="primary-fill">Tindakan Utama</Button>
-          </DialogClose>
-        </DialogFooter>
-      </DialogBody>
-    </Dialog>
+          </AlertDialogClose>
+        </AlertDialogAction>
+      </AlertDialogContent>
+    </AlertDialog>
     ```
   </Tab>
 </Tabs>

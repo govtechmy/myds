@@ -5,6 +5,7 @@
     "index",
     "(getting-started)/install",
     "(getting-started)/style-configuration",
+    "(getting-started)/accessibility",
     "(getting-started)/usage",
 
     "---Pemasangan---",
@@ -52,7 +53,9 @@
     "(components)/tooltip",
 
     "---Hooks ---",
-    "(hooks)/use-theme"
+    "(hooks)/use-pagination",
+    "(hooks)/use-theme",
+    "(hooks)/use-toast"
   ],
   "root": true
 }

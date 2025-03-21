@@ -1,4 +1,4 @@
-export default function MalaysiaFlagIcon(props: any) {
+export function MalaysiaFlagIcon({ ...props }) {
   return (
     <svg
       width="32"
