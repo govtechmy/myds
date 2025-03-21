@@ -21,7 +21,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
           <p>
             <span>Ini adalah perkhidmatan baru. Bantu kami memperbaikinya. </span>
             <Link underline="always" primary href="#">
-              <span>Hantar maklum balas anda di sini.</span>
+              <span className="text-inherit">Hantar maklum balas anda di sini.</span>
             </Link>
           </p>
         </AnnounceBarDescription>
@@ -92,7 +92,7 @@ Gunakan prop `variant` untuk menukar gaya bar pengumuman!
             <p>
             <span>Ini adalah perkhidmatan baru. Bantu kami memperbaikinya. </span>
             <Link underline="always" primary href="#">
-                <span>Hantar maklum balas anda di sini.</span>
+                <span className="text-inherit">Hantar maklum balas anda di sini.</span>
             </Link>
             </p>
         </AnnounceBarDescription>
@@ -103,7 +103,7 @@ Gunakan prop `variant` untuk menukar gaya bar pengumuman!
             <p>
             <span>Ini adalah perkhidmatan baru. Bantu kami memperbaikinya. </span>
             <Link underline="always" primary href="#">
-                <span>Hantar maklum balas anda di sini.</span>
+                <span className="text-inherit">Hantar maklum balas anda di sini.</span>
             </Link>
             </p>
         </AnnounceBarDescription>
@@ -114,7 +114,7 @@ Gunakan prop `variant` untuk menukar gaya bar pengumuman!
             <p>
             <span>Ini adalah perkhidmatan baru. Bantu kami memperbaikinya. </span>
             <Link underline="always" primary href="#">
-                <span>Hantar maklum balas anda di sini.</span>
+                <span className="text-inherit">Hantar maklum balas anda di sini.</span>
             </Link>
             </p>
         </AnnounceBarDescription>
@@ -125,7 +125,7 @@ Gunakan prop `variant` untuk menukar gaya bar pengumuman!
             <p>
             <span>Ini adalah perkhidmatan baru. Bantu kami memperbaikinya. </span>
             <Link underline="always" primary href="#">
-                <span>Hantar maklum balas anda di sini.</span>
+                <span className="text-inherit">Hantar maklum balas anda di sini.</span>
             </Link>
             </p>
         </AnnounceBarDescription>
@@ -136,7 +136,7 @@ Gunakan prop `variant` untuk menukar gaya bar pengumuman!
             <p>
             <span>Ini adalah perkhidmatan baru. Bantu kami memperbaikinya. </span>
             <Link underline="always" primary href="#">
-                <span>Hantar maklum balas anda di sini.</span>
+                <span className="text-inherit">Hantar maklum balas anda di sini.</span>
             </Link>
             </p>
         </AnnounceBarDescription>
@@ -211,16 +211,44 @@ Gunakan prop `variant` untuk menukar gaya bar pengumuman!
 
 ## Props
 
+### AnnounceBar
+
+<TypeTable
+  type={{
+    border: {
+      description:
+        "Sama ada untuk menunjukkan sempadan di bahagian bawah AnnounceBar",
+      type: "boolean",
+      default: "true",
+    },
+    children: {
+      type: "ReactNode",
+    },
+  }}
+/>
+
 ### AnnounceBarTag
 
 <TypeTable
   type={{
     variant: {
-      description: "Gaya varian butang",
+      description: "Varian gaya butang",
       type: "enum",
-      typeDescription:
-        "primary-fill | primary-outline | primary-ghost | danger-fill | danger-outline | danger-ghost | default-outline | default-ghost",
-      default: "default-outline",
+      typeDescription: "default | primary | success | warning | danger",
+      default: "default",
+    },
+    children: {
+      type: "ReactNode",
+    },
+  }}
+/>
+
+### AnnounceBarDescription
+
+<TypeTable
+  type={{
+    children: {
+      type: "ReactNode",
     },
   }}
 />

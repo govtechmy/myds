@@ -1,5 +1,22 @@
 # @govtechmy/myds-react
 
+## 0.0.18
+
+### Patch Changes
+
+- 2558fb8: Fix alert dialog spacing
+
+## 0.0.17
+
+### Patch Changes
+
+- 1ae118c: Fix Tooltip trigger animation
+- 6fe6aa7: Fix Checkbox icon stroke too thin
+- 8ec3c92: Fix spacing for DialogHeader based on border existence
+- 2f311ad: Refactor Calendar, DatePicker & DateRangePicker to update selected date on month/year change
+- 105565f: Fix adding border to Announcebar
+- 263f775: Refactor CookieBanner component
+
 ## 0.0.16
 
 ### Patch Changes

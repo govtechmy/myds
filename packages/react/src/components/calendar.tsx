@@ -13,6 +13,7 @@ import {
 import { FC, useEffect, useRef, useState } from "react";
 import {
   DateLib,
+  DateRange,
   DayPicker,
   DayPickerProps,
   defaultDateLib,
@@ -34,6 +35,7 @@ type CalendarProps = DayPickerProps & {
   maxYear?: number;
   minYear?: number;
   yearOrder?: "asc" | "desc";
+  daterange?: "from" | "to";
 };
 
 const Calendar: FC<CalendarProps> = ({
@@ -77,7 +79,7 @@ const Calendar: FC<CalendarProps> = ({
       onMonthChange={setMonth}
       className={clx(
         "pb-4.5 w-full p-3",
-        view !== "day" && "h-[326px]",
+        view === "day" ? "sm:w-fit" : "h-[342px]",
         className,
       )}
       classNames={{
@@ -85,7 +87,7 @@ const Calendar: FC<CalendarProps> = ({
         month: "flex flex-col h-full gap-y-1.5",
         month_caption: "",
         caption_label: "text-sm font-medium",
-        nav: "absolute left-52 flex gap-2 items-center",
+        nav: "absolute right-0 flex gap-2 items-center",
         button_previous: buttonVariants({
           variant: "default-outline",
           iconOnly: true,
@@ -98,15 +100,15 @@ const Calendar: FC<CalendarProps> = ({
         }),
         chevron: "size-4",
         month_grid: "w-full border-collapse space-y-1",
-        weekdays: "flex",
-        weekday: "text-txt-black-500 font-normal w-10 text-body-xs py-2",
-        week: "flex w-full mt-1.5",
-        day: "p-0",
+        weekdays: "",
+        weekday: "text-txt-black-500 font-normal sm:w-10 text-body-xs py-2",
+        week: "w-full mt-1.5",
+        day: "aspect-square p-0",
         day_button: clx(
           buttonVariants({ variant: "default-ghost" }),
-          "size-10 font-normal justify-center disabled:bg-transparent",
+          "aspect-square h-full w-full font-normal justify-center disabled:bg-transparent",
           "[.selected:not(.in-range)_&]:bg-primary-600 [.selected:not(.in-range)_&]:text-white",
-          "[.today:not(.selected)_&]:text-primary-600 [.today:selected)_&]:text-white",
+          "[.today:not(.selected)_&]:text-txt-primary [.today:selected)_&]:text-white",
         ),
         selected: clx(
           "selected",
@@ -164,76 +166,175 @@ const Calendar: FC<CalendarProps> = ({
           return view === "day" ? (
             <table {...tableProps} />
           ) : view === "month" ? (
-            <table role="grid" className="grid grow grid-cols-3">
-              {Array(12)
-                .fill(null)
-                .map((_, i) => {
-                  const date = new Date();
-                  date.setFullYear(year, i);
-                  date.setHours(0, 0, 0, 0);
+            <table role="grid" className="table h-full">
+              <tbody>
+                {[0, 1, 2, 3].map((row_index) => (
+                  <tr>
+                    {[0, 1, 2].map((col_index) => {
+                      const date = new Date();
+                      date.setHours(0, 0, 0, 0);
 
-                  const isSelected =
-                    month.getMonth() === i && month.getFullYear() === year;
+                      let selected_date = date;
+                      if (props.mode !== undefined)
+                        selected_date = getSelectedDate(
+                          props.selected,
+                          props.daterange,
+                        );
 
-                  return (
-                    <td role="gridcell">
-                      <Button
-                        data-selected={isSelected}
-                        variant={isSelected ? "primary-fill" : "default-ghost"}
-                        disabled={
-                          props.disabled
-                            ? dateMatchers("month", date, props.disabled)
-                            : false
-                        }
-                        className="h-full w-full justify-center disabled:data-[selected=false]:bg-transparent"
-                        onClick={() => {
-                          setMonth(date);
-                          setView("day");
-                        }}
-                      >
-                        {formatDate(date, "MMM")}
-                      </Button>
-                    </td>
-                  );
-                })}
+                      const i = row_index * 3 + col_index;
+
+                      date.setFullYear(year, i, selected_date.getDate());
+
+                      const isSelected =
+                        month.getMonth() === i && month.getFullYear() === year;
+
+                      return (
+                        <td role="gridcell">
+                          <Button
+                            data-selected={isSelected}
+                            variant={
+                              isSelected ? "primary-fill" : "default-ghost"
+                            }
+                            disabled={
+                              props.disabled
+                                ? dateMatchers("month", date, props.disabled)
+                                : false
+                            }
+                            className="h-full w-full justify-center disabled:data-[selected=false]:bg-transparent"
+                            onClick={(e) => {
+                              setMonth(date);
+                              setView("day");
+
+                              if (props.mode !== undefined && props.onSelect) {
+                                if (props.mode === "single")
+                                  props.onSelect(date, date, {}, e);
+                                if (props.mode === "range") {
+                                  if (props.selected) {
+                                    const { from, to } = props.selected;
+                                    props.onSelect(
+                                      props.daterange === "from"
+                                        ? { from: date, to }
+                                        : { from, to: date },
+                                      date,
+                                      {},
+                                      e,
+                                    );
+                                  } else
+                                    props.onSelect(
+                                      props.daterange === "from"
+                                        ? { from: date, to: undefined }
+                                        : { from: undefined, to: date },
+                                      date,
+                                      {},
+                                      e,
+                                    );
+                                }
+                              }
+                            }}
+                          >
+                            {formatDate(date, "MMM")}
+                          </Button>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
             </table>
           ) : (
-            <table role="grid" className="grid grid-cols-3 overflow-y-auto">
-              {Array(maxYear - minYear + 1)
-                .fill(null)
-                .map((_, i) => {
-                  const displayYear =
-                    yearOrder === "asc" ? minYear + i : maxYear - i;
-                  const isSelected = month.getFullYear() === displayYear;
+            <div className="overflow-y-auto">
+              <table role="grid" className="w-full">
+                <tbody>
+                  {Array(Math.ceil((maxYear - minYear) / 3))
+                    .fill(null)
+                    .map((_, row_index) => (
+                      <tr>
+                        {[0, 1, 2].map((col_index) => {
+                          const i = row_index * 3 + col_index;
 
-                  const date = new Date();
-                  date.setFullYear(displayYear, 0, 1);
-                  date.setHours(0, 0, 0, 0);
+                          const displayYear =
+                            yearOrder === "asc" ? minYear + i : maxYear - i;
+                          const isSelected =
+                            month.getFullYear() === displayYear;
 
-                  return (
-                    <td role="gridcell">
-                      <Button
-                        ref={isSelected ? yearRef : null}
-                        data-selected={isSelected}
-                        variant={isSelected ? "primary-fill" : "default-ghost"}
-                        className="h-11 w-full justify-center disabled:data-[selected=false]:bg-transparent"
-                        disabled={
-                          props.disabled
-                            ? dateMatchers("year", date, props.disabled)
-                            : false
-                        }
-                        onClick={() => {
-                          setYear(displayYear);
-                          setMonth(new Date(displayYear, month.getMonth()));
-                          setView("month");
-                        }}
-                      >
-                        {displayYear}
-                      </Button>
-                    </td>
-                  );
-                })}
-            </table>
+                          const date = new Date();
+                          date.setHours(0, 0, 0, 0);
+
+                          let selected_date = date;
+
+                          if (props.mode !== undefined)
+                            selected_date = getSelectedDate(
+                              props.selected,
+                              props.daterange,
+                            );
+
+                          date.setFullYear(
+                            displayYear,
+                            selected_date.getMonth(),
+                            selected_date.getDate(),
+                          );
+
+                          return (
+                            <td role="gridcell">
+                              <Button
+                                ref={isSelected ? yearRef : null}
+                                data-selected-date={date}
+                                data-selected={isSelected}
+                                variant={
+                                  isSelected ? "primary-fill" : "default-ghost"
+                                }
+                                className="h-full min-h-11 w-full justify-center disabled:data-[selected=false]:bg-transparent"
+                                disabled={
+                                  props.disabled
+                                    ? dateMatchers("year", date, props.disabled)
+                                    : false
+                                }
+                                onClick={(e) => {
+                                  setYear(displayYear);
+                                  month.setFullYear(displayYear);
+                                  setMonth(month);
+                                  setView("month");
+
+                                  if (
+                                    props.mode !== undefined &&
+                                    props.onSelect
+                                  ) {
+                                    if (props.mode === "single")
+                                      props.onSelect(date, date, {}, e);
+                                    if (props.mode === "range") {
+                                      if (props.selected) {
+                                        const { from, to } = props.selected;
+                                        props.onSelect(
+                                          props.daterange === "from"
+                                            ? { from: date, to }
+                                            : { from, to: date },
+                                          date,
+                                          {},
+                                          e,
+                                        );
+                                      } else
+                                        props.onSelect(
+                                          props.daterange === "from"
+                                            ? { from: date, to: undefined }
+                                            : { from: undefined, to: date },
+                                          date,
+                                          {},
+                                          e,
+                                        );
+                                    }
+                                  }
+                                }}
+                              >
+                                {displayYear}
+                              </Button>
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
           );
         },
         NextMonthButton(props) {
@@ -370,4 +471,20 @@ function dateMatchers(
     }
     return false;
   });
+}
+
+function getSelectedDate(
+  selected?: Date | Date[] | DateRange,
+  daterange?: "from" | "to",
+): Date {
+  const date = new Date();
+  if (selected === undefined) return date;
+  if (isDate(selected)) return selected;
+  if (isDateRange(selected)) {
+    if (daterange === "from" && selected.from) return selected.from;
+    if (daterange === "to" && selected.to) return selected.to;
+    return date;
+  }
+  if (selected.length > 0 && selected[0]) return selected[0];
+  return date;
 }

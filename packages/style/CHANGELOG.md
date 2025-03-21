@@ -1,5 +1,18 @@
 # @govtechmy/myds-style
 
+## 0.0.9
+
+### Patch Changes
+
+- 2558fb8: Fix alert dialog spacing
+
+## 0.0.8
+
+### Patch Changes
+
+- 1ae118c: Fix Tooltip trigger animation
+- 263f775: Refactor CookieBanner component
+
 ## 0.0.7
 
 ### Patch Changes
