@@ -1,27 +1,35 @@
-import * as React from "react";
+import {
+  ComponentProps,
+  createContext,
+  forwardRef,
+  ForwardRefExoticComponent,
+  FunctionComponent,
+  JSXElementConstructor,
+  LegacyRef,
+  ReactElement,
+  ReactNode,
+  useContext,
+} from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { clx } from "../utils";
 import { cva } from "class-variance-authority";
+import { Slot } from "@radix-ui/react-slot";
 
 /*========================================================================================================================*/
 
-interface TabsProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root> {
-  variant: "pill" | "enclosed" | "line";
-  size: "small" | "medium";
+interface TabsProps extends ComponentProps<typeof TabsPrimitive.Root> {
+  variant?: "pill" | "enclosed" | "line";
+  size?: "small" | "medium";
 }
 
-const TabsContext = React.createContext<TabsProps>({
+const TabsContext = createContext<TabsProps>({
   variant: "line",
   size: "small",
 });
 
 /*========================================================================================================================*/
 
-const Tabs = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Root>,
-  TabsProps
->((props, ref) => (
+const Tabs: ForwardRefExoticComponent<TabsProps> = forwardRef((props, ref) => (
   <TabsContext.Provider value={props}>
     <TabsPrimitive.Root ref={ref} {...props} />
   </TabsContext.Provider>
@@ -35,9 +43,9 @@ const tabs_list_cva = cva(
   {
     variants: {
       variant: {
-        pill: ["bg-transparent rounded-full"],
+        pill: "bg-transparent rounded-full",
         enclosed: "bg-bg-washed rounded-md",
-        line: "before:h-0.5 before:content-[''] before:absolute before:-bottom-2.5 before:bg-otl-gray-200 before:left-0 before:right-0 mb-2",
+        line: "before:h-[1px] before:absolute before:-bottom-[9px] before:bg-otl-gray-200 before:left-0 before:right-0",
       },
       width: {
         full: "w-full",
@@ -50,25 +58,23 @@ const tabs_list_cva = cva(
   },
 );
 
-interface TabsListProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> {
+interface TabsListProps extends ComponentProps<typeof TabsPrimitive.List> {
   width?: "fit" | "full";
 }
 
-const TabsList = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.List>,
-  TabsListProps
->(({ className, width = "fit", ...props }, ref) => {
-  const { variant } = React.useContext(TabsContext);
+const TabsList: ForwardRefExoticComponent<TabsListProps> = forwardRef(
+  ({ className, width = "fit", ...props }, ref) => {
+    const { variant } = useContext(TabsContext);
 
-  return (
-    <TabsPrimitive.List
-      ref={ref}
-      className={tabs_list_cva({ variant, width, className })}
-      {...props}
-    />
-  );
-});
+    return (
+      <TabsPrimitive.List
+        ref={ref}
+        className={tabs_list_cva({ variant, width, className })}
+        {...props}
+      />
+    );
+  },
+);
 TabsList.displayName = TabsPrimitive.List.displayName;
 
 /*========================================================================================================================*/
@@ -83,13 +89,12 @@ const tabs_trigger_cva = cva(
       variant: {
         pill: [
           "bg-transparent data-[state=active]:bg-bg-washed-active transition-colors rounded-full",
-          "before:h-auto before:w-[1px] before:content-[''] before:absolute before:-left-1 before:bg-otl-gray-300 before:first-of-type:hidden",
         ],
         enclosed: [
           "data-[state=active]:bg-bg-dialog-active rounded-md transition-[border] data-[state=active]:border-otl-gray-200",
-          "before:h-auto before:w-[1px] before:content-[''] before:absolute before:-left-1 before:bg-otl-gray-300 before:first-of-type:hidden",
+          // "before:h-auto before:w-[1px] before:content-[''] before:absolute before:-left-1 before:bg-otl-gray-300 before:first-of-type:hidden",
         ],
-        line: "rounded-md before:content-[''] before:absolute before:-bottom-2.5 before:left-0 before:right-0 before:data-[state=active]:bg-primary-600 before:h-0.5 before:transition-all before:duration-200",
+        line: "rounded-md before:h-0.5 before:content-[''] before:absolute before:-bottom-2.5 before:left-0 before:right-0 before:data-[state=active]:bg-primary-600 before:transition-all before:duration-200",
       },
       size: {
         small: "text-body-sm py-1.5 px-2.5",
@@ -125,11 +130,10 @@ const tabs_trigger_cva = cva(
   },
 );
 
-const TabsTrigger = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => {
-  const { variant, size } = React.useContext(TabsContext);
+const TabsTrigger: ForwardRefExoticComponent<
+  ComponentProps<typeof TabsPrimitive.TabsTrigger>
+> = forwardRef(({ className, ...props }, ref) => {
+  const { variant, size } = useContext(TabsContext);
   return (
     <TabsPrimitive.Trigger
       ref={ref}
@@ -158,30 +162,26 @@ const tab_icon_cva = cva(
 );
 
 interface TabsIconProps {
-  children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
+  children: ReactElement<any, string | JSXElementConstructor<any>>;
 }
 
-const TabsIcon: React.ForwardRefExoticComponent<TabsIconProps> =
-  React.forwardRef(({ children }, ref) => {
-    const { size } = React.useContext(TabsContext);
+const TabsIcon: FunctionComponent<TabsIconProps> = ({ children }) => {
+  const { size } = useContext(TabsContext);
 
-    return React.cloneElement(children, {
-      ref,
-      className: clx(tab_icon_cva({ size })),
-    });
-  });
+  return <Slot className={clx(tab_icon_cva({ size }))}>{children}</Slot>;
+};
 
 TabsIcon.displayName = "TabsIcon";
 /*========================================================================================================================*/
 
-interface TabsCounterProps extends React.ComponentPropsWithoutRef<"span"> {
-  children: React.ReactNode;
-  ref?: React.LegacyRef<HTMLSpanElement | null>;
+interface TabsCounterProps extends ComponentProps<"span"> {
+  children: ReactNode;
+  ref?: LegacyRef<HTMLSpanElement>;
 }
 
-const TabsCounter: React.ForwardRefExoticComponent<TabsCounterProps> =
-  React.forwardRef(({ children, ...props }, ref) => {
-    const { size } = React.useContext(TabsContext);
+const TabsCounter: ForwardRefExoticComponent<TabsCounterProps> = forwardRef(
+  ({ children, ...props }, ref) => {
+    const { size } = useContext(TabsContext);
     return (
       <span
         ref={ref}
@@ -195,16 +195,16 @@ const TabsCounter: React.ForwardRefExoticComponent<TabsCounterProps> =
         {children}
       </span>
     );
-  });
+  },
+);
 
 TabsCounter.displayName = "TabsCounter";
 
 /*========================================================================================================================*/
 
-const TabsContent = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => (
+const TabsContent: ForwardRefExoticComponent<
+  ComponentProps<typeof TabsPrimitive.Content>
+> = forwardRef(({ className, ...props }, ref) => (
   <TabsPrimitive.Content
     ref={ref}
     className={clx("text-txt-black-700", className)}
