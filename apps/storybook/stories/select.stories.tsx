@@ -105,7 +105,7 @@ const CONTENT = (
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Select",
+  title: "@govtechmy/myds-react/Components/Select",
   component: Select,
   tags: ["autodocs"],
   parameters: {

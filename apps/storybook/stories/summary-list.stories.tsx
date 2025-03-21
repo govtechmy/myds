@@ -21,7 +21,7 @@ import { SwapIcon } from "@govtechmy/myds-react/icon";
  */
 
 const meta = {
-  title: "@govtechmy/myds-react/SummaryList",
+  title: "@govtechmy/myds-react/Components/SummaryList",
   component: SummaryList,
   tags: ["autodocs"],
   parameters: {

@@ -110,7 +110,7 @@ type EmployeeProps = {
  */
 
 const meta: Meta<typeof DataTable> = {
-  title: "@govtechmy/myds-react/DataTable",
+  title: "@govtechmy/myds-react/Components/DataTable",
   component: DataTable,
   tags: ["autodocs"],
   parameters: {

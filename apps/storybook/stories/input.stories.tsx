@@ -35,7 +35,7 @@ import ArrowForward from "../react/arrow-forward";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Input",
+  title: "@govtechmy/myds-react/Components/Input",
   component: Input,
   tags: ["autodocs"],
   parameters: {

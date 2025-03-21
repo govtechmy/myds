@@ -23,7 +23,7 @@ import { Tag } from "@govtechmy/myds-react/tag";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Tag",
+  title: "@govtechmy/myds-react/Components/Tag",
   component: Tag,
   parameters: {
     layout: "centered",

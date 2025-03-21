@@ -28,7 +28,7 @@ import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Label",
+  title: "@govtechmy/myds-react/Components/Label",
   component: Label,
   tags: ["autodocs"],
   parameters: {

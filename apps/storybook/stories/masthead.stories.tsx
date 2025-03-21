@@ -74,11 +74,11 @@ import { createStory } from "../utils";
  */
 
 const meta = {
-  title: "@govtechmy/myds-react/Masthead",
+  title: "@govtechmy/myds-react/Components/Masthead",
   component: Masthead,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen",
+    layout: "padded",
     docs: {
       description: {
         component:

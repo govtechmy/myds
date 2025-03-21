@@ -42,7 +42,7 @@ const CalloutDemo = (props: ComponentProps<typeof Callout>) => {
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Callout",
+  title: "@govtechmy/myds-react/Components/Callout",
   component: CalloutDemo,
   tags: ["autodocs"],
   parameters: {
