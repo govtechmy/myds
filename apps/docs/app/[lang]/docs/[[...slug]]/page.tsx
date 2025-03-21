@@ -77,7 +77,7 @@ export default async function Page({ params }: PageParams) {
                     {...props}
                     src={light}
                     className="img-light"
-                    alt={alt}
+                    // alt={alt}
                     width={widthNum}
                     height={heightNum}
                   />
@@ -85,7 +85,7 @@ export default async function Page({ params }: PageParams) {
                     {...props}
                     src={dark || light}
                     className="img-dark"
-                    alt={alt}
+                    // alt={alt}
                     width={widthNum}
                     height={heightNum}
                   />
