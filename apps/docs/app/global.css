@@ -6,13 +6,53 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 
 :root {
-  --_accent: 182 88 47;     
-  --_accent-dark: 220 151 121; 
+  --_accent: 182 88 47;
+  --_accent-dark: 220 151 121;
   --txt-accent: var(--_accent);
 }
 
 .dark {
   --txt-accent: var(--_accent-dark);
+}
+
+.icon-hero-desktop-light {
+  display: block;
+}
+.icon-hero-desktop-dark {
+  display: none;
+}
+.dark .icon-hero-desktop-light {
+  display: none;
+}
+.dark .icon-hero-desktop-dark {
+  display: block;
+}
+
+@media (max-width: 639px) {
+  .icon-hero-desktop-light,
+  .icon-hero-desktop-dark {
+    display: none !important;
+  }
+}
+
+.icon-hero-mobile-light {
+  display: block;
+}
+.icon-hero-mobile-dark {
+  display: none;
+}
+.dark .icon-hero-mobile-light {
+  display: none;
+}
+.dark .icon-hero-mobile-dark {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .icon-hero-mobile-light,
+  .icon-hero-mobile-dark {
+    display: none !important;
+  }
 }
 
 @tailwind base;
@@ -86,5 +126,68 @@
 
   code .remove {
     @apply bg-bg-danger-100;
+  }
+}
+
+@layer utilities {
+  .icon-custom-grid-cols {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 16px;
+  }
+
+  @media (min-width: 320px) {
+    .icon-custom-grid-cols {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 460px) {
+    .icon-custom-grid-cols {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 640px) {
+    .icon-custom-grid-cols {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 768px) {
+    .icon-custom-grid-cols {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 960px) {
+    .icon-custom-grid-cols {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .icon-custom-grid-cols {
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .icon-custom-grid-cols {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+  }
+
+  /* Hide scrollbar for Chrome, Safari, and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
