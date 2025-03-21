@@ -57,9 +57,11 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
     });
 
   const dateBefore: DateBefore = {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
     before: selectedDateRange?.from!,
   };
   const dateAfter: DateAfter = {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
     after: selectedDateRange?.to!,
   };
 

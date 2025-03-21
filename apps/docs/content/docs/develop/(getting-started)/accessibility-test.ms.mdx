@@ -1,0 +1,80 @@
+---
+title: Alat Ujian Kebolehcapaian
+description: Terokai alat ujian kebolehcapaian untuk membantu mengenal pasti dan menyelesaikan isu kebolehcapaian semasa pembangunan. Alat-alat ini bekerjasama untuk memastikan komponen kami memenuhi piawaian WCAG dan menyediakan pengalaman yang lebih baik untuk semua pengguna.
+---
+
+
+## Alat Ujian Automatik
+
+Alat ujian kebolehcapaian automatik membantu mengesan masalah lebih awal dalam proses pembangunan. Walaupun ia tidak dapat menggantikan ujian manual, ia menyediakan barisan pertahanan pertama terhadap masalah kebolehcapaian yang biasa.
+
+### Plugin ESLint: jsx-a11y
+Plugin jsx-a11y ESLint menyediakan analisis statik untuk peraturan kebolehcapaian pada elemen JSX, mengesan masalah sebelum kod anda dijalankan.
+
+**Ciri Utama**
+- Pemeriksaan AST statik untuk peraturan kebolehcapaian
+- Disepadukan ke dalam konfigurasi ESLint kami
+- Menguatkuasakan amalan terbaik pada masa pembangunan
+
+**Implementasi**
+
+```jsx
+// Dalam konfigurasi ESLint anda
+module.exports = {
+  extends: [
+    // ... lanjutan lain
+    'plugin:jsx-a11y/recommended', // [!code highlight]
+  ],
+  plugins: [
+    // ... plugin lain
+    'jsx-a11y', // [!code highlight]
+  ],
+  rules: {
+    // Anda boleh menyesuaikan peraturan tertentu
+    'jsx-a11y/aria-role': 'error',
+    'jsx-a11y/img-redundant-alt': 'warn',
+  }
+};
+```
+### Storybook: a11y-addon
+
+Untuk komponen yang didokumentasikan, kami menggunakan addon kebolehcapaian Storybook untuk melakukan ujian kebolehcapaian semasa masa larian.
+
+**Ciri Utama**
+- Mengintegrasikan axe-core untuk ujian komprehensif
+- Menyediakan maklum balas visual dalam UI Storybook
+- Menguji komponen dalam keadaan dan varian yang berbeza
+
+### VS Code: axe Accessibility Linter
+
+Sambungan axe Accessibility Linter untuk VS Code membantu mengenal pasti masalah kebolehcapaian semasa pembangunan dengan maklum balas masa nyata.
+
+**Ciri Utama**
+- Menyediakan maklum balas masa nyata dalam editor anda
+- Menyerlahkan isu kebolehcapaian dengan penerangan terperinci
+- Melengkapi ESLint dengan panduan yang lebih terperinci
+
+**Tip Ujian**
+- Pasang sambungan melalui pasaran VS Code
+- Cari isu yang diserlahkan dalam fail JSX/TSX anda
+- Letakkan tetikus di atas isu untuk penerangan terperinci dan cadangan pembaikan
+
+## Sumber & Rujukan
+
+<Cards>
+  <Card
+    href="https://github.com/jsx-eslint/eslint-plugin-jsx-a11y?tab=readme-ov-file#supported-rules"
+    title="jsx-a11y"
+    description="Repositori dan peraturan yang disokong"
+  />
+  <Card
+    href="https://storybook.js.org/docs/writing-tests/accessibility-testing"
+    title="Ujian kebolehcapaian Storybook"
+    description="Permulaan pantas dan konfigurasi untuk ujian kebolehcapaian Storybook"
+  />
+  <Card
+    href="https://marketplace.visualstudio.com/items?itemName=deque-systems.vscode-axe-linter"
+    title="axe Accessibility Linter"
+    description="Pautan muat turun dan panduan untuk pemasangan"
+  />
+</Cards>

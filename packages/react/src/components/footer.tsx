@@ -2,13 +2,11 @@ import {
   Children,
   cloneElement,
   ComponentProps,
-  ComponentPropsWithoutRef,
   forwardRef,
   ForwardRefExoticComponent,
   isValidElement,
   ReactElement,
   ReactNode,
-  RefAttributes,
 } from "react";
 import { clx } from "../utils";
 import { Slot } from "@radix-ui/react-slot";

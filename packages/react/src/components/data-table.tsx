@@ -55,6 +55,7 @@ import { cva } from "class-variance-authority";
  * @see https://tanstack.com/table/v8/docs/api/core/column-def#meta
  */
 declare module "@tanstack/react-table" {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface ColumnMeta<TData extends RowData, TValue> {
     className?: {
       header?: string;
@@ -223,7 +224,7 @@ const DataTableProvider = <TData extends Record<string, any>>({
       <Table
         className={className}
         style={{
-          width: Boolean(props.pin) ? table.getTotalSize() : undefined,
+          width: props.pin ? table.getTotalSize() : undefined,
         }}
       >
         {children}
@@ -498,7 +499,6 @@ const RadioColumn = <TData extends Record<string, any>>() => {
       >
         <input
           type="radio"
-          role="radio"
           aria-label="radio"
           id={row.id}
           value={row.id}

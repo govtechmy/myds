@@ -1,7 +1,5 @@
 "use client";
 import { Paragraph } from "@/components/Paragraph";
-import IconMailWhite from "@/icons/mail-white";
-import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
 import { clx } from "@govtechmy/myds-react/utils";
 import Section from "../section";
 import { useContext } from "react";

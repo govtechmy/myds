@@ -23,7 +23,7 @@ const Tooltip: FunctionComponent<ComponentProps<typeof Root>> = (props) => {
     </TooltipProvider>
   );
 };
-Tooltip.displayName = Tooltip.displayName;
+Tooltip.displayName = TooltipProvider.displayName;
 
 interface TooltipContentProps
   extends ComponentProps<typeof Content>,
@@ -41,6 +41,7 @@ const tooltip_content_cva = cva([
 const TooltipContent: ForwardRefExoticComponent<TooltipContentProps> =
   forwardRef(
     (
+      // eslint-disable-next-line  @typescript-eslint/no-unused-vars
       { className, asChild, children, container, forceMount, ...props },
       ref,
     ) => (

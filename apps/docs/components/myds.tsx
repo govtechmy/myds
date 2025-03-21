@@ -79,7 +79,7 @@ import {
   SelectItem,
 } from "@govtechmy/myds-react/select";
 import { Tag } from "@govtechmy/myds-react/tag";
-import { Cell } from "@govtechmy/myds-react/data-table";
+import { Cell, ColumnDef } from "@govtechmy/myds-react/data-table";
 import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 import {
   FacebookIcon,
@@ -302,7 +302,7 @@ export const CustomValueSelect: FunctionComponent = () => {
           {(value) => (
             <div className="flex gap-1">
               {Array.isArray(value)
-                ? value.map((v) => <Pill>{v}</Pill>)
+                ? value.map((v, i) => <Pill key={i}>{v}</Pill>)
                 : value}
             </div>
           )}
@@ -517,7 +517,13 @@ export const DataTableColumns = [
   },
 ];
 
-export const DataTableFooterColumns = [
+type Employee = {
+  name: string;
+  age: number;
+  position: string;
+};
+
+export const DataTableFooterColumns: ColumnDef<Employee>[] = [
   {
     accessorKey: "name",
     header: "Name",
@@ -525,7 +531,7 @@ export const DataTableFooterColumns = [
     meta: {
       expandable: true,
     },
-    footer: ({ table }: any) => `No. of Employees: ${table.getRowCount()}`,
+    footer: ({ table }) => `No. of Employees: ${table.getRowCount()}`,
   },
   {
     accessorKey: "age",
@@ -687,9 +693,7 @@ export const DataTableRadio = {
 
 interface PreviewSummaryList extends ComponentProps<typeof SummaryList> {}
 
-export const PreviewSummaryList: FunctionComponent<PreviewSummaryList> = (
-  props,
-) => {
+export const PreviewSummaryList: FunctionComponent<PreviewSummaryList> = () => {
   return (
     <SummaryList>
       <SummaryListHeader>Government Subsidy Application</SummaryListHeader>
@@ -761,9 +765,9 @@ export const PreviewSummaryList: FunctionComponent<PreviewSummaryList> = (
   );
 };
 
-export const PreviewSummaryListAction: FunctionComponent<PreviewSummaryList> = (
-  props,
-) => {
+export const PreviewSummaryListAction: FunctionComponent<
+  PreviewSummaryList
+> = () => {
   return (
     <div className="not-prose w-[660px]">
       <Button variant="primary-ghost" className="h-8">
@@ -777,6 +781,7 @@ import {
   AutoPagination,
   AutoPaginationProps,
 } from "@govtechmy/myds-react/pagination";
+import Image from "next/image";
 
 export const SimplePagination = forwardRef<HTMLElement, AutoPaginationProps>(
   (props, ref) => {
@@ -792,7 +797,7 @@ export const SimplePagination = forwardRef<HTMLElement, AutoPaginationProps>(
 SimplePagination.displayName = "SimplePagination";
 
 export const SelfPagination = ({ count = 200, limit = 10, page = 1 }) => {
-  const { visiblePages, max } = usePagination({ count, limit, page });
+  const { visiblePages } = usePagination({ count, limit, page });
   const pageFn = (page: number) => console.log(page);
 
   return (
@@ -837,8 +842,8 @@ export const SiteInfoComponent = () => {
             </p>
           }
           logo={
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+            <Image
+              src="/common/jata-negara.png"
               width={36}
               height={30}
               alt="Malaysia Coat of Arms"
@@ -907,8 +912,8 @@ export const FooterComponent = () => {
           <div className="text-txt-black-900 flex items-center gap-x-2.5">
             <FooterLogo
               logo={
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
+                <Image
+                  src="/common/jata-negara.png"
                   width={36}
                   height={30}
                   alt="Malaysia Coat of Arms"

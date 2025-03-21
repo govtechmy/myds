@@ -103,6 +103,7 @@ const TableCaption: ForwardRefExoticComponent<ComponentProps<"caption">> =
 TableCaption.displayName = "TableCaption";
 
 const TableTooltip: ForwardRefExoticComponent<ComponentProps<typeof Tooltip>> =
+  // eslint-disable-next-line  @typescript-eslint/no-unused-vars
   forwardRef(({ children, ...props }, ref) => {
     return (
       <Tooltip {...props}>
@@ -122,7 +123,10 @@ const TableSkeleton: ForwardRefExoticComponent<ComponentProps<"div">> =
     return (
       <div
         ref={ref}
-        className="animate-shimmer direction-reverse from-bg-black-100 via-bg-black-300 to-bg-black-100 min-h-3 w-full rounded-full bg-gradient-to-r bg-[length:200%_50%]"
+        className={clx(
+          "animate-shimmer direction-reverse from-bg-black-100 via-bg-black-300 to-bg-black-100 min-h-3 w-full rounded-full bg-gradient-to-r bg-[length:200%_50%]",
+          className,
+        )}
         {...props}
       />
     );
@@ -136,7 +140,7 @@ const TableEmpty: ForwardRefExoticComponent<ComponentProps<"td">> = forwardRef(
       <TableCell
         ref={ref}
         colSpan={colSpan}
-        className="text-txt-black-500 py-8 text-center"
+        className={clx("text-txt-black-500 py-8 text-center", className)}
         {...props}
       >
         {children || "No data available"}

@@ -16,6 +16,10 @@
     "start": {
       "persistent": true,
       "cache": false
+    },
+    "lint": {
+      "persistent": false,
+      "cache": false
     }
   }
 }

@@ -76,7 +76,7 @@ RadioItem.displayName = "RadioItem";
 const RadioButton = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
->(({ className, children, ...props }, ref) => {
+>(({ className, ...props }, ref) => {
   const { size } = useContext(RadioContext);
   const { disabled } = useContext(RadioItemContext);
   return (
