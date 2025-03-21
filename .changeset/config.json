@@ -7,9 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": [
-    "@govtechmy/myds-cli",
-    "@myds/typescript-config",
-    "@myds/eslint-config"
-  ]
+  "ignore": ["@govtechmy/myds-cli", "@myds/typescript-config"]
 }
