@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacyMampu Icon
+* MAMPU Icon
 * @param className
-* @returns LegacyMampuIcon
+* @returns MAMPUIcon
 */
-export const LegacyMampuIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const MAMPUIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icon/mampu" clipPath="url(#clip0_14237_1235)">
 <g id="agency-icons/mini/mampu">

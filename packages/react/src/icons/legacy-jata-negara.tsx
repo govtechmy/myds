@@ -2,13 +2,13 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
- * LegacyJataNegara Icon
+ * JataNegara Icon
  * @param className
- * @returns LegacyJataNegaraIcon
+ * @returns JataNegaraIcon
  */
-export const LegacyJataNegaraIcon: FunctionComponent<
-  SVGProps<SVGSVGElement>
-> = (props) => {
+export const JataNegaraIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (
+  props,
+) => {
   return (
     <svg
       width="32"
@@ -557,49 +557,49 @@ export const LegacyJataNegaraIcon: FunctionComponent<
             d="M11.7439 13.0591L11.7587 14.5586C11.7587 14.5586 11.8008 14.7714 11.9097 14.7788C11.9097 14.7788 12.0582 14.8184 12.0507 14.5264V13.0591H11.7414H11.7439Z"
             stroke="#231F20"
             strokeWidth="0.0918"
-            strokeMiterlimit="10"
+            stroke-miterlimit="10"
           />
           <path
             id="Vector_90"
             d="M11.6202 12.7374H11.3455C11.3455 12.7374 11.4593 13.0294 11.6202 13.022H11.6548V13.0591H12.1992V13.017H12.2561C12.2561 13.017 12.4046 12.9725 12.4962 12.7349H11.6202V12.7374Z"
             stroke="#231F20"
             strokeWidth="0.0918"
-            strokeMiterlimit="10"
+            stroke-miterlimit="10"
           />
           <path
             id="Vector_91"
             d="M11.7414 12.4429H12.078V12.7349H11.7414V12.4429Z"
             stroke="#231F20"
             strokeWidth="0.0918"
-            strokeMiterlimit="10"
+            stroke-miterlimit="10"
           />
           <path
             id="Vector_92"
             d="M11.8355 12.7151C11.8355 12.7646 11.7934 12.8042 11.739 12.8042C11.6845 12.8042 11.6425 12.7646 11.6425 12.7151C11.6425 12.6656 11.6845 12.626 11.739 12.626C11.7934 12.626 11.8355 12.6656 11.8355 12.7151Z"
             stroke="#231F20"
             strokeWidth="0.0918"
-            strokeMiterlimit="10"
+            stroke-miterlimit="10"
           />
           <path
             id="Vector_93"
             d="M12.0012 12.7151C12.0012 12.7547 11.9691 12.7869 11.9295 12.7869C11.8899 12.7869 11.8577 12.7547 11.8577 12.7151C11.8577 12.6755 11.8899 12.6434 11.9295 12.6434C11.9691 12.6434 12.0012 12.6755 12.0012 12.7151Z"
             stroke="#231F20"
             strokeWidth="0.0918"
-            strokeMiterlimit="10"
+            stroke-miterlimit="10"
           />
           <path
             id="Vector_94"
             d="M12.1992 12.7151C12.1992 12.7621 12.1596 12.8017 12.1126 12.8017C12.0656 12.8017 12.026 12.7621 12.026 12.7151C12.026 12.6681 12.0656 12.6285 12.1126 12.6285C12.1596 12.6285 12.1992 12.6681 12.1992 12.7151Z"
             stroke="#231F20"
             strokeWidth="0.0918"
-            strokeMiterlimit="10"
+            stroke-miterlimit="10"
           />
           <path
             id="Vector_95"
             d="M11.7167 12.4429C11.7167 12.4429 11.3579 12.3044 11.2861 12.3044C11.2861 12.3044 11.0609 12.3192 11.2639 12.2128C11.2639 12.2128 11.3703 12.1336 11.3752 12.0792C11.3752 12.0792 11.3307 11.9975 11.2886 11.9901C11.2886 11.9901 11.2465 11.8812 11.4321 11.9307C11.4321 11.9307 12.1324 12.24 12.078 12.4182V12.4405H11.7167V12.4429Z"
             stroke="#231F20"
             strokeWidth="0.0918"
-            strokeMiterlimit="10"
+            stroke-miterlimit="10"
           />
           <path
             id="Vector_96"

@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
- * LegacyMiniInternetMcmc Icon
+ * MiniInternetMCMC Icon
  * @param className
- * @returns LegacyMiniInternetMcmcIcon
+ * @returns MiniInternetMCMCIcon
  */
-export const LegacyMiniInternetMcmcIcon: FunctionComponent<
+export const MiniInternetMCMCIcon: FunctionComponent<
   SVGProps<SVGSVGElement>
 > = (props) => {
   return (

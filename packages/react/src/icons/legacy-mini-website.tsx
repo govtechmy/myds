@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacyMiniWebsite Icon
+* MiniWebsite Icon
 * @param className
-* @returns LegacyMiniWebsiteIcon
+* @returns MiniWebsiteIcon
 */
-export const LegacyMiniWebsiteIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const MiniWebsiteIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icons/mini/website" clipPath="url(#clip0_14447_1250)">
 <path id="Vector 64" d="M13.3746 5.82876L14.3176 2.9997" stroke="#27272A" strokeWidth="1.5" strokeLinecap="round"/>

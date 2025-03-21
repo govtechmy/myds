@@ -9,7 +9,8 @@ import {
   CollapsibleTrigger,
   CollapsibleContent,
 } from "@radix-ui/react-collapsible";
-import { ChevronDownIcon, SpecialMalaysiaFlagIcon } from "../icons/";
+import { ChevronDownIcon } from "../icons/chevron-down";
+import { MalaysiaFlagIcon } from "../icons/malaysia-flag";
 import { clx } from "../utils";
 import { Slot } from "@radix-ui/react-slot";
 
@@ -71,7 +72,7 @@ const MastheadHeader: FunctionComponent<ComponentProps<"div">> = ({
       className="px-4.5 flex items-center gap-2 py-2 outline-none sm:py-1 xl:px-0"
       {...props}
     >
-      <SpecialMalaysiaFlagIcon className="inline-block aspect-auto w-fit shrink-0" />
+      <MalaysiaFlagIcon className="inline-block aspect-auto w-fit shrink-0" />
       <div className="text-txt-black-700 text-body-sm flex w-full items-center justify-between truncate sm:justify-start">
         {children}
       </div>

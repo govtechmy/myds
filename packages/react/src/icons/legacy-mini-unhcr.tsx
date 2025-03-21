@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacyMiniUnhcr Icon
+* MiniUNHCR Icon
 * @param className
-* @returns LegacyMiniUnhcrIcon
+* @returns MiniUNHCRIcon
 */
-export const LegacyMiniUnhcrIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const MiniUNHCRIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icons/mini/unhcr">
 <g id="Group 52">

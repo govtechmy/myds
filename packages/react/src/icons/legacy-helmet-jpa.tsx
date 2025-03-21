@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacyHelmetJpa Icon
+* HelmetJPA Icon
 * @param className
-* @returns LegacyHelmetJpaIcon
+* @returns HelmetJPAIcon
 */
-export const LegacyHelmetJpaIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const HelmetJPAIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icon/helmet-jpa" clipPath="url(#clip0_14237_1218)">
 <g id="agency-icons/mini/helmet-jpa">

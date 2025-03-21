@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacyMiniFloodWarning Icon
+* MiniFloodWarning Icon
 * @param className
-* @returns LegacyMiniFloodWarningIcon
+* @returns MiniFloodWarningIcon
 */
-export const LegacyMiniFloodWarningIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const MiniFloodWarningIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icons/mini/flood-warning">
 <g id="Group 39">

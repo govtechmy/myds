@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* GovMy Icon
+* Putrajaya Icon
 * @param className
-* @returns GovMyIcon
+* @returns PutrajayaIcon
 */
-export const GovMyIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const PutrajayaIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="Icon/gov-my">
 <path id="Vector" d="M12 9.25H8M12 9.25H15.5M12 9.25L12.1325 9.1617C13.4102 8.30987 13.291 6.3955 11.9175 5.70874L11.0963 5.29814C10.7092 5.10461 10.3954 4.79077 10.2019 4.40372L10 4M8 9.25H4.5M8 9.25L7.86754 9.1617C6.58981 8.30987 6.70899 6.3955 8.08252 5.70874L8.90372 5.29814C9.29077 5.10461 9.60461 4.79077 9.79814 4.40372L10 4M10 4V3.25M10 3.25V2.25L12.5 2.75L10 3.25Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

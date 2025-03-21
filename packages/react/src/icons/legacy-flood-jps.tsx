@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacyFloodJps Icon
+* FloodJPS Icon
 * @param className
-* @returns LegacyFloodJpsIcon
+* @returns FloodJPSIcon
 */
-export const LegacyFloodJpsIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const FloodJPSIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icon/flood-jps" clipPath="url(#clip0_14237_1223)">
 <g id="agency-icons/mini/flood-warning">

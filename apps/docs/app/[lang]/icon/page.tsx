@@ -1,4 +1,3 @@
-"use client";
 import SearchBarIcons from "@/components/icon/Searchbar";
 import { iconDataList } from "@/components/icon/IconDataList";
 import IconsHeroDesktopLight from "@/icons/icons-hero-desktop-light";

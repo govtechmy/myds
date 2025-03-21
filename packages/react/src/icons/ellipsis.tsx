@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* Options Icon
+* Ellipsis Icon
 * @param className
-* @returns OptionsIcon
+* @returns EllipsisIcon
 */
-export const OptionsIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const EllipsisIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="Icon/options">
 <g id="Vector">

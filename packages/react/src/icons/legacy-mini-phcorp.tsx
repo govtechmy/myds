@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacyMiniPhcorp Icon
+* MiniPhcorp Icon
 * @param className
-* @returns LegacyMiniPhcorpIcon
+* @returns MiniPhcorpIcon
 */
-export const LegacyMiniPhcorpIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const MiniPhcorpIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icons/mini/phcorp">
 <g id="Vector">

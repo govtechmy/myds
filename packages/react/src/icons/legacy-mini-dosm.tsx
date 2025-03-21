@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacyMiniDosm Icon
+* MiniDOSM Icon
 * @param className
-* @returns LegacyMiniDosmIcon
+* @returns MiniDOSMIcon
 */
-export const LegacyMiniDosmIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const MiniDOSMIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icons/mini/dosm" clipPath="url(#clip0_14447_1225)">
 <g id="Group 45">

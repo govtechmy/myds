@@ -2,13 +2,13 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
- * LegacyMiniBookMoe Icon
+ * MiniBookMOE Icon
  * @param className
- * @returns LegacyMiniBookMoeIcon
+ * @returns MiniBookMoeIcon
  */
-export const LegacyMiniBookMoeIcon: FunctionComponent<
-  SVGProps<SVGSVGElement>
-> = (props) => {
+export const MiniBookMOEIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (
+  props,
+) => {
   return (
     <svg
       width="24"
@@ -32,7 +32,7 @@ export const LegacyMiniBookMoeIcon: FunctionComponent<
             d="M2.5 19H4.71528C5.13589 19 5.55536 18.9564 5.96697 18.8699L6.6329 18.7299C8.7205 18.2911 10.8609 19.1964 12 21V21V21C13.1391 19.1964 15.2795 18.2911 17.3671 18.7299L18.033 18.8699C18.4446 18.9564 18.8641 19 19.2847 19H21.5"
             stroke="#27272A"
             strokeWidth="1.5"
-            strokeMiterlimit="5.75877"
+            stroke-miterlimit="5.75877"
             strokeLinecap="round"
             strokeLinejoin="round"
           />

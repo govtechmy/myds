@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacyMiniBallotSpr Icon
+* MiniBallotSPR Icon
 * @param className
-* @returns LegacyMiniBallotSprIcon
+* @returns MiniBallotSPRIcon
 */
-export const LegacyMiniBallotSprIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const MiniBallotSPRIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icons/mini/ballot-spr">
 <g id="Vector">

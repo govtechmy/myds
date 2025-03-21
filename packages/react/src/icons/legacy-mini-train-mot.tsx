@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacyMiniTrainMot Icon
+* MiniTrainMOT Icon
 * @param className
-* @returns LegacyMiniTrainMotIcon
+* @returns MiniTrainMOTIcon
 */
-export const LegacyMiniTrainMotIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const MiniTrainMOTIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icons/mini/train-mot">
 <g id="Group 33">

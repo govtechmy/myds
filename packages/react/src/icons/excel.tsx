@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* ExcelFile Icon
+* Excel Icon
 * @param className
-* @returns ExcelFileIcon
+* @returns ExcelIcon
 */
-export const ExcelFileIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const ExcelIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="Icon/excel-file">
 <g id="Vector">

@@ -1,16 +1,4 @@
-import React from "react";
-import { FunctionComponent, SVGProps } from "react";
-
-/**
- *  SpecialMalaysiaFlagIcon
- * @param className
- * @returns  SpecialMalaysiaFlagIcon
- */
-export const SpecialMalaysiaFlagIcon: FunctionComponent<
-  SVGProps<SVGSVGElement>
-> = (props) => {
-  return (
-    <svg
+<svg
       width="32"
       height="16"
       viewBox="0 0 32 16"
@@ -64,5 +52,3 @@ export const SpecialMalaysiaFlagIcon: FunctionComponent<
         </clipPath>
       </defs>
     </svg>
-  );
-};

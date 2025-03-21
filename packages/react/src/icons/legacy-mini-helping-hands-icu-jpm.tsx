@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacyMiniHelpingHandsIcuJpm Icon
+* MiniHelpingHandsICUJPM Icon
 * @param className
-* @returns LegacyMiniHelpingHandsIcuJpmIcon
+* @returns MiniHelpingHandsICUJPMIcon
 */
-export const LegacyMiniHelpingHandsIcuJpmIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const MiniHelpingHandsICUJPMIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icons/mini/helping-hands-icu-jpm" clipPath="url(#clip0_14447_1236)">
 <g id="Group 42">

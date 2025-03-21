@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacyMoneyEpf Icon
+* MoneyEPF Icon
 * @param className
-* @returns LegacyMoneyEpfIcon
+* @returns MoneyEPFIcon
 */
-export const LegacyMoneyEpfIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const MoneyEPFIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icon/money-epf" clipPath="url(#clip0_14237_1233)">
 <g id="agency-icons/mini/money-epf">

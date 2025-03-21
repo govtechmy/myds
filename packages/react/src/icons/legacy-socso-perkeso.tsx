@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacySocsoPerkeso Icon
+* SOCSOPERKESO Icon
 * @param className
-* @returns LegacySocsoPerkesoIcon
+* @returns SOCSOPERKESOIcon
 */
-export const LegacySocsoPerkesoIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const SOCSOPERKESOIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icon/socso-perkeso" clipPath="url(#clip0_14237_1236)">
 <g id="agency-icons/mini/socso">

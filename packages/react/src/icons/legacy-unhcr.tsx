@@ -2,11 +2,11 @@ import React from "react";
 import { FunctionComponent, SVGProps } from "react";
 
 /**
-* LegacyUnhcr Icon
+* UNHCR Icon
 * @param className
-* @returns LegacyUnhcrIcon
+* @returns UNHCRIcon
 */
-export const LegacyUnhcrIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
+export const UNHCRIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (props) => {
     return <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 <g id="agency-icon/unhcr" clipPath="url(#clip0_14237_1220)">
 <g id="agency-icons/mini/unhcr">
