@@ -1,4 +1,4 @@
 {
-  "apps/docs/**/*.{js,ts,tsx,jsx}": ["pnpm exec lint --fix"],
+  "apps/docs/**/*.{js,ts,tsx,jsx}": ["pnpm exec eslint --fix"],
   "packages/react/**/*.{js,ts,tsx,jsx}": ["pnpm exec eslint --fix"]
 }

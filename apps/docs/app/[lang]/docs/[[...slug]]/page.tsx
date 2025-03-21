@@ -65,6 +65,7 @@ export default async function Page({ params }: PageParams) {
                 width !== undefined
                   ? parseInt(width.toString(), 10)
                   : undefined;
+
               const heightNum =
                 height !== undefined
                   ? parseInt(height.toString(), 10)
@@ -76,7 +77,7 @@ export default async function Page({ params }: PageParams) {
                     {...props}
                     src={light}
                     className="img-light"
-                    // alt={alt}
+                    alt={alt}
                     width={widthNum}
                     height={heightNum}
                   />
@@ -84,7 +85,7 @@ export default async function Page({ params }: PageParams) {
                     {...props}
                     src={dark || light}
                     className="img-dark"
-                    // alt={alt}
+                    alt={alt}
                     width={widthNum}
                     height={heightNum}
                   />
