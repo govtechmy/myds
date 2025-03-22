@@ -1,5 +1,13 @@
 # @govtechmy/myds-react
 
+## 0.0.19
+
+### Patch Changes
+
+- 02810f0: Support asChild interaction for NavbarMenuItem
+- fe0b3be: Update color of table cell
+- b73a362: Fix Tabs line style off by 1px and remove divider
+
 ## 0.0.18
 
 ### Patch Changes
