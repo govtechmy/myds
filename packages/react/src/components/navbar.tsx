@@ -19,6 +19,7 @@ import { Button } from "./button";
 import { Link } from "./link";
 import { ChevronDownIcon, CrossIcon, HamburgerMenuIcon } from "../icons";
 import { cva } from "class-variance-authority";
+import { Slot } from "@radix-ui/react-slot";
 
 interface NavbarProps extends ComponentProps<"header"> {}
 
@@ -172,17 +173,19 @@ const NavbarMenuItem: FunctionComponent<NavbarMenuItemProps> = ({
   className,
   children,
   href,
+  asChild,
   ...props
 }) => {
   const is_from_dropdown = useContext(NavbarMenuDropdownContext);
+  const Comp = asChild ? Slot : Link;
   return (
     <NavigationMenuItem
       className={clx(navbar_menu_item_cva({ is_from_dropdown }), className)}
       {...props}
     >
-      <Link href={href} underline="none" className="w-full">
+      <Comp href={href} underline="none" className="w-full">
         {children}
-      </Link>
+      </Comp>
     </NavigationMenuItem>
   );
 };
