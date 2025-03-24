@@ -42,13 +42,13 @@ const Navbar: FunctionComponent<NavbarProps> = ({
       <header
         id="navbar"
         className={clx(
-          "bg-bg-white border-otl-gray-200 shadow-button sticky top-0 z-50 h-16 w-full border-b print:hidden",
+          "bg-bg-white border-otl-gray-200 shadow-button sticky top-0 z-50 h-16 w-full border-b max-md:h-14 print:hidden",
           className,
         )}
         data-nosnippet
         {...props}
       >
-        <div className="relative mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-4 px-6 xl:px-0">
+        <div className="relative mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-4 px-6 max-md:h-14 xl:px-0">
           {children}
         </div>
       </header>
