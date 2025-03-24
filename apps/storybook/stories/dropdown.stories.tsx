@@ -11,7 +11,7 @@ import {
   CopyIcon,
   EditIcon,
   LogoutIcon,
-  OptionsIcon,
+  EllipsisIcon,
   SettingIcon,
 } from "@govtechmy/myds-react/icon";
 import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
@@ -45,7 +45,7 @@ import { ButtonIcon } from "@govtechmy/myds-react/button";
  * <Dropdown>
  *   <DropdownTrigger>
 *      <ButtonIcon>
-*        <OptionsIcon />
+*        <EllipsisIcon />
 *      </ButtonIcon>
 *    </DropdownTrigger>,
 *    <DropdownContent>
@@ -60,7 +60,7 @@ import { ButtonIcon } from "@govtechmy/myds-react/button";
 * <Dropdown>
 *   <DropdownTrigger>
 *      <ButtonIcon>
-*        <OptionsIcon />
+*        <EllipsisIcon />
 *      </ButtonIcon>
 *    </DropdownTrigger>,
 *   <DropdownContent side="bottom" align="end">
@@ -135,7 +135,7 @@ const meta = {
         with_icon: [
           <DropdownTrigger>
             <ButtonIcon aria-label="options button">
-              <OptionsIcon />
+              <EllipsisIcon />
             </ButtonIcon>
           </DropdownTrigger>,
           <DropdownContent side="bottom" align="end">

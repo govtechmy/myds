@@ -3,7 +3,11 @@ title: Masthead
 description: The Masthead component is a standardized header for Malaysian government websites.
 ---
 
-import { Lock2Icon, GovMyIcon, LockFillIcon } from "@govtechmy/myds-react/icon";
+import {
+  Lock2Icon,
+  PutrajayaIcon,
+  LockFillIcon,
+} from "@govtechmy/myds-react/icon";
 import { Quicklinks } from "@/components/quicklinks";
 import Preview from "@/components/preview";
 import { TypeTable } from "fumadocs-ui/components/type-table";
@@ -27,7 +31,7 @@ import {
         </MastheadHeader>
         <MastheadContent>
           <MastheadSection
-            icon={<GovMyIcon />}
+            icon={<PutrajayaIcon />}
             title="Official government websites end with .gov.my"
           >
             If the link does not end with <b>.gov.my</b>, exit the website immediately even if it looks similar.
@@ -52,7 +56,7 @@ import {
   MastheadTrigger,
   MastheadSection,
 } from "@govtechmy/myds-react/masthead";
-import { GovMyIcon, Lock2Icon, LockFillIcon } from "@govtechmy/myds-react/icon";
+import { PutrajayaIcon, Lock2Icon, LockFillIcon } from "@govtechmy/myds-react/icon";
 
 <Masthead>
   <MastheadHeader>
@@ -61,7 +65,7 @@ import { GovMyIcon, Lock2Icon, LockFillIcon } from "@govtechmy/myds-react/icon";
   </MastheadHeader>
   <MastheadContent>
     <MastheadSection
-      icon={<GovMyIcon />}
+      icon={<PutrajayaIcon />}
       title="Official government websites end with .gov.my"
     >
       If the link does not end with <b>.gov.my</b>, exit the website immediately

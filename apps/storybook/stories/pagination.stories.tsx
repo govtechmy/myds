@@ -7,7 +7,8 @@ import {
   PaginationPrevious,
 } from "@govtechmy/myds-react/pagination";
 import React from "react";
-import { GovIcon } from "../../../packages/react/src/icons/gov";
+
+import { GovtOfficeIcon } from "@govtechmy/myds-react/icon";
 import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
 import ArrowBack from "../react/arrow-back";
 
@@ -224,7 +225,7 @@ export const CustomizedButtonAndLabel: Story = createStory({
     <PaginationNext asChild>
       <Button variant="primary-fill">
         <ButtonIcon>
-          <GovIcon />
+          <GovtOfficeIcon />
         </ButtonIcon>
         Go
       </Button>
