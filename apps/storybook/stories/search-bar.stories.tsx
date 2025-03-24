@@ -70,7 +70,7 @@ import { Pill } from "@govtechmy/myds-react/pill";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Components/SearchBar",
+  title: "@govtechmy/myds-react/SearchBar",
   component: SearchBar,
   tags: ["autodocs"],
   parameters: {

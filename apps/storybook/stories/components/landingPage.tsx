@@ -44,13 +44,6 @@ const DemoNavbar = () => {
 
   return (
     <Navbar>
-      {/* <NavbarLogo
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Coat_of_arms_of_Malaysia.svg/500px-Coat_of_arms_of_Malaysia.svg.png"
-        alt="Kementerian Digital"
-        className="sm:max-md:hidden"
-      >
-        Ministry Of Digital
-      </NavbarLogo> */}
       <NavbarMenu>
         <NavbarMenuItem href="#">Menu 1</NavbarMenuItem>
         <NavbarMenuItem href="#">Menu 2</NavbarMenuItem>
@@ -213,7 +206,7 @@ export default function LandingPage() {
           >
             <img
               alt=""
-              src="../stories/assets/addon-library.png"
+              src="https://d2391uizq0pg2.cloudfront.net/common/preview-2.svg"
               className="h-auto w-full"
             />
           </picture>

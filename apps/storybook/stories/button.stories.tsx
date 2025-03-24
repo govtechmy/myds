@@ -57,7 +57,7 @@ import React from "react";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Components/Button",
+  title: "@govtechmy/myds-react/Button",
   component: Button,
   parameters: {
     layout: "centered",

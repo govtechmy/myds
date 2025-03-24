@@ -16,7 +16,7 @@ import { createStory } from "../utils";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Components/Link",
+  title: "@govtechmy/myds-react/Link",
   component: Link,
   tags: ["autodocs"],
   parameters: {

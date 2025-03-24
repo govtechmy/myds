@@ -17,7 +17,7 @@ import { createStory } from "../utils";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Components/ThemeSwitch",
+  title: "@govtechmy/myds-react/ThemeSwitch",
   // tags: ["!dev"],
   component: ThemeSwitch,
   parameters: {

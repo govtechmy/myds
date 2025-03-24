@@ -57,7 +57,7 @@ import { createStory } from "../utils";
  */
 // @ts-expect-error
 const meta: Meta = {
-  title: "@govtechmy/myds-react/Components/AlertDialog",
+  title: "@govtechmy/myds-react/AlertDialog",
   component: AlertDialog,
   render: ({ dismissible, align, variant }) => {
     return (

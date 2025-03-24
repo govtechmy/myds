@@ -2,7 +2,7 @@ import { fn } from "@storybook/test";
 import LandingPage from "./components/landingPage";
 
 export default {
-  title: "@govtechmy/myds-react/Examples/LandingPage",
+  title: "@govtechmy/examples/LandingPage",
   component: LandingPage,
   // remove the automatic documentation for Layout
   tags: ["!autodocs"],

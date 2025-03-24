@@ -15,7 +15,7 @@ import { Button } from "@govtechmy/myds-react/button";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Components/Spinner",
+  title: "@govtechmy/myds-react/Spinner",
   component: Spinner,
   tags: ["autodocs"],
   parameters: {

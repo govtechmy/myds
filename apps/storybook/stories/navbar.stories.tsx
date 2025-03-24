@@ -110,7 +110,7 @@ import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
  */
 
 const meta = {
-  title: "@govtechmy/myds-react/Components/Navbar",
+  title: "@govtechmy/myds-react/Navbar",
   component: Navbar,
   tags: ["autodocs"],
   parameters: {

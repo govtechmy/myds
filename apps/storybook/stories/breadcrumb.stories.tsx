@@ -45,7 +45,7 @@ import React from "react";
  * ```
  */
 const meta: Meta = {
-  title: "@govtechmy/myds-react/Components/Breadcrumb",
+  title: "@govtechmy/myds-react/Breadcrumb",
   component: Breadcrumb,
   parameters: {
     layout: "centered",

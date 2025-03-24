@@ -46,7 +46,7 @@ import {
  */
 
 const meta = {
-  title: "@govtechmy/myds-react/Components/Footer",
+  title: "@govtechmy/myds-react/Footer",
   component: Footer,
   tags: ["autodocs"],
   parameters: {

@@ -27,7 +27,7 @@ import { InputOTP, InputOTPSlot } from "@govtechmy/myds-react/input-otp";
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Components/InputOTP",
+  title: "@govtechmy/myds-react/InputOTP",
   component: InputOTP,
   tags: ["autodocs"],
   parameters: {

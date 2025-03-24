@@ -141,7 +141,7 @@ const DemoToast = (props: any) => {
  * ```
  */
 const meta = {
-  title: "@govtechmy/myds-react/Components/Toast",
+  title: "@govtechmy/myds-react/Toast",
   component: DemoToast,
   tags: ["autodocs"],
   parameters: {

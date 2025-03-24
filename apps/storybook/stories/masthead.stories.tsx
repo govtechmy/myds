@@ -74,7 +74,7 @@ import { createStory } from "../utils";
  */
 
 const meta = {
-  title: "@govtechmy/myds-react/Components/Masthead",
+  title: "@govtechmy/myds-react/Masthead",
   component: Masthead,
   tags: ["autodocs"],
   parameters: {

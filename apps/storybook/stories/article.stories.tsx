@@ -1,7 +1,7 @@
 import Article from "./components/article";
 
 export default {
-  title: "@govtechmy/myds-react/Examples/Article",
+  title: "@govtechmy/examples/Article",
   component: Article,
   // remove the automatic documentation for Layout
   tags: ["!autodocs"],
