@@ -221,6 +221,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "@myds/eslint-config": "workspace:*",
     "@swc/core": "^1.10.1",
     "@types/node": "^22.7.5",
     "@types/react": "^18",
@@ -231,7 +232,6 @@
     "tsup": "^8.3.5"
   },
   "dependencies": {
-    "@myds/eslint-config": "workspace:*",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-collapsible": "^1.1.3",
