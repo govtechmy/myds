@@ -1,9 +1,7 @@
-import { fn } from "@storybook/test";
-
 import Article from "./components/article";
 
 export default {
-  title: "Example/Article",
+  title: "@govtechmy/myds-react/Examples/Article",
   component: Article,
   // remove the automatic documentation for Layout
   tags: ["!autodocs"],
