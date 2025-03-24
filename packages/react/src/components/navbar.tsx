@@ -151,6 +151,7 @@ interface NavbarMenuItemProps
   children: ReactNode;
   href: string;
   className?: string;
+  asChild?: boolean;
 }
 
 const navbar_menu_item_cva = cva(

@@ -102,6 +102,7 @@ const Select: React.ForwardRefExoticComponent<SelectProps> = React.forwardRef(
         <SelectPrimitive.Root
           ref={ref}
           {...props}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           /* @ts-expect-error */
           value={_value}
           onValueChange={handleValueChange}
@@ -213,7 +214,11 @@ const SelectCounter: React.ForwardRefExoticComponent<SelectCounterProps> =
     const { size } = React.useContext(SelectContext);
 
     return (
-      <span ref={ref} className={clx(select_counter_cva({ size }))} {...props}>
+      <span
+        ref={ref}
+        className={clx(select_counter_cva({ size }), className)}
+        {...props}
+      >
         {children}
       </span>
     );

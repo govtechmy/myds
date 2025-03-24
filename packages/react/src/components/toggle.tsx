@@ -121,7 +121,7 @@ const ToggleThumb: React.FC<ToggleThumbProps> = ({ className }) => {
       <span
         tabIndex={0}
         role="switch"
-        className={thumbVariants({ size: context.size })}
+        className={clx(thumbVariants({ size: context.size }), className)}
         onKeyDown={handleKeyDown}
         data-state={context.checked ? "checked" : "unchecked"}
         aria-checked={context.checked}

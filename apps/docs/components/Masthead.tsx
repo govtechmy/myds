@@ -14,7 +14,7 @@ import {
   MastheadTrigger,
 } from "@govtechmy/myds-react/masthead";
 
-export default (props: { lang: "en" | "ms" }) => {
+const MastheadExample = (props: { lang: "en" | "ms" }) => {
   const { t } = getRosetta(props.lang);
   return (
     <Masthead>
@@ -35,3 +35,5 @@ export default (props: { lang: "en" | "ms" }) => {
     </Masthead>
   );
 };
+
+export default MastheadExample;

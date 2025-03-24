@@ -2,7 +2,6 @@
 
 import { Link } from "@govtechmy/myds-react/link";
 import { Button, ButtonIcon } from "@govtechmy/myds-react/button";
-import { usePathname, useRouter } from "next/navigation";
 import { FunctionComponent } from "react";
 import Storybook from "@/icons/storybook";
 import Github from "@/icons/github";

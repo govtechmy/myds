@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "check-exports": "attw --pack . --profile node16"
+    "check-exports": "attw --pack . --profile node16",
+    "lint": "eslint ."
   },
   "files": [
     "dist",
@@ -230,6 +231,7 @@
     "tsup": "^8.3.5"
   },
   "dependencies": {
+    "@myds/eslint-config": "workspace:*",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-collapsible": "^1.1.3",
