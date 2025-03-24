@@ -114,7 +114,7 @@ const meta = {
   component: Navbar,
   tags: ["autodocs"],
   parameters: {
-    layout: "full",
+    layout: "padded",
   },
   decorators: [
     (Story) => {

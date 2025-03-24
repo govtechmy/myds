@@ -6,6 +6,7 @@ const config: StorybookConfig = {
     "../stories/**/*.mdx",
     "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
+  staticDirs: ["../stories/assets"],
 
   addons: [
     // "storybook-tailwind-dark-mode",
