@@ -1,5 +1,14 @@
 # @govtechmy/myds-docs
 
+## 0.0.22
+
+### Patch Changes
+
+- d92931f: Added accessibility testing docs, and fix linting issues.
+- Updated dependencies [d92931f]
+- Updated dependencies [d897cd3]
+  - @govtechmy/myds-react@0.0.20
+
 ## 0.0.21
 
 ### Patch Changes

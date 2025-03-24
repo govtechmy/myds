@@ -1,5 +1,14 @@
 # @govtechmy/myds-react
 
+## 0.0.20
+
+### Patch Changes
+
+- d92931f: Implement shared eslint config, and fixed lint issues
+- d897cd3: Fix navbar height for mobile
+- Updated dependencies [d92931f]
+  - @myds/eslint-config@0.0.1
+
 ## 0.0.19
 
 ### Patch Changes
