@@ -1,5 +1,12 @@
 # @govtechmy/myds-docs
 
+## 0.0.23
+
+### Patch Changes
+
+- Updated dependencies [e71f6dc]
+  - @govtechmy/myds-react@0.0.21
+
 ## 0.0.22
 
 ### Patch Changes

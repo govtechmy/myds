@@ -1,5 +1,11 @@
 # @govtechmy/myds-react
 
+## 0.0.21
+
+### Patch Changes
+
+- e71f6dc: Move eslint config from dependency to devDependency
+
 ## 0.0.20
 
 ### Patch Changes
