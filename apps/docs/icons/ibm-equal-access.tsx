@@ -8,7 +8,7 @@ export default function IBMEqualAccess({ ...props }) {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <g clip-path="url(#clip0_139_6375)">
+      <g clipPath="url(#clip0_139_6375)">
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"

@@ -18,7 +18,7 @@ export const MalaysiaFlagIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <g id="Icon/Malaysia Flag" clip-path="url(#clip0_6969_3440)">
+      <g id="Icon/Malaysia Flag" clipPath="url(#clip0_6969_3440)">
         <rect width="31.9713" height="16" fill="white" />
         <g id="Stripe">
           <path d="M16.0001 0L31.9857 0V1.14256H16.0001V0Z" fill="#D10525" />
