@@ -12,10 +12,10 @@ export default function IconHomepage() {
     <SearchProvider>
       <div className="container">
         <div className="relative">
-          <IconsHeroDesktopLight className="icon-hero-desktop-light h-[300px] w-full" />
-          <IconsHeroDesktopDark className="icon-hero-desktop-dark h-[300px] w-full" />
-          <IconsHeroMobileLight className="icon-hero-mobile-light h-[300px] w-full max-[380px]:h-[250px]" />
-          <IconsHeroMobileDark className="icon-hero-mobile-dark h-[300px] w-full max-[380px]:h-[250px]" />
+          <IconsHeroDesktopLight className="img-light hidden h-[300px] w-full min-[640px]:block" />
+          <IconsHeroDesktopDark className="img-dark hidden h-[300px] w-full min-[640px]:block" />
+          <IconsHeroMobileLight className="img-light h-[300px] w-full max-[380px]:h-[250px] min-[639px]:hidden" />
+          <IconsHeroMobileDark className="img-dark h-[300px] w-full max-[380px]:h-[250px] min-[639px]:hidden" />
           <div className="absolute inset-0 flex flex-col items-center justify-end text-center">
             <h1 className="px-4.5 max-[500px]:text-heading-2xs max-[600px]:text-heading-xs max-w-[600px] max-[380px]:text-sm">
               Beautifully crafted SVG icons, made for{" "}
