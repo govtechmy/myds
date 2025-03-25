@@ -1,56 +1,60 @@
 import { Button } from "@govtechmy/myds-react/button";
-import { IconDataList } from "./IconDataList";
+import { IconData, IconDataList } from "./IconDataList";
 import { clx } from "@govtechmy/myds-react/utils";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { CopyIcon } from "@govtechmy/myds-react/icon";
 
 export default function ResultMap({ result }: { result: IconDataList }) {
-  const [copiedSVGIndex, setCopiedSVGIndex] = useState<number | null>(null);
-  const [copiedJSXIndex, setCopiedJSXIndex] = useState<number | null>(null);
-
-  const handleCopy = async (
-    iconName: string,
-    index: number,
-    type: "svg" | "jsx",
-  ) => {
-    const response = await fetch(`/assets/icons/${iconName}.svg`);
-    const filecontent = await response.text();
-    navigator.clipboard.writeText(filecontent || "");
-
-    if (type === "svg") {
-      setCopiedSVGIndex(index);
-      setTimeout(() => setCopiedSVGIndex(null), 2000);
-    } else {
-      setCopiedJSXIndex(index);
-      setTimeout(() => setCopiedJSXIndex(null), 2000);
-    }
-  };
-
   return (
     <div className={clx("grid gap-2", "icon-custom-grid-cols")}>
       {result.map((icon, index) => (
-        <div key={index} className="flex flex-col items-center justify-center">
-          <div className="relative flex h-[140px] w-full flex-col items-center justify-center rounded-xl border border-black shadow-md">
-            <div className="flex items-center justify-center">{icon.svg}</div>
-            <div className="absolute w-full opacity-0 hover:opacity-100">
-              <Button
-                onClick={() => handleCopy(icon.name ?? "", index, "svg")}
-                className="text-txt-black-500 flex h-[70px] w-full items-center justify-center rounded-b-none rounded-t-lg border-0 bg-transparent hover:bg-gray-300/70 dark:text-[#303030]"
-              >
-                {copiedSVGIndex === index ? "Copied!" : "Copy SVG"}
-              </Button>
-              <Button
-                onClick={() => handleCopy(icon.name ?? "", index, "jsx")}
-                className="text-txt-black-500 flex h-[70px] w-full items-center justify-center rounded-b-lg rounded-t-none border-0 bg-transparent hover:bg-gray-300/70 dark:text-[#303030]"
-              >
-                {copiedJSXIndex === index ? "Copied!" : "Copy JSX"}
-              </Button>
-            </div>
-          </div>
-          <div className="text-txt-black-500 flex items-center justify-center truncate py-2 text-sm hover:line-clamp-2">
-            {icon.name}
-          </div>
-        </div>
+        <IconGridItem key={index} icon={icon} />
       ))}
+    </div>
+  );
+}
+
+function IconGridItem({ icon }: { icon: IconData }) {
+  const iconRef = useRef<HTMLDivElement>(null);
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopy = () => {
+    if (!iconRef.current) {
+      throw Error("iconRef not ready");
+    }
+    navigator.clipboard.writeText(iconRef.current?.innerHTML || "");
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center">
+      <div className="relative flex h-[140px] w-full flex-col items-center justify-center rounded-xl border border-black shadow-md">
+        <div ref={iconRef} className="flex items-center justify-center">
+          {icon.svg}
+        </div>
+        <div className="absolute h-full w-full opacity-0 hover:opacity-100">
+          <Button
+            onClick={() => handleCopy()}
+            className="text-txt-black-500 flex h-full w-full flex-row-reverse items-start rounded-lg border-0 bg-transparent p-4 hover:bg-gray-50/10 dark:text-[#303030]"
+          >
+            {isCopied === true ? (
+              <span className="rounded-md text-xs font-normal shadow-gray-50">
+                Copied!
+              </span>
+            ) : (
+              <div className="rounded-md shadow-gray-50">
+                <CopyIcon className="size-4" />
+              </div>
+            )}
+          </Button>
+        </div>
+      </div>
+      <div className="text-txt-black-500 flex items-center justify-center truncate py-2 text-sm hover:line-clamp-2">
+        {icon.name}
+      </div>
     </div>
   );
 }
