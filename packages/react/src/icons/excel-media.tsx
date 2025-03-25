@@ -44,7 +44,7 @@ export const ExcelMediaIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (
           <path
             d="M29.1667 12.5833V0L43.7501 14.5833H31.1667C30.0622 14.5833 29.1667 13.6879 29.1667 12.5833Z"
             fill="url(#paint0_linear_2648_7283)"
-            fill-opacity="0.3"
+            fillOpacity="0.3"
             style={{ mixBlendMode: "hard-light" }}
           />
         </g>
@@ -66,8 +66,8 @@ export const ExcelMediaIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (
           y2="11"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>

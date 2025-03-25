@@ -9,8 +9,10 @@ import {
   SearchBarHint,
 } from "@govtechmy/myds-react/search-bar";
 import { Pill } from "@govtechmy/myds-react/pill";
-import type { IconData } from "./IconDataList";
+import type { IconData, IconDataList } from "./IconDataList";
 import { SearchContext } from "./SearchProvider";
+import { TRACE_OUTPUT_VERSION } from "next/dist/shared/lib/constants";
+import { queryObjects } from "v8";
 
 export default function SearchBarIcons({
   iconDataList,
@@ -28,56 +30,16 @@ export default function SearchBarIcons({
   const inputRef = useFocusOnKeyPress<HTMLInputElement>("/", hasFocus);
 
   useEffect(() => {
-    const filterIcons = (
-      query: string,
-      conditions: ((iconType: string) => boolean)[],
-    ) => {
+    const filterIcons = (query: string) => {
       return iconDataList.filter(({ type, filename }) => {
         const iconData = `${type} ${filename}`.toLowerCase();
-        const iconType = type.toLowerCase();
-        return (
-          iconData.includes(query.toLowerCase()) &&
-          conditions.every((condition) => condition(iconType))
-        );
+        return iconData.includes(query.toLowerCase());
       });
     };
 
-    const resultAll = filterIcons(query, [() => true]);
-    const resultGeneric = filterIcons(query, [
-      (iconType) => !iconType.includes("legacy"),
-      (iconType) => iconType.includes("generic"),
-      (iconType) => !iconType.includes("filled"),
-    ]);
-    const resultFilled = filterIcons(query, [
-      (iconType) => !iconType.includes("legacy"),
-      (iconType) => iconType.includes("filled"),
-    ]);
-    const resultWYSIWYG = filterIcons(query, [
-      (iconType) => !iconType.includes("legacy"),
-      (iconType) => iconType.includes("wysiwyg"),
-    ]);
-    const resultSocialMedia = filterIcons(query, [
-      (iconType) => !iconType.includes("legacy"),
-      (iconType) => iconType.includes("social media"),
-    ]);
-    const resultMedia = filterIcons(query, [
-      (iconType) => !iconType.includes("legacy"),
-      (iconType) => !iconType.includes("social"),
-      (iconType) => iconType.includes("media"),
-    ]);
-    const resultLegacyGeneric = filterIcons(query, [
-      (iconType) => iconType.includes("legacy"),
-    ]);
-
-    setResults({
-      all: resultAll,
-      generic: resultGeneric,
-      filled: resultFilled,
-      wysiwyg: resultWYSIWYG,
-      socialMedia: resultSocialMedia,
-      media: resultMedia,
-      legacyGeneric: resultLegacyGeneric,
-    });
+    const group = GroupResultsSearch(filterIcons(query));
+    setResults(group);
+    console.log(group);
   }, [query, iconDataList, setResults]);
 
   return (
@@ -132,4 +94,74 @@ function useFocusOnKeyPress<T extends HTMLElement>(
   }, [isFocused]);
 
   return ref;
+}
+
+type GroupedIcons = {
+  all: IconDataList;
+  generic: IconDataList;
+  filled: IconDataList;
+  wysiwyg: IconDataList;
+  socialMedia: IconDataList;
+  media: IconDataList;
+  legacyGeneric: IconDataList;
+};
+
+function GroupResultsSearch(iconDataList: IconDataList) {
+  const group: GroupedIcons = {
+    all: [],
+    generic: [],
+    filled: [],
+    wysiwyg: [],
+    socialMedia: [],
+    media: [],
+    legacyGeneric: [],
+  };
+
+  for (let i = 0; i < iconDataList.length; i++) {
+    const icon = iconDataList[i];
+    icon.type = icon.type.toLowerCase();
+
+    //all result
+    group.all.push(icon);
+
+    //result generic
+    if (
+      !icon.type.includes("legacy") &&
+      icon.type.includes("generic") &&
+      !icon.type.includes("filled")
+    ) {
+      group.generic.push(icon);
+    }
+
+    //result Filled
+    if (!icon.type.includes("legacy") && icon.type.includes("filled")) {
+      group.filled.push(icon);
+    }
+
+    // const resultWYSIWYG
+    if (!icon.type.includes("legacy") && icon.type.includes("wysiwyg")) {
+      group.wysiwyg.push(icon);
+    }
+
+    // const Social Media
+    if (!icon.type.includes("legacy") && icon.type.includes("social media")) {
+      group.socialMedia.push(icon);
+    }
+
+    // const Media
+    if (
+      !icon.type.includes("legacy") &&
+      !icon.type.includes("social") &&
+      icon.type.includes("media")
+    ) {
+      group.media.push(icon);
+    }
+
+    // const Legacy Generic
+    if (icon.type.includes("legacy")) {
+      group.legacyGeneric.push(icon);
+    }
+  }
+
+  return group;
 }

@@ -33,7 +33,7 @@ export const BookMOEIcon: FunctionComponent<SVGProps<SVGSVGElement>> = (
               d="M6.5 23H8.71528C9.13589 23 9.55536 22.9564 9.96697 22.8699L10.6329 22.7299C12.7205 22.2911 14.8609 23.1964 16 25V25V25C17.1391 23.1964 19.2795 22.2911 21.3671 22.7299L22.033 22.8699C22.4446 22.9564 22.8641 23 23.2847 23H25.5"
               stroke="currentColor"
               strokeWidth="1.5"
-              stroke-miterlimit="5.75877"
+              strokeMiterlimit="5.75877"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
