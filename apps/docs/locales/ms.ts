@@ -277,6 +277,17 @@ export default {
     },
   },
 
+  /* Icon Page */
+  icons: {
+    title: "Ikon SVG yang direka dengan indah, dibuat untuk",
+    title2: "integrasi yang mudah",
+  },
+  searchbar: {
+    searchname: "Cari mengikut nama",
+    press: "Tekan",
+    tosearch: "untuk mencari",
+  },
+
   /* Error */
   e404: {
     title: "404 - Halaman tidak dijumpai | MYDS",

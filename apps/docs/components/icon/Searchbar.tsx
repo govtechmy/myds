@@ -11,15 +11,17 @@ import {
 import { Pill } from "@govtechmy/myds-react/pill";
 import type { IconData, IconDataList } from "./IconDataList";
 import { SearchContext } from "./SearchProvider";
-import { TRACE_OUTPUT_VERSION } from "next/dist/shared/lib/constants";
-import { queryObjects } from "v8";
+import { getRosetta } from "@/locales/_server";
 
 export default function SearchBarIcons({
   iconDataList,
+  params,
 }: {
   iconDataList: IconData[];
+  params: { lang: "en" | "ms" };
 }) {
   const searchContext = useContext(SearchContext);
+  const { t } = getRosetta(params.lang);
 
   if (!searchContext) {
     throw new Error("SearchBarIcons must be used within a SearchProvider");
@@ -39,7 +41,6 @@ export default function SearchBarIcons({
 
     const group = GroupResultsSearch(filterIcons(query));
     setResults(group);
-    console.log(group);
   }, [query, iconDataList, setResults]);
 
   return (
@@ -55,7 +56,7 @@ export default function SearchBarIcons({
         <SearchBarInputContainer>
           <SearchBarInput
             ref={inputRef}
-            placeholder="Search by name"
+            placeholder={t("searchbar.searchname")}
             value={query}
             onValueChange={(newValue) => setQuery(newValue)}
             onFocus={() => setHasFocus(true)}
@@ -64,7 +65,8 @@ export default function SearchBarIcons({
           {query && <SearchBarClearButton onClick={() => setQuery("")} />}
           {!hasFocus && (
             <SearchBarHint className="hidden sm:flex">
-              Press <Pill size="small">/</Pill> to search
+              {t("searchbar.press")} <Pill size="small">/</Pill>{" "}
+              {t("searchbar.tosearch")}
             </SearchBarHint>
           )}
           <SearchBarSearchButton />

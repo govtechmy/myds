@@ -275,6 +275,17 @@ export default {
     },
   },
 
+  /* Icon Page */
+  icons: {
+    title: "Beautifully crafted SVG icons, made for",
+    title2: "effortless integration",
+  },
+  searchbar: {
+    searchname: "Search by name",
+    press: "Press",
+    tosearch: "to search",
+  },
+
   /* Error */
   e404: {
     title: "404 - Page Not Found | MYDS",
