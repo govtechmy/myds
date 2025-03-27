@@ -16,6 +16,13 @@ import { getRosetta } from "@/locales/_server";
  * So, might as well, default lang="ms" from the start.
  */
 
+/*
+  To you, my young Padawan (and you, my young Jedi), 
+  this code I entrust. 
+  My time has come, but in your hands, its destiny now lies. 
+  May the Force guide you. 💪
+*/
+
 const NotFound: FunctionComponent = () => {
   const { config } = getMYDSConfig("ms");
 
