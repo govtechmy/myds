@@ -281,6 +281,7 @@ export default {
   icons: {
     title: "Ikon SVG yang direka dengan indah, dibuat untuk",
     title2: "integrasi yang mudah",
+    description: "Teroka koleksi ikon sedia ada",
     copied: "Disalin",
   },
   searchbar: {

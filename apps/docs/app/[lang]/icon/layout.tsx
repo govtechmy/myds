@@ -31,7 +31,7 @@ export default function Layout({
               <h3 className="font-heading text-[18px] font-semibold leading-[26px]">
                 MYDS
               </h3>
-              <Tag className="text-accent text-xs">Beta</Tag>
+              <Tag className="text-txt-accent text-xs">Beta</Tag>
             </div>
           ),
           enableSearch: false,

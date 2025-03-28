@@ -221,7 +221,7 @@ export default {
   /* Design */
   design: {
     title: "Design",
-    description: "Design guidelines and resources",
+    description: "Design guidelines",
     color: {
       title: "Color",
       description:
@@ -247,7 +247,7 @@ export default {
   /* Develop */
   develop: {
     title: "Component",
-    description: "Component library for developers",
+    description: "Component library",
     button: {
       title: "Button",
       description:
@@ -279,6 +279,7 @@ export default {
   icons: {
     title: "Beautifully crafted SVG icons, made for",
     title2: "effortless integration",
+    description: "Explore available icons",
     copied: "Copied",
   },
   searchbar: {
