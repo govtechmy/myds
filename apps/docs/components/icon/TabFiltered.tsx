@@ -23,57 +23,22 @@ const TabFiltered: FunctionComponent = () => {
       defaultValue="all"
       onValueChange={(value) => setType(value as IconType)}
     >
-      <div className="flex h-[46px] justify-center">
-        <TabsList
-          width="full"
-          className={clx(
-            "no-scrollbar h-full flex-grow items-center justify-center overflow-x-scroll scroll-smooth text-nowrap max-md:justify-start",
-          )}
-        >
-          <TabsTrigger
-            className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
-            value="all"
-          >
-            {t("tabfilter.all")}
-          </TabsTrigger>
-          <TabsTrigger
-            className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
-            value="generic"
-          >
-            {t("tabfilter.generic")}
-          </TabsTrigger>
-          <TabsTrigger
-            className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
-            value="filled"
-          >
-            {t("tabfilter.filled")}
-          </TabsTrigger>
-          <TabsTrigger
-            className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
-            value="wysiwyg"
-          >
-            {t("tabfilter.wysiwyg")}
-          </TabsTrigger>
-          <TabsTrigger
-            className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
-            value="social_media"
-          >
-            {t("tabfilter.socialmedia")}
-          </TabsTrigger>
-          <TabsTrigger
-            className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
-            value="media"
-          >
-            {t("tabfilter.media")}
-          </TabsTrigger>
-          <TabsTrigger
-            className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
-            value="legacy"
-          >
-            {t("tabfilter.legacy")}
-          </TabsTrigger>
-        </TabsList>
-      </div>
+      <TabsList
+        width="full"
+        className={clx(
+          "no-scrollbar flex-grow items-center justify-center overflow-x-scroll scroll-smooth text-nowrap max-md:justify-start",
+        )}
+      >
+        <TabsTrigger value="all">{t("tabfilter.all")}</TabsTrigger>
+        <TabsTrigger value="generic">{t("tabfilter.generic")}</TabsTrigger>
+        <TabsTrigger value="filled">{t("tabfilter.filled")}</TabsTrigger>
+        <TabsTrigger value="wysiwyg">{t("tabfilter.wysiwyg")}</TabsTrigger>
+        <TabsTrigger value="social_media">
+          {t("tabfilter.socialmedia")}
+        </TabsTrigger>
+        <TabsTrigger value="media">{t("tabfilter.media")}</TabsTrigger>
+        <TabsTrigger value="legacy">{t("tabfilter.legacy")}</TabsTrigger>
+      </TabsList>
     </Tabs>
   );
 };
