@@ -19,6 +19,7 @@ import { Button } from "./button";
 import { Link } from "./link";
 import { ChevronDownIcon, CrossIcon, HamburgerMenuIcon } from "../icons";
 import { cva } from "class-variance-authority";
+import { Slot } from "@radix-ui/react-slot";
 
 interface NavbarProps extends ComponentProps<"header"> {}
 
@@ -42,13 +43,13 @@ const Navbar: FunctionComponent<NavbarProps> = ({
       <header
         id="navbar"
         className={clx(
-          "bg-bg-white border-otl-gray-200 shadow-button sticky top-0 z-50 h-16 w-full border-b print:hidden",
+          "bg-bg-white border-otl-gray-200 shadow-button sticky top-0 z-50 h-16 w-full border-b max-md:h-14 print:hidden",
           className,
         )}
         data-nosnippet
         {...props}
       >
-        <div className="relative mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-4 px-6 xl:px-0">
+        <div className="relative mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-4 px-6 max-md:h-14 xl:px-0">
           {children}
         </div>
       </header>
@@ -150,6 +151,7 @@ interface NavbarMenuItemProps
   children: ReactNode;
   href: string;
   className?: string;
+  asChild?: boolean;
 }
 
 const navbar_menu_item_cva = cva(
@@ -172,17 +174,19 @@ const NavbarMenuItem: FunctionComponent<NavbarMenuItemProps> = ({
   className,
   children,
   href,
+  asChild,
   ...props
 }) => {
   const is_from_dropdown = useContext(NavbarMenuDropdownContext);
+  const Comp = asChild ? Slot : Link;
   return (
     <NavigationMenuItem
       className={clx(navbar_menu_item_cva({ is_from_dropdown }), className)}
       {...props}
     >
-      <Link href={href} underline="none" className="w-full">
+      <Comp href={href} underline="none" className="w-full">
         {children}
-      </Link>
+      </Comp>
     </NavigationMenuItem>
   );
 };

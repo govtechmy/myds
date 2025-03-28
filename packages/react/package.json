@@ -1,10 +1,11 @@
 {
   "name": "@govtechmy/myds-react",
-  "version": "0.0.18",
+  "version": "0.0.21",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "check-exports": "attw --pack . --profile node16"
+    "check-exports": "attw --pack . --profile node16",
+    "lint": "eslint ."
   },
   "files": [
     "dist",
@@ -220,6 +221,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "@myds/eslint-config": "workspace:*",
     "@swc/core": "^1.10.1",
     "@types/node": "^22.7.5",
     "@types/react": "^18",

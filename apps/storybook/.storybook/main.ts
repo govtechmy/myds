@@ -1,12 +1,12 @@
 import { join, dirname } from "path";
 import type { StorybookConfig } from "@storybook/react-vite";
-import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: [
     "../stories/**/*.mdx",
     "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
+  staticDirs: ["../stories/assets"],
 
   addons: [
     // "storybook-tailwind-dark-mode",

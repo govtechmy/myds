@@ -41,6 +41,7 @@ const PaginationContext = createContext<
   limit: 6,
   totalPages: 0,
   type: "default",
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onPageChange: (page) => {},
 });
 
@@ -289,7 +290,7 @@ const AutoPagination: ForwardRefExoticComponent<AutoPaginationProps> =
             <PaginationItem>
               {previous || <PaginationPrevious />}
             </PaginationItem>
-            {visiblePages.map((page, index) => (
+            {visiblePages.map((page) => (
               <PaginationItem key={page}>
                 {page === "..." ? (
                   <PaginationEllipsis />

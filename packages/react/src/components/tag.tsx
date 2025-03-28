@@ -2,7 +2,6 @@ import React, {
   ComponentProps,
   forwardRef,
   ForwardRefExoticComponent,
-  FunctionComponent,
   RefAttributes,
 } from "react";
 import { cva, VariantProps } from "class-variance-authority";
