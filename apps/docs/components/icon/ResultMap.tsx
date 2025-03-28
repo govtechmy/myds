@@ -4,8 +4,12 @@ import { IconData } from "./IconDataList";
 import { FunctionComponent, useContext, useRef, useState } from "react";
 import { CopyIcon } from "@govtechmy/myds-react/icon";
 import { SearchContext } from "./SearchProvider";
+import { useParams } from "next/navigation";
+import { getRosetta } from "@/locales/_server";
 
 const IconGridItem: FunctionComponent<{ icon: IconData }> = ({ icon }) => {
+  const params = useParams();
+  const { t } = getRosetta(params.lang as "en" | "ms");
   const iconRef = useRef<HTMLDivElement>(null);
   const [isCopied, setIsCopied] = useState(false);
 
@@ -31,11 +35,11 @@ const IconGridItem: FunctionComponent<{ icon: IconData }> = ({ icon }) => {
             className="text-txt-black-500 flex h-full w-full flex-row-reverse items-start rounded-lg border-0 bg-transparent p-4 hover:bg-gray-50/10 dark:text-[#303030]"
           >
             {isCopied === true ? (
-              <span className="rounded-md text-xs font-normal shadow-gray-50">
-                Copied!
+              <span className="text-txt-black-700 rounded-md text-xs font-normal transition">
+                {t("icons.copied")}!
               </span>
             ) : (
-              <div className="rounded-md shadow-gray-50">
+              <div className="text-txt-black-700 rounded-md">
                 <CopyIcon className="size-4" />
               </div>
             )}

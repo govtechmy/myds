@@ -279,6 +279,7 @@ export default {
   icons: {
     title: "Beautifully crafted SVG icons, made for",
     title2: "effortless integration",
+    copied: "Copied",
   },
   searchbar: {
     searchname: "Search by name",

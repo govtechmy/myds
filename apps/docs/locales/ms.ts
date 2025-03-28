@@ -281,6 +281,7 @@ export default {
   icons: {
     title: "Ikon SVG yang direka dengan indah, dibuat untuk",
     title2: "integrasi yang mudah",
+    copied: "Disalin",
   },
   searchbar: {
     searchname: "Cari mengikut nama",
