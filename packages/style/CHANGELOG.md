@@ -1,5 +1,11 @@
 # @govtechmy/myds-style
 
+## 0.0.10
+
+### Patch Changes
+
+- c6a904f: Fix Tabs vertical padding
+
 ## 0.0.9
 
 ### Patch Changes

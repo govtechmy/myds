@@ -1,6 +1,6 @@
 {
   "name": "@govtechmy/myds-react",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
