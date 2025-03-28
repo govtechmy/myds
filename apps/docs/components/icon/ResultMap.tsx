@@ -24,18 +24,18 @@ const IconGridItem: FunctionComponent<{ icon: IconData }> = ({ icon }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div>
       <div className="relative flex h-[140px] w-full flex-col items-center justify-center rounded-xl border border-black shadow-md">
         <div ref={iconRef} className="flex items-center justify-center">
           {icon.svg}
         </div>
-        <div className="absolute h-full w-full opacity-0 hover:opacity-100">
+        <div className="absolute h-full w-full opacity-0 focus-within:opacity-100">
           <Button
             onClick={() => handleCopy()}
             className="text-txt-black-500 flex h-full w-full flex-row-reverse items-start rounded-lg border-0 bg-transparent p-4 hover:bg-gray-50/10 dark:text-[#303030]"
           >
             {isCopied === true ? (
-              <span className="text-txt-black-700 rounded-md text-xs font-normal transition">
+              <span className="text-txt-black-700 text-body-xs rounded-md font-normal transition">
                 {t("icons.copied")}!
               </span>
             ) : (
@@ -46,9 +46,9 @@ const IconGridItem: FunctionComponent<{ icon: IconData }> = ({ icon }) => {
           </Button>
         </div>
       </div>
-      <div className="text-txt-black-500 flex items-center justify-center truncate py-2 text-sm hover:line-clamp-2">
+      <p className="text-txt-black-500 text-body-sm max-w-full text-wrap py-2 text-center">
         {icon.name}
-      </div>
+      </p>
     </div>
   );
 };
