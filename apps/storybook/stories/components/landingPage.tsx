@@ -9,13 +9,9 @@ import {
 } from "@govtechmy/myds-react/footer";
 import {
   FacebookIcon,
-  GlobeIcon,
   InstagramIcon,
-  MoonIcon,
   SearchIcon,
-  SunIcon,
-  TikTokIcon,
-  TwitterIcon,
+  TwitterXIcon,
   YoutubeIcon,
 } from "@govtechmy/myds-react/icon";
 import { Link } from "@govtechmy/myds-react/link";
@@ -23,19 +19,11 @@ import { Masthead } from "@govtechmy/myds-react/masthead";
 import {
   Navbar,
   NavbarAction,
-  NavbarLogo,
   NavbarMenu,
   NavbarMenuDropdown,
   NavbarMenuItem,
 } from "@govtechmy/myds-react/navbar";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@govtechmy/myds-react/select";
-import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
+
 import { clx } from "@govtechmy/myds-react/utils";
 import { useState } from "react";
 
@@ -119,7 +107,7 @@ const DemoFooter = () => {
               underline="none"
               className="hover:text-txt-black-900"
             >
-              <TwitterIcon className="text-txt-black-700" />
+              <TwitterXIcon className="text-txt-black-700" />
             </Link>
             <Link
               href="#"

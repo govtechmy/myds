@@ -7,8 +7,7 @@ import {
   FacebookIcon,
   InstagramIcon,
   TikTokIcon,
-  XIcon,
-  TwitterIcon,
+  TwitterXIcon,
   YoutubeIcon,
 } from "@govtechmy/myds-react/icon";
 import { Quicklinks } from "@/components/quicklinks";
@@ -30,7 +29,7 @@ import { Link } from "@govtechmy/myds-react/link";
 import {
   SiteInfoComponent,
   FooterComponent,
-  SiteLinkGroupComponent
+  SiteLinkGroupComponent,
 } from "@/components/myds";
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton" className="not-prose"> 
@@ -101,7 +100,7 @@ import {
           underline="none"
           className="hover:text-txt-black-900"
         >
-          <TwitterIcon className="text-txt-black-700" />
+          <TwitterXIcon className="text-txt-black-700" />
         </Link>
         <Link
           href="#"
@@ -217,8 +216,11 @@ export default () => (
 ```
 
 ## Contoh
+
 ### FooterSection
+
 `FooterSection` adalah bekas(container) untuk menyusun kandungan footer dan menyediakan tingkah laku responsif.
+
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
   <Tab value="Pratonton">
   <Footer>
@@ -258,7 +260,9 @@ export default () => (
 </Tabs>
 
 ### SiteInfo
+
 Komponen HTML `aside` yang digunakan untuk mengandungi maklumat seperti maklumat jabatan dan pautan media sosial.
+
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
   <Tab value="Pratonton">
     <div className="max-w-[50%] mx-auto bg-bg-gray-50">
@@ -313,7 +317,7 @@ Komponen HTML `aside` yang digunakan untuk mengandungi maklumat seperti maklumat
           underline="none"
           className="hover:text-txt-black-900"
         >
-          <TwitterIcon className="text-txt-black-700" />
+          <TwitterXIcon className="text-txt-black-700" />
         </Link>
         <Link
           href="#"
@@ -337,26 +341,24 @@ Komponen HTML `aside` yang digunakan untuk mengandungi maklumat seperti maklumat
         </Link>
       </div>
     </SiteInfo>
-  ```
-  </Tab>
+
+```
+</Tab>
 </Tabs>
 
 ### SiteLinkGroup
 Bekas (container) yang menyusun koleksi `SiteLink` ke dalam kumpulan bertajuk.
 
 <Tabs items={["Pratonton", "Kod"]} defaultValue="Pratonton">
-  <Tab value="Pratonton">
-    <div className="max-w-[50%] mx-auto bg-bg-gray-50">
-      <SiteLinkGroupComponent />
-    </div>
-  </Tab>
-  <Tab value="Kod">
-  ```
-  import 
-  {
-  SiteLinkGroup,
-  SiteLink,
-  } from "@govtechmy/myds-react/footer";
+<Tab value="Pratonton">
+  <div className="max-w-[50%] mx-auto bg-bg-gray-50">
+    <SiteLinkGroupComponent />
+  </div>
+</Tab>
+<Tab value="Kod">
+```
+
+import { SiteLinkGroup, SiteLink } from "@govtechmy/myds-react/footer";
 
   <SiteLinkGroup groupTitle="Super super long long long long long long long long title">
       <SiteLink href="#">
@@ -376,7 +378,9 @@ Bekas (container) yang menyusun koleksi `SiteLink` ke dalam kumpulan bertajuk.
 </Tabs>
 
 ## Props
+
 ### Footer
+
 <TypeTable
   type={{
     children: {
@@ -391,6 +395,7 @@ Bekas (container) yang menyusun koleksi `SiteLink` ke dalam kumpulan bertajuk.
 />
 
 ### FooterSection
+
 <TypeTable
   type={{
     children: {
@@ -405,6 +410,7 @@ Bekas (container) yang menyusun koleksi `SiteLink` ke dalam kumpulan bertajuk.
 />
 
 ### SiteInfo
+
 <TypeTable
   type={{
     children: {
@@ -419,6 +425,7 @@ Bekas (container) yang menyusun koleksi `SiteLink` ke dalam kumpulan bertajuk.
 />
 
 ### SiteLinkGroup
+
 <TypeTable
   type={{
     children: {
@@ -436,12 +443,13 @@ Bekas (container) yang menyusun koleksi `SiteLink` ke dalam kumpulan bertajuk.
     linkCount: {
       description: "Bilangan elemen anak yang harus dipaparkan",
       type: "number",
-      default: 8
-    }
+      default: 8,
+    },
   }}
 />
 
 ### FooterLogo
+
 <TypeTable
   type={{
     className: {
@@ -460,6 +468,7 @@ Bekas (container) yang menyusun koleksi `SiteLink` ke dalam kumpulan bertajuk.
 />
 
 ### SiteLink
+
 <TypeTable
   type={{
     className: {
@@ -474,8 +483,6 @@ Bekas (container) yang menyusun koleksi `SiteLink` ke dalam kumpulan bertajuk.
       description: "Suis untuk mewarisi komponen anak secara langsung",
       type: "boolean",
       default: "false",
-    }
+    },
   }}
 />
-
-

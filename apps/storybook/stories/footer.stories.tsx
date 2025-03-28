@@ -11,7 +11,7 @@ import { Link } from "@govtechmy/myds-react/link";
 import {
   FacebookIcon,
   InstagramIcon,
-  TwitterIcon,
+  TwitterXIcon,
   YoutubeIcon,
 } from "@govtechmy/myds-react/icon";
 
@@ -123,7 +123,7 @@ export const Default: Story = {
                 underline="none"
                 className="hover:text-txt-black-900"
               >
-                <TwitterIcon className="text-txt-black-700" />
+                <TwitterXIcon className="text-txt-black-700" />
               </Link>
               <Link
                 href="#"
@@ -269,7 +269,7 @@ export const CustomDark: Story = {
                 underline="none"
                 className="hover:text-txt-black-900"
               >
-                <TwitterIcon className="text-txt-black-700" />
+                <TwitterXIcon className="text-txt-black-700" />
               </Link>
               <Link
                 href="#"

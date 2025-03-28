@@ -7,8 +7,7 @@ import {
   FacebookIcon,
   InstagramIcon,
   TikTokIcon,
-  XIcon,
-  TwitterIcon,
+  TwitterXIcon,
   YoutubeIcon,
 } from "@govtechmy/myds-react/icon";
 import { Quicklinks } from "@/components/quicklinks";
@@ -30,7 +29,7 @@ import { Link } from "@govtechmy/myds-react/link";
 import {
   SiteInfoComponent,
   FooterComponent,
-  SiteLinkGroupComponent
+  SiteLinkGroupComponent,
 } from "@/components/myds";
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose"> 
@@ -101,7 +100,7 @@ import {
           underline="none"
           className="hover:text-txt-black-900"
         >
-          <TwitterIcon className="text-txt-black-700" />
+          <TwitterXIcon className="text-txt-black-700" />
         </Link>
         <Link
           href="#"
@@ -217,8 +216,11 @@ export default () => (
 ```
 
 ## Examples
+
 ### FooterSection
+
 `FooterSection` is a grid-based layout container that organizes and partition footer content and provides the responsive behavior.
+
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
   <Footer>
@@ -258,7 +260,9 @@ export default () => (
 </Tabs>
 
 ### SiteInfo
+
 An `aside` HTML component designed to contain brand information, contact details, and social media links in the footer.
+
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview">
     <div className="max-w-[50%] mx-auto bg-bg-gray-50">
@@ -313,7 +317,7 @@ An `aside` HTML component designed to contain brand information, contact details
           underline="none"
           className="hover:text-txt-black-900"
         >
-          <TwitterIcon className="text-txt-black-700" />
+          <TwitterXIcon className="text-txt-black-700" />
         </Link>
         <Link
           href="#"
@@ -337,25 +341,23 @@ An `aside` HTML component designed to contain brand information, contact details
         </Link>
       </div>
     </SiteInfo>
-  ```
-  </Tab>
+
+```
+</Tab>
 </Tabs>
 
 ### SiteLinkGroup
 A container that structures a collection of links (`SiteLink`) into a titled group with responsive column layout.
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
-    <div className="max-w-[50%] mx-auto bg-bg-gray-50">
-      <SiteLinkGroupComponent />
-    </div>
-  </Tab>
-  <Tab value="Code">
-  ```
-  import 
-  {
-  SiteLinkGroup,
-  SiteLink,
-  } from "@govtechmy/myds-react/footer";
+<Tab value="Preview">
+  <div className="max-w-[50%] mx-auto bg-bg-gray-50">
+    <SiteLinkGroupComponent />
+  </div>
+</Tab>
+<Tab value="Code">
+```
+
+import { SiteLinkGroup, SiteLink } from "@govtechmy/myds-react/footer";
 
   <SiteLinkGroup groupTitle="Super super long long long long long long long long title">
       <SiteLink href="#">
@@ -375,7 +377,9 @@ A container that structures a collection of links (`SiteLink`) into a titled gro
 </Tabs>
 
 ## Props
+
 ### Footer
+
 <TypeTable
   type={{
     children: {
@@ -390,6 +394,7 @@ A container that structures a collection of links (`SiteLink`) into a titled gro
 />
 
 ### FooterSection
+
 <TypeTable
   type={{
     children: {
@@ -404,6 +409,7 @@ A container that structures a collection of links (`SiteLink`) into a titled gro
 />
 
 ### SiteInfo
+
 <TypeTable
   type={{
     children: {
@@ -418,6 +424,7 @@ A container that structures a collection of links (`SiteLink`) into a titled gro
 />
 
 ### SiteLinkGroup
+
 <TypeTable
   type={{
     children: {
@@ -435,12 +442,13 @@ A container that structures a collection of links (`SiteLink`) into a titled gro
     linkCount: {
       description: "The number of children to be displayed in the grouping",
       type: "number",
-      default: 8
-    }
+      default: 8,
+    },
   }}
 />
 
 ### FooterLogo
+
 <TypeTable
   type={{
     className: {
@@ -459,6 +467,7 @@ A container that structures a collection of links (`SiteLink`) into a titled gro
 />
 
 ### SiteLink
+
 <TypeTable
   type={{
     className: {
@@ -473,8 +482,6 @@ A container that structures a collection of links (`SiteLink`) into a titled gro
       description: "Flag to inherit child component directly",
       type: "boolean",
       default: "false",
-    }
+    },
   }}
 />
-
-

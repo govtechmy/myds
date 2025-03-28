@@ -7,7 +7,7 @@ import React, {
   useContext,
 } from "react";
 import { clx } from "../utils";
-import { OptionsIcon } from "../icons/options";
+import { EllipsisIcon } from "../icons/ellipsis";
 import { Button, ButtonIcon } from "./button";
 import { ChevronLeftIcon } from "../icons/chevron-left";
 import { ChevronRightIcon } from "../icons/chevron-right";
@@ -222,7 +222,7 @@ const PaginationEllipsis = ({
     className={clx("flex size-8 items-center justify-center", className)}
     {...props}
   >
-    <OptionsIcon className="text-txt-black-700 size-4" />
+    <EllipsisIcon className="text-txt-black-700 size-4" />
     <span className="sr-only">More pages</span>
   </span>
 );

@@ -7,7 +7,11 @@ import {
   MastheadSection,
   MastheadTitle,
 } from "@govtechmy/myds-react/masthead";
-import { Lock2Icon, GovMyIcon, LockFillIcon } from "@govtechmy/myds-react/icon";
+import {
+  Lock2Icon,
+  PutrajayaIcon,
+  LockFillIcon,
+} from "@govtechmy/myds-react/icon";
 import { createStory } from "../utils";
 
 /**
@@ -114,7 +118,7 @@ export const Default: Story = createStory({
 
       <MastheadContent>
         <MastheadSection
-          icon={<GovMyIcon />}
+          icon={<PutrajayaIcon />}
           title={"Official government websites end with .gov.my"}
         >
           If the link does not end with <b>.gov.my</b>, exit the website
@@ -145,7 +149,7 @@ export const DefaultDark: Story = createStory(
 
         <MastheadContent>
           <MastheadSection
-            icon={<GovMyIcon />}
+            icon={<PutrajayaIcon />}
             title={"Official government websites end with .gov.my"}
           >
             If the link does not end with <b>.gov.my</b>, exit the website
@@ -201,7 +205,7 @@ export const DefaultDark: Story = createStory(
 //   render: () => (
 //     <Masthead>
 //       <MastheadContent>
-//         <MastheadSection icon={<GovMyIcon />}>
+//         <MastheadSection icon={<PutrajayaIcon />}>
 //           <MastheadSectionTitle>
 //             Laman web rasmi kerajaan berakhir dengan .gov.my
 //           </MastheadSectionTitle>
@@ -221,7 +225,7 @@ export const DefaultDark: Story = createStory(
 //     <div className="dark">
 //       <Masthead>
 //         <MastheadContent>
-//           <MastheadSection icon={<GovMyIcon />}>
+//           <MastheadSection icon={<PutrajayaIcon />}>
 //             <MastheadSectionTitle>
 //               Laman web rasmi kerajaan berakhir dengan .gov.my
 //             </MastheadSectionTitle>
@@ -248,7 +252,7 @@ export const DefaultDark: Story = createStory(
 //         <MastheadTrigger>Ketahui Lebih Lanjut</MastheadTrigger>
 //       </MastheadHeader>
 //       <MastheadContent>
-//         <MastheadSection icon={<GovMyIcon />}>
+//         <MastheadSection icon={<PutrajayaIcon />}>
 //           <MastheadSectionTitle>
 //             Laman web rasmi kerajaan berakhir dengan .gov.my
 //           </MastheadSectionTitle>
@@ -287,7 +291,7 @@ export const DefaultDark: Story = createStory(
 //           <MastheadTrigger>Ketahui Lebih Lanjut</MastheadTrigger>
 //         </MastheadHeader>
 //         <MastheadContent>
-//           <MastheadSection icon={<GovMyIcon />}>
+//           <MastheadSection icon={<PutrajayaIcon />}>
 //             <MastheadSectionTitle>
 //               Laman web rasmi kerajaan berakhir dengan .gov.my
 //             </MastheadSectionTitle>

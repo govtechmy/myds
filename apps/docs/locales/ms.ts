@@ -217,6 +217,7 @@ export default {
     home: "Laman Utama",
     design: "Reka Bentuk",
     develop: "Pembangunan",
+    icon: "ikon",
   },
 
   /* Design */
@@ -274,6 +275,28 @@ export default {
       description:
         "Komponen navigasi digunakan untuk membantu pengguna bergerak di sekitar produk digital.",
     },
+  },
+
+  /* Icon Page */
+  icons: {
+    title: "Ikon SVG yang direka dengan indah, dibuat untuk",
+    title2: "integrasi yang mudah",
+    description: "Teroka koleksi ikon sedia ada",
+    copied: "Disalin",
+  },
+  searchbar: {
+    searchname: "Cari mengikut nama",
+    press: "Tekan",
+    tosearch: "untuk mencari",
+  },
+  tabfilter: {
+    all: "Semua",
+    generic: "Generik",
+    filled: "Terisi",
+    wysiwyg: "WYSIWYG",
+    socialmedia: "Media Sosial",
+    media: "Media",
+    legacy: "Ikon Agensi (Legasi)",
   },
 
   /* Error */

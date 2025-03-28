@@ -2,7 +2,7 @@
  * Script to extract SVG icon, convert to tsx and sanitize to React-friendly attributes.
  * Arguments: None
  */
-import fs, { mkdirSync } from "fs";
+import fs from "fs";
 import path from "path";
 import { icon_directory } from "./util";
 
@@ -46,10 +46,50 @@ interface MainScriptProps {
  * @returns {string} - The converted PascalCase string.
  */
 function dashToPascalCase(str: string): string {
+  const reserved = new Set([
+    "spr",
+    "moh",
+    "moe",
+    "mcmc",
+    "mers",
+    "pdn",
+    "bnm",
+    "jpj",
+    "mof",
+    "dosm",
+    "bomba",
+    "jps",
+    "jpa",
+    "icu",
+    "jpm",
+    "jpn",
+    "jakoa",
+    "mampu",
+    "ipr",
+    "epu",
+    "epf",
+    "kwap",
+    "lhdn",
+    "pdrm",
+    "ntrc",
+    "socso",
+    "mot",
+    "met",
+    "unhcr",
+    "perkeso",
+    "rss",
+    "pdf",
+  ]);
+
   return str
     .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join("");
+    .map((word) =>
+      reserved.has(word)
+        ? word.toUpperCase()
+        : word.charAt(0).toUpperCase() + word.slice(1),
+    )
+    .join("")
+    .replace("Legacy", "");
 }
 async function clearDirectory(dirPath) {
   fs.rmSync(dirPath, { recursive: true });

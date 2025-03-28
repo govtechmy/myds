@@ -84,7 +84,7 @@ import { Toggle, ToggleThumb } from "@govtechmy/myds-react/toggle";
 import {
   FacebookIcon,
   InstagramIcon,
-  TwitterIcon,
+  TwitterXIcon,
   YoutubeIcon,
   SwapIcon,
 } from "@govtechmy/myds-react/icon";
@@ -877,7 +877,7 @@ export const SiteInfoComponent = () => {
           underline="none"
           className="hover:text-txt-black-900"
         >
-          <TwitterIcon className="text-txt-black-700" />
+          <TwitterXIcon className="text-txt-black-700" />
         </Link>
         <Link
           href="#"
@@ -949,7 +949,7 @@ export const FooterComponent = () => {
               underline="none"
               className="hover:text-txt-black-900"
             >
-              <TwitterIcon className="text-txt-black-700" />
+              <TwitterXIcon className="text-txt-black-700" />
             </Link>
             <Link
               href="#"

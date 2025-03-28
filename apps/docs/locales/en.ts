@@ -215,12 +215,13 @@ export default {
     home: "Home",
     design: "Design",
     develop: "Develop",
+    icon: "Icon",
   },
 
   /* Design */
   design: {
     title: "Design",
-    description: "Design guidelines and resources",
+    description: "Design guidelines",
     color: {
       title: "Color",
       description:
@@ -246,7 +247,7 @@ export default {
   /* Develop */
   develop: {
     title: "Component",
-    description: "Component library for developers",
+    description: "Component library",
     button: {
       title: "Button",
       description:
@@ -272,6 +273,28 @@ export default {
       description:
         "Navigation components are used to help users move around a digital product.",
     },
+  },
+
+  /* Icon Page */
+  icons: {
+    title: "Beautifully crafted SVG icons, made for",
+    title2: "effortless integration",
+    description: "Explore available icons",
+    copied: "Copied",
+  },
+  searchbar: {
+    searchname: "Search by name",
+    press: "Press",
+    tosearch: "to search",
+  },
+  tabfilter: {
+    all: "All",
+    generic: "Generic",
+    filled: "Filled",
+    wysiwyg: "WYSIWYG",
+    socialmedia: "Social Media",
+    media: "Media",
+    legacy: "Agency Icon (Legacy)",
   },
 
   /* Error */

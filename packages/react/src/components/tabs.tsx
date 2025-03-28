@@ -39,7 +39,7 @@ Tabs.displayName = TabsPrimitive.Root.displayName;
 /*========================================================================================================================*/
 
 const tabs_list_cva = cva(
-  "relative flex flex-row items-center space-x-1 justify-start font-medium",
+  "relative flex flex-row items-center space-x-1 justify-start font-medium py-1",
   {
     variants: {
       variant: {
@@ -103,14 +103,14 @@ const tabs_trigger_cva = cva(
     },
     compoundVariants: [
       {
-        variant: ["pill", "enclosed"],
+        variant: "enclosed",
         size: "small",
         className: "before:py-2",
       },
       {
-        variant: ["pill", "enclosed"],
+        variant: "enclosed",
         size: "medium",
-        className: " before:py-2.5",
+        className: "before:py-2.5",
       },
       {
         variant: "line",

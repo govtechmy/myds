@@ -1,6 +1,7 @@
 import { Tag } from "@/components/Tag";
 import { links } from "@/lib/constant";
 import { getRosetta } from "@/locales/_server";
+import { ComponentIcon, FontIcon, GlobeIcon } from "@govtechmy/myds-react/icon";
 import { type HomeLayoutProps } from "fumadocs-ui/home-layout";
 import { LinkItemType } from "fumadocs-ui/layout";
 import Image from "next/image";
@@ -40,6 +41,7 @@ export const getMYDSConfig = (lang: "en" | "ms"): MYDSConfig => {
       text: t("menu.design"),
       description: t("design.description"),
       url: `/${lang}/docs/design`,
+      icon: <FontIcon />,
       active: "nested-url",
     },
     {
@@ -47,6 +49,15 @@ export const getMYDSConfig = (lang: "en" | "ms"): MYDSConfig => {
       text: t("menu.develop"),
       description: t("develop.description"),
       url: `/${lang}/docs/develop`,
+      icon: <GlobeIcon />,
+      active: "nested-url",
+    },
+    {
+      title: t("menu.icon"),
+      text: t("menu.icon"),
+      description: t("icons.description"),
+      url: `/${lang}/icon`,
+      icon: <ComponentIcon />,
       active: "nested-url",
     },
   ];

@@ -2,7 +2,7 @@ import { DocsLayout } from "fumadocs-ui/layout";
 import type { ReactNode } from "react";
 import { getMYDSConfig } from "@/app/[lang]/layout.config";
 import { source } from "@/app/[lang]/source";
-import DocsTab from "@/components/docs-tab";
+import { RootToggle } from "fumadocs-ui/components/layout/root-toggle";
 
 export default function Layout({
   children,
@@ -15,7 +15,12 @@ export default function Layout({
   return (
     <DocsLayout
       sidebar={{
-        banner: <DocsTab menus={menu} />,
+        banner: (
+          <RootToggle
+            className="border-otl-gray-200 shadow-button hover:bg-bg-washed mx-0.5 rounded-md border transition"
+            options={menu}
+          />
+        ),
       }}
       tree={source.pageTree[lang]}
       {...config}

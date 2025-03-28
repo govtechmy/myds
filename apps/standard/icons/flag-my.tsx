@@ -8,7 +8,7 @@ export default function FlagMY({ ...props }) {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <g clip-path="url(#clip0_398_3787)">
+      <g clipPath="url(#clip0_398_3787)">
         <rect width="31.9713" height="16" fill="white" />
         <path d="M16.0001 0L31.9857 0V1.14256H16.0001V0Z" fill="#D10525" />
         <path
