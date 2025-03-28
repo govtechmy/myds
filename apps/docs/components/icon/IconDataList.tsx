@@ -13,18 +13,20 @@ export const iconDataList: IconData[] = [
   //Generic Icons : 120 icons
   //Remove 1 Icon - Placeholder
 
-  {
-    filename: "Icon/outline/malaysia-flag",
-    name: "malaysia-flag",
-    type: "Media",
-    svg: <Icons.MalaysiaFlagIcon />,
-  },
-  {
-    filename: "agency-icon/jata-negara",
-    name: "jata-negara",
-    type: "Media",
-    svg: <Icons.JataNegaraIcon />,
-  },
+  // malaysia flag doesnt fit any icon base ref, its a special made atm
+  // {
+  //   filename: "Icon/outline/malaysia-flag",
+  //   name: "malaysia-flag",
+  //   type: "Media",
+  //   svg: <Icons.MalaysiaFlagIcon />,
+  // },
+  // Jata negara also the same issue. not fitting any icon base ref
+  // {
+  //   filename: "agency-icon/jata-negara",
+  //   name: "jata-negara",
+  //   type: "Media",
+  //   svg: <Icons.JataNegaraIcon />,
+  // },
   {
     filename: "Icon/outline/hamburger-menu",
     name: "hamburger-menu",

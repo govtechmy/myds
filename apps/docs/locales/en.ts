@@ -285,6 +285,15 @@ export default {
     press: "Press",
     tosearch: "to search",
   },
+  tabfilter: {
+    all: "All",
+    generic: "Generic",
+    filled: "Filled",
+    wysiwyg: "WYSIWYG",
+    socialmedia: "Social Media",
+    media: "Media",
+    legacy: "Agency Icon (Legacy)",
+  },
 
   /* Error */
   e404: {

@@ -10,9 +10,15 @@ import ResultMap from "./ResultMap";
 import { IconData } from "./IconDataList";
 import { useContext } from "react";
 import { SearchContext } from "./SearchProvider";
+import { getRosetta } from "@/locales/_server";
 
-export default function TabFiltered() {
+export default function TabFiltered({
+  params,
+}: {
+  params: { lang: "en" | "ms" };
+}) {
   const searchContext = useContext(SearchContext);
+  const { t } = getRosetta(params.lang);
 
   if (!searchContext) {
     throw new Error("SearchContext must be used within a SearchProvider");
@@ -35,43 +41,43 @@ export default function TabFiltered() {
               className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
               value="1"
             >
-              All
+              {t("tabfilter.all")}
             </TabsTrigger>
             <TabsTrigger
               className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
               value="2"
             >
-              Generic
+              {t("tabfilter.generic")}
             </TabsTrigger>
             <TabsTrigger
               className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
               value="3"
             >
-              Filled
+              {t("tabfilter.filled")}
             </TabsTrigger>
             <TabsTrigger
               className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
               value="4"
             >
-              WYSIWYG
+              {t("tabfilter.wysiwyg")}
             </TabsTrigger>
             <TabsTrigger
               className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
               value="5"
             >
-              Social Media
+              {t("tabfilter.socialmedia")}
             </TabsTrigger>
             <TabsTrigger
               className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
               value="6"
             >
-              Media
+              {t("tabfilter.media")}
             </TabsTrigger>
             <TabsTrigger
               className="before:!static before:!left-0 before:!h-0 before:!w-0 before:bg-transparent before:!content-none before:first-of-type:!block"
               value="7"
             >
-              Agency Icon (Legacy)
+              {t("tabfilter.legacy")}
             </TabsTrigger>
           </TabsList>
         </div>

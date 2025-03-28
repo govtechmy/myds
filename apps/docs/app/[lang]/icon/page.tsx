@@ -33,7 +33,7 @@ export default function IconHomepage({
           </div>
         </div>
 
-        <TabFiltered />
+        <TabFiltered params={params} />
       </div>
     </SearchProvider>
   );

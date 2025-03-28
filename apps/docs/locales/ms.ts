@@ -287,6 +287,15 @@ export default {
     press: "Tekan",
     tosearch: "untuk mencari",
   },
+  tabfilter: {
+    all: "Semua",
+    generic: "Generik",
+    filled: "Terisi",
+    wysiwyg: "WYSIWYG",
+    socialmedia: "Media Sosial",
+    media: "Media",
+    legacy: "Ikon Agensi (Legasi)",
+  },
 
   /* Error */
   e404: {
