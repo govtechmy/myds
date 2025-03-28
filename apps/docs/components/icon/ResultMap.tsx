@@ -1,27 +1,17 @@
+"use client";
 import { Button } from "@govtechmy/myds-react/button";
-import { IconData, IconDataList } from "./IconDataList";
-import { clx } from "@govtechmy/myds-react/utils";
-import { useRef, useState } from "react";
+import { IconData } from "./IconDataList";
+import { FunctionComponent, useContext, useRef, useState } from "react";
 import { CopyIcon } from "@govtechmy/myds-react/icon";
+import { SearchContext } from "./SearchProvider";
 
-export default function ResultMap({ result }: { result: IconDataList }) {
-  return (
-    <div className={clx("grid gap-2", "icon-custom-grid-cols")}>
-      {result.map((icon, index) => (
-        <IconGridItem key={index} icon={icon} />
-      ))}
-    </div>
-  );
-}
-
-function IconGridItem({ icon }: { icon: IconData }) {
+const IconGridItem: FunctionComponent<{ icon: IconData }> = ({ icon }) => {
   const iconRef = useRef<HTMLDivElement>(null);
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopy = () => {
-    if (!iconRef.current) {
-      throw Error("iconRef not ready");
-    }
+    if (!iconRef.current) throw new Error("iconRef not ready");
+
     navigator.clipboard.writeText(iconRef.current?.innerHTML || "");
     setIsCopied(true);
     setTimeout(() => {
@@ -57,4 +47,25 @@ function IconGridItem({ icon }: { icon: IconData }) {
       </div>
     </div>
   );
-}
+};
+
+IconGridItem.displayName = "IconGridItem";
+
+const ResultMap: FunctionComponent = () => {
+  const context = useContext(SearchContext);
+  if (!context)
+    throw new Error("SearchContext must be used within a SearchProvider");
+  const { result } = context;
+
+  return (
+    <div className="icon-custom-grid-cols grid gap-2 py-8">
+      {result.map((icon, index) => (
+        <IconGridItem key={index} icon={icon} />
+      ))}
+    </div>
+  );
+};
+
+ResultMap.displayName = "ResultMap";
+
+export default ResultMap;

@@ -1,5 +1,4 @@
 import SearchBarIcons from "@/components/icon/Searchbar";
-import { iconDataList } from "@/components/icon/IconDataList";
 import IconsHeroDesktopLight from "@/icons/icons-hero-desktop-light";
 import IconsHeroDesktopDark from "@/icons/icons-hero-desktop-dark";
 import IconsHeroMobileLight from "@/icons/icons-hero-mobile-light";
@@ -7,6 +6,7 @@ import IconsHeroMobileDark from "@/icons/icons-hero-mobile-dark";
 import TabFiltered from "@/components/icon/TabFiltered";
 import { SearchProvider } from "@/components/icon/SearchProvider";
 import { getRosetta } from "@/locales/_server";
+import ResultMap from "@/components/icon/ResultMap";
 
 export default function IconHomepage({
   params,
@@ -28,12 +28,12 @@ export default function IconHomepage({
               <span className="text-txt-primary">{t("icons.title2")}</span>
             </h1>
             <div className="px-4.5 w-full max-w-[600px] py-8">
-              <SearchBarIcons params={params} iconDataList={iconDataList} />
+              <SearchBarIcons />
             </div>
           </div>
         </div>
-
-        <TabFiltered params={params} />
+        <TabFiltered />
+        <ResultMap />
       </div>
     </SearchProvider>
   );
