@@ -1,5 +1,11 @@
 # @govtechmy/myds-react
 
+## 0.0.22
+
+### Patch Changes
+
+- c6a904f: Fix Tabs vertical padding
+
 ## 0.0.21
 
 ### Patch Changes
