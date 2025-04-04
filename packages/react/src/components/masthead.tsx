@@ -69,7 +69,7 @@ const MastheadHeader: FunctionComponent<ComponentProps<"div">> = ({
 }) => {
   return (
     <div
-      className="px-4.5 flex items-center gap-2 py-2 outline-none sm:py-1 xl:px-0"
+      className="px-4.5 flex items-center gap-2 overflow-x-hidden py-2 outline-none sm:py-1 xl:px-0"
       {...props}
     >
       <MalaysiaFlagIcon className="inline-block aspect-auto w-fit shrink-0" />
@@ -89,7 +89,7 @@ const MastheadTitle: FunctionComponent<ComponentProps<"p">> = ({
   return (
     <p
       className={clx(
-        "text-txt-black-700 text-body-sm max-w-[230px] truncate sm:max-w-full sm:flex-grow-0",
+        "text-txt-black-700 text-body-sm truncate sm:max-w-full sm:flex-grow-0",
         className,
       )}
       {...props}
