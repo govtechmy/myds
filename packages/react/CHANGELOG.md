@@ -1,5 +1,11 @@
 # @govtechmy/myds-react
 
+## 0.0.23
+
+### Patch Changes
+
+- 348f449: Maximize available width for p tag before truncating
+
 ## 0.0.22
 
 ### Patch Changes
