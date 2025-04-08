@@ -29,7 +29,7 @@ const IconGridItem: FunctionComponent<{ icon: IconData }> = ({ icon }) => {
         <div ref={iconRef} className="flex items-center justify-center">
           {icon.svg}
         </div>
-        <div className="absolute h-full w-full opacity-0 focus-within:opacity-100">
+        <div className="absolute h-full w-full opacity-0 focus-within:opacity-100 hover:opacity-100">
           <Button
             onClick={() => handleCopy()}
             className="text-txt-black-500 flex h-full w-full flex-row-reverse items-start rounded-lg border-0 bg-transparent p-4 hover:bg-gray-50/10 dark:text-[#303030]"
