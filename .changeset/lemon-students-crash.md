@@ -2,4 +2,4 @@
 "@govtechmy/myds-docs": patch
 ---
 
-UI:Hover Icon Fix
+UI:Icon Docs - Fix: Hover did not display copy icon
