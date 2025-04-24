@@ -128,18 +128,18 @@ export default {
           year: "2024",
         },
         "3": {
-          date: "DIS 2024",
-          title: "Pustaka Komponen MYDS untuk React",
-          description: "Pustaka komponen MYDS untuk React akan diterbitkan.",
-          type: "none",
-          year: "2024",
-        },
-        "4": {
           date: "15 NOV 2024",
           title: "Garis Panduan Reka Bentuk MYDS",
           description:
             "Garis panduan reka bentuk untuk MYDS kini sedia untuk tontonan awam",
           type: "launched",
+          year: "2024",
+        },
+        "4": {
+          date: "DIS 2024",
+          title: "Pustaka Komponen MYDS untuk React",
+          description: "Pustaka komponen MYDS untuk React akan diterbitkan.",
+          type: "none",
           year: "2024",
         },
         "5": {
