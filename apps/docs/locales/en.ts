@@ -126,13 +126,6 @@ export default {
           year: "2024",
         },
         "3": {
-          date: "DEC 2024",
-          title: "MYDS Component Library for React",
-          description: "Component library MYDS for React to be released",
-          type: "none",
-          year: "2024",
-        },
-        "4": {
           date: "15 NOV 2024",
           title: "MYDS Design Guideline",
           description:
@@ -140,7 +133,13 @@ export default {
           type: "launched",
           year: "2024",
         },
-
+        "4": {
+          date: "DEC 2024",
+          title: "MYDS Component Library for React",
+          description: "Component library MYDS for React to be released",
+          type: "none",
+          year: "2024",
+        },
         "5": {
           date: "MAR 2025",
           title: "Final Stakeholder Consultation",

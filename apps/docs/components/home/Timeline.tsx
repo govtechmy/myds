@@ -25,11 +25,7 @@ type Props = {
 };
 
 // Sort the data into sections. The items in even-numbered sections are reversed horizontally.
-function sortData(data: DataItem[], sectionIndex: number) {
-  if (sectionIndex % 2 === 0) {
-    return data;
-  }
-
+function sortData(data: DataItem[]) {
   const oddData = data.filter((_, i) => i % 2 !== 0);
   const evenData = data.filter((_, i) => i % 2 === 0);
   const result: DataItem[] = [];
@@ -114,7 +110,7 @@ export default function Timeline(props: Props) {
                 >
                   {/* List for tablet screen size and beyond */}
                   <ItemList
-                    data={sortData(data, i)}
+                    data={sortData(data)}
                     trailing={itemPositions[i] === 1}
                     className={clx("itemlist-lg max-sm:hidden")}
                   />
