@@ -189,7 +189,7 @@ Use the `type` prop to change how the content should be displayed!
 
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose">
-    <Accordion type="multiple" defaultValue="item-1">
+    <Accordion type="multiple" defaultValue={["item-1"]}>
       {items.default}
     </Accordion>
   </Tab>
