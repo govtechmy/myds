@@ -215,6 +215,7 @@ export default {
     design: "Design",
     develop: "Develop",
     icon: "Icon",
+    community: "Community",
   },
 
   /* Design */
@@ -300,5 +301,20 @@ export default {
   e404: {
     title: "404 - Page Not Found | MYDS",
     description: "The page you are looking for does not exist.",
+  },
+
+  /* Community Page */
+  community: {
+    description: "Help Improve",
+    title: "Want to Contribute?",
+    subtitle: "Share your interest in contributing to MYDS.",
+    name:"Name",
+    email:"Email",
+    submit:"Submit",
+    form: {
+      required: "Field is required",
+      invalidEmail: "Invalid email address",
+      invalidName: "Name can only contain letters and spaces",
+    }
   },
 };

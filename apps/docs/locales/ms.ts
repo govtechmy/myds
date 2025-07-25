@@ -218,6 +218,7 @@ export default {
     design: "Reka Bentuk",
     develop: "Pembangunan",
     icon: "ikon",
+    community: "Komuniti",
   },
 
   /* Design */
@@ -303,5 +304,20 @@ export default {
   e404: {
     title: "404 - Halaman tidak dijumpai | MYDS",
     description: "Halaman yang anda cari tidak wujud.",
+  },
+
+  /* community Page */
+  community: {
+    description: "Bantu Penambahbaikan",
+    title: "Ingin Menyumbang?",
+    subtitle: "Kongsikan minat anda untuk menyumbang kepada MYDS.",
+    name: "Nama",
+    email: "Emel",
+    submit: "Hantar",
+    form: {
+      required: "Ruangan ini wajib diisi",
+      invalidEmail: "Alamat emel tidak sah",
+      invalidName: "Nama hanya boleh mengandungi huruf dan ruang",
+    },
   },
 };
