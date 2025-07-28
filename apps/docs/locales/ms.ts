@@ -309,8 +309,10 @@ export default {
   /* community Page */
   community: {
     description: "Bantu Penambahbaikan",
-    title: "Ingin Menyumbang?",
-    subtitle: "Kongsikan minat anda untuk menyumbang kepada MYDS.",
+    title: "Komuniti Pembangun MYDS",
+    subtitle: "Sertai Komuniti Pembangun MYDS!",
+    subtitle2: "Komuniti Pembangun MYDS ialah peluang anda untuk memacu hala tuju perjalanan Sistem Reka Bentuk Malaysia! Komuniti ini melibatkan pelbagai pihak berkepentingan yang menghimpunkan Pereka Kreatif, Pakar UI/UX, Pembangun Front-End, dan ramai lagi bagi memastikan Sistem Reka Bentuk Malaysia setaraf dengan piawaian industri!",
+    subtitle3: "Sertailah kami dalam usaha ini!",
     name: "Nama",
     email: "Emel",
     submit: "Hantar",

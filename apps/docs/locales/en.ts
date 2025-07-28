@@ -306,8 +306,10 @@ export default {
   /* Community Page */
   community: {
     description: "Help Improve",
-    title: "Want to Contribute?",
-    subtitle: "Share your interest in contributing to MYDS.",
+    title: "MYDS Developer's Community",
+    subtitle: "Join the MYDS Developer Community!",
+    subtitle2: "MYDS Developer's community is your chance to drive the direction of Malaysia's Design System journey! A community involving various stakeholders that brings together Creative Designers, UI/UX Experts, Front-End Developers, and many more to ensure Malaysia's Design System is on par with the industry standard!",
+    subtitle3: "Don't just ask for change — make it!",
     name:"Name",
     email:"Email",
     submit:"Submit",
