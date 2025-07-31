@@ -11,6 +11,7 @@
     "lint-staged": "next lint --fix"
   },
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.857.0",
     "@govtechmy/myds-react": "workspace:*",
     "@govtechmy/myds-style": "workspace:*",
     "@hookform/resolvers": "^5.2.0",

@@ -316,10 +316,23 @@ export default {
     name: "Nama",
     email: "Emel",
     submit: "Hantar",
+    infoTitle: "Maklumat",
+    interest: "Berminat dalam:",
+    institute: "Institut / Organisasi",
+    myGovOnlyInfo: "Kami kini dalam Fasa 1 dan hanya dibuka kepada pegawai kerajaan yang berminat untuk menyumbang kepada MYDS. Kami akan dibuka kepada orang awam tidak lama lagi — nantikan!",
     form: {
+      selectPlaceholder: "Bidang Minat Anda",
       required: "Ruangan ini wajib diisi",
       invalidEmail: "Alamat emel tidak sah",
       invalidName: "Nama hanya boleh mengandungi huruf dan ruang",
+      success1: "Terima kasih, ",
+      success2: "! Kami akan hubungi anda di",
+      failError: "Gagal menghantar. Sila cuba lagi nanti.",
+      interest: {
+        option1: "UI/UX",
+        option2: "Frontend",
+        option3: "Operasi",
+      },
     },
-  },
+  }
 };

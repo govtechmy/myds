@@ -1,13 +1,19 @@
 "use client";
 
 import { Input } from "@govtechmy/myds-react/input";
-import { Callout, CalloutTitle } from "@govtechmy/myds-react/callout";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@govtechmy/myds-react/select";
 import { getRosetta } from "@/locales/_server";
 import Footer from "@/components/Footer";
 import { links } from "@/lib/constant";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
+import {
+  AnnounceBar,
+  AnnounceBarTag,
+  AnnounceBarDescription,
+} from "@govtechmy/myds-react/announce-bar";
 
 export default function CommunityPage({
   params,
@@ -26,12 +32,21 @@ export default function CommunityPage({
       .string()
       .trim()
       .min(1, { message: t("community.form.required") })
-      .regex(/^[^\s@]+@[^\s@]+\.gov\.my$/, { message: t("community.form.invalidEmail") }),
+      .regex(/^[^\s@]+@[^\s@]+\.gov\.my$/, {
+        message: t("community.form.invalidEmail"),
+      }),
+    institute: z.string().trim().min(1, { message: t("community.form.required") }),
+    interest: z
+      .enum(["uiux", "frontend", "operation"])
+      .refine((val) => val !== undefined, {
+        message: t("community.form.required"),
+      }),
   });
 
   type FormData = z.infer<typeof formSchema>;
 
   const {
+    control,
     register,
     handleSubmit,
     reset,
@@ -46,7 +61,6 @@ export default function CommunityPage({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          token: "mySuperSecretToken123",
           dateTime: new Date().toISOString(),
           ...data,
         }),
@@ -54,22 +68,45 @@ export default function CommunityPage({
 
       const result = await response.json();
       if (result.status === "success") {
-        alert(`Thank you, ${data.name}! We'll contact you at ${data.email}.`);
+        alert(`${t("community.form.sucess1")} ${data.name}${t("community.form.success2")} ${data.email}`);
         reset();
       } else {
-        alert(result.message || "Something went wrong.");
+        alert(result.message);
       }
     } catch (err) {
-      alert("Failed to submit. Please try again later.");
+      alert(`${t("community.form.failError")}`);
       console.error("Submission error:", err);
     }
   };
 
   return (
     <>
-      <section className="min-h-[700px] bg-bg-gray-50 flex items-center justify-center px-4 py-10">
-        <div className="w-full max-w-6xl flex flex-col lg:flex-row lg:items-center gap-12">
-          <div className="lg:w-3/5">
+      <AnnounceBar>
+        <AnnounceBarTag variant="primary">{t("community.infoTitle")}</AnnounceBarTag>
+        <AnnounceBarDescription>
+          {t("community.myGovOnlyInfo")}
+        </AnnounceBarDescription>
+      </AnnounceBar>
+
+      <section className="relative min-h-[700px] flex items-center justify-center px-4 py-0 overflow-hidden z-0">
+        <Image
+          src="/common/hero.svg"
+          alt="Hero"
+          fill
+          priority
+          className="object-cover img-light opacity-50"
+        />
+
+        <Image
+          src="/common/hero-dark.svg"
+          alt="Hero"
+          fill
+          priority
+          className="object-cover hidden dark:block img-dark opacity-50"
+        />
+
+        <div className="w-full max-w-6xl flex flex-col lg:flex-row lg:items-center gap-10 z-10">
+          <div className="lg:w-3/5 backdrop-blur-md">
             <h2 className="text-4xl font-bold text-black-900 mb-6">
               {t("community.title")}
             </h2>
@@ -84,19 +121,59 @@ export default function CommunityPage({
             </p>
           </div>
 
-          <div className="bg-bg-white lg:w-2/5 p-8 rounded-xl shadow-md">
+          <div className="bg-bg-white lg:w-2/5 p-8 rounded-xl border">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+
+              <div>
+                <label
+                  htmlFor="interest"
+                  className="block mb-1 text-[14px] text-[#6B6B74]"
+                >
+                  {t("community.interest")}
+                </label>
+
+                <Controller
+                  control={control}
+                  name="interest"
+                  render={({ field }) => (
+                    <Select
+                      size="small"
+                      variant="outline"
+                      onValueChange={field.onChange}
+                      value={field.value}
+                    >
+                      <SelectTrigger
+                        id="interest"
+                        className={`w-full ${errors.interest ? "border-danger-600" : ""}`}
+                      >
+                        <SelectValue placeholder={t("community.form.selectPlaceholder")} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectItem value="uiux">{t("community.form.interest.option1")}</SelectItem>
+                          <SelectItem value="frontend">{t("community.form.interest.option2")}</SelectItem>
+                          <SelectItem value="operation">{t("community.form.interest.option3")}</SelectItem>
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+                {errors.interest && (
+                  <div className="pt-1">
+                    <p className="text-danger-600 text-[14px]">{errors.interest.message}</p>
+                  </div>
+                )}
+              </div>
+
               <div>
                 <label htmlFor="name" className="block mb-1 text-[14px] text-[#6B6B74]">
                   {t("community.name")}
                 </label>
-                <Input id="name" {...register("name")} />
+                <Input id="name" {...register("name")} className={errors.name ? "border-danger-600" : ""}/>
                 {errors.name && (
-                  <div className="pt-3">
-                    <Callout variant="danger">
-                      <CalloutTitle className="font-normal">{errors.name.message}</CalloutTitle>
-                    </Callout>
-                  </div>
+                 <div className="pt-1">
+                    <p className="text-danger-600 text-[14px]">{errors.name.message}</p>
+                 </div>
                 )}
               </div>
 
@@ -104,12 +181,22 @@ export default function CommunityPage({
                 <label htmlFor="email" className="block mb-1 text-[14px] text-[#6B6B74]">
                   {t("community.email")}
                 </label>
-                <Input id="email" {...register("email")} />
+                <Input id="email" {...register("email")} className={errors.email ? "border-danger-600" : ""}/>
                 {errors.email && (
-                  <div className="pt-3">
-                    <Callout variant="danger">
-                      <CalloutTitle className="font-normal">{errors.email.message}</CalloutTitle>
-                    </Callout>
+                    <div className="pt-1">
+                      <p className="text-danger-600 text-[14px]">{errors.email.message}</p>
+                    </div>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="institute" className="block mb-1 text-[14px] text-[#6B6B74]">
+                  {t("community.institute")}
+                </label>
+                <Input id="institute" {...register("institute")} className={errors.institute ? "border-danger-600" : ""}/>
+                {errors.institute && (
+                  <div className="pt-1">
+                    <p className="text-danger-600 text-[14px]">{errors.institute.message}</p>
                   </div>
                 )}
               </div>
@@ -126,13 +213,9 @@ export default function CommunityPage({
           </div>
         </div>
       </section>
-
       <Footer
         ministry={t("common.names.kd")}
-        descriptionWithNewlines={`Aras 13, 14 dan 15, Blok Menara, Menara Usahawan
-        No. 18, Persiaran Perdana, Presint 2
-        Pusat Pentadbiran Kerajaan Persekutuan
-        62000 Putrajaya, Malaysia.`}
+        descriptionWithNewlines={t("Footer.address")}
         links={[
           {
             title: t("Footer.designSystem"),
@@ -165,3 +248,4 @@ export default function CommunityPage({
     </>
   );
 }
+

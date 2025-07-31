@@ -309,14 +309,29 @@ export default {
     title: "MYDS Developer's Community",
     subtitle: "Join the MYDS Developer Community!",
     subtitle2: "MYDS Developer's community is your chance to drive the direction of Malaysia's Design System journey! A community involving various stakeholders that brings together Creative Designers, UI/UX Experts, Front-End Developers, and many more to ensure Malaysia's Design System is on par with the industry standard!",
+
+
     subtitle3: "Don't just ask for change — make it!",
     name:"Name",
     email:"Email",
     submit:"Submit",
+    infoTitle: "Info",
+    interest: "Interested in:",
+    institute: "Institute / Organization",
+    myGovOnlyInfo: "We’re currently in Phase 1 and open only to government officers who are interested in contributing to MYDS. We’ll be opening to the public soon—stay tuned!",
     form: {
-      required: "Field is required",
-      invalidEmail: "Invalid email address",
-      invalidName: "Name can only contain letters and spaces",
+      selectPlaceholder:"Your Area of Interest",
+      required: "Field is required.",
+      invalidEmail: "Please Enter a valid email address.",
+      invalidName: "Name can only contain letters and spaces.",
+      success1: "Thank you, ",
+      success2: "! We'll contact you at",
+      failError: "Failed to submit. Please try again later.",
+      interest: {
+        option1:"UI/UX",
+        option2:"Frontend",
+        option3:"Operation",
+      },
     }
   },
 };
