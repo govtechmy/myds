@@ -334,5 +334,10 @@ export default {
         option3: "Operasi",
       },
     },
+     modal:{
+      close:"Tutup",
+      title:"Berjaya Dihantar!",
+      content:"Permohonan anda telah berjaya dihantar. Kami akan menghubungi anda secepat mungkin."
+    },
   }
 };

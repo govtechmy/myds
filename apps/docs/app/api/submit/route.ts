@@ -14,11 +14,11 @@ export async function POST(request: Request) {
     const sendEmail = async ({
       to,
       subject,
-      body,
+      html,
     }: {
       to: string;
       subject: string;
-      body: string;
+      html: string;
     }) => {
       const params = {
         Source: process.env.SES_FROM_ADDRESS!,
@@ -28,10 +28,12 @@ export async function POST(request: Request) {
         Message: {
           Subject: {
             Data: subject,
+            Charset: "UTF-8",
           },
           Body: {
-            Text: {
-              Data: body,
+            Html: {
+              Data: html,
+              Charset: "UTF-8",
             },
           },
         },
@@ -57,19 +59,22 @@ export async function POST(request: Request) {
     const sheetResponse = await res.json();
 
     if (sheetResponse.status === "success") {
-      const message = `Hi ${body.name},
-
-      We've received your request to be part of the MYDS Community! Our team has recorded your information and will contact you as soon as possible.
-
-      Thank you for your interest in shaping Malaysia's Design System.
-
-      Best regards,  
-      MYDS Team`;
+      const htmlMessage = `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+          <h2 style="color: #2C3E50;">Hi ${body.name},</h2>
+          <p>We've received your request to be part of the <strong>MYDS Community</strong>!</p>
+          <p>Our team has recorded your information and will contact you as soon as possible.</p>
+          <p>Thank you for your interest in shaping <strong>Malaysia's Design System</strong>.</p>
+          <br />
+          <p style="margin-top: 20px;">Best regards,</p>
+          <p><strong>MYDS Team</strong></p>
+        </div>
+      `;
 
       await sendEmail({
         to: body.email,
         subject: "MYDS Community Submission Received",
-        body: message,
+        html: htmlMessage,
       });
     }
 
@@ -82,4 +87,3 @@ export async function POST(request: Request) {
     );
   }
 }
-
