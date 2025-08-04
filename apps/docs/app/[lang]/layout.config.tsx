@@ -1,7 +1,12 @@
 import { Tag } from "@/components/Tag";
 import { links } from "@/lib/constant";
 import { getRosetta } from "@/locales/_server";
-import { ComponentIcon, FontIcon, GlobeIcon, UserGroupIcon } from "@govtechmy/myds-react/icon";
+import {
+  ComponentIcon,
+  FontIcon,
+  GlobeIcon,
+  UserGroupIcon,
+} from "@govtechmy/myds-react/icon";
 import { type HomeLayoutProps } from "fumadocs-ui/home-layout";
 import { LinkItemType } from "fumadocs-ui/layout";
 import Image from "next/image";

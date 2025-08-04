@@ -16,34 +16,34 @@ export default function CommunityHero({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="relative min-h-[700px] flex items-center justify-center py-4 px-4 overflow-hidden z-0">
-        
+    <section className="relative z-0 flex min-h-[700px] items-center justify-center overflow-hidden px-4 py-4">
       <Image
         src="/common/hero.svg"
         alt="Hero"
         fill
         priority
-        className="object-cover img-light opacity-50"
+        className="img-light object-cover opacity-30 blur-sm"
       />
       <Image
         src="/common/hero-dark.svg"
         alt="Hero"
         fill
         priority
-        className="object-cover hidden dark:block img-dark opacity-50"
+        className="img-dark hidden object-cover opacity-30 blur-sm dark:block"
       />
 
-          <div className="w-full max-w-6xl flex flex-col lg:flex-row lg:items-center gap-10 z-10">
-              <div className="lg:w-3/5 backdrop-blur-md">
-                  <h2 className="text-4xl font-bold text-black-900 mb-6">{title}</h2>
-                  <p className="text-xl text-black-600 mb-4">{subtitle1}</p>
-                  <p className="text-base text-black-600">{subtitle2}</p>
-                  <p className="text-base text-black-600 mt-4 font-semibold">{subtitle3}</p>
-              </div>
+      <div className="z-10 flex w-full max-w-6xl flex-col gap-10 lg:flex-row lg:items-center">
+        <div className="backdrop-blur-md lg:w-3/5">
+          <h2 className="text-black-900 mb-6 text-4xl font-bold">{title}</h2>
+          <p className="text-black-600 mb-4 text-xl">{subtitle1}</p>
+          <p className="text-black-600 text-base">{subtitle2}</p>
+          <p className="text-black-600 mt-4 text-base font-semibold">
+            {subtitle3}
+          </p>
+        </div>
 
-              {children && <div className="lg:w-2/5">{children}</div>}
-          </div>
-          
+        {children && <div className="lg:w-2/5">{children}</div>}
+      </div>
     </section>
   );
 }

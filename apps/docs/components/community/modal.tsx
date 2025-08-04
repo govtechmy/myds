@@ -1,8 +1,17 @@
-export default function Modal({ children, onClose }: { children: React.ReactNode; onClose: () => void }) {
+export default function Modal({
+  children,
+  onClose,
+}: {
+  children: React.ReactNode;
+  onClose: () => void;
+}) {
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
-        <button className="absolute top-3 right-3 text-xl text-gray-700" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+      <div className="relative w-full max-w-md rounded-lg bg-white p-6 shadow-lg">
+        <button
+          className="absolute right-3 top-3 text-xl text-gray-700"
+          onClick={onClose}
+        >
           &times;
         </button>
         {children}

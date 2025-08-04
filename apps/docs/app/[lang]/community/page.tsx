@@ -10,7 +10,11 @@ import CheckCircle from "@/icons/check-circle";
 import { links } from "@/lib/constant";
 import Modal from "@/components/community/modal";
 
-export default function CommunityPage({ params }: { params: { lang: "en" | "ms" } }) {
+export default function CommunityPage({
+  params,
+}: {
+  params: { lang: "en" | "ms" };
+}) {
   const [showModal, setShowModal] = useState(false);
 
   const { t } = getRosetta(params.lang);
@@ -28,7 +32,7 @@ export default function CommunityPage({ params }: { params: { lang: "en" | "ms" 
         subtitle2={t("community.subtitle2")}
         subtitle3={t("community.subtitle3")}
       >
-        <div className="bg-bg-white p-8 rounded-xl border">
+        <div className="bg-bg-white rounded-xl border p-8">
           <CommunityForm
             interestLabel={t("community.interest")}
             selectPlaceholder={t("community.form.selectPlaceholder")}
@@ -59,15 +63,17 @@ export default function CommunityPage({ params }: { params: { lang: "en" | "ms" 
 
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <div className="space-y-4 text-center p-6">
+          <div className="space-y-4 p-6 text-center">
             <div className="mx-auto h-11 w-11 text-green-600">
               <CheckCircle className="h-full w-full" />
             </div>
             <h3 className="text-lg font-bold">{t("community.modal.title")}</h3>
-            <p className="text-sm text-gray-600">{t("community.modal.content")}</p>
+            <p className="text-sm text-gray-600">
+              {t("community.modal.content")}
+            </p>
             <button
               onClick={() => setShowModal(false)}
-              className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded w-full"
+              className="bg-primary-600 hover:bg-primary-700 w-full rounded px-4 py-2 text-white"
             >
               {t("community.modal.close")}
             </button>

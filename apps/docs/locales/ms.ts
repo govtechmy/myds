@@ -311,7 +311,8 @@ export default {
     description: "Bantu Penambahbaikan",
     title: "Komuniti Pembangun MYDS",
     subtitle: "Sertai Komuniti Pembangun MYDS!",
-    subtitle2: "Komuniti Pembangun MYDS ialah peluang anda untuk memacu hala tuju perjalanan Sistem Reka Bentuk Malaysia! Komuniti ini melibatkan pelbagai pihak berkepentingan yang menghimpunkan Pereka Kreatif, Pakar UI/UX, Pembangun Front-End, dan ramai lagi bagi memastikan Sistem Reka Bentuk Malaysia setaraf dengan piawaian industri!",
+    subtitle2:
+      "Komuniti Pembangun MYDS ialah peluang anda untuk memacu hala tuju perjalanan Sistem Reka Bentuk Malaysia! Komuniti ini melibatkan pelbagai pihak berkepentingan yang menghimpunkan Pereka Kreatif, Pakar UI/UX, Pembangun Front-End, dan ramai lagi bagi memastikan Sistem Reka Bentuk Malaysia setaraf dengan piawaian industri!",
     subtitle3: "Sertailah kami dalam usaha ini!",
     name: "Nama",
     email: "Emel",
@@ -319,7 +320,8 @@ export default {
     infoTitle: "Maklumat",
     interest: "Berminat dalam:",
     institute: "Institut / Organisasi",
-    myGovOnlyInfo: "Kami kini dalam Fasa 1 dan hanya dibuka kepada pegawai kerajaan yang berminat untuk menyumbang kepada MYDS. Kami akan dibuka kepada orang awam tidak lama lagi — nantikan!",
+    myGovOnlyInfo:
+      "Kami kini dalam Fasa 1 dan hanya dibuka kepada pegawai kerajaan yang berminat untuk menyumbang kepada MYDS. Kami akan dibuka kepada orang awam tidak lama lagi — nantikan!",
     form: {
       selectPlaceholder: "Bidang Minat Anda",
       required: "Ruangan ini wajib diisi",
@@ -334,10 +336,11 @@ export default {
         option3: "Operasi",
       },
     },
-     modal:{
-      close:"Tutup",
-      title:"Berjaya Dihantar!",
-      content:"Permohonan anda telah berjaya dihantar. Kami akan menghubungi anda secepat mungkin."
+    modal: {
+      close: "Tutup",
+      title: "Berjaya Dihantar!",
+      content:
+        "Permohonan anda telah berjaya dihantar. Kami akan menghubungi anda secepat mungkin.",
     },
-  }
+  },
 };
