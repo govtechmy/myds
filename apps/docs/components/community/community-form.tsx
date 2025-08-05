@@ -264,7 +264,7 @@ export default function CommunityForm({
         </div>
 
         <div className="flex justify-center">
-          <button
+          <Button
             type="submit"
             disabled={isLoading}
             className="bg-primary-600 hover:bg-primary-700 disabled:bg-primary-400 flex w-full items-center justify-center gap-2 rounded px-4 py-2 text-center text-white disabled:cursor-not-allowed"
@@ -296,7 +296,7 @@ export default function CommunityForm({
             ) : (
               submitLabel
             )}
-          </button>
+          </Button>
         </div>
       </form>
 
