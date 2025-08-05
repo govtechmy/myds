@@ -47,7 +47,6 @@ export async function POST(request: Request) {
 
     const payload = {
       ...body,
-      token: process.env.SHEET_TOKEN,
     };
 
     const res = await fetch(process.env.SHEET_WEB_APP!, {

@@ -327,8 +327,8 @@ export default {
       required: "Ruangan ini wajib diisi",
       invalidEmail: "Alamat emel tidak sah",
       invalidName: "Nama hanya boleh mengandungi huruf dan ruang",
-      success1: "Terima kasih, ",
-      success2: "! Kami akan hubungi anda di",
+      success1: "Terima kasih",
+      success2: "Kami akan hubungi anda",
       failError: "Gagal menghantar. Sila cuba lagi nanti.",
       interest: {
         option1: "UI/UX",

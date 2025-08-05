@@ -327,8 +327,8 @@ export default {
       requiredInterest: "Please select your area of interest.",
       invalidEmail: "Please Enter a valid email address.",
       invalidName: "Name can only contain letters and spaces.",
-      success1: "Thank you, ",
-      success2: "! We'll contact you at",
+      success1: "Thank you",
+      success2: "We'll contact you soon",
       failError: "Failed to submit. Please try again later.",
       interest: {
         option1: "UI/UX",
