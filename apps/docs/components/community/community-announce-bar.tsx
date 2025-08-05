@@ -14,8 +14,8 @@ export default function CommunityAnnounceBar({
 }) {
   return (
     <div className="w-full border-b border-gray-200">
-      <div className="max-w-container container mx-auto px-4 md:px-6">
-        <AnnounceBar className="border-0">
+      <div className="max-w-container container mx-auto md:px-6">
+        <AnnounceBar className="border-0 md:mx-0">
           <div className="flex items-center gap-3">
             <AnnounceBarTag variant="primary">{infoTitle}</AnnounceBarTag>
             <AnnounceBarDescription>{myGovOnlyInfo}</AnnounceBarDescription>
