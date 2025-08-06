@@ -178,19 +178,18 @@ export default function CommunityForm({
               >
                 <SelectTrigger
                   id="interest"
-                  className={`w-full ${errors.interest ? "border-danger-600" : ""}`}
+                  className={`w-full justify-between ${errors.interest ? "border-danger-600" : ""}`}
                 >
-                  <SelectValue placeholder={selectPlaceholder} />
+                  <SelectValue
+                    placeholder={selectPlaceholder}
+                    className="bg-danger-50"
+                  />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent >
                   <SelectGroup>
                     <SelectItem value="uiux">{interestOptions.uiux}</SelectItem>
-                    <SelectItem value="frontend">
-                      {interestOptions.frontend}
-                    </SelectItem>
-                    <SelectItem value="operation">
-                      {interestOptions.operation}
-                    </SelectItem>
+                    <SelectItem value="frontend">{interestOptions.frontend}</SelectItem>
+                    <SelectItem value="operation">{interestOptions.operation}</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
