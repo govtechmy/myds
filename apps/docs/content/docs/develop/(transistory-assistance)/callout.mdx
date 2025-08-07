@@ -1,0 +1,80 @@
+---
+title: Callout
+description: Explore the integrated accessibility testing tools in our development environment that help identify and resolve accessibility issues during development. These tools work together to ensure our components meet WCAG standards and provide a better experience for all users.
+---
+
+## Automated Testing Tools
+
+Automated accessibility testing tools help catch issues early in the development process. While they can't replace manual testing, they provide a first line of defense against common accessibility problems.
+
+
+### ESLint Plugin: jsx-a11y
+The jsx-a11y ESLint plugin provides static analysis for accessibility rules on JSX elements, catching issues before your code even runs.
+
+**Key Features**
+- Static AST checking for accessibility rules
+- Integrated into our ESLint configuration
+- Enforces best practices at development time
+
+**Implementation**
+
+```jsx
+// In your ESLint configuration
+module.exports = {
+  extends: [
+    // ... other extensions
+    'plugin:jsx-a11y/recommended', // [!code highlight]
+  ],
+  plugins: [
+    // ... other plugins
+    'jsx-a11y', // [!code highlight]
+  ],
+  rules: {
+    // You can customize specific rules
+    'jsx-a11y/aria-role': 'error',
+    'jsx-a11y/img-redundant-alt': 'warn',
+  }
+};
+```
+### Storybook: a11y-addon
+
+For documented components, we use Storybook's accessibility addon to perform runtime accessibility testing.
+
+**Key Features**
+- Integrates axe-core for comprehensive testing
+- Provides visual feedback in the Storybook UI
+- Tests components in different states and variants
+
+### VS Code: axe Accessibility Linter
+
+The axe Accessibility Linter extension for VS Code helps identify accessibility issues during development with real-time feedback.
+
+**Key Features**
+- Provides real-time feedback in your editor
+- Highlights accessibility issues with detailed explanations
+- Complements ESLint with more detailed guidance
+
+**Testing Tips**
+- Install the extension via VS Code marketplace
+- Look for highlighted issues in your JSX/TSX files
+- Hover over issues for detailed explanations and fix suggestions
+
+## Resource & References
+
+<Cards>
+  <Card
+    href="https://github.com/jsx-eslint/eslint-plugin-jsx-a11y?tab=readme-ov-file#supported-rules"
+    title="jsx-a11y"
+    description="Repository and supported rules"
+  />
+  <Card
+    href="https://storybook.js.org/docs/writing-tests/accessibility-testing"
+    title="Storybook accessibility testing"
+    description="Quick start and configuration on storybook accessibility testing"
+  />
+  <Card
+    href="https://marketplace.visualstudio.com/items?itemName=deque-systems.vscode-axe-linter"
+    title="axe Accessibility Linter"
+    description="Download link and guide for installation"
+  />
+</Cards>
