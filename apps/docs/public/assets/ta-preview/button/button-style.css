@@ -1,0 +1,302 @@
+/* CSS BASE RESET ------------------------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default body margin */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: #fff;
+  color: #000;
+}
+
+/* Reset headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove default anchor styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Normalize images and media */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Form elements reset */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  appearance: none;
+}
+
+/* Reset button styles completely */
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Ensure buttons and inputs are usable */
+button:disabled,
+input:disabled {
+  cursor: not-allowed;
+}
+
+/* Table reset */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove focus outlines unless using keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Button Reset */
+.button-myds {
+  all: unset; /* Reset all browser styles */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 6px 10px;
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 0;
+  /* leading-trim is not widely supported, omit or use with fallback */
+  border: 1px solid transparent;
+  border-radius: 8px;
+  gap: 6px;
+}
+
+.button-myds:focus {
+  outline: 3px solid #96b7ff66;
+}
+
+.dark .button-myds:focus {
+  outline: 3px solid #1d4ed866;
+}
+
+/* CSS BASE RESET ------------------------------------------------------------------------------------ */
+
+/* Primary Button */
+.button-myds-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.button-myds-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.button-myds-primary:disabled {
+  background-color: #c2d5ff;
+  cursor: not-allowed;
+  border: none;
+  color: #ffffff66;
+}
+
+/* Secondary Button */
+.button-myds-secondary {
+  background-color: #ffffff;
+  color: #3f3f46;
+  border-color: #e4e4e7;
+}
+
+.button-myds-secondary:hover {
+  background-color: #fafafa;
+}
+
+.button-myds-secondary:disabled {
+  background-color: #f4f4f566;
+  cursor: not-allowed;
+  border: none;
+  color: #52525b66;
+}
+
+/* Secondary Color Button */
+.button-myds-secondary-color {
+  background-color: #ffffff;
+  color: #2563eb;
+  border-color: #c2d5ff;
+}
+
+.button-myds-secondary-color:hover {
+  background-color: #eff6ff;
+}
+
+.button-myds-secondary-color:disabled {
+  background-color: #f4f4f566;
+  cursor: not-allowed;
+  border: none;
+  color: #2563eb66;
+}
+
+/* Tertiary Button */
+
+.button-myds-tertiary {
+  background-color: transparent;
+  border-color: transparent;
+  color: #3f3f46;
+}
+
+.button-myds-tertiary:hover {
+  background-color: #fafafa;
+}
+
+.button-myds-tertiary:disabled {
+  background-color: #f4f4f566;
+  cursor: not-allowed;
+  border: none;
+  color: #52525b66;
+}
+
+/* Tertiary Color Button */
+
+.button-myds-tertiary-color {
+  background-color: transparent;
+  border-color: transparent;
+  color: #2563eb;
+}
+
+.button-myds-tertiary-color:hover {
+  background-color: #eff6ff;
+}
+
+.button-myds-tertiary-color:disabled {
+  background-color: #f4f4f566;
+  cursor: not-allowed;
+  border: none;
+  color: #2563eb66;
+}
+
+/* Danger Primary Button */
+
+.button-myds-danger-primary {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  color: #ffffff;
+}
+
+.button-myds-danger-primary:hover {
+  background-color: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.button-myds-danger-primary:disabled {
+  background-color: #fecaca;
+  cursor: not-allowed;
+  border: none;
+  color: #ffffff66;
+}
+
+/* Danger Secondary Button */
+
+.button-myds-danger-secondary {
+  background-color: #ffffff;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.button-myds-danger-secondary:hover {
+  background-color: #fef2f2;
+  border-color: #fca5a5;
+}
+
+.button-myds-danger-secondary:disabled {
+  background-color: #f4f4f566;
+  cursor: not-allowed;
+  border: none;
+  color: #b91c1c66;
+}
+
+/* Danger Tertiary Button */
+
+.button-myds-danger-tertiary {
+  background-color: #ffffff;
+  border-color: transparent;
+  color: #b91c1c;
+}
+
+.button-myds-danger-tertiary:hover {
+  background-color: #fef2f2;
+  border-color: transparent;
+}
+
+.button-myds-danger-tertiary:disabled {
+  background-color: #f4f4f566;
+  cursor: not-allowed;
+  border: none;
+  color: #b91c1c66;
+}
+
+/* for porting into documentation */
+
+html,
+body {
+  height: 100%;
+  background-color: white;
+}
+.dark body {
+  height: 100%;
+  background-color: #161619;
+}
+
+.page-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 10px;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+}

@@ -1,6 +1,6 @@
 ---
-title: Button
-description: MYDS-compliant button component for seamless transition starting point from HTML/CSS to React
+title: Butang
+description:  Komponen butang patuh MYDS untuk titik permulaan peralihan lancar dari HTML/CSS ke React
 ---
 import {
   PreviewButton,
@@ -12,13 +12,13 @@ import {
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import IframeThemePreview from "@/components/iframe-theme-preview";
 
-<Tabs items={["Preview", "Code","Css"]} defaultValue="Preview">
+<Tabs items={["Preview", "Kod","Css"]} defaultValue="Preview">
   <Tab value="Preview">
     <IframeThemePreview  
       src="/assets/ta-preview/button/ta-button-preview.html" 
     />
   </Tab>
-  <Tab value="Code">
+  <Tab value="Kod">
   ```tsx
       <div class="button-grid">
         <button class="button-myds button-myds-primary">Default</button>
@@ -502,45 +502,45 @@ table {
 </Tabs>
 
 
-## Overview
+## Gambaran Keseluruhan
 
-The MYDS HTML/CSS Button provides flexible variants and consistent styling for applications not using React. It ensures proper state handling (hover, focus, disabled), and design harmony across public-sector interfaces.
+Butang MYDS HTML/CSS menyediakan variasi yang fleksibel dan gaya yang konsisten untuk aplikasi yang tidak menggunakan React. Ia memastikan pengendalian keadaan yang betul (hover, fokus, dilumpuhkan), serta keharmonian reka bentuk merentasi antara muka sektor awam.
 
-## 1. Setup
+## 1. Persediaan
 
-Follow these steps to prepare the button styles in your HTML project.
-
-
-### Step 1 - Copy the CSS code
-
-Copy the full CSS code provided in the **CSS** tab above.
-
-You can:
-
-* **Append** the code to your **existing CSS file** (e.g., `styles.css`, `main.css`, or another stylesheet already linked in your project),
-  **OR**
-* **Create** a new file named `styles.css` if you don’t have a stylesheet yet.
+Ikuti langkah-langkah berikut untuk menyediakan gaya butang dalam projek HTML anda.
 
 
-> ⚠ **Important — CSS Reset Included**
+### Langkah 1 - Salin Kod CSS
+
+Salin keseluruhan kod CSS yang disediakan dalam tab **CSS** di atas.
+
+Anda boleh:
+
+* **Tambahkan** kod tersebut ke dalam **fail CSS sedia ada** anda (contohnya, `styles.css`, `main.css`, atau fail stylesheet lain yang sudah dihubungkan dalam projek anda),
+  **ATAU**
+* **Buat** fail baru bernama `styles.css` jika anda belum mempunyai fail stylesheet.
+
+> ⚠ **Penting — Termasuk CSS Reset**
 >
-> The provided CSS file contains a **global CSS reset** that affects all HTML elements (e.g., removing default margins, padding, borders, and browser styles).
-> This ensures consistent rendering across browsers, but if your project already uses its own reset or normalize stylesheet, **review and adjust the reset section to avoid conflicts**.
+> Fail CSS yang disediakan mengandungi **global CSS reset** yang memberi kesan kepada semua elemen HTML (contohnya, membuang margin, padding, border dan gaya lalai pelayar).
+> Ini memastikan paparan konsisten merentasi pelayar, tetapi jika projek anda sudah menggunakan reset atau normalize stylesheet sendiri, **sila semak dan laraskan bahagian reset untuk mengelakkan konflik**.
 
+### Langkah 2 - Pautkan CSS dalam HTML
 
-### Step 2 - Link the CSS in HTML
-
-If you created a new `styles.css` file, link it in your HTML `<head>`:
+Jika anda telah membuat fail `styles.css` baru, pautkan ia di dalam `<head>` HTML anda:
 
 ```html
 <link rel="stylesheet" href="styles.css" />
 ```
 
-If you appended to an existing file, make sure that file is already linked in your HTML.
+Jika anda menambah kod ke fail yang sudah ada, pastikan fail tersebut sudahpun dipautkan dalam HTML anda.
 
-### Step 3 - Include the required font
 
-The **Inter** font is part of the MYDS design guidelines. Add it inside your `<head>`:
+### Langkah 3 - Sertakan font yang diperlukan
+
+Font **Inter** adalah sebahagian daripada panduan reka bentuk MYDS. Tambahkan ia di dalam `<head>` anda:
+
 
 ```html
 <link
@@ -548,8 +548,7 @@ The **Inter** font is part of the MYDS design guidelines. Add it inside your `<h
   rel="stylesheet"
 />
 ```
-
-Your `<head>` should look similar to:
+`<head>` anda sepatutnya kelihatan seperti berikut:
 
 ```html
 <head>
@@ -564,17 +563,16 @@ Your `<head>` should look similar to:
 </head>
 ```
 
----
 
-## 2. Usage
+## 2. Penggunaan
 
-All buttons use the base class:
+Semua butang menggunakan kelas asas:
 
 ```html
 <button class="button-myds">...</button>
 ```
 
-To apply styles, add one of the variant modifier classes:
+Untuk menggunakan gaya, tambahkan salah satu kelas pengubah varian berikut:
 
 * `button-myds-primary`
 * `button-myds-secondary`
@@ -587,13 +585,12 @@ To apply styles, add one of the variant modifier classes:
 
 ---
 
-## 3. Variants
+## 3. Variasi
 
-### Primary
+### Utama (Primary)
 
-
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
+  <Tab value="Pratonton">
   <div className="flex justify-center">
       <Button
         >
@@ -601,7 +598,7 @@ To apply styles, add one of the variant modifier classes:
       </Button>
       </div>
   </Tab>
-  <Tab value="Code">
+  <Tab value="Kod">
   ```tsx 
   <button class="button-myds button-myds-primary">Primary</button>
   ```
@@ -610,10 +607,10 @@ To apply styles, add one of the variant modifier classes:
 
 
 
-### Secondary
+### Sekunder (Secondary)
 
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
+  <Tab value="Pratonton">
   <div className="flex justify-center">
       <Button
         variant="default-outline"
@@ -622,7 +619,7 @@ To apply styles, add one of the variant modifier classes:
       </Button>
       </div>
   </Tab>
-  <Tab value="Code">
+  <Tab value="Kod">
   ```tsx 
   <button class="button-myds button-myds-secondary">Secondary</button>
   ```
@@ -630,10 +627,10 @@ To apply styles, add one of the variant modifier classes:
 </Tabs>
 
 
-### Secondary Color
+### Warna Sekunder (Secondary Color)
 
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
+  <Tab value="Pratonton">
   <div className="flex justify-center">
       <Button
         variant="primary-outline"
@@ -642,17 +639,17 @@ To apply styles, add one of the variant modifier classes:
       </Button>
       </div>
   </Tab>
-  <Tab value="Code">
+  <Tab value="Kod">
   ```tsx 
   <button class="button-myds button-myds-secondary-color">Secondary</button>
   ```
   </Tab>
 </Tabs>
 
-### Tertiary
+### Tertier (Tertiary)
 
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
+  <Tab value="Pratonton">
   <div className="flex justify-center">
       <Button
         variant="default-ghost"
@@ -661,17 +658,17 @@ To apply styles, add one of the variant modifier classes:
       </Button>
       </div>
   </Tab>
-  <Tab value="Code">
+  <Tab value="Kod">
   ```tsx 
   <button class="button-myds button-myds-tertiary">Tertiary</button>
   ```
   </Tab>
 </Tabs>
 
-### Tertiary Color
+### Warna Tertier (Tertiary Color)
 
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
+  <Tab value="Pratonton">
   <div className="flex justify-center">
       <Button
         variant="primary-ghost"
@@ -680,7 +677,7 @@ To apply styles, add one of the variant modifier classes:
       </Button>
       </div>
   </Tab>
-  <Tab value="Code">
+  <Tab value="Kod">
   ```tsx 
   <button class="button-myds button-myds-tertiary-color">Tertiary</button>
   ```
@@ -689,8 +686,8 @@ To apply styles, add one of the variant modifier classes:
 
 ### Danger - Primary
 
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
+  <Tab value="Pratonton">
   <div className="flex justify-center">
       <Button
         variant="danger-fill"
@@ -699,7 +696,7 @@ To apply styles, add one of the variant modifier classes:
       </Button>
       </div>
   </Tab>
-  <Tab value="Code">
+  <Tab value="Kod">
   ```tsx 
   <button class="button-myds button-myds-danger-primary">Danger</button>
   ```
@@ -708,85 +705,87 @@ To apply styles, add one of the variant modifier classes:
 
 ### Danger - Secondary
 
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
+  <Tab value="Pratonton">
   <div className="flex justify-center">
       <Button
         variant="danger-outline"
         >
-        <span className='text-[#b91c1c]'>Tertiary</span>
+        <span className='text-[#b91c1c]'>Danger</span>
       </Button>
       </div>
   </Tab>
-  <Tab value="Code">
+  <Tab value="Kod">
   ```tsx 
-  <button class="button-myds button-myds-danger-secondary">Secondary</button>
+  <button class="button-myds button-myds-danger-secondary">Danger</button>
   ```
   </Tab>
 </Tabs>
 
 ### Danger - Tertiary
 
-<Tabs items={["Preview", "Code"]} defaultValue="Preview">
-  <Tab value="Preview">
+<Tabs items={["Pratonton", "Kod"]} defaultValue="Preview">
+  <Tab value="Pratonton">
   <div className="flex justify-center">
       <Button
         variant="danger-ghost"
         >
-        <span className='text-[#b91c1c]'>Tertiary</span>
+        <span className='text-[#b91c1c]'>Danger</span>
       </Button>
       </div>
   </Tab>
-  <Tab value="Code">
+  <Tab value="Kod">
   ```tsx 
-  <button class="button-myds button-myds-danger-tertiary">Secondary</button>
+  <button class="button-myds button-myds-danger-tertiary">Danger</button>
   ```
   </Tab>
 </Tabs>
 
 ---
 
-## 4. States
+## 4. Keadaan (State)
 
-Each variant supports:
+Setiap varian menyokong:
 
-* **Default**
-* **Hover**
-* **Focused**
-* **Disabled**
+* **Asal**
+* **Arahkan Tetikus (Hover)**
+* **Fokus**
+* **Dilumpuhkan**
 
----
-
-## 5. Anatomy
-
-| Selector                 | Purpose                              |
-| ------------------------ | ------------------------------------ |
-| `.button-myds`           | Base layout and reset                |
-| `.button-myds-[variant]` | Defines visual appearance            |
-| `:hover`                 | Hover interactions                   |
-| `:focus`                 | Focus ring for accessibility         |
-| `:disabled`              | Disabled appearance and cursor style |
 
 ---
 
-## 6. Customization
+## 5. Anatomi
 
-You can override default styles in your stylesheet
-Example:
+| Pemilih                  | Tujuan                                 |
+| ------------------------ | -------------------------------------- |
+| `.button-myds`           | Susun atur asas dan tetapan semula     |
+| `.button-myds-[variant]` | Menentukan penampilan visual           |
+| `:hover`                 | Interaksi apabila tetikus diarahkan    |
+| `:focus`                 | Cincin fokus untuk kebolehcapaian      |
+| `:disabled`              | Penampilan dilumpuhkan dan gaya kursor |
+
+---
+
+## 6. Penyesuaian
+
+Anda boleh mengatasi gaya lalai dalam fail stylesheet anda
+Contoh:
 
 ```css
 .button-myds.button-myds-primary {
-  background-color: #1e40af; /* Custom primary color */
+  background-color: #1e40af; /* Warna utama tersuai */
 }
 ```
 
 ---
 
-## 7. Accessibility
+## 7. Kebolehcapaian
 
-* Built with the native `<button>` element
-* Keyboard navigation supported with visible focus ring
-* Disabled state uses the native `disabled` attribute
+* Dibina menggunakan elemen `<button>` asli
+* Navigasi papan kekunci disokong dengan cincin fokus yang kelihatan
+* Keadaan dilumpuhkan menggunakan atribut `disabled` asli
 
 ---
+
 

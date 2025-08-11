@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+    <link rel="stylesheet" href="button-style.css" />
+    <link rel="stylesheet" href="button-style-darkmode.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      window.addEventListener("message", (event) => {
+        if (event.origin !== window.origin) return;
+        if (event.data?.theme) {
+          document.documentElement.className = event.data.theme;
+          console.log("Theme applied inside iframe:", event.data.theme);
+        }
+      }, false);
+    </script>
+    
+  </head>
+  <body>
+    <main class="page-center">
+      <div class="button-grid">
+        <!-- Primary -->
+        <button class="button-myds button-myds-primary">Default</button>
+        <button class="button-myds button-myds-primary">Hover</button>
+        <button class="button-myds button-myds-primary">Focused</button>
+        <button disabled class="button-myds button-myds-primary">
+          Disabled
+        </button>
+
+        <!-- Secondary -->
+        <button class="button-myds button-myds-secondary">Secondary</button>
+        <button class="button-myds button-myds-secondary">Hover</button>
+        <button class="button-myds button-myds-secondary">Focused</button>
+        <button disabled class="button-myds button-myds-secondary">
+          Disabled
+        </button>
+
+        <!-- Secondary Color -->
+        <button class="button-myds button-myds-secondary-color">
+          Secondary
+        </button>
+        <button class="button-myds button-myds-secondary-color">Hover</button>
+        <button class="button-myds button-myds-secondary-color">Focused</button>
+        <button disabled class="button-myds button-myds-secondary-color">
+          Disabled
+        </button>
+
+        <!-- Tertiary -->
+        <button class="button-myds button-myds-tertiary">Tertiary</button>
+        <button class="button-myds button-myds-tertiary">Hover</button>
+        <button class="button-myds button-myds-tertiary">Focused</button>
+        <button disabled class="button-myds button-myds-tertiary">
+          Disabled
+        </button>
+
+        <!-- Tertiary Color -->
+        <button class="button-myds button-myds-tertiary-color">Tertiary</button>
+        <button class="button-myds button-myds-tertiary-color">Hover</button>
+        <button class="button-myds button-myds-tertiary-color">Focused</button>
+        <button disabled class="button-myds button-myds-tertiary-color">
+          Disabled
+        </button>
+
+        <!-- Danger Primary -->
+        <button class="button-myds button-myds-danger-primary">Danger</button>
+        <button class="button-myds button-myds-danger-primary">Hover</button>
+        <button class="button-myds button-myds-danger-primary">Focused</button>
+        <button disabled class="button-myds button-myds-danger-primary">
+          Disabled
+        </button>
+
+        <!-- Danger Secondary -->
+        <button class="button-myds button-myds-danger-secondary">Danger</button>
+        <button class="button-myds button-myds-danger-secondary">Hover</button>
+        <button class="button-myds button-myds-danger-secondary">
+          Focused
+        </button>
+        <button disabled class="button-myds button-myds-danger-secondary">
+          Disabled
+        </button>
+
+        <!-- Danger Tertiary -->
+        <button class="button-myds button-myds-danger-tertiary">Danger</button>
+        <button class="button-myds button-myds-danger-tertiary">Hover</button>
+        <button class="button-myds button-myds-danger-tertiary">Focused</button>
+        <button disabled class="button-myds button-myds-danger-tertiary">
+          Disabled
+        </button>
+      </div>
+    </main>
+  </body>
+</html>
