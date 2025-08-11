@@ -95,7 +95,7 @@ export function SetNewPasswordTemplate() {
         <h1 className="text-2xl font-semibold mb-2">Set new password</h1>
 
         <p className="text-body-md text-gray-600 mb-6">
-          Your new password must be different to previously used passwords.
+          Your new password must be different from previously used passwords.
         </p>
 
         <form className="space-y-4 text-left">
