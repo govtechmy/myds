@@ -518,15 +518,13 @@ Butang MYDS HTML/CSS menyediakan variasi yang fleksibel dan gaya yang konsisten 
 
 Ikuti langkah-langkah ini untuk menyediakan gaya butang dalam projek HTML anda.
 
----
-
 **Susunan Import yang Disyorkan**
 Pastikan anda memuatkan fail stylesheet mengikut urutan ini bagi memastikan gaya dipaparkan dengan betul:
 
 ```html
-<link rel="stylesheet" href="reset.css" />
-<link rel="stylesheet" href="button.css" />
-<link rel="stylesheet" href="button-dark.css" />
+<link rel="stylesheet" href="reset.css" /> <!-- rujuk kepada ResetCSS -->
+<link rel="stylesheet" href="button.css" /> <!-- rujuk kepada ButtonCSS -->
+<link rel="stylesheet" href="button-dark.css" /> <!-- rujuk kepada ButtonDarkCSS -->
 ```
 
 Ini memastikan bahawa:
@@ -535,7 +533,6 @@ Ini memastikan bahawa:
 2. **Gaya asas butang** mengatasi reset di mana perlu.
 3. **Gaya tema gelap** dimuatkan terakhir, supaya ia boleh mengatasi kedua-dua reset dan gaya asas butang apabila diperlukan.
 
----
 
 ### Langkah 2 – Sertakan fon yang diperlukan
 
@@ -565,7 +562,7 @@ Bahagian `<head>` anda sepatutnya kelihatan seperti ini:
 </head>
 ```
 
----
+
 
 ## 2. Penggunaan
 
@@ -586,7 +583,7 @@ Untuk menggunakan gaya, tambahkan salah satu kelas pengubah varian berikut:
 * `button-myds-danger-secondary`
 * `button-myds-danger-tertiary`
 
----
+
 
 ## 3. Variasi
 
@@ -744,7 +741,7 @@ Untuk menggunakan gaya, tambahkan salah satu kelas pengubah varian berikut:
   </Tab>
 </Tabs>
 
----
+
 
 ## 4. Keadaan (State)
 
@@ -756,10 +753,9 @@ Setiap varian menyokong:
 * **Dilumpuhkan**
 
 
----
+
 
 ## 5. Anatomi
-
 | Pemilih                  | Tujuan                                 |
 | ------------------------ | -------------------------------------- |
 | `.button-myds`           | Susun atur asas dan tetapan semula     |
@@ -768,7 +764,7 @@ Setiap varian menyokong:
 | `:focus`                 | Cincin fokus untuk kebolehcapaian      |
 | `:disabled`              | Penampilan dilumpuhkan dan gaya kursor |
 
----
+
 
 ## 6. Penyesuaian
 
@@ -781,7 +777,7 @@ Contoh:
 }
 ```
 
----
+
 
 ## 7. Kebolehcapaian
 
@@ -789,6 +785,6 @@ Contoh:
 * Navigasi papan kekunci disokong dengan cincin fokus yang kelihatan
 * Keadaan dilumpuhkan menggunakan atribut `disabled` asli
 
----
+
 
 

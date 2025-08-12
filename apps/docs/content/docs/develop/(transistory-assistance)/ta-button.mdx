@@ -516,15 +516,14 @@ The MYDS HTML/CSS Button provides flexible variants and consistent styling for a
 
 Follow these steps to prepare the button styles in your HTML project.
 
----
 
 **Recommended Import Order**
 Make sure to load the stylesheets in this sequence to ensure proper styling:
 
 ```html
-<link rel="stylesheet" href="reset.css" />
-<link rel="stylesheet" href="button.css" />
-<link rel="stylesheet" href="button-dark.css" />
+<link rel="stylesheet" href="reset.css" />  <!-- refer to ResetCSS -->
+<link rel="stylesheet" href="button.css" /> <!-- refer to ButtonCSS -->
+<link rel="stylesheet" href="button-dark.css" /> <!-- refer to ButtonDarkCSS -->
 ```
 
 This guarantees that:
@@ -533,7 +532,6 @@ This guarantees that:
 2. The **button base styles** override the reset where necessary.
 3. The **dark theme styles** apply last, so they can override both the reset and base button styles when needed.
 
----
 
 ### Step 2 - Include the required font
 
@@ -563,7 +561,7 @@ Your `<head>` should look similar to:
 </head>
 ```
 
----
+
 
 ## 2. Usage
 
@@ -584,7 +582,7 @@ To apply styles, add one of the variant modifier classes:
 * `button-myds-danger-secondary`
 * `button-myds-danger-tertiary`
 
----
+
 
 ## 3. Variants
 
@@ -743,7 +741,7 @@ To apply styles, add one of the variant modifier classes:
   </Tab>
 </Tabs>
 
----
+
 
 ## 4. States
 
@@ -754,10 +752,9 @@ Each variant supports:
 * **Focused**
 * **Disabled**
 
----
+
 
 ## 5. Anatomy
-
 | Selector                 | Purpose                              |
 | ------------------------ | ------------------------------------ |
 | `.button-myds`           | Base layout and reset                |
@@ -766,7 +763,7 @@ Each variant supports:
 | `:focus`                 | Focus ring for accessibility         |
 | `:disabled`              | Disabled appearance and cursor style |
 
----
+
 
 ## 6. Customization
 
@@ -779,7 +776,7 @@ Example:
 }
 ```
 
----
+
 
 ## 7. Accessibility
 
@@ -787,5 +784,5 @@ Example:
 * Keyboard navigation supported with visible focus ring
 * Disabled state uses the native `disabled` attribute
 
----
+
 
