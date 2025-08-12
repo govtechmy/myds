@@ -12,7 +12,7 @@ import {
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import IframeThemePreview from "@/components/iframe-theme-preview";
 
-<Tabs items={["Preview", "Kod","Css"]} defaultValue="Preview">
+<Tabs items={["Preview","Kod","ResetCSS","ButtonCSS","ButtonDarkCSS"]} defaultValue="Preview">
   <Tab value="Preview">
     <IframeThemePreview  
       src="/assets/ta-preview/button/ta-button-preview.html" 
@@ -83,10 +83,9 @@ import IframeThemePreview from "@/components/iframe-theme-preview";
       </div>
       ```
   </Tab>
-  <Tab value="Css">
+  <Tab value="ResetCSS">
   ```tsx
 /* CSS BASE RESET ------------------------------------------------------------------------------------ */
-
 *,
 *::before,
 *::after {
@@ -197,6 +196,11 @@ table {
   gap: 6px;
 }
 
+
+  ```
+  </Tab>
+  <Tab value="ButtonCSS">
+  ```tsx
 .button-myds:focus {
   outline: 3px solid #96b7ff66;
 }
@@ -204,8 +208,6 @@ table {
 .dark .button-myds:focus {
   outline: 3px solid #1d4ed866;
 }
-
-/* CSS BASE RESET ------------------------------------------------------------------------------------ */
 
 /* Primary Button */
 .button-myds-primary {
@@ -359,143 +361,148 @@ table {
   color: #b91c1c66;
 }
 
+  ```
+  </Tab>
+  <Tab value="ButtonDarkCSS">
+  ```tsx
 /* dark mode support */
 
 .dark .button-myds-primary:disabled {
-  background-color: #172554;
-  cursor: not-allowed;
-  border-color: transparent;
-  color: #ffffff66;
-}
-
-/* Secondary Button */
-.dark .button-myds-secondary {
-  background-color: #18181b;
-  color: #d4d4d8;
-  border-color: #3f3f46;
-}
-
-.dark .button-myds-secondary:hover {
-  background-color: #27272a;
-}
-
-.dark .button-myds-secondary:disabled {
-  background-color: #27272a66;
-  cursor: not-allowed;
-  border-color: transparent;
-  color: #a1a1aa66;
-}
-
-/* Secondary Color Button */
-.dark .button-myds-secondary-color {
-  background-color: #18181b;
-  color: #6394ff;
-  border-color: #1e40af;
-}
-
-.dark .button-myds-secondary-color:hover {
-  background-color: #172554;
-}
-
-.dark .button-myds-secondary-color:disabled {
-  background-color: #27272a66;
-  cursor: not-allowed;
-  border-color: transparent;
-  color: #6394ff66;
-}
-
-/* Tertiary Button */
-.dark .button-myds-tertiary {
-  background-color: transparent;
-  border-color: transparent;
-  color: #d4d4d8;
-}
-
-.dark .button-myds-tertiary:hover {
-  background-color: #27272a;
-}
-
-.dark .button-myds-tertiary:disabled {
-  background-color: #27272a66;
-  cursor: not-allowed;
-  border-color: transparent;
-  color: #a1a1aa66;
-}
-
-/* Tertiary Color Button */
-.dark .button-myds-tertiary-color {
-  background-color: transparent;
-  border-color: transparent;
-  color: #6394ff;
-}
-
-.dark .button-myds-tertiary-color:hover {
-  background-color: #172554;
-}
-
-.dark .button-myds-tertiary-color:disabled {
-  background-color: #27272a66;
-  cursor: not-allowed;
-  border-color: transparent;
-  color: #6394ff66;
-}
-
-/* Danger Primary Button */
-.dark .button-myds-danger-primary {
-  background-color: #dc2626;
-  border-color: #dc2626;
-  color: #ffffff;
-}
-
-.dark .button-myds-danger-primary:hover {
-  background-color: #b91c1c;
-  border-color: #b91c1c;
-}
-
-.dark .button-myds-danger-primary:disabled {
-  background-color: #450a0a;
-  cursor: not-allowed;
-  border-color: transparent;
-  color: #ffffff66;
-}
-
-/* Danger Secondary Button */
-.dark .button-myds-danger-secondary {
-  background-color: #18181b;
-  border-color: #991b1b;
-  color: #f87171;
-}
-
-.dark .button-myds-danger-secondary:hover {
-  background-color: #450a0a;
-  border-color: #fca5a5;
-}
-
-.dark .button-myds-danger-secondary:disabled {
-  background-color: #27272a66;
-  cursor: not-allowed;
-  border-color: transparent;
-  color: #f8717166;
-}
-
-/* Danger Tertiary Button */
-.dark .button-myds-danger-tertiary {
-  background-color: transparent;
-  border-color: transparent;
-  color: #f87171;
-}
-
-.dark .button-myds-danger-tertiary:hover {
-  background-color: #450a0a;
-  border-color: transparent;
-}
-
-.dark .button-myds-danger-tertiary:disabled {
-  background-color: #27272a66;
-  cursor: not-allowed;
-  border-color: transparent;
-  color: #f8717166;
-}
+    background-color: #172554;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #ffffff66;
+  }
+  
+  /* Secondary Button */
+  .dark .button-myds-secondary {
+    background-color: #18181b;
+    color: #d4d4d8;
+    border-color: #3f3f46;
+  }
+  
+  .dark .button-myds-secondary:hover {
+    background-color: #27272a;
+  }
+  
+  .dark .button-myds-secondary:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #a1a1aa66;
+  }
+  
+  /* Secondary Color Button */
+  .dark .button-myds-secondary-color {
+    background-color: #18181b;
+    color: #6394ff;
+    border-color: #1e40af;
+  }
+  
+  .dark .button-myds-secondary-color:hover {
+    background-color: #172554;
+  }
+  
+  .dark .button-myds-secondary-color:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #6394ff66;
+  }
+  
+  /* Tertiary Button */
+  .dark .button-myds-tertiary {
+    background-color: transparent;
+    border-color: transparent;
+    color: #d4d4d8;
+  }
+  
+  .dark .button-myds-tertiary:hover {
+    background-color: #27272a;
+  }
+  
+  .dark .button-myds-tertiary:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #a1a1aa66;
+  }
+  
+  /* Tertiary Color Button */
+  .dark .button-myds-tertiary-color {
+    background-color: transparent;
+    border-color: transparent;
+    color: #6394ff;
+  }
+  
+  .dark .button-myds-tertiary-color:hover {
+    background-color: #172554;
+  }
+  
+  .dark .button-myds-tertiary-color:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #6394ff66;
+  }
+  
+  /* Danger Primary Button */
+  .dark .button-myds-danger-primary {
+    background-color: #dc2626;
+    border-color: #dc2626;
+    color: #ffffff;
+  }
+  
+  .dark .button-myds-danger-primary:hover {
+    background-color: #b91c1c;
+    border-color: #b91c1c;
+  }
+  
+  .dark .button-myds-danger-primary:disabled {
+    background-color: #450a0a;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #ffffff66;
+  }
+  
+  /* Danger Secondary Button */
+  .dark .button-myds-danger-secondary {
+    background-color: #18181b;
+    border-color: #991b1b;
+    color: #f87171;
+  }
+  
+  .dark .button-myds-danger-secondary:hover {
+    background-color: #450a0a;
+    border-color: #fca5a5;
+  }
+  
+  .dark .button-myds-danger-secondary:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #f8717166;
+  }
+  
+  /* Danger Tertiary Button */
+  .dark .button-myds-danger-tertiary {
+    background-color: transparent;
+    border-color: transparent;
+    color: #f87171;
+  }
+  
+  .dark .button-myds-danger-tertiary:hover {
+    background-color: #450a0a;
+    border-color: transparent;
+  }
+  
+  .dark .button-myds-danger-tertiary:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #f8717166;
+  }
+  
 
   ```
   </Tab>
@@ -506,41 +513,33 @@ table {
 
 Butang MYDS HTML/CSS menyediakan variasi yang fleksibel dan gaya yang konsisten untuk aplikasi yang tidak menggunakan React. Ia memastikan pengendalian keadaan yang betul (hover, fokus, dilumpuhkan), serta keharmonian reka bentuk merentasi antara muka sektor awam.
 
+
 ## 1. Persediaan
 
-Ikuti langkah-langkah berikut untuk menyediakan gaya butang dalam projek HTML anda.
+Ikuti langkah-langkah ini untuk menyediakan gaya butang dalam projek HTML anda.
 
+---
 
-### Langkah 1 - Salin Kod CSS
-
-Salin keseluruhan kod CSS yang disediakan dalam tab **CSS** di atas.
-
-Anda boleh:
-
-* **Tambahkan** kod tersebut ke dalam **fail CSS sedia ada** anda (contohnya, `styles.css`, `main.css`, atau fail stylesheet lain yang sudah dihubungkan dalam projek anda),
-  **ATAU**
-* **Buat** fail baru bernama `styles.css` jika anda belum mempunyai fail stylesheet.
-
-> ⚠ **Penting — Termasuk CSS Reset**
->
-> Fail CSS yang disediakan mengandungi **global CSS reset** yang memberi kesan kepada semua elemen HTML (contohnya, membuang margin, padding, border dan gaya lalai pelayar).
-> Ini memastikan paparan konsisten merentasi pelayar, tetapi jika projek anda sudah menggunakan reset atau normalize stylesheet sendiri, **sila semak dan laraskan bahagian reset untuk mengelakkan konflik**.
-
-### Langkah 2 - Pautkan CSS dalam HTML
-
-Jika anda telah membuat fail `styles.css` baru, pautkan ia di dalam `<head>` HTML anda:
+**Susunan Import yang Disyorkan**
+Pastikan anda memuatkan fail stylesheet mengikut urutan ini bagi memastikan gaya dipaparkan dengan betul:
 
 ```html
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="reset.css" />
+<link rel="stylesheet" href="button.css" />
+<link rel="stylesheet" href="button-dark.css" />
 ```
 
-Jika anda menambah kod ke fail yang sudah ada, pastikan fail tersebut sudahpun dipautkan dalam HTML anda.
+Ini memastikan bahawa:
 
+1. **CSS reset** digunakan terlebih dahulu.
+2. **Gaya asas butang** mengatasi reset di mana perlu.
+3. **Gaya tema gelap** dimuatkan terakhir, supaya ia boleh mengatasi kedua-dua reset dan gaya asas butang apabila diperlukan.
 
-### Langkah 3 - Sertakan font yang diperlukan
+---
 
-Font **Inter** adalah sebahagian daripada panduan reka bentuk MYDS. Tambahkan ia di dalam `<head>` anda:
+### Langkah 2 – Sertakan fon yang diperlukan
 
+Fon **Inter** adalah sebahagian daripada garis panduan reka bentuk MYDS. Tambahkan ia di dalam tag `<head>`:
 
 ```html
 <link
@@ -548,21 +547,25 @@ Font **Inter** adalah sebahagian daripada panduan reka bentuk MYDS. Tambahkan ia
   rel="stylesheet"
 />
 ```
-`<head>` anda sepatutnya kelihatan seperti berikut:
+
+Bahagian `<head>` anda sepatutnya kelihatan seperti ini:
 
 ```html
 <head>
-  <!-- Inter Font -->
+  <!-- Fon Inter -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
-  <!-- Design System Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Stylesheet Sistem Reka Bentuk -->
+  <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="button.css" />
+  <link rel="stylesheet" href="button-dark.css" />
 </head>
 ```
 
+---
 
 ## 2. Penggunaan
 
