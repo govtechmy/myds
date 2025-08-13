@@ -32,6 +32,14 @@
     "(transistory-assistance)/ta-theme-switcher/",
     "(transistory-assistance)/ta-toggle/",
 
+    "---Template ---",
+    "(template)/login",
+    "(template)/registration",
+    "(template)/forgot-password",
+    "(template)/landing-page",
+    "(template)/standard-page",
+    "(template)/contact-us",
+
     "---Komponen ---",
     "(components)/accordion",
     "(components)/alert-dialog",
@@ -70,7 +78,7 @@
     "(components)/toast",
     "(components)/toggle",
     "(components)/tooltip",
-
+    
     "---Hooks ---",
     "(hooks)/use-pagination",
     "(hooks)/use-theme",
