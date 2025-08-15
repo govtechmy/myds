@@ -1,6 +1,6 @@
 ---
-title: Contact us
-description: A responsive, accessible contact us screen template with MYDS components.
+title: Hubungi Kami
+description: Templat skrin hubungi kami yang responsif dan mesra kebolehcapaian dengan komponen MYDS.
 ---
 
 import { Button } from "@/components/myds";
@@ -183,30 +183,27 @@ export default function ContactUsTemplate() {
 </Tabs>
 
 
+## Ringkasan Umum
 
+Komponen `ContactUsTemplate` menyediakan contoh UI untuk skrin lupa kata laluan menggunakan komponen [MYDS](https://github.com/govtechmy/myds) Ia merangkumi:
 
-## Overview
+- Bahagian butiran hubungan yang responsif dengan bingkai peta Google, nombor telefon dan e-mel.
+- Pautan media sosial dengan ikon yang digayakan mengikut garis panduan reka bentuk MYDS.
+- Reka bentuk mesra peranti mudah alih yang menyesuaikan susun atur daripada format bertindan kepada satu baris pada skrin bersaiz besar.
 
-The `ContactUsTemplate` component provides a sample UI contact us screen using [MYDS](https://github.com/govtechmy/myds) components. It includes:
+Templat halaman hubungi kami ini dibina untuk **pembangunan yang pantas** dan **integrasi yang mudah**. Ia direka bentuk untuk membantu pasukan memulakan dengan lebih cepat melalui susun atur yang mematuhi **sistem reka bentuk MYDS**, tanpa perlu menyusun komponen secara manual.
 
-- Responsive contact details section with google map frame, telephone and email.
-- Social media links with icons styled according to the MYDS design guidelines.
-- A mobile-friendly layout that adapts from stacked sections to a single row on large screens.
-
-This contact us page template is built for **rapid development** and **easy integration**. It is designed to help teams get started faster by providing a layout that adheres to the **MYDS design system**, eliminating the need to piece together individual components manually.
-
-> ⚠️ **Note**: This is a **design-only template**. It does **not** include any functional logic such as:
-> - Working contact details for google map frame, telephone and email
-> - Working Social media links
+> ⚠️ **Nota**: Ini ialah **templat reka bentuk sahaja**. Ia **tidak** merangkumi sebarang logik fungsi seperti:
+> - Butiran hubungan yang berfungsi untuk bingkai peta Google, nombor telefon dan e-mel
+> - Pautan media sosial yang berfungsi
 > 
 > You are expected to implement such logic based on your own system needs.
 
+## Penggunaan
 
-## Usage
+Salin keseluruhan kod di bawah untuk mula!
 
-Copy the whole code below to get started!
-
-```tsx copy title="Template"
+```tsx copy title="Templat"
 import { Button } from "@govtechmy/myds-react/button";
 import {
     PhoneIcon,
@@ -353,48 +350,50 @@ export default function ContactUsTemplate() {
 }
 ```
 
-## Anatomy
+## Anatomi
 
 ```
 <ContactUs />
-├── Header
-│   └── PageTitle ("Contact Us")
-├── Body
-│   ├── InfoSection
-│   │   ├── OfficeLabel ("Office")
-│   │   ├── OfficeName ("Ministry of Digital")
-│   │   ├── OfficeAddress (multiline)
-│   │   ├── MapButtons
-│   │   │   ├── Google Maps Button (PinIcon)
-│   │   │   └── Waze Button (PinIcon)
-│   └── MapSection
+├── Pengepala
+│   └── TajukHalaman ("Hubungi Kami")
+├── Badan
+│   ├── SeksyenMaklumat
+│   │   ├── LabelPejabat ("Pejabat")
+│   │   ├── NamaPejabat ("Kementerian Digital")
+│   │   ├── AlamatPejabat (berbilang baris)
+│   │   ├── ButangPeta
+│   │   │   ├── Butang Google Maps (PinIcon)
+│   │   │   └── Butang Waze (PinIcon)
+│   └── SeksyenPeta
 │       └── GoogleMapIframe
-└── Footer
-    ├── ContactMethods
-    │   ├── Telephone (PhoneIcon)
-    │   └── Email (EmailIcon)
-    └── SocialLinks
+└── KakiHalaman
+    ├── KaedahHubungan
+    │   ├── Telefon (PhoneIcon)
+    │   └── E-mel (EmailIcon)
+    └── PautanMediaSosial
         ├── Facebook
         ├── Instagram
         ├── X (Twitter)
         └── Tiktok
-
 ```
 
-## Features
+## Ciri-ciri
 
-- Fully responsive layout with adaptive grid for small to large screens.
-- Integrated Google Maps iframe for location display.
-- Mobile-friendly social links arranged in grid format.
+- Susun atur responsif sepenuhnya dengan grid adaptif untuk skrin kecil hingga besar.
+
+- Iframe Google Maps terbina bagi paparan lokasi.
+- Pautan media sosial mesra peranti mudah alih disusun dalam format grid.
 
 ## Customization
 
-You can edit anything inside the code, its fully customizable!
-It’s built to help you get started quickly with a contact us UI and is meant to be adapted however you like. The template is made up of three main parts:
+## Penyesuaian
 
--  `Header` - Edit to change the title, add branding, or integrate functional components (toggle/dropdown)
--  `Body` - Edit to adjust the office details, map embed, and contact action buttons
--  `Footer` -  Edit to change contact info, add/remove links, and update social media icons
+Anda boleh mengedit apa sahaja dalam kod ini — ia boleh disesuaikan sepenuhnya!
+Ia dibina untuk membantu anda bermula dengan cepat dengan antara muka hubungi kami, dan direka bentuk untuk disesuaikan mengikut keperluan anda. Templat ini terdiri daripada tiga bahagian utama:
 
-Think of this as a flexible UI starting point, where you can change anything, add anything, and make it your own!
-Previously, using just MYDS components meant you still had to design and style entire pages from scratch. Now, with the new templates, you don’t have to worry about CSS or layout design. They come with ready-made, mobile-friendly UIs to speed up your development!
+- `Header` – Sunting untuk menukar tajuk, menambah penjenamaan, atau mengintegrasikan komponen fungsi (togol/jatuh turun).
+- `Body` – Sunting untuk mengubah butiran pejabat, peta terbenam, dan butang tindakan hubungi.
+- `Footer` – Sunting untuk menukar maklumat hubungan, menambah/membuang pautan, dan mengemas kini ikon media sosial.
+
+Anggap ini sebagai titik permulaan UI yang fleksibel. Anda boleh ubah apa sahaja, tambah apa sahaja, dan jadikannya milik anda sepenuhnya!
+Anda tak perlu lagi design kod css secara sepenuhnya dari awal!
