@@ -1,6 +1,6 @@
 ---
-title: Contact Us
-description: A responsive, accessible contact us screen template with MYDS components.
+title: Hubungi Kami
+description: Templat skrin hubungi kami yang responsif dan mesra kebolehcapaian dengan komponen MYDS.
 ---
 
 import { Button } from "@/components/myds";
@@ -54,7 +54,7 @@ export default function ContactUsTemplate() {
 
             <div className="max-w-4xl px-4 mx-auto py-16 grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 items-start justify-center">
                 <div className="space-y-4.5 lg:py-10">
-                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-foreground-primary text-txt-primary">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-foreground-primary text-blue-600">
                         Office
                     </p>
                     <h2 className="py-2 text-xl font-semibold">Ministry of Digital</h2>
@@ -80,8 +80,8 @@ export default function ContactUsTemplate() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <PinIcon className="mr-2 text-txt-primary" />
-                                <p className="text-txt-primary">Google Maps</p>
+                                <PinIcon className="mr-2 text-blue-600" />
+                                <p className="text-blue-600">Google Maps</p>
                             </a>
                         </Button>
                         <Button
@@ -95,8 +95,8 @@ export default function ContactUsTemplate() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <PinIcon className="mr-2 text-txt-primary" />
-                                <p className="text-txt-primary">Waze</p>
+                                <PinIcon className="mr-2 text-blue-600" />
+                                <p className="text-blue-600">Waze</p>
                             </a>
                         </Button>
                     </div>
@@ -122,11 +122,11 @@ export default function ContactUsTemplate() {
                             href="tel:+603-8000 example"
                             className="flex items-center gap-4.5 px-6 py-8 min-h-[96px]"
                         >
-                            <div className="flex size-[42px] items-center justify-center rounded-full bg-brand-50 p-[9px] text-foreground-primary bg-bg-washed">
-                                <PhoneIcon className="text-txt-primary" />
+                            <div className="flex size-[42px] items-center justify-center rounded-full bg-brand-50 p-[9px] text-foreground-primary bg-blue-50">
+                                <PhoneIcon className="text-blue-600" />
                             </div>
                             <div className="space-y-1 font-semibold">
-                                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-txt-primary">
+                                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-500">
                                     Telephone
                                 </p>
                                 <p className="text-lg text-foreground font-bold">+603-8000 example</p>
@@ -137,11 +137,11 @@ export default function ContactUsTemplate() {
                             href="mailto:example@digital.gov.my"
                             className="flex items-center gap-4.5 px-6 py-8 min-h-[96px]"
                         >
-                            <div className="flex size-[42px] items-center justify-center rounded-full bg-brand-50 p-[9px] text-foreground-primary bg-bg-washed">
-                                <EmailIcon className="text-txt-primary" />
+                            <div className="flex size-[42px] items-center justify-center rounded-full bg-brand-50 p-[9px] text-foreground-primary bg-blue-50">
+                                <EmailIcon className="text-blue-600" />
                             </div>
                             <div className="space-y-1 font-semibold">
-                                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-txt-primary">
+                                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-500">
                                     E-mail
                                 </p>
                                 <p className="text-lg text-foreground font-bold">
@@ -152,10 +152,10 @@ export default function ContactUsTemplate() {
 
                         <div className="grid grid-cols-4 divide-x divide-washed-100">
                             {[
-                                { icon: <FacebookIcon className="text-txt-primary" />, label: "Facebook", url: "#" },
-                                { icon: <InstagramIcon className="text-txt-primary" />, label: "Instagram", url: "#" },
-                                { icon: <TwitterXIcon className="text-txt-primary" />, label: "X", url: "#" },
-                                { icon: <TiktokIcon className="text-txt-primary" />, label: "Tiktok", url: "#" },
+                                { icon: <FacebookIcon className="text-blue-600" />, label: "Facebook", url: "#" },
+                                { icon: <InstagramIcon className="text-blue-600" />, label: "Instagram", url: "#" },
+                                { icon: <TwitterXIcon className="text-blue-600" />, label: "X", url: "#" },
+                                { icon: <TiktokIcon className="text-blue-600" />, label: "Tiktok", url: "#" },
                             ].map((s, i) => (
                                 <a
                                     key={i}
@@ -164,7 +164,7 @@ export default function ContactUsTemplate() {
                                     rel="noopener noreferrer"
                                     className="flex flex-col items-center justify-center gap-2 py-6 md:gap-3"
                                 >
-                                    <div className="flex size-[42px] items-center justify-center rounded-full bg-bg-washed">
+                                    <div className="flex size-[42px] items-center justify-center rounded-full bg-blue-50">
                                         {s.icon}
                                     </div>
                                     <span className="text-sm text-black-700">{s.label}</span>
@@ -183,28 +183,27 @@ export default function ContactUsTemplate() {
 </Tabs>
 
 
-## Overview
+## Ringkasan Umum
 
-The `ContactUsTemplate` component provides a sample UI contact us screen using [MYDS](https://github.com/govtechmy/myds) components. It includes:
+Komponen `ContactUsTemplate` menyediakan contoh UI untuk skrin lupa kata laluan menggunakan komponen [MYDS](https://github.com/govtechmy/myds) Ia merangkumi:
 
-- Responsive contact details section with google map frame, telephone and email.
-- Social media links with icons styled according to the MYDS design guidelines.
-- A mobile-friendly layout that adapts from stacked sections to a single row on large screens.
+- Bahagian butiran hubungan yang responsif dengan bingkai peta Google, nombor telefon dan e-mel.
+- Pautan media sosial dengan ikon yang digayakan mengikut garis panduan reka bentuk MYDS.
+- Reka bentuk mesra peranti mudah alih yang menyesuaikan susun atur daripada format bertindan kepada satu baris pada skrin bersaiz besar.
 
-This contact us page template is built for **rapid development** and **easy integration**. It is designed to help teams get started faster by providing a layout that adheres to the **MYDS design system**, eliminating the need to piece together individual components manually.
+Templat halaman hubungi kami ini dibina untuk **pembangunan yang pantas** dan **integrasi yang mudah**. Ia direka bentuk untuk membantu pasukan memulakan dengan lebih cepat melalui susun atur yang mematuhi **sistem reka bentuk MYDS**, tanpa perlu menyusun komponen secara manual.
 
-> ⚠️ **Note**: This is a **design-only template**. It does **not** include any functional logic such as:
-> - Working contact details for google map frame, telephone and email
-> - Working Social media links
+> ⚠️ **Nota**: Ini ialah **templat reka bentuk sahaja**. Ia **tidak** merangkumi sebarang logik fungsi seperti:
+> - Butiran hubungan yang berfungsi untuk bingkai peta Google, nombor telefon dan e-mel
+> - Pautan media sosial yang berfungsi
 > 
 > You are expected to implement such logic based on your own system needs.
 
+## Penggunaan
 
-## Usage
+Salin keseluruhan kod di bawah untuk mula!
 
-Copy the whole code below to get started!
-
-```tsx copy title="Template"
+```tsx copy title="Templat"
 import { Button } from "@govtechmy/myds-react/button";
 import {
     PhoneIcon,
@@ -225,7 +224,7 @@ export default function ContactUsTemplate() {
 
             <div className="max-w-4xl px-4 mx-auto py-16 grid grid-cols-1 lg:grid-cols-[40%_60%] gap-12 items-start justify-center">
                 <div className="space-y-4.5 lg:py-10">
-                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-foreground-primary text-txt-primary">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-foreground-primary text-blue-600">
                         Office
                     </p>
                     <h2 className="py-2 text-xl font-semibold">Ministry of Digital</h2>
@@ -251,8 +250,8 @@ export default function ContactUsTemplate() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <PinIcon className="mr-2 text-txt-primary" />
-                                <p className="text-txt-primary">Google Maps</p>
+                                <PinIcon className="mr-2 text-blue-600" />
+                                <p className="text-blue-600">Google Maps</p>
                             </a>
                         </Button>
                         <Button
@@ -266,8 +265,8 @@ export default function ContactUsTemplate() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <PinIcon className="mr-2 text-txt-primary" />
-                                <p className="text-txt-primary">Waze</p>
+                                <PinIcon className="mr-2 text-blue-600" />
+                                <p className="text-blue-600">Waze</p>
                             </a>
                         </Button>
                     </div>
@@ -293,11 +292,11 @@ export default function ContactUsTemplate() {
                             href="tel:+603-8000 example"
                             className="flex items-center gap-4.5 px-6 py-8 min-h-[96px]"
                         >
-                            <div className="flex size-[42px] items-center justify-center rounded-full bg-brand-50 p-[9px] text-foreground-primary bg-bg-washed">
-                                <PhoneIcon className="text-txt-primary" />
+                            <div className="flex size-[42px] items-center justify-center rounded-full bg-brand-50 p-[9px] text-foreground-primary bg-blue-50">
+                                <PhoneIcon className="text-blue-600" />
                             </div>
                             <div className="space-y-1 font-semibold">
-                                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-txt-primary">
+                                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-500">
                                     Telephone
                                 </p>
                                 <p className="text-lg text-foreground font-bold">+603-8000 example</p>
@@ -308,11 +307,11 @@ export default function ContactUsTemplate() {
                             href="mailto:example@digital.gov.my"
                             className="flex items-center gap-4.5 px-6 py-8 min-h-[96px]"
                         >
-                            <div className="flex size-[42px] items-center justify-center rounded-full bg-brand-50 p-[9px] text-foreground-primary bg-bg-washed">
-                                <EmailIcon className="text-txt-primary" />
+                            <div className="flex size-[42px] items-center justify-center rounded-full bg-brand-50 p-[9px] text-foreground-primary bg-blue-50">
+                                <EmailIcon className="text-blue-600" />
                             </div>
                             <div className="space-y-1 font-semibold">
-                                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-txt-primary">
+                                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-500">
                                     E-mail
                                 </p>
                                 <p className="text-lg text-foreground font-bold">
@@ -323,10 +322,10 @@ export default function ContactUsTemplate() {
 
                         <div className="grid grid-cols-4 divide-x divide-washed-100">
                             {[
-                                { icon: <FacebookIcon className="text-txt-primary" />, label: "Facebook", url: "#" },
-                                { icon: <InstagramIcon className="text-txt-primary" />, label: "Instagram", url: "#" },
-                                { icon: <TwitterXIcon className="text-txt-primary" />, label: "X", url: "#" },
-                                { icon: <TiktokIcon className="text-txt-primary" />, label: "Tiktok", url: "#" },
+                                { icon: <FacebookIcon className="text-blue-600" />, label: "Facebook", url: "#" },
+                                { icon: <InstagramIcon className="text-blue-600" />, label: "Instagram", url: "#" },
+                                { icon: <TwitterXIcon className="text-blue-600" />, label: "X", url: "#" },
+                                { icon: <TiktokIcon className="text-blue-600" />, label: "Tiktok", url: "#" },
                             ].map((s, i) => (
                                 <a
                                     key={i}
@@ -335,7 +334,7 @@ export default function ContactUsTemplate() {
                                     rel="noopener noreferrer"
                                     className="flex flex-col items-center justify-center gap-2 py-6 md:gap-3"
                                 >
-                                    <div className="flex size-[42px] items-center justify-center rounded-full bg-bg-washed">
+                                    <div className="flex size-[42px] items-center justify-center rounded-full bg-blue-50">
                                         {s.icon}
                                     </div>
                                     <span className="text-sm text-black-700">{s.label}</span>
@@ -351,48 +350,50 @@ export default function ContactUsTemplate() {
 }
 ```
 
-## Anatomy
+## Anatomi
 
 ```
 <ContactUs />
-├── Header
-│   └── PageTitle ("Contact Us")
-├── Body
-│   ├── InfoSection
-│   │   ├── OfficeLabel ("Office")
-│   │   ├── OfficeName ("Ministry of Digital")
-│   │   ├── OfficeAddress (multiline)
-│   │   ├── MapButtons
-│   │   │   ├── Google Maps Button (PinIcon)
-│   │   │   └── Waze Button (PinIcon)
-│   └── MapSection
+├── Pengepala
+│   └── TajukHalaman ("Hubungi Kami")
+├── Badan
+│   ├── SeksyenMaklumat
+│   │   ├── LabelPejabat ("Pejabat")
+│   │   ├── NamaPejabat ("Kementerian Digital")
+│   │   ├── AlamatPejabat (berbilang baris)
+│   │   ├── ButangPeta
+│   │   │   ├── Butang Google Maps (PinIcon)
+│   │   │   └── Butang Waze (PinIcon)
+│   └── SeksyenPeta
 │       └── GoogleMapIframe
-└── Footer
-    ├── ContactMethods
-    │   ├── Telephone (PhoneIcon)
-    │   └── Email (EmailIcon)
-    └── SocialLinks
+└── KakiHalaman
+    ├── KaedahHubungan
+    │   ├── Telefon (PhoneIcon)
+    │   └── E-mel (EmailIcon)
+    └── PautanMediaSosial
         ├── Facebook
         ├── Instagram
         ├── X (Twitter)
         └── Tiktok
-
 ```
 
-## Features
+## Ciri-ciri
 
-- Fully responsive layout with adaptive grid for small to large screens.
-- Integrated Google Maps iframe for location display.
-- Mobile-friendly social links arranged in grid format.
+- Susun atur responsif sepenuhnya dengan grid adaptif untuk skrin kecil hingga besar.
+
+- Iframe Google Maps terbina bagi paparan lokasi.
+- Pautan media sosial mesra peranti mudah alih disusun dalam format grid.
 
 ## Customization
 
-You can edit anything inside the code, its fully customizable!
-It’s built to help you get started quickly with a contact us UI and is meant to be adapted however you like. The template is made up of three main parts:
+## Penyesuaian
 
--  `Header` - Edit to change the title, add branding, or integrate functional components (toggle/dropdown)
--  `Body` - Edit to adjust the office details, map embed, and contact action buttons
--  `Footer` -  Edit to change contact info, add/remove links, and update social media icons
+Anda boleh mengedit apa sahaja dalam kod ini — ia boleh disesuaikan sepenuhnya!
+Ia dibina untuk membantu anda bermula dengan cepat dengan antara muka hubungi kami, dan direka bentuk untuk disesuaikan mengikut keperluan anda. Templat ini terdiri daripada tiga bahagian utama:
 
-Think of this as a flexible UI starting point, where you can change anything, add anything, and make it your own!
-Previously, using just MYDS components meant you still had to design and style entire pages from scratch. Now, with the new templates, you don’t have to worry about CSS or layout design. They come with ready-made, mobile-friendly UIs to speed up your development!
+- `Header` – Sunting untuk menukar tajuk, menambah penjenamaan, atau mengintegrasikan komponen fungsi (togol/jatuh turun).
+- `Body` – Sunting untuk mengubah butiran pejabat, peta terbenam, dan butang tindakan hubungi.
+- `Footer` – Sunting untuk menukar maklumat hubungan, menambah/membuang pautan, dan mengemas kini ikon media sosial.
+
+Anggap ini sebagai titik permulaan UI yang fleksibel. Anda boleh ubah apa sahaja, tambah apa sahaja, dan jadikannya milik anda sepenuhnya!
+Anda tak perlu lagi design kod css secara sepenuhnya dari awal!
