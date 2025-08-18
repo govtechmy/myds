@@ -131,7 +131,7 @@ const NavbarMenu: FunctionComponent<NavigationMenuProps> = ({
       {/* Desktop */}
       <NavigationMenuList
         className={clx(
-          "cl hidden xl:flex xl:justify-start xl:gap-1",
+          "hidden xl:flex xl:justify-start xl:gap-1",
           classNameNavDesktop,
         )}
       >
