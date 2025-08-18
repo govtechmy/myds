@@ -116,14 +116,25 @@ const NavbarLogo: FunctionComponent<NavbarLogoProps> = ({
 NavbarLogo.displayName = "NavbarLogo";
 interface NavigationMenuProps {
   children: ReactNode;
+  classNameNavDesktop?: string;
+  classNameNavMobile?: string;
 }
 
-const NavbarMenu: FunctionComponent<NavigationMenuProps> = ({ children }) => {
+const NavbarMenu: FunctionComponent<NavigationMenuProps> = ({
+  children,
+  classNameNavDesktop,
+  classNameNavMobile,
+}) => {
   const { show } = useContext(NavbarContext);
   return (
     <NavigationMenu className="grow">
       {/* Desktop */}
-      <NavigationMenuList className="hidden xl:flex xl:justify-start xl:gap-1">
+      <NavigationMenuList
+        className={clx(
+          "cl hidden xl:flex xl:justify-start xl:gap-1",
+          classNameNavDesktop,
+        )}
+      >
         {children}
       </NavigationMenuList>
 
@@ -135,6 +146,7 @@ const NavbarMenu: FunctionComponent<NavigationMenuProps> = ({ children }) => {
             "h-fit w-full rounded-b-lg p-3 transition-transform motion-reduce:transition-none",
             "overflow-autp max-h-full",
             show && "-mb-16 translate-y-full",
+            classNameNavMobile,
           )}
         >
           <ul>{children}</ul>
