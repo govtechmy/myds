@@ -1,5 +1,11 @@
 # @govtechmy/myds-react
 
+## 1.0.0
+
+### Major Changes
+
+- ee2d39a: :q
+
 ## 0.0.24
 
 ### Patch Changes
