@@ -4,6 +4,8 @@
 
 ### Major Changes
 
+- :q
+- Fix patch tailwind
 - ee2d39a: :q
 
 ## 0.0.24
