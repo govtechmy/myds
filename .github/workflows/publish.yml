@@ -5,7 +5,7 @@ on:
 
   push:
     branches:
-      - "release"
+      - "release/**"
     paths:
       - "packages/react/**"
 
