@@ -3,11 +3,11 @@ name: "publish"
 on:
   workflow_dispatch:
 
-  # push:
-  #   branches:
-  #     - "feat/publish"
-  # paths:
-  #   - "packages/react/**"
+  push:
+    branches:
+      - "release"
+    paths:
+      - "packages/react/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

@@ -1,5 +1,11 @@
 # @govtechmy/myds-react
 
+## 0.0.24
+
+### Patch Changes
+
+- d2e231e: fix navbar : passing classname on mobile and desktop
+
 ## 0.0.23
 
 ### Patch Changes

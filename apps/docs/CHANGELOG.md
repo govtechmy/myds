@@ -1,5 +1,14 @@
 # @govtechmy/myds-docs
 
+## 0.0.26
+
+### Patch Changes
+
+- a408a73: UI:Icon Docs - Fix: Hover did not display copy icon
+- 9f5f069: Fix: Bug - Wrong timeline order in "Our Plan" while in portrait (mobile) bug
+- Updated dependencies [d2e231e]
+  - @govtechmy/myds-react@0.0.24
+
 ## 0.0.25
 
 ### Patch Changes
