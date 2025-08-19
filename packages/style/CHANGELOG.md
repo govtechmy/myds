@@ -1,5 +1,12 @@
 # @govtechmy/myds-style
 
+## 1.0.0
+
+### Major Changes
+
+- :q
+- Fix patch tailwind
+
 ## 0.0.10
 
 ### Patch Changes
