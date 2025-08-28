@@ -57,6 +57,7 @@
     "(components)/dialog",
     "(components)/dropdown",
     "(components)/footer",
+    "(components)/footer-logo",
     "(components)/input",
     "(components)/input-otp",
     "(components)/label",
