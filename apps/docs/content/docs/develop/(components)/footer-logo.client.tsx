@@ -166,7 +166,7 @@ export const FooterComponent = () => {
                 <TiktokIcon scale={32} className="md:scale-40 text-[#2563EB]" />
               </Link>
               <Link
-                href={"https://www.linkedin.com/in/adam-hafidz/"}
+                href={"#"}
                 target="_blank"
                 className="bg-bg-washed flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F5FF] p-2 hover:bg-gray-200 hover:shadow-md hover:shadow-gray-300 md:h-10 md:w-10"
               >
