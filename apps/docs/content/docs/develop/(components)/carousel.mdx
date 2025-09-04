@@ -1,0 +1,470 @@
+---
+title: Carousel
+description: The Carousel component provides an interactive way to showcase features, content, or media in a horizontally scrollable list.
+---
+
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TikTokIcon,
+  TwitterXIcon,
+  YoutubeIcon,
+} from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { Button } from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+import {
+  Footer,
+  SiteInfo,
+  FooterSection,
+  SiteLinkGroup,
+  SiteLink,
+  FooterLogo,
+} from "@govtechmy/myds-react/footer";
+
+import { Link } from "@govtechmy/myds-react/link";
+
+import { FeaturesCarousel } from "./carousel.client";
+
+## Overview
+
+The **Carousel** component provides an interactive way to showcase features, content, or media in a horizontally scrollable list. It combines two parts:
+
+1. **HorizontalCard**   → A horizontally scrollable container with left/right navigation arrows.  
+2. **FeaturesCarousel** → A feature-specific implementation using `HorizontalCard.tsx`, which also supports opening a modal to show more details about each item.
+
+This is useful when you want to display multiple features, showcasing product highlights and even creating media galleries with modal previews.
+
+## Preview
+
+<Tabs items={["Preview", "Code", "HorizontalCardTSX"]} defaultValue="Preview" className="not-prose"> 
+  
+  <Tab value="Preview">
+    <div className="overflow-scroll px-2 h-[500px]">
+      <div >
+        <FeaturesCarousel />
+      </div>
+    </div>
+  </Tab>
+
+  <Tab value="Code">
+  ```tsx
+  import { useState } from "react";
+  import HorizontalCard from "@/public/HorizontalCard";
+  import {
+    Dialog,
+    DialogBody,
+    DialogContent,
+    DialogHeader,
+    DialogTrigger,
+    DialogFooter,
+    DialogClose,
+  } from "@govtechmy/myds-react/dialog";
+
+  interface Feature {
+    id: number;
+    title: string;
+    desc: string;
+    image: string;
+    open: string;
+    support?: string; // optional
+  }
+
+  export function FeaturesCarousel() {
+    const features: Feature[] = [
+      {
+        id: 1,
+        image: "/assets/content4/state1.png",
+        title: "Pengalaman Mesra Pengguna",
+        open: "/assets/content4/pengalaman_mesra.png",
+        desc: "Samada anda menggunakan MyGOV Malaysia untuk melakukan semakan atau permohonan, MyGOV Malaysia menawarkan pengalaman interaksi yang intuitif dengan antaramuka yang kemas dan intuitif.",
+      },
+      {
+        id: 2,
+        image: "/assets/content4/state2.png",
+        title: "Akaun Berasaskan",
+        support: "/mydigitalid.png",
+        open: "/assets/content4/mygov_mobile.png",
+        desc: "Untuk menggunakan MyGOV Malaysia, anda hanya perlu menggunakan MyDigital ID iaitu sistem pengenalan diri rakyat Malaysia yang sah dan selamat untuk kegunaan dalam talian.",
+      },
+      {
+        id: 3,
+        image: "/assets/content4/state3.jpg",
+        title: "Daripada lesen ke peperiksaan, semak semuanya di sini",
+        open: "/assets/content4/lesen.png",
+        desc: "MyGOV Malaysia dapat menghantar notifikasi penting khusus untuk individu seperti amaran bencana yang dihantar terus kepada anda.",
+      },
+      {
+        id: 4,
+        image: "/assets/content4/state4.png",
+        title: "Terima notifikasi yang relevan dengan anda",
+        open: "/assets/content4/notifikasi.png",
+        desc: "MyGOV Malaysia dapat menghantar notifikasi penting khusus untuk individu seperti amaran bencana yang dihantar terus kepada anda.",
+      },
+      {
+        id: 5,
+        image: "/assets/content4/state5.png",
+        title: "... dan pelbagai fungsi akan datang",
+        open: "/assets/content4/features_lain.png",
+        desc: "MyGOV Malaysia sedang giat membangunkan pelbagai fungsi baharu yang akan dilancarkan pada masa hadapan, seperti permohonan dan pembayaran.",
+      },
+    ];
+
+    const [currentFeatureIndex, setCurrentFeatureIndex] = useState(0);
+
+    return (
+      <section className="flex flex-row justify-center px-[18px] py-12">
+        <div className="w-full">
+          <Dialog>
+
+            {/* Carousel Track */}
+            <HorizontalCard>
+              {features.map((feature, index) => (
+                <DialogTrigger>
+                  <div
+                    key={feature.id}
+                    className="flex-shrink-0 px-2"
+                    style={{ width: "334px", height: "354px" }}
+                  >
+                    <div
+                      className="relative top-0 flex h-full w-full cursor-pointer flex-col items-center overflow-hidden rounded-2xl shadow-2xl md:left-40"
+                      onClick={() => setCurrentFeatureIndex(index)}
+                    >
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="relative h-full w-full bg-white">
+                          <img
+                            src={feature.image}
+                            alt={feature.title}
+                            className="object-contain"
+                            sizes="(max-width: 640px) 100vw, (max-width: 992px) 50vw, 334px"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </DialogTrigger>
+              ))}
+            </HorizontalCard>
+            
+            {/* Modal Body */}
+            <DialogBody className="w-full md:!max-w-[800px]">
+              <DialogClose>
+                <button
+                  className="absolute right-4 top-4 rounded-lg border border-[#E4E4E7] p-1.5 text-gray-500 hover:text-gray-800"
+                  aria-label="Close modal"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </DialogClose>
+
+              <DialogHeader className="pb-0">
+              </DialogHeader>
+
+              <DialogContent >
+                <div className="w-full flex flex-col items-center justify-center gap-8 md:flex-row">
+                  <div>
+                    <img
+                      src={features[currentFeatureIndex].open}
+                      alt={features[currentFeatureIndex]?.title ?? ""}
+                      width={222}
+                      height={275}
+                    />
+                  </div>
+
+                  <div>
+                    <h2 className="mb-4 text-base font-semibold">
+                      {features[currentFeatureIndex]?.title ?? ""}
+                    </h2>
+                    <p className="mt-4 font-normal max-w-sm">
+                      {features[currentFeatureIndex]?.desc ?? ""}
+                    </p>
+                  </div>
+                </div>
+              </DialogContent>
+              
+              <DialogFooter className="pt-0"></DialogFooter>
+            </DialogBody>
+          </Dialog>
+        </div>
+      </section>
+    );
+  }
+
+  ````
+  </Tab>
+
+  <Tab value="HorizontalCardTSX">
+  
+  ```tsx
+  import { ChevronLeftIcon, ChevronRightIcon } from '@govtechmy/myds-react/icon';
+  import { clx } from '@govtechmy/myds-react/utils';
+  import { useRef } from 'react';
+
+  interface HorizontalCardProps {
+    title?: string;
+    children?: React.ReactNode;
+  }
+
+  export default function HorizontalCard({ title, children }: HorizontalCardProps) {
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    const scroll = (offset: number) => {
+      if (scrollRef.current) {
+        scrollRef.current.scrollBy({ left: offset, behavior: 'smooth' });
+      }
+    };
+
+    return (
+      // Scrolling Container
+      <div className={clx('')}>
+        <div
+          ref={scrollRef}
+          className=" flex gap-2 w-full overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar"
+        >
+          {children}
+        </div>
+
+        {/* Title & Arrows */}
+        <div className="justify-between flex">
+          <h2 className="tracking-[2px] text-gray-130 text-xs font-medium items-center flex">{title}</h2>
+            <div className="flex justify-end gap-3 pt-6">
+              <div className="border border-[#E4E4E7] rounded-full p-2 bg-pink-500">
+                <ChevronLeftIcon className="size-5 " onClick={() => scroll(-340)} />
+              </div>
+              <div className="border border-[#E4E4E7] rounded-full p-2">
+                <ChevronRightIcon className="size-5 " onClick={() => scroll(340)} />
+              </div>
+            </div>
+        </div>
+      </div>
+    );
+  }
+
+  ````
+  </Tab>
+</Tabs>
+
+## How It Works
+1. **HorizontalCard**
+   - Provides a horizontally scrollable container for feature cards.
+   - Each card is clickable and opens the modal when triggered.
+
+2. **Dialog**
+   - Used to show the feature details in a modal view.
+   - Contains `DialogTrigger`, `DialogBody`, `DialogContent`, and `DialogClose`.
+
+3. **FeaturesCarousel**
+   - Wraps multiple feature cards inside `HorizontalCard`.
+   - Each card is clickable and opens a modal (`Dialog`).
+   - The modal displays a larger image and additional details.
+
+4. **Features State**
+   - A useState hook tracks the currently selected feature (`currentFeatureIndex`).
+
+5. **Feature Cards**
+   - Each feature has an image, title, description, and expanded view (`open`).
+
+## Usage
+To use the Carousel in your project:
+
+1. **Import the components**
+```tsx
+import { useState } from "react";
+import HorizontalCard from "@/public/HorizontalCard";
+
+```
+
+Also import the Dialog components:
+
+```tsx
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogHeader,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@govtechmy/myds-react/dialog";
+
+```
+
+2. **Prepare your data**
+
+Each item should follow the Feature interface:
+
+```tsx
+interface Feature {
+  id: number;
+  title: string;
+  desc: string;
+  image: string;
+  open: string;
+  support?: string; // optional
+}
+
+```
+
+3. **Render the carousel**
+
+Below is a simplified version of the **FeaturesCarousel** component you can copy and adapt:
+
+```tsx
+import { useState } from "react";
+import HorizontalCard from "./HorizontalCard";
+import {
+  Dialog,
+  DialogBody,
+  DialogContent,
+  DialogHeader,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@govtechmy/myds-react/dialog";
+
+// Define the structure for your carousel items.
+interface Feature {
+  id: number;
+  title: string;
+  desc: string;
+  image: string; // The image for the carousel card
+  open: string;  // The larger image for the modal
+  support?: string;
+}
+
+export default function App() {
+  // 📸 User Instructions:
+  // 1. Replace the placeholder objects below with your own data.
+  // 2. Add as many items as you need to the `features` array.
+  // 3. For 'image' and 'open', provide the path to your image files.
+  //    The 'image' is for the small carousel card, and 'open' is for the larger pop-up.
+
+  const features: Feature[] = [
+    {
+      id: 1,
+      image: "/public/your_card_image.png",
+      title: "Your First Image Title",
+      open: "/public/your_modal_image.png",
+      desc: "This is a brief description of the first image.",
+    },
+    {
+      id: 2,
+      image: "/public/your_card_image_2.png",
+      title: "Your Second Image Title",
+      open: "/public/your_modal_image_2.png",
+      desc: "This is a brief description of the second image.",
+    },
+    // Add more items here following the same structure.
+  ];
+
+  // State to manage which feature's content is shown in the modal.
+  const [currentFeatureIndex, setCurrentFeatureIndex] = useState(0);
+
+  return (
+    <div className="mx-auto max-w-[1328px] border-x border-[#F4F4F5] sm:px-[18px] md:px-[24px]">
+      <section className="flex justify-center px-[18px] py-12">
+        <div className="w-full">
+          <Dialog>
+            <HorizontalCard>
+              {features.map((feature, index) => (
+                <DialogTrigger key={feature.id}>
+                  <div
+                    className="relative flex-shrink-0 px-2 cursor-pointer"
+                    style={{ width: "334px", height: "354px" }}
+                    onClick={() => setCurrentFeatureIndex(index)}
+                  >
+                    {/* Card Container: Fixed size with overflow hidden */}
+                    <div className="h-full w-full rounded-2xl shadow-2xl overflow-hidden border">
+                      {/* How Images Fit:
+                      1. object-cover = class ensures your images (no matter their original size) will fill the container completely without distortion. 
+                                        Excess parts of the image will be automatically cropped.
+                      2. object-contain = This class scales the image down so that it fits entirely within the container, preserving its aspect ratio. 
+                                          It will not crop the image, but it may leave empty space (letterboxing) if the image's aspect ratio does not match the container's. 
+                      */}
+                      <img
+                        src={feature.image}
+                        alt={feature.title}
+                        className="w-full h-full"  // The images will fit in the card (if the image is too big, the image will be compacted)
+                      />
+                    </div>
+                  </div>
+                </DialogTrigger>
+              ))}
+            </HorizontalCard>
+
+            {/* Modal Body: This is the pop-up that appears when a card is clicked */}
+            <DialogBody className="w-full md:!max-w-[800px]">
+              <DialogClose>
+                <button
+                  className="absolute right-4 top-4 rounded-lg border border-[#E4E4E7] p-1.5 text-gray-500 hover:text-gray-800"
+                  aria-label="Close modal"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </DialogClose>
+              <DialogHeader className="pb-0" />
+              <DialogContent>
+                <div className="flex flex-col items-center gap-8 md:flex-row justify-center">
+                  {/* Modal Image: Uses the 'open' image path from your data */}
+                  <img
+                    src={features[currentFeatureIndex].open}
+                    alt={features[currentFeatureIndex].title}
+                    width={222}
+                    height={275}
+                  />
+                  <div>
+                    <h2 className="mb-4 text-base font-semibold">
+                      {features[currentFeatureIndex].title}
+                    </h2>
+                    <p className="max-w-sm">
+                      {features[currentFeatureIndex].desc}
+                    </p>
+                  </div>
+                </div>
+              </DialogContent>
+              <DialogFooter className="pt-0" />
+            </DialogBody>
+          </Dialog>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+```
+
+4. **Customize Content**
+   - Replace `features` array with your own data.
+   - Adjust styling inside `HorizontalCard` or `FeaturesCarousel` if needed.
+   - Optional: add more controls or customize modal layout.
+
+Best for: Showcasing features, services, or image galleries in a compact scrollable view, with modal support for expanded content.
