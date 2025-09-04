@@ -253,6 +253,7 @@
     "input-otp": "^1.4.1",
     "mitt": "^3.0.1",
     "react-day-picker": "^9.5.1",
+    "react-remove-scroll": "^2.7.1",
     "tailwind-merge": "^2.4.0"
   }
 }

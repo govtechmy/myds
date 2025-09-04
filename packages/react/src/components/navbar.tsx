@@ -7,6 +7,8 @@ import {
   ComponentProps,
   useRef,
   useId,
+  useEffect,
+  RefObject,
 } from "react";
 import { clx } from "../utils";
 import {
@@ -16,8 +18,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@radix-ui/react-navigation-menu";
-import { Popover } from "./popover";
 import {
+  Popover,
   PopoverAnchor,
   PopoverContent,
 } from "@radix-ui/react-popover";
@@ -25,7 +27,8 @@ import { Button } from "./button";
 import { Link } from "./link";
 import { ChevronDownIcon, CrossIcon, HamburgerMenuIcon } from "../icons";
 import { cva } from "class-variance-authority";
-import { Slot } from "@radix-ui/react-slot";
+import { RemoveScroll } from "react-remove-scroll";
+import { Root, Slot } from "@radix-ui/react-slot";
 
 interface NavbarProps extends ComponentProps<"header"> {}
 
@@ -59,7 +62,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({
         data-nosnippet
         {...props}
       >
-        <div className="relative mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-4 px-6 max-md:h-14 xl:px-0">
+        <div className="relative mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-4 px-4.5 lg:px-6 max-md:h-14">
           {children}
         </div>
       </header>
@@ -129,79 +132,86 @@ interface NavigationMenuProps {
 }
 
 const NavbarMenu: FunctionComponent<NavigationMenuProps> = ({ children }) => {
-  const { id } = useContext(NavbarContext);
-  const node = document.getElementById(id);
-
   return (
-    <NavigationMenu className="grow" id={id}>
+    <NavigationMenu className="grow">
       {/* Desktop */}
       <NavigationMenuList className="hidden xl:flex xl:justify-start xl:gap-1">
         {children}
       </NavigationMenuList>
 
       {/* Tablet / Mobile */}
-      <NavbarMobileMenu node={node}>{children}</NavbarMobileMenu>
+      <NavbarMobileMenu>{children}</NavbarMobileMenu>
     </NavigationMenu>
   );
 };
 
 interface NavbarMobileMenuProps {
   children: ReactNode;
-  node: HTMLElement | null;
 }
 
 type Measurable = {
   getBoundingClientRect: () => DOMRect;
 };
 
-const NavbarMobileMenu: FunctionComponent<NavbarMobileMenuProps> = ({
-  children,
-  node,
-}) => {
-  const { show, setShow } = useContext(NavbarContext);
+const NavbarMobileMenu: FunctionComponent<NavbarMobileMenuProps> = ({ children }) => {
+  const { id, show, setShow } = useContext(NavbarContext);
 
   const virtualRef = useRef<Measurable | null>(null);
-  if (node) {
-    virtualRef.current = node;
-  }
+
+  useEffect(() => {
+    const node = document.getElementById(id);
+
+    if (node) {
+      virtualRef.current = node;
+    }
+  }, [virtualRef]);
+
+  if (!show) {
+    return null;
+  };
 
   return (
-    <Popover open={show} onOpenChange={setShow}>
-      <PopoverAnchor virtualRef={virtualRef} />
-      <PopoverContent
-        sideOffset={0}
-        align="start"
-        className={clx("absolute top-full z-40 xl:hidden h-dvh")}
-        style={{
-          width: "var(--radix-popover-trigger-width)",
-        }}
-      >
-        <div
-          className={clx(
-            "absolute h-dvh w-full",
-            "bg-gray-700/60",
-            "data-[state=open]:animate-in data-[state=open]:fade-in-0",
-            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
-          )}
-        />
-        <ul
-          className={clx(
-            "absolute p-3 max-h-[80dvh] overflow-y-auto",
-            "border-otl-gray-200 rounded-md rounded-t-none border border-t-0 outline-none",
-            "bg-bg-dialog text-txt-black-900 shadow-context-menu",
-            "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-top-2",
-            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2",
-          )}
+    <RemoveScroll as={Root} allowPinchZoom enabled>
+      <Popover open={show} onOpenChange={setShow}>
+        <PopoverAnchor virtualRef={virtualRef as RefObject<Measurable>} />
+        <PopoverContent
+          sideOffset={0}
+          align="start"
+          className={clx("absolute top-full z-40 h-dvh xl:hidden")}
           style={{
             width: "var(--radix-popover-trigger-width)",
           }}
         >
-          {children}
-        </ul>
-      </PopoverContent>
-    </Popover>
-  );
-};
+          <div
+            className={clx(
+              "absolute h-dvh w-full",
+              "bg-gray-700/60",
+              "data-[state=open]:animate-in data-[state=open]:fade-in-0",
+              "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+            )}
+            aria-hidden
+            onClick={() => setShow(false)}
+            onKeyDown={() => setShow(false)}
+          />
+          <ul
+            className={clx(
+              "absolute max-h-[80dvh] overflow-y-auto p-3",
+              "border-otl-gray-200 rounded-md rounded-t-none border border-t-0 outline-none",
+              "bg-bg-dialog text-txt-black-900 shadow-context-menu",
+              "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-top-2",
+              "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2",
+            )}
+            style={{
+              width: "var(--radix-popover-trigger-width)", // width - padding
+            }}
+          >
+            {children}
+          </ul>
+        </PopoverContent>
+      </Popover>
+    </RemoveScroll>
+  )
+}
 
 NavbarMenu.displayName = "NavbarMenu";
 
