@@ -76,22 +76,22 @@ export function FeaturesCarousel() {
                     className="flex-shrink-0 px-2"
                     style={{ width: "334px", height: "354px" }}
                   >
-                  <div
-                    className="relative top-0 flex h-full w-full cursor-pointer flex-col items-center overflow-hidden rounded-2xl shadow-2xl md:left-40"
-                    onClick={() => setCurrentFeatureIndex(index)}
-                  >
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="relative h-full w-full bg-white">
-                        <img
-                          src={feature.image}
-                          alt={feature.title}
-                          className="object-contain"
-                          sizes="(max-width: 640px) 100vw, (max-width: 992px) 50vw, 334px"
-                        />
+                    <div
+                      className="relative top-0 flex h-full w-full cursor-pointer flex-col items-center overflow-hidden rounded-2xl shadow-2xl md:left-40"
+                      onClick={() => setCurrentFeatureIndex(index)}
+                    >
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="relative h-full w-full bg-white">
+                          <img
+                            src={feature.image}
+                            alt={feature.title}
+                            className="object-contain"
+                            sizes="(max-width: 640px) 100vw, (max-width: 992px) 50vw, 334px"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
                 </DialogTrigger>
               ))}
             </HorizontalCard>

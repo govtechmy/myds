@@ -123,9 +123,8 @@ This is useful when you want to display multiple features, showcasing product hi
             {/* Carousel Track */}
             <HorizontalCard>
               {features.map((feature, index) => (
-                <DialogTrigger>
+                <DialogTrigger key={feature.id}>
                   <div
-                    key={feature.id}
                     className="flex-shrink-0 px-2"
                     style={{ width: "334px", height: "354px" }}
                   >
