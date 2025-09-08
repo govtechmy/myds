@@ -214,7 +214,7 @@ export const NavbarCustomKementerianDigital = createStory(
           Ministry Of Digital
         </NavbarLogo>
         <NavbarMenu>
-          <NavbarMenuItem href="/menu1">MinistryProfile</NavbarMenuItem>
+          <NavbarMenuItem href="/menu1">Ministry Profile</NavbarMenuItem>
           <NavbarMenuItem href="/menu2">Policy</NavbarMenuItem>
           <NavbarMenuItem href="/menu3">Achievements</NavbarMenuItem>
           <NavbarMenuItem href="/menu4">Media</NavbarMenuItem>
