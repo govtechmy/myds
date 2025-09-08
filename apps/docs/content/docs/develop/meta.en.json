@@ -48,6 +48,7 @@
     "(components)/breadcrumb",
     "(components)/button",
     "(components)/callout",
+    "(components)/carousel",
     "(components)/checkbox",
     "(components)/cookies-banner",
     "(components)/data-table",
