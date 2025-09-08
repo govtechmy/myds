@@ -5,6 +5,10 @@ import {
   useContext,
   ReactNode,
   ComponentProps,
+  useRef,
+  useId,
+  useEffect,
+  RefObject,
 } from "react";
 import { clx } from "../utils";
 import {
@@ -14,20 +18,27 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@radix-ui/react-navigation-menu";
-import { Portal } from "@radix-ui/react-portal";
+import {
+  Popover,
+  PopoverAnchor,
+  PopoverContent,
+} from "@radix-ui/react-popover";
 import { Button } from "./button";
 import { Link } from "./link";
 import { ChevronDownIcon, CrossIcon, HamburgerMenuIcon } from "../icons";
 import { cva } from "class-variance-authority";
-import { Slot } from "@radix-ui/react-slot";
+import { RemoveScroll } from "react-remove-scroll";
+import { Root, Slot } from "@radix-ui/react-slot";
 
 interface NavbarProps extends ComponentProps<"header"> {}
 
 interface NavbarContextProps {
+  id: string;
   show: boolean;
   setShow: (value: boolean) => void;
 }
 const NavbarContext = createContext<NavbarContextProps>({
+  id: "",
   show: false,
   setShow: () => {},
 });
@@ -37,11 +48,13 @@ const Navbar: FunctionComponent<NavbarProps> = ({
   className,
   ...props
 }) => {
+  const id = useId();
+
   const [show, setShow] = useState(false);
   return (
-    <NavbarContext.Provider value={{ show, setShow }}>
+    <NavbarContext.Provider value={{ id, show, setShow }}>
       <header
-        id="navbar"
+        id={id}
         className={clx(
           "bg-bg-white border-otl-gray-200 shadow-button sticky top-0 z-50 h-16 w-full border-b max-md:h-14 print:hidden",
           className,
@@ -49,7 +62,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({
         data-nosnippet
         {...props}
       >
-        <div className="relative mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-4 px-6 max-md:h-14 xl:px-0">
+        <div className="px-4.5 relative mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-4 max-md:h-14 md:px-6">
           {children}
         </div>
       </header>
@@ -125,7 +138,6 @@ const NavbarMenu: FunctionComponent<NavigationMenuProps> = ({
   classNameNavDesktop,
   classNameNavMobile,
 }) => {
-  const { show } = useContext(NavbarContext);
   return (
     <NavigationMenu className="grow">
       {/* Desktop */}
@@ -139,20 +151,79 @@ const NavbarMenu: FunctionComponent<NavigationMenuProps> = ({
       </NavigationMenuList>
 
       {/* Tablet / Mobile */}
-      <Portal>
-        <div
+      <NavbarMobileMenu className={clx(classNameNavMobile)}>
+        {children}
+      </NavbarMobileMenu>
+    </NavigationMenu>
+  );
+};
+
+interface NavbarMobileMenuProps {
+  children: ReactNode;
+  className?: string;
+}
+
+type Measurable = {
+  getBoundingClientRect: () => DOMRect;
+};
+
+const NavbarMobileMenu: FunctionComponent<NavbarMobileMenuProps> = ({
+  children,
+  className,
+}) => {
+  const { id, show, setShow } = useContext(NavbarContext);
+
+  const virtualRef = useRef<Measurable | null>(null);
+
+  useEffect(() => {
+    const node = document.getElementById(id);
+
+    if (node) {
+      virtualRef.current = node;
+    }
+  }, [virtualRef]);
+
+  if (!show) {
+    return null;
+  }
+
+  return (
+    <RemoveScroll as={Root} allowPinchZoom enabled>
+      <Popover open={show} onOpenChange={setShow}>
+        <PopoverAnchor virtualRef={virtualRef as RefObject<Measurable>} />
+        <PopoverContent
+          sideOffset={0}
+          align="start"
           className={clx(
-            "bg-bg-white shadow-context-menu absolute bottom-full z-40 block xl:hidden",
-            "h-fit w-full rounded-b-lg p-3 transition-transform motion-reduce:transition-none",
-            "overflow-autp max-h-full",
-            show && "-mb-16 translate-y-full",
-            classNameNavMobile,
+            "absolute top-full z-40 h-dvh w-[var(--radix-popover-trigger-width)] xl:hidden",
+            className,
           )}
         >
-          <ul>{children}</ul>
-        </div>
-      </Portal>
-    </NavigationMenu>
+          <div
+            className={clx(
+              "absolute h-dvh w-full",
+              "bg-gray-700/60",
+              "data-[state=open]:animate-in data-[state=open]:fade-in-0",
+              "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+            )}
+            aria-hidden
+            onClick={() => setShow(false)}
+            onKeyDown={() => setShow(false)}
+          />
+          <ul
+            className={clx(
+              "absolute max-h-[80dvh] w-[var(--radix-popover-trigger-width)] overflow-y-auto p-3",
+              "border-otl-gray-200 rounded-md rounded-t-none border border-t-0 outline-none",
+              "bg-bg-dialog text-txt-black-900 shadow-context-menu",
+              "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-top-2",
+              "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2",
+            )}
+          >
+            {children}
+          </ul>
+        </PopoverContent>
+      </Popover>
+    </RemoveScroll>
   );
 };
 
@@ -272,6 +343,7 @@ const NavbarAction: FunctionComponent<NavbarActionProps> = ({
       {children}
       <Button
         variant="default-ghost"
+        iconOnly
         className={clx("xl:hidden", className)}
         onClick={handleToggle}
         aria-label={`${show ? "Close" : "Open"} navigation menu`}
