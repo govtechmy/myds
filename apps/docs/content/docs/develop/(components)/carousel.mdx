@@ -212,7 +212,6 @@ This is useful when you want to display multiple features, showcasing product hi
   
   ```tsx
   import { ChevronLeftIcon, ChevronRightIcon } from '@govtechmy/myds-react/icon';
-  import { clx } from '@govtechmy/myds-react/utils';
   import { useRef } from 'react';
 
   interface HorizontalCardProps {
@@ -231,7 +230,7 @@ This is useful when you want to display multiple features, showcasing product hi
 
     return (
       // Scrolling Container
-      <div className={clx('')}>
+      <>
         <div
           ref={scrollRef}
           className=" flex gap-2 w-full overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar"
@@ -251,7 +250,7 @@ This is useful when you want to display multiple features, showcasing product hi
               </div>
             </div>
         </div>
-      </div>
+      </>
     );
   }
 

@@ -211,7 +211,6 @@ Komponen ini berguna apabila anda ingin memaparkan pelbagai ciri, kelebihan, ata
 
   ```tsx
   import { ChevronLeftIcon, ChevronRightIcon } from '@govtechmy/myds-react/icon';
-  import { clx } from '@govtechmy/myds-react/utils';
   import { useRef } from 'react';
 
   interface HorizontalCardProps {
@@ -230,7 +229,7 @@ Komponen ini berguna apabila anda ingin memaparkan pelbagai ciri, kelebihan, ata
 
     return (
       // Scrolling Container
-      <div className={clx('')}>
+      <>
         <div
           ref={scrollRef}
           className=" flex gap-2 w-full overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar"
@@ -250,7 +249,7 @@ Komponen ini berguna apabila anda ingin memaparkan pelbagai ciri, kelebihan, ata
               </div>
             </div>
         </div>
-      </div>
+      </>
     );
   }
 
