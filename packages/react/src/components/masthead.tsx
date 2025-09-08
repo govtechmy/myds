@@ -138,7 +138,7 @@ const MastheadContent: FunctionComponent<
       )}
       {...props}
     >
-      <div className="px-4.5 gap-4.5 flex flex-col pb-6 pt-3 sm:grid-cols-2 sm:flex-row sm:px-6 sm:pb-8 sm:pt-6">
+      <div className="px-4.5 gap-4.5 flex flex-col pb-6 pt-3 sm:grid-cols-2 sm:flex-row sm:pb-8 sm:pt-6 md:px-6">
         {children}
       </div>
     </CollapsibleContent>
