@@ -62,7 +62,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({
         data-nosnippet
         {...props}
       >
-        <div className="relative mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-4 px-4.5 md:px-6 max-md:h-14">
+        <div className="px-4.5 relative mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-4 max-md:h-14 md:px-6">
           {children}
         </div>
       </header>
@@ -129,31 +129,48 @@ const NavbarLogo: FunctionComponent<NavbarLogoProps> = ({
 NavbarLogo.displayName = "NavbarLogo";
 interface NavigationMenuProps {
   children: ReactNode;
+  classNameNavDesktop?: string;
+  classNameNavMobile?: string;
 }
 
-const NavbarMenu: FunctionComponent<NavigationMenuProps> = ({ children }) => {
+const NavbarMenu: FunctionComponent<NavigationMenuProps> = ({
+  children,
+  classNameNavDesktop,
+  classNameNavMobile,
+}) => {
   return (
     <NavigationMenu className="grow">
       {/* Desktop */}
-      <NavigationMenuList className="hidden xl:flex xl:justify-start xl:gap-1">
+      <NavigationMenuList
+        className={clx(
+          "hidden xl:flex xl:justify-start xl:gap-1",
+          classNameNavDesktop,
+        )}
+      >
         {children}
       </NavigationMenuList>
 
       {/* Tablet / Mobile */}
-      <NavbarMobileMenu>{children}</NavbarMobileMenu>
+      <NavbarMobileMenu className={clx(classNameNavMobile)}>
+        {children}
+      </NavbarMobileMenu>
     </NavigationMenu>
   );
 };
 
 interface NavbarMobileMenuProps {
   children: ReactNode;
+  className?: string;
 }
 
 type Measurable = {
   getBoundingClientRect: () => DOMRect;
 };
 
-const NavbarMobileMenu: FunctionComponent<NavbarMobileMenuProps> = ({ children }) => {
+const NavbarMobileMenu: FunctionComponent<NavbarMobileMenuProps> = ({
+  children,
+  className,
+}) => {
   const { id, show, setShow } = useContext(NavbarContext);
 
   const virtualRef = useRef<Measurable | null>(null);
@@ -168,7 +185,7 @@ const NavbarMobileMenu: FunctionComponent<NavbarMobileMenuProps> = ({ children }
 
   if (!show) {
     return null;
-  };
+  }
 
   return (
     <RemoveScroll as={Root} allowPinchZoom enabled>
@@ -177,10 +194,10 @@ const NavbarMobileMenu: FunctionComponent<NavbarMobileMenuProps> = ({ children }
         <PopoverContent
           sideOffset={0}
           align="start"
-          className={clx("absolute top-full z-40 h-dvh xl:hidden")}
-          style={{
-            width: "var(--radix-popover-trigger-width)",
-          }}
+          className={clx(
+            "absolute top-full z-40 h-dvh w-[var(--radix-popover-trigger-width)] xl:hidden",
+            className,
+          )}
         >
           <div
             className={clx(
@@ -195,23 +212,20 @@ const NavbarMobileMenu: FunctionComponent<NavbarMobileMenuProps> = ({ children }
           />
           <ul
             className={clx(
-              "absolute max-h-[80dvh] overflow-y-auto p-3",
+              "absolute max-h-[80dvh] w-[var(--radix-popover-trigger-width)] overflow-y-auto p-3",
               "border-otl-gray-200 rounded-md rounded-t-none border border-t-0 outline-none",
               "bg-bg-dialog text-txt-black-900 shadow-context-menu",
               "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-top-2",
               "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2",
             )}
-            style={{
-              width: "var(--radix-popover-trigger-width)", // width - padding
-            }}
           >
             {children}
           </ul>
         </PopoverContent>
       </Popover>
     </RemoveScroll>
-  )
-}
+  );
+};
 
 NavbarMenu.displayName = "NavbarMenu";
 
