@@ -69,7 +69,7 @@ const MastheadHeader: FunctionComponent<ComponentProps<"div">> = ({
 }) => {
   return (
     <div
-      className="px-4.5 flex items-center gap-2 overflow-x-hidden py-2 outline-none sm:py-1 xl:px-0"
+      className="px-4.5 flex items-center gap-2 overflow-x-hidden py-2 outline-none sm:py-1 md:px-6"
       {...props}
     >
       <MalaysiaFlagIcon className="inline-block aspect-auto w-fit shrink-0" />
@@ -138,7 +138,7 @@ const MastheadContent: FunctionComponent<
       )}
       {...props}
     >
-      <div className="px-4.5 gap-4.5 flex flex-col pb-6 pt-3 sm:grid-cols-2 sm:flex-row sm:px-6 sm:pb-8 sm:pt-6 xl:px-0">
+      <div className="px-4.5 gap-4.5 flex flex-col pb-6 pt-3 sm:grid-cols-2 sm:flex-row sm:px-6 sm:pb-8 sm:pt-6">
         {children}
       </div>
     </CollapsibleContent>
