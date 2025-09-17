@@ -22,6 +22,7 @@ import {
   Popover,
   PopoverAnchor,
   PopoverContent,
+  PopoverPortal,
 } from "@radix-ui/react-popover";
 import { Button } from "./button";
 import { Link } from "./link";
@@ -191,36 +192,35 @@ const NavbarMobileMenu: FunctionComponent<NavbarMobileMenuProps> = ({
     <RemoveScroll as={Root} allowPinchZoom enabled>
       <Popover open={show} onOpenChange={setShow}>
         <PopoverAnchor virtualRef={virtualRef as RefObject<Measurable>} />
-        <PopoverContent
-          sideOffset={0}
-          align="start"
-          className={clx(
-            "absolute top-full z-40 h-dvh w-[var(--radix-popover-trigger-width)] xl:hidden",
-            className,
-          )}
-        >
-          <div
-            className={clx(
-              "absolute h-dvh w-full",
-              "bg-gray-700/60",
-              "data-[state=open]:animate-in data-[state=open]:fade-in-0",
-              "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
-            )}
-            aria-hidden
-            onClick={() => setShow(false)}
-          />
-          <ul
-            className={clx(
-              "absolute max-h-[80dvh] w-[var(--radix-popover-trigger-width)] overflow-y-auto p-3",
-              "border-otl-gray-200 rounded-md rounded-t-none border border-t-0 outline-none",
-              "bg-bg-dialog text-txt-black-900 shadow-context-menu",
-              "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-top-2",
-              "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2",
-            )}
+        <PopoverPortal>
+          <PopoverContent
+            sideOffset={0}
+            align="start"
+            className={clx("absolute top-full z-40 h-dvh xl:hidden", className)}
           >
-            {children}
-          </ul>
-        </PopoverContent>
+            <div
+              className={clx(
+                "absolute h-dvh w-[var(--radix-popper-anchor-width)]",
+                "bg-gray-700/60",
+                "data-[state=open]:animate-in data-[state=open]:fade-in-0",
+                "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+              )}
+              aria-hidden
+              onClick={() => setShow(false)}
+            />
+            <ul
+              className={clx(
+                "absolute max-h-[80dvh] w-[var(--radix-popper-anchor-width)] overflow-y-auto p-3",
+                "border-otl-gray-200 rounded-md rounded-t-none border border-t-0 outline-none",
+                "bg-bg-dialog text-txt-black-900 shadow-context-menu",
+                "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:slide-in-from-top-2",
+                "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top-2",
+              )}
+            >
+              {children}
+            </ul>
+          </PopoverContent>
+        </PopoverPortal>
       </Popover>
     </RemoveScroll>
   );
