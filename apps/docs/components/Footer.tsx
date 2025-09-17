@@ -48,7 +48,7 @@ export default function Footer(props: Props) {
                       key={name}
                       className="text-black-700 hover:text-black-900 text-sm [text-underline-position:from-font] hover:underline"
                       target="_blank"
-                      rel="noopenner noreferrer"
+                      rel="noopener noreferrer"
                       href={href}
                     >
                       {name}
