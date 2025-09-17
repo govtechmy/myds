@@ -1,5 +1,11 @@
 # @govtechmy/myds-react
 
+## 1.0.1
+
+### Patch Changes
+
+- 2673812: fix pagination : error duplicate key (...) thrown by myds auto pagination due to design --> pageiniital (...) pagemiddle (...) pagefinal
+
 ## 1.0.0
 
 ### Major Changes
