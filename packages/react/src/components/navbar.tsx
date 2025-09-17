@@ -181,7 +181,7 @@ const NavbarMobileMenu: FunctionComponent<NavbarMobileMenuProps> = ({
     if (node) {
       virtualRef.current = node;
     }
-  }, [virtualRef]);
+  }, [id]);
 
   if (!show) {
     return null;
