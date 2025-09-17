@@ -208,7 +208,6 @@ const NavbarMobileMenu: FunctionComponent<NavbarMobileMenuProps> = ({
             )}
             aria-hidden
             onClick={() => setShow(false)}
-            onKeyDown={() => setShow(false)}
           />
           <ul
             className={clx(
