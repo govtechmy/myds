@@ -1,0 +1,512 @@
+---
+title: Logo Footer
+description: Komponen Logo Footer ialah implementasi footer piawai untuk laman web rasmi kerajaan Malaysia.
+---
+
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TikTokIcon,
+  TwitterXIcon,
+  YoutubeIcon,
+} from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import Preview from "@/components/preview";
+import { Button } from "@/components/myds";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+import {
+  Footer,
+  SiteInfo,
+  FooterSection,
+  SiteLinkGroup,
+  SiteLink,
+  FooterLogo,
+} from "@govtechmy/myds-react/footer";
+import { Link } from "@govtechmy/myds-react/link";
+
+import { FooterComponent } from "./footer-logo.client";
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose"> 
+  <Tab value="Preview">
+    <div className="overflow-scroll px-2 h-[250px]">
+      <div >
+        <FooterComponent />
+      </div>
+    </div>
+
+  </Tab>
+  <Tab value="Code">
+
+```tsx
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TwitterXIcon,
+  TiktokIcon,
+  LinkedinIcon,
+} from "@govtechmy/myds-react/icon";
+
+import { 
+  Footer, 
+  FooterSection, 
+  FooterLogo, 
+  SiteInfo 
+} from "@govtechmy/myds-react/footer";
+
+import { Link } from "@govtechmy/myds-react/link";
+
+export const FooterComponent = () => {
+  return (
+    <>
+      <Footer>
+        <div className="flex w-full flex-col items-center">
+          <div className="flex w-full flex-row justify-center">
+            <div className="mb-5 flex flex-col items-center justify-center gap-y-4">
+              SEBUAH INISIATIF
+              <FooterLogo
+                logo={
+                  <img
+                    src="/assets/logo-govtech.png"
+                    alt="GovTech Malaysia"
+                    width={240}
+                    height={85}
+                  />
+                }
+              />
+            </div>
+            <div className="flex flex-col items-center justify-center gap-y-4">
+              DIBANGUNKAN OLEH
+              <FooterLogo
+                logo={
+                  <img
+                    src="/assets/logo-kementerian-digital.png"
+                    alt="Logo Kementerian Digital"
+                    width={150}
+                    height={92}
+                  />
+                }
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex w-full flex-col items-center gap-y-4 pt-4">
+          DENGAN KERJASAMA
+          <div className="flex flex-row items-center gap-6">
+            <FooterLogo
+              logo={
+                <img
+                  src="/assets/logo-mydigital.png"
+                  alt="MyDigital"
+                  width={210}
+                  height={40}
+                />
+              }
+            />
+
+            <FooterLogo
+              logo={
+                <img
+                  src="/assets/logo-mynic.png"
+                  alt="MyNIC"
+                  width={130}
+                  height={40}
+                />
+              }
+            />
+
+            <FooterLogo
+              logo={
+                <img
+                  src="/assets/logo-cybersecurity-malaysia.png"
+                  alt="CyberSecurity Malaysia"
+                  width={200}
+                  height={40}
+                />
+              }
+            />
+          </div>
+        </div>
+
+        <div className="flex w-full flex-col items-center gap-y-4 pt-4">
+          KOLABORASI STRATEGIK
+          <div className="flex flex-row items-center gap-6">
+            <FooterLogo
+              logo={
+                <img
+                  src="/assets/logo-mydigitalid.png"
+                  alt="MyDigital ID"
+                  width={170}
+                  height={40}
+                />
+              }
+            />
+
+            <FooterLogo
+              logo={
+                <img
+                  src="/assets/logo-mygcc.png"
+                  alt="Malaysia Government Call Center"
+                  width={140}
+                  height={40}
+                />
+              }
+            />
+          </div>
+        </div>
+
+        <FooterSection className="w-full">
+          <SiteInfo></SiteInfo>
+        </FooterSection>
+
+        <FooterSection className="text-txt-black-500 md:max-lg:gap-4.5 mx-auto flex w-full max-w-[1000px] justify-between border-none pt-8 text-sm max-lg:flex-col max-md:gap-4 lg:gap-6">
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-col items-start gap-3 md:flex-row md:items-center">
+              <p className="text-xs md:text-sm">
+                © 2025 Kementerian Digital. Semua hakcipta terpelihara.
+              </p>
+            </div>
+            <div className="flex flex-row gap-3">
+              <Link
+                href="#"
+                target="_blank"
+                className="bg-bg-washed flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F5FF] p-2 hover:bg-gray-200 hover:shadow-md hover:shadow-gray-300 md:h-10 md:w-10"
+              >
+                <FacebookIcon
+                  scale={32}
+                  className="md:scale-40 text-[#2563EB]"
+                />
+              </Link>
+              <Link
+                href={"#"}
+                target="_blank"
+                className="bg-bg-washed flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F5FF] p-2 hover:bg-gray-200 hover:shadow-md hover:shadow-gray-300 md:h-10 md:w-10"
+              >
+                <TwitterXIcon
+                  scale={32}
+                  className="md:scale-40 text-[#2563EB]"
+                />
+              </Link>
+              <Link
+                href={"#"}
+                target="_blank"
+                className="bg-bg-washed flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F5FF] p-2 hover:bg-gray-200 hover:shadow-md hover:shadow-gray-300 md:h-10 md:w-10"
+              >
+                <InstagramIcon
+                  scale={32}
+                  className="md:scale-40 text-[#2563EB]"
+                />
+              </Link>
+              <Link
+                href={"#"}
+                target="_blank"
+                className="bg-bg-washed flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F5FF] p-2 hover:bg-gray-200 hover:shadow-md hover:shadow-gray-300 md:h-10 md:w-10"
+              >
+                <TiktokIcon scale={32} className="md:scale-40 text-[#2563EB]" />
+              </Link>
+              <Link
+                href={"#"}
+                target="_blank"
+                className="bg-bg-washed flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F5FF] p-2 hover:bg-gray-200 hover:shadow-md hover:shadow-gray-300 md:h-10 md:w-10"
+              >
+                <LinkedinIcon
+                  scale={32}
+                  className="md:scale-40 text-[#2563EB]"
+                />
+              </Link>
+            </div>
+          </div>
+          <p className="text-xs md:text-sm">Last updated: 15th Aug 2025</p>
+        </FooterSection>
+      </Footer>
+    </>
+  );
+};
+
+```
+  </Tab>
+</Tabs>
+
+## Pengenalan 
+
+Komponen **Logo Footer** menyediakan reka bentuk footer yang piawai untuk laman web kerajaan Malaysia.  
+Ia merangkumi teks hakcipta, maklumat tarikh kemas kini terakhir, dan pautan rasmi media sosial.
+
+## Penggunaan
+
+Untuk menggunakannya, import komponen dan ikon yang diperlukan daripada **MYDS React**:
+
+```tsx
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TwitterXIcon,
+  TiktokIcon,
+  LinkedinIcon,
+} from "@govtechmy/myds-react/icon";
+
+import { 
+  Footer, 
+  FooterSection,
+  FooterLogo,
+  SiteInfo,
+} from "@govtechmy/myds-react/footer";
+
+import { Link } from "@govtechmy/myds-react/link";
+
+```
+
+Kemudian, bina komponen footer logo anda:
+
+```tsx
+export const FooterComponent = () => {
+  return (
+    <Footer>
+      <div className="flex w-full flex-col items-center">
+        <div className="flex w-full flex-row justify-center">
+          <div className="mb-5 flex flex-col items-center justify-center gap-y-4">
+            SEBUAH INISIATIF
+            <FooterLogo
+              logo={
+                <img
+                  src="/assets/logo-govtech.png"
+                  alt="GovTech Malaysia"
+                  width={240}
+                  height={85}
+                />
+              }
+            />
+          </div>
+          <div className="flex flex-col items-center justify-center gap-y-4">
+            DIBANGUNKAN OLEH
+            <FooterLogo
+              logo={
+                <img
+                  src="/assets/logo-kementerian-digital.png"
+                  alt="Logo Kementerian Digital"
+                  width={150}
+                  height={92}
+                />
+              }
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="flex w-full flex-col items-center gap-y-4 pt-4">
+        DENGAN KERJASAMA
+        <div className="flex flex-row items-center gap-6">
+          <FooterLogo
+            logo={
+              <img
+                src="/assets/logo-mydigital.png"
+                alt="MyDigital"
+                width={210}
+                height={40}
+              />
+            }
+          />
+
+          <FooterLogo
+            logo={
+              <img
+                src="/assets/logo-mynic.png"
+                alt="MyNIC"
+                width={130}
+                height={40}
+              />
+            }
+          />
+
+          <FooterLogo
+            logo={
+              <img
+                src="/assets/logo-cybersecurity-malaysia.png"
+                alt="CyberSecurity Malaysia"
+                width={200}
+                height={40}
+              />
+            }
+          />
+        </div>
+      </div>
+
+      <div className="flex w-full flex-col items-center gap-y-4 pt-4">
+        KOLABORASI STRATEGIK
+        <div className="flex flex-row items-center gap-6">
+          <FooterLogo
+            logo={
+              <img
+                src="/assets/logo-mydigitalid.png"
+                alt="MyDigital ID"
+                width={170}
+                height={40}
+              />
+            }
+          />
+
+          <FooterLogo
+            logo={
+              <img
+                src="/assets/logo-mygcc.png"
+                alt="Malaysia Government Call Center"
+                width={140}
+                height={40}
+              />
+            }
+          />
+        </div>
+      </div>
+
+      <FooterSection className="w-full">
+        <SiteInfo></SiteInfo>
+      </FooterSection>
+
+      <FooterSection className="text-txt-black-500 md:max-lg:gap-4.5 mx-auto flex w-full max-w-[1000px] justify-between border-none pt-8 text-sm max-lg:flex-col max-md:gap-4 lg:gap-6">
+        <div className="flex flex-col gap-3">
+          {/* Copyright */}
+          <div className="flex flex-col items-start gap-3 md:flex-row md:items-center">
+            <p className="text-xs md:text-sm">
+              © 2025 Kementerian Digital. Semua hakcipta terpelihara.
+            </p>
+          </div>
+
+          {/* Social Media Links */}
+          <div className="flex flex-row gap-3">
+            <Link
+              href="#"
+              target="_blank"
+              className="bg-bg-washed flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F5FF] p-2 hover:bg-gray-200 hover:shadow-md hover:shadow-gray-300 md:h-10 md:w-10"
+            >
+              <FacebookIcon scale={32} className="md:scale-40 text-[#2563EB]" />
+            </Link>
+
+            <Link
+              href="#"
+              target="_blank"
+              className="bg-bg-washed flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F5FF] p-2 hover:bg-gray-200 hover:shadow-md hover:shadow-gray-300 md:h-10 md:w-10"
+            >
+              <TwitterXIcon scale={32} className="md:scale-40 text-[#2563EB]" />
+            </Link>
+
+            <Link
+              href="#"
+              target="_blank"
+              className="bg-bg-washed flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F5FF] p-2 hover:bg-gray-200 hover:shadow-md hover:shadow-gray-300 md:h-10 md:w-10"
+            >
+              <InstagramIcon
+                scale={32}
+                className="md:scale-40 text-[#2563EB]"
+              />
+            </Link>
+
+            <Link
+              href="#"
+              target="_blank"
+              className="bg-bg-washed flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F5FF] p-2 hover:bg-gray-200 hover:shadow-md hover:shadow-gray-300 md:h-10 md:w-10"
+            >
+              <TiktokIcon scale={32} className="md:scale-40 text-[#2563EB]" />
+            </Link>
+
+            <Link
+              href="#"
+              target="_blank"
+              className="bg-bg-washed flex h-8 w-8 items-center justify-center rounded-full bg-[#F1F5FF] p-2 hover:bg-gray-200 hover:shadow-md hover:shadow-gray-300 md:h-10 md:w-10"
+            >
+              <LinkedinIcon scale={32} className="md:scale-40 text-[#2563EB]" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Last updated */}
+        <p className="text-xs md:text-sm">Last updated: 15th Aug 2025</p>
+      </FooterSection>
+    </Footer>
+  );
+};
+
+```
+
+## Props & Penyesuaian
+
+- `Footer` –> Pembungkus asas untuk footer.
+- `FooterSection` –> Menentukan susun atur dan penjajaran dalam footer.
+- `FooterLogo` -> Memaparkan logo rasmi agensi/kementerian di bahagian footer. Menerima prop logo (kebiasaannya berupa `<img />`).
+- `SiteInfo` -> Blok piawai yang memaparkan maklumat laman (domain, pemilikan, penafian). Memastikan konsistensi di seluruh laman web kerajaan.
+- `Link` –> Memastikan gaya konsisten untuk pautan luar.
+- `Icons` –> (Facebook, TwitterX, dsb.) – Disediakan oleh library ikon MYDS React.
+
+### Anda boleh ubah:
+
+- Tarikh **kemas kini terakhir** secara manual.
+- **Pautan media sosial** dengan URL rasmi kementerian/jabatan anda.
+- Logo dalam `FooterLogo` — gantikan nilai `src` dengan laluan fail logo anda sendiri (e.g., `/public/logos/agency.png`).
+
+## Contoh dengan URL 
+
+```tsx
+<Link href="https://www.facebook.com/youragency" target="_blank">
+  <FacebookIcon scale={32} className="text-[#2563EB]" />
+</Link>
+
+```
+
+## Penerangan className (Gaya)
+
+Komponen ini menggunakan kelas utiliti Tailwind CSS untuk susun atur, jarak, dan gaya.
+
+- `FooterSection`
+
+```css
+text-txt-black-500      /* Warna teks hitam-500 daripada sistem reka bentuk */
+mx-auto                 /* Pusatkan footer secara mendatar */
+flex                    /* Aktifkan susun atur flexbox */
+w-full                  /* Lebar penuh */
+max-w-[1000px]          /* Lebar maksimum = 1000px */
+justify-between         /* Jarak di antara hakcipta dan tarikh kemas kini */
+border-none             /* Buang sempadan */
+pt-8                    /* Padding atas: 2rem */
+text-sm                 /* Saiz teks kecil */
+max-lg:flex-col         /* Pada skrin kecil, susun menegak */
+md:max-lg:gap-4.5       /* Skrin sederhana–besar: jarak tersuai */
+max-md:gap-4            /* Pada mudah alih, jarak lebih kecil */
+lg:gap-6                /* Jarak lebih besar pada skrin besar */
+
+```
+
+- `Link`
+
+```css
+flex                        /* Flexbox untuk pusatkan ikon */
+h-8 w-8                     /* Saiz: 2rem x 2rem (mudah alih) */
+md:h-10 md:w-10             /* Saiz lebih besar (2.5rem) pada skrin sederhana+ */
+items-center justify-center /* Pusatkan ikon dalam butang bulat */
+rounded-full                /* Bulatan penuh */
+bg-[#F1F5FF]                /* Latar biru muda */
+p-2                         /* Padding dalaman */
+hover:bg-gray-200           /* Tukar latar bila hover */
+hover:shadow-md             /* Tambah bayang bila hover */
+hover:shadow-gray-300       /* Warna bayang bila hover */
+
+```
+
+- `p`
+
+```css
+text-xs                 /* Teks kecil untuk mudah alih */
+md:text-sm              /* Teks kecil-sederhana untuk skrin lebih besar */
+
+```
+
+- `Icon`
+
+```css
+md:scale-40             /* Besarkan ikon pada skrin sederhana+ */
+text-[#2563EB]          /* Warna ikon biru (blue-600) */
+
+```
+
+Dengan ini, anda boleh memastikan footer yang konsisten di semua laman web kerajaan Malaysia, sejajar dengan MYDS (Malaysia Government Design System).
+

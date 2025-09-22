@@ -1,0 +1,448 @@
+---
+title: Login
+description: A responsive, accessible login screen template with MYDS components.
+---
+
+import { Button } from "@/components/myds";
+import { Input } from "@/components/myds";
+import {
+  GlobeIcon,
+  GoogleIcon,
+  JataNegaraIcon,
+} from "@govtechmy/myds-react/icon";
+import { Navbar, NavbarLogo } from "@/components/myds";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/myds";
+import { ThemeSwitch } from "@/components/myds";
+import { Link } from "@govtechmy/myds-react/link";
+import { clx } from "@govtechmy/myds-react/utils";
+import LoginTemplate from "@/templates/login.tsx";
+import Preview from "@/components/preview";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose p-0 m-0">
+    <div className="relative isolate w-full min-h-[90vh] overflow-hidden rounded-md border shadow">
+        <LoginTemplate className="px-4 bg-bg-gray-50" />
+    </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+import { Button } from "@govtechmy/myds-react/button";
+import { Input } from "@govtechmy/myds-react/input";
+import {
+  GlobeIcon,
+  GoogleIcon,
+  JataNegaraIcon,
+} from "@govtechmy/myds-react/icon";
+import { Navbar, NavbarLogo } from "@govtechmy/myds-react/navbar";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@govtechmy/myds-react/select";
+import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
+import { Link } from "@govtechmy/myds-react/link";
+import { clx } from "@govtechmy/myds-react/utils";
+
+export default function LoginTemplate() {
+  return (
+    <div className="border-otl-gray-200 shadow-card flex min-h-screen flex-col border">
+      <HeaderLogin />
+      <BodyLogin />
+      <FooterLogin />
+    </div>
+  );
+}
+
+function BodyLogin() {
+  return (
+    <div className="bg-bg-gray-50 flex w-full flex-grow items-center justify-center py-12">
+      <form className="mx-auto flex max-w-[400px] flex-col items-center justify-center gap-8 px-4">
+        <div className="flex flex-col gap-4 text-center">
+          <div className="text-2xl font-semibold">Log in to Brand</div>
+          <div className="text-txt-black-700 text-base">
+            Welcome back! Please enter your details.
+          </div>
+        </div>
+        <div className="flex w-full flex-col gap-4">
+          <div className="flex w-full flex-col gap-1.5">
+            <div className="text-txt-black-500 text-sm">Email</div>
+            <Input
+              size="medium"
+              id="email"
+              type="email"
+              placeholder="yourname@example.com"
+              required
+            />
+          </div>
+          <div className="flex w-full flex-col gap-1.5">
+            <div className="text-txt-black-500 text-sm">Password</div>
+            <Input
+              size="medium"
+              id="password"
+              type="password"
+              placeholder="Enter Your Password"
+              required
+            />
+          </div>
+        </div>
+        <div className="flex w-full flex-col items-center justify-center gap-4">
+          <Button size="medium" className="w-full items-center justify-center">
+            Log in
+          </Button>
+          <div className="text-txt-black-500 text-sm">OR</div>
+          <Button
+            variant={"default-outline"}
+            className="w-full items-center justify-center"
+            size="medium"
+          >
+            <GoogleIcon></GoogleIcon> Continue with MyGovUC
+          </Button>
+        </div>
+        <Link
+          underline="hover"
+          className="text-txt-primary text-sm font-normal"
+          href="https://www.google.com"
+        >
+          Forgot Password?
+        </Link>
+      </form>
+    </div>
+  );
+}
+
+function HeaderLogin() {
+  return (
+    <Navbar
+      className="bg-bg-gray-50 border-b-0"
+      style={{ boxShadow: "0 0 #0000" }}
+    >
+      <NavbarLogo
+        src="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+        alt="Malaysian Government Design System"
+      >
+        <div className="text-lg font-semibold">MYDS</div>
+        <div className="text-bg-white bg-bg-black-900 font-body rounded-sm px-1.5 py-0.5 text-xs font-medium leading-[18px]">
+          DASHBOARD
+        </div>
+      </NavbarLogo>
+      <div className="flex gap-2">
+        <ThemeSwitch />
+        <div className="hidden sm:block">
+          <Select defaultValue="EN" variant="outline" size="small">
+            <SelectTrigger aria-label="language-selection">
+              <GlobeIcon className="h-4 w-4"></GlobeIcon>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent align="end" className="font-body rounded-[4px] py-1">
+              <SelectItem value="EN">EN</SelectItem>
+              <SelectItem value="BM">BM</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+    </Navbar>
+  );
+}
+
+function FooterLogin() {
+  return (
+    <div className="bg-bg-gray-50">
+      <div className="gap-4.5 hidden items-center py-1 pl-6 text-sm font-normal max-[430px]:flex">
+        <Navlinks />
+      </div>
+      <div
+        className={clx(
+          "relative mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-4 px-6",
+          "max-md:h-14",
+          "xl:px-0",
+        )}
+      >
+        <div className="flex items-center justify-center max-sm:flex-col">
+          <div className="flex items-center justify-center gap-2">
+            <JataNegaraIcon></JataNegaraIcon>
+            <div className="flex max-sm:flex-col">
+              <div className="font-heading font-semibold">
+                Government of Malaysia
+              </div>
+              <div className="font-body text-txt-black-500 flex items-center pl-[10px] text-xs font-normal leading-[18px] max-sm:pl-0">
+                © 2024 Government of Malaysia
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="gap-4.5 flex items-center justify-center text-sm font-normal max-[430px]:hidden">
+          <Navlinks />
+        </div>
+      </div>
+    </div>
+  );
+}
+function Navlinks() {
+  return (
+    <>
+      <Link underline="hover" href="https://www.google.com">
+        Home
+      </Link>
+      <Link underline="hover" href="https://www.google.com">
+        API Docs
+      </Link>
+    </>
+  );
+}
+  ```
+  </Tab>
+</Tabs>
+
+
+
+
+## Overview
+
+The `LoginTemplate` component provides a sample UI login screen using [MYDS](https://github.com/govtechmy/myds) components. It includes:
+
+- A responsive header with logo, language switcher, and theme toggle.
+- A centered login form with email/password fields and third-party login support.
+- A footer with branding and navigation links.
+
+This login page template is built for **rapid development** and **easy integration**. It is designed to help teams get started faster by providing a layout that adheres to the **MYDS design system**, eliminating the need to piece together individual components manually.
+
+> ⚠️ **Note**: This is a **design-only template**. It does **not** include any functional logic such as:
+> - Dark/light mode toggling
+> - Email or password validation
+> - Authentication handling
+> - Form submission
+> 
+> You are expected to implement such logic based on your own system needs.
+
+## Usage
+
+Copy the whole code below to get started!
+
+```tsx copy title="Template"
+import { Button } from "@govtechmy/myds-react/button";
+import { Input } from "@govtechmy/myds-react/input";
+import {
+  GlobeIcon,
+  GoogleIcon,
+  JataNegaraIcon,
+} from "@govtechmy/myds-react/icon";
+import { Navbar, NavbarLogo } from "@govtechmy/myds-react/navbar";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@govtechmy/myds-react/select";
+import { ThemeSwitch } from "@govtechmy/myds-react/theme-switch";
+import { Link } from "@govtechmy/myds-react/link";
+import { clx } from "@govtechmy/myds-react/utils";
+
+export default function LoginTemplate() {
+  return (
+    <div className="border-otl-gray-200 shadow-card flex min-h-screen flex-col border">
+      <HeaderLogin />
+      <BodyLogin />
+      <FooterLogin />
+    </div>
+  );
+}
+
+function BodyLogin() {
+  return (
+    <div className="bg-bg-gray-50 flex w-full flex-grow items-center justify-center py-12">
+      <form className="mx-auto flex max-w-[400px] flex-col items-center justify-center gap-8 px-4">
+        <div className="flex flex-col gap-4 text-center">
+          <div className="text-2xl font-semibold">Log in to Brand</div>
+          <div className="text-txt-black-700 text-base">
+            Welcome back! Please enter your details.
+          </div>
+        </div>
+        <div className="flex w-full flex-col gap-4">
+          <div className="flex w-full flex-col gap-1.5">
+            <div className="text-txt-black-500 text-sm">Email</div>
+            <Input
+              size="medium"
+              id="email"
+              type="email"
+              placeholder="yourname@example.com"
+              required
+            />
+          </div>
+          <div className="flex w-full flex-col gap-1.5">
+            <div className="text-txt-black-500 text-sm">Password</div>
+            <Input
+              size="medium"
+              id="password"
+              type="password"
+              placeholder="Enter Your Password"
+              required
+            />
+          </div>
+        </div>
+        <div className="flex w-full flex-col items-center justify-center gap-4">
+          <Button size="medium" className="w-full items-center justify-center">
+            Log in
+          </Button>
+          <div className="text-txt-black-500 text-sm">OR</div>
+          <Button
+            variant={"default-outline"}
+            className="w-full items-center justify-center"
+            size="medium"
+          >
+            <GoogleIcon></GoogleIcon> Continue with MyGovUC
+          </Button>
+        </div>
+        <Link
+          underline="hover"
+          className="text-txt-primary text-sm font-normal"
+          href="https://www.google.com"
+        >
+          Forgot Password?
+        </Link>
+      </form>
+    </div>
+  );
+}
+
+function HeaderLogin() {
+  return (
+    <Navbar
+      className="bg-bg-gray-50 border-b-0"
+      style={{ boxShadow: "0 0 #0000" }}
+    >
+      <NavbarLogo
+        src="https://d2391uizq0pg2.cloudfront.net/common/logo.svg"
+        alt="Malaysian Government Design System"
+      >
+        <div className="text-lg font-semibold">MYDS</div>
+        <div className="text-bg-white bg-bg-black-900 font-body rounded-sm px-1.5 py-0.5 text-xs font-medium leading-[18px]">
+          DASHBOARD
+        </div>
+      </NavbarLogo>
+      <div className="flex gap-2">
+        <ThemeSwitch />
+        <div className="hidden sm:block">
+          <Select defaultValue="EN" variant="outline" size="small">
+            <SelectTrigger aria-label="language-selection">
+              <GlobeIcon className="h-4 w-4"></GlobeIcon>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent align="end" className="font-body rounded-[4px] py-1">
+              <SelectItem value="EN">EN</SelectItem>
+              <SelectItem value="BM">BM</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+    </Navbar>
+  );
+}
+
+function FooterLogin() {
+  return (
+    <div className="bg-bg-gray-50">
+      <div className="gap-4.5 hidden items-center py-1 pl-6 text-sm font-normal max-[430px]:flex">
+        <Navlinks />
+      </div>
+      <div
+        className={clx(
+          "relative mx-auto flex h-16 max-w-screen-xl items-center justify-between gap-4 px-6",
+          "max-md:h-14",
+          "xl:px-0",
+        )}
+      >
+        <div className="flex items-center justify-center max-sm:flex-col">
+          <div className="flex items-center justify-center gap-2">
+            <JataNegaraIcon></JataNegaraIcon>
+            <div className="flex max-sm:flex-col">
+              <div className="font-heading font-semibold">
+                Government of Malaysia
+              </div>
+              <div className="font-body text-txt-black-500 flex items-center pl-[10px] text-xs font-normal leading-[18px] max-sm:pl-0">
+                © 2024 Government of Malaysia
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="gap-4.5 flex items-center justify-center text-sm font-normal max-[430px]:hidden">
+          <Navlinks />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Navlinks() {
+  return (
+    <>
+      <Link underline="hover" href="https://www.google.com">
+        Home
+      </Link>
+      <Link underline="hover" href="https://www.google.com">
+        API Docs
+      </Link>
+    </>
+  );
+}
+
+```
+
+```tsx copy title="Render Page"
+function LoginPage() {
+  return (
+    <LoginTemplate/>
+  );
+}
+```
+
+## Anatomy
+
+```
+<LoginTemplate />
+├── HeaderLogin
+│   ├── Navbar
+│   │   ├── NavbarLogo
+│   │   ├── ThemeSwitch
+│   │   └── Select (Language)
+├── BodyLogin
+│   ├── Form
+│   │   ├── Email Input
+│   │   ├── Password Input
+│   │   ├── Log In Button
+│   │   ├── Continue with MyGovUC Button
+│   │   └── Forgot Password Link
+└── FooterLogin
+    ├── Jata Icon + Branding
+    └── Navlinks (Home, API Docs)
+```
+
+## Features
+
+-  Uses MYDS styling system and components.
+-  Fully responsive with adaptive footer for small screens.
+-  Basic Template Login to get started
+
+## Customization
+
+You can edit anything inside the code, its fully customizable!
+It’s built to help you get started quickly with a login UI and is meant to be adapted however you like. The template is made up of three main parts:
+
+-  `HeaderLogin` - Edit to change the logo and integrate functional components (toggle/dropdown)
+-  `BodyLogin` - Edit to handle login handling logic
+-  `FooterLogin` - Edit to change Logo, info, links
+
+Think of this as a flexible UI starting point, where you can change anything, add anything, and make it your own!
+Previously, using just MYDS components meant you still had to design and style entire pages from scratch. Now, with the new templates, you don’t have to worry about CSS or layout design. They come with ready-made, mobile-friendly UIs to speed up your development!

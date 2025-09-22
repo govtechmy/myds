@@ -215,6 +215,10 @@ export default {
     design: "Design",
     develop: "Develop",
     icon: "Icon",
+    storybook: "Storybook",
+    community: "Community",
+    myds_ai: "MYDS AI",
+    splask: "SPLaSK",
   },
 
   /* Design */
@@ -300,5 +304,65 @@ export default {
   e404: {
     title: "404 - Page Not Found | MYDS",
     description: "The page you are looking for does not exist.",
+  },
+
+  /* Community Page */
+  community: {
+    description: "Help Improve",
+    title: "MYDS Developer's Community",
+    subtitle: "Join the MYDS Developer Community!",
+    subtitle2:
+      "MYDS Developer's community is your chance to drive the direction of Malaysia's Design System journey! A community involving various stakeholders that brings together Creative Designers, UI/UX Experts, Front-End Developers, and many more to ensure Malaysia's Design System is on par with the industry standard!",
+    subtitle3: "Don't just ask for change — make it!",
+    name: "Name",
+    email: "Email",
+    submit: "Submit",
+    infoTitle: "Info",
+    interest: "Interested in:",
+    institute: "Institute / Organization",
+    myGovOnlyInfo:
+      "We’re currently in Phase 1 and open only to government officers who are interested in contributing to MYDS. We’ll be opening to the public soon—stay tuned!",
+    form: {
+      selectPlaceholder: "Your Area of Interest",
+      requiredName: "Please fill in your name.",
+      requiredEmail: "Please fill in your email address.",
+      requiredInstitute: "Please fill in your institution.",
+      requiredInterest: "Please select your area of interest.",
+      invalidEmail: "Please Enter a valid Government email address.",
+      invalidName: "Name can only contain letters and spaces.",
+      success1: "Thank you",
+      success2: "We'll contact you soon",
+      failError: "Failed to submit. Please try again later.",
+      interest: {
+        option1: "UI/UX",
+        option2: "Frontend",
+        option3: "Operation",
+      },
+    },
+    modal: {
+      close: "Continue",
+      title: "Successfully Sent!",
+      content:
+        "Your application has been successfully submitted. We will contact you as soon as possible.",
+    },
+    emailToSend: {
+      header: "MYDS Community Submission Received",
+      message1: "Hi",
+      message2:
+        "We've received your request to be part of the MYDS Community! Our team has recorded your information and will contact you as soon as possible.",
+      message3:
+        "Thank you for your interest in shaping Malaysia's Design System.",
+      regard: "Best regards,",
+      team: "MYDS Team",
+    },
+  },
+  myds_ai: {
+    description: "MYDS AI is a tool that helps you generate MYDS components and designs.",
+  },
+  splask: {
+    description: "SPLaSK is a an accessibility testing tool for Malaysian government websites.",
+  },
+  storybook: {
+    description: "Storybook is a UI development environment for MYDS components.",
   },
 };
