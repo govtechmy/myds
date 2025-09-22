@@ -1,6 +1,6 @@
 {
   "name": "@govtechmy/myds-docs",
-  "version": "0.0.25",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "next build",

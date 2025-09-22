@@ -1,5 +1,28 @@
 # @govtechmy/myds-storybook
 
+## 1.0.0
+
+### Major Changes
+
+- :q
+- Fix patch tailwind
+- ee2d39a: :q
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+- Updated dependencies [ee2d39a]
+  - @govtechmy/myds-react@1.0.0
+  - @govtechmy/myds-style@1.0.0
+
+## 0.0.26
+
+### Patch Changes
+
+- Updated dependencies [d2e231e]
+  - @govtechmy/myds-react@0.0.24
+
 ## 0.0.25
 
 ### Patch Changes
