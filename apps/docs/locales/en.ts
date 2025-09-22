@@ -215,6 +215,7 @@ export default {
     design: "Design",
     develop: "Develop",
     icon: "Icon",
+    storybook: "Storybook",
     community: "Community",
     myds_ai: "MYDS AI",
     splask: "SPLaSK",
@@ -360,5 +361,8 @@ export default {
   },
   splask: {
     description: "SPLaSK is a an accessibility testing tool for Malaysian government websites.",
+  },
+  storybook: {
+    description: "Storybook is a UI development environment for MYDS components.",
   },
 };

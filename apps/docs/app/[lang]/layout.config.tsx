@@ -3,6 +3,7 @@ import { links } from "@/lib/constant";
 import { getRosetta } from "@/locales/_server";
 import {
   ComponentIcon,
+  DocumentIcon,
   FontIcon,
   GlobeIcon,
   InfoIcon,
@@ -65,6 +66,14 @@ export const getMYDSConfig = (lang: "en" | "ms"): MYDSConfig => {
       description: t("icons.description"),
       url: `/${lang}/icon`,
       icon: <ComponentIcon />,
+      active: "nested-url",
+    },
+    {
+      title: t("menu.storybook"),
+      text: t("menu.storybook"),
+      description: t("storybook.description"),
+      url: `https://myds-storybook.vercel.app/`,
+      icon: <DocumentIcon />,
       active: "nested-url",
     },
     {
