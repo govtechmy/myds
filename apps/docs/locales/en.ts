@@ -330,6 +330,9 @@ export default {
       requiredInterest: "Please select your area of interest.",
       invalidEmail: "Please Enter a valid Government email address.",
       invalidName: "Name can only contain letters and spaces.",
+        emailExists: "This email has already been registered.",
+      emailExistsDetail:
+        "Email already exists in database, therefore we won't be submitting your request. Thank you.",
       success1: "Thank you",
       success2: "We'll contact you soon",
       failError: "Failed to submit. Please try again later.",

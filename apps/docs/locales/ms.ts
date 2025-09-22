@@ -327,6 +327,9 @@ export default {
       required: "Ruangan ini wajib diisi",
       invalidEmail: "Alamat emel Kerajaan tidak sah",
       invalidName: "Nama hanya boleh mengandungi huruf dan ruang",
+      emailExists: "Emel ini telah didaftarkan.",
+      emailExistsDetail:
+        "Emel sudah wujud dalam pangkalan data, oleh itu permohonan anda tidak akan dihantar. Terima kasih.",
       success1: "Terima kasih",
       success2: "Kami akan hubungi anda",
       failError: "Gagal menghantar. Sila cuba lagi nanti.",
