@@ -5,6 +5,8 @@ import {
   ComponentIcon,
   FontIcon,
   GlobeIcon,
+  InfoIcon,
+  SettingIcon,
   UserGroupIcon,
 } from "@govtechmy/myds-react/icon";
 import { type HomeLayoutProps } from "fumadocs-ui/home-layout";
@@ -71,6 +73,22 @@ export const getMYDSConfig = (lang: "en" | "ms"): MYDSConfig => {
       description: t("community.description"),
       url: `/${lang}/community`,
       icon: <UserGroupIcon />,
+      active: "nested-url",
+    },
+    {
+      title: t("menu.myds_ai"),
+      text: t("menu.myds_ai"),
+      description: t("myds_ai.description"),
+      url: `https://myds-gen.vercel.app/`,
+      icon: <SettingIcon />,
+      active: "nested-url",
+    },
+    {
+      title: t("menu.splask"),
+      text: t("menu.splask"),
+      description: t("splask.description"),
+      url: `https://splask.jdn.gov.my/`,
+      icon: <InfoIcon />,
       active: "nested-url",
     },
   ];

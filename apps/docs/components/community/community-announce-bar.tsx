@@ -13,7 +13,7 @@ export default function CommunityAnnounceBar({
   myGovOnlyInfo: string;
 }) {
   return (
-    <div className="w-full border-b border-gray-200">
+    <div className="w-full">
       <div className="max-w-container container mx-auto px-0">
         <AnnounceBar className="border-0 md:mx-0 md:px-4 xl:px-0 px-0">
           <div className="flex items-center gap-3">

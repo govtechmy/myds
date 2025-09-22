@@ -216,6 +216,8 @@ export default {
     develop: "Develop",
     icon: "Icon",
     community: "Community",
+    myds_ai: "MYDS AI",
+    splask: "SPLaSK",
   },
 
   /* Design */
@@ -325,7 +327,7 @@ export default {
       requiredEmail: "Please fill in your email address.",
       requiredInstitute: "Please fill in your institution.",
       requiredInterest: "Please select your area of interest.",
-      invalidEmail: "Please Enter a valid email address.",
+      invalidEmail: "Please Enter a valid Government email address.",
       invalidName: "Name can only contain letters and spaces.",
       success1: "Thank you",
       success2: "We'll contact you soon",
@@ -352,5 +354,11 @@ export default {
       regard: "Best regards,",
       team: "MYDS Team",
     },
+  },
+  myds_ai: {
+    description: "MYDS AI is a tool that helps you generate MYDS components and designs.",
+  },
+  splask: {
+    description: "SPLaSK is a an accessibility testing tool for Malaysian government websites.",
   },
 };

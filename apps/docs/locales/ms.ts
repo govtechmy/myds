@@ -325,7 +325,7 @@ export default {
     form: {
       selectPlaceholder: "Bidang Minat Anda",
       required: "Ruangan ini wajib diisi",
-      invalidEmail: "Alamat emel tidak sah",
+      invalidEmail: "Alamat emel Kerajaan tidak sah",
       invalidName: "Nama hanya boleh mengandungi huruf dan ruang",
       success1: "Terima kasih",
       success2: "Kami akan hubungi anda",
