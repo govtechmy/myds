@@ -46,6 +46,8 @@ type Props = {
     failError: string;
     success1: string;
     success2: string;
+    emailExists: string;
+    emailExistsDetail: string;
   };
 };
 
@@ -63,6 +65,7 @@ export default function CommunityForm({
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [duplicateWarning, setDuplicateWarning] = useState<string | null>(null);
 
   const schema = z.object({
     name: z
@@ -92,6 +95,8 @@ export default function CommunityForm({
     register,
     handleSubmit,
     reset,
+    setError,
+    clearErrors,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -122,6 +127,15 @@ export default function CommunityForm({
           setShowSuccess(false);
         }, 3000);
       } else {
+        // Handle duplicate email from backend if indicated
+        // Prefer explicit code, then HTTP 409, then message heuristic
+        if (
+          result?.message?.toLowerCase() === "email already exists"
+        ) {
+          setError("email", { type: "manual", message: errMsg.emailExists });
+          setDuplicateWarning(errMsg.emailExistsDetail);
+          return;
+        }
         setShowError(true);
       }
     } catch (err) {
@@ -153,6 +167,12 @@ export default function CommunityForm({
             <p className="text-success-800 font-medium">{errMsg.success1}</p>
           </div>
           <p className="text-success-700 mt-1 text-sm">{errMsg.success2}</p>
+        </div>
+      )}
+
+      {duplicateWarning && (
+        <div className="bg-warning-50 border-warning-200 rounded-lg border p-4">
+          <div className="text-warning-800">{duplicateWarning}</div>
         </div>
       )}
 
@@ -231,7 +251,14 @@ export default function CommunityForm({
           </label>
           <Input
             id="email"
-            {...register("email")}
+            {...register("email", {
+              onChange: () => {
+                if (duplicateWarning) {
+                  setDuplicateWarning(null);
+                  clearErrors("email");
+                }
+              },
+            })}
             className={errors.email ? "border-danger-600" : ""}
             disabled={isLoading}
           />

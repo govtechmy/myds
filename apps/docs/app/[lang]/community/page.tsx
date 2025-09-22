@@ -54,6 +54,8 @@ export default function CommunityPage({
               failError: t("community.form.failError"),
               success1: t("community.form.success1"),
               success2: t("community.form.success2"),
+              emailExists: t("community.form.emailExists"),
+              emailExistsDetail: t("community.form.emailExistsDetail"),
             }}
             onSubmitComplete={() => setShowModal(true)}
           />
