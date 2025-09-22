@@ -1,5 +1,12 @@
 # @govtechmy/myds-react
 
+## 1.0.2
+
+### Patch Changes
+
+- 4259c83: refactor: positioning of `Navbar` menu in mobile
+  fix: omit `Breadcrumb` padding from default style, add to `fill` variant
+
 ## 1.0.1
 
 ### Patch Changes
