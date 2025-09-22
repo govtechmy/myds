@@ -28,11 +28,11 @@ export default function Feedback(props: Props) {
           {t("Home.description.feedback_1")}
           <Link
             className="text-txt-primary inline font-medium underline"
-            href="mailto:design@tech.gov.my"
+            href="mailto:support@mydigital.gov.my"
             newTab
             underline="always"
           >
-            design@tech.gov.my
+            support@mydigital.gov.my
           </Link>
           {t("Home.description.feedback_2")}
           <Link
