@@ -1,5 +1,13 @@
 # @govtechmy/myds-docs
 
+## 1.0.2
+
+### Patch Changes
+
+- 4259c83: standardise `Masthead`, `Navbar` and container padding
+- Updated dependencies [4259c83]
+  - @govtechmy/myds-react@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes
