@@ -217,8 +217,11 @@ export default {
     home: "Laman Utama",
     design: "Reka Bentuk",
     develop: "Pembangunan",
-    icon: "ikon",
+    icon: "Ikon",
+    storybook: "Storybook",
     community: "Komuniti",
+    myds_ai: "AI MYDS",
+    splask: "SPLaSK",
   },
 
   /* Design */
