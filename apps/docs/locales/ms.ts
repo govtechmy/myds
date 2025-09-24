@@ -217,8 +217,11 @@ export default {
     home: "Laman Utama",
     design: "Reka Bentuk",
     develop: "Pembangunan",
-    icon: "ikon",
+    icon: "Ikon",
+    storybook: "Storybook",
     community: "Komuniti",
+    myds_ai: "AI MYDS",
+    splask: "SPLaSK",
   },
 
   /* Design */
@@ -345,5 +348,24 @@ export default {
       content:
         "Permohonan anda telah berjaya dihantar. Kami akan menghubungi anda secepat mungkin.",
     },
+    emailToSend: {
+      header: "Penghantaran Komuniti MYDS Diterima",
+      message1: "Hai",
+      message2:
+        "Kami telah menerima permintaan anda untuk menjadi sebahagian daripada Komuniti MYDS! Pasukan kami telah merekodkan maklumat anda dan akan menghubungi anda secepat mungkin.",
+      message3:
+        "Terima kasih atas minat anda untuk membentuk Sistem Reka Bentuk Malaysia.",
+      regard: "Yang ikhlas,",
+      team: "Pasukan MYDS",
+    },
+  },
+  myds_ai: {
+    description: "AI MYDS adalah alat yang membantu anda menjana komponen dan reka bentuk MYDS.",
+  },
+  splask: {
+    description: "SPLaSK adalah alat ujian kebolehcapaian untuk laman web kerajaan Malaysia.",
+  },
+  storybook: {
+    description: "Storybook adalah persekitaran pembangunan UI untuk komponen MYDS.",
   },
 };
