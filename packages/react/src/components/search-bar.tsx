@@ -23,6 +23,8 @@ const SearchBarContext = React.createContext<Context>({
 
 interface SearchBarProps extends ComponentProps<typeof Command> {
   size?: SearchBarSize;
+  splwpkSearchFunction?: boolean;
+  splwpkAdvancedSearchFunction?: boolean;
 }
 
 /**
@@ -30,13 +32,32 @@ interface SearchBarProps extends ComponentProps<typeof Command> {
  * @see https://github.com/pacocoursey/cmdk#command-cmdk-root
  */
 const SearchBar: FunctionComponent<SearchBarProps> = forwardRef(
-  ({ children, className, size = DEFAULT_SIZE, ...props }, ref) => {
+  (
+    {
+      children,
+      className,
+      size = DEFAULT_SIZE,
+      splwpkSearchFunction = false,
+      splwpkAdvancedSearchFunction = false,
+      ...props
+    },
+    ref,
+  ) => {
     return (
       <SearchBarContext.Provider value={{ size }}>
         <Command
           ref={ref}
           className={clx("relative z-0", className)}
           shouldFilter={false}
+          {...(splwpkSearchFunction
+            ? { "splwpk-search-function": "splwpk-search-function" }
+            : {})}
+          {...(splwpkAdvancedSearchFunction
+            ? {
+                "splwpk-advanced-search-function":
+                  "splwpk-advanced-search-function",
+              }
+            : {})}
           {...props}
         >
           {children}
