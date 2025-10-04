@@ -115,6 +115,7 @@ export interface ButtonProps
     VariantProps<typeof button_cva> {
   asChild?: boolean;
   iconOnly?: boolean;
+  SplaskOnlineEParticipation?: boolean;
 }
 
 const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
@@ -126,22 +127,29 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
       children,
       asChild = false,
       iconOnly = false,
+      SplaskOnlineEParticipation,
       ...props
     },
     ref,
   ) => {
     const Comp = asChild ? Slot : "button";
 
+    const buttonElement = (
+      <Comp
+        ref={ref}
+        className={clx(button_cva({ variant, size, className, iconOnly }))}
+        {...props}
+      >
+        {children}
+      </Comp>
+    );
+
+    if (!SplaskOnlineEParticipation) return buttonElement;
+
     return (
-      <ButtonContext.Provider value={{ variant, size }}>
-        <Comp
-          ref={ref}
-          className={clx(button_cva({ variant, size, className, iconOnly }))}
-          {...props}
-        >
-          {children}
-        </Comp>
-      </ButtonContext.Provider>
+      <div splwpk-online-e-participation="splwpk-online-e-participation">
+        {buttonElement}
+      </div>
     );
   },
 );
