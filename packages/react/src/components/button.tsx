@@ -118,6 +118,14 @@ export interface ButtonProps
   SplaskOnlineEParticipation?: boolean;
 }
 
+/*========================================================================================================================*/
+
+const ButtonContext = createContext<VariantProps<typeof button_cva>>({
+  variant: "primary-fill",
+  size: "small",
+  iconOnly: false,
+});
+
 const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
   (
     {
@@ -135,13 +143,15 @@ const Button: ForwardRefExoticComponent<ButtonProps> = forwardRef(
     const Comp = asChild ? Slot : "button";
 
     const buttonElement = (
-      <Comp
-        ref={ref}
-        className={clx(button_cva({ variant, size, className, iconOnly }))}
-        {...props}
-      >
-        {children}
-      </Comp>
+      <ButtonContext.Provider value={{ variant, size, iconOnly }}>
+        <Comp
+          ref={ref}
+          className={clx(button_cva({ variant, size, className, iconOnly }))}
+          {...props}
+        >
+          {children}
+        </Comp>
+      </ButtonContext.Provider>
     );
 
     if (!SplaskOnlineEParticipation) return buttonElement;
@@ -157,23 +167,10 @@ Button.displayName = "Button";
 
 /*========================================================================================================================*/
 
-const ButtonContext = createContext<VariantProps<typeof button_cva>>({
-  variant: "primary-fill",
-  size: "small",
-  iconOnly: false,
-});
-
-/*========================================================================================================================*/
-
 /**
  * ButtonCounter component is a forward-ref exotic component that utilizes the ButtonContext
  * to apply variant and size styles to a span element.
- *
- * @param {ButtonCounterProps} props - The properties for the ButtonCounter component.
- * @param {React.Ref} ref - The ref to be forwarded to the span element.
- * @returns {JSX.Element} The rendered span element with applied styles and children.
  */
-
 const button_counter_cva = cva(
   [
     "flex aspect-square shrink-0 items-center justify-center",
@@ -222,21 +219,13 @@ const ButtonCounter: ForwardRefExoticComponent<ButtonCounterProps> = forwardRef(
     );
   },
 );
-
 ButtonCounter.displayName = "ButtonCounter";
 
 /*========================================================================================================================*/
 
 /**
  * `ButtonIcon` forwards a ref to its child and applies a class based on the button size.
- *
- * @component
- * @param {ButtonIconProps} props - The properties for the ButtonIcon component.
- * @param {React.ReactNode} props.children - The child element to which the ref will be forwarded.
- * @param {React.Ref} ref - The ref to be forwarded to the child element.
- * @returns {React.ReactElement} The cloned child element with the forwarded ref and applied class name.
  */
-
 const button_icon_cva = cva(
   "block stroke-inherit text-inherit stroke-[1.5px] shrink-0",
   {
@@ -272,7 +261,8 @@ const ButtonIcon: ForwardRefExoticComponent<ButtonIconProps> = forwardRef(
     );
   },
 );
-
 ButtonIcon.displayName = "ButtonIcon";
+
+/*========================================================================================================================*/
 
 export { Button, ButtonIcon, ButtonCounter, button_cva };
