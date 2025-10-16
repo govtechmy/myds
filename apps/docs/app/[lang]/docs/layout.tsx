@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { getMYDSConfig } from "@/app/[lang]/layout.config";
 import { source } from "@/app/[lang]/source";
 import { RootToggle } from "fumadocs-ui/components/layout/root-toggle";
+import { transformTreeWithBeta } from "@/components/TreeBetaTransform";
 
 export default function Layout({
   children,
@@ -12,6 +13,8 @@ export default function Layout({
   params: { lang: "en" | "ms" };
 }) {
   const { config, menu } = getMYDSConfig(lang);
+  const transformedTree = transformTreeWithBeta(source.pageTree[lang]);
+  
   return (
     <DocsLayout
       sidebar={{
@@ -22,7 +25,7 @@ export default function Layout({
           />
         ),
       }}
-      tree={source.pageTree[lang]}
+      tree={transformedTree}
       {...config}
     >
       {children}
