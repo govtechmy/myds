@@ -20,7 +20,7 @@ export function addSplaskToTitle(name: string | React.ReactNode): React.ReactNod
   if (checkSplaskTag(name)) {
     return (
       <div className="justify-between flex w-full">
-       <div>{name}</div> <Tag variant="primary" size="small"> SPLaSK</Tag>
+       <div>{name}</div> <Tag variant="primary" size="small">SPLaSK</Tag>
       </div>
     );
   }
