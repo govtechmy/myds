@@ -60,6 +60,7 @@
     "(components)/dropdown",
     "(components)/footer",
     "(components)/footer-logo",
+    "(components)/horizontal-card",
     "(components)/input",
     "(components)/input-otp",
     "(components)/label",

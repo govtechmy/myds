@@ -1,0 +1,197 @@
+---
+title: Horizontal Card
+description: The Horizontal Card (Carousel) component provides an interactive way to showcase features, content, or media in a horizontally scrollable list.
+---
+
+import { Preview } from "@/components/preview";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TikTokIcon,
+  TwitterXIcon,
+  YoutubeIcon,
+} from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import { Button } from "@/components/myds";
+
+import {
+  Footer,
+  SiteInfo,
+  FooterSection,
+  SiteLinkGroup,
+  SiteLink,
+  FooterLogo,
+} from "@govtechmy/myds-react/footer";
+import { Link } from "@govtechmy/myds-react/link";
+
+import { FeaturesHorizontalCard } from "./horizontal-card.client";
+
+## Overview
+
+The **Horizontal Card** component (or Carousel) provides an interactive and visually engaging way to display multiple items horizontally.  
+It is designed to showcase features, media, or content with smooth horizontal scrolling and responsive behavior.
+
+It consists of two main parts:
+
+1. **HorizontalCard** — A horizontally scrollable container with navigation arrows.  
+2. **FeaturesHorizontalCard** — A higher-level example implementation using `HorizontalCard.tsx`.
+
+This layout pattern is commonly used to highlight key content, promotional banners, or visual galleries.
+
+## Usage
+
+### Import Components
+
+```tsx
+import { ChevronLeftIcon, ChevronRightIcon } from '@govtechmy/myds-react/icon';
+import { useRef } from 'react';
+```
+
+### Define Props
+
+```tsx
+interface HorizontalCardProps {
+  title?: string;
+  children?: React.ReactNode;
+}
+```
+
+### Render HorizontalCard
+
+```tsx
+export default function HorizontalCard({ title, children }: HorizontalCardProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+ 
+  const scroll = (offset: number) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: offset, behavior: 'smooth' });
+    }
+  };
+ 
+  return (
+    <>
+      <div
+        ref={scrollRef}
+        className="flex gap-2 w-full overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar"
+      >
+        {children}
+      </div>
+
+      <div className="justify-between flex mt-4">
+        <h2 className="tracking-[2px] text-gray-130 text-xs font-medium items-center flex">{title}</h2>
+        <div className="flex justify-end gap-3">
+          <div className="border border-[#E4E4E7] rounded-full p-2 bg-pink-500">
+            <ChevronLeftIcon className="size-5" onClick={() => scroll(-340)} />
+          </div>
+          <div className="border border-[#E4E4E7] rounded-full p-2">
+            <ChevronRightIcon className="size-5" onClick={() => scroll(340)} />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+```
+
+## Example
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview" className="not-prose">
+  <Tab value="Preview">
+    <div className="overflow-scroll px-2 h-[500px]">
+      <FeaturesHorizontalCard />
+    </div>
+  </Tab>
+
+  <Tab value="Code">
+  ```tsx
+  "use client";
+
+  import HorizontalCard from "@/public/HorizontalCard";
+
+  interface Feature {
+    id: number;
+    title: string;
+    desc: string;
+    image: string;
+    open: string;
+    support?: string;
+  }
+
+  export function FeaturesHorizontalCard() {
+    const features: Feature[] = [
+      {
+        id: 1,
+        image: "/assets/content4/state1.png",
+        title: "Pengalaman Mesra Pengguna",
+        open: "/assets/content4/pengalaman_mesra.png",
+        desc: "Samada anda menggunakan MyGOV Malaysia untuk melakukan semakan atau permohonan, MyGOV Malaysia menawarkan pengalaman interaksi yang intuitif dengan antaramuka yang kemas dan intuitif.",
+      },
+      {
+        id: 2,
+        image: "/assets/content4/state2.png",
+        title: "Akaun Berasaskan",
+        support: "/mydigitalid.png",
+        open: "/assets/content4/mygov_mobile.png",
+        desc: "Untuk menggunakan MyGOV Malaysia, anda hanya perlu menggunakan MyDigital ID iaitu sistem pengenalan diri rakyat Malaysia yang sah dan selamat untuk kegunaan dalam talian.",
+      },
+      {
+        id: 3,
+        image: "/assets/content4/state3.jpg",
+        title: "Daripada lesen ke peperiksaan, semak semuanya di sini",
+        open: "/assets/content4/lesen.png",
+        desc: "MyGOV Malaysia dapat menghantar notifikasi penting khusus untuk individu seperti amaran bencana yang dihantar terus kepada anda.",
+      },
+      {
+        id: 4,
+        image: "/assets/content4/state4.png",
+        title: "Terima notifikasi yang relevan dengan anda",
+        open: "/assets/content4/notifikasi.png",
+        desc: "MyGOV Malaysia dapat menghantar notifikasi penting khusus untuk individu seperti amaran bencana yang dihantar terus kepada anda.",
+      },
+      {
+        id: 5,
+        image: "/assets/content4/state5.png",
+        title: "... dan pelbagai fungsi akan datang",
+        open: "/assets/content4/features_lain.png",
+        desc: "MyGOV Malaysia sedang giat membangunkan pelbagai fungsi baharu yang akan dilancarkan pada masa hadapan, seperti permohonan dan pembayaran.",
+      },
+    ];
+
+    return (
+      <section className="flex flex-row justify-center px-[18px] py-12">
+        <div className="w-full">
+          <HorizontalCard>
+            {features.map((feature) => (
+              <div key={feature.id}>
+                <div className="flex-shrink-0 px-2" style={{ width: "334px", height: "354px" }}>
+                  <div className="relative flex h-full w-full cursor-pointer flex-col items-center overflow-hidden rounded-2xl shadow-2xl">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative h-full w-full bg-white">
+                        <img
+                          src={feature.image}
+                          alt={feature.title}
+                          className="object-contain"
+                          sizes="(max-width: 640px) 100vw, (max-width: 992px) 50vw, 334px"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </HorizontalCard>
+        </div>
+      </section>
+    );
+  }
+  ```
+  </Tab>
+</Tabs>
+
+---
+
+**Tip:**  
+Use the `HorizontalCard` layout to group and horizontally scroll through items like service highlights, product features, or announcement banners.
