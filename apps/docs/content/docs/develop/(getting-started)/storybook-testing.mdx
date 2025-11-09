@@ -1,0 +1,489 @@
+---
+title: Adding Components to Storybook
+description: A comprehensive guide on how to add and test components in Storybook for the MYDS design system.
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Callout } from "fumadocs-ui/components/callout";
+
+This guide explains how to add components to Storybook for testing and development in the MYDS design system. Storybook serves as both a development environment and a testing playground for components.
+
+## Overview
+
+Storybook in MYDS is configured to:
+- Test components in isolation
+- Showcase different component variants and states
+- Support both light and dark themes
+- Include accessibility testing with `@storybook/addon-a11y`
+- Provide interactive controls for component props
+
+## File Structure
+
+The Storybook setup is located in `/apps/storybook/` with the following structure:
+
+```
+apps/storybook/
+├── .storybook/          # Storybook configuration
+│   ├── main.ts          # Main configuration
+│   ├── preview.ts       # Global decorators and parameters
+│   └── global.css       # Global styles
+├── stories/             # Story files
+│   ├── button.stories.tsx
+│   ├── input.stories.tsx
+│   └── ...
+├── utils/               # Utility functions
+│   └── index.ts         # Helper functions like createStory
+└── react/               # React components for icons/examples
+```
+
+## Creating a New Story
+
+### 1. Basic Story Structure
+
+Create a new file in `/apps/storybook/stories/` named `{component-name}.stories.tsx`:
+
+```tsx
+import { fn } from "@storybook/test";
+import type { Meta, StoryObj } from "@storybook/react";
+import { createStory } from "../utils";
+import { ComponentName } from "@govtechmy/myds-react/component-name";
+
+/**
+ * ### Overview
+ * Brief description of what the component does and its purpose.
+ * 
+ * ### Usage
+ * ```tsx
+ * import { ComponentName } from "@govtechmy/myds-react/component-name"
+ * 
+ * <ComponentName prop="value">Content</ComponentName>
+ * ```
+ */
+const meta = {
+  title: "@govtechmy/myds-react/ComponentName",
+  component: ComponentName,
+  parameters: {
+    layout: "centered", // or "padded" or "fullscreen"
+  },
+  args: { 
+    // Default args for all stories
+    onClick: fn() // For interactive components
+  },
+  argTypes: {
+    // Define controls for component props
+  },
+} satisfies Meta<typeof ComponentName>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+```
+
+### 2. Defining ArgTypes
+
+ArgTypes control how props appear in Storybook's controls panel:
+
+```tsx
+argTypes: {
+  variant: {
+    table: {
+      type: { summary: "enum" },
+      category: "myds API",
+    },
+    description: "Available component variants",
+    control: "select",
+    options: ["primary", "secondary", "danger"],
+  },
+  size: {
+    table: {
+      type: { summary: "enum" },
+      category: "myds API", 
+    },
+    description: "Component size",
+    control: "inline-radio",
+    options: ["small", "medium", "large"],
+  },
+  disabled: {
+    table: {
+      type: { summary: "boolean" },
+      defaultValue: { summary: "false" },
+    },
+    description: "Disable the component",
+    control: "boolean",
+  },
+  children: {
+    description: "Component content",
+    control: "text",
+  },
+}
+```
+
+### 3. Creating Stories
+
+Each story represents a specific state or variant of your component:
+
+```tsx
+/**
+ * Primary variant story with description of when to use it.
+ */
+export const Primary: Story = createStory({
+  variant: "primary",
+  children: "Primary Button",
+});
+
+/**
+ * Secondary variant story.
+ */
+export const Secondary: Story = createStory({
+  variant: "secondary", 
+  children: "Secondary Button",
+});
+
+/**
+ * Disabled state story.
+ */
+export const Disabled: Story = createStory({
+  variant: "primary",
+  disabled: true,
+  children: "Disabled Button",
+});
+```
+
+## Advanced Patterns
+
+### 1. Complex Children with Mapping
+
+For components with complex children structures, use control mapping:
+
+```tsx
+argTypes: {
+  children: {
+    control: "select",
+    options: ["Text Only", "With Icon", "Icon Only"],
+    mapping: {
+      "Text Only": <span>Button Text</span>,
+      "With Icon": (
+        <>
+          <span>Button Text</span>
+          <ButtonIcon><ArrowIcon /></ButtonIcon>
+        </>
+      ),
+      "Icon Only": (
+        <ButtonIcon><ArrowIcon /></ButtonIcon>
+      ),
+    },
+  },
+}
+```
+
+### 2. Dark Theme Stories
+
+Create dark theme variants using the `createStory` helper:
+
+```tsx
+export const DarkPrimary: Story = createStory(
+  {
+    variant: "primary",
+    children: "Primary Button",
+    className: "dark", // Add dark class if needed
+  },
+  "dark" // Set theme to dark
+);
+```
+
+### 3. Custom Render Functions
+
+For complex layouts or additional context:
+
+```tsx
+import { createRender } from "../utils";
+
+export const WithContext: Story = createRender(
+  (args) => (
+    <div className="p-4 bg-gray-100">
+      <ComponentName {...args} />
+    </div>
+  )
+);
+```
+
+### 4. Interactive Stories
+
+For components that need user interaction:
+
+```tsx
+export const Interactive: Story = {
+  args: {
+    onClick: fn(),
+    variant: "primary",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+    
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalled();
+  },
+};
+```
+
+## Testing Strategies
+
+### 1. Visual Testing
+
+Create stories that cover:
+- All component variants
+- Different sizes
+- Various states (hover, focus, disabled)
+- With and without optional props
+- Light and dark themes
+
+### 2. Accessibility Testing
+
+Storybook includes `@storybook/addon-a11y` for accessibility testing:
+
+```tsx
+export const AccessibilityTest: Story = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: true,
+          },
+        ],
+      },
+    },
+  },
+};
+```
+
+### 3. Responsive Testing
+
+Test components at different viewport sizes:
+
+```tsx
+export const Responsive: Story = {
+  parameters: {
+    viewport: {
+      viewports: {
+        mobile: {
+          name: 'Mobile',
+          styles: { width: '375px', height: '667px' },
+        },
+        tablet: {
+          name: 'Tablet', 
+          styles: { width: '768px', height: '1024px' },
+        },
+      },
+    },
+  },
+};
+```
+
+## Best Practices
+
+### Story Organization
+
+1. **Naming Convention**: Use `{component-name}.stories.tsx`
+2. **Story Names**: Use descriptive names that indicate the variant or state being tested
+3. **Documentation**: Include JSDoc comments explaining when to use each variant
+4. **Grouping**: Group related stories together and use consistent naming
+
+### Component Coverage
+
+Ensure your stories cover:
+- [ ] All component variants
+- [ ] All size options
+- [ ] Interactive states (hover, focus, active)
+- [ ] Disabled states
+- [ ] Loading states (if applicable)
+- [ ] Error states (if applicable)
+- [ ] With and without optional props
+- [ ] Light and dark themes
+- [ ] Edge cases (very long text, empty content, etc.)
+
+### Performance Considerations
+
+- Use `createStory` helper for consistent theming
+- Avoid heavy computations in story definitions
+- Use `args` and `argTypes` efficiently
+- Keep story files focused on a single component
+
+## Running Storybook
+
+To start the Storybook development server:
+
+```bash
+# From the root of the project
+pnpm storybook
+
+# Or from the storybook directory
+cd apps/storybook
+pnpm dev
+```
+
+## Example: Complete Input Story
+
+Here's a complete example for an Input component:
+
+<Tabs items={["input.stories.tsx"]} defaultValue="input.stories.tsx">
+  <Tab value="input.stories.tsx">
+```tsx
+import { fn } from "@storybook/test";
+import type { Meta, StoryObj } from "@storybook/react";
+import { createStory } from "../utils";
+import { Input, InputIcon } from "@govtechmy/myds-react/input";
+import { SearchIcon, UserIcon } from "@govtechmy/myds-react/icon";
+
+/**
+ * ### Overview
+ * The Input component provides a text input field with support for icons,
+ * different sizes, and various states.
+ * 
+ * ### Usage
+ * ```tsx
+ * import { Input, InputIcon } from "@govtechmy/myds-react/input"
+ * 
+ * <Input placeholder="Enter text" />
+ * 
+ * // With icon
+ * <Input placeholder="Search">
+ *   <InputIcon position="left">
+ *     <SearchIcon />
+ *   </InputIcon>
+ * </Input>
+ * ```
+ */
+const meta = {
+  title: "@govtechmy/myds-react/Input",
+  component: Input,
+  parameters: {
+    layout: "centered",
+  },
+  args: {
+    onChange: fn(),
+  },
+  argTypes: {
+    size: {
+      table: {
+        type: { summary: "enum" },
+        category: "myds API",
+      },
+      description: "Input size",
+      control: "inline-radio",
+      options: ["small", "medium", "large"],
+    },
+    placeholder: {
+      table: {
+        type: { summary: "string" },
+      },
+      description: "Placeholder text",
+      control: "text",
+    },
+    disabled: {
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
+      description: "Disable the input",
+      control: "boolean",
+    },
+    children: {
+      control: "select",
+      options: ["None", "Left Icon", "Right Icon", "Both Icons"],
+      mapping: {
+        "None": undefined,
+        "Left Icon": (
+          <InputIcon position="left">
+            <SearchIcon />
+          </InputIcon>
+        ),
+        "Right Icon": (
+          <InputIcon position="right">
+            <UserIcon />
+          </InputIcon>
+        ),
+        "Both Icons": (
+          <>
+            <InputIcon position="left">
+              <SearchIcon />
+            </InputIcon>
+            <InputIcon position="right">
+              <UserIcon />
+            </InputIcon>
+          </>
+        ),
+      },
+    },
+  },
+} satisfies Meta<typeof Input>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = createStory({
+  placeholder: "Enter text",
+});
+
+export const Small: Story = createStory({
+  size: "small",
+  placeholder: "Small input",
+});
+
+export const Medium: Story = createStory({
+  size: "medium", 
+  placeholder: "Medium input",
+});
+
+export const Large: Story = createStory({
+  size: "large",
+  placeholder: "Large input", 
+});
+
+export const WithLeftIcon: Story = createStory({
+  placeholder: "Search...",
+  children: "Left Icon",
+});
+
+export const WithRightIcon: Story = createStory({
+  placeholder: "Username",
+  children: "Right Icon",
+});
+
+export const Disabled: Story = createStory({
+  placeholder: "Disabled input",
+  disabled: true,
+});
+
+export const DarkDefault: Story = createStory(
+  {
+    placeholder: "Enter text",
+  },
+  "dark"
+);
+```
+  </Tab>
+</Tabs>
+
+<Callout type="info">
+  Always test your stories in both light and dark themes to ensure proper contrast and visibility.
+</Callout>
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Component not rendering**: Check import paths and ensure the component is exported correctly
+2. **Controls not working**: Verify `argTypes` configuration and prop types
+3. **Styles not applied**: Ensure Tailwind CSS is properly configured in `preview.ts`
+4. **Dark theme not working**: Check if `createStory` is used with correct theme parameter
+
+### Debug Tips
+
+- Use Storybook's **Actions** panel to monitor event handlers
+- Check the **Controls** panel to verify prop values
+- Use browser dev tools to inspect rendered components
+- Review console for any error messages
+
+Following this guide ensures that your components are thoroughly tested and well-documented in Storybook, making them easier to develop, review, and maintain.

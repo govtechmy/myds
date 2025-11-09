@@ -1,0 +1,275 @@
+---
+title: Menulis Dokumentasi Komponen
+description: Panduan komprehensif tentang cara menulis dokumentasi untuk komponen MYDS.
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Callout } from "fumadocs-ui/components/callout";
+
+Panduan ini menerangkan cara menulis dokumentasi komprehensif untuk komponen MYDS. Mengikuti konvensyen ini memastikan konsistensi merentas semua dokumentasi komponen.
+
+## Struktur Dokumen
+
+Setiap fail dokumentasi komponen harus mengikuti struktur ini:
+
+### 1. Frontmatter
+
+Mulakan dengan frontmatter YAML yang mengandungi tajuk dan penerangan komponen:
+
+```yaml
+---
+title: NamaKomponen
+description: Penerangan yang jelas dan ringkas tentang apa yang dilakukan oleh komponen dan tujuannya.
+---
+```
+
+### 2. Import
+
+Import semua komponen dan utiliti yang diperlukan:
+
+```tsx
+import { NamaKomponen, SubKomponen } from "@govtechmy/myds-react/nama-komponen";
+import { NamaIkon } from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+```
+
+### 3. Bahagian Hero
+
+Tunjukkan contoh utama dengan tab preview dan kod. Gunakan corak ini:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    Contoh bagaimana bahagian hero preview akan kelihatan
+  </Tab>
+  <Tab value="Code">
+```tsx
+// Contoh kod yang menunjukkan penggunaan asas
+import { NamaKomponen } from "@govtechmy/myds-react/nama-komponen";
+
+<NamaKomponen prop="nilai">
+  Kandungan
+</NamaKomponen>
+```
+  </Tab>
+</Tabs>
+
+### 4. Pautan Pantas
+
+Sediakan pautan ke Storybook dan kod sumber:
+
+```mdx
+<Quicklinks
+  links={{
+    storybook: "https://myds-storybook.vercel.app/?path=/docs/nama-komponen--docs",
+    source: "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/nama-komponen.tsx",
+  }}
+/>
+```
+
+### 5. Bahagian Penggunaan
+
+Tunjukkan penyata import dan anatomi komponen:
+
+```ts copy title="Import"
+import {
+  NamaKomponen,
+  SubKomponen,
+} from "@govtechmy/myds-react/nama-komponen";
+```
+
+```tsx copy title="Anatomi"
+export default () => (
+  <NamaKomponen>
+    <SubKomponen />
+  </NamaKomponen>
+);
+```
+
+### 6. Bahagian Contoh
+
+Tunjukkan kes penggunaan yang berbeza dengan tajuk yang jelas. Setiap contoh harus mengikuti corak ini:
+
+- Mulakan dengan tajuk yang deskriptif (cth: "### Varian", "### Saiz", "### Dengan Ikon")
+- Berikan penjelasan ringkas tentang apa yang ditunjukkan oleh contoh
+- Gunakan komponen Tabs dengan tab "Preview" dan "Code"
+- Tunjukkan contoh visual dalam tab Preview
+- Tunjukkan kod yang sepadan dalam tab Code dengan highlighting sintaks yang betul
+
+### 7. Bahagian Props
+
+Dokumentasikan semua props komponen menggunakan TypeTable:
+
+```mdx
+## Props
+
+### NamaKomponen
+
+<TypeTable
+  type={{
+    namaProp: {
+      description: "Penerangan jelas tentang apa yang dilakukan oleh prop",
+      type: "jenis",
+      typeDescription: "maklumat jenis khusus",
+      default: "nilai lalai",
+    },
+  }}
+/>
+```
+
+## Garis Panduan Kandungan
+
+### Gaya Penulisan
+
+- **Jelas dan Ringkas**: Gunakan bahasa yang mudah dan langsung
+- **Terminologi Konsisten**: Gunakan istilah yang sama sepanjang dokumentasi
+- **Boleh Dilaksanakan**: Fokus pada apa yang perlu diketahui oleh pembangun untuk menggunakan komponen
+- **Contoh Dahulu**: Tunjukkan contoh sebelum menerangkan konsep
+
+### Contoh Kod
+
+- **Lengkap**: Selalu tunjukkan contoh yang lengkap dan berfungsi
+- **Berkomen**: Tambah komen untuk contoh yang kompleks
+- **Konsisten**: Gunakan konvensyen penamaan dan pemformatan yang konsisten
+- **Mudah Disalin**: Buat kod mudah disalin dan ditampal
+
+### Contoh Visual
+
+- **Mewakili**: Tunjukkan kes penggunaan yang paling biasa
+- **Jelas**: Gunakan kontras dan ruang yang baik
+- **Interaktif**: Jika boleh, tunjukkan contoh interaktif
+- **Responsif**: Pertimbangkan bagaimana contoh kelihatan pada saiz skrin yang berbeza
+
+## Corak Khusus Komponen
+
+### Komponen Borang
+
+Untuk komponen borang (Input, Select, dll.), sentiasa sertakan:
+
+- Variasi saiz
+- Keadaan dilumpuhkan
+- Penggunaan terkawal vs tidak terkawal
+- Keadaan pengesahan (jika berkenaan)
+- Dengan/tanpa label dan teks bantuan
+
+Struktur contoh:
+- Saiz
+- Dilumpuhkan
+- Keadaan Tidak Terkawal vs Terkawal
+- Dengan Label
+- Keadaan Pengesahan
+
+### Komponen Interaktif
+
+Untuk komponen interaktif (Button, Dialog, dll.), sertakan:
+
+- Semua varian dan keadaan
+- Penggunaan ikon (jika berkenaan)
+- Contoh pengendalian acara
+- Pertimbangan kebolehcapaian
+
+### Komponen Susun Atur
+
+Untuk komponen susun atur (Grid, Stack, dll.), sertakan:
+
+- Pilihan jarak
+- Variasi penjajaran
+- Tingkah laku responsif
+- Contoh penyarangan
+
+## Konvensyen Penamaan Fail
+
+- Gunakan kebab-case untuk nama fail: `button.mdx`, `date-picker.mdx`
+- Cipta versi Bahasa Inggeris dan Melayu: `button.mdx`, `button.ms.mdx`
+- Untuk komponen dengan interaktiviti sisi klien, cipta fail `.client.tsx` untuk demo
+
+## Amalan Terbaik MDX
+
+### Import Komponen
+
+Sentiasa import komponen dari pakej yang betul:
+
+```tsx
+// ✅ Betul
+import { Button } from "@govtechmy/myds-react/button";
+
+// ❌ Salah
+import { Button } from "@govtechmy/myds-react";
+```
+
+### Penggunaan Tab
+
+Gunakan tab secara konsisten untuk bahagian Preview/Code. Sentiasa gunakan komponen Tabs dengan item "Preview" dan "Code", lalai kepada "Preview". Letakkan contoh visual dalam tab Preview dan kod yang sepadan dalam tab Code dengan highlighting sintaks bahasa yang betul.
+
+### Blok Kod
+
+Gunakan tag bahasa yang sesuai dan tambah atribut `copy` untuk potongan penting:
+
+```tsx copy title="Import"
+import { Component } from "@govtechmy/myds-react/component";
+```
+
+## Dokumentasi Props
+
+### Struktur TypeTable
+
+Dokumentasikan props secara sistematik:
+
+```mdx
+<TypeTable
+  type={{
+    namaProp: {
+      description: "Apa yang dilakukan oleh prop dan bila untuk menggunakannya",
+      type: "string | number | boolean",
+      typeDescription: "Maklumat jenis yang lebih khusus jika diperlukan",
+      default: "nilaiLalai",
+    },
+  }}
+/>
+```
+
+### Props Wajib vs Pilihan
+
+- Tandakan props wajib dengan jelas dalam penerangan
+- Sentiasa nyatakan nilai lalai untuk props pilihan
+- Gunakan jenis union TypeScript untuk enum: `"small" | "medium" | "large"`
+
+## Menambah ke Navigasi
+
+Selepas mencipta dokumentasi komponen:
+
+1. Tambah komponen ke bahagian yang sesuai dalam `meta.en.json`:
+
+```json
+{
+  "pages": [
+    "---Components ---",
+    "(components)/komponen-baru"
+  ]
+}
+```
+
+2. Cipta versi Melayu jika diperlukan dan tambah ke `meta.ms.json`
+
+<Callout type="info">
+  Untuk komponen yang memerlukan interaktiviti sisi klien dalam contoh, cipta fail `.client.tsx` berasingan dan import dalam fail MDX.
+</Callout>
+
+## Senarai Semak Kualiti
+
+Sebelum menerbitkan dokumentasi komponen, pastikan:
+
+- [ ] Frontmatter lengkap dan tepat
+- [ ] Semua import betul dan perlu
+- [ ] Contoh hero jelas dan mewakili
+- [ ] Quicklinks menunjuk ke URL Storybook dan sumber yang betul
+- [ ] Bahagian penggunaan termasuk import dan anatomi yang betul
+- [ ] Contoh merangkumi semua kes penggunaan utama
+- [ ] Semua props didokumentasikan dengan penerangan yang jelas
+- [ ] Contoh kod lengkap dan berfungsi
+- [ ] Contoh visual jelas dan berformat baik
+- [ ] Bahasa jelas dan konsisten
+- [ ] Komponen ditambah ke navigasi meta.json
+
+Mengikuti panduan ini memastikan bahawa semua dokumentasi komponen MYDS mengekalkan kualiti dan konsistensi yang tinggi, memudahkan pembangun memahami dan menggunakan komponen dengan berkesan.

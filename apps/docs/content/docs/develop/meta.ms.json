@@ -9,6 +9,8 @@
     "(getting-started)/accessibility-test",
     "(getting-started)/splask-compliance",
     "(getting-started)/usage",
+    "(getting-started)/writing-component-docs",
+    "(getting-started)/storybook-testing",
 
     "---Pemasangan---",
     "(installation)/nextjs",

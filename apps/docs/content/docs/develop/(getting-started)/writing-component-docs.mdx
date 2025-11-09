@@ -1,0 +1,275 @@
+---
+title: Writing Component Documentation
+description: A comprehensive guide on how to write documentation for MYDS components.
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Callout } from "fumadocs-ui/components/callout";
+
+This guide explains how to write comprehensive documentation for MYDS components. Following these conventions ensures consistency across all component documentation.
+
+## Document Structure
+
+Every component documentation file should follow this structure:
+
+### 1. Frontmatter
+
+Start with YAML frontmatter containing the component title and description:
+
+```yaml
+---
+title: ComponentName
+description: A clear, concise description of what the component does and its purpose.
+---
+```
+
+### 2. Imports
+
+Import all necessary components and utilities:
+
+```tsx
+import { ComponentName, SubComponent } from "@govtechmy/myds-react/component-name";
+import { IconName } from "@govtechmy/myds-react/icon";
+import { Quicklinks } from "@/components/quicklinks";
+import { TypeTable } from "fumadocs-ui/components/type-table";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+```
+
+### 3. Hero Section
+
+Show a primary example with preview and code tabs. Use this pattern:
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+    Example of how the hero section preview would look
+  </Tab>
+  <Tab value="Code">
+```tsx
+// Example code showing the basic usage
+import { ComponentName } from "@govtechmy/myds-react/component-name";
+
+<ComponentName prop="value">
+  Content
+</ComponentName>
+```
+  </Tab>
+</Tabs>
+
+### 4. Quick Links
+
+Provide links to Storybook and source code:
+
+```mdx
+<Quicklinks
+  links={{
+    storybook: "https://myds-storybook.vercel.app/?path=/docs/component-name--docs",
+    source: "https://github.com/govtechmy/myds/blob/main/packages/react/src/components/component-name.tsx",
+  }}
+/>
+```
+
+### 5. Usage Section
+
+Show import statements and component anatomy:
+
+```ts copy title="Import"
+import {
+  ComponentName,
+  SubComponent,
+} from "@govtechmy/myds-react/component-name";
+```
+
+```tsx copy title="Anatomy"
+export default () => (
+  <ComponentName>
+    <SubComponent />
+  </ComponentName>
+);
+```
+
+### 6. Examples Section
+
+Demonstrate different use cases with clear headings. Each example should follow this pattern:
+
+- Start with a descriptive heading (e.g., "### Variant", "### Size", "### With Icon")
+- Provide a brief explanation of what the example demonstrates
+- Use Tabs component with "Preview" and "Code" tabs
+- Show visual examples in Preview tab
+- Show corresponding code in Code tab with proper syntax highlighting
+
+### 7. Props Section
+
+Document all component props using TypeTable:
+
+```mdx
+## Props
+
+### ComponentName
+
+<TypeTable
+  type={{
+    propName: {
+      description: "Clear description of what the prop does",
+      type: "type",
+      typeDescription: "specific type information",
+      default: "default value",
+    },
+  }}
+/>
+```
+
+## Content Guidelines
+
+### Writing Style
+
+- **Clear and Concise**: Use simple, direct language
+- **Consistent Terminology**: Use the same terms throughout the documentation
+- **Actionable**: Focus on what developers need to know to use the component
+- **Examples-First**: Show examples before explaining concepts
+
+### Code Examples
+
+- **Complete**: Always show complete, working examples
+- **Commented**: Add comments for complex examples
+- **Consistent**: Use consistent naming conventions and formatting
+- **Copy-friendly**: Make code easy to copy and paste
+
+### Visual Examples
+
+- **Representative**: Show the most common use cases
+- **Clear**: Use good contrast and spacing
+- **Interactive**: When possible, show interactive examples
+- **Responsive**: Consider how examples look on different screen sizes
+
+## Component-Specific Patterns
+
+### Form Components
+
+For form components (Input, Select, etc.), always include:
+
+- Size variations
+- Disabled state
+- Controlled vs uncontrolled usage
+- Validation states (if applicable)
+- With/without labels and help text
+
+Example structure:
+- Size
+- Disabled
+- Uncontrolled vs Controlled State
+- With Label
+- Validation States
+
+### Interactive Components
+
+For interactive components (Button, Dialog, etc.), include:
+
+- All variants and states
+- Icon usage (if applicable)
+- Event handling examples
+- Accessibility considerations
+
+### Layout Components
+
+For layout components (Grid, Stack, etc.), include:
+
+- Spacing options
+- Alignment variations
+- Responsive behavior
+- Nesting examples
+
+## File Naming Conventions
+
+- Use kebab-case for file names: `button.mdx`, `date-picker.mdx`
+- Create both English and Malay versions: `button.mdx`, `button.ms.mdx`
+- For components with client-side interactivity, create `.client.tsx` files for demos
+
+## MDX Best Practices
+
+### Component Imports
+
+Always import components from the correct package:
+
+```tsx
+// ✅ Correct
+import { Button } from "@govtechmy/myds-react/button";
+
+// ❌ Incorrect
+import { Button } from "@govtechmy/myds-react";
+```
+
+### Tab Usage
+
+Use tabs consistently for Preview/Code sections. Always use the Tabs component with "Preview" and "Code" items, defaulting to "Preview". Place visual examples in the Preview tab and corresponding code in the Code tab with proper language syntax highlighting.
+
+### Code Blocks
+
+Use appropriate language tags and add `copy` attribute for important snippets:
+
+```tsx copy title="Import"
+import { Component } from "@govtechmy/myds-react/component";
+```
+
+## Props Documentation
+
+### TypeTable Structure
+
+Document props systematically:
+
+```mdx
+<TypeTable
+  type={{
+    propName: {
+      description: "What the prop does and when to use it",
+      type: "string | number | boolean",
+      typeDescription: "More specific type information if needed",
+      default: "defaultValue",
+    },
+  }}
+/>
+```
+
+### Required vs Optional Props
+
+- Mark required props clearly in descriptions
+- Always specify default values for optional props
+- Use TypeScript union types for enums: `"small" | "medium" | "large"`
+
+## Adding to Navigation
+
+After creating component documentation:
+
+1. Add the component to the appropriate section in `meta.en.json`:
+
+```json
+{
+  "pages": [
+    "---Components ---",
+    "(components)/new-component"
+  ]
+}
+```
+
+2. Create the Malay version if needed and add to `meta.ms.json`
+
+<Callout type="info">
+  For components that require client-side interactivity in examples, create separate `.client.tsx` files and import them in the MDX file.
+</Callout>
+
+## Quality Checklist
+
+Before publishing component documentation, ensure:
+
+- [ ] Frontmatter is complete and accurate
+- [ ] All imports are correct and necessary
+- [ ] Hero example is clear and representative
+- [ ] Quicklinks point to correct Storybook and source URLs
+- [ ] Usage section includes proper import and anatomy
+- [ ] Examples cover all major use cases
+- [ ] All props are documented with clear descriptions
+- [ ] Code examples are complete and functional
+- [ ] Visual examples are clear and well-formatted
+- [ ] Language is clear and consistent
+- [ ] Component is added to navigation meta.json
+
+Following this guide ensures that all MYDS component documentation maintains high quality and consistency, making it easy for developers to understand and use the components effectively.

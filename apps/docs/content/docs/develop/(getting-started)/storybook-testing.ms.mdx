@@ -1,0 +1,489 @@
+---
+title: Menambah Komponen ke Storybook
+description: Panduan komprehensif tentang cara menambah dan menguji komponen dalam Storybook untuk sistem reka bentuk MYDS.
+---
+
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Callout } from "fumadocs-ui/components/callout";
+
+Panduan ini menerangkan cara menambah komponen ke Storybook untuk ujian dan pembangunan dalam sistem reka bentuk MYDS. Storybook berfungsi sebagai persekitaran pembangunan dan tempat ujian untuk komponen.
+
+## Gambaran Keseluruhan
+
+Storybook dalam MYDS dikonfigurasikan untuk:
+- Menguji komponen secara berasingan
+- Mempamerkan varian dan keadaan komponen yang berbeza
+- Menyokong tema terang dan gelap
+- Termasuk ujian kebolehcapaian dengan `@storybook/addon-a11y`
+- Menyediakan kawalan interaktif untuk props komponen
+
+## Struktur Fail
+
+Persediaan Storybook terletak di `/apps/storybook/` dengan struktur berikut:
+
+```
+apps/storybook/
+├── .storybook/          # Konfigurasi Storybook
+│   ├── main.ts          # Konfigurasi utama
+│   ├── preview.ts       # Penghias dan parameter global
+│   └── global.css       # Gaya global
+├── stories/             # Fail cerita
+│   ├── button.stories.tsx
+│   ├── input.stories.tsx
+│   └── ...
+├── utils/               # Fungsi utiliti
+│   └── index.ts         # Fungsi pembantu seperti createStory
+└── react/               # Komponen React untuk ikon/contoh
+```
+
+## Mencipta Cerita Baru
+
+### 1. Struktur Cerita Asas
+
+Cipta fail baru dalam `/apps/storybook/stories/` bernama `{nama-komponen}.stories.tsx`:
+
+```tsx
+import { fn } from "@storybook/test";
+import type { Meta, StoryObj } from "@storybook/react";
+import { createStory } from "../utils";
+import { NamaKomponen } from "@govtechmy/myds-react/nama-komponen";
+
+/**
+ * ### Gambaran Keseluruhan
+ * Penerangan ringkas tentang apa yang dilakukan oleh komponen dan tujuannya.
+ * 
+ * ### Penggunaan
+ * ```tsx
+ * import { NamaKomponen } from "@govtechmy/myds-react/nama-komponen"
+ * 
+ * <NamaKomponen prop="nilai">Kandungan</NamaKomponen>
+ * ```
+ */
+const meta = {
+  title: "@govtechmy/myds-react/NamaKomponen",
+  component: NamaKomponen,
+  parameters: {
+    layout: "centered", // atau "padded" atau "fullscreen"
+  },
+  args: { 
+    // Args lalai untuk semua cerita
+    onClick: fn() // Untuk komponen interaktif
+  },
+  argTypes: {
+    // Tentukan kawalan untuk props komponen
+  },
+} satisfies Meta<typeof NamaKomponen>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+```
+
+### 2. Menentukan ArgTypes
+
+ArgTypes mengawal bagaimana props muncul dalam panel kawalan Storybook:
+
+```tsx
+argTypes: {
+  variant: {
+    table: {
+      type: { summary: "enum" },
+      category: "myds API",
+    },
+    description: "Varian komponen yang tersedia",
+    control: "select",
+    options: ["primary", "secondary", "danger"],
+  },
+  size: {
+    table: {
+      type: { summary: "enum" },
+      category: "myds API", 
+    },
+    description: "Saiz komponen",
+    control: "inline-radio",
+    options: ["small", "medium", "large"],
+  },
+  disabled: {
+    table: {
+      type: { summary: "boolean" },
+      defaultValue: { summary: "false" },
+    },
+    description: "Lumpuhkan komponen",
+    control: "boolean",
+  },
+  children: {
+    description: "Kandungan komponen",
+    control: "text",
+  },
+}
+```
+
+### 3. Mencipta Cerita
+
+Setiap cerita mewakili keadaan atau varian khusus komponen anda:
+
+```tsx
+/**
+ * Cerita varian utama dengan penerangan bila untuk menggunakannya.
+ */
+export const Primary: Story = createStory({
+  variant: "primary",
+  children: "Butang Utama",
+});
+
+/**
+ * Cerita varian sekunder.
+ */
+export const Secondary: Story = createStory({
+  variant: "secondary", 
+  children: "Butang Sekunder",
+});
+
+/**
+ * Cerita keadaan dilumpuhkan.
+ */
+export const Disabled: Story = createStory({
+  variant: "primary",
+  disabled: true,
+  children: "Butang Dilumpuhkan",
+});
+```
+
+## Corak Lanjutan
+
+### 1. Children Kompleks dengan Pemetaan
+
+Untuk komponen dengan struktur children yang kompleks, gunakan pemetaan kawalan:
+
+```tsx
+argTypes: {
+  children: {
+    control: "select",
+    options: ["Teks Sahaja", "Dengan Ikon", "Ikon Sahaja"],
+    mapping: {
+      "Teks Sahaja": <span>Teks Butang</span>,
+      "Dengan Ikon": (
+        <>
+          <span>Teks Butang</span>
+          <ButtonIcon><ArrowIcon /></ButtonIcon>
+        </>
+      ),
+      "Ikon Sahaja": (
+        <ButtonIcon><ArrowIcon /></ButtonIcon>
+      ),
+    },
+  },
+}
+```
+
+### 2. Cerita Tema Gelap
+
+Cipta varian tema gelap menggunakan pembantu `createStory`:
+
+```tsx
+export const DarkPrimary: Story = createStory(
+  {
+    variant: "primary",
+    children: "Butang Utama",
+    className: "dark", // Tambah kelas gelap jika diperlukan
+  },
+  "dark" // Tetapkan tema kepada gelap
+);
+```
+
+### 3. Fungsi Render Kustom
+
+Untuk susun atur kompleks atau konteks tambahan:
+
+```tsx
+import { createRender } from "../utils";
+
+export const WithContext: Story = createRender(
+  (args) => (
+    <div className="p-4 bg-gray-100">
+      <NamaKomponen {...args} />
+    </div>
+  )
+);
+```
+
+### 4. Cerita Interaktif
+
+Untuk komponen yang memerlukan interaksi pengguna:
+
+```tsx
+export const Interactive: Story = {
+  args: {
+    onClick: fn(),
+    variant: "primary",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button');
+    
+    await userEvent.click(button);
+    await expect(args.onClick).toHaveBeenCalled();
+  },
+};
+```
+
+## Strategi Ujian
+
+### 1. Ujian Visual
+
+Cipta cerita yang merangkumi:
+- Semua varian komponen
+- Saiz yang berbeza
+- Pelbagai keadaan (hover, focus, disabled)
+- Dengan dan tanpa props pilihan
+- Tema terang dan gelap
+
+### 2. Ujian Kebolehcapaian
+
+Storybook termasuk `@storybook/addon-a11y` untuk ujian kebolehcapaian:
+
+```tsx
+export const AccessibilityTest: Story = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          {
+            id: 'color-contrast',
+            enabled: true,
+          },
+        ],
+      },
+    },
+  },
+};
+```
+
+### 3. Ujian Responsif
+
+Uji komponen pada saiz viewport yang berbeza:
+
+```tsx
+export const Responsive: Story = {
+  parameters: {
+    viewport: {
+      viewports: {
+        mobile: {
+          name: 'Mobile',
+          styles: { width: '375px', height: '667px' },
+        },
+        tablet: {
+          name: 'Tablet', 
+          styles: { width: '768px', height: '1024px' },
+        },
+      },
+    },
+  },
+};
+```
+
+## Amalan Terbaik
+
+### Organisasi Cerita
+
+1. **Konvensyen Penamaan**: Gunakan `{nama-komponen}.stories.tsx`
+2. **Nama Cerita**: Gunakan nama deskriptif yang menunjukkan varian atau keadaan yang diuji
+3. **Dokumentasi**: Sertakan komen JSDoc yang menerangkan bila untuk menggunakan setiap varian
+4. **Pengelompokan**: Kelompokkan cerita berkaitan bersama dan gunakan penamaan yang konsisten
+
+### Liputan Komponen
+
+Pastikan cerita anda merangkumi:
+- [ ] Semua varian komponen
+- [ ] Semua pilihan saiz
+- [ ] Keadaan interaktif (hover, focus, active)
+- [ ] Keadaan dilumpuhkan
+- [ ] Keadaan memuatkan (jika berkenaan)
+- [ ] Keadaan ralat (jika berkenaan)
+- [ ] Dengan dan tanpa props pilihan
+- [ ] Tema terang dan gelap
+- [ ] Kes tepi (teks sangat panjang, kandungan kosong, dll.)
+
+### Pertimbangan Prestasi
+
+- Gunakan pembantu `createStory` untuk tema yang konsisten
+- Elakkan pengiraan berat dalam definisi cerita
+- Gunakan `args` dan `argTypes` dengan cekap
+- Pastikan fail cerita fokus pada satu komponen
+
+## Menjalankan Storybook
+
+Untuk memulakan pelayan pembangunan Storybook:
+
+```bash
+# Dari akar projek
+pnpm storybook
+
+# Atau dari direktori storybook
+cd apps/storybook
+pnpm dev
+```
+
+## Contoh: Cerita Input Lengkap
+
+Berikut adalah contoh lengkap untuk komponen Input:
+
+<Tabs items={["input.stories.tsx"]} defaultValue="input.stories.tsx">
+  <Tab value="input.stories.tsx">
+```tsx
+import { fn } from "@storybook/test";
+import type { Meta, StoryObj } from "@storybook/react";
+import { createStory } from "../utils";
+import { Input, InputIcon } from "@govtechmy/myds-react/input";
+import { SearchIcon, UserIcon } from "@govtechmy/myds-react/icon";
+
+/**
+ * ### Gambaran Keseluruhan
+ * Komponen Input menyediakan medan input teks dengan sokongan untuk ikon,
+ * saiz yang berbeza, dan pelbagai keadaan.
+ * 
+ * ### Penggunaan
+ * ```tsx
+ * import { Input, InputIcon } from "@govtechmy/myds-react/input"
+ * 
+ * <Input placeholder="Masukkan teks" />
+ * 
+ * // Dengan ikon
+ * <Input placeholder="Cari">
+ *   <InputIcon position="left">
+ *     <SearchIcon />
+ *   </InputIcon>
+ * </Input>
+ * ```
+ */
+const meta = {
+  title: "@govtechmy/myds-react/Input",
+  component: Input,
+  parameters: {
+    layout: "centered",
+  },
+  args: {
+    onChange: fn(),
+  },
+  argTypes: {
+    size: {
+      table: {
+        type: { summary: "enum" },
+        category: "myds API",
+      },
+      description: "Saiz input",
+      control: "inline-radio",
+      options: ["small", "medium", "large"],
+    },
+    placeholder: {
+      table: {
+        type: { summary: "string" },
+      },
+      description: "Teks placeholder",
+      control: "text",
+    },
+    disabled: {
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
+      description: "Lumpuhkan input",
+      control: "boolean",
+    },
+    children: {
+      control: "select",
+      options: ["Tiada", "Ikon Kiri", "Ikon Kanan", "Kedua-dua Ikon"],
+      mapping: {
+        "Tiada": undefined,
+        "Ikon Kiri": (
+          <InputIcon position="left">
+            <SearchIcon />
+          </InputIcon>
+        ),
+        "Ikon Kanan": (
+          <InputIcon position="right">
+            <UserIcon />
+          </InputIcon>
+        ),
+        "Kedua-dua Ikon": (
+          <>
+            <InputIcon position="left">
+              <SearchIcon />
+            </InputIcon>
+            <InputIcon position="right">
+              <UserIcon />
+            </InputIcon>
+          </>
+        ),
+      },
+    },
+  },
+} satisfies Meta<typeof Input>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = createStory({
+  placeholder: "Masukkan teks",
+});
+
+export const Small: Story = createStory({
+  size: "small",
+  placeholder: "Input kecil",
+});
+
+export const Medium: Story = createStory({
+  size: "medium", 
+  placeholder: "Input sederhana",
+});
+
+export const Large: Story = createStory({
+  size: "large",
+  placeholder: "Input besar", 
+});
+
+export const WithLeftIcon: Story = createStory({
+  placeholder: "Cari...",
+  children: "Ikon Kiri",
+});
+
+export const WithRightIcon: Story = createStory({
+  placeholder: "Nama pengguna",
+  children: "Ikon Kanan",
+});
+
+export const Disabled: Story = createStory({
+  placeholder: "Input dilumpuhkan",
+  disabled: true,
+});
+
+export const DarkDefault: Story = createStory(
+  {
+    placeholder: "Masukkan teks",
+  },
+  "dark"
+);
+```
+  </Tab>
+</Tabs>
+
+<Callout type="info">
+  Sentiasa uji cerita anda dalam tema terang dan gelap untuk memastikan kontras dan keterlihatan yang betul.
+</Callout>
+
+## Penyelesaian Masalah
+
+### Isu Biasa
+
+1. **Komponen tidak merender**: Semak laluan import dan pastikan komponen diekspot dengan betul
+2. **Kawalan tidak berfungsi**: Sahkan konfigurasi `argTypes` dan jenis prop
+3. **Gaya tidak digunakan**: Pastikan Tailwind CSS dikonfigurasikan dengan betul dalam `preview.ts`
+4. **Tema gelap tidak berfungsi**: Semak jika `createStory` digunakan dengan parameter tema yang betul
+
+### Petua Debug
+
+- Gunakan panel **Actions** Storybook untuk memantau pengendali acara
+- Semak panel **Controls** untuk mengesahkan nilai prop
+- Gunakan alat dev pelayar untuk memeriksa komponen yang dirender
+- Semak konsol untuk sebarang mesej ralat
+
+Mengikuti panduan ini memastikan bahawa komponen anda diuji dengan teliti dan didokumentasikan dengan baik dalam Storybook, menjadikannya lebih mudah untuk dibangunkan, dikaji, dan diselenggara.
