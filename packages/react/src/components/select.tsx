@@ -12,6 +12,11 @@ type SelectBase = Omit<
 > & {
   variant: "outline" | "ghost" | null;
   size: "small" | "medium" | "large" | null;
+  /**
+   * Add this prop for Splask Multilang Support
+   * Will render splwpk-multilang ="splwpk-multilang"
+   */
+splaskMultilang?: boolean; 
 };
 
 type SelectSingle = SelectBase & {
@@ -96,20 +101,29 @@ const Select: React.ForwardRefExoticComponent<SelectProps> = React.forwardRef(
     };
 
     return (
-      <SelectContext.Provider
-        value={{ ...props, _value, _handleClose: _setOpen }}
-      >
-        <SelectPrimitive.Root
-          ref={ref}
-          {...props}
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          /* @ts-expect-error */
-          value={_value}
-          onValueChange={handleValueChange}
-          open={_open}
-          onOpenChange={handleClose}
-        />
-      </SelectContext.Provider>
+
+  <div
+    {...(props.splaskMultilang
+      ? { "splwpk-multilang": "splwpk-multilang" }
+      : {})}
+  >
+    <SelectContext.Provider
+      value={{ ...props, _value, _handleClose: _setOpen }}
+    >
+      <SelectPrimitive.Root
+        ref={ref}
+        {...props}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        /* @ts-expect-error */
+        value={_value}
+        onValueChange={handleValueChange}
+        open={_open}
+        onOpenChange={handleClose}
+      />
+    </SelectContext.Provider>
+  </div>
+
+
     );
   },
 );
