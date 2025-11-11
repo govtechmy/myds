@@ -77,7 +77,8 @@ export default function CommunityForm({
       .string()
       .trim()
       .min(1, { message: errMsg.requiredEmail })
-      .regex(/^[^\s@]+@[^\s@]+\.gov\.my$/, {
+      // .regex(/^[^\s@]+@[^\s@]+\.gov\.my$/, {// targeted .gov.my emails only
+      .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, { // open to all emails
         message: errMsg.invalidEmail,
       }),
     institute: z.string().trim().min(1, { message: errMsg.requiredInstitute }),
