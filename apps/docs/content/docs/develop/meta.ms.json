@@ -15,24 +15,6 @@
     "(installation)/vite",
     "(installation)/laravel",
 
-    "---Komponen Peralihan (CSS)---",
-    "(transistory-assistance)/ta-accordion/",
-    "(transistory-assistance)/ta-alert/",
-    "(transistory-assistance)/ta-button/",
-    "(transistory-assistance)/ta-callout/",
-    "(transistory-assistance)/ta-card/",
-    "(transistory-assistance)/ta-dialog/",
-    "(transistory-assistance)/ta-input/",
-    "(transistory-assistance)/ta-label/",
-    "(transistory-assistance)/ta-link/",
-    "(transistory-assistance)/ta-pagination/",
-    "(transistory-assistance)/ta-popover/",
-    "(transistory-assistance)/ta-select/",
-    "(transistory-assistance)/ta-spinner/",
-    "(transistory-assistance)/ta-tag/",
-    "(transistory-assistance)/ta-theme-switcher/",
-    "(transistory-assistance)/ta-toggle/",
-
     "---Template ---",
     "(template)/login",
     "(template)/registration",
@@ -81,11 +63,29 @@
     "(components)/toast",
     "(components)/toggle",
     "(components)/tooltip",
-    
+
     "---Hooks ---",
     "(hooks)/use-pagination",
     "(hooks)/use-theme",
-    "(hooks)/use-toast"
+    "(hooks)/use-toast",
+
+    "---Komponen Peralihan (CSS)---",
+    "(transistory-assistance)/ta-accordion/",
+    "(transistory-assistance)/ta-alert/",
+    "(transistory-assistance)/ta-button/",
+    "(transistory-assistance)/ta-callout/",
+    "(transistory-assistance)/ta-card/",
+    "(transistory-assistance)/ta-dialog/",
+    "(transistory-assistance)/ta-input/",
+    "(transistory-assistance)/ta-label/",
+    "(transistory-assistance)/ta-link/",
+    "(transistory-assistance)/ta-pagination/",
+    "(transistory-assistance)/ta-popover/",
+    "(transistory-assistance)/ta-select/",
+    "(transistory-assistance)/ta-spinner/",
+    "(transistory-assistance)/ta-tag/",
+    "(transistory-assistance)/ta-theme-switcher/",
+    "(transistory-assistance)/ta-toggle/"
   ],
   "root": true
 }
