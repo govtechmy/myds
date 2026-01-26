@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Callout Example</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css-reset.css">
+  <link rel="stylesheet" href="../button/button.css">
+  <link rel="stylesheet" href="../button/button-dark.css">
+  <link rel="stylesheet" href="callout.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .callout-main {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.origin !== window.origin) return;
+      if (event.data?.theme) {
+        document.documentElement.className = event.data.theme;
+        console.log("Theme applied inside iframe:", event.data.theme);
+      }
+    }, false);
+  </script>
+</head>
+
+<body>
+  <div class="callout-main">
+    <div class="callout">
+      <svg class="callout-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M10 10V13M10 7.05V7M17.25 10C17.25 14.0041 14.0041 17.25 10 17.25C5.99594 17.25 2.75 14.0041 2.75 10C2.75 5.99594 5.99594 2.75 10 2.75C14.0041 2.75 17.25 5.99594 17.25 10Z"
+          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div class="callout-content">
+        <div class="callout-text">
+          <p class="callout-title">Basic Callout with Title and Content</p>
+          <p class="callout-description">
+            Online services will be down for maintenance on Saturday from 10 PM to 2 AM. Thank you for your patience!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout-main">
+    <div class="callout">
+      <svg class="callout-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M10 10V13M10 7.05V7M17.25 10C17.25 14.0041 14.0041 17.25 10 17.25C5.99594 17.25 2.75 14.0041 2.75 10C2.75 5.99594 5.99594 2.75 10 2.75C14.0041 2.75 17.25 5.99594 17.25 10Z"
+          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div class="callout-content">
+        <div class="callout-text">
+          <p class="callout-title">Callout with Button</p>
+          <p class="callout-description">
+            Online services will be down for maintenance on Saturday from 10 PM to 2 AM. Thank you for your patience!
+          </p>
+        </div>
+        <div class="callout-action">
+          <button class="button-myds button-myds-secondary px-4 py-2 rounded-md border text-sm font-medium">
+            Primary Button
+          </button>
+          <button class="button-myds button-myds-tertiary px-4 py-2 rounded-md border text-sm font-medium">
+            Secondary Button
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout-main">
+    <div class="callout" style="flex-direction: row; align-items: center;">
+      <svg class="callout-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M10 10V13M10 7.05V7M17.25 10C17.25 14.0041 14.0041 17.25 10 17.25C5.99594 17.25 2.75 14.0041 2.75 10C2.75 5.99594 5.99594 2.75 10 2.75C14.0041 2.75 17.25 5.99594 17.25 10Z"
+          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div class="callout-content callout-row">
+        <p class="callout-title">Callout with Close Button</p>
+        <button class="button-myds button-myds-tertiary px-4 py-2 rounded-md border text-sm font-medium">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout-main">
+    <div class="callout callout-success">
+      <svg class="callout-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.25 7.75L8.5 15.25L3.75 10.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+      <div class="callout-content">
+        <div class="callout-text">
+          <p class="callout-title">Success Variant</p>
+          <p class="callout-description">Your changes have been saved successfully.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout-main">
+    <div class="callout callout-warning">
+      <svg class="callout-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M10 6.75V10.75M10 14V14.01M9.25 3.25L2.75 15.25C2.33579 16 2.90237 17 3.75 17H16.25C17.0976 17 17.6642 16 17.25 15.25L10.75 3.25C10.3358 2.5 9.66421 2.5 9.25 3.25Z"
+          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div class="callout-content">
+        <div class="callout-text">
+          <p class="callout-title">Warning Variant</p>
+          <p class="callout-description">Please review your information before proceeding.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout-main">
+    <div class="callout callout-danger">
+      <svg class="callout-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M6.75 6.75L13.25 13.25M13.25 6.75L6.75 13.25M17.25 10C17.25 14.0041 14.0041 17.25 10 17.25C5.99594 17.25 2.75 14.0041 2.75 10C2.75 5.99594 5.99594 2.75 10 2.75C14.0041 2.75 17.25 5.99594 17.25 10Z"
+          stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div class="callout-content">
+        <div class="callout-text">
+          <p class="callout-title">Danger Variant</p>
+          <p class="callout-description">An error occurred. Please try again later.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
