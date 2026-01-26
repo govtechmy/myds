@@ -5,18 +5,6 @@
   background-color: #161619;
 }
 
-.call-title {
-  color: #000;
-}
-
-.dark .call-title {
-  color: #ffffff;
-}
-
-.dark h1, h2, h3, h4, h5, h6 {
-  color: #ffffff;
-}
-
 /* Callout Container */
 .callout {
   display: flex;
