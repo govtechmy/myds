@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="./toggle.css">
+    <link rel="stylesheet" href="./toggle-dark.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.addEventListener("message", (event) => {
+          if (event.origin !== window.origin) return;
+          if (event.data?.theme) {
+            document.documentElement.className = event.data.theme;
+            console.log("Theme applied inside iframe:", event.data.theme);
+          }
+        }, false);
+      </script>
+</head>
+<body>
+    <main class="page-center">
+
+         <label class="toggle-label-myds toggle-sm-myds">
+            <input type="checkbox" class="toggle-input-myds">
+            <span class="toggle-track-myds track-sm-myds">
+              <span class="toggle-thumb-myds"></span>
+            </span>
+          </label>
+      
+          <label class="toggle-label-myds toggle-md-myds">
+            <input type="checkbox" class="toggle-input-myds">
+            <span class="toggle-track-myds track-md-myds">
+              <span class="toggle-thumb-myds"></span>
+            </span>
+          </label>
+
+          <label class="toggle-label-myds toggle-lg-myds">
+            <input type="checkbox" class="toggle-input-myds">
+            <span class="toggle-track-myds track-lg-myds">
+              <span class="toggle-thumb-myds"></span>
+            </span>
+          </label>
+    </main>
+</body>
+</html>
+
+

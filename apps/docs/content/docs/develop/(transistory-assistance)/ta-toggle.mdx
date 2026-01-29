@@ -1,6 +1,338 @@
 ---
 title: Toggle
-description: Explore the integrated accessibility testing tools in our development environment that help identify and resolve accessibility issues during development. These tools work together to ensure our components meet WCAG standards and provide a better experience for all users.
+description: MYDS-compliant toggle component for seamless transition starting point from HTML/CSS to React
 ---
+import {
+  PreviewButton,
+  Button,
+  ButtonIcon,
+  ButtonCounter,
+  Link,
+} from "@/components/myds";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import { Toggle, ToggleThumb, ControlledToggle } from "@/components/myds";
+import IframeThemePreview from "@/components/iframe-theme-preview";
 
-## Work In Progress
+<Tabs items={["Preview","Code","ResetCSS","ToggleCSS","ToggleDarkCSS"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <IframeThemePreview  
+      src="/assets/ta-preview/toggle/ta-toggle-preview.html" 
+      height="100"
+    />
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+    <label class="toggle-label-myds toggle-sm-myds">
+      <input type="checkbox" class="toggle-input-myds">
+      <span class="toggle-track-myds track-sm-myds">
+        <span class="toggle-thumb-myds"></span>
+      </span>
+    </label>
+
+    <label class="toggle-label-myds toggle-md-myds">
+      <input type="checkbox" class="toggle-input-myds">
+      <span class="toggle-track-myds track-md-myds">
+        <span class="toggle-thumb-myds"></span>
+      </span>
+    </label>
+
+    <label class="toggle-label-myds toggle-lg-myds">
+      <input type="checkbox" class="toggle-input-myds">
+      <span class="toggle-track-myds track-lg-myds">
+        <span class="toggle-thumb-myds"></span>
+      </span>
+    </label>
+      ```
+  </Tab>
+  <Tab value="ResetCSS">
+  ```tsx
+/* CSS BASE RESET ------------------------------------------------------------------------------------ */
+*,
+html,
+body {
+  height: 100%;
+  background-color: white;
+}
+.dark body {
+  height: 100%;
+  background-color: #161619;
+}
+
+/* --- CORE TOGGLE CSS --- */
+
+.toggle-label-myds {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.toggle-input-myds {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-track-myds {
+  display: block;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+/* 5. White circle*/
+.toggle-thumb-myds {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- STATE CHANGES --- */
+
+/* When input is Checked: Change Track Color */
+.toggle-input-myds:checked + .toggle-track-myds {
+  background-color: #2563eb;
+}
+
+/* When input is Focus: Add focus ring (Accessibility) */
+.toggle-input-myds:focus-visible + .toggle-track-myds {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+  ```
+  </Tab>
+  <Tab value="ToggleCSS">
+  ```tsx
+/* --- SIZES --- */
+
+/* Small Toggle */
+.toggle-sm-myds .toggle-track-myds {
+  width: 24px;
+  height: 16px;
+}
+
+.toggle-sm-myds .toggle-thumb-myds {
+  width: 10px;
+  height: 10px;
+  top: 3px; 
+  left: 3px;
+}
+
+/* Move thumb when checked (Small) */
+.toggle-input-myds:checked + .toggle-track-myds.track-sm-myds .toggle-thumb-myds {
+  transform: translateX(8px);
+}
+
+/* Medium Toggle (Default) */
+.toggle-md-myds .toggle-track-myds {
+  width: 30px;
+  height: 20px;
+}
+
+.toggle-md-myds .toggle-thumb-myds {
+  width: 14px;
+  height: 14px; 
+  top: 3px;
+  left: 3px;
+}
+
+/* Move thumb when checked (Medium) */
+.toggle-input-myds:checked + .toggle-track-myds.track-md-myds .toggle-thumb-myds {
+  transform: translateX(10px);
+}
+
+/* Large Toggle */
+.toggle-lg-myds .toggle-track-myds {
+  width: 36px;
+  height: 24px;
+}
+.toggle-lg-myds .toggle-thumb-myds {
+  width: 18px;
+  height: 18px;
+  top: 3px; 
+  left: 3px;
+}
+/* Move thumb when checked (Large) */
+.toggle-input-myds:checked + .toggle-track-myds.track-lg-myds .toggle-thumb-myds {
+  transform: translateX(12px);
+}
+
+  ```
+  </Tab>
+  <Tab value="ToggleDarkCSS">
+  ```tsx
+/* dark mode support */
+
+.dark .toggle-track-myds {
+    background-color: #3f3f46;
+}
+  
+.dark .toggle-label-myds:hover .toggle-track-myds {
+    background-color: #52525b;
+}
+  
+.dark .toggle-input-myds:checked + .toggle-track-myds {
+    background-color: #3b82f6; 
+}
+  
+.dark .toggle-thumb-myds {
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.dark .toggle-input-myds:focus-visible + .toggle-track-myds {
+    outline-color: #60a5fa;
+}
+
+  ```
+  </Tab>
+</Tabs>
+
+## Overview
+
+The MYDS HTML/CSS Toggle (Switch) is a lightweight, accessible interaction component used to toggle between two states. It is built using semantic HTML (checkboxes) and CSS transitions to provide a native-feel experience with three standardized sizes.
+
+## 1. Setup
+
+Import the following stylesheets to ensure the toggle displays correctly.
+
+```html
+<link rel="stylesheet" href="reset.css" />
+<link rel="stylesheet" href="./toggle.css">
+<link rel="stylesheet" href="./toggle-dark.css">
+```
+
+This guarantees that:
+
+1. The **CSS reset** applies first.
+2. The **toggle base styles** override the reset where necessary.
+3. The **dark theme styles** apply last, so they can override both the reset and base button styles when needed.
+
+## 2. Usage
+
+To implement a toggle, wrap a hidden input and a track span inside a label. Apply the size modifier (sm, md, or lg) to both the label and the track.
+
+```html
+<label class="toggle-label-myds toggle-md-myds">
+  <input type="checkbox" class="toggle-input-myds">
+  <span class="toggle-track-myds track-md-myds">
+    <span class="toggle-thumb-myds"></span>
+  </span>
+</label>
+```
+
+## 3. Sizes
+
+### Small (sm)
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center">
+    <Toggle size="small">
+        <ToggleThumb />
+    </Toggle>
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+  <label class="toggle-label-myds toggle-sm-myds">
+    <input type="checkbox" class="toggle-input-myds" />
+    <span class="toggle-track-myds track-sm-myds">
+      <span class="toggle-thumb-myds"></span>
+    </span>
+  </label>
+  ```
+  </Tab>
+</Tabs>
+
+### Medium (md)
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center">
+    <Toggle size="medium">
+        <ToggleThumb />
+    </Toggle>
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+<label class="toggle-label-myds toggle-md-myds">
+  <input type="checkbox" class="toggle-input-myds">
+  <span class="toggle-track-myds track-md-myds">
+    <span class="toggle-thumb-myds"></span>
+  </span>
+</label>
+  ```
+  </Tab>
+</Tabs>
+
+### Large (lg)
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center">
+    <Toggle size="large">
+        <ToggleThumb />
+    </Toggle>
+  </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+<label class="toggle-label-myds toggle-lg-myds">
+  <input type="checkbox" class="toggle-input-myds">
+  <span class="toggle-track-myds track-lg-myds">
+    <span class="toggle-thumb-myds"></span>
+  </span>
+</label>
+  ```
+  </Tab>
+</Tabs>
+
+## 4. States
+
+The toggle handles the following states automatically through the native checkbox:
+
+  * **Unchecked:** Default state with a neutral gray track.
+  * **Checked:** Primary blue track with the thumb translated horizontally.
+  * **Hover:** Subtle background color shift on the track.
+  * **Focused:** Accessible 2px ring visible during keyboard navigation (`Tab`).
+  * **Disabled:** Input becomes non-interactive (Add `disabled` attribute to the input).
+
+
+
+## 5. Anatomy
+| Selector                 | Purpose                                                |
+| ------------------------ | -------------------------------------------------------|
+| `.toggle-label-myds`     | Wrapper that defines the hit area.                     |
+| `.toggle-input-myds`     | Hidden native checkbox managing the state.             |
+| `.toggle-track-myds`     | The visual background/container of the toggle.         |
+| `.toggle-thumb-myds`     | The sliding white circle component.                    |
+| `.track-[size]-myds`     | Controls size-specific dimensions and translation math.|
+
+
+
+## 6. Customization
+
+You can change the "active" color by overriding the checked state:
+
+```css
+.toggle-input-myds:checked + .toggle-track-myds {
+  background-color: #10b981; /* Changes blue to emerald */
+}
+```
+
+## 7. Accessibility
+
+* **Semantic:** Uses `<input type="checkbox">` so screen readers identify it as a toggle/switch.
+  * **Keyboard Support:** Fully navigable via `Space` and `Tab`.
+  * **Aria-Labels:** For better UX, it is recommended to add `aria-label="Toggle setting name"` to the input.
+
+
+

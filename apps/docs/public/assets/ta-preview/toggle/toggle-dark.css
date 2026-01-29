@@ -1,0 +1,20 @@
+.dark .toggle-track-myds {
+    background-color: #3f3f46;
+}
+  
+.dark .toggle-label-myds:hover .toggle-track-myds {
+    background-color: #52525b;
+}
+  
+.dark .toggle-input-myds:checked + .toggle-track-myds {
+    background-color: #3b82f6; 
+}
+  
+.dark .toggle-thumb-myds {
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.dark .toggle-input-myds:focus-visible + .toggle-track-myds {
+    outline-color: #60a5fa;
+}
