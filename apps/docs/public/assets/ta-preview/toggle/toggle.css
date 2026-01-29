@@ -1,0 +1,121 @@
+.toggle-label-myds {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.toggle-input-myds {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-track-myds {
+  display: block;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+/* 5. White circle)*/
+.toggle-thumb-myds {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- STATE CHANGES --- */
+
+/* When input is Checked: Change Track Color */
+.toggle-input-myds:checked + .toggle-track-myds {
+  background-color: #2563eb;
+}
+
+/* When input is Focus: Add focus ring (Accessibility) */
+.toggle-input-myds:focus-visible + .toggle-track-myds {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* --- SIZES --- */
+
+/* Small Toggle */
+.toggle-sm-myds .toggle-track-myds {
+  width: 24px;
+  height: 16px;
+}
+
+.toggle-sm-myds .toggle-thumb-myds {
+  width: 10px;
+  height: 10px;
+  top: 3px; 
+  left: 3px;
+}
+
+/* Move thumb when checked (Small) */
+.toggle-input-myds:checked + .toggle-track-myds.track-sm-myds .toggle-thumb-myds {
+  transform: translateX(8px);
+}
+
+/* Medium Toggle (Default) */
+.toggle-md-myds .toggle-track-myds {
+  width: 30px;
+  height: 20px;
+}
+
+.toggle-md-myds .toggle-thumb-myds {
+  width: 14px;
+  height: 14px; 
+  top: 3px;
+  left: 3px;
+}
+
+/* Move thumb when checked (Medium) */
+.toggle-input-myds:checked + .toggle-track-myds.track-md-myds .toggle-thumb-myds {
+  transform: translateX(10px);
+}
+
+/* Large Toggle */
+.toggle-lg-myds .toggle-track-myds {
+  width: 36px;
+  height: 24px;
+}
+.toggle-lg-myds .toggle-thumb-myds {
+  width: 18px;
+  height: 18px;
+  top: 3px; 
+  left: 3px;
+}
+/* Move thumb when checked (Large) */
+.toggle-input-myds:checked + .toggle-track-myds.track-lg-myds .toggle-thumb-myds {
+  transform: translateX(12px);
+}
+
+/* for porting into documentation */
+
+html,
+body {
+  height: 100%;
+  background-color: white;
+  margin: 0;
+}
+.dark body {
+  height: 100%;
+  background-color: #161619;
+}
+
+.page-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
+  min-height: 100%;
+}
+
