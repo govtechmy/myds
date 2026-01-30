@@ -1,0 +1,44 @@
+/* dark mode */
+
+.dark body {
+  background-color: #18181b;
+  color: #e4e4e7;
+}
+
+.dark .button-myds:focus {
+  outline: 3px solid #1d4ed866;
+  background-color: #18181b;
+  border-color: #27272a;
+  color: #d4d4d8;
+}
+
+.dark .button-myds-secondary {
+  background-color: #18181b;
+  border-color: #27272a;
+  color: #d4d4d8;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+}
+
+.dark .button-myds-secondary:hover {
+  background-color: #27272a;
+  border-color: #3f3f46;
+  color: #ffffff;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
+}
+
+.dark .button-myds-secondary:disabled {
+  background-color: #27272a66;
+  color: #a1a1aa66;
+  cursor: not-allowed;
+  border: transparent;
+  box-shadow: none;
+}
+
+.dark .selected {
+  background-color: #27272a;
+  color: #ffffff;
+}
+
+.dark .current-page-number {
+  color: #d4d4d8;
+}

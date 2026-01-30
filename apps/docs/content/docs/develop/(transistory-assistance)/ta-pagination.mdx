@@ -1,6 +1,864 @@
 ---
 title: Pagination
-description: Explore the integrated accessibility testing tools in our development environment that help identify and resolve accessibility issues during development. These tools work together to ensure our components meet WCAG standards and provide a better experience for all users.
+description: MYDS-compliant pagination component for seamless transition starting point from HTML/CSS to React
 ---
 
-## Work In Progress
+import {
+  PreviewButton,
+  Button,
+  ButtonIcon,
+  ButtonCounter,
+  Link,
+} from "@/components/myds";
+import { SimplePagination as AutoPagination } from "@/components/myds";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import IframeThemePreview from "@/components/iframe-theme-preview";
+
+<Tabs items={["Preview","Code","PaginationCSS","PaginationDarkCSS", 'PaginationJS']} defaultValue="Preview">
+  <Tab value="Preview">
+    <IframeThemePreview  
+      src="/assets/ta-preview/pagination/ta-pagination-preview.html" 
+      height="300px"
+      className="flex justify-center items-center p-0"
+    />
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+<nav class="pagination-myds">
+  <ul>
+    <li>
+      <button
+        class="button-myds button-myds-secondary simple"
+        id="prevSimpleBtn"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="Icon/chevron-left">
+            <path
+              id="Vector 146"
+              d="M11 5L6 10L11 15"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+        Previous
+      </button>
+    </li>
+    <li>
+      <button
+        class="button-myds button-myds-secondary simple"
+        id="nextSimpleBtn"
+      >
+        Next
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="Icon/chevron-right">
+            <path
+              id="Vector 146"
+              d="M8 5L13 10L8 15"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+      </button>
+    </li>
+  </ul>
+</nav>
+
+// Default Type Pagination
+
+<nav class="pagination-myds">
+<ul id="pagination-list">
+    <li>
+    <button class="button-myds button-myds-secondary" id="prevDefaultBtn">
+        <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        >
+        <g id="Icon/chevron-left">
+            <path
+            id="Vector 146"
+            d="M11 5L6 10L11 15"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ></path>
+        </g>
+        </svg>
+    </button>
+    </li>
+    <!-- Page numbers will be dynamically inserted here -->
+    <li>
+    <button class="button-myds button-myds-secondary" id="nextDefaultBtn">
+        <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        >
+        <g id="Icon/chevron-right">
+            <path
+            id="Vector 146"
+            d="M8 5L13 10L8 15"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ></path>
+        </g>
+        </svg>
+    </button>
+    </li>
+</ul>
+</nav>
+Full Type Pagination
+
+<nav class="pagination-myds">
+  <ul class="full">
+    <li class="current-page-number" id="page-info">
+      Page 2 of 20
+    </li>
+    <li>
+      <button class="button-myds button-myds-secondary simple" id="prevFullBtn">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="Icon/chevron-left">
+            <path
+              id="Vector 146"
+              d="M11 5L6 10L11 15"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+        Previous
+      </button>
+    </li>
+    <li>
+      <button class="button-myds button-myds-secondary simple" id="nextFullBtn">
+        Next
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="Icon/chevron-right">
+            <path
+              id="Vector 146"
+              d="M8 5L13 10L8 15"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </g>
+        </svg>
+      </button>
+    </li>
+  </ul>
+</nav>
+```
+</Tab>
+
+<Tab value="PaginationCSS">
+```css
+.pagination-myds {
+display: flex;
+justify-content: center;
+padding: 10px;
+width: 100%;
+}
+
+.pagination-myds ul {
+display: flex;
+align-items: center;
+gap: 16px;
+list-style: none;
+margin: 0;
+}
+
+.button-myds {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+height: 40px;
+width: 40px;
+padding: 8px 8px;
+border-radius: 8px;
+border: 1px solid transparent;
+font-size: 16px;
+line-height: 24px;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.15s ease;
+}
+
+// ---------- Simple Type Pagination Styles ----------
+
+.simple {
+width: auto;
+min-width: 86px;
+padding: 12px 8px;
+}
+
+.button-myds:focus {
+outline: 3px solid #96b7ff66;
+background-color: #ffffff;
+border-color: #e4e4e7;
+color: #3f3f46;
+}
+
+.button-myds-secondary {
+background-color: #ffffff;
+border-color: #e4e4e7;
+color: #3f3f46;
+box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
+}
+
+.button-myds-secondary:hover {
+background-color: #fafafa;
+border-color: #d4d4d8;
+color: #18181b;
+box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
+}
+
+.button-myds-secondary:disabled {
+background-color: #f4f4f566;
+color: #52525b66;
+cursor: not-allowed;
+border: none;
+box-shadow: none;
+}
+
+// ---------- Default Type Pagination Styles ----------
+
+.number {
+border: transparent;
+box-shadow: none;
+}
+
+.number:hover {
+box-shadow: none;
+}
+
+.selected {
+background-color: #f4f4f5;
+}
+
+// ---------- Full Type Pagination Styles ----------
+
+.current-page-number {
+flex: 1;
+min-width: 212px;
+color: #3f3f46;
+}
+
+````
+
+</Tab>
+
+<Tab value="PaginationDarkCSS">
+```css
+/* dark mode */
+
+.dark body {
+  background-color: #18181b;
+  color: #e4e4e7;
+}
+
+.dark .button-myds:focus {
+  outline: 3px solid #1d4ed866;
+  background-color: #18181b;
+  border-color: #27272a;
+  color: #d4d4d8;
+}
+
+.dark .button-myds-secondary {
+  background-color: #18181b;
+  border-color: #27272a;
+  color: #d4d4d8;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+}
+
+.dark .button-myds-secondary:hover {
+  background-color: #27272a;
+  border-color: #3f3f46;
+  color: #ffffff;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.07);
+}
+
+.dark .button-myds-secondary:disabled {
+  background-color: #27272a66;
+  color: #a1a1aa66;
+  cursor: not-allowed;
+  border: transparent;
+  box-shadow: none;
+}
+
+.dark .selected {
+  background-color: #27272a;
+  color: #ffffff;
+}
+
+.dark .current-page-number {
+  color: #d4d4d8;
+}
+
+```
+</Tab>
+
+<Tab value="PaginationJS">
+```tsx
+const totalPages = 10;
+const pageSize = 10;
+let currentPage = 1;
+
+const paginationList = document.getElementById("pagination-list");
+const pageInfo = document.getElementById("page-info");
+
+const prevDefault = document.getElementById("prevDefaultBtn");
+const nextDefault = document.getElementById("nextDefaultBtn");
+
+const prevSimple = document.getElementById("prevSimpleBtn");
+const nextSimple = document.getElementById("nextSimpleBtn");
+
+const prevFull = document.getElementById("prevFullBtn");
+const nextFull = document.getElementById("nextFullBtn");
+
+function createPageButton(page) {
+  const li = document.createElement("li");
+  const btn = document.createElement("button");
+
+  btn.className = "button-myds button-myds-secondary number";
+  btn.dataset.page = page;
+  btn.textContent = page;
+
+  if (page === currentPage) {
+    btn.classList.add("selected");
+  }
+
+  btn.addEventListener("click", () => {
+    currentPage = page;
+    renderPagination();
+  });
+
+  li.appendChild(btn);
+  return li;
+}
+
+function createEllipsis() {
+  const li = document.createElement("li");
+  li.classList.add("ellipsis");
+  li.innerHTML = `
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g id="Icon/options">
+        <g id="Vector">
+          <path
+            d="M11 10C11 10.5523 10.5523 11 10 11C9.44772 11 9 10.5523 9 10C9 9.44772 9.44772 9 10 9C10.5523 9 11 9.44772 11 10Z"
+            fill="currentColor"
+          ></path>
+          <path
+            d="M17 10C17 10.5523 16.5523 11 16 11C15.4477 11 15 10.5523 15 10C15 9.44772 15.4477 9 16 9C16.5523 9 17 9.44772 17 10Z"
+            fill="currentColor"
+          ></path>
+          <path
+            d="M5 10C5 10.5523 4.55228 11 4 11C3.44772 11 3 10.5523 3 10C3 9.44772 3.44772 9 4 9C4.55228 9 5 9.44772 5 10Z"
+            fill="currentColor"
+          ></path>
+          <path
+            d="M11 10C11 10.5523 10.5523 11 10 11C9.44772 11 9 10.5523 9 10C9 9.44772 9.44772 9 10 9C10.5523 9 11 9.44772 11 10Z"
+            stroke="currentColor"
+            stroke-width="1.5"
+          ></path>
+          <path
+            d="M17 10C17 10.5523 16.5523 11 16 11C15.4477 11 15 10.5523 15 10C15 9.44772 15.4477 9 16 9C16.5523 9 17 9.44772 17 10Z"
+            stroke="currentColor"
+            stroke-width="1.5"
+          ></path>
+          <path
+            d="M5 10C5 10.5523 4.55228 11 4 11C3.44772 11 3 10.5523 3 10C3 9.44772 3.44772 9 4 9C4.55228 9 5 9.44772 5 10Z"
+            stroke="currentColor"
+            stroke-width="1.5"
+          ></path>
+        </g>
+      </g>
+    </svg>`;
+
+  return li;
+}
+
+function renderPagination() {
+  const nextLi = paginationList.lastElementChild;
+
+  paginationList
+    .querySelectorAll(".number, .ellipsis")
+    .forEach((el) => el.closest("li").remove());
+
+  const EDGE_COUNT = 4;
+  const MID_COUNT = 3;
+  const HALF = Math.floor(MID_COUNT / 2);
+
+  // Always show the first page
+  paginationList.insertBefore(createPageButton(1), nextLi);
+
+  if (totalPages <= EDGE_COUNT) {
+    for (let i = 2; i <= totalPages; i++) {
+      paginationList.insertBefore(createPageButton(i), nextLi);
+    }
+  } else {
+    // START RANGE
+    if (currentPage <= EDGE_COUNT) {
+      for (let i = 2; i <= EDGE_COUNT; i++) {
+        paginationList.insertBefore(createPageButton(i), nextLi);
+      }
+
+      if (totalPages > EDGE_COUNT + 1) {
+        paginationList.insertBefore(createEllipsis(), nextLi);
+        paginationList.insertBefore(createPageButton(totalPages), nextLi);
+      }
+    }
+
+    // END RANGE
+    else if (currentPage > totalPages - EDGE_COUNT) {
+      paginationList.insertBefore(createEllipsis(), nextLi);
+
+      for (let i = totalPages - EDGE_COUNT + 1; i <= totalPages; i++) {
+        paginationList.insertBefore(createPageButton(i), nextLi);
+      }
+    }
+
+    // MIDDLE RANGE
+    else {
+      paginationList.insertBefore(createEllipsis(), nextLi);
+
+      let start = currentPage - HALF;
+      let end = currentPage + HALF + 1;
+
+      for (let i = start; i < end; i++) {
+        paginationList.insertBefore(createPageButton(i), nextLi);
+      }
+
+      paginationList.insertBefore(createEllipsis(), nextLi);
+      paginationList.insertBefore(createPageButton(totalPages), nextLi);
+    }
+  }
+
+  prevDefault.disabled =
+    prevSimple.disabled =
+    prevFull.disabled =
+      currentPage === 1;
+  nextDefault.disabled =
+    nextSimple.disabled =
+    nextFull.disabled =
+      currentPage === totalPages;
+  pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+  console.log(`Fetching data: page=${currentPage}, size=${pageSize}`);
+}
+
+function goPrev() {
+  if (currentPage > 1) {
+    currentPage--;
+    renderPagination();
+  }
+}
+
+function goNext() {
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderPagination();
+  }
+}
+
+prevDefault.addEventListener("click", goPrev);
+nextDefault.addEventListener("click", goNext);
+prevSimple.addEventListener("click", goPrev);
+nextSimple.addEventListener("click", goNext);
+prevFull.addEventListener("click", goPrev);
+nextFull.addEventListener("click", goNext);
+
+renderPagination(); //Initial render
+
+```
+</Tab>
+</Tabs>
+
+## Overview
+
+The **Pagination** component helps users navigate large sets of content by dividing results into discrete pages.
+It provides clear navigation context, reduces cognitive load, and ensures consistent interaction across MYDS applications.
+
+This component is implemented using **HTML, CSS, and JavaScript**, suitable for projects not using React.
+
+## 1. Setup
+
+### Required Stylesheets
+Load the stylesheets in the following order to ensure correct styling and theme overrides:
+
+```html
+<!-- refer to PaginationCSS -->
+<link rel="stylesheet" href="pagination.css" />
+
+<!-- refer to PaginationDarkCSS -->
+<link rel="stylesheet" href="pagination-dark.css" />
+```
+
+### Font Requirement
+
+The **Inter** font is part of the MYDS design guidelines. Add it inside your `<head>`:
+
+```html
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+```
+
+Your `<head>` should look similar to:
+
+```html
+<head>
+  <!-- Inter Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Design System Stylesheet -->
+  <link rel="stylesheet" href="pagination.css" />
+  <link rel="stylesheet" href="pagination-dark.css" />
+</head>
+```
+
+## 2. Usage
+
+**Use pagination when:**
+
+- A dataset is too large to display at once
+- Content is fetched page by page from an API
+- Users need to understand their position within a result set
+
+**Avoid pagination when:**
+
+- The total number of items is small
+- Infinite scrolling or progressive loading is more appropriate
+
+## 3. Variants
+
+The Pagination component supports three variants, each designed for different levels of context and screen density.
+
+### Simple
+
+Provides only Previous and Next controls. Suitable for mobile views or minimal layouts.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+    <div className="flex flex-col gap-10">
+      <AutoPagination
+        page={2}
+        limit={10}
+        count={200}
+        type="simple"
+        maxDisplay={4}
+      />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <nav class="pagination-myds">
+      <ul>
+        <li>
+          <button
+            class="button-myds button-myds-secondary simple"
+            id="prevSimpleBtn"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="Icon/chevron-left">
+                <path
+                  id="Vector 146"
+                  d="M11 5L6 10L11 15"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+            Previous
+          </button>
+        </li>
+        <li>
+          <button
+            class="button-myds button-myds-secondary simple"
+            id="nextSimpleBtn"
+          >
+            Next
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="Icon/chevron-right">
+                <path
+                  id="Vector 146"
+                  d="M8 5L13 10L8 15"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    ```
+  </Tab>
+</Tabs>
+
+### Default
+
+Displays numbered pages with ellipsis handling for large datasets.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+    <div className="flex flex-col gap-10">
+      <AutoPagination
+        page={2}
+        limit={10}
+        count={200}
+        type="default"
+        maxDisplay={4}
+      />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <nav class="pagination-myds">
+      <ul id="pagination-list">
+        <li>
+          <button class="button-myds button-myds-secondary" id="prevDefaultBtn">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="Icon/chevron-left">
+                <path
+                  id="Vector 146"
+                  d="M11 5L6 10L11 15"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </button>
+        </li>
+        <!-- Page number will be generated here -->
+        <li>
+          <button class="button-myds button-myds-secondary" id="nextDefaultBtn">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="Icon/chevron-right">
+                <path
+                  id="Vector 146"
+                  d="M8 5L13 10L8 15"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    ```
+  </Tab>
+</Tabs>
+
+### Full
+
+Adds contextual information such as current page and total pages. Best for desktop layouts and data-heavy views.
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview" className="not-prose">
+    <div className="flex flex-col gap-10">
+      <AutoPagination
+        page={2}
+        limit={10}
+        count={200}
+        type="full"
+        maxDisplay={4}
+      />
+    </div>
+  </Tab>
+  <Tab value="Code">
+    ```tsx
+    <nav class="pagination-myds">
+      <ul class="full" style="padding: 0px">
+        <li class="current-page-number" id="page-info">
+          Page 2 of 20
+        </li>
+        <li>
+          <button
+            class="button-myds button-myds-secondary simple"
+            id="prevFullBtn"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="Icon/chevron-left">
+                <path
+                  id="Vector 146"
+                  d="M11 5L6 10L11 15"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+            Previous
+          </button>
+        </li>
+        <li>
+          <button
+            class="button-myds button-myds-secondary simple"
+            id="nextFullBtn"
+          >
+            Next
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="Icon/chevron-right">
+                <path
+                  id="Vector 146"
+                  d="M8 5L13 10L8 15"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    ```
+  </Tab>
+</Tabs>
+
+## 4. JavaScript Integration
+
+Pagination logic is handled via JavaScript and includes:
+
+* Dynamic page number rendering
+* Ellipsis handling for large page counts
+* Disabled states for boundary pages
+* Shared state across all pagination variants
+
+### Using API-driven pagination
+
+In real applications, pagination state is usually controlled by API responses rather than hardcoded values.
+
+Typical API values:
+
+* `currentPage` : current page number (1-based)
+* `pageSize` : number of items per page
+* `totalPages` : total number of pages
+
+## 5. Anatomy
+
+| Selector               | Purpose                              |
+| ---------------------- | ------------------------------------ |
+| `.pagination-myds`     | Base pagination layout               |
+| `.button-myds`         | Button appearance and interaction    |
+| `.number`              | Page number button                   |
+| `.selected`            | Active page indicator                |
+| `.current-page-number` | Page context text (Full variant)     |
+| `:hover`               | Hover interactions                   |
+| `:focus`               | Focus ring for accessibility         |
+| `:disabled`            | Disabled appearance and cursor style |
+
+## 6. Customization
+
+You may override pagination styles to suit specific layouts or branding needs.
+Example:
+
+```css
+.pagination-myds .selected {
+  background-color: #e5edff;
+}
+```
+
+## 7. Accessibility
+
+* Visible focus indicators for keyboard navigation
+* Disabled state uses the native disabled attribute
+
+````
