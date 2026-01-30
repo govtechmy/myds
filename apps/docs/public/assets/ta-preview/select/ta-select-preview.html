@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Select Component Example</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="select.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .variant-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .disabled-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .disabled-section p {
+      margin: 0;
+      font-size: 0.875rem;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.origin !== window.origin) return;
+      if (event.data?.theme) {
+        document.documentElement.className = event.data.theme;
+        console.log("Theme applied inside iframe:", event.data.theme);
+      }
+    }, false);
+  </script>
+	<script src="select.js" defer></script>
+</head>
+
+<body>
+	<br/>
+  <div>
+    <!-- Outline Variant -->
+    <div class="select-wrapper">
+      <label class="select-label">Variant Outline</label>
+      <div class="custom-select select-small">
+        <button type="button" class="select-trigger" label="Fruit">
+          <span class="select-name">Fruit</span>
+          <span class="select-value">Select</span>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-txt-black-900 size-4" aria-hidden="true">
+            <g id="Icon/chevron-down-opaque">
+              <path id="Vector" d="M6.25251 7C5.13887 7 4.58117 8.34643 5.36862 9.13388L9.16152 12.9268C9.64967 13.4149 10.4411 13.4149 10.9293 12.9268L14.7222 9.13388C15.5096 8.34643 14.9519 7 13.8383 7H6.25251Z" fill="currentColor"></path>
+            </g>
+          </svg>
+        </button>
+        <div class="select-dropdown">
+          <div class="select-option" data-value="apple">Apple</div>
+          <div class="select-option" data-value="banana">Banana</div>
+          <div class="select-option" data-value="blueberry">Blueberry</div>
+          <div class="select-option" data-value="grapes">Grapes</div>
+          <div class="select-option" data-value="pineapple">Pineapple</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ghost Variant -->
+    <div class="select-wrapper">
+      <label class="select-label">Variant Ghost</label>
+      <div class="custom-select select-small select-ghost">
+        <button type="button" class="select-trigger">
+          <span class="select-name">Fruit</span>
+          <span class="select-value">Select</span>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-txt-black-900 size-4" aria-hidden="true">
+            <g id="Icon/chevron-down-opaque">
+              <path id="Vector" d="M6.25251 7C5.13887 7 4.58117 8.34643 5.36862 9.13388L9.16152 12.9268C9.64967 13.4149 10.4411 13.4149 10.9293 12.9268L14.7222 9.13388C15.5096 8.34643 14.9519 7 13.8383 7H6.25251Z" fill="currentColor"></path>
+            </g>
+          </svg>
+        </button>
+        <div class="select-dropdown">
+          <div class="select-option" data-value="apple">Apple</div>
+          <div class="select-option" data-value="banana">Banana</div>
+          <div class="select-option" data-value="blueberry">Blueberry</div>
+          <div class="select-option" data-value="grapes">Grapes</div>
+          <div class="select-option" data-value="pineapple">Pineapple</div>
+        </div>
+      </div>
+    </div>
+
+	</div>
+	<div>
+    <!-- Disabled Variant -->
+    <div class="select-wrapper">
+      <label class="select-label">Disabled select</label>
+        <div class="custom-select select-small disabled">
+        <button type="button" class="select-trigger" disabled>
+          <span class="select-name">Fruit</span>
+          <span class="select-value">Select</span>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-txt-black-900 size-4" aria-hidden="true">
+            <g id="Icon/chevron-down-opaque">
+              <path id="Vector" d="M6.25251 7C5.13887 7 4.58117 8.34643 5.36862 9.13388L9.16152 12.9268C9.64967 13.4149 10.4411 13.4149 10.9293 12.9268L14.7222 9.13388C15.5096 8.34643 14.9519 7 13.8383 7H6.25251Z" fill="currentColor"></path>
+            </g>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Disabled Variant -->
+    <div class="select-wrapper">
+      <label class="select-label">Disabled options</label>
+			<div class="custom-select select-small">
+        <button type="button" class="select-trigger">
+          <span class="select-name">Fruit</span>
+          <span class="select-value">Select</span>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-txt-black-900 size-4" aria-hidden="true">
+            <g id="Icon/chevron-down-opaque">
+              <path id="Vector" d="M6.25251 7C5.13887 7 4.58117 8.34643 5.36862 9.13388L9.16152 12.9268C9.64967 13.4149 10.4411 13.4149 10.9293 12.9268L14.7222 9.13388C15.5096 8.34643 14.9519 7 13.8383 7H6.25251Z" fill="currentColor"></path>
+            </g>
+          </svg>
+        </button>
+        <div class="select-dropdown">
+          <div class="select-option disabled" data-value="apple" disabled>Apple</div>
+          <div class="select-option" data-value="banana">Banana</div>
+          <div class="select-option disabled" data-value="blueberry" disabled>Blueberry</div>
+          <div class="select-option" data-value="grapes">Grapes</div>
+          <div class="select-option" data-value="pineapple">Pineapple</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <!-- Small Select Variant -->
+    <div class="select-wrapper">
+      <label class="select-label">Small Select</label>
+      <div class="custom-select select-small">
+        <button type="button" class="select-trigger" label="Fruit">
+          <span class="select-name">Fruit</span>
+          <span class="select-value">Select</span>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-txt-black-900 size-4" aria-hidden="true">
+            <g id="Icon/chevron-down-opaque">
+              <path id="Vector" d="M6.25251 7C5.13887 7 4.58117 8.34643 5.36862 9.13388L9.16152 12.9268C9.64967 13.4149 10.4411 13.4149 10.9293 12.9268L14.7222 9.13388C15.5096 8.34643 14.9519 7 13.8383 7H6.25251Z" fill="currentColor"></path>
+            </g>
+          </svg>
+        </button>
+        <div class="select-dropdown">
+          <div class="select-option" data-value="apple">Apple</div>
+          <div class="select-option" data-value="banana">Banana</div>
+          <div class="select-option" data-value="blueberry">Blueberry</div>
+          <div class="select-option" data-value="grapes">Grapes</div>
+          <div class="select-option" data-value="pineapple">Pineapple</div>
+        </div>
+      </div>
+    </div>
+    <!-- Medium Select Variant -->
+    <div class="select-wrapper">
+      <label class="select-label">Medium Select</label>
+      <div class="custom-select select-medium">
+        <button type="button" class="select-trigger" label="Fruit">
+          <span class="select-name">Fruit</span>
+          <span class="select-value">Select</span>
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-txt-black-900 size-4" aria-hidden="true">
+            <g id="Icon/chevron-down-opaque">
+              <path id="Vector" d="M6.25251 7C5.13887 7 4.58117 8.34643 5.36862 9.13388L9.16152 12.9268C9.64967 13.4149 10.4411 13.4149 10.9293 12.9268L14.7222 9.13388C15.5096 8.34643 14.9519 7 13.8383 7H6.25251Z" fill="currentColor"></path>
+            </g>
+          </svg>
+        </button>
+        <div class="select-dropdown">
+          <div class="select-option" data-value="apple">Apple</div>
+          <div class="select-option" data-value="banana">Banana</div>
+          <div class="select-option" data-value="blueberry">Blueberry</div>
+          <div class="select-option" data-value="grapes">Grapes</div>
+          <div class="select-option" data-value="pineapple">Pineapple</div>
+        </div>
+      </div>
+    </div>
+    <!-- Large Select Variant -->
+    <div class="select-wrapper">
+      <label class="select-label">Large Select</label>
+      <div class="custom-select select-large">
+        <button type="button" class="select-trigger" label="Fruit">
+          <span class="select-name">Fruit</span>
+          <span class="select-value">Select</span>
+          <svg width="2o" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-txt-black-900 size-4" aria-hidden="true">
+            <g id="Icon/chevron-down-opaque">
+              <path id="Vector" d="M6.25251 7C5.13887 7 4.58117 8.34643 5.36862 9.13388L9.16152 12.9268C9.64967 13.4149 10.4411 13.4149 10.9293 12.9268L14.7222 9.13388C15.5096 8.34643 14.9519 7 13.8383 7H6.25251Z" fill="currentColor"></path>
+            </g>
+          </svg>
+        </button>
+        <div class="select-dropdown">
+          <div class="select-option" data-value="apple">Apple</div>
+          <div class="select-option" data-value="banana">Banana</div>
+          <div class="select-option" data-value="blueberry">Blueberry</div>
+          <div class="select-option" data-value="grapes">Grapes</div>
+          <div class="select-option" data-value="pineapple">Pineapple</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
