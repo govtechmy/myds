@@ -2,5 +2,25 @@
 title: Tag
 description: Explore the integrated accessibility testing tools in our development environment that help identify and resolve accessibility issues during development. These tools work together to ensure our components meet WCAG standards and provide a better experience for all users.
 ---
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import IframeThemePreview from "@/components/iframe-theme-preview";
 
-## Work In Progress
+<Tabs items={["Preview","Code","TagCSS"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <IframeThemePreview  
+      src="/assets/ta-preview/tag/ta-tag-preview.html" 
+    />
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+    /* Tag Component Implementation */
+  ```
+  </Tab>
+  <Tab value="TagCSS">
+  ```css
+  /* Tag Component Styles */
+  ```
+  </Tab>
+</Tabs>
+
+## Overview
