@@ -31,6 +31,15 @@
       font-size: larger;
     }
   </style>
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.origin !== window.origin) return;
+      if (event.data?.theme) {
+        document.documentElement.className = event.data.theme;
+        console.log("Theme applied inside iframe:", event.data.theme);
+      }
+    }, false);
+  </script>
 </head>
 
 <body>
