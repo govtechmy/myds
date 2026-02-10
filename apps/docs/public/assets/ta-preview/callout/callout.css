@@ -1,5 +1,16 @@
 /* Simplified Callout Component Styles */
 
+/* for porting into documentation */
+html,
+body {
+  height: 100%;
+  background-color: white;
+}
+.dark body {
+  height: 100%;
+  background-color: #161619;
+}
+
 /* Callout Container */
 .callout {
   display: flex;
