@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tag Component Examples</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css-reset.css" />
+  <link rel="stylesheet" href="tag.css" />
+  <style>
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+      /* font-family: "Inter", sans-serif; */
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section h2 {
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .dark .section h2 {
+      color: var(--Text-txt-black-500, #A1A1AA);
+    }
+
+    .tag-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+  </style>
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.origin !== window.origin) return;
+      if (event.data?.theme) {
+        document.documentElement.className = event.data.theme;
+        console.log("Theme applied inside iframe:", event.data.theme);
+      }
+    }, false);
+  </script>
+</head>
+
+<body>
+  <!-- Variants Section -->
+  <div class="section">
+    <h2>Variants</h2>
+    <div class="tag-group">
+      <span class="tag tag-medium tag-default">
+        <span class="tag-dot"></span>
+        <span class="tag-text">Default</span>
+      </span>
+
+      <span class="tag tag-medium tag-primary">
+        <span class="tag-dot"></span>
+        <span class="tag-text">Primary</span>
+      </span>
+
+      <span class="tag tag-medium tag-success">
+        <span class="tag-dot"></span>
+        <span class="tag-text">Success</span>
+      </span>
+
+      <span class="tag tag-medium tag-danger">
+        <span class="tag-dot"></span>
+        <span class="tag-text">Danger</span>
+      </span>
+
+      <span class="tag tag-medium tag-warning">
+        <span class="tag-dot"></span>
+        <span class="tag-text">Warning</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Sizes Section -->
+  <div class="section">
+    <h2>Sizes</h2>
+    <div class="tag-group">
+      <span class="tag tag-small tag-primary">
+        <span class="tag-dot"></span>
+        <span class="tag-text">Small</span>
+      </span>
+
+      <span class="tag tag-medium tag-primary">
+        <span class="tag-dot"></span>
+        <span class="tag-text">Medium</span>
+      </span>
+
+      <span class="tag tag-large tag-primary">
+        <span class="tag-dot"></span>
+        <span class="tag-text">Large</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Style Section -->
+  <div class="section">
+    <h2>Styles</h2>
+    <div class="tag-group">
+      <span class="tag tag-medium tag-primary">
+        <span class="tag-dot"></span>
+        <span class="tag-text">Normal</span>
+      </span>
+
+      <span class="tag tag-medium tag-primary tag-rounded">
+        <span class="tag-dot"></span>
+        <span class="tag-text">Rounded</span>
+      </span>
+    </div>
+  </div>
+</body>
+
+</html>
