@@ -1,0 +1,103 @@
+/* for porting into documentation */
+html,
+body {
+  height: 100%;
+  background-color: white;
+}
+.dark body {
+  height: 100%;
+  background-color: #161619;
+}
+
+/* Spinner Component Styles */
+
+/* Base Spinner */
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+}
+
+/* Spin Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Gray Spinner */
+.spinner-gray {
+  border-top-color: #6b6b74;
+  border-right-color: rgba(107, 107, 116, 0.3);
+  border-bottom-color: rgba(107, 107, 116, 0.3);
+  border-left-color: rgba(107, 107, 116, 0.3);
+}
+
+/* White Spinner */
+.spinner-white {
+  border-top-color: #ffffff;
+  border-right-color: rgba(255, 255, 255, 0.3);
+  border-bottom-color: rgba(255, 255, 255, 0.3);
+  border-left-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Default Spinner (same as gray) */
+.spinner-default {
+  border-top-color: #6b6b74;
+  border-right-color: rgba(107, 107, 116, 0.3);
+  border-bottom-color: rgba(107, 107, 116, 0.3);
+  border-left-color: rgba(107, 107, 116, 0.3);
+}
+
+/* Dark mode adjustments */
+.dark .spinner-gray,
+.dark .spinner-default {
+  border-top-color: #a1a1aa;
+  border-right-color: rgba(161, 161, 170, 0.3);
+  border-bottom-color: rgba(161, 161, 170, 0.3);
+  border-left-color: rgba(161, 161, 170, 0.3);
+}
+
+/* Size variants */
+.spinner-small {
+  /* width: 0.875rem;
+  height: 0.875rem; */
+  width: 16px;
+  height: 16px;
+  border-width: 1.5px;
+}
+
+.spinner-medium {
+  /* width: 1rem;
+  height: 1rem; */
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+.spinner-large {
+  /* width: 1.25rem;
+  height: 1.25rem; */
+  width: 24px;
+  height: 24px;
+  border-width: 2.5px;
+}
+
+/* Button integration styles */
+button .spinner {
+  margin-left: 0.5rem;
+}
+
+button:disabled .spinner {
+  opacity: 0.5;
+}
