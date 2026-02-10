@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spinner Component Examples</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css-reset.css" />
+  <link rel="stylesheet" href="../button/button.css" />
+  <link rel="stylesheet" href="../button/button-dark.css" />
+  <link rel="stylesheet" href="spinner.css" />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+      font-size: larger;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Spinner Component Examples</h1>
+
+  <div class="section">
+    <!-- Color: Gray -->
+    <button class="button-myds button-myds-secondary px-4 py-2 rounded-md border">
+      Loading Gray
+      <span class="spinner spinner-gray"></span>
+    </button>
+
+    <!-- Color: White -->
+    <button class="button-myds button-myds-primary px-4 py-2 rounded-md border">
+      Loading White
+      <span class="spinner spinner-white"></span>
+    </button>
+
+    <!-- Variant: Default -->
+    <button class="button-myds button-myds-secondary px-4 py-2 rounded-md border">
+      Loading Default
+      <span class="spinner spinner-default"></span>
+    </button>
+  </div>
+
+  <h1>Spinner Component Examples Size</h1>
+  <div class="section">
+    <!-- Color: Gray -->
+    <button class="button-myds button-myds-primary px-4 py-2 rounded-md border">
+      Loading Small
+      <span class="spinner spinner-default spinner-small"></span>
+    </button>
+
+    <!-- Color: White -->
+    <button class="button-myds button-myds-primary px-4 py-2 rounded-md border">
+      Loading Medium
+      <span class="spinner spinner-default spinner-medium"></span>
+    </button>
+
+    <!-- Variant: Default -->
+    <button class="button-myds button-myds-primary px-4 py-2 rounded-md border">
+      Loading Large
+      <span class="spinner spinner-default spinner-large"></span>
+    </button>
+  </div>
+</body>
+
+</html>
