@@ -2,59 +2,17 @@ import { Slot } from "@radix-ui/react-slot";
 import { ComponentProps, forwardRef, ForwardRefExoticComponent } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 
-/*========================================================================================================================*/
-/* Extend JSX so React recognises the Splask custom elements */
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "splwpk-broadcast": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-      "splwpk-online-services": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-      "splwpk-online-e-participation": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-      "splwpk-privacy-policy": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-      "splwpk-procurement": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-      "splwpk-freedom": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-      "splwpk-faqs": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
-    }
-  }
-}
-
-/*========================================================================================================================*/
-
-interface LinkProps
-  extends ComponentProps<"a">,
-    VariantProps<typeof link_cva> {
+interface LinkProps extends ComponentProps<"a">, VariantProps<typeof link_cva> {
   asChild?: boolean;
   newTab?: boolean;
 
-  // Splask attributes
-  SplaskBroadcast?: boolean;
-  SplaskOnlineServices?: boolean;
-  SplaskOnlineEParticipation?: boolean;
-  SplaskPrivacyPolicy?: boolean;
-  SplaskProcurement?: boolean;
-  SplaskFreedom?: boolean;
-  SplaskFaqs?: boolean;
+  splaskBroadcast?: boolean;
+  splaskOnlineServices?: boolean;
+  splaskOnlineEParticipation?: boolean;
+  splaskPrivacyPolicy?: boolean;
+  splaskProcurement?: boolean;
+  splaskFreedom?: boolean;
+  splaskFaqs?: boolean;
 }
 
 const link_cva = cva("transition-colors", {
@@ -73,12 +31,9 @@ const link_cva = cva("transition-colors", {
 
 /**
  * The Link component extends the `<a>` element, customised according to the MYDS theme.
- * Supports Splask wrapper attributes if required.
- *
  * @example
- * <Link href="https://design.digital.gov.my" newTab primary underline="always" SplaskBroadcast>
- *   MYDS
- * </Link>
+ * <Link href="https://design.digital.gov.my" newTab primary underline="always">MYDS</Link>
+ * @see {@link https://design.digital.gov.my/?path=/docs/myds-react-link--docs}
  */
 const Link: ForwardRefExoticComponent<LinkProps> = forwardRef(
   (
@@ -90,47 +45,42 @@ const Link: ForwardRefExoticComponent<LinkProps> = forwardRef(
       newTab = false,
       primary = false,
       underline = "always",
-      SplaskBroadcast,
-      SplaskOnlineServices,
-      SplaskOnlineEParticipation,
-      SplaskPrivacyPolicy,
-      SplaskProcurement,
-      SplaskFreedom,
-      SplaskFaqs,
+      splaskBroadcast = false,
+      splaskOnlineServices = false,
+      splaskOnlineEParticipation = false,
+      splaskPrivacyPolicy = false,
+      splaskProcurement = false,
+      splaskFreedom = false,
+      splaskFaqs = false,
       ...props
     },
     ref,
   ) => {
     const Comp = asChild ? Slot : "a";
 
-    const linkElement = (
+    const splaskAttrs: Record<string, string> = {};
+    if (splaskBroadcast) splaskAttrs["splwpk-broadcast"] = "splwpk-broadcast";
+    if (splaskOnlineServices) splaskAttrs["splwpk-online-services"] = "splwpk-online-services";
+    if (splaskOnlineEParticipation) splaskAttrs["splwpk-online-e-participation"] = "splwpk-online-e-participation";
+    if (splaskPrivacyPolicy) splaskAttrs["splwpk-privacy-policy"] = "splwpk-privacy-policy";
+    if (splaskProcurement) splaskAttrs["splwpk-procurement"] = "splwpk-procurement";
+    if (splaskFreedom) splaskAttrs["splwpk-freedom"] = "splwpk-freedom";
+    if (splaskFaqs) splaskAttrs["splwpk-faqs"] = "splwpk-faqs";
+
+    return (
       <Comp
         ref={ref}
         href={href}
         className={link_cva({ primary, underline, className })}
         target={newTab ? "_blank" : "_self"}
+        {...splaskAttrs}
         {...props}
       >
         {children}
       </Comp>
     );
-
-    // collect Splask attributes
-    const attrs: Record<string, string> = {};
-    if (SplaskBroadcast) attrs["splwpk-broadcast"] = "splwpk-broadcast";
-    if (SplaskOnlineServices) attrs["splwpk-online-services"] = "splwpk-online-services";
-    if (SplaskOnlineEParticipation) attrs["splwpk-online-e-participation"] = "splwpk-online-e-participation";
-    if (SplaskPrivacyPolicy) attrs["splwpk-privacy-policy"] = "splwpk-privacy-policy";
-    if (SplaskProcurement) attrs["splwpk-procurement"] = "splwpk-procurement";
-    if (SplaskFreedom) attrs["splwpk-freedom"] = "splwpk-freedom";
-    if (SplaskFaqs) attrs["splwpk-faqs"] = "splwpk-faqs";
-
-    if (Object.keys(attrs).length === 0) return linkElement;
-
-    return <div {...attrs}>{linkElement}</div>;
   },
 );
-
 Link.displayName = "Link";
 
 export { Link };
