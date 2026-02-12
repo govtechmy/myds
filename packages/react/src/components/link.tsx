@@ -5,6 +5,14 @@ import { cva, VariantProps } from "class-variance-authority";
 interface LinkProps extends ComponentProps<"a">, VariantProps<typeof link_cva> {
   asChild?: boolean;
   newTab?: boolean;
+
+  splwpkBroadcast?: boolean;
+  splwpkOnlineServices?: boolean;
+  splwpkOnlineEParticipation?: boolean;
+  splwpkPrivacyPolicy?: boolean;
+  splwpkProcurement?: boolean;
+  splwpkFreedom?: boolean;
+  splwpkFaqs?: boolean;
 }
 
 const link_cva = cva("transition-colors", {
@@ -37,11 +45,27 @@ const Link: ForwardRefExoticComponent<LinkProps> = forwardRef(
       newTab = false,
       primary = false,
       underline = "always",
+      splwpkBroadcast = false,
+      splwpkOnlineServices = false,
+      splwpkOnlineEParticipation = false,
+      splwpkPrivacyPolicy = false,
+      splwpkProcurement = false,
+      splwpkFreedom = false,
+      splwpkFaqs = false,
       ...props
     },
     ref,
   ) => {
     const Comp = asChild ? Slot : "a";
+
+    const splwpkAttrs: Record<string, string> = {};
+    if (splwpkBroadcast) splwpkAttrs["splwpk-broadcast"] = "splwpk-broadcast";
+    if (splwpkOnlineServices) splwpkAttrs["splwpk-online-services"] = "splwpk-online-services";
+    if (splwpkOnlineEParticipation) splwpkAttrs["splwpk-online-e-participation"] = "splwpk-online-e-participation";
+    if (splwpkPrivacyPolicy) splwpkAttrs["splwpk-privacy-policy"] = "splwpk-privacy-policy";
+    if (splwpkProcurement) splwpkAttrs["splwpk-procurement"] = "splwpk-procurement";
+    if (splwpkFreedom) splwpkAttrs["splwpk-freedom"] = "splwpk-freedom";
+    if (splwpkFaqs) splwpkAttrs["splwpk-faqs"] = "splwpk-faqs";
 
     return (
       <Comp
@@ -49,6 +73,7 @@ const Link: ForwardRefExoticComponent<LinkProps> = forwardRef(
         href={href}
         className={link_cva({ primary, underline, className })}
         target={newTab ? "_blank" : "_self"}
+        {...splwpkAttrs}
         {...props}
       >
         {children}
