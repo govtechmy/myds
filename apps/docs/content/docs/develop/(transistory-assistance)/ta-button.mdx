@@ -1,0 +1,788 @@
+---
+title: Button
+description: MYDS-compliant button component for seamless transition starting point from HTML/CSS to React
+---
+import {
+  PreviewButton,
+  Button,
+  ButtonIcon,
+  ButtonCounter,
+  Link,
+} from "@/components/myds";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
+import IframeThemePreview from "@/components/iframe-theme-preview";
+
+<Tabs items={["Preview","Code","ResetCSS","ButtonCSS","ButtonDarkCSS"]} defaultValue="Preview">
+  <Tab value="Preview">
+    <IframeThemePreview  
+      src="/assets/ta-preview/button/ta-button-preview.html" 
+    />
+  </Tab>
+  <Tab value="Code">
+  ```tsx
+      <div class="button-grid">
+        <button class="button-myds button-myds-primary">Default</button>
+        <button class="button-myds button-myds-primary">Hover</button>
+        <button class="button-myds button-myds-primary">Focused</button>
+        <button disabled class="button-myds button-myds-primary">
+          Disabled
+        </button>
+       
+        <button class="button-myds button-myds-secondary">Secondary</button>
+        <button class="button-myds button-myds-secondary">Hover</button>
+        <button class="button-myds button-myds-secondary">Focused</button>
+        <button disabled class="button-myds button-myds-secondary">
+          Disabled
+        </button>
+    
+        <button class="button-myds button-myds-secondary-color">
+          Secondary
+        </button>
+        <button class="button-myds button-myds-secondary-color">Hover</button>
+        <button class="button-myds button-myds-secondary-color">Focused</button>
+        <button disabled class="button-myds button-myds-secondary-color">
+          Disabled
+        </button>
+
+        <button class="button-myds button-myds-tertiary">Tertiary</button>
+        <button class="button-myds button-myds-tertiary">Hover</button>
+        <button class="button-myds button-myds-tertiary">Focused</button>
+        <button disabled class="button-myds button-myds-tertiary">
+          Disabled
+        </button>
+
+        <button class="button-myds button-myds-tertiary-color">Tertiary</button>
+        <button class="button-myds button-myds-tertiary-color">Hover</button>
+        <button class="button-myds button-myds-tertiary-color">Focused</button>
+        <button disabled class="button-myds button-myds-tertiary-color">
+          Disabled
+        </button>
+
+        <button class="button-myds button-myds-danger-primary">Danger</button>
+        <button class="button-myds button-myds-danger-primary">Hover</button>
+        <button class="button-myds button-myds-danger-primary">Focused</button>
+        <button disabled class="button-myds button-myds-danger-primary">
+          Disabled
+        </button>
+
+        <button class="button-myds button-myds-danger-secondary">Danger</button>
+        <button class="button-myds button-myds-danger-secondary">Hover</button>
+        <button class="button-myds button-myds-danger-secondary">
+          Focused
+        </button>
+        <button disabled class="button-myds button-myds-danger-secondary">
+          Disabled
+        </button>
+
+        <button class="button-myds button-myds-danger-tertiary">Danger</button>
+        <button class="button-myds button-myds-danger-tertiary">Hover</button>
+        <button class="button-myds button-myds-danger-tertiary">Focused</button>
+        <button disabled class="button-myds button-myds-danger-tertiary">
+          Disabled
+        </button>
+      </div>
+      ```
+  </Tab>
+  <Tab value="ResetCSS">
+  ```tsx
+/* CSS BASE RESET ------------------------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default body margin */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: #fff;
+  color: #000;
+}
+
+/* Reset headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove default anchor styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Normalize images and media */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Form elements reset */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  appearance: none;
+}
+
+/* Reset button styles completely */
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Ensure buttons and inputs are usable */
+button:disabled,
+input:disabled {
+  cursor: not-allowed;
+}
+
+/* Table reset */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove focus outlines unless using keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Button Reset */
+.button-myds {
+  all: unset; /* Reset all browser styles */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 6px 10px;
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 0;
+  /* leading-trim is not widely supported, omit or use with fallback */
+  border: 1px solid transparent;
+  border-radius: 8px;
+  gap: 6px;
+}
+
+
+  ```
+  </Tab>
+  <Tab value="ButtonCSS">
+  ```tsx
+.button-myds:focus {
+  outline: 3px solid #96b7ff66;
+}
+
+.dark .button-myds:focus {
+  outline: 3px solid #1d4ed866;
+}
+
+/* Primary Button */
+.button-myds-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+.button-myds-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.button-myds-primary:disabled {
+  background-color: #c2d5ff;
+  cursor: not-allowed;
+  border: none;
+  color: #ffffff66;
+}
+
+/* Secondary Button */
+.button-myds-secondary {
+  background-color: #ffffff;
+  color: #3f3f46;
+  border-color: #e4e4e7;
+}
+
+.button-myds-secondary:hover {
+  background-color: #fafafa;
+}
+
+.button-myds-secondary:disabled {
+  background-color: #f4f4f566;
+  cursor: not-allowed;
+  border: none;
+  color: #52525b66;
+}
+
+/* Secondary Color Button */
+.button-myds-secondary-color {
+  background-color: #ffffff;
+  color: #2563eb;
+  border-color: #c2d5ff;
+}
+
+.button-myds-secondary-color:hover {
+  background-color: #eff6ff;
+}
+
+.button-myds-secondary-color:disabled {
+  background-color: #f4f4f566;
+  cursor: not-allowed;
+  border: none;
+  color: #2563eb66;
+}
+
+/* Tertiary Button */
+
+.button-myds-tertiary {
+  background-color: transparent;
+  border-color: transparent;
+  color: #3f3f46;
+}
+
+.button-myds-tertiary:hover {
+  background-color: #fafafa;
+}
+
+.button-myds-tertiary:disabled {
+  background-color: #f4f4f566;
+  cursor: not-allowed;
+  border: none;
+  color: #52525b66;
+}
+
+/* Tertiary Color Button */
+
+.button-myds-tertiary-color {
+  background-color: transparent;
+  border-color: transparent;
+  color: #2563eb;
+}
+
+.button-myds-tertiary-color:hover {
+  background-color: #eff6ff;
+}
+
+.button-myds-tertiary-color:disabled {
+  background-color: #f4f4f566;
+  cursor: not-allowed;
+  border: none;
+  color: #2563eb66;
+}
+
+/* Danger Primary Button */
+
+.button-myds-danger-primary {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  color: #ffffff;
+}
+
+.button-myds-danger-primary:hover {
+  background-color: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.button-myds-danger-primary:disabled {
+  background-color: #fecaca;
+  cursor: not-allowed;
+  border: none;
+  color: #ffffff66;
+}
+
+/* Danger Secondary Button */
+
+.button-myds-danger-secondary {
+  background-color: #ffffff;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.button-myds-danger-secondary:hover {
+  background-color: #fef2f2;
+  border-color: #fca5a5;
+}
+
+.button-myds-danger-secondary:disabled {
+  background-color: #f4f4f566;
+  cursor: not-allowed;
+  border: none;
+  color: #b91c1c66;
+}
+
+/* Danger Tertiary Button */
+
+.button-myds-danger-tertiary {
+  background-color: #ffffff;
+  border-color: transparent;
+  color: #b91c1c;
+}
+
+.button-myds-danger-tertiary:hover {
+  background-color: #fef2f2;
+  border-color: transparent;
+}
+
+.button-myds-danger-tertiary:disabled {
+  background-color: #f4f4f566;
+  cursor: not-allowed;
+  border: none;
+  color: #b91c1c66;
+}
+
+  ```
+  </Tab>
+  <Tab value="ButtonDarkCSS">
+  ```tsx
+/* dark mode support */
+
+.dark .button-myds-primary:disabled {
+    background-color: #172554;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #ffffff66;
+  }
+  
+  /* Secondary Button */
+  .dark .button-myds-secondary {
+    background-color: #18181b;
+    color: #d4d4d8;
+    border-color: #3f3f46;
+  }
+  
+  .dark .button-myds-secondary:hover {
+    background-color: #27272a;
+  }
+  
+  .dark .button-myds-secondary:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #a1a1aa66;
+  }
+  
+  /* Secondary Color Button */
+  .dark .button-myds-secondary-color {
+    background-color: #18181b;
+    color: #6394ff;
+    border-color: #1e40af;
+  }
+  
+  .dark .button-myds-secondary-color:hover {
+    background-color: #172554;
+  }
+  
+  .dark .button-myds-secondary-color:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #6394ff66;
+  }
+  
+  /* Tertiary Button */
+  .dark .button-myds-tertiary {
+    background-color: transparent;
+    border-color: transparent;
+    color: #d4d4d8;
+  }
+  
+  .dark .button-myds-tertiary:hover {
+    background-color: #27272a;
+  }
+  
+  .dark .button-myds-tertiary:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #a1a1aa66;
+  }
+  
+  /* Tertiary Color Button */
+  .dark .button-myds-tertiary-color {
+    background-color: transparent;
+    border-color: transparent;
+    color: #6394ff;
+  }
+  
+  .dark .button-myds-tertiary-color:hover {
+    background-color: #172554;
+  }
+  
+  .dark .button-myds-tertiary-color:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #6394ff66;
+  }
+  
+  /* Danger Primary Button */
+  .dark .button-myds-danger-primary {
+    background-color: #dc2626;
+    border-color: #dc2626;
+    color: #ffffff;
+  }
+  
+  .dark .button-myds-danger-primary:hover {
+    background-color: #b91c1c;
+    border-color: #b91c1c;
+  }
+  
+  .dark .button-myds-danger-primary:disabled {
+    background-color: #450a0a;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #ffffff66;
+  }
+  
+  /* Danger Secondary Button */
+  .dark .button-myds-danger-secondary {
+    background-color: #18181b;
+    border-color: #991b1b;
+    color: #f87171;
+  }
+  
+  .dark .button-myds-danger-secondary:hover {
+    background-color: #450a0a;
+    border-color: #fca5a5;
+  }
+  
+  .dark .button-myds-danger-secondary:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #f8717166;
+  }
+  
+  /* Danger Tertiary Button */
+  .dark .button-myds-danger-tertiary {
+    background-color: transparent;
+    border-color: transparent;
+    color: #f87171;
+  }
+  
+  .dark .button-myds-danger-tertiary:hover {
+    background-color: #450a0a;
+    border-color: transparent;
+  }
+  
+  .dark .button-myds-danger-tertiary:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #f8717166;
+  }
+  
+
+  ```
+  </Tab>
+</Tabs>
+
+## Overview
+
+The MYDS HTML/CSS Button provides flexible variants and consistent styling for applications not using React. It ensures proper state handling (hover, focus, disabled), and design harmony across public-sector interfaces.
+
+## 1. Setup
+
+Follow these steps to prepare the button styles in your HTML project.
+
+
+**Recommended Import Order**
+Make sure to load the stylesheets in this sequence to ensure proper styling:
+
+```html
+<link rel="stylesheet" href="reset.css" />  <!-- refer to ResetCSS -->
+<link rel="stylesheet" href="button.css" /> <!-- refer to ButtonCSS -->
+<link rel="stylesheet" href="button-dark.css" /> <!-- refer to ButtonDarkCSS -->
+```
+
+This guarantees that:
+
+1. The **CSS reset** applies first.
+2. The **button base styles** override the reset where necessary.
+3. The **dark theme styles** apply last, so they can override both the reset and base button styles when needed.
+
+
+### Step 2 - Include the required font
+
+The **Inter** font is part of the MYDS design guidelines. Add it inside your `<head>`:
+
+```html
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+```
+
+Your `<head>` should look similar to:
+
+```html
+<head>
+  <!-- Inter Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Design System Stylesheet -->
+  <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="button.css" />
+  <link rel="stylesheet" href="button-dark.css" />
+</head>
+```
+
+
+
+## 2. Usage
+
+All buttons use the base class:
+
+```html
+<button class="button-myds">...</button>
+```
+
+To apply styles, add one of the variant modifier classes:
+
+* `button-myds-primary`
+* `button-myds-secondary`
+* `button-myds-secondary-color`
+* `button-myds-tertiary`
+* `button-myds-tertiary-color`
+* `button-myds-danger-primary`
+* `button-myds-danger-secondary`
+* `button-myds-danger-tertiary`
+
+
+
+## 3. Variants
+
+### Primary
+
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center">
+      <Button
+        >
+        <span className='text-white'>Primary</span>
+      </Button>
+      </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+  <button class="button-myds button-myds-primary">Primary</button>
+  ```
+  </Tab>
+</Tabs>
+
+
+
+### Secondary
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center">
+      <Button
+        variant="default-outline"
+        >
+        <span className=''>Secondary</span>
+      </Button>
+      </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+  <button class="button-myds button-myds-secondary">Secondary</button>
+  ```
+  </Tab>
+</Tabs>
+
+
+### Secondary Color
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center">
+      <Button
+        variant="primary-outline"
+        >
+        <span className='text-[#2563eb]'>Secondary</span>
+      </Button>
+      </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+  <button class="button-myds button-myds-secondary-color">Secondary</button>
+  ```
+  </Tab>
+</Tabs>
+
+### Tertiary
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center">
+      <Button
+        variant="default-ghost"
+        >
+        <span className=''>Tertiary</span>
+      </Button>
+      </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+  <button class="button-myds button-myds-tertiary">Tertiary</button>
+  ```
+  </Tab>
+</Tabs>
+
+### Tertiary Color
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center">
+      <Button
+        variant="primary-ghost"
+        >
+        <span className='text-[#2563eb]'>Tertiary</span>
+      </Button>
+      </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+  <button class="button-myds button-myds-tertiary-color">Tertiary</button>
+  ```
+  </Tab>
+</Tabs>
+
+### Danger - Primary
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center">
+      <Button
+        variant="danger-fill"
+        >
+        <span className='text-white'>Danger</span>
+      </Button>
+      </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+  <button class="button-myds button-myds-danger-primary">Danger</button>
+  ```
+  </Tab>
+</Tabs>
+
+### Danger - Secondary
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center">
+      <Button
+        variant="danger-outline"
+        >
+        <span className='text-[#b91c1c]'>Danger</span>
+      </Button>
+      </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+  <button class="button-myds button-myds-danger-secondary">Danger</button>
+  ```
+  </Tab>
+</Tabs>
+
+### Danger - Tertiary
+
+<Tabs items={["Preview", "Code"]} defaultValue="Preview">
+  <Tab value="Preview">
+  <div className="flex justify-center">
+      <Button
+        variant="danger-ghost"
+        >
+        <span className='text-[#b91c1c]'>Danger</span>
+      </Button>
+      </div>
+  </Tab>
+  <Tab value="Code">
+  ```tsx 
+  <button class="button-myds button-myds-danger-tertiary">Danger</button>
+  ```
+  </Tab>
+</Tabs>
+
+
+
+## 4. States
+
+Each variant supports:
+
+* **Default**
+* **Hover**
+* **Focused**
+* **Disabled**
+
+
+
+## 5. Anatomy
+| Selector                 | Purpose                              |
+| ------------------------ | ------------------------------------ |
+| `.button-myds`           | Base layout and reset                |
+| `.button-myds-[variant]` | Defines visual appearance            |
+| `:hover`                 | Hover interactions                   |
+| `:focus`                 | Focus ring for accessibility         |
+| `:disabled`              | Disabled appearance and cursor style |
+
+
+
+## 6. Customization
+
+You can override default styles in your stylesheet
+Example:
+
+```css
+.button-myds.button-myds-primary {
+  background-color: #1e40af; /* Custom primary color */
+}
+```
+
+
+
+## 7. Accessibility
+
+* Built with the native `<button>` element
+* Keyboard navigation supported with visible focus ring
+* Disabled state uses the native `disabled` attribute
+
+
+

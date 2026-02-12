@@ -290,8 +290,8 @@ const AutoPagination: ForwardRefExoticComponent<AutoPaginationProps> =
             <PaginationItem>
               {previous || <PaginationPrevious />}
             </PaginationItem>
-            {visiblePages.map((page) => (
-              <PaginationItem key={page}>
+            {visiblePages.map((page, index) => (
+              <PaginationItem key={index}>
                 {page === "..." ? (
                   <PaginationEllipsis />
                 ) : (

@@ -20,6 +20,19 @@ If you open a pull request for a new feature, we're likely to close it not becau
 
 MYDS is largely managed by [Turborepo](https://turbo.build/). If you would like contribute via code, we recommend learning to utilise the features of Turborepo to make your life easier, from running multiple dev servers, scope installs, using codegens and many more.
 
+## Building on Windows
+
+The documentation site (`apps/docs`) uses `fumadocs-docgen` as an optional dependency. This package may fail to install on Windows due to Playwright dependencies. If you encounter build errors related to Playwright when building the docs:
+
+1. The build will continue without the `fumadocs-docgen` features (install instructions enhancement)
+2. Alternatively, you can skip installing optional dependencies with:
+   ```sh
+   pnpm install --no-optional
+   ```
+3. The documentation site will build successfully without this package
+
+This is expected behavior and does not affect the functionality of the documentation.
+
 ## Coding standards
 
 Our code formatting rules are defined in the [prettierc](./.prettierrc) and [\_eslint](./packages/_eslint/).

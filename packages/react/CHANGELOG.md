@@ -1,5 +1,32 @@
 # @govtechmy/myds-react
 
+## 1.0.2
+
+### Patch Changes
+
+- 4259c83: refactor: positioning of `Navbar` menu in mobile
+  fix: omit `Breadcrumb` padding from default style, add to `fill` variant
+
+## 1.0.1
+
+### Patch Changes
+
+- 2673812: fix pagination : error duplicate key (...) thrown by myds auto pagination due to design --> pageiniital (...) pagemiddle (...) pagefinal
+
+## 1.0.0
+
+### Major Changes
+
+- :q
+- Fix patch tailwind
+- ee2d39a: :q
+
+## 0.0.24
+
+### Patch Changes
+
+- d2e231e: fix navbar : passing classname on mobile and desktop
+
 ## 0.0.23
 
 ### Patch Changes

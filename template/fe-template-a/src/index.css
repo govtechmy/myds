@@ -1,0 +1,4 @@
+@import "@govtechmy/myds-style/full.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

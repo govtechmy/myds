@@ -1,0 +1,111 @@
+/* CSS BASE RESET ------------------------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default body margin */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: #fff;
+  color: #000;
+}
+
+/* Reset headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove default anchor styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Normalize images and media */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Form elements reset */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  appearance: none;
+}
+
+/* Reset button styles completely */
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Ensure buttons and inputs are usable */
+button:disabled,
+input:disabled {
+  cursor: not-allowed;
+}
+
+/* Table reset */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove focus outlines unless using keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Button Reset */
+.button-myds {
+  all: unset; /* Reset all browser styles */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 6px 10px;
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 0;
+  /* leading-trim is not widely supported, omit or use with fallback */
+  border: 1px solid transparent;
+  border-radius: 8px;
+  gap: 6px;
+}

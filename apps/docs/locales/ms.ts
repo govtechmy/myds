@@ -217,7 +217,11 @@ export default {
     home: "Laman Utama",
     design: "Reka Bentuk",
     develop: "Pembangunan",
-    icon: "ikon",
+    icon: "Ikon",
+    storybook: "Storybook",
+    community: "Komuniti",
+    myds_ai: "AI MYDS",
+    splask: "SPLaSK",
   },
 
   /* Design */
@@ -303,5 +307,65 @@ export default {
   e404: {
     title: "404 - Halaman tidak dijumpai | MYDS",
     description: "Halaman yang anda cari tidak wujud.",
+  },
+
+  /* community Page */
+  community: {
+    description: "Bantu Penambahbaikan",
+    title: "Komuniti Pembangun MYDS",
+    subtitle: "Sertai Komuniti Pembangun MYDS!",
+    subtitle2:
+      "Komuniti Pembangun MYDS ialah peluang anda untuk memacu hala tuju perjalanan Sistem Reka Bentuk Malaysia! Komuniti ini melibatkan pelbagai pihak berkepentingan yang menghimpunkan Pereka Kreatif, Pakar UI/UX, Pembangun Front-End, dan ramai lagi bagi memastikan Sistem Reka Bentuk Malaysia setaraf dengan piawaian industri!",
+    subtitle3: "Sertailah kami dalam usaha ini!",
+    name: "Nama",
+    email: "Emel",
+    submit: "Hantar",
+    infoTitle: "Maklumat",
+    interest: "Berminat dalam:",
+    institute: "Institut / Organisasi",
+    myGovOnlyInfo:
+      "Kami kini dalam Fasa 1 dan hanya dibuka kepada pegawai kerajaan yang berminat untuk menyumbang kepada MYDS. Kami akan dibuka kepada orang awam tidak lama lagi — nantikan!",
+    form: {
+      selectPlaceholder: "Bidang Minat Anda",
+      required: "Ruangan ini wajib diisi",
+      invalidEmail: "Alamat emel Kerajaan tidak sah",
+      invalidName: "Nama hanya boleh mengandungi huruf dan ruang",
+      emailExists: "Emel ini telah didaftarkan.",
+      emailExistsDetail:
+        "Emel sudah wujud dalam pangkalan data, oleh itu permohonan anda tidak akan dihantar. Terima kasih.",
+      success1: "Terima kasih",
+      success2: "Kami akan hubungi anda",
+      failError: "Gagal menghantar. Sila cuba lagi nanti.",
+      interest: {
+        option1: "UI/UX",
+        option2: "Frontend",
+        option3: "Operasi",
+      },
+    },
+    modal: {
+      close: "Tutup",
+      title: "Berjaya Dihantar!",
+      content:
+        "Permohonan anda telah berjaya dihantar. Kami akan menghubungi anda secepat mungkin.",
+    },
+    emailToSend: {
+      header: "Penghantaran Komuniti MYDS Diterima",
+      message1: "Hai",
+      message2:
+        "Kami telah menerima permintaan anda untuk menjadi sebahagian daripada Komuniti MYDS! Pasukan kami telah merekodkan maklumat anda dan akan menghubungi anda secepat mungkin.",
+      message3:
+        "Terima kasih atas minat anda untuk membentuk Sistem Reka Bentuk Malaysia.",
+      regard: "Yang ikhlas,",
+      team: "Pasukan MYDS",
+    },
+  },
+  myds_ai: {
+    description: "AI MYDS adalah alat yang membantu anda menjana komponen dan reka bentuk MYDS.",
+  },
+  splask: {
+    description: "SPLaSK adalah alat ujian kebolehcapaian untuk laman web kerajaan Malaysia.",
+  },
+  storybook: {
+    description: "Storybook adalah persekitaran pembangunan UI untuk komponen MYDS.",
   },
 };

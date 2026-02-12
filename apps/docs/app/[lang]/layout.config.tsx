@@ -1,7 +1,15 @@
 import { Tag } from "@/components/Tag";
 import { links } from "@/lib/constant";
 import { getRosetta } from "@/locales/_server";
-import { ComponentIcon, FontIcon, GlobeIcon } from "@govtechmy/myds-react/icon";
+import {
+  ComponentIcon,
+  DocumentIcon,
+  FontIcon,
+  GlobeIcon,
+  InfoIcon,
+  SettingIcon,
+  UserGroupIcon,
+} from "@govtechmy/myds-react/icon";
 import { type HomeLayoutProps } from "fumadocs-ui/home-layout";
 import { LinkItemType } from "fumadocs-ui/layout";
 import Image from "next/image";
@@ -58,6 +66,38 @@ export const getMYDSConfig = (lang: "en" | "ms"): MYDSConfig => {
       description: t("icons.description"),
       url: `/${lang}/icon`,
       icon: <ComponentIcon />,
+      active: "nested-url",
+    },
+    {
+      title: t("menu.storybook"),
+      text: t("menu.storybook"),
+      description: t("storybook.description"),
+      url: `https://myds-storybook.vercel.app/`,
+      icon: <DocumentIcon />,
+      active: "nested-url",
+    },
+    {
+      title: t("menu.community"),
+      text: t("menu.community"),
+      description: t("community.description"),
+      url: `/${lang}/community`,
+      icon: <UserGroupIcon />,
+      active: "nested-url",
+    },
+    {
+      title: t("menu.myds_ai"),
+      text: t("menu.myds_ai"),
+      description: t("myds_ai.description"),
+      url: `https://myds-gen.vercel.app/`,
+      icon: <SettingIcon />,
+      active: "nested-url",
+    },
+    {
+      title: t("menu.splask"),
+      text: t("menu.splask"),
+      description: t("splask.description"),
+      url: `https://splask.jdn.gov.my/`,
+      icon: <InfoIcon />,
       active: "nested-url",
     },
   ];

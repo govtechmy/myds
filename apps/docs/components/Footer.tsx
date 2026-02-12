@@ -16,13 +16,7 @@ type Props = {
 };
 
 export default function Footer(props: Props) {
-  // const format = useFormatter();
-  // const t = useTranslations();
   const { t } = useContext(RosettaContext);
-
-  const className = {
-    link: "text-sm text-black-700 [text-underline-position:from-font] hover:text-black-900 hover:underline",
-  };
 
   return (
     <div className="bg-bg-gray-50 border-otl-gray-200 border-t py-8 lg:py-16">
@@ -36,18 +30,13 @@ export default function Footer(props: Props) {
                 height={28}
                 alt="Jata Negara"
               />
-              <div>
-                <span className="whitespace-nowrap font-semibold text-inherit">
-                  {props.ministry}
-                </span>
-              </div>
+              <span className="whitespace-nowrap font-semibold text-inherit">
+                {props.ministry}
+              </span>
             </div>
-            <p
-              className="text-black-700 text-sm"
-              dangerouslySetInnerHTML={{
-                __html: props.descriptionWithNewlines.replaceAll("\n", "<br/>"),
-              }}
-            ></p>
+            <p className="text-black-700 whitespace-pre-line text-sm">
+              {props.descriptionWithNewlines}
+            </p>
           </div>
           <div className="flex flex-col gap-6 text-sm lg:flex-row">
             {props.links.map((item, index) => (
@@ -57,9 +46,9 @@ export default function Footer(props: Props) {
                   {item.links.map(({ name, href }) => (
                     <a
                       key={name}
-                      className={className.link}
+                      className="text-black-700 hover:text-black-900 text-sm [text-underline-position:from-font] hover:underline"
                       target="_blank"
-                      rel="noopenner noreferrer"
+                      rel="noopener noreferrer"
                       href={href}
                     >
                       {name}

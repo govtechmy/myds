@@ -42,11 +42,11 @@ export const Spinner: React.FC<SpinnerProps> = ({
   size,
   color,
   className = "",
-  show=true,
+  show = true,
   ...props
 }) => {
   if (!show) {
-    return (null)
+    return null;
   }
   return (
     <div
