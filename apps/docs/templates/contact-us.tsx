@@ -14,7 +14,7 @@ import {
 export default function ContactUsTemplate() {
     return (
         <>
-            <div className="bg-bg-gray-50 border-b border-outline-200">
+            <div className="border-b border-outline-200">
                 <div className="max-w-full px-6 py-10 text-center">
                     <h1 className="text-center font-poppins text-[2rem] font-semibold sm:text-hmd">
                         Contact Us
@@ -23,7 +23,7 @@ export default function ContactUsTemplate() {
             </div>
 
             <main className="divide-y divide-washed-100">
-                <section className="bg-bg-gray-50">
+                <section className="">
                     <div className="gap-6 border-washed-100 py-12 lg:py-[84px] xl:mx-auto xl:max-w-7xl xl:grid xl:grid-cols-12 xl:border-x">
                         <div className="col-span-10 col-start-2 flex items-center justify-center">
                             <div className="flex flex-col gap-12 sm:flex-row px-4 sm:px-0">
@@ -129,7 +129,7 @@ export default function ContactUsTemplate() {
                                 ))}
                             </div>
 
-                            <div className="grid flex-none grid-flow-row grid-cols-4 divide-x divide-washed-100 px-0 max-md:divide-y">
+                            <div className="grid flex-none grid-flow-row grid-cols-4 divide-x divide-washed-100 border-t border-washed-100 px-0 max-md:divide-y">
                                 {[
                                     { icon: <FacebookIcon className="size-6" />, label: "Facebook", url: "#" },
                                     { icon: <InstagramIcon className="size-6" />, label: "Instagram", url: "#" },

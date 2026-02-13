@@ -29,7 +29,7 @@ import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 <Tabs items={["Preview", "Code"]} defaultValue="Preview">
   <Tab value="Preview" className="not-prose p-0 m-0">
     <div className="relative isolate w-full min-h-[90vh] overflow-hidden rounded-md border shadow">
-        <ContactUsTemplate className="px-4 bg-bg-gray-50" />
+        <ContactUsTemplate/>
     </div>
   </Tab>
   <Tab value="Code">
@@ -202,14 +202,14 @@ export default function ContactUsTemplate() {
 
 The `ContactUsTemplate` component provides a sample UI contact us screen using [MYDS](https://github.com/govtechmy/myds) components. It includes:
 
-- Responsive contact details section with google map frame, telephone and email.
+- Responsive contact details section with Google Map frame, telephone and email.
 - Social media links with icons styled according to the MYDS design guidelines.
 - A mobile-friendly layout that adapts from stacked sections to a single row on large screens.
 
 This contact us page template is built for **rapid development** and **easy integration**. It is designed to help teams get started faster by providing a layout that adheres to the **MYDS design system**, eliminating the need to piece together individual components manually.
 
 > ⚠️ **Note**: This is a **design-only template**. It does **not** include any functional logic such as:
-> - Working contact details for google map frame, telephone and email
+> - Working contact details for Google Map frame, telephone and email
 > - Working Social media links
 > 
 > You are expected to implement such logic based on your own system needs.
