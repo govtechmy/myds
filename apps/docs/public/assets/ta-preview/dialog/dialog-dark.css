@@ -1,0 +1,82 @@
+/* Dark Mode Support */
+
+.dark dialog::backdrop {
+  background-color: #3f3f4699;
+}
+
+.dark .button-myds-primary {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+.dark .button-myds-primary:hover {
+  background-color: #1e40af;
+}
+
+.dark .button-myds-primary:disabled {
+  background-color: #172554;
+  cursor: not-allowed;
+  border-color: transparent;
+  color: #ffffff66;
+}
+
+.dark .button-myds-primary:focus {
+  outline: 3px solid #1d4ed866;
+}
+
+.dark .button-myds-secondary {
+  background-color: #18181b;
+  border-color: #27272a;
+  color: #d1d5db;
+}
+
+.dark .button-myds-secondary:hover {
+  background-color: #27272a;
+  border-color: #3f3f46;
+  color: #f9fafb;
+}
+
+.dark .button-myds-secondary:disabled {
+  background-color: #18181b;
+  color: #52525b;
+  border-color: transparent;
+  pointer-events: none;
+}
+
+.dark dialog {
+  border-color: #161619;
+  background-color: #161619;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+}
+
+.dark .dialog-close {
+  background-color: #18181b;
+  border-color: #27272a;
+  color: #f9fafb;
+}
+
+.dark .dialog-close:hover {
+  background-color: #27272a;
+  border-color: #3f3f46;
+  color: #ffffff;
+}
+
+.dark .dialog-close:focus {
+  box-shadow: 0 0 0 3px #1d4ed866;
+}
+
+.dark .dialog-close:disabled {
+  background-color: #18181b;
+  color: #52525b;
+  border-color: transparent;
+}
+
+.dark .dialog-title {
+  color: #f9fafb;
+}
+
+/* Dialog Content */
+.dark .dialog-content {
+  color: #9ca3af;
+}
