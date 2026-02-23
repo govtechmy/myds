@@ -50,33 +50,33 @@
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
 }
 
-.dark .dialog-close {
+.dark .myds-dialog-close {
   background-color: #18181b;
   border-color: #27272a;
   color: #f9fafb;
 }
 
-.dark .dialog-close:hover {
+.dark .myds-dialog-close:hover {
   background-color: #27272a;
   border-color: #3f3f46;
   color: #ffffff;
 }
 
-.dark .dialog-close:focus {
+.dark .myds-dialog-close:focus {
   box-shadow: 0 0 0 3px #1d4ed866;
 }
 
-.dark .dialog-close:disabled {
+.dark .myds-dialog-close:disabled {
   background-color: #18181b;
   color: #52525b;
   border-color: transparent;
 }
 
-.dark .dialog-title {
+.dark .myds-dialog-title {
   color: #f9fafb;
 }
 
 /* Dialog Content */
-.dark .dialog-content {
+.dark .myds-dialog-content {
   color: #9ca3af;
 }

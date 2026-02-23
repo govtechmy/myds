@@ -27,12 +27,13 @@ import IframeThemePreview from "@/components/iframe-theme-preview";
   <Tab value="Code">
   ```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
     <style>
       body {
         font-family: "Inter", sans-serif;
@@ -44,41 +45,48 @@ import IframeThemePreview from "@/components/iframe-theme-preview";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-    <main class="page-center">
-      <button class="button-myds-primary" onclick="openDialog()">
-        Open Dialog
+    <main class="myds-page-center">
+      <button class="button-myds-primary" onclick=openDialog()>
+        Default
       </button>
       
       <dialog>
-        <div class="dialog-header">
-          <h2 class="dialog-title">Dialog Title</h2>
+        <div class="myds-dialog-header">
+          <h2 class="myds-dialog-title">Dialog Title</h2>
         </div>
 
-        <div class="dialog-content">
+        <div class="myds-dialog-content">
           <p>Dialog content goes here.</p>
         </div>
 
-        <div class="dialog-footer">
-          <div class="dialog-actions-group">
-            <button class="button-myds button-myds-secondary" type="button" onclick="closeDialog()">
+        <div class="myds-dialog-footer">
+          <div class="myds-dialog-actions-group">
+            <button class="button-myds button-myds-secondary" type="button" onclick=closeDialog() autofocus>
               Secondary Action
             </button>
-            <button class="button-myds button-myds-primary" type="button" onclick="closeDialog()">
+            <button class="button-myds button-myds-primary" type="button" onclick=closeDialog()>
               Primary Action
             </button>
           </div>
         </div>
         
-        <button class="dialog-close" onclick="closeDialog()" aria-label="Close">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+        <button class="myds-dialog-close" onclick=closeDialog() aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
         </button>
       </dialog>
     </main>
 
     <script>
       const dialog = document.querySelector('dialog');
+
+      window.addEventListener("message", (event) => {
+        if (event.origin !== window.origin) return;
+        if (event.data?.theme) {
+          document.documentElement.className = event.data.theme;
+        }
+      });
 
       function openDialog() {
         dialog.showModal();
@@ -88,7 +96,6 @@ import IframeThemePreview from "@/components/iframe-theme-preview";
         dialog.close();
       }
 
-      // Close dialog when clicking outside (on backdrop)
       dialog.addEventListener('click', (e) => {
         const rect = dialog.getBoundingClientRect();
         if (
@@ -619,7 +626,7 @@ Your `<head>` should look similar to:
 The dialog uses the native HTML `<dialog>` element with the following structure:
 
 ```html
-<button class="button-myds-primary" onclick="openDialog()">
+<button class="button-myds-primary" onclick=openDialog()>
   Open Dialog
 </button>
 
@@ -634,16 +641,16 @@ The dialog uses the native HTML `<dialog>` element with the following structure:
 
   <div class="dialog-footer">
     <div class="dialog-actions-group">
-      <button class="button-myds button-myds-secondary" type="button" onclick="closeDialog()">
+      <button class="button-myds button-myds-secondary" type="button" onclick=closeDialog()>
         Secondary Action
       </button>
-      <button class="button-myds button-myds-primary" type="button" onclick="closeDialog()">
+      <button class="button-myds button-myds-primary" type="button" onclick=closeDialog()>
         Primary Action
       </button>
     </div>
   </div>
   
-  <button class="dialog-close" onclick="closeDialog()" aria-label="Close">
+  <button class="dialog-close" onclick=closeDialog() aria-label="Close">
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>

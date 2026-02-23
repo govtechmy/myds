@@ -17,32 +17,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-    <main class="page-center">
-      <button class="button-myds-primary" onclick="openDialog()">
+    <main class="myds-page-center">
+      <button class="button-myds-primary" onclick=openDialog()>
         Default
       </button>
       
       <dialog>
-        <div class="dialog-header">
-          <h2 class="dialog-title">Dialog Title</h2>
+        <div class="myds-dialog-header">
+          <h2 class="myds-dialog-title">Dialog Title</h2>
         </div>
 
-        <div class="dialog-content">
+        <div class="myds-dialog-content">
           <p>Dialog content goes here.</p>
         </div>
 
-        <div class="dialog-footer">
-          <div class="dialog-actions-group">
-            <button class="button-myds button-myds-secondary" type="button" onclick="closeDialog()" autofocus>
+        <div class="myds-dialog-footer">
+          <div class="myds-dialog-actions-group">
+            <button class="button-myds button-myds-secondary" type="button" onclick=closeDialog() autofocus>
               Secondary Action
             </button>
-            <button class="button-myds button-myds-primary" type="button" onclick="closeDialog()">
+            <button class="button-myds button-myds-primary" type="button" onclick=closeDialog()>
               Primary Action
             </button>
           </div>
         </div>
         
-        <button class="dialog-close" onclick="closeDialog()" aria-label="Close">
+        <button class="myds-dialog-close" onclick="closeDialog()" aria-label="Close">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>

@@ -29,7 +29,7 @@ body {
   outline: 3px solid #96b7ff66;
 }
 
-.page-center {
+.myds-page-center {
   display: grid;
   place-content: center;
   min-height: 100%;
@@ -106,7 +106,7 @@ dialog::backdrop {
 }
 
 /* Dialog Close Button */
-.dialog-close {
+.myds-dialog-close {
   position: absolute;
   right: 1rem;
   top: 1rem;
@@ -127,22 +127,22 @@ dialog::backdrop {
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
-.dialog-close:hover {
+.myds-dialog-close:hover {
   background-color: #f9fafb;
   border-color: #d1d5db;
   color: #111827;
 }
 
-.dialog-close:active {
+.myds-dialog-close:active {
   transform: translateY(0.5px);
 }
 
-.dialog-close:focus {
+.myds-dialog-close:focus {
   outline: none;
   box-shadow: 0 0 0 3px #96b7ff66;
 }
 
-.dialog-close:disabled {
+.myds-dialog-close:disabled {
   cursor: not-allowed;
   pointer-events: none;
   background-color: #f3f4f6;
@@ -150,13 +150,13 @@ dialog::backdrop {
   border-color: transparent;
 }
 
-.dialog-close svg {
+.myds-dialog-close svg {
   width: 1.25rem;
   height: 1.25rem;
 }
 
 /* Dialog Header */
-.dialog-header {
+.myds-dialog-header {
   width: 100%;
   padding: 1.5rem 1.5rem 0.5rem;
 }
@@ -169,7 +169,7 @@ dialog::backdrop {
 }
 
 /* Dialog Content */
-.dialog-content {
+.myds-dialog-content {
   width: 100%;
   padding: 0 1.5rem;
   color: #6b7280;
@@ -178,7 +178,7 @@ dialog::backdrop {
 }
 
 /* Dialog Footer */
-.dialog-footer {
+.myds-dialog-footer {
   display: flex;
   width: 100%;
   padding: 1.5rem;
@@ -188,7 +188,7 @@ dialog::backdrop {
   justify-content: space-between;
 }
 
-.dialog-actions-group {
+.myds-dialog-actions-group {
   display: flex;
   gap: 0.75rem;
   justify-content: flex-end;
@@ -197,7 +197,7 @@ dialog::backdrop {
   width: 100%;
 }
 
-.dialog-actions-group > * {
+.myds-dialog-actions-group > * {
   width: 100%;
   place-content: center;
 }
@@ -269,17 +269,17 @@ dialog::backdrop {
 }
 
 @media (min-width: 640px) {
-  .dialog-footer {
+  .myds-dialog-footer {
     flex-direction: row;
     justify-content: flex-end;
   }
 
-  .dialog-actions-group {
+  .myds-dialog-actions-group {
     flex-direction: row;
     width: auto;
   }
 
-  .dialog-actions-group > *,
+  .myds-dialog-actions-group > *,
   .button-myds {
     width: auto;
   }
