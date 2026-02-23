@@ -225,7 +225,7 @@ body {
   outline: 3px solid #96b7ff66;
 }
 
-.page-center {
+.myds-page-center {
   display: grid;
   place-content: center;
   min-height: 100%;
@@ -302,7 +302,7 @@ dialog::backdrop {
 }
 
 /* Dialog Close Button */
-.dialog-close {
+.myds-dialog-close {
   position: absolute;
   right: 1rem;
   top: 1rem;
@@ -323,22 +323,22 @@ dialog::backdrop {
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 }
 
-.dialog-close:hover {
+.myds-dialog-close:hover {
   background-color: #f9fafb;
   border-color: #d1d5db;
   color: #111827;
 }
 
-.dialog-close:active {
+.myds-dialog-close:active {
   transform: translateY(0.5px);
 }
 
-.dialog-close:focus {
+.myds-dialog-close:focus {
   outline: none;
   box-shadow: 0 0 0 3px #96b7ff66;
 }
 
-.dialog-close:disabled {
+.myds-dialog-close:disabled {
   cursor: not-allowed;
   pointer-events: none;
   background-color: #f3f4f6;
@@ -346,18 +346,18 @@ dialog::backdrop {
   border-color: transparent;
 }
 
-.dialog-close svg {
+.myds-dialog-close svg {
   width: 1.25rem;
   height: 1.25rem;
 }
 
 /* Dialog Header */
-.dialog-header {
+.myds-dialog-header {
   width: 100%;
   padding: 1.5rem 1.5rem 0.5rem;
 }
 
-.dialog-title {
+.myds-dialog-title {
   font-size: 1.125rem;
   line-height: 1.75rem;
   color: #111827;
@@ -365,7 +365,7 @@ dialog::backdrop {
 }
 
 /* Dialog Content */
-.dialog-content {
+.myds-dialog-content {
   width: 100%;
   padding: 0 1.5rem;
   color: #6b7280;
@@ -374,7 +374,7 @@ dialog::backdrop {
 }
 
 /* Dialog Footer */
-.dialog-footer {
+.myds-dialog-footer {
   display: flex;
   width: 100%;
   padding: 1.5rem;
@@ -384,7 +384,7 @@ dialog::backdrop {
   justify-content: space-between;
 }
 
-.dialog-actions-group {
+.myds-dialog-actions-group {
   display: flex;
   gap: 0.75rem;
   justify-content: flex-end;
@@ -393,7 +393,7 @@ dialog::backdrop {
   width: 100%;
 }
 
-.dialog-actions-group > * {
+.myds-dialog-actions-group > * {
   width: 100%;
   place-content: center;
 }
@@ -465,17 +465,17 @@ dialog::backdrop {
 }
 
 @media (min-width: 640px) {
-  .dialog-footer {
+  .myds-dialog-footer {
     flex-direction: row;
     justify-content: flex-end;
   }
 
-  .dialog-actions-group {
+  .myds-dialog-actions-group {
     flex-direction: row;
     width: auto;
   }
 
-  .dialog-actions-group > *,
+  .myds-dialog-actions-group > *,
   .button-myds {
     width: auto;
   }
@@ -536,34 +536,34 @@ dialog::backdrop {
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
 }
 
-.dark .dialog-close {
+.dark .myds-dialog-close {
   background-color: #18181b;
   border-color: #27272a;
   color: #f9fafb;
 }
 
-.dark .dialog-close:hover {
+.dark .myds-dialog-close:hover {
   background-color: #27272a;
   border-color: #3f3f46;
   color: #ffffff;
 }
 
-.dark .dialog-close:focus {
+.dark .myds-dialog-close:focus {
   box-shadow: 0 0 0 3px #1d4ed866;
 }
 
-.dark .dialog-close:disabled {
+.dark .myds-dialog-close:disabled {
   background-color: #18181b;
   color: #52525b;
   border-color: transparent;
 }
 
-.dark .dialog-title {
+.dark .myds-dialog-title {
   color: #f9fafb;
 }
 
 /* Dialog Content */
-.dark .dialog-content {
+.dark .myds-dialog-content {
   color: #9ca3af;
 }
 ```
@@ -631,16 +631,16 @@ The dialog uses the native HTML `<dialog>` element with the following structure:
 </button>
 
 <dialog>
-  <div class="dialog-header">
-    <h2 class="dialog-title">Dialog Title</h2>
+  <div class="myds-dialog-header">
+    <h2 class="myds-dialog-title">Dialog Title</h2>
   </div>
 
-  <div class="dialog-content">
+  <div class="myds-dialog-content">
     <p>Dialog content goes here.</p>
   </div>
 
-  <div class="dialog-footer">
-    <div class="dialog-actions-group">
+  <div class="myds-dialog-footer">
+    <div class="myds-dialog-actions-group">
       <button class="button-myds button-myds-secondary" type="button" onclick=closeDialog()>
         Secondary Action
       </button>
@@ -650,7 +650,7 @@ The dialog uses the native HTML `<dialog>` element with the following structure:
     </div>
   </div>
   
-  <button class="dialog-close" onclick=closeDialog() aria-label="Close">
+  <button class="myds-dialog-close" onclick=closeDialog() aria-label="Close">
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
@@ -666,7 +666,7 @@ The dialog consists of the following elements:
 - **Dialog Element**: Native HTML5 dialog element
 - **Dialog Header**: Contains the title
 - **Dialog Content**: Main content area
-- **Dialog Footer**: Contains action buttons wrapped in `dialog-actions-group`
+- **Dialog Footer**: Contains action buttons wrapped in `myds-dialog-actions-group`
 - **Close Button**: Positioned absolutely in the top-right corner
 
 ## 4. States
@@ -684,16 +684,16 @@ Each button in the dialog supports:
 | ------------------------ | ------------------------------------ |
 | `dialog`                 | Native HTML dialog element with custom styling |
 | `dialog::backdrop`       | The backdrop overlay (styled via pseudo-element) |
-| `.dialog-header`         | Header section |
-| `.dialog-title`          | Dialog title styling |
-| `.dialog-content`        | Content area |
-| `.dialog-footer`         | Footer section |
-| `.dialog-actions-group`  | Wrapper for footer buttons |
-| `.dialog-close`          | Close button |
+| `.myds-dialog-header`         | Header section |
+| `.myds-dialog-title`          | Dialog title styling |
+| `.myds-dialog-content`        | Content area |
+| `.myds-dialog-footer`         | Footer section |
+| `.myds-dialog-actions-group`  | Wrapper for footer buttons |
+| `.myds-dialog-close`          | Close button |
 | `.button-myds`           | Base button styles |
 | `.button-myds-primary`   | Primary action button |
 | `.button-myds-secondary` | Secondary action button |
-| `.page-center`           | Centers content on the page |
+| `.myds-page-center`           | Centers content on the page |
 
 ## 6. Customization
 
@@ -705,7 +705,7 @@ dialog {
   max-width: 40rem; /* Custom dialog width */
 }
 
-.dialog-title {
+.myds-dialog-title {
   font-size: 1.25rem; /* Custom title size */
 }
 ```
