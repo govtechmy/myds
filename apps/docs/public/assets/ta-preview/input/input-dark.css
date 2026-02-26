@@ -1,0 +1,138 @@
+/* dark mode support */
+
+.dark .button-myds-primary:disabled {
+    background-color: #172554;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #ffffff66;
+  }
+  
+  /* Secondary Button */
+  .dark .button-myds-secondary {
+    background-color: #18181b;
+    color: #d4d4d8;
+    border-color: #3f3f46;
+  }
+  
+  .dark .button-myds-secondary:hover {
+    background-color: #27272a;
+  }
+  
+  .dark .button-myds-secondary:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #a1a1aa66;
+  }
+  
+  /* Secondary Color Button */
+  .dark .button-myds-secondary-color {
+    background-color: #18181b;
+    color: #6394ff;
+    border-color: #1e40af;
+  }
+  
+  .dark .button-myds-secondary-color:hover {
+    background-color: #172554;
+  }
+  
+  .dark .button-myds-secondary-color:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #6394ff66;
+  }
+  
+  /* Tertiary Button */
+  .dark .button-myds-tertiary {
+    background-color: transparent;
+    border-color: transparent;
+    color: #d4d4d8;
+  }
+  
+  .dark .button-myds-tertiary:hover {
+    background-color: #27272a;
+  }
+  
+  .dark .button-myds-tertiary:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #a1a1aa66;
+  }
+  
+  /* Tertiary Color Button */
+  .dark .button-myds-tertiary-color {
+    background-color: transparent;
+    border-color: transparent;
+    color: #6394ff;
+  }
+  
+  .dark .button-myds-tertiary-color:hover {
+    background-color: #172554;
+  }
+  
+  .dark .button-myds-tertiary-color:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #6394ff66;
+  }
+  
+  /* Danger Primary Button */
+  .dark .button-myds-danger-primary {
+    background-color: #dc2626;
+    border-color: #dc2626;
+    color: #ffffff;
+  }
+  
+  .dark .button-myds-danger-primary:hover {
+    background-color: #b91c1c;
+    border-color: #b91c1c;
+  }
+  
+  .dark .button-myds-danger-primary:disabled {
+    background-color: #450a0a;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #ffffff66;
+  }
+  
+  /* Danger Secondary Button */
+  .dark .button-myds-danger-secondary {
+    background-color: #18181b;
+    border-color: #991b1b;
+    color: #f87171;
+  }
+  
+  .dark .button-myds-danger-secondary:hover {
+    background-color: #450a0a;
+    border-color: #fca5a5;
+  }
+  
+  .dark .button-myds-danger-secondary:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #f8717166;
+  }
+  
+  /* Danger Tertiary Button */
+  .dark .button-myds-danger-tertiary {
+    background-color: transparent;
+    border-color: transparent;
+    color: #f87171;
+  }
+  
+  .dark .button-myds-danger-tertiary:hover {
+    background-color: #450a0a;
+    border-color: transparent;
+  }
+  
+  .dark .button-myds-danger-tertiary:disabled {
+    background-color: #27272a66;
+    cursor: not-allowed;
+    border-color: transparent;
+    color: #f8717166;
+  }
+  
