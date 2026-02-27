@@ -29,7 +29,7 @@ body {
   outline: 3px solid #96b7ff66;
 }
 
-.myds-page-center {
+.page-center {
   display: grid;
   place-content: center;
   min-height: 100%;
