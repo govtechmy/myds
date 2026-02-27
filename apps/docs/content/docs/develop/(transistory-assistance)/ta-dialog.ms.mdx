@@ -570,32 +570,32 @@ dialog::backdrop {
   </Tab>
 </Tabs>
 
-## Overview
+## Gambaran Keseluruhan
 
-The MYDS HTML/CSS Dialog provides a modal component for applications not using React. It ensures proper state handling, accessibility features, and design harmony across public-sector interfaces.
+Dialog HTML/CSS MYDS menyediakan komponen modal untuk aplikasi yang tidak menggunakan React. Ia memastikan pengendalian keadaan yang betul, ciri-ciri kebolehcapaian, dan keharmonian reka bentuk merentasi antara muka sektor awam.
 
-## 1. Setup
+## 1. Persediaan
 
-Follow these steps to prepare the dialog styles in your HTML project.
+Ikut langkah-langkah ini untuk menyediakan gaya dialog dalam projek HTML anda.
 
-**Recommended Import Order**
-Make sure to load the stylesheets in this sequence to ensure proper styling:
+**Susunan Import yang Disyorkan**
+Pastikan untuk memuatkan stylesheet dalam urutan ini untuk memastikan penggayaan yang betul:
 
 ```html
-<link rel="stylesheet" href="css-reset.css" />  <!-- refer to ResetCSS -->
-<link rel="stylesheet" href="dialog.css" />     <!-- refer to DialogCSS -->
-<link rel="stylesheet" href="dialog-dark.css" /> <!-- refer to DialogDarkCSS -->
+<link rel="stylesheet" href="css-reset.css" />  <!-- rujuk kepada ResetCSS -->
+<link rel="stylesheet" href="dialog.css" />     <!-- rujuk kepada DialogCSS -->
+<link rel="stylesheet" href="dialog-dark.css" /> <!-- rujuk kepada DialogDarkCSS -->
 ```
 
-This guarantees that:
+Ini menjamin bahawa:
 
-1. The CSS reset applies first.
-2. The dialog base styles override the reset where necessary.
-3. The dark theme styles apply last, so they can override both the reset and base dialog styles when needed.
+1. CSS reset digunakan terlebih dahulu.
+2. Gaya asas dialog mengatasi reset di mana perlu.
+3. Gaya tema gelap digunakan terakhir, supaya ia boleh mengatasi kedua-dua reset dan gaya dialog asas apabila diperlukan.
 
-### Step 2 - Include the required font
+### Langkah 2 - Sertakan fon yang diperlukan
 
-The Inter font is part of the MYDS design guidelines. Add it inside your `<head>`:
+Fon Inter adalah sebahagian daripada garis panduan reka bentuk MYDS. Tambahkannya di dalam `<head>` anda:
 
 ```html
 <link
@@ -604,53 +604,53 @@ The Inter font is part of the MYDS design guidelines. Add it inside your `<head>
 />
 ```
 
-Your `<head>` should look similar to:
+`<head>` anda sepatutnya kelihatan seperti ini:
 
 ```html
 <head>
-  <!-- Inter Font -->
+  <!-- Fon Inter -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
-  <!-- Design System Stylesheet -->
+  <!-- Stylesheet Sistem Reka Bentuk -->
   <link rel="stylesheet" href="css-reset.css" />
   <link rel="stylesheet" href="dialog.css" />
   <link rel="stylesheet" href="dialog-dark.css" />
 </head>
 ```
 
-## 2. Usage
+## 2. Penggunaan
 
-The dialog uses the native HTML `<dialog>` element with the following structure:
+Dialog menggunakan elemen HTML `<dialog>` asli dengan struktur berikut:
 
 ```html
 <button class="button-myds-primary" onclick=openDialog()>
-  Open Dialog
+  Buka Dialog
 </button>
 
 <dialog>
   <div class="myds-dialog-header">
-    <h2 class="myds-dialog-title">Dialog Title</h2>
+    <h2 class="myds-dialog-title">Tajuk Dialog</h2>
   </div>
 
   <div class="myds-dialog-content">
-    <p>Dialog content goes here.</p>
+    <p>Kandungan dialog diletakkan di sini.</p>
   </div>
 
   <div class="myds-dialog-footer">
     <div class="myds-dialog-actions-group">
       <button class="button-myds button-myds-secondary" type="button" onclick=closeDialog()>
-        Secondary Action
+        Tindakan Sekunder
       </button>
       <button class="button-myds button-myds-primary" type="button" onclick=closeDialog()>
-        Primary Action
+        Tindakan Utama
       </button>
     </div>
   </div>
   
-  <button class="myds-dialog-close" onclick=closeDialog() aria-label="Close">
+  <button class="myds-dialog-close" onclick=closeDialog() aria-label="Tutup">
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
@@ -658,76 +658,76 @@ The dialog uses the native HTML `<dialog>` element with the following structure:
 </dialog>
 ```
 
-## 3. Structure
+## 3. Struktur
 
-The dialog consists of the following elements:
+Dialog terdiri daripada elemen-elemen berikut:
 
-- **Trigger Button**: Opens the dialog using `showModal()`
-- **Dialog Element**: Native HTML5 dialog element
-- **Dialog Header**: Contains the title
-- **Dialog Content**: Main content area
-- **Dialog Footer**: Contains action buttons wrapped in `myds-dialog-actions-group`
-- **Close Button**: Positioned absolutely in the top-right corner
+- **Butang Pencetus**: Membuka dialog menggunakan `showModal()`
+- **Elemen Dialog**: Elemen dialog HTML5 asli
+- **Pengepala Dialog**: Mengandungi tajuk
+- **Kandungan Dialog**: Kawasan kandungan utama
+- **Pengaki Dialog**: Mengandungi butang tindakan yang dibungkus dalam `myds-dialog-actions-group`
+- **Butang Tutup**: Diletakkan secara mutlak di sudut kanan atas
 
-## 4. States
+## 4. Keadaan
 
-Each button in the dialog supports:
+Setiap butang dalam dialog menyokong:
 
-- **Default**
+- **Lalai**
 - **Hover**
-- **Focused**
-- **Disabled**
+- **Fokus**
+- **Dilumpuhkan**
 
-## 5. Anatomy
+## 5. Anatomi
 
-| Selector                 | Purpose                              |
+| Pemilih                  | Tujuan                              |
 | ------------------------ | ------------------------------------ |
-| `dialog`                 | Native HTML dialog element with custom styling |
-| `dialog::backdrop`       | The backdrop overlay (styled via pseudo-element) |
-| `.myds-dialog-header`         | Header section |
-| `.myds-dialog-title`          | Dialog title styling |
-| `.myds-dialog-content`        | Content area |
-| `.myds-dialog-footer`         | Footer section |
-| `.myds-dialog-actions-group`  | Wrapper for footer buttons |
-| `.myds-dialog-close`          | Close button |
-| `.button-myds`           | Base button styles |
-| `.button-myds-primary`   | Primary action button |
-| `.button-myds-secondary` | Secondary action button |
-| `.page-center`           | Centers content on the page |
+| `dialog`                 | Elemen dialog HTML asli dengan penggayaan tersuai |
+| `dialog::backdrop`       | Lapisan latar belakang (digayakan melalui pseudo-element) |
+| `.myds-dialog-header`         | Bahagian pengepala |
+| `.myds-dialog-title`          | Penggayaan tajuk dialog |
+| `.myds-dialog-content`        | Kawasan kandungan |
+| `.myds-dialog-footer`         | Bahagian pengaki |
+| `.myds-dialog-actions-group`  | Pembungkus untuk butang pengaki |
+| `.myds-dialog-close`          | Butang tutup |
+| `.button-myds`           | Gaya butang asas |
+| `.button-myds-primary`   | Butang tindakan utama |
+| `.button-myds-secondary` | Butang tindakan sekunder |
+| `.page-center`           | Memusatkan kandungan pada halaman |
 
-## 6. Customization
+## 6. Penyesuaian
 
-You can override default styles in your stylesheet.
-Example:
+Anda boleh mengatasi gaya lalai dalam stylesheet anda.
+Contoh:
 
 ```css
 dialog {
-  max-width: 40rem; /* Custom dialog width */
+  max-width: 40rem; /* Lebar dialog tersuai */
 }
 
 .myds-dialog-title {
-  font-size: 1.25rem; /* Custom title size */
+  font-size: 1.25rem; /* Saiz tajuk tersuai */
 }
 ```
 
 ## 7. JavaScript
 
-The implementation uses the native dialog API:
+Pelaksanaan menggunakan API dialog asli:
 
 ```javascript
 const dialog = document.querySelector('dialog');
 
-// Open dialog
+// Buka dialog
 function openDialog() {
   dialog.showModal();
 }
 
-// Close dialog
+// Tutup dialog
 function closeDialog() {
   dialog.close();
 }
 
-// Close on backdrop click (dismissible)
+// Tutup apabila klik di luar (boleh ditolak)
 dialog.addEventListener('click', (e) => {
   const rect = dialog.getBoundingClientRect();
   if (
@@ -741,10 +741,10 @@ dialog.addEventListener('click', (e) => {
 });
 ```
 
-## 8. Accessibility
+## 8. Kebolehcapaian
 
-- Built with the native `<dialog>` element
-- Keyboard navigation supported (ESC key closes dialog by default)
-- Semantic button elements
-- Visible focus ring for keyboard users
-- SVG icon with proper viewBox for the close button
+- Dibina dengan elemen `<dialog>` asli
+- Navigasi papan kekunci disokong (kekunci ESC menutup dialog secara lalai)
+- Elemen butang semantik
+- Cincin fokus yang kelihatan untuk pengguna papan kekunci
+- Ikon SVG dengan viewBox yang betul untuk butang tutup
