@@ -1,188 +1,205 @@
-.button-myds:focus {
-  outline: 3px solid #96b7ff66;
+/* MYDS Color Tokens - Light Mode */
+:root {
+  --bg-white: rgb(255 255 255);
+  --bg-washed: rgb(244 244 245);
+  --txt-black-700: rgb(63 63 70);
+  --txt-black-500: rgb(107 107 116);
+  --txt-black-disabled: rgba(82 82 91 / 0.4);
+  --otl-gray-200: rgb(228 228 231);
+  --otl-primary-300: rgb(150 183 255);
+  --fr-primary: rgba(150 183 255 / 0.4);
 }
 
-.dark .button-myds:focus {
-  outline: 3px solid #1d4ed866;
+/* Layout */
+.page-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
 }
 
-/* Primary Button */
-.button-myds-primary {
-  background-color: #2563eb;
-  color: #ffffff;
-  border-color: #2563eb;
+.myds-input-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
 }
 
-.button-myds-primary:hover {
-  background-color: #1d4ed8;
+.myds-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.button-myds-primary:disabled {
-  background-color: #c2d5ff;
-  cursor: not-allowed;
-  border: none;
-  color: #ffffff66;
+.myds-input-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: var(--txt-black-700);
 }
 
-/* Secondary Button */
-.button-myds-secondary {
-  background-color: #ffffff;
-  color: #3f3f46;
-  border-color: #e4e4e7;
+/* Input Container (like the wrapper div in React) */
+.myds-input-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border: 1px solid var(--otl-gray-200);
+  border-radius: 0.375rem;
+  background-color: var(--bg-white);
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.15s ease;
 }
 
-.button-myds-secondary:hover {
-  background-color: #fafafa;
+.myds-input-container:focus-within,
+.myds-input-container-focused {
+  border-color: var(--otl-primary-300);
+  box-shadow: 0 0 0 3px var(--fr-primary);
 }
 
-.button-myds-secondary:disabled {
-  background-color: #f4f4f566;
-  cursor: not-allowed;
-  border: none;
-  color: #52525b66;
+/* Base Input Styles */
+.myds-input {
+  width: 100%;
+  background-color: var(--bg-white);
+  border: 1px solid transparent;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 0.375rem;
+  color: var(--txt-black-700);
+  transition: colors 0.15s ease;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
-/* Secondary Color Button */
-.button-myds-secondary-color {
-  background-color: #ffffff;
-  color: #2563eb;
-  border-color: #c2d5ff;
+.myds-input::placeholder {
+  color: var(--txt-black-500);
 }
 
-.button-myds-secondary-color:hover {
-  background-color: #eff6ff;
-}
-
-.button-myds-secondary-color:disabled {
-  background-color: #f4f4f566;
-  cursor: not-allowed;
-  border: none;
-  color: #2563eb66;
-}
-
-/* Tertiary Button */
-
-.button-myds-tertiary {
-  background-color: transparent;
-  border-color: transparent;
-  color: #3f3f46;
-}
-
-.button-myds-tertiary:hover {
-  background-color: #fafafa;
-}
-
-.button-myds-tertiary:disabled {
-  background-color: #f4f4f566;
-  cursor: not-allowed;
-  border: none;
-  color: #52525b66;
-}
-
-/* Tertiary Color Button */
-
-.button-myds-tertiary-color {
-  background-color: transparent;
-  border-color: transparent;
-  color: #2563eb;
-}
-
-.button-myds-tertiary-color:hover {
-  background-color: #eff6ff;
-}
-
-.button-myds-tertiary-color:disabled {
-  background-color: #f4f4f566;
-  cursor: not-allowed;
-  border: none;
-  color: #2563eb66;
-}
-
-/* Danger Primary Button */
-
-.button-myds-danger-primary {
-  background-color: #dc2626;
-  border-color: #dc2626;
-  color: #ffffff;
-}
-
-.button-myds-danger-primary:hover {
-  background-color: #b91c1c;
-  border-color: #b91c1c;
-}
-
-.button-myds-danger-primary:disabled {
-  background-color: #fecaca;
-  cursor: not-allowed;
-  border: none;
-  color: #ffffff66;
-}
-
-/* Danger Secondary Button */
-
-.button-myds-danger-secondary {
-  background-color: #ffffff;
-  border-color: #fecaca;
-  color: #b91c1c;
-}
-
-.button-myds-danger-secondary:hover {
-  background-color: #fef2f2;
-  border-color: #fca5a5;
-}
-
-.button-myds-danger-secondary:disabled {
-  background-color: #f4f4f566;
-  cursor: not-allowed;
-  border: none;
-  color: #b91c1c66;
-}
-
-/* Danger Tertiary Button */
-
-.button-myds-danger-tertiary {
-  background-color: #ffffff;
-  border-color: transparent;
-  color: #b91c1c;
-}
-
-.button-myds-danger-tertiary:hover {
-  background-color: #fef2f2;
+.myds-input:focus {
+  outline: none;
   border-color: transparent;
 }
 
-.button-myds-danger-tertiary:disabled {
-  background-color: #f4f4f566;
+.myds-input:disabled {
+  background-color: var(--bg-washed);
   cursor: not-allowed;
-  border: none;
-  color: #b91c1c66;
+  color: var(--txt-black-disabled);
 }
 
-/* for porting into documentation */
+/* Size Variants */
+.myds-input-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
 
+.myds-input-md {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.myds-input-lg {
+  padding: 0.625rem 0.875rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+/* Input with Icons */
+.myds-input-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: var(--txt-black-500);
+}
+
+.myds-input-icon svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.myds-input-icon-left {
+  left: 0.75rem;
+}
+
+.myds-input-icon-right {
+  right: 0.75rem;
+}
+
+.myds-input-with-left-icon {
+  padding-left: 2.5rem;
+}
+
+.myds-input-with-right-icon {
+  padding-right: 2.5rem;
+}
+
+.myds-input-with-both-icon {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+/* Input Addons (Prepend/Append) */
+.myds-input-addon {
+  display: flex;
+  align-items: center;
+  border: 1px solid transparent;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--txt-black-700);
+}
+
+.myds-input-addon-prepend {
+  padding: 0.375rem 0.75rem;
+  border-right: 1px solid var(--otl-gray-200);
+}
+
+.myds-input-addon-append {
+  padding: 0.375rem 0.75rem;
+  border-left: 1px solid var(--otl-gray-200);
+}
+
+.myds-input-with-prepend {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.myds-input-with-append {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Disabled State for Container with addons/icons */
+.myds-input-container:has(.myds-input:disabled) {
+  background-color: var(--bg-washed);
+}
+
+.myds-input-container:has(.myds-input:disabled) .myds-input-icon {
+  color: var(--txt-black-disabled);
+}
+
+.myds-input-container:has(.myds-input:disabled) .myds-input-addon {
+  color: var(--txt-black-disabled);
+}
+
+/* For porting into documentation */
 html,
 body {
   height: 100%;
   background-color: white;
 }
+
 .dark body {
   height: 100%;
   background-color: #161619;
-}
-
-.page-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  min-height: 100%;
-}
-
-.button-grid {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  gap: 10px;
-  align-items: center;
-  justify-items: center;
-  justify-content: center;
 }

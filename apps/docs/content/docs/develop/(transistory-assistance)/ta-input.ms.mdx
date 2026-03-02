@@ -1,6 +1,6 @@
 ---
 title: Input
-description: MYDS-compliant input component for seamless transition starting point from HTML/CSS to React
+description: Komponen input yang mematuhi MYDS untuk titik permulaan peralihan lancar dari HTML/CSS ke React
 ---
 import {
   PreviewButton,
@@ -12,49 +12,49 @@ import {
 import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 import IframeThemePreview from "@/components/iframe-theme-preview";
 
-<Tabs items={["Preview","Code","ResetCSS","InputCSS","InputDarkCSS"]} defaultValue="Preview">
-  <Tab value="Preview">
+<Tabs items={["Pratonton","Kod","ResetCSS","InputCss","InputDarkCSS"]} defaultValue="Pratonton">
+  <Tab value="Pratonton">
     <IframeThemePreview  
       src="/assets/ta-preview/input/ta-input-preview.html" 
     />
   </Tab>
-  <Tab value="Code">
+  <Tab value="Kod">
   ```html
       <div class="myds-input-grid">
-        <!-- Default Input -->
+        <!-- Input Lalai -->
         <div class="myds-input-wrapper">
-          <label class="myds-input-label">Default</label>
-          <input type="text" class="myds-input" placeholder="Enter text..." />
+          <label class="myds-input-label">Lalai</label>
+          <input type="text" class="myds-input" placeholder="Masukkan teks..." />
         </div>
 
-        <!-- Hover Input -->
+        <!-- Input Hover -->
         <div class="myds-input-wrapper">
           <label class="myds-input-label">Hover</label>
-          <input type="text" class="myds-input myds-input-hover" placeholder="Enter text..." />
+          <input type="text" class="myds-input myds-input-hover" placeholder="Masukkan teks..." />
         </div>
 
-        <!-- Focused Input -->
+        <!-- Input Fokus -->
         <div class="myds-input-wrapper">
-          <label class="myds-input-label">Focused</label>
-          <input type="text" class="myds-input myds-input-focused" placeholder="Enter text..." />
+          <label class="myds-input-label">Fokus</label>
+          <input type="text" class="myds-input myds-input-focused" placeholder="Masukkan teks..." />
         </div>
 
-        <!-- Disabled Input -->
+        <!-- Input Dilumpuhkan -->
         <div class="myds-input-wrapper">
-          <label class="myds-input-label">Disabled</label>
-          <input type="text" class="myds-input" placeholder="Enter text..." disabled />
+          <label class="myds-input-label">Dilumpuhkan</label>
+          <input type="text" class="myds-input" placeholder="Masukkan teks..." disabled />
         </div>
 
-        <!-- Error Input -->
+        <!-- Input Ralat -->
         <div class="myds-input-wrapper">
-          <label class="myds-input-label">Error</label>
-          <input type="text" class="myds-input myds-input-error" placeholder="Enter text..." value="Invalid input" />
+          <label class="myds-input-label">Ralat</label>
+          <input type="text" class="myds-input myds-input-error" placeholder="Masukkan teks..." value="Input tidak sah" />
         </div>
 
-        <!-- With Value Input -->
+        <!-- Input Dengan Nilai -->
         <div class="myds-input-wrapper">
-          <label class="myds-input-label">With Value</label>
-          <input type="text" class="myds-input" placeholder="Enter text..." value="Sample text" />
+          <label class="myds-input-label">Dengan Nilai</label>
+          <input type="text" class="myds-input" placeholder="Masukkan teks..." value="Teks sampel" />
         </div>
       </div>
       ```
@@ -323,70 +323,70 @@ body {
   </Tab>
 </Tabs>
 
-## Overview
+## Gambaran Keseluruhan
 
-The Input component provides a consistent, accessible text input field that follows MYDS design guidelines. It includes multiple states for different user interactions and feedback scenarios.
+Komponen Input menyediakan medan input teks yang konsisten dan boleh diakses yang mengikuti garis panduan reka bentuk MYDS. Ia termasuk pelbagai keadaan untuk interaksi pengguna dan senario maklum balas yang berbeza.
 
-## Features
+## Ciri-ciri
 
-- **Multiple States**: Default, hover, focus, disabled, and error states
-- **Accessibility**: Proper labels and ARIA attributes
-- **Dark Mode**: Full dark mode support
-- **Responsive**: Adapts to different screen sizes
-- **Customizable**: Easy to style and extend
+- **Pelbagai Keadaan**: Keadaan lalai, hover, fokus, dilumpuhkan, dan ralat
+- **Kebolehcapaian**: Label dan atribut ARIA yang sesuai
+- **Mod Gelap**: Sokongan penuh mod gelap
+- **Responsif**: Menyesuaikan diri dengan saiz skrin yang berbeza
+- **Boleh Disesuaikan**: Mudah untuk digayakan dan diperluaskan
 
-## Usage
+## Penggunaan
 
-### Basic Input
+### Input Asas
 
 ```html
 <div class="myds-input-wrapper">
   <label class="myds-input-label">Label</label>
-  <input type="text" class="myds-input" placeholder="Enter text..." />
+  <input type="text" class="myds-input" placeholder="Masukkan teks..." />
 </div>
 ```
 
-### Input with Error
+### Input dengan Ralat
 
 ```html
 <div class="myds-input-wrapper">
-  <label class="myds-input-label">Email</label>
-  <input type="email" class="myds-input myds-input-error" placeholder="Enter email..." value="invalid" />
+  <label class="myds-input-label">E-mel</label>
+  <input type="email" class="myds-input myds-input-error" placeholder="Masukkan e-mel..." value="tidak sah" />
 </div>
 ```
 
-### Disabled Input
+### Input Dilumpuhkan
 
 ```html
 <div class="myds-input-wrapper">
-  <label class="myds-input-label">Disabled</label>
-  <input type="text" class="myds-input" placeholder="Cannot edit..." disabled />
+  <label class="myds-input-label">Dilumpuhkan</label>
+  <input type="text" class="myds-input" placeholder="Tidak boleh edit..." disabled />
 </div>
 ```
 
-## Class Reference
+## Rujukan Kelas
 
-| Class | Description |
+| Kelas | Penerangan |
 |-------|-------------|
-| `.myds-input` | Base input styling |
-| `.myds-input-wrapper` | Container for label and input |
-| `.myds-input-label` | Label styling |
-| `.myds-input-hover` | Hover state (for demos) |
-| `.myds-input-focused` | Focus state (for demos) |
-| `.myds-input-error` | Error state styling |
+| `.myds-input` | Gaya input asas |
+| `.myds-input-wrapper` | Bekas untuk label dan input |
+| `.myds-input-label` | Gaya label |
+| `.myds-input-hover` | Keadaan hover (untuk demo) |
+| `.myds-input-focused` | Keadaan fokus (untuk demo) |
+| `.myds-input-error` | Gaya keadaan ralat |
 
-## Accessibility
+## Kebolehcapaian
 
-- Always pair inputs with labels using the `myds-input-label` class
-- Use appropriate `type` attributes (text, email, password, etc.)
-- Include placeholder text for additional context
-- Error states should be accompanied by error messages
-- Disabled inputs are not focusable or interactive
+- Sentiasa pasangkan input dengan label menggunakan kelas `myds-input-label`
+- Gunakan atribut `type` yang sesuai (text, email, password, dll.)
+- Sertakan teks placeholder untuk konteks tambahan
+- Keadaan ralat perlu disertakan dengan mesej ralat
+- Input yang dilumpuhkan tidak boleh difokus atau interaktif
 
-## Best Practices
+## Amalan Terbaik
 
-1. **Always use labels**: Every input should have a corresponding label
-2. **Meaningful placeholders**: Use placeholders as examples, not as labels
-3. **Error feedback**: Combine `.myds-input-error` with clear error messages
-4. **Appropriate types**: Use the correct input type for the data being collected
-5. **Validation**: Provide immediate feedback for validation errors
+1. **Sentiasa gunakan label**: Setiap input harus mempunyai label yang berkaitan
+2. **Placeholder bermakna**: Gunakan placeholder sebagai contoh, bukan sebagai label
+3. **Maklum balas ralat**: Gabungkan `.myds-input-error` dengan mesej ralat yang jelas
+4. **Jenis yang sesuai**: Gunakan jenis input yang betul untuk data yang dikumpul
+5. **Pengesahan**: Berikan maklum balas segera untuk ralat pengesahan

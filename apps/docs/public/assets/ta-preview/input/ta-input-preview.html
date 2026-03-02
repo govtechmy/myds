@@ -28,14 +28,116 @@
   </head>
   <body>
     <main class="page-center">
-      <div class="button-grid">
-        <!-- Primary -->
-        <button class="button-myds button-myds-primary">Default</button>
-        <button class="button-myds button-myds-primary">Hover</button>
-        <button class="button-myds button-myds-primary">Focused</button>
-        <button disabled class="button-myds button-myds-primary">
-          Disabled
-        </button>
+      <div class="myds-input-grid">
+        <!-- Default Input -->
+        <div class="myds-input-wrapper">
+          <label class="myds-input-label">Default (Small)</label>
+          <div class="myds-input-container">
+            <input type="text" class="myds-input myds-input-sm" placeholder="Type something here" />
+          </div>
+        </div>
+
+        <!-- Medium Size -->
+        <div class="myds-input-wrapper">
+          <label class="myds-input-label">Medium</label>
+          <div class="myds-input-container">
+            <input type="text" class="myds-input myds-input-md" placeholder="Type something here" />
+          </div>
+        </div>
+
+        <!-- Large Size -->
+        <div class="myds-input-wrapper">
+          <label class="myds-input-label">Large</label>
+          <div class="myds-input-container">
+            <input type="text" class="myds-input myds-input-lg" placeholder="Type something here" />
+          </div>
+        </div>
+
+        <!-- With Left Icon -->
+        <div class="myds-input-wrapper">
+          <label class="myds-input-label">With Left Icon</label>
+          <div class="myds-input-container">
+            <div class="myds-input-icon myds-input-icon-left">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 14L11.1 11.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <input type="text" class="myds-input myds-input-sm myds-input-with-left-icon" placeholder="Search..." />
+          </div>
+        </div>
+
+        <!-- With Right Icon -->
+        <div class="myds-input-wrapper">
+          <label class="myds-input-label">With Right Icon</label>
+          <div class="myds-input-container">
+            <input type="email" class="myds-input myds-input-sm myds-input-with-right-icon" placeholder="you@example.com" />
+            <div class="myds-input-icon myds-input-icon-right">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.66667 4L8 8.66667L13.3333 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="2" y="3.33334" width="12" height="9.33333" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- With Both Icons -->
+        <div class="myds-input-wrapper">
+          <label class="myds-input-label">With Both Icons</label>
+          <div class="myds-input-container">
+            <div class="myds-input-icon myds-input-icon-left">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 10C9.10457 10 10 9.10457 10 8C10 6.89543 9.10457 6 8 6C6.89543 6 6 6.89543 6 8C6 9.10457 6.89543 10 8 10Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M13.3333 8C13.3333 8 11.3333 12 8 12C4.66667 12 2.66667 8 2.66667 8C2.66667 8 4.66667 4 8 4C11.3333 4 13.3333 8 13.3333 8Z" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <input type="password" class="myds-input myds-input-sm myds-input-with-both-icon" placeholder="Password..." value="password123" />
+            <div class="myds-input-icon myds-input-icon-right">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5.33333V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="8" cy="8" r="5.33333" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- With Prepend -->
+        <div class="myds-input-wrapper">
+          <label class="myds-input-label">With Prepend</label>
+          <div class="myds-input-container">
+            <div class="myds-input-addon myds-input-addon-prepend">
+              RM
+            </div>
+            <input type="text" class="myds-input myds-input-sm myds-input-with-prepend" placeholder="0.00" />
+          </div>
+        </div>
+
+        <!-- With Append -->
+        <div class="myds-input-wrapper">
+          <label class="myds-input-label">With Append</label>
+          <div class="myds-input-container">
+            <input type="text" class="myds-input myds-input-sm myds-input-with-append" placeholder="Type something here" />
+            <div class="myds-input-addon myds-input-addon-append">
+              Copy
+            </div>
+          </div>
+        </div>
+
+        <!-- Focused State -->
+        <div class="myds-input-wrapper">
+          <label class="myds-input-label">Focused</label>
+          <div class="myds-input-container myds-input-container-focused">
+            <input type="text" class="myds-input myds-input-sm" placeholder="Type something here" value="Focused state" />
+          </div>
+        </div>
+
+        <!-- Disabled State -->
+        <div class="myds-input-wrapper">
+          <label class="myds-input-label">Disabled</label>
+          <div class="myds-input-container">
+            <input type="text" class="myds-input myds-input-sm" placeholder="Cannot edit..." disabled />
+          </div>
+        </div>
       </div>
     </main>
   </body>
