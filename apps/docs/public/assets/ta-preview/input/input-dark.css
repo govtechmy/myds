@@ -1,0 +1,68 @@
+/* Dark mode support - MYDS Color Tokens */
+.dark {
+  --bg-white: rgb(24 24 27);
+  --bg-washed: rgb(29 29 33);
+  --txt-black-700: rgb(212 212 216);
+  --txt-black-500: rgb(161 161 170);
+  --txt-black-disabled: rgba(161 161 170 / 0.4);
+  --otl-gray-200: rgb(39 39 42);
+  --otl-primary-300: rgb(29 78 216);
+  --fr-primary: rgba(29 78 216 / 0.4);
+}
+
+.dark .myds-input-label {
+  color: var(--txt-black-700);
+}
+
+.dark .myds-input-container {
+  background-color: var(--bg-white);
+  border-color: var(--otl-gray-200);
+}
+
+.dark .myds-input-container:focus-within,
+.dark .myds-input-container-focused {
+  border-color: var(--otl-primary-300);
+  box-shadow: 0 0 0 3px var(--fr-primary);
+}
+
+.dark .myds-input {
+  background-color: var(--bg-white);
+  color: var(--txt-black-700);
+}
+
+.dark .myds-input::placeholder {
+  color: var(--txt-black-500);
+}
+
+.dark .myds-input:disabled {
+  background-color: var(--bg-washed);
+  color: var(--txt-black-disabled);
+}
+
+.dark .myds-input-icon {
+  color: var(--txt-black-500);
+}
+
+.dark .myds-input-addon {
+  color: var(--txt-black-700);
+}
+
+.dark .myds-input-addon-prepend {
+  border-right-color: var(--otl-gray-200);
+}
+
+.dark .myds-input-addon-append {
+  border-left-color: var(--otl-gray-200);
+}
+
+.dark .myds-input-container:has(.myds-input:disabled) {
+  background-color: var(--bg-washed);
+}
+
+.dark .myds-input-container:has(.myds-input:disabled) .myds-input-icon {
+  color: var(--txt-black-disabled);
+}
+
+.dark .myds-input-container:has(.myds-input:disabled) .myds-input-addon {
+  color: var(--txt-black-disabled);
+}
