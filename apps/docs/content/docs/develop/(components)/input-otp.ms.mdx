@@ -20,7 +20,7 @@ import { InputOTPControlledExample } from "./input-otp.client";
   </Tab>
   <Tab value="Code">
     ```tsx
-    import { InputOTP, InputOTPSlot } from "@/components/myds"
+    import { InputOTP, InputOTPSlot } from "@govtechmy/myds-react/input-otp"
 
     <InputOTP maxLength={4}>
       <InputOTPSlot index={0} />
@@ -45,7 +45,7 @@ import { InputOTPControlledExample } from "./input-otp.client";
 ## Usage
 
 ```ts copy title="Import"
-import { InputOTP, InputOTPSlot } from "@/components/myds";
+import { InputOTP, InputOTPSlot } from "@govtechmy/myds-react/input-otp";
 ```
 
 ```tsx copy title="Anatomi"
@@ -74,7 +74,7 @@ Tetapkan prop `invalid` kepada true untuk menandakan input sebagai tidak sah.
   </Tab>
   <Tab value="Code">
     ```tsx
-    import { InputOTP, InputOTPSlot } from "@/components/myds"
+    import { InputOTP, InputOTPSlot } from "@govtechmy/myds-react/input-otp"
 
     <InputOTP maxLength={4} invalid>
       <InputOTPSlot index={0} />
@@ -102,7 +102,7 @@ Nyahaktifkan input dengan menetapkan prop `disabled` kepada true.
   </Tab>
   <Tab value="Code">
     ```tsx
-    import { InputOTP, InputOTPSlot } from "@/components/myds"
+    import { InputOTP, InputOTPSlot } from "@govtechmy/myds-react/input-otp"
 
     <InputOTP maxLength={4} disabled defaultValue="AB12">
       <InputOTPSlot index={0} />
@@ -125,7 +125,7 @@ Input boleh dikawal dengan menetapkan props `value` dan `onChange`. Dalam contoh
   </Tab>
   <Tab value="Code">
     ```tsx
-    import { InputOTP, InputOTPSlot } from "@/components/myds"
+    import { InputOTP, InputOTPSlot } from "@govtechmy/myds-react/input-otp"
 
     const [value, setValue] = useState("");
 
@@ -161,7 +161,7 @@ Hantar regex kepada prop `pattern` untuk hanya menerima nilai corak tertentu. Se
   </Tab>
   <Tab value="Code">
     ```tsx
-    import { InputOTP, InputOTPSlot } from "@/components/myds"
+    import { InputOTP, InputOTPSlot } from "@govtechmy/myds-react/input-otp"
 
     <InputOTP maxLength={4} pattern="^[0-9]{0,4}$">
       <InputOTPSlot index={0} />

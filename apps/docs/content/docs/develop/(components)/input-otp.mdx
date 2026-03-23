@@ -20,7 +20,7 @@ import { InputOTPControlledExample } from "./input-otp.client";
   </Tab>
   <Tab value="Code">
     ```tsx
-    import { InputOTP, InputOTPSlot } from "@/components/myds"
+    import { InputOTP, InputOTPSlot } from "@govtechmy/myds-react/input-otp"
 
     <InputOTP maxLength={4}>
       <InputOTPSlot index={0} />
@@ -45,7 +45,7 @@ import { InputOTPControlledExample } from "./input-otp.client";
 ## Usage
 
 ```ts copy title="Import"
-import { InputOTP, InputOTPSlot } from "@/components/myds";
+import { InputOTP, InputOTPSlot } from "@govtechmy/myds-react/input-otp";
 ```
 
 ```tsx copy title="Anatomy"
@@ -74,7 +74,7 @@ Set the `invalid` prop to true to mark the input as invalid.
   </Tab>
   <Tab value="Code">
     ```tsx
-    import { InputOTP, InputOTPSlot } from "@/components/myds"
+    import { InputOTP, InputOTPSlot } from "@govtechmy/myds-react/input-otp"
 
     <InputOTP maxLength={4} invalid>
       <InputOTPSlot index={0} />
@@ -102,7 +102,7 @@ Disable the input by setting the `disabled` prop to true.
   </Tab>
   <Tab value="Code">
     ```tsx
-    import { InputOTP, InputOTPSlot } from "@/components/myds"
+    import { InputOTP, InputOTPSlot } from "@govtechmy/myds-react/input-otp"
 
     <InputOTP maxLength={4} disabled defaultValue="AB12">
       <InputOTPSlot index={0} />
@@ -125,7 +125,7 @@ The input can be controlled by setting the `value` and `onChange` props. In the 
   </Tab>
   <Tab value="Code">
     ```tsx
-    import { InputOTP, InputOTPSlot } from "@/components/myds"
+    import { InputOTP, InputOTPSlot } from "@govtechmy/myds-react/input-otp"
 
     const [value, setValue] = useState("");
 
@@ -161,7 +161,7 @@ Pass a regex to the `pattern` prop to only accept values of a certain pattern. F
   </Tab>
   <Tab value="Code">
     ```tsx
-    import { InputOTP, InputOTPSlot } from "@/components/myds"
+    import { InputOTP, InputOTPSlot } from "@govtechmy/myds-react/input-otp"
 
     <InputOTP maxLength={4} pattern="^[0-9]{0,4}$">
       <InputOTPSlot index={0} />
