@@ -1,6 +1,17 @@
 # Malaysian Government Design System (MYDS)
 
+> **Unofficial fork.** This isn't the official MYDS repository; that's [govtechmy/myds](https://github.com/govtechmy/myds). This fork adds [`DESIGN.md`](./DESIGN.md), an independent description of MYDS as built for AI agents working on official Malaysian government services, and its glossary, [`CONTEXT.md`](./CONTEXT.md). Both files are © 2026 Amer Fathullah Nuaim Zakaria, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); the licence covers only their text, not MYDS itself. For DESIGN.md files of other design systems, see [VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md).
+
 ![myds-hero-img](https://d2391uizq0pg2.cloudfront.net/design/myds-hero-img.png)
+
+## Preview
+
+Interactive previews of the MYDS design tokens and component library — no framework build required.
+
+| Theme | Link |
+|-------|------|
+| ☀️ Light | [preview.html](./preview.html) |
+| 🌙 Dark | [preview-dark.html](./preview-dark.html) |
 
 > The Malaysian Government Design System (MYDS) contains the design guideline and the component library for creating consistent and accessible digital services across the Malaysian government.
 
