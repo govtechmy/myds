@@ -17,7 +17,10 @@ export default function IframeThemePreview({ src, height = 600 }: Props) {
     const observer = new MutationObserver(() => {
       setTheme(document.documentElement.className);
     });
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
 
     return () => observer.disconnect();
   }, []);
@@ -30,7 +33,7 @@ export default function IframeThemePreview({ src, height = 600 }: Props) {
       const iframe = iframeRef.current;
       if (iframe && iframe.contentWindow) {
         iframe.contentWindow.postMessage({ theme }, window.location.origin);
-      } 
+      }
     }
 
     iframe.addEventListener("load", sendTheme);
@@ -43,7 +46,7 @@ export default function IframeThemePreview({ src, height = 600 }: Props) {
 
   // Hold off rendering iframe until theme is set
   if (!theme) {
-    return null; 
+    return null;
   }
 
   return (
